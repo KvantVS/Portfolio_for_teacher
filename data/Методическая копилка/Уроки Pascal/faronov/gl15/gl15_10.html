@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_9.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_11.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Цветовая палитра
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+В процедуре Draw переменная Color задает атрибуты (цвет символов и цвет фона) 
+символов, выводимых с помощью методов MoveChar и MoveStr. С помощью функции 
+GetColor она устанавливается таким образом, чтобы символы на экране отображались 
+цветовым сочетанием с номером 1. В Turbo Vision используется гибкая система 
+установки цвета отдельных видимых элементов. Элемент изображения связывается не 
+с каким-то конкретным цветом, а с индексом в таблице цветов, называемой 
+палитрой. Количество элементов палитры зависит от количества цветовых сочетаний, 
+используемых при выводе элемента изображения. Например, в TScroller используется 
+двух</font><font face="Arial, Helvetica, sans-serif" size="3">элементная палитра цветов: первый элемент устанавливает цвет нормального 
+текста, второй - выделенного текста (рис. 15.6).</font> </P>
+<p align="center"><img border="0" src="15_6.jpg"  ></p>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Рис.15.6.</b> Палитра объекта TScroller</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Числа 6 и 7 в этой палитре указывают не конкретные цвета, а номера позиций в 
+палитре объекта-владельца. Для нашего случая объектом-владельцем будет TWindow. 
+Таким образом, цвет номер 1 палитры TScroller лишь указывает на шестое по счету 
+цветовое сочетание в палитре TWindow (рис. 15.7).</font> </P>
+<p align="center"><img border="0" src="15_7.jpg"  ></p>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Рис. 15.7.</b> Связь палитр TScroller и TWindow</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Шестой элемент палитры TWindow в свою очередь ссылается на 13-й элемент 
+палитры своего владельца - TProgram. Объект TProgram - это начальный видимый 
+элемент любой программы в Turbo Vision. На нем заканчивается любая цепочка 
+ссылок, т.е. его палитра содержит конкретные атрибуты символов. Тринадцатый 
+элемент этой палитры содержит значение $1Е, что соответствует выводу желтого 
+символа на синем фоне - именно таким образом отображается нормальный текст в 
+окне TScroller, если это окно вставлено в TWindow. Если бы объект TScroller был 
+помещен непосредственно на панель экрана, то значение 6 в первом элементе 
+палитры TScroller указывало бы на 6-й элемент палитры TProgram, содержащий 
+атрибуты $28 (темно-серые символы на зеленом фоне). Цветовые палитры в Turbo 
+Vision содержат такие значения по</font> <font face="Arial, Helvetica, sans-serif" size="3">умолчанию, чтобы любая комбинация цветов давала приятную цветовую гамму. При 
+необходимости пользователь может изменить любую цветовую палитру. Вернемся к 
+нашему примеру и рассмотрим реализацию конструктора
+Init:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor TInterior.Init(var Bounds:
+TRect;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">HS,VS: PScrollBar);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Создает окно для данных}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Inherited Init(Bounds, HS, VS) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadFile;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GrowMode := gfGrowHiX + gfGrowHiY;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetLimit(LLine,NLines)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; {Tinterior.Init}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Объект TScroller имеет поле GrowMode, которое определяет, как элемент будет 
+изменять свои размеры, если пользователь потребует этого. Параметр gfGrowHiX 
+предписывает окну TScroller изменяться таким образом, чтобы правая его граница 
+всегда находилась на постоянном расстоянии от правой границы владельца. Точно 
+также gfGrowHiY задает неизменным расстояние нижней границы окна TScroller от 
+нижней границы владельца. Таким образом, окно TScroller всегда будет занимать 
+всю внутреннюю часть окна-владельца TWindow. С помощью процедуры SetLimit (X, Y) 
+мы задаем горизонтальную Х и вертикальную У границы перемещения окна 
+относительно текста. Эти границы будут выдерживаться при управлении окном с 
+помощью клавишей или мыши: какими бы не были текущие размеры окна, нажатие на 
+клавишу End, например, смещает его вправо так, чтобы самым правым видимым 
+символом был Х-й символ текста. Нажатие на клавиши Ctrl-PgDn смещает окно вниз 
+по тексту таким образом, чтобы самая нижняя строка окна соответствовала Y-й 
+строке текста. Иными словами, параметры X и Y задают координаты правого нижнего 
+угла виртуального (воображаемого) экрана неограниченных размеров, на котором 
+находится текст и по которому «скользит» окно. Левый верхний угол виртуального 
+экрана всегда имеет координаты (0,0).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Осталось отредактировать конструктор TWorkWinJnit: нужно изменить тип 
+переменной Interior</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Interior: PInterior;&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> и обращение к конструктору:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Interior := New(PInterior, Init(Bounds, HS,
+VS));</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Но не спешите запускать программу на счет: ведь файла данных пока еще нет, а 
+поэтому Вы ничего не увидите на экране. Чтобы все-таки оценить достигнутые 
+результаты, измените текст процедуры ReadFile - добавьте в него следующие 
+строки:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TInterior.ReadFile;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Читает содержимое файла данных}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">f: text;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s := copy(ParamStr(0),l,pos('.',ParamStr(0)))+'pas';&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">assign(f,s);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">reset(f);  {Открываем файл с текстом программы}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> NLines := 0;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">while not EOF(f) and (NLines &lt; MaxLine) do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">inc(NLines);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn(f/Lines[NLines])&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">close (f) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">exit;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; {ReadFile}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Добавленные строки заставят процедуру прочитать в массив Lines текст самой 
+программы (если Вы будете запускать программу из среды Турбо Паскаль, не 
+забудьте установить компиляцию в дисковый файл опцией COMPILE/DESTINATION, иначе 
+оператор</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s:=copy(ParamStr(0),l,pos('.',ParamStr(0)))+'pas';</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">не сможет установить в S правильное имя файла с текстом Вашей программы). 
+После запуска программы нажмите клавишу F3, задайте имя несуществующего файла, 
+нажмите клавиши Enter и F4 - на экране появится изображение, показанное на рис. 
+15.8.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Это окно откликается на нажатие клавиш управления курсором, команды PgUp, 
+PgDn, Ctrl-PgUp и т.д. подобно тому, как ведет себя окно редактора в среде Турбо 
+Паскаль. С помощью мыши Вы можете перемещать его по экрану, изменять размеры, 
+закрывать - все эти действия реализует стандартный обработчик событий объекта
+TScroller.</font> </P>
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_9.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_11.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</BODY></HTML>

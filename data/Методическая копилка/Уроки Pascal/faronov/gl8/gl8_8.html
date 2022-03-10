@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl8_7.html">
+<img SRC="Back.gif" BORDER="0">
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0">
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Расширинный синтаксис вызова функций
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+В Турбо Паскале есть возможность вызывать функцию и не использовать то 
+значение, которое она возвращает. Иными словами, вызов функции может внешне 
+выглядеть как вызов процедуры, например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{$Х+} {Включаем расширенный синтаксис}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function My.Func (var x : Integer) : Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if x&lt;0 then x:=0&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else MyFunc := x+10&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end; {MyFunc}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">i : Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin {main}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> i := 1;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">i := 2*MyFunc(i) -100;  {Стандартный вызов функции}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> MyFunc ( i )  {Расширенный 
+синтаксис вызова}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end.  {main}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Расширенный синтаксис делает использование функций таким же свободным, как, 
+например, их использование в языке Си, и придает Турбо Паскалю дополнительную 
+гибкость. С помощью расширенного синтаксиса нельзя вызывать стандартные функции. 
+Компиляция с учетом расширенного синтаксиса включается активным состоянием опции 
+EXTENDED SYNTAX диалогового окна OPTIONS/COMPILER (см. прил.1) или глобальной 
+директивой компилятора {$Х+}.</font> </P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl8_7.html">
+<img SRC="Back.gif" BORDER="0">
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0">
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

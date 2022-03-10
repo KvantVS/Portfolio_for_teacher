@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl17_13.html">
+<img SRC="Back.gif" BORDER="0">
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0">
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Воздействие на состояние поля State
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+В отличие от других полей поле State доступно только для чтения (поля 
+Options, DragMode и GrowMode доступны также и для записи). Это означает, что в 
+программе не может использоваться оператор вида</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">State := NewState;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Установить новое состояние этого поля можно только с помощью метода SetState, 
+доступного любому видимому элементу. Метод SetState объявлен в Turbo Vision 
+следующим образом:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TView = object (TObject)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Procedure SetState(AState:Word; Enable:
+Boolean); Virtual;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">При обращении к методу параметр AState должен содержать маску разрядов поля 
+State, а признак Enable указывает, должны ли устанавливаться эти разряды (Enable 
+= True) или очищаться (Enable = False).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Отметим, что Turbo Vision вызывает метод SetState всякий раз, когда элемент 
+активизируется или выбирается. Это дает возможность программе устанавливать 
+новое состояние элемента или реагировать на действия пользователя (например, на 
+активизацию видимого элемента). В отличие от этого поля Options, DragMode и 
+GrowMode активизируются только при инициации элемента и далее обычно не 
+меняются.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Видимые элементы часто перекрывают метод SetState, чтобы гибко реагировать на 
+действия пользователя. Например кнопка (объект TButton) просматривает флаги поля 
+State и изменяет свой цвет на бирюзовый, когда становится активной. В следующем 
+примере объект TButton вначале проверяет, принадлежит ли он активному окну, 
+чтобы решить, рисовать себя или нет. Затем он проверяет, выбрана ли кнопка в 
+окне и, если это так, вызывает свой метод MakeDefault, чтобы установить или 
+сбросить (в зависимости от Enable) свою активность по умолчанию:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TButton.SetState(AState: Word; Enable: Boolean);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TView.SetState(AState, Enable);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if (AState and (sfSelected + sfActive)) &lt;&gt; 0 then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DrawView;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if (AState and sfFocused)&lt;&gt; 0 then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MakeDefault(Enable);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Другой пример: допустим, что Ваша программа включает в себя текстовый 
+редактор и Вы хотите разрешить или запретить все команды редактирования в полосе 
+меню в зависимости от того, открыт редактор или нет. В этом случае Вы можете 
+создать такой метод SetState для текстового редактора:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TEditor.SetState(AState: Word; Enable: Boolean);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">EditorCommands = [cmSearch,
+cmReplace,cmSearchAgain,&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmGotoLine, cmFindProc,cmFindError];</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TView.SetState(AState, Enable);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if AState and sfActive &lt;&gt; 0 then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if Enable then EnableCommands(EditorCommands)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else 
+DisableCommands(EditorCommands); </font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<p>&nbsp;</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl17_13.html">
+<img SRC="Back.gif" BORDER="0">
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0">
+</a>
+</font>
+</td>
+</tr>
+</table>
+</BODY></HTML>

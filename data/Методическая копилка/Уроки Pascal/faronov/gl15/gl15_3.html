@@ -1,0 +1,189 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_2.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_4.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Формирование меню
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Вернемся к смысловой части нашего примера и подумаем о том, какие еще 
+свойства следует придать программе. Поскольку мы предполагаем работу с файлом, 
+можно включить в программу код, реализующий строку меню с опцией «Файл», связав 
+с этой опцией такие действия, как открытие уже существующего файла данных и/или 
+создание нового. Здесь же можно предусмотреть возможность альтернативного выхода 
+из программы. Кроме того, в главное меню следует поместить еще одну опцию, 
+назовем ее «Работа». Эта опция должна открыть доступ к содержательной части 
+программы. С учетом сказанного программу нужно дополнить следующими строками:</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Команды для обработчиков событий:}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmWork = 203;  {Обработать данные}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmDOS = 204;  {Временно выйти в ДОС}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WinComl: TCommandSet = [cmSave,cmWork];
+ {Множество</font> <font size="3">временно недоступных команд}</font></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Эти строки следует вставить сразу после предложения Uses; они определяют коды 
+команд, которые будут затем использоваться для вызова соответствующих частей 
+программы. Кроме того, объявление объекта TNotebook нужно дополнить строкой</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TNotebook = object</font> <font size="3">(TApplication)</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure InitMenuBar;</font> <font size="3">Virtual;
+ {Перекрываем стандартный метод InitMenuBar}</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">в которой перекрывается прежний метод InitMenuBar, ответственный за 
+формирование строки меню. И, наконец, в разделе объявлений программы следует 
+поместить описание метода InitMenuBar и видоизменить описание метода 
+InitStatusLine:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TNotebook.Ini tMenuBar;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Создание верхнего меню}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R: TRect;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetExtent (R) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.B.Y := succ(R.A.Y) ;  {R - координаты, строки меню}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> MenuBar := New ( 
+PMenuBar , Init(R, NewMenu (  {Создаем меню}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Первый элемент нового меню представляет собой подменю (меню второго уровня) 
+. Создаем его} </font><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> NewSubMenu( '~F~/ Файл', hcNoContext,&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Описываем элемент главного 
+меню}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> NewMenu (  {Создаем подменю}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewItem(  {Первый элемент}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> '~1~/ Открыть ', 
+'F3' , kbF3,cmOpen, hcNoContext,&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewItem(  {Второй элемент}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> '~2~/ Закрыть ', 'F2', 
+kbF2, cmSave,hcNoContext,&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewItem(  {Третий элемент}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'~3~/ Сменить диск' , ' ' , 0, cmChangeDir,hcNoContext,&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> NewLine (  
+{Строка-разделитель}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewItem('~4~/ Вызов ДОС' , ' ' , 0,
+cmDOSShell,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">hcNoContext,&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewItem('~5~/ Конец работы' , 'Alt-X' ,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">kbAltX, cmQuit, hcNoContext,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NIL) ) ) ) ) )  {Нет других элементов подменю} ),</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Создаем второй элемент главного меню}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewItem( '~W~/ Работа', ' ', kbF4, 
+cmWork, hcNoContext,&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NIL)  {Нет других элементов главного меню} ))))&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; {TNotebook. InitMenuBar}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{---------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TNotebook. InitStatusLine;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Формирует строку статуса}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R: TRect;  {Границы строки статуса}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetExtent (R,) ;  {Получаем в R координаты всего экрана}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> R.A.Y := pred(R.B.Y) 
+; StatusLine := New(PStatusLine,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Init(R,  {Создаем строку статуса}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> NewStatusDef (О, $FFFF,  {Устанавливаем 
+максимальный диапазон контекстной справочной службы}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewStatusKey('~Alt-X~ 
+Выход', kbAltX, cmQuit,&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewStatusKey('~F2~ Закрыть', kbF2, cmSave,&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewStatusKey('~F3~ Открыть', kbF3,cmOpen,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewStatusKey('~F4~ Работа', kbF4,cmWork,&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewStatusKey('~F10~ Меню', 
+kbF10,cmMenu, NUL))))),{Нет других клавиш}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NUL){Нет других определений}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DisableCommands(WinComl)  {Запрещаем недоступные команды}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;  
+{TNotebook.InitStatusLine}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В новом варианте программы мы продвинулись дальше по пути конкретизации ее 
+действий. Если Вы запустите программу и нажмете клавиши Alt-F (вызов опции 
+«Файл» главного меню), на экране появится изображение, показанное на рис. 15,2.</font> 
+</P>
+<p align="center"><img border="0" src="15_2.jpg"  ></p>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Рис.15.2.</b> Вид окна с развернутым меню опции Файл</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Определение опций меню во многом напоминает определение командных клавиш в 
+строке статуса. Отличие заключается лишь в том, что с любой опцией меню может 
+быть при необходимости связана встроенная справочная служба. В нашей программе 
+мы не используем эту возможность, для чего задаем стандартный идентификатор 
+hcNoContext (нет контекстно-зависимой справки) при описании каждой опции.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Подобно клавишам строки статуса командные клавиши меню выделяются символом 
+«~». Заметим, что не имеет смысла назначать в качестве командных клавиш клавиши 
+кириллицы, так как при их анализе Turbo Vision игнорирует коды 128...255. Если 
+бы, например, мы задали в качестве командной клавиши для опции «Файл» клавишу 
+«Ф», нажатие Alt-Ф не вызвало бы развертывания подменю, связанного с этой опцией 
+(как и в Турбо Паскале, в Turbo Vision опции главного меню вызываются 
+комбинацией А1t-&lt;клавиша&gt;, а опции меню нижнего уровня - просто нажатием 
+нужной командной клавиши).</font> </P>
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_2.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_4.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</BODY></HTML>

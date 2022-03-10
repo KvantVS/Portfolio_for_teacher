@@ -1,0 +1,203 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl14_4.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl14_6.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Многоугольники
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>Процедура</b> Rectangle. </font> </P>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Вычерчивает прямоугольник с указанными координатами углов. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Rectangle(X1,Y1,X2,Y2: Integer);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь X1... Y2 - координаты левого верхнего (X1, Y1) и правого нижнего (Х2, 
+Y2) углов прямоугольника. Прямоугольник вычерчивается с использованием текущего 
+цвета и текущего стиля линий.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В следующем примере на экране вычерчиваются 10 вложенных друг в друга 
+прямоугольников.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Graph, CRT;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">d,r,e,xl,yl, x2,y2,dx,dy: Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Инициируем графику}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> d := Detect; InitGraph(d, r, ' ') ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> e := GraphResult; if 
+e &lt;&gt; grOK then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(GraphErrorMsg(e))&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Определяем приращения сторон}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> dx := GetMaxX div 20;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> dy := GetMaxY div 20;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+{Чертим вложенные прямоугольники}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for d := 0 to 9 do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Rectangle(d*dx,d*dy,GetMaxX-d*dx,GetMaxY-d*dy);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if ReadKey=#0 then d := 
+ord(ReadKey);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> CloseGraph</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> DrawPoly.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Вычерчивает произвольную ломаную линию, заданную 
+координатами точек излома.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure DrawPoly(N: Word; var Points)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь N - количество точек излома, включая обе крайние точки; Points - 
+переменная типа PointType, содержащая координаты точек излома.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Координаты точек излома задаются парой значений типа Word: первое определяет 
+горизонтальную, второе - вертикальную координаты. Для них можно использовать 
+следующий определенный в модуле тип:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PointType = record</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">х, у : Word</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">При вычерчивании используется текущий цвет и текущий стиль линий. Вот как, 
+например, можно с помощью этой процедуры вывести на экран график синуса:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Graph;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">N = 100;  {Количество точек графика}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">d, r, e: Integer;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">m : array [O..N+1] of PointType; k : Word;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Инициируем графику}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">d := Detect; InitGraph(d, r, '');&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> e := GraphResult; if e 
+&lt;&gt; grOk then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(GraphErrorMsg(e))&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Вычисляем координаты графика}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for k := 0 to N do with m[k] do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">x := trunc(k*GetMaxX/N);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> у := trunc(GetMaxY*(-sin(2*Pi*k/N)+1)/2)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Замыкаем график прямой линией}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> m[succ(N)].x := m[0] .x;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> m[succ(n)].y := m[0] 
+.у;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> DrawPoly(N + 2, m);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> ReadLn;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> CloseGraph&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В этом примере для проведения горизонтальной прямой используется «замыкание» 
+ломаной - первая и последняя координаты ее точек излома совпадают.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Замечу, что хотя количество точек излома N - выражение типа Word, на самом 
+деле внутри процедуры на этот параметр накладываются ограничения, связанные с 
+конечным размером используемой буферной памяти. Вы можете убедиться в этом с 
+помощью, например, изменения N в предыдущем примере: при N=678 график перестанет 
+выводиться на экран, а функция GraphResult будет возвращать значение -6 (не 
+хватает памяти для просмотра областей). Таким образом, для этой программы 
+пороговое значение количества точек излома составляет 679. В то же время для 
+программы</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Graph;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">N=510;  {Предельное значение, при котором</font>
+<font size="3">на экране еще видна диагональная линия}&nbsp;</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">d,k: Integer;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Coo: array [1..N] of PointType;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">d := Detect; InitGraph(d,k,' ') ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for k := 1 to N do with Coo[k] do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if odd(k) 
+then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> X := 0;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Y := 0&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">X := GetMaxX;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Y := GetMaxY&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DrawPoly(N,Coo);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> CloseGraph&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">это значение равно 510. В этой программе ломаная задается в виде многократно 
+накладывающихся друг на друга диагональных линий.</font> </P>
+
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl14_4.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl14_6.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl20_2.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl20_4.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Создание и удаление потока
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для работы с потоками в Turbo Vision предусмотрен абстрактный тип TStream и 
+три его потомка - TDOSStream, TBufStream и TEMSStream.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Объект TDOSStream реализует небуферизованный доступ к файлу или файловому 
+устройству. Буферизация потока означает использование некоторого промежуточного 
+буфера, в который помещаются данные перед физической записью их на диск или 
+сразу после физического чтения с диска. Буферизация позволяет согласовать формат 
+данных с размерами дискового сектора и обычно значительно ускоряет доступ к 
+потоку, поэтому в большинстве случаев в программах используется буферизованная 
+версия потока, реализуемая объектом TBufStream.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Объект TEMSStream обеспечивает доступ к отображаемой памяти компьютера, 
+оборудованного специальной EMS-платой (для ПК с процессорами 80386 и более 
+поздними EMS-память может эмулироваться). Запись объектов в EMS-памятъ и чтение 
+их из нее осуществляется с предельно возможной скоростью, однако содержимое этой 
+памяти разрушается после выключения компьютера. Таким образом, TEMSStream 
+используется для временного хранения данных с целью минимизации времени доступа 
+к ним. Если в программе предполагается частое обращение к потоку, имеет смысл 
+скопировать его в EMS-память в начале работы программы и перенести хранящиеся в 
+нем данные на диск перед завершением работы.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В каждом из объектов TXXXStream предусмотрен свой конструктор Init, с помощью 
+которого создается экземпляр нужного потока. Ниже описывается формат вызова 
+каждого конструктора.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor TDOSStream.Init(FileName:
+FNameStr; Mode: Word);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь FileName - имя дискового файла или файлового устройства, Mode - способ 
+доступа к данным.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Параметр FileName может содержать полное имя файла с указанием диска и 
+маршрута поиска. Параметр Mode определяет способ доступа к данным. Для задания 
+это</font><font face="Arial, Helvetica, sans-serif" size="3">го параметра можно использовать следующие константы, определенные в модуле
+Objects:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">stCreat = $ЗС00;  {Создать файл}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">stOpenRead = $3D00;  {Открыть файл только для чтения}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">stOpenWrite = $3D01;  {Открыть файл только для записи}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">stOpen = $3D02;  {Открыть файл для чтения и записи}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor TBufStream(FileName: FNameStr;
+Mode: Word; Size: Word);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь FileName, Mode - см. выше; Size - размер буфера в байтах.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Размер буфера выбирается равным размеру дискового сектора (512 байт) или 
+размеру кластера (п*512, и = 1, 2, 4, 8, ...). Минимальные потери времени 
+обеспечивает размер буфера, равный размеру кластера диска (кластер - минимальная 
+порция дискового пространства, выделяемая каждому файлу). При работе с гибкими 
+дисками размер кластера обычно равен одному или двум секторам, для жесткого 
+диска этот размер зависит от общей емкости диска и чаще всего равен 4 или 8 
+секторам. Если Вы не знаете размеры кластера диска, с которым будет связан 
+поток, установите Size = 512.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor TEMSStream.Init(MinSize,
+MaxSize: LongInt);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь MinSize, MaxSize определяют соответственно минимальный и максимальный 
+размеры блока, который будет передаваться в EMS-память. Параметр MaxSize имеет 
+смысл только при использовании драйвера EMS-памяти, версии меньше 4.0: в этом 
+случае попытка разместить в расширенной памяти блок, больше MaxSize, вызовет 
+ошибку; при использовании версии драйвера 4.0 и выше в памяти можно разместить 
+блок любого размера, в этом случае параметр MaxSize можно опускать.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">После завершения работы с потоком следует удалить его экземпляр - это 
+аналогично тому, как Вы закрываете дисковый файл после его использования. Для 
+удаления потока нужно обратиться к его методу Done, например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Dispose(PMyStream, Done);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь PMyStream - указатель на экземпляр потока, размещенный в куче. Если Вы 
+не использовали указатель на поток (т.е. если экземпляр потока размещен в 
+обычной переменной), для удаления потока используется вызов</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MyStrearn.Done;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">(MyStrem - экземпляр потока).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В ходе реализации процедуры TStream.Done очищается внутренний буфер (если 
+использовался буферизованный поток); закрывается файл и уничтожается экземпляр 
+потока.</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl20_2.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl20_4.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+</BODY></HTML>

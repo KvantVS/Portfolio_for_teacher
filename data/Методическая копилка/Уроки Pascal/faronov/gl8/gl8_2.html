@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl8_1.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl8_3.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Описание программы
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Описание подпрограммы состоит из заголовка и тела подпрограммы.</font> </P>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Заголовок
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Заголовок процедуры имеет вид:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PROCEDURE &lt;имя&gt; [ (&lt;сп. ф. п . &gt;) ] ;&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Заголовок функции:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">FUNCTION &lt;имя&gt; [ (&lt;сп.ф.п.&gt;)] : &lt;тил&gt;;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь &lt;имя&gt; - имя подпрограммы (правильный идентификатор);&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> 
+&lt;сп.ф.п.&gt; - список формальных параметров;&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> &lt;тип&gt; - тип возвращаемого 
+функцией результата.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Сразу за заголовком подпрограммы может следовать одна из стандартных директив 
+ASSEMBLER, EXTERNAL, FAR, FORWARD, INLINE, INTERRUPT, NEAR. Эти директивы 
+уточняют действия компилятора и распространяются на всю подпрограмму и только на 
+нее, т.е. если за подпрограммой следует другая подпрограмма, стандартная 
+директива, указанная за заголовком первой, не распространяется на вторую.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">ASSEMBLER - эта директива отменяет стандартную последовательность машинных 
+инструкций, вырабатываемых при входе в процедуру и перед выходом из нее. Тело 
+подпрограммы в этом случае должно реализоваться с помощью команд встроенного 
+ассемблера (см. п.11.8).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">EXTERNAL - с помощью этой директивы объявляется внешняя подпрограмма (см. 
+п.11.1).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">FAR - компилятор должен создавать код подпрограммы, рассчитанный на дальнюю 
+модель вызова. Директива NEAR заставит компилятор создать код, рассчитанный на 
+ближнюю модель памяти. По умолчанию все подпрограммы, объявленные в интерфейсной 
+части модулей, генерируются с расчетом на дальнюю модель вызова, а все остальные 
+подпрограммы - на ближнюю модель.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В соответствии с архитектурой микропроцессора ПК, в программах могут 
+использоваться две модели памяти: ближняя и дальняя. Модель памяти определяет 
+возможность вызова процедуры из различных частей программы: если используется 
+ближняя</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">модель, вызов возможен только в пределах 64 Кбайт (в пределах одного сегмента 
+кода, который выделяется основной программе и каждому используемому в ней 
+модулю); при дальней модели вызов возможен из любого сегмента. Ближняя модель 
+экономит один байт и несколько микросекунд на каждом вызове подпрограммы, 
+поэтому стандартный режим компиляции предполагает эту модель памяти. Однако при 
+передаче процедурных параметров (см.п.8.4), а также в оверлейных модулях (см. п. 
+11.6) соответствующие подпрограммы должны компилироваться с расчетом на 
+универсальную - дальнюю - модель памяти, одинаково пригодную при любом 
+расположении процедуры и вызывающей ее программы в памяти.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Явное объявление модели памяти стандартными директивами имеет более высокий 
+приоритет по сравнению с опциями настройки среды Турбо Паскаля.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">FORWARD - используется при опережающем описании (см. п.8.6) для сообщения 
+компилятору, что описание подпрограммы следует где-то дальше по тексту программы 
+(но в пределах текущего программного модуля).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">INLINE - указывает на то, что тело подпрограммы реализуется с помощью 
+встроенных машинных инструкций (см. п.11.2).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">INTERRUPT - используется при создании процедур обработки прерываний (см. 
+п.11.4).</font> </P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl8_1.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl8_3.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

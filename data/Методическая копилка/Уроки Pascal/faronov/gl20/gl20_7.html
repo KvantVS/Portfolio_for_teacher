@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl20_6.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl20_8.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Обработка ошибок
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">При обнаружении ошибки поток вызывает свой метод TStream.Error, который 
+определяет необходимую реакцию программы. По умолчанию этот метод просто 
+записывает информацию об ошибке в поля TStream.Status и TStream.ErrorInfo.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Поле Status определяет тип ошибки, в соответствии со следующими константами 
+модуля Objects:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">stOk = 0;  {Нет ошибки}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">stError =-1;  {Ошибка доступа}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">stInitError =-2; {Ошибка инициации потока}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">stReadError =-3;  {Чтение за концом потока}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">stWriteError =-4;  {Нельзя расширить поток}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">stGetError =-5; (Get для незарегистрированного объекта}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">stPutError =-6;  {Put для незарегистрированного объекта}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Поле ErrorInfo определено только для Status - -5 или Status - -6: в первом 
+случае оно содержит регистрационный номер, полученный из потока и не 
+обнаруженный в регистрационном списке; во втором - смещение ТВМ 
+незарегистрированного объекта, который программа пытается поместить в поток.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Сразу после обнаружения ошибки Turbo Vision блокирует все операции с потоком 
+до тех пор, пока аварийная ситуация не будет сброшена обращением к методу
+TStream.Reset.</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl20_6.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl20_8.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+</BODY></HTML>

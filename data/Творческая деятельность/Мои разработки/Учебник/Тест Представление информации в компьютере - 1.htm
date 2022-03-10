@@ -1,0 +1,188 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0038)http://www.junior.ru/wwwexam/t_pr1.htm -->
+<HTML><HEAD><TITLE>Тест " информация</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1251">
+<META content="Николаева В.А." name=Author>
+<SCRIPT language=JavaScript>
+<!-- hide
+
+var scrtxt = "Тесты по информатике и информационным технологиям" ; 
+var length = scrtxt.length;
+var width = 100;
+var pos = -(width + 2);
+
+function scroll() {
+  pos++;
+  var scroller = "";
+  if (pos == length) {
+    pos = -(width + 2);
+  }
+
+  if (pos < 0) {
+    for (var i = 1; i <= Math.abs(pos); i++) {
+      scroller = scroller+" ";}
+    scroller = scroller + scrtxt.substring(0, width - i + 1);
+  }
+  else {
+    scroller = scroller + scrtxt.substring(pos, width + pos);
+  }
+
+  window.status = scroller;
+  setTimeout("scroll()", 100);
+}
+
+// -->
+</SCRIPT>
+
+<META content="MSHTML 6.00.2600.0" name=GENERATOR></HEAD>
+<BODY bgColor=white onload=scroll()>
+<SCRIPT language=JavaScript>
+<!--Начало сценария
+var res="2233211444"
+
+function check_me()
+{
+	var count=0
+	with(document.test)
+	{
+		if (!Q1[0].checked&&!Q1[1].checked&&!Q1[2].checked&&!Q1[3].checked) {count+=1};
+		if (!Q2[0].checked&&!Q2[1].checked&&!Q2[2].checked&&!Q2[3].checked) {count+=1};
+		if (!Q3[0].checked&&!Q3[1].checked&&!Q3[2].checked&&!Q3[3].checked) {count+=1};
+		if (!Q4[0].checked&&!Q4[1].checked&&!Q4[2].checked&&!Q4[3].checked) {count+=1};
+		if (!Q5[0].checked&&!Q5[1].checked&&!Q5[2].checked&&!Q5[3].checked) {count+=1};
+		if (!Q6[0].checked&&!Q6[1].checked&&!Q6[2].checked&&!Q6[3].checked) {count+=1};
+		if (!Q7[0].checked&&!Q7[1].checked&&!Q7[2].checked&&!Q7[3].checked) {count+=1};
+		if (!Q8[0].checked&&!Q8[1].checked&&!Q8[2].checked&&!Q8[3].checked) {count+=1};
+		if (!Q9[0].checked&&!Q9[1].checked&&!Q9[2].checked&&!Q9[3].checked) {count+=1};
+		if (!Q10[0].checked&&!Q10[1].checked&&!Q10[2].checked&&!Q10[3].checked) {count+=1};
+		if (count>0) {alert("Вы выполнили не все задания. Проверьте себя.")} 
+		else answer()
+	}
+}
+
+function control(k,f1,f2,f3,f4,f5,f6,f7,f8,f9,f10)
+{
+	if (k==1&&f1.checked) return true;
+	if (k==2&&f2.checked) return true;
+	if (k==3&&f3.checked) return true;
+	if (k==4&&f4.checked) return true;
+	if (k==5&&f5.checked) return true;
+	if (k==6&&f6.checked) return true;
+	if (k==7&&f7.checked) return true;
+	if (k==8&&f8.checked) return true;
+	if (k==9&&f9.checked) return true;
+	if (k==10&&f10.checked) return true;
+	return false;
+}
+
+function answer()
+{
+	answ="";
+	with(document)
+	{
+		answ+=control(res.charAt(0),test.Q1[0],test.Q1[1],test.Q1[2],test.Q1[3])?"1":"0"
+		answ+=control(res.charAt(1),test.Q2[0],test.Q2[1],test.Q2[2],test.Q2[3])?"1":"0"
+		answ+=control(res.charAt(2),test.Q3[0],test.Q3[1],test.Q3[2],test.Q3[3])?"1":"0"
+		answ+=control(res.charAt(3),test.Q4[0],test.Q4[1],test.Q4[2],test.Q4[3])?"1":"0"
+		answ+=control(res.charAt(4),test.Q5[0],test.Q5[1],test.Q5[2],test.Q5[3])?"1":"0"
+		answ+=control(res.charAt(5),test.Q6[0],test.Q6[1],test.Q6[2],test.Q6[3])?"1":"0"
+		answ+=control(res.charAt(6),test.Q7[0],test.Q7[1],test.Q7[2],test.Q7[3])?"1":"0"
+		answ+=control(res.charAt(7),test.Q8[0],test.Q8[1],test.Q8[2],test.Q8[3])?"1":"0"
+		answ+=control(res.charAt(8),test.Q9[0],test.Q9[1],test.Q9[2],test.Q9[3])?"1":"0"
+		answ+=control(res.charAt(9),test.Q10[0],test.Q10[1],test.Q10[2],test.Q10[3])?"1":"0"
+		showResult();
+	}
+}
+
+function showResult()
+{
+	var nok=0;
+	var i,s;
+	for (i=0;i<answ.length;i++) {nok+=answ.charAt(i)=="1"?1:0;}
+	if(nok<=4) s='"НЕУДОВЛЕТВОРИТЕЛЬНО"';
+	if(nok>4 && nok<6) s='"УДОВЛЕТВОРИТЕЛЬНО"';
+	if(nok==6) s='"УДОВЛЕТВОРИТЕЛЬНО"';
+	if(nok>6 && nok<8) s='"ХОРОШО"';
+	if(nok==8) s='"ХОРОШО"';
+	if(nok>8) s='"ОТЛИЧНО"';
+	document.test.s1.value="Количество правильных ответов "+nok+". Ваша оценка "+s+". Загляните в окно рядом с номером задания. Если ответ правильный, то там (+). Если Вы ошиблись, там (-).";
+	with(document.test)
+	{
+		if (answ.charAt(0)=="1") {T1.value=" +"} else {T1.value=" -"};
+		if (answ.charAt(1)=="1") {T2.value=" +"} else {T2.value=" -"};
+		if (answ.charAt(2)=="1") {T3.value=" +"} else {T3.value=" -"};
+		if (answ.charAt(3)=="1") {T4.value=" +"} else {T4.value=" -"};
+		if (answ.charAt(4)=="1") {T5.value=" +"} else {T5.value=" -"};
+		if (answ.charAt(5)=="1") {T6.value=" +"} else {T6.value=" -"};
+		if (answ.charAt(6)=="1") {T7.value=" +"} else {T7.value=" -"};
+		if (answ.charAt(7)=="1") {T8.value=" +"} else {T8.value=" -"};
+		if (answ.charAt(8)=="1") {T9.value=" +"} else {T9.value=" -"};
+		if (answ.charAt(9)=="1") {T10.value=" +"} else {T10.value=" -"};
+	}
+}
+
+</SCRIPT>
+
+<FORM name=test>
+<CENTER><FONT face=Arial,Helvetica,sans-serif color=#000099>
+<H3>Тест " информация</H3></CENTER>
+<OL>
+  <LI>
+  <H4><INPUT size=1 name=T1> За основную единицу измерения количества информации 
+  принят...</H4><INPUT type=radio name=Q1> 1 бод <BR><INPUT type=radio name=Q1> 
+  1 бит <BR><INPUT type=radio name=Q1> 1 байт <BR><INPUT type=radio name=Q1> 1 
+  Кбайт <BR><BR>
+  <LI>
+  <H4><INPUT size=1 name=T2> Сколько бит в слове ИНФОРМАТИКА? </H4><INPUT 
+  type=radio name=Q2> 11 <BR><INPUT type=radio name=Q2> 88 <BR><INPUT type=radio 
+  name=Q2> 44 <BR><INPUT type=radio name=Q2> 1 <BR><BR>
+  <LI>
+  <H4><INPUT size=1 name=T3> В процессе преобразования текстового файла из 
+  кодировки MS-DOS в кодировку Windows происходит ...</H4><INPUT type=radio 
+  name=Q3> редактирование документа <BR><INPUT type=radio name=Q3> 
+  форматирование документа <BR><INPUT type=radio name=Q3> перекодировка символов 
+  <BR><INPUT type=radio name=Q3> печать документа <BR><BR>
+  <LI>
+  <H4><INPUT size=1 name=T4> Чему равен 1 байт? </H4><INPUT type=radio name=Q4> 
+  10 бит <BR><INPUT type=radio name=Q4> 10 Кбайт <BR><INPUT type=radio name=Q4> 
+  8 бит <BR><INPUT type=radio name=Q4> 1 бод <BR><BR>
+  <LI>
+  <H4><INPUT size=1 name=T5> Какое количество информации содержит один разряд 
+  шестнадцатеричного числа? </H4><INPUT type=radio name=Q5> 1 бит <BR><INPUT 
+  type=radio name=Q5> 4 бита <BR><INPUT type=radio name=Q5> 1 байт <BR><INPUT 
+  type=radio name=Q5> 16 бит <BR><BR>
+  <LI>
+  <H4><INPUT size=1 name=T6> Как записывается десятичное число 5 в двоичной 
+  системе счисления? </H4><INPUT type=radio name=Q6> 101 <BR><INPUT type=radio 
+  name=Q6> 110 <BR><INPUT type=radio name=Q6> 111 <BR><INPUT type=radio name=Q6> 
+  100 <BR><BR>
+  <LI>
+  <H4><INPUT size=1 name=T7> Растровый графический файл содержит черно-белое 
+  изображение (без градаций серого) размером 100 х 100 точек. Каков 
+  информационный объем этого файла? </H4><INPUT type=radio name=Q7> 10000 бит 
+  <BR><INPUT type=radio name=Q7> 10000 байт <BR><INPUT type=radio name=Q7> 10 
+  Кбайт <BR><INPUT type=radio name=Q7> 1000 бит <BR><BR>
+  <LI>
+  <H4><INPUT size=1 name=T8> Сколько существует различных кодировок букв 
+  русского алфавита? </H4><INPUT type=radio name=Q8> одна <BR><INPUT type=radio 
+  name=Q8> две (MS-DOS, Windows) <BR><INPUT type=radio name=Q8> три (MS-DOS, 
+  Windows, Macintosh) <BR><INPUT type=radio name=Q8> пять (MS-DOS, Windows, 
+  Macintosh, КОИ-8, ISO) <BR><BR>
+  <LI>
+  <H4><INPUT size=1 name=T9> Звуковая плата с возможностью 16-битного двоичного 
+  кодирования позволяет воспроизводить звук с ...</H4><INPUT type=radio name=Q9> 
+  8 уровнями интенсивности <BR><INPUT type=radio name=Q9> 16 уровнями 
+  интенсивности <BR><INPUT type=radio name=Q9> 256 уровнями интенсивности 
+  <BR><INPUT type=radio name=Q9> 65536 уровнями интенсивности <BR><BR>
+  <LI>
+  <H4><INPUT size=1 name=T10> Наибольший информационный объем будет иметь файл, 
+  содержащий...</H4><INPUT type=radio name=Q10> 1 страницу текста <BR><INPUT 
+  type=radio name=Q10> черно-белый рисунок 100 х 100 <BR><INPUT type=radio 
+  name=Q10> аудиоклип длительностью 1 мин <BR><INPUT type=radio name=Q10> 
+  видеоклип длительностью 1 мин <BR></LI></OL><BR>
+<CENTER>
+<P><TEXTAREA name=s1 rows=4 cols=70> </TEXTAREA> </P><INPUT onclick=check_me() type=button value="Показать результат">&nbsp;&nbsp;&nbsp;&nbsp; 
+<INPUT type=reset value="Сбросить ответы"> </CENTER><BR><BR></FORM>
+<P>
+<H5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</H5>
+<P></P></FONT></BODY></HTML>

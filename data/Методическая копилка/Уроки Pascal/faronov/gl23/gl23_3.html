@@ -1,0 +1,255 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_2.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_4.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Отладка программ
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если Вы пытались отлаживать какую-либо программу в Turbo Vision, Вы наверняка 
+убедились, что трассировка (пошаговое прослеживание логики работы) таких 
+программ весьма неэффективна. Вызвано это двумя обстоятельствами. Во-первых, 
+значительная часть библиотеки Turbo Vision скрыта от Вас: библиотека 
+поставляется в TPU-файлах, прослеживание работы которых невозможно. Во-вторых, в 
+Turbo Vision используется принцип отделения логики создания видимых элементов от 
+логики обработки связанных с ними событий: как только видимый элемент 
+активизируется вызовом Execute, начинает работать его метод HandleEvent, который 
+может породить целую цепочку непрослеживаемых трассировкой действий программы.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Ключом к решению проблемы отладки программ в Turbo Vision является 
+расстановка точек контроля в наследуемых методах HandleEvent. Если программа не 
+хочет открывать диалоговое окно или не реагирует на нажимаемую кнопку, следует 
+прежде всего убедиться в том, что Ваши действия действительно порождают нужное 
+событие.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Может случиться, что установленная контрольная точка не будет реагировать 
+вообще или, наоборот, будет активизироваться слишком часто. Если точка не 
+активизируется, это означает, что Ваш обработчик событий просто «не видит» 
+событие. В этом случае необходимо убедиться в том, что поле EventMask видимого 
+объекта содержит маску, позволяющую ему реагировать на событие нужного вида. 
+Другой причиной «исчезновения» события может быть его перехват (и обработка) 
+другим видимым элементом. Это может быть вызвано различными обстоятельствами. 
+Например, Вы могли ошибочно связать две разные команды с одной константой или 
+используете команду, которую использует также другой видимый элемент. Кроме 
+того, обычно в наследуемых методах HandleEvent вызывается обработчик событий 
+объекта-родителя, который может «украсть» событие у Вашего обработчика. В таких 
+ситуациях бывает</font> <font face="Arial, Helvetica, sans-serif" size="3">достаточно сделать вызов родительского метода после того, как событие будет 
+обработано Вами.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если контрольная точка активизируется слишком часто, значит Вы установили ее 
+неправильно. Например, если Вы установили эту точку внутри метода 
+TGroup.Execute, точка будет непрерывно активизироваться, т.к. значительная часть 
+времени работы программы тратится на ожидание события. Если Вам все-таки 
+требуется установить контрольную точку именно в этом месте, сделайте ее 
+условной, чтобы она не реагировала на пустые или ненужные события.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Иногда запущенная программа «зависает», т.е. перестает реагировать на любые 
+действия пользователя. Такие ошибки отлаживать труднее всего. Если программа 
+«зависла», попытайтесь прежде всего локализовать то место, в котором это 
+происходит. Для этого обычно используется расстановка контрольных точек в 
+подозрительных местах программы. Следует помнить, что в Turbo Vision «зависания» 
+связаны в основном с тремя видами ошибок:</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> освобождается динамический объект, который входил в состав ранее 
+освобожденной динамической группы;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">читаются данные из потока в ошибочно зарегистрированный объект (объект 
+имеет неуникальный регистрационный номер);</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> элемент коллекции ошибочно трактуется как элемент другого типа. Ошибки 
+первого вида встречаются наиболее часто. Например, прогон следующего невинного 
+на первый взгляд варианта программы приводит к зависанию:</font></li>
+</ul>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Objects,Views;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">G1, G2: PGroup;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R: TRect;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(10,5,70,20) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Gl := New(PGroup, Init(R));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Grow(-10, -3) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">G2 := New(PGroup, Init(R));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">G1.Insert(G2);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Dispose(G1, Done);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Dispose(G2, Done)  {Здесь программа "зависнет"!}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Заметим, что перестановка операторов Dispose местами приводит к корректному 
+варианту, т.к. метод G1.Done умеет контролировать освобождение своего 
+подэлемента G2 и не освобождает его вторично. Во всех случаях оператор Dispose 
+(G2, Done) излишен: освобождение группы вызывает автоматическое освобождение 
+всех ее подэ-лементов.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Поскольку динамическая память используется в Turbo Vision очень интенсивно, 
+полезно предусмотреть в отладочном варианте программы визуализацию ее размера. 
+Для этого можно использовать такой объект THeapView:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Unit HeapView;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Interface</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Dialogs,Objects;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PHeapView = THeapView;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">THeapView = object(TStaticText)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Constructor Init(var R: TRect);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Procedure Update;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Implementation&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Constructor THeapView.Init;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">S: String;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Str(MemAvail,S);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Inherited lnit(R,#3+S)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure THeapView.Update;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">S: String;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Str(MemAvail,S);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DisposeStr(Text);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Text := NewStr(#3+S);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Draw&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Например, в следующей программе показан способ включения контрольного окна, 
+создаваемого в этом объекте, в верхний правый угол экрана:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Objects,Views,App, HeapView;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">H: PHeapView;{Окно для MemAvail}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">W: PWindow;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">G: PGroup;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R: TRect;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">P: TApplication;{Стандартная программа}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+begin&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">P.Init;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(70,0,80,1);{Верхний правый угол}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">New(H, Init(R));{Создаем окно контроля}&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">P.Insert(H);{Помещаем его на экран}</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn;  {Пауза - показываем начальный размер кучи}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(10,5,70,20);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">W := New(PWindow,Init(R,'',0));  {Создаем окно}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(5,3,55,12);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">G := New(PGroup, Init(R));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">W.Insert(G);  {Вставляем в окно группу}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DeskTop.Insert(W);  {Выводим на экран}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Н.Update;  {Обновляем окно контроля}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn;  {Пауза - размер кучи перед освобождением}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Dispose(W, Done);  {Освобождаем окно и группу}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">НА.Update;  {Обновляем окно контроля}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn;  {Пауза - размер после 
+освобождения}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Р.Done&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для получения текущего значения общего размера кучи используется вызов метода 
+THeapView.Update в нужных местах программы. Вы можете автоматизировать 
+обновление окна контроля, если включите вызов Update в перекрываемый метод 
+TProgramIdle. В следующем варианте показан способ отображения MemAvail в фоновом 
+режиме. Кроме того, в программе иллюстрируется возможное использование функции 
+MessageBox.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{$Х+} {Используется расширенный синтаксис вызова функции MessageBox}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Uses 
+Objects,Views,App,HeapView,MsgBox;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MyApp = object (TApplication)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Procedure Idle; Virtual;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">H: PHeapView;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Procedure MyApp.Idle;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">H^.Update&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">W: PWindow;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">G: PGroup;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R: TRect;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">P: MyApp;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">P.Init;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(70,0,80,1);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">New(H,Init(R));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">P.Insert(H);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MessageBox(#3'Размер кучи до размещения',NIL,0);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(10,5,70,20) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">W := New(PWindow, Init(R,'',0));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(5,3,55,12) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">G := New(PGroup, Init(R));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WA.lnsert(G);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DeskTop.Insert(W);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MessageBox(#3'Размер кучи после размещения', NIL,0);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Dispose(W, Done);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MessageBox(#3'Размер кучи после освобождения', NIL,0);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Р.Done&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Константа #3 вставляется в начало строки сообщения в том случае, когда 
+требуется центрировать эту строку (расположить ее симметрично относительно 
+границ окна сообщения).</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_2.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_4.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

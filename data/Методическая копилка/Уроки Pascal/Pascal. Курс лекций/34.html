@@ -1,0 +1,288 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Untitled</title>
+</head>
+
+<body lang=RU style="'tab-interval:35.4pt'" background="bgrwhite.gif">
+<p><div align="center"><b><font size="+1" face="Arial">34. Последовательный и прямой доступ </font></b></div></p>
+<p><span
+style="mso-spacerun: yes">   </span>Смысл последовательного<span
+style="mso-spacerun: yes">  </span>доступа<span style="mso-spacerun: yes"> 
+</span>заключается в том,<span style="mso-spacerun: yes">  </span>что в каждый
+
+<p>момент
+времени доступна лишь одна компонента из<span style="mso-spacerun: yes"> 
+</span>всей<span style="mso-spacerun: yes">  </span>последователь-
+
+<p>ности.
+Для<span style="mso-spacerun: yes">  </span>того,<span style="mso-spacerun:
+yes">  </span>чтобы обратиться (получить доступ)<span style="mso-spacerun:
+yes">  </span>к компоненте с
+
+<p>номером
+К,<span style="mso-spacerun: yes">  </span>необходимо просмотреть от начала
+файла К-1 предшествующую
+
+<p>компоненту.
+После обращения к компоненте с номером К можно обращаться
+
+<p>к
+компоненте с номером К+1. Отсюда следует, что процессы формирования
+
+<p>(записи)
+компонент<span style="mso-spacerun: yes">   </span>файла и просмотра
+(чтения)<span style="mso-spacerun: yes">  </span>не могут произвольно
+
+<p>чередоваться.
+Таким<span style="mso-spacerun: yes">  </span>образом, файл вначале строится
+при помощи после-
+
+<p>довательного
+добавления<span style="mso-spacerun: yes">  </span>компонент в конец,<span
+style="mso-spacerun: yes">  </span>а затем может последова-
+
+<p>тельно
+просматриваться от начала до конца.
+
+<p><span
+style="mso-spacerun: yes">   </span>Рассмотренные ранее<span
+style="mso-spacerun: yes">  </span>средства работы с файлами обеспечивают
+после-
+
+<p>довательный
+доступ.
+
+<p><span
+style="mso-spacerun: yes">   </span>TURBO PASCAL<span style="mso-spacerun:
+yes">  </span>позволяет применять к компонентным и бестиповым фай-
+
+<p>лам,
+записанным<span style="mso-spacerun: yes">  </span>на диск, способ прямого
+доступа. Прямой доступ озна-
+
+<p>чает
+возможность<span style="mso-spacerun: yes">   </span>заранее определить в файле
+блок,<span style="mso-spacerun: yes">  </span>к которому будет
+
+<p>применена
+операция ввода - вывода.<span style="mso-spacerun: yes">  </span>В случае
+бестиповых<span style="mso-spacerun: yes">  </span>файлов<span
+style="mso-spacerun: yes">  </span>блок
+
+<p>равен
+размеру буфера,<span style="mso-spacerun: yes">  </span>для компонентных файлов
+блок - это одна компо-
+
+<p>нента
+файла.
+
+<p><span
+style="mso-spacerun: yes">   </span>Прямой доступ<span style="mso-spacerun:
+yes">  </span>предполагает,<span style="mso-spacerun: yes">  </span>что файл
+представляет собой линейную
+
+<p>последовательность
+блоков.<span style="mso-spacerun: yes">  </span>Если файл содержит n блоков, то
+они нуме-
+
+<p>руются
+от 1 через 1 до n.<span style="mso-spacerun: yes">  </span>Кроме того, вводится
+понятие условной гра-
+
+<p>ницы
+между блоками, при этом условная граница с номером 0 расположена
+
+<p>перед
+блоком с номером 1,<span style="mso-spacerun: yes">  </span>граница с номером 1
+расположена перед бло-
+
+<p>ком с
+номером 2 и,<span style="mso-spacerun: yes">  </span>наконец,<span
+style="mso-spacerun: yes">  </span>условная граница с номером n<span
+style="mso-spacerun: yes">  </span>находится
+
+<p>после
+блока с номером n.
+
+<p><span
+style="mso-spacerun: yes">   </span>Реализация прямого доступа осуществляется с
+помощью функций и про-
+
+<p>цедур
+FileSize, FilePos, Seek и Truncate.
+
+<p><span
+style="mso-spacerun: yes">   </span>Функция FileSize( var f ):<span
+style="mso-spacerun: yes">  </span>Longint возвращает количество блоков в
+
+<p>открытом
+файле f.
+
+<p><span
+style="mso-spacerun: yes">   </span>Функция FilePos( var f ):<span
+style="mso-spacerun: yes">  </span>Longint возвращает<span style="mso-spacerun:
+yes">  </span>текущую<span style="mso-spacerun: yes">  </span>позицию<span
+style="mso-spacerun: yes">  </span>в
+
+<p>файле
+f. Позиция в файле - это номер условной границы. Для только что
+
+<p>открытого
+файла текущей позицией будет граница с номером 0.<span style="mso-spacerun:
+yes">  </span>Это зна-
+
+<p>чит,
+что<span style="mso-spacerun: yes">  </span>можно записать или прочесть блок с
+номером 1.<span style="mso-spacerun: yes">  </span>После чтения
+
+<p>или
+записи первого блока текущая позиция переместится<span style="mso-spacerun:
+yes">  </span>на<span style="mso-spacerun: yes">  </span>границу<span
+style="mso-spacerun: yes">  </span>с
+
+<p>номером
+1,<span style="mso-spacerun: yes">  </span>и можно будет обращаться к ьлоку с
+номером 2. После проч-
+
+<p>тения
+последней записи значение FilePos равно значению FileSize.
+
+<p><span
+style="mso-spacerun: yes">   </span>Процедура Seek( var f; N: Longint)
+обеспечивает назначение текущей
+
+<p>позиции
+в файле (позиционирование).<span style="mso-spacerun: yes">  </span>В параметре
+N должен быть<span style="mso-spacerun: yes">  </span>задан
+
+<p>номер
+условной границы, предшествующей блоку, к которому будет произ-
+
+<p>водиться
+последующее обращение.<span style="mso-spacerun: yes">  </span>Например, чтобы
+работать с блоком 4,
+
+<p>необходимо
+задать значение N, равное 3. Процедура Seek работает с от-
+
+<p>крытыми
+файлами.
+
+<p><span
+style="mso-spacerun: yes">   </span>Процедура Truncate( var f )<span
+style="mso-spacerun: yes">  </span>устанавливает в текущей позиции приз-
+
+<p>нак
+конца файла и удаляет (стирает) все последующие блоки.
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>Пример. Пусть на НМД имеется текстовый файл
+ID.DAT, который содер-
+
+<p>жит
+числовые<span style="mso-spacerun: yes">   </span>значения<span
+style="mso-spacerun: yes">  </span>действительного<span style="mso-spacerun:
+yes">  </span>типа<span style="mso-spacerun: yes">  </span>по два числа в
+каждой
+
+<p>строке
+- значения аргумента и функции соответственно.<span style="mso-spacerun: yes"> 
+</span>Количество пар
+
+<p>чисел
+не более 200.<span style="mso-spacerun: yes">  </span>Составить программу,
+которая читает файл, значе-
+
+<p>ния
+аргумента и функции записывает в одномерные массивы, подсчитывает
+
+<p>их
+количество,<span style="mso-spacerun: yes">    </span>выводит на экран дисплея
+и записывает в файл компо-
+
+<p>нентного
+типа RD.DAT.
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Program F;
+
+<p><span
+style="mso-spacerun: yes">    </span>var
+
+<p><span
+style="mso-spacerun: yes">     </span>rArg, rF: Array[1..200] of Real;
+
+<p><span
+style="mso-spacerun: yes">       </span>inf: Text;
+
+<p><span
+style="mso-spacerun: yes">       </span>outf: File of Real;
+
+<p><span
+style="mso-spacerun: yes">       </span>n, l: Integer;
+
+<p><span
+style="mso-spacerun: yes">    </span>begin
+
+<p><span
+style="mso-spacerun: yes">      </span>Assign(inf,'ID.DAT');
+
+<p><span
+style="mso-spacerun: yes">      </span>Assign(outf,'RD.DAT');
+
+<p><span
+style="mso-spacerun: yes">      </span>Reset(inf);
+
+<p><span
+style="mso-spacerun: yes">      </span>Rewrite(outf);
+
+<p><span
+style="mso-spacerun: yes">      </span>n:=0;
+
+<p><span
+style="mso-spacerun: yes">      </span>while not EOF(inf) do
+
+<p><span
+style="mso-spacerun: yes">        </span>begin
+
+<p><span
+style="mso-spacerun: yes">          </span>n:=n+1;
+
+<p><span
+style="mso-spacerun: yes">          </span>ReadLn(inf,rArg[n],rF[n])
+
+<p><span
+style="mso-spacerun: yes">        </span>end;
+
+<p><span
+style="mso-spacerun: yes">      </span>for l:=1 to n do
+
+<p><span
+style="mso-spacerun: yes">       </span>begin
+
+<p><span
+style="mso-spacerun: yes">        </span>WriteLn(l:2,rArg[l]:8:2,rF[l]:8:2);
+
+<p><span
+style="mso-spacerun: yes">        </span>Write(outf,rArg[l], rF[l]);
+
+<p><span
+style="mso-spacerun: yes">       </span>end;
+
+<p><span
+style="mso-spacerun: yes">      </span>close(outf)
+
+<p><span
+style="mso-spacerun: yes">    </span>end.
+
+<p><div align="center"><a href="../Pascal. Курс лекций.html">	<img src="../../soder.gif" width=120 height=31 border=0 alt=""></a></div></p>
+
+</body>
+</html>

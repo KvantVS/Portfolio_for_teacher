@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_2.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_14.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Перекрытие GetEvent
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Единственным источником событий является метод TView.GetEvent. Только этот 
+метод обращается к внешним источникам информации - клавиатуре и мыши. Если в 
+Вашей программе используются другие устройства ввода информации (например, 
+джойстик или коммуникационный канал), Вы должны перекрыть этот метод и научить 
+его работе с нестандартными устройствами.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Проще всего перекрыть метод можно при объявлении нового типа Вашей программы, 
+например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Арр,...;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MyProgram = object (TApplication)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure GetEvent(var Event: TEvent)</font>;<font size="3">Virtual;</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure MyProgram.GetEvent(var Event: TEvent);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'TApplication.GetEvent(Event);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if Event.What = evNothing then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Обращение к нестандартным источникам информации}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Поскольку MyProgram в конечном счете наследует GetEvent от TView, все видимые 
+элементы Вашей программы будут пользоваться новым источником информации.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Преимущества централизованного сбора событий очевидны. Перекрывая 
+единственный метод GetEvent, Вы можете заставить программу реагировать на 
+внешнюю информацию любым удобным для Вас способом. Например, можно перехватывать 
+заранее обусловленные командные клавиши и развертывать их в целую серию событий. 
+Таким способом легко создавать различного рода макрокоманды.</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_12.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_14.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

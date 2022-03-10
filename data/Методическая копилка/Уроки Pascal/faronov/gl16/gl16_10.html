@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl16_9.html">
+<img SRC="Back.gif" BORDER="0">
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0">
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Контроллеры
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Абстрактный объект TValidator и его потомки образуют группу 
+объектов-контролеров. Общее назначение этих объектов - осуществление контроля за 
+клавиатурным вводом пользователя. Они связываются с объектами типа TEditor и 
+активизируются при выполнении TEditor.Valid. Получив управление, контролеры 
+проверяют соответствие введенных данных определенным требованиям и блокируют 
+завершение ввода, если обнаружена ошибка. Объекты-контролеры избавляют 
+программиста от рутинной работы, связанной с программированием контроля наиболее 
+популярных форматов вводимых данных.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">TValidator</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Абстрактный объект TValidator инкапсулирует основные свойства всех 
+объектов-контролеров. Его метод Valid вызывается из одноименного метода 
+редактора TEditor и обращается к абстрактному методу TValidator.Is Valid, чтобы 
+осуществить необходимый контроль.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">TPXPicture Validator</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Объект TPXPictureValidator проверяет введенную пользователем строку на 
+соответствие некоторому эталонному образцу ввода. Образец задается в виде 
+текстовой строки, подготовленной в соответствии со спецификацией СУБД Paradox 
+корпорации Borland.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">TFilterValidator</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Этот объект проверяет все символы, введенные пользователем, на соответствие 
+набору допустимых символов. Если хотя бы один введенный символ не соответствует 
+ни одному из символов эталонного набора, метод TFilterValidator.IsValid вернет 
+значение False и таким образом будет блокирована попытка пользователя закрыть 
+объект TEditor.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">TRangeValidator</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Объект TRangeValidator порожден от TFilterValidator. Он преобразует 
+символьный ввод в целое число и проверяет, находится ли оно в заданном диапазоне 
+Min...Max значений. Его метод IsValid возвращает True только в том случае, когда 
+введенные пользователем символы соответствуют внешнему представлению целых 
+чисел, а само введенное число N удовлетворяет условию Мах&gt; =N&gt; =Min.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">TLookupValidator</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Абстрактный объект TLookupValidator предназначен для контроля соответствия 
+введенной пользователем строки набору эталонных строк. Фактически он 
+модифицирует поведение TValidator в случае, когда проверяется произвольная 
+текстовая строка. В его потомках должен перекрываться метод Lookup, 
+осуществляющий нужный контроль.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">TStringLookupValidator</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Объект TStringLookupValidator порожден от TLookupValidator и осуществляет 
+контроль введенной пользователем строки, сравнивая ее с набором допустимых строк 
+из отсортированной коллекции строк.</font> </P>
+<p>&nbsp;</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl16_9.html">
+<img SRC="Back.gif" BORDER="0">
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0">
+</a>
+</font>
+</td>
+</tr>
+</table>
+</BODY></HTML>

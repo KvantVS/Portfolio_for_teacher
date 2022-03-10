@@ -1,0 +1,494 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl13_1.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl13_3.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Текстовый вывод на экран
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Библиотека Turbo Vision способна удовлетворить самым высоким требованиям и я 
+настоятельно рекомендую обращаться к ней при программировании сложных текстовых 
+изображений (меню, окон и т.п.). Тем не менее вполне возможно, что некоторые из 
+читателей захотят использовать значительно более простые, но достаточно 
+эффективные средства модуля CRT, описываемые в этом разделе.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Используемое в ПК устройство визуального отображения информации - дисплей 
+-состоит из двух основных частей: монитора, содержащего экран 
+(электронно-лучевую трубку или жидкокристаллическую панель) с необходимыми 
+компонентами (устройствами развертки изображения), и блока управления, который 
+чаще называют дисплейным адаптером или просто адаптером. Обычно оба устройства 
+согласуются друг с другом, но в отдельных случаях этого согласования может не 
+быть (например, цветной монитор может работать с монохромным адаптером и 
+наоборот). Будем считать оба устройства согласованными, поэтому, говоря о 
+различных дисплеях, я буду говорить только о различных адаптерах, так как именно 
+в них сосредоточены основные отличия дисплеев друг от друга.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Исторически первым адаптером (1981 г.), использованным на IBM PC, был так 
+называемый монохромный адаптер (MDA). Его возможности очень скромны: он позволял 
+выводить только текстовые сообщения в одном из двух форматов - 25 строк по 40 
+или по 80 символов в строке. Символы выводились в прямом изображении (светлые 
+символы на темном фоне), причем их ширина оставалась одинаковой в обоих режимах, 
+поэтому при выводе в режиме 40x25 использовалась только левая половина экрана. В 
+MDA применялись два символьных шрифта - обычный и с подчеркиванием.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В 1982 году фирма Hercules выпустила адаптер HGC (от англ. Hercules Graphics 
+Card - графическая карта Геркулес), который полностью эмулировал MDA в текстовом 
+режиме, но в отличие от него мог еще воспроизводить и графические изображения с 
+разрешением 720x350 точек (пикселей).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Примерно в это же время IBM выпустила цветной графический адаптер CGA (Color 
+Graphics Adapter) и впервые на экране ПК появился цвет. CGA позволял выводить 
+как текстовые сообщения, так и графические изображения (с разрешением 320x200 
+или 640x200 пикселей). В текстовом режиме выводились 40x25 или 80x25 символов 
+как в монохромном, так и в цветном изображениях. При использовании монохромного 
+режима символы, в отличие от MDA, не могли подчеркиваться, зато их можно было</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">выводить в негативном изображении (черные символы на светлом фоне). При 
+выводе в цветном режиме использовалось 16 цветов для символов и 8 - для 
+окружающего их фона.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Текстовые возможности CGA стали стандартом де-факто и поддерживаются во всех 
+последующих разработках IBM - адаптерах EGA, MCGA, VGA и SVGA. Возможности 
+модуля CRT рассматриваются применительно к адаптерам этого типа.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> TextMode. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Используется для задания одного из возможных текстовых 
+режимов работы адаптера. Заголовок процедуры:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TextMode(Mode: Word);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь Mode - код текстового режима. В качестве значения этого выражения могут 
+использоваться следующие константы, определенные в модуле CRT:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">BW40=0{Черно-белый режим 40x25}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Со40=1{Цветной режим 40x25}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">BW80=2{Черно-белый режим 80x25}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Со80=3{Цветной режим 80x25}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Mono=7{Используется с MDA}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Font8x8=256{Используется для загружаемого шрифта в режиме 80х43</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">или 80х50 с адаптерами EGA илиVGA}</font>  </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Код режима, установленного с помощью вызова процедуры TextMode, запоминается 
+в глобальной переменной LastMode модуля CRT и может использоваться для 
+восстановления начального состояния экрана.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Следующая программа иллюстрирует использование этой процедуры в различных 
+режимах. Замечу, что при вызове TextMode сбрасываются все ранее сделанные 
+установки цвета и окон, экран очищается и курсор переводится в его левый верхний 
+угол.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses CRT;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Print(S: String);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">(Выводит сообщение S и ждет инициативы пользователя}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(S);  {Выводим сообщение}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn('Нажмите клавишу
+Enter...');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn  {Ждем нажатия клавиши Enter}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;  {Print}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">LM: Word;{Начальный режим экрана}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">LM := LastMode;  {Запоминаем начальный режим работы дисплея}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TextMode(Со40);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Print('Режим 40x25");</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TextMode(CoSO) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Print('Режим 80x25');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TextMode(Co40+Font8x8);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Print('Режим Co40+Font8x8') ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TextMode(Co80+Font8x8);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Print('Режим Co80+Font8x8');&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Восстанавливаем исходный режим работы:}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TextMode(LM)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> TextColpr. </font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Определяет цвет выводимых символов. Заголовок процедуры:</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TextColor(Color: Byte);</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> TextBackground. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Определяет цвет фона. Заголовок:&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Procedure TextBackground(Color: Byte);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Единственным параметром обращения к этим процедурам должно быть выражение 
+типа Byte, задающее код нужного цвета. Этот код удобно определять с помощью 
+следующих мнемонических констант, объявленных в модуле CRT:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Black = 0;{Черный}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Blue = 1;{Темно-синий}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Green = 2 ;{Темно-зеленый}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Cyan = 3;{Бирюзовый}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Red = 4 ;{Красный}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Magenta = 5;{Фиолетовый}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Brown = 6 ;{Коричневый}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">LightGray = 7;{Светло-серый}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DarkGray = 8;{Темно-серый}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">LightBlue = 9;{Синий}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">LightGreen = 10;{Светло-зеленый}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">LightCyan = 11;{Светло-бирюзовый}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">LightRed = 12;{Розовый}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">LightMagenta = 13;{Малиновый}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Yellow = 14;{Желтый}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">White ' =15;{Белый}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Blink =128;{Мерцание символа}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Следующая программа иллюстрирует цветовые возможности Турбо Паскаля.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses CRT;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Col: array [1..15] of String [16] =</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">('темно-синий','темно-зеленый','бирюзовый','красный',</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'фиолетовый','коричневый','светло-серый','темно-серый',</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'синий','зеленый','светло-бирюзовый','розовый',</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'малиновый','желтый','белый');&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k: Byte;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for k := 1 to 15 do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin  {Выводим 15 сообщений различными цветами}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TextColor(k);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn('Цвет ', k, ' - ',Col[k])&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TextColor(White+Blink);  {Белые мигающие символы}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn('Мерцание 
+символов');&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Восстанавливаем стандартный цвет}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TextColor(LightGray);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> WriteLn&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Обратите внимание на последний оператор WriteLn: если его убрать, режим 
+мерцания символов сохранится после завершения программы, несмотря на то, что 
+перед ним стоит оператор</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TextColor(LightGray)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Дело в том, что все цветовые определения предварительно заносятся в 
+специальную переменную TextAttr модуля CRT и используются для настройки адаптера 
+только при обращении к процедурам Write/WriteLn.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> ClrScr. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Очищает экран или окно (см. ниже процедуру Window). После 
+обращения к ней экран (окно) заполняется цветом фона и курсор устанавливается в 
+его левый верхний угол. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses CRT;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">С: Char&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TextBackground(red) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ClrScr;{Заполняем экран красным цветом}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn('Нажмите любую клавишу...');&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> С := ReadKey;  {Ждем нажатия любой 
+клавиши}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TextBackground(Black) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ClrScr  {Восстанавливаем черный фон экрана}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> Window. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Определяет текстовое окно - область экрана, которая в 
+дальнейшем будет рассматриваться процедурами вывода как весь экран. Сразу после 
+вызова процедуры курсор помещается в левый верхний угол окна, а само окно 
+очищается (заполняется цветом фона). По мере вывода курсор, как обычно, 
+смещается вправо и при достижении правой границы окна переходит на новую строку, 
+а если он к этому моменту находился на последней строке, содержимое окна 
+сдвигается вверх на одну строку, т.е. осуществляется «прокрутка» окна. Заголовок 
+процедуры:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Window(XI,Y1,X2,Y2: Byte);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">ЗдесьX1...Y2 - координаты левого верхнего (XI,Y1) и правого нижнего (X2,Y2) 
+углов окна. Они задаются в координатах экрана, причем левый верхний угол экрана 
+имеет координаты (1,1), горизонтальная координата увеличивается слева направо, а 
+вертикальная - сверху вниз.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В следующем примере иллюстрируется вывод достаточно длинного сообщения в двух 
+разных окнах.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses CRT;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k: integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Создаем левое окно -желтые символы на синем фоне:}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TextBackground(Blue);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Window(5,2,35,17);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TextColor(Yellow);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for k := 1 to 100 do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write(' Нажмите клавишу Enter...');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn;  {Ждем нажатия Enter}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ClrScr;  {Очищаем окно}</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Создаем правое окно - белые символы на красном фоне:}</font> 
+ 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TextBackground(Red);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TextColor(White);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Window(40,2,70,17);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for k := 1 to 100 do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write(' Нажмите клавишу Enter...');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TextMode(C080)  {Сбрасываем все установки}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Обращение к процедуре Window игнорируется, если какая-либо из координат 
+выходит за границы экрана или если нарушается одно из условий: Х2&gt;Х1 и 
+Y2&gt;Y1. Каждое новое обращение к Window отменяет предыдущее определение окна. 
+Границы текущего окна запоминаются в двух глобальных переменных модуля CRT: 
+переменная WindMin типа Word хранит X1 и Y1 (XI - в младшем байте), а переменная 
+того же типа WindMax - Х2 и Y2(X2 - в младшем байте). При желании Вы можете 
+изменять их нужным образом без обращения к Window. Например, вместо оператора</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Window(40,2,70,17);&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> можно было бы использовать два оператора</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WindMin := 39+(1 shl 8);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> WindMax := 69+(16 shl 8);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">(в отличие от обращения к Window координаты, хранящиеся в переменных WindMin 
+и WindMax, соответствуют началу отсчета 0,0).</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> GotoXY. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Переводит курсор в нужное место экрана или текущего окна. 
+Заголовок процедуры:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure GotoXY(X,Y: Byte);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь X, Y - новые координаты курсора. Координаты задаются относительно 
+границ экрана (окна), т.е оператор</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY(1,1);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">означает указание перевести курсор в левый верхний угол экрана (или окна, 
+если к этому моменту на экране определено окно). Обращение к процедуре 
+игнорируется, если новые координаты выходят за границы экрана (окна).</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функции</b> whereX и WhereY<u>.</u></font></P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">С помощью этих функций типа Byte можно определить 
+текущие координаты курсора: WhereX возвращает его горизонтальную, a WhereY - 
+вертикальную координаты.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В следующей программе сначала в центре экрана создается окно, которое 
+обводится рамкой, затем в окне выводится таблица из двух колонок.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses CRT;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">LU =#218;{Левый верхний угол рамки}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> RU =#191;{Правый верхний угол)}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> LD =#192;{Левый нижний}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> RD =#217;{Правый нижний}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> H =#196;{Горизонтальная черта}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> V =#179;{Вертикальная черта}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">X1 =14;{Координаты окна}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Y1 =5;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">X2 =66;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Y2 =20;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Txt = 'Нажмите клавишу Enter...';&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k: integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ClrScr;  {Очищаем экран}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Создаем окно в центре экрана - желтые символы на 
+синем фоне:}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TextBackground(Blue);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TextColor(Yellow);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Window(X1,Y1,X2,У2);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ClrScr;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Обводим окно рамкой}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write(LU);  {Левый верхний угол}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{</font><font size="3">Горизонтальная линия}</font> </font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for k: = X1+1 to X2-1 do Write(H);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write(RU);{Верхний правый угол}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for k := Y1+1 to Y2-1 do{Вертикальные линии}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY(1,k-Y1+1);{Переходим к левой границе}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write(V);{Левая черта}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY(X2-X1+1,WhereY){Правая граница}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write(V){Правая черта}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write(LD);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Левый нижний угол}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Window(X1,Y1,X2,Y2+1);{Расширяем вниз на одну строку координаты окна, иначе 
+вывод в правый нижний угол вызовет прокрутку окна вверх}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY(2,Y2-Y1+1);  
+{Возвращаем курсор из левого</font> <font size="3">верхнего угла окна на нужное место}</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Горизонтальная рамка}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for k:= X1+1 to X2-1 do Write(H);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write(RD);  {Правый нижний угол}&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Определяем внутреннюю часть окна}&nbsp;</font> 
+ 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Window(X1+1,Y1+1,X2-1,Y2-1);&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Выводим левый столбец}&nbsp;</font> 
+ 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for k := Y1+1 to Y2-2 do</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn('Левый столбец, строка
+',k-Y1);;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Ждем нажатия любой клавиши}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write('Нажмите любую клавишу...');&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> k := ord(ReadKey); if k=0 then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k := ord(ReadKey);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DelLine;  {Стираем приглашение}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Выводим правый столбец}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for k := Y1+1 to Y2-2 
+do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY((X2-X1) div 2,k-Y1);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write('Правый столбец, строка
+',k-Y1)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Выводим сообщение и ждем нажатия клавиши
+Enter}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY((X2-X1-Length(Txt)) 
+div 2,Y2-Y1-1);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TextColor(White);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write(Txt);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Восстанавливаем стандартный режим}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TextMode(CO80)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Три следующие процедуры без параметров могут оказаться полезными при 
+разработке текстовых редакторов.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> ClrEOL. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Стирает часть строки от текущего положения курсора до 
+правой границы окна (экрана). Положение курсора не меняется.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> DelLine. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Уничтожает всю строку с курсором в текущем окне (или на 
+экране, если окно не создано). При этом все строки ниже удаляемой (если они 
+есть) сдвигаются вверх на одну строку.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> InsLine. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Вставляет строку: строка с курсором и все строки ниже ее 
+сдвигаются вниз на одну строку; строка, вышедшая за нижнюю границу окна 
+(экрана), безвозвратно теряется; текущее положение курсора не меняется.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедуры</b> LowVideo, NormVideo и HighVideo. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">С помощью этих процедур без 
+параметров можно устанавливать соответственно пониженную, нормальную и 
+повышенную яркость символов. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses CRT;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">LowVideo;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn('Пониженная яркость');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NormVideo;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn('Нормальная яркость');&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">HighVideo;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn('Повышенная яркость')&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Замечу, что на практике нет разницы между пониженной и нормальной яркостью 
+изображения.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> AssignCRT.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Связывает текстовую файловую переменную F с экраном с 
+помощью непосредственного обращения к видеопамяти (т.е. к памяти, используемой 
+адаптером для создания изображения на экране). В результате вывод в такой 
+текстовый файл осуществляется значительно (в 3...5 раз) быстрее, чем если бы 
+этот файл был связан с экраном стандартной процедурой Assign. Заголовок 
+процедуры:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure AssignCRT(F: Text);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В следующей программе измеряется скорость вывода на экран с помощью 
+стандартной файловой процедуры и с помощью непосредственного обращения к 
+видеопамяти. Вначале файловая переменная F связывается «медленной» процедурой 
+Assign со стандартным устройством CON (т.е. с экраном) и подсчитывается 
+количество N1 циклов вывода некоторого текста за 5*55 = 275 миллисекунд 
+системных часов. Затем файловая переменная связывается с экраном с помощью 
+процедуры быстрого доступа AssignCRT и точно так же подсчитывается количество N2 
+циклов вывода. В конце программы счетчики N1 и N2 выводятся на экран.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Замечу, что показания системных часов хранятся в оперативной памяти 
+компьютера в виде четырехбайтного слова по адресу [$0040:$006С] и наращиваются 
+на единицу каждые 55 миллисекунд.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses CRT;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">F: Text;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">t: LongInt;{Начало отсчета времени}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">N1,N2: Word;{Счетчики вывода}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">txt = ' Text';&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{----- Стандартный вывод в файл -----}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Assign(F,'CON');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Rewrite(F);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">N1 := 0;{Готовим счетчик вывода}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ClrScr;{Очищаем экран}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Запоминаем начальный момент:}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">t := MemL[$0040:$006C];</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Ждем начала нового 55-мс интервала, чтобы</font>
+<font size="3">исключить погрешность в определении времени:}</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">while MemL[$0040:$006C]=t do;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Цикл вывода за 5 интервалов}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">while MemL[$0040:$006С]&lt;t+6 do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">inc(N1) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write(F,txt)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Close(F);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{----- Вывод с помощью быстрой процедуры прямого доступа к экрану - ----}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">AssignCRT(F);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Rewrite(F);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> N2 := 0;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ClrScr;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> t := MemL[$0040:$006C];&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> while MemL[$0040:$006C]=t do;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> while 
+MemL[$0040:$006C]&lt;t+6 do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">inc(N2);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write(F,txt)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Close(F);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Печатаем результат}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ClrScr;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(Nl,N2:10)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Следует учесть, что вывод на экран обычным образом - без использования 
+файловой переменной (например, оператором Write (txt)) также осуществляется с 
+помощью непосредственного доступа к видеопамяти, поэтому ценность процедуры 
+AssignCRT весьма сомнительна. Прямой доступ к видеопамяти регулируется 
+глобальной логической переменной DirectVideo модуля CRT: если эта переменная 
+имеет значение True, доступ разрешен, если False - доступ к экрану 
+осуществляется с помощью относительно медленных средств операционной системы 
+MS-DOS. По умолчанию переменная DirectVideo имеет значение
+True.</font> </P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl13_1.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl13_3.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

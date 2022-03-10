@@ -1,0 +1,316 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Untitled</title>
+</head>
+
+
+<body lang=RU style="'tab-interval:35.4pt'" background="bgrwhite.gif">
+<p><div align="center"><b><font size="+1" face="Arial">10. Операторы ввода и вывода </font></b></div></p>
+<p><span
+style="mso-spacerun: yes">   </span>Рассмотрим организацию<span
+style="mso-spacerun: yes">  </span>ввода и вывода данных с терминального уст-
+
+<p>ройства.
+Терминальное устройство - это устройство, с которым работает
+
+<p>пользователь,
+обычно это экран (дисплей) и клавиатура.
+
+<p><span
+style="mso-spacerun: yes">   </span>Для ввода и вывода данных используются
+стандартные процедуры ввода
+
+<p>и
+вывода Read и Write, оперирующие стандартными последовательными файлами
+
+<p>INPUT и
+OUTPUT.
+
+<p><span
+style="mso-spacerun: yes">   </span>Эти файлы разбиваются на строки переменной
+длины,<span style="mso-spacerun: yes">  </span>отделяемые друг
+
+<p>от
+друга признаком конца строки.<span style="mso-spacerun: yes">  </span>Конец
+строки задается нажатием кла-
+
+<p>виши
+ENTER.
+
+<p><span
+style="mso-spacerun: yes">   </span>Для ввода исходных данных используются
+операторы процедур ввода:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">         </span>Read(A1,A2,...AK);
+
+<p><span
+style="mso-spacerun: yes">         </span>ReadLn(A1,A2,...AK);
+
+<p><span
+style="mso-spacerun: yes">         </span>ReadLn;
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Первый из них реализует чтение К значений
+исходных данных и<span style="mso-spacerun: yes">  </span>прис-
+
+<p>ваивание
+этих значений переменным А1,<span style="mso-spacerun: yes">  </span>А2,<span
+style="mso-spacerun: yes">  </span>...,<span style="mso-spacerun: yes"> 
+</span>АК. Второй оператор
+
+<p>реализует
+чтение К значений исходных данных, пропуск остальных значе-
+
+<p>ний до
+начала следующей строки, присваивание считанных значений пере-
+
+<p>менным
+А1,<span style="mso-spacerun: yes">  </span>А2, ..., АК. Третий оператор
+реализует пропуск строки ис-
+
+<p>ходных
+данных.
+
+<p><span
+style="mso-spacerun: yes">   </span>При вводе исходных данных<span
+style="mso-spacerun: yes">  </span>происходит<span style="mso-spacerun: yes"> 
+</span>преобразование<span style="mso-spacerun: yes">  </span>из<span
+style="mso-spacerun: yes">  </span>внешней
+
+<p>формы
+представления во внутреннюю, определяемую типом переменных. Пе-
+
+<p>ременные,
+образующие<span style="mso-spacerun: yes">  </span>список ввода, могут
+принадлежать либо к целому,
+
+<p>либо
+к<span style="mso-spacerun: yes">   </span>действительному,<span
+style="mso-spacerun: yes">  </span>либо к символьному типам. <span
+style="mso-spacerun: yes"> </span>Чтение исходных
+
+<p>данных
+логического типа в языке ПАСКАЛЬ недопустимо.
+
+<p><span
+style="mso-spacerun: yes">   </span>Операторы ввода<span style="mso-spacerun:
+yes">  </span>при чтении значений переменных целого и
+
+<p>действительного
+типа пропускает пробелы,<span style="mso-spacerun: yes">  </span>предшествующие
+числу.<span style="mso-spacerun: yes">  </span>В то
+
+<p>же
+время эти операторы не пропускают пробелов,<span style="mso-spacerun: yes"> 
+</span>предшествующих значе-
+
+<p>ниям
+символьных переменных,<span style="mso-spacerun: yes">  </span>так как
+пробелы<span style="mso-spacerun: yes">  </span>являются<span
+style="mso-spacerun: yes">  </span>равноправными
+
+<p>символами
+строк. Пример записи операторов ввода:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">         </span>var rV, rS: Real;
+
+<p><span
+style="mso-spacerun: yes">             </span>iW, iJ: Integer;
+
+<p><span
+style="mso-spacerun: yes">             </span>chC, chD: Char;
+
+<p><span
+style="mso-spacerun: yes">         </span>................
+
+<p><span
+style="mso-spacerun: yes">         </span>Read(rV, rS, iW, iJ);
+
+<p><span
+style="mso-spacerun: yes">         </span>Read(chC, chD);
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Значения исходных данных могут отделяться
+друг от друга<span style="mso-spacerun: yes">  </span>пробелами
+
+<p>и
+нажатием клавиш табуляции и Enter.
+
+<p><span
+style="mso-spacerun: yes">   </span>Для вывода результатов работы программы на
+экран используются
+
+<p>операторы:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">         </span>Write(A1,A2,...AK);
+
+<p><span
+style="mso-spacerun: yes">         </span>WriteLn(A1,A2,...AK);
+
+<p><span
+style="mso-spacerun: yes">         </span>WriteLn;
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Первый из этих операторов реализует вывод
+значений переменных<span style="mso-spacerun: yes">  </span>А1,
+
+<p>А2,...,АК
+в<span style="mso-spacerun: yes">   </span>строку экрана.<span
+style="mso-spacerun: yes">  </span>Второй оператор реализует вывод
+
+<p>значений
+переменных А1,<span style="mso-spacerun: yes">  </span>А2,<span
+style="mso-spacerun: yes">  </span>...,<span style="mso-spacerun: yes"> 
+</span>АК и переход к<span style="mso-spacerun: yes">  </span>началу<span
+style="mso-spacerun: yes">  </span>следующей
+
+<p>строки.
+Третий<span style="mso-spacerun: yes">   </span>оператор реализует пропуск
+строки и переход к началу
+
+<p>следующей
+строки.
+
+<p><span
+style="mso-spacerun: yes">   </span>Переменные, составляющие список вывода,
+могут относиться к целому,
+
+<p>действительному,
+символьному или булевскому типам. В качестве элемен-
+
+<p>та
+списка вывода кроме имен переменных могут использоваться выражения
+
+<p>и
+строки.
+
+<p><span
+style="mso-spacerun: yes">   </span>Вывод каждого<span style="mso-spacerun:
+yes">  </span>значения в строку экрана происходит в соот-
+
+<p>ветствии
+с шириной поля вывода,<span style="mso-spacerun: yes">  </span>определяемой
+конкретной<span style="mso-spacerun: yes">  </span>реализацией
+
+<p>языка.
+
+<p><span
+style="mso-spacerun: yes">   </span>Форма представления значений в поле вывода
+соответствует типу<span style="mso-spacerun: yes">  </span>пе-
+
+<p>ременных
+и выражений:<span style="mso-spacerun: yes">  </span>величины целого типа
+выводятся как целые деся-
+
+<p>тичные
+числа,<span style="mso-spacerun: yes">  </span>действительного типа - как<span
+style="mso-spacerun: yes">  </span>действительные<span style="mso-spacerun:
+yes">  </span>десятичные
+
+<p>числа с
+десятичным порядком,<span style="mso-spacerun: yes">  </span>символьного типа и
+строки - в виде сим-
+
+<p>волов,
+логического типа - в виде логических констант TRUE и FALSE.
+
+<p><span
+style="mso-spacerun: yes">   </span>Оператор вывода<span style="mso-spacerun:
+yes">  </span>позволяет<span style="mso-spacerun: yes">  </span>задать<span
+style="mso-spacerun: yes">  </span>ширину поля вывода для каждого
+
+<p>элемента
+списка вывода.<span style="mso-spacerun: yes">  </span>В этом случае
+
+<p>элемент
+списка вывода имеет вид А:К, где
+
+<p>А -
+выражение или строка,<span style="mso-spacerun: yes">  </span>К - выражение
+либо константа целого<span style="mso-spacerun: yes">  </span>типа.
+
+<p>Если
+выводимое значение занимает в поле вывода меньше позиций, чем К,
+
+<p>то
+перед этим значением располагаются пробелы.<span style="mso-spacerun: yes"> 
+</span>Если выводимое значе-
+
+<p>ние не
+помещается в ширину поля К,<span style="mso-spacerun: yes">  </span>то для
+этого значения будет отве-
+
+<p>дено
+необходимое количество позиций. Для величин действительного типа
+
+<p>элемент
+списка вывода может иметь вид А:К:М, где А - переменная или выраже-
+
+<p>ние
+действительного типа,<span style="mso-spacerun: yes">  </span>К - ширина поля
+вывода,<span style="mso-spacerun: yes">  </span>М<span style="mso-spacerun:
+yes">  </span>-<span style="mso-spacerun: yes">  </span>число<span
+style="mso-spacerun: yes">  </span>цифр
+
+<p>дробной
+части<span style="mso-spacerun: yes">   </span>выводимого значения.<span
+style="mso-spacerun: yes">  </span>К и М - выражения или константы
+
+<p>целого
+типа.<span style="mso-spacerun: yes">  </span>В этом случае действительные
+значения выводятся в форме
+
+<p>десятичного
+числа с фиксированной точкой.
+
+<p><span
+style="mso-spacerun: yes">    </span>Пример записи операторов вывода:
+
+<p><span
+style="mso-spacerun: yes">        </span>. . . . . . . . . . . .
+
+<p><span
+style="mso-spacerun: yes">        </span>var rA, rB: Real;<span
+style="mso-spacerun: yes">       </span>iP,iQ:Integer;
+
+<p><span
+style="mso-spacerun: yes">            </span>bR, bS: Boolean;<span
+style="mso-spacerun: yes">    </span>chT, chV, chU, chW: Char;
+
+<p><span
+style="mso-spacerun: yes">        </span>. . . . . . . . . . . .
+
+<p><span
+style="mso-spacerun: yes">        </span>WriteLn(rA, rB:10:2);
+
+<p><span
+style="mso-spacerun: yes">        </span>WriteLn(iP, iQ:8);
+
+<p><span
+style="mso-spacerun: yes">        </span>WriteLn(bR, bS:8);
+
+<p><span
+style="mso-spacerun: yes">        </span>WriteLn(chT, chV, chU, chW);
+
+<p><div align="center"><a href="../Pascal. Курс лекций.html">	<img src="../../soder.gif" width=120 height=31 border=0 alt=""></a></div></p>
+
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl9_1.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl9_3.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Заголовок модуля и связь модулей друг с другом
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Заголовок модуля состоит из зарезервированного слова UNIT и следующего за ним 
+имени модуля. Для правильной работы среды Турбо Паскаля и возможности 
+подключения средств, облегчающих разработку крупных программ (см. п.9.6), это 
+имя должно совпадать с именем дискового файла, в который помещается исходный 
+текст модуля. Если, например, имеем заголовок</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Unit Global;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">то исходный текст соответствующего модуля должен размещаться в дисковом файле 
+GLOBAL.PAS. Имя модуля служит для его связи с другими модулями и основной 
+программой. Эта связь устанавливается специальным предложением</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">USES &lt;сп.модулей&gt;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь USES - зарезервированное слово {использует);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">&lt;сп.модулей&gt; - список модулей, с которыми устанавливается связь; 
+элементами списка являются имена модулей, отделяемые друг от друга запятыми, 
+например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses CRT, Graph, Global;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если объявление USES... используется, оно должно открывать раздел описаний 
+основной программы. Модули могут использовать другие модули. Предложение USES в 
+модулях может следовать либо сразу за зарезервированным словом INTERFACE, либо 
+сразу за словом IMPLEMENTATION, либо, наконец, и там, и там (т.е. допускаются 
+два предложения USES).</font> </P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl9_1.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl9_3.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

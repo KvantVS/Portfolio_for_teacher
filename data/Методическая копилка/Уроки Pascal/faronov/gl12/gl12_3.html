@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl12_2.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl12_4.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Адресация
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+В архитектуре МП 8086/8088 адрес любого байта задается двумя 16-битовыми 
+словами - сегментом и смещением. При формировании 20-разрядного полного адреса, 
+необходимого для адресации в пределах 1 Мбайт, сегмент сдвигается влево на 4 
+разряда (умножается на 16) и складывается со смещением. Поскольку емкость 16-разрядного смещения составляет 65536 значений, в пределах одного сегмента 
+можно адресовать до 64 Кбайт.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Архитектура МП позволяет использовать семь различных способов адресации.</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Регистровая&nbsp;</font>
+</b> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Извлекает операнд из регистра или помещает его в регистр. 
+Примеры:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ах,bх  {Извлекаем из ВХ и помещаем в АХ}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> add cx,ax  {Содержимое АХ 
+прибавляем к СХ}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> push ex  {Заталкиваем в стек содержимое СХ}</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Непосредственная</font>
+</b> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Операнд (8- или 16-разрядная константа) содержится непосредственно в теле 
+команды. Примеры:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ax,100  {Загружаем в АХ значение 100}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">add ax,5  {К содержимому АХ прибавляем 5}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> mov cx,$FFFF  {Помещаем в СХ значение 
+65535}</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Прямая</font>
+</b> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Смещение операнда задается в теле программы и складывается с регистром DS; 
+например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">X: Word; В: Byte;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ах,Х  {Пересылаем значение переменной X регистр АХ}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> add ah,В  {К 
+содержимому регистра АН прибавляем значение переменной В}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov X,ax  {Пересылаем содержимое регистра АХ, в область памяти переменной X}</font> 
+</P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Косвенная регистровая</font>
+</b> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Исполнительный адрес операнда (точнее, его смещение) содержится в одном из 
+регистров ВХ, ВР, SI или DI. Для указания косвенной адресации этот регистр 
+должен заключаться в квадратные скобки, например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ax,[bx] {Содержимое 16-разрядного слова, хранящегося в памяти по адресу 
+DS:BX,пересылаем в регистр АХ};</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Каждый из регистров BX...DI по умолчанию работает со своим сегментным 
+регистром:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DS:BX, SS:BP, DS:SI, ES:DI</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Допускается явное указание сегментного регистра, если он отличается от 
+умалчиваемого, например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ax,es:[bx]</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Адресация по базе&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Базовый регистр ВХ (или ВР) содержит базу (адрес начала 
+некоторого фрагмента</font> <font face="Arial, Helvetica, sans-serif" size="3">памяти), относительно которой ассемблер вычисляет смещение, например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ах,[Ьх]+10 {Загружаем в АХ 10-й по счету байт от начала базы памяти по 
+адресу DS-.BX};</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Индексная адресация</font>
+</b> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Один из индексных регистров SI или DI указывает положение элемента 
+относительно начала некоторой области памяти. Пусть, например, АОВ - имя массива 
+значений типа Byte. Тогда можно использовать такие фрагменты:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov si,15  {Помещаем в SI константу 15}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ah,АОВ[si]  {Пересылаем в АН 16-й по порядку байт от начала массива}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov si,0</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov AOB[si],ah  {Пересылаем полученное в самый первый элемент массива}</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Адресация по базе с индексированием</font>
+</b> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Вариант индексной адресации для случая, когда индексируемая область памяти 
+задается своей базой. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ax,[bx][si]</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Этот тип адресации удобен при обработке двумерных массивов. Если, например, 
+АОВ есть массив из 10x10 байт вида</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">АОВ: array [0..9,0..9] of Byte;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">то для доступа к элементу АОВ [2,3] можно использовать такой фрагмент</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov bx,20  {База строки 2}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov si,2  {Номер 3-го элемента}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ax,AOB[bx] [si] </font><font size="3">{Доступ к элементу}</font></font> </P>
+
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl12_2.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl12_4.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

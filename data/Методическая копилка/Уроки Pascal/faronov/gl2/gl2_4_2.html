@@ -1,0 +1,175 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" >
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl2_4_1.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td >
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl2_4_3.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p align="left">
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+ 
+Условный оператор
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Условный оператор позволяет проверить некоторое условие и в зависимости от 
+результатов проверки выполнить то или иное действие. Таким образом, условный 
+оператор - это средство ветвления вычислительного процесса.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Структура условного оператора имеет следующий вид:</font> </P>
+<p align="left"></P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">IF &lt;условие&gt; THEN &lt;оператор1&gt; ELSE &lt;оператор2&gt;</font><font face="Arial, Helvetica, sans-serif" size="3">,</font> </P>
+<p align="left"></P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">где IF, THEN, ELSE - зарезервированные слова (если, то, иначе); 
+&lt;условие&gt; - произвольное выражение логического типа; &lt;оператор1&gt;, 
+&lt;оператор2&gt; - любые операторы языка Турбо Паскаль.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Условный оператор работает по следующему алгоритму. Вначале вычисляется 
+условное выражение &lt;условие&gt;. Если результат есть TRUE (истина), то 
+выполняется &lt;оператор1&gt;, а &lt;оператор2&gt; пропускается; если результат 
+есть FALSE (ложь), наоборот, &lt;оператор1&gt; пропускается, а выполняется 
+&lt;оператор2&gt;. Например:</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">х, у, max: Integer;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if x &gt; max then</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">у := max else</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">y := x;</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">При выполнении этого фрагмента переменная Y получит значение переменной X, 
+если только это значение не превышает МАХ, в противном случае Y станет равно 
+МАХ.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Часть ELSE &lt;оператор2&gt; условного оператора может быть опущена. Тогда 
+при значении TRUE условного выражения выполняется &lt;оператор1&gt;, в противном 
+случае этот оператор пропускается:</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">х, у, max: Integer;&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if x &gt; max then</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">max := x;&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Y := x;</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">В этом примере переменная Y всегда будет иметь значение переменной X,а в МАХ 
+запоминается максимальное значение X.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Поскольку любой из операторов &lt;оператор1&gt; и &lt;оператор2&gt; может 
+быть любого типа, в том числе и условным, а в то же время не каждый из 
+«вложенных» условных операторов может иметь часть ELSE &lt;оператор2&gt;, то 
+возникает неоднозначность трактовки условий. Эта неоднозначность в Турбо Паскале 
+решается следующим</font> <font face="Arial, Helvetica, sans-serif" size="3">образом: любая встретившаяся часть ELSE соответствует ближайшей к ней 
+«сверху» части THEN условного оператора. Например:</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">a,b,c,d : Integer; begin</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">a := 1; b := 2; c= 3; d := 4;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if a &gt; b then</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if с &lt; d then&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if с &lt; 0 then</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">с := 0 else</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">a := b; <i> {а равно 1}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if a &gt; b then&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if с then&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if с then&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> с := 0</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">else</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">else&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+else</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">a := b; <i> {а равно 2}</i></font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Рассмотрим программу (пример 2.4), которая вводит произвольное десятичное 
+целое число в диапазоне 0...15, преобразует его к шестнадцатеричному и выводит 
+на экран полученный результат.</font> </P>
+<p align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Пример 2.4&nbsp;</font>
+</b> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Program Hex;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Программа вводит с клавиатуры целое число в диапазоне от 0 до 15, 
+преобразует его к шестнадцатеричной системе счисления и выводит результат на 
+экран}</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">n : Integer; <i> {Вводимое число}&nbsp;</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> ch : Char; <i> {Результат}&nbsp;</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write ( ',n = ' ) ;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn(n); <i> { Вводим число }</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"><i> {Проверяем число на принадлежность к диапазону 
+0...15}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if (n &gt;= 0) and (n &lt;= 15) then</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin <i> {Да, принадлежит диапазону}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if n &lt; 10 then</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ch := chr(ord('0') + n)</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">else</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ch := chr(ord('A') + n- 10);</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn('n = ',ch)&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">else <i> {He принадлежит диапазону}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn('Ошибка')&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">В шестнадцатеричной системе счисления используется 16 цифр в каждом разряде: 
+цифры 0...9 обозначают первые 10 возможных значений разряда, буквы A...F - 
+остальные шесть.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">В программе учитывается непрерывность и упорядоченность множеств цифр 0...9, 
+букв A...F и их кодов (см. гл.4).</font> </P> 
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" >
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl2_4_1.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td >
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl2_4_3.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</body>
+</html>

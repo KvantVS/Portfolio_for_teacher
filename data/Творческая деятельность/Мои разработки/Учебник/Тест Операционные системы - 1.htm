@@ -1,0 +1,196 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0041)http://www.junior.ru/wwwexam/t_opsys1.htm -->
+<HTML><HEAD><TITLE>Тест "Операционные системы - 1"</TITLE>
+<META content="text/html; charset=windows-1251" http-equiv=Content-Type>
+<META content="Николаева В.А." name=Author>
+<SCRIPT language=JavaScript>
+<!-- hide
+
+var scrtxt = "Тесты по информатике и информационным технологиям" ; 
+var length = scrtxt.length;
+var width = 100;
+var pos = -(width + 2);
+
+function scroll() {
+  pos++;
+  var scroller = "";
+  if (pos == length) {
+    pos = -(width + 2);
+  }
+
+  if (pos < 0) {
+    for (var i = 1; i <= Math.abs(pos); i++) {
+      scroller = scroller+" ";}
+    scroller = scroller + scrtxt.substring(0, width - i + 1);
+  }
+  else {
+    scroller = scroller + scrtxt.substring(pos, width + pos);
+  }
+
+  window.status = scroller;
+  setTimeout("scroll()", 100);
+}
+
+// -->
+</SCRIPT>
+
+<META content="MSHTML 5.00.2614.3500" name=GENERATOR></HEAD>
+<BODY bgColor=white onload=scroll()>
+<SCRIPT language=JavaScript>
+<!--Начало сценария
+
+var res="4411321323"
+
+function check_me()
+{
+	var count=0
+	with(document.test)
+	{
+		if (!Q1[0].checked&&!Q1[1].checked&&!Q1[2].checked&&!Q1[3].checked) {count+=1};
+		if (!Q2[0].checked&&!Q2[1].checked&&!Q2[2].checked&&!Q2[3].checked) {count+=1};
+		if (!Q3[0].checked&&!Q3[1].checked&&!Q3[2].checked&&!Q3[3].checked) {count+=1};
+		if (!Q4[0].checked&&!Q4[1].checked&&!Q4[2].checked&&!Q4[3].checked) {count+=1};
+		if (!Q5[0].checked&&!Q5[1].checked&&!Q5[2].checked) {count+=1};
+		if (!Q6[0].checked&&!Q6[1].checked&&!Q6[2].checked) {count+=1};
+		if (!Q7[0].checked&&!Q7[1].checked&&!Q7[2].checked&&!Q7[3].checked) {count+=1};
+		if (!Q8[0].checked&&!Q8[1].checked&&!Q8[2].checked&&!Q8[3].checked) {count+=1};
+		if (!Q9[0].checked&&!Q9[1].checked&&!Q9[2].checked) {count+=1};
+		if (!Q10[0].checked&&!Q10[1].checked&&!Q10[2].checked&&!Q10[3].checked) {count+=1};
+		if (count>0) {alert("Вы выполнили не все задания. Проверьте себя.")} 
+		else answer()
+	}
+}
+
+function control(k,f1,f2,f3,f4,f5,f6,f7,f8,f9,f10)
+{
+	if (k==1&&f1.checked) return true;
+	if (k==2&&f2.checked) return true;
+	if (k==3&&f3.checked) return true;
+	if (k==4&&f4.checked) return true;
+	if (k==5&&f5.checked) return true;
+	if (k==6&&f6.checked) return true;
+	if (k==7&&f7.checked) return true;
+	if (k==8&&f8.checked) return true;
+	if (k==9&&f9.checked) return true;
+	if (k==10&&f10.checked) return true;
+	return false;
+}
+
+function answer()
+{
+	answ="";
+	with(document)
+	{
+		answ+=control(res.charAt(0),test.Q1[0],test.Q1[1],test.Q1[2],test.Q1[3])?"1":"0"
+		answ+=control(res.charAt(1),test.Q2[0],test.Q2[1],test.Q2[2],test.Q2[3])?"1":"0"
+		answ+=control(res.charAt(2),test.Q3[0],test.Q3[1],test.Q3[2],test.Q3[3])?"1":"0"
+		answ+=control(res.charAt(3),test.Q4[0],test.Q4[1],test.Q4[2],test.Q4[3])?"1":"0"
+		answ+=control(res.charAt(4),test.Q5[0],test.Q5[1],test.Q5[2])?"1":"0"
+		answ+=control(res.charAt(5),test.Q6[0],test.Q6[1],test.Q6[2])?"1":"0"
+		answ+=control(res.charAt(6),test.Q7[0],test.Q7[1],test.Q7[2],test.Q7[3])?"1":"0"
+		answ+=control(res.charAt(7),test.Q8[0],test.Q8[1],test.Q8[2],test.Q8[3])?"1":"0"
+		answ+=control(res.charAt(8),test.Q9[0],test.Q9[1],test.Q9[2])?"1":"0"
+		answ+=control(res.charAt(9),test.Q10[0],test.Q10[1],test.Q10[2],test.Q10[3])?"1":"0"
+		showResult();
+	}
+}
+
+function showResult()
+{
+	var nok=0;
+	var i,s;
+	for (i=0;i<answ.length;i++) {nok+=answ.charAt(i)=="1"?1:0;}
+	if(nok<=4) s='"НЕУДОВЛЕТВОРИТЕЛЬНО"';
+	if(nok>4 && nok<6) s='"УДОВЛЕТВОРИТЕЛЬНО"';
+	if(nok==6) s='"УДОВЛЕТВОРИТЕЛЬНО"';
+	if(nok>6 && nok<8) s='"ХОРОШО"';
+	if(nok==8) s='"ХОРОШО"';
+	if(nok>8) s='"ОТЛИЧНО"';
+	document.test.s1.value="Количество правильных ответов "+nok+". Ваша оценка "+s+". Загляните в окно рядом с номером задания. Если ответ правильный, то там (+). Если Вы ошиблись, там (-).";
+	with(document.test)
+	{
+		if (answ.charAt(0)=="1") {T1.value=" +"} else {T1.value=" -"};
+		if (answ.charAt(1)=="1") {T2.value=" +"} else {T2.value=" -"};
+		if (answ.charAt(2)=="1") {T3.value=" +"} else {T3.value=" -"};
+		if (answ.charAt(3)=="1") {T4.value=" +"} else {T4.value=" -"};
+		if (answ.charAt(4)=="1") {T5.value=" +"} else {T5.value=" -"};
+		if (answ.charAt(5)=="1") {T6.value=" +"} else {T6.value=" -"};
+		if (answ.charAt(6)=="1") {T7.value=" +"} else {T7.value=" -"};
+		if (answ.charAt(7)=="1") {T8.value=" +"} else {T8.value=" -"};
+		if (answ.charAt(8)=="1") {T9.value=" +"} else {T9.value=" -"};
+		if (answ.charAt(9)=="1") {T10.value=" +"} else {T10.value=" -"};
+	}
+}
+
+</SCRIPT>
+
+<FORM name=test>
+<CENTER><FONT color=#000099 face=Arial,Helvetica,sans-serif>
+<H3>Операционные системы - 1</H3></CENTER>
+<OL>
+  <LI>
+  <H4><INPUT name=T1 size=1> Какие функции выполняет операционная система? 
+  </H4><INPUT name=Q1 type=radio> обеспечение организации и хранения файлов 
+  <BR><INPUT name=Q1 type=radio> подключения устройств ввода/вывода <BR><INPUT 
+  name=Q1 type=radio> организация обмена данными между компьютером и различными 
+  периферийными устройствами <BR><INPUT name=Q1 type=radio> организация диалога 
+  с пользователем, управления аппаратурой и ресурсами компьютера <BR><BR>
+  <LI>
+  <H4><INPUT name=T2 size=1> Где находится BIOS? </H4><INPUT name=Q2 type=radio> 
+  в оперативно-запоминающем устройстве (ОЗУ) <BR><INPUT name=Q2 type=radio> на 
+  винчестере <BR><INPUT name=Q2 type=radio> на CD-ROM <BR><INPUT name=Q2 
+  type=radio> в постоянно-запоминающем устройстве (ПЗУ) <BR><BR>
+  <LI>
+  <H4><INPUT name=T3 size=1> Папка, в которую временно попадают удалённые 
+  объекты, называется ...</H4><INPUT name=Q3 type=radio> Корзина <BR><INPUT 
+  name=Q3 type=radio> Оперативная <BR><INPUT name=Q3 type=radio> Портфель 
+  <BR><INPUT name=Q3 type=radio> Блокнот <BR><BR>
+  <LI>
+  <H4><INPUT name=T4 size=1> Текущий диск - это ...</H4><INPUT name=Q4 
+  type=radio> диск, с которым пользователь работает в данный момент времени 
+  <BR><INPUT name=Q4 type=radio> CD-ROM <BR><INPUT name=Q4 type=radio> жесткий 
+  диск <BR><INPUT name=Q4 type=radio> диск, в котором хранится операционная 
+  система <BR><BR>
+  <LI>
+  <H4><INPUT name=T5 size=1> ОС Windows поддерживает длинные имена файлов. 
+  Длинным именем файла считается ... </H4><INPUT name=Q5 type=radio> любое имя 
+  файла без ограничения на количество символов в имени файла <BR><INPUT name=Q5 
+  type=radio> любое имя файла латинскими буквами, не превыщающее 255 символов 
+  <BR><INPUT name=Q5 type=radio> любое имя файла, не превышающее 255 символов 
+  <BR><BR>
+  <LI>
+  <H4><INPUT name=T6 size=1> Внутренние команды - это ... </H4><INPUT name=Q6 
+  type=radio> команды, предназначенные для создания файлов и каталогов 
+  <BR><INPUT name=Q6 type=radio> команды, встроенные в DOS <BR><INPUT name=Q6 
+  type=radio> команды, которые имеют расширения .sys, .exe, .com <BR><BR>
+  <LI>
+  <H4><INPUT name=T7 size=1> Какие функции выполняет программа command.com? 
+  </H4><INPUT name=Q7 type=radio> обрабатывает команды, вводимые пользователем 
+  <BR><INPUT name=Q7 type=radio> хранит все команды операционной системы 
+  <BR><INPUT name=Q7 type=radio> обрабатывает команды и программы, выполняемые 
+  при каждом запуске компьютера <BR><INPUT name=Q7 type=radio> хранит все 
+  команды, которые использует пользователь в своей работе <BR><BR>
+  <LI>
+  <H4><INPUT name=T8 size=1> Загрузчик операционной системы служит для 
+  ...</H4><INPUT name=Q8 type=radio> загрузки программ в оперативную память ЭВМ 
+  <BR><INPUT name=Q8 type=radio> обработки команд, введенных пользователем 
+  <BR><INPUT name=Q8 type=radio> считывания в память модулей операционной 
+  системы io.sys и msdos.sys <BR><INPUT name=Q8 type=radio> подключения 
+  устройств ввода-вывода <BR><BR>
+  <LI>
+  <H4><INPUT name=T9 size=1> Какие команды DOS называются внешними? </H4><INPUT 
+  name=Q9 type=radio> команды, предназначенные только для работы с периферийными 
+  устройствами <BR><INPUT name=Q9 type=radio> команды, хранящиеся на диске и 
+  вызываемые по мере необходимости <BR><INPUT name=Q9 type=radio> все команды, 
+  которые можно реализовать с помощью DOS <BR><BR>
+  <LI>
+  <H4><INPUT name=T10 size=1> BIOS - это ...</H4><INPUT name=Q10 type=radio> 
+  игровая программа <BR><INPUT name=Q10 type=radio> диалоговая оболочка 
+  <BR><INPUT name=Q10 type=radio> базовая система ввода-вывода <BR><INPUT 
+  name=Q10 type=radio> командный язык операционной системы <BR></LI></OL><BR>
+<CENTER>
+<P><TEXTAREA cols=70 name=s1 rows=4> </TEXTAREA> </P><INPUT onclick=check_me() type=button value="Показать результат">&nbsp;&nbsp;&nbsp;&nbsp; 
+<INPUT type=reset value="Сбросить ответы"> </CENTER><BR><BR></FORM>
+<P>
+<H5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</H5>
+<P></P></FONT></BODY></HTML>

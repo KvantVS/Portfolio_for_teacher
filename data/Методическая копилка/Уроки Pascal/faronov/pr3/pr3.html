@@ -1,0 +1,777 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+<table COLS="3" width="%">
+<tr>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr3_1.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+ 
+Сообщения и коды ошибок
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3"></font>
+<ul>
+
+      <li><font face="Arial, Helvetica, sans-serif" size="3">Сообщения об ошибках периода компиляции</font>
+    </li>
+    <li><font face="Arial, Helvetica, sans-serif" size="3">Ошибки
+      возникающие во время выполнения
+      программ</font>
+</li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Ошибки, обнаруживаемые ДОС</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Ошибки ввода-вывода</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Критические ошибки</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Фатальные
+          ошибки</font></li>
+     
+</ul>
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Сообщения об ошибках периода компиляции
+
+</font>
+</b>
+<br>
+</font>
+</p>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Среда Турбо Паскаля дает исчерпывающую информацию о характере и месте 
+обнаруженной компилятором ошибки. При обнаружении ошибки среда автоматически 
+загружает в окно редактора исходный файл и помещает курсор около того места, где 
+в исходном тексте обнаружена ошибка. При этом в верхней строке редактора 
+появляется диагностическое сообщение. После нажатия на любую клавишу (кроме FI) 
+верхняя строка восстанавливает свой первоначальный вид и среда переходит к 
+режиму редактирования. Если после появления сообщения об ошибке нажать F1, на 
+экране появится окно справочной службы с детальной информацией об ошибке и 
+рекомендациями по ее устранению. Некоторые ошибки в исходном тексте 
+обнаруживаются не сразу, а в ходе продолжающегося контекстного разбора. 
+Например, несоответствие типов в операторе присваивания не может быть обнаружено 
+до тех пор, пока не будет вычислено целиком выражение в правой части этого 
+оператора. В таких случаях ищите ошибку слева от курсора или в предыдущей строке 
+текста.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Ниже приводятся сообщения об ошибках в том виде, в каком они появляются в 
+верхней строке редактора, а также перевод сообщений справочной службы.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">На экране после кода ошибки (цифры) нет точки, поэтому ее нет и в 
+соответствующем месте текста.</font> </P>
+<P></P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">1 Out of memory&nbsp;</font> <font size="3">(Выход за границы памяти).</font></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Компилятору не хватает памяти. Имеется ряд возможных решений этой проблемы:</font> 
+</P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> если в опции COMPILE/DESTINATION установлено значение MEMORY, замените эту 
+опцию на DISK;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> если в опции OPTIONS/LINKER/LINK BUFFER установлено значение MEMORY, 
+замените эту опцию т DISK;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> если Вы используете резидентные обслуживающие программы, такие как 
+SIDEKICK, NORTON, удалите их из памяти;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> если Вы используете интегрированную среду TVRBO.EXE, то попробуйте 
+воспользоваться компилятором ТРС.ЕХЕ - он занимает меньше памяти.</font></li>
+</ul>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если ни одна из рекомендаций не помогает, то, возможно, Ваша программа просто 
+слишком велика, чтобы компилировать ее в таком объеме памяти. В этом случае Вы 
+должны разбить ее на два или более модулей.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">2 Identifier expected (He указан идентификатор).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В этом месте должен находиться идентификатор. Возможно, Вы пытаетесь 
+использовать в качестве идентификатора зарезервированное слово.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">3 Unknown identifier (Неизвестный идентификатор).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Этот идентификатор не был 
+описан.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">4 Duplicate identifier (Двойной идентификатор).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Попытка дважды описать один и 
+тот же идентификатор.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">5 Syntax error (Синтаксическая ошибка).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В исходном тексте найден недопустимый символ. Возможно, Вы забыли заключить в 
+апострофы строковую константу.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">6 Error in real constant (Ошибка в вещественной константе).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Синтаксис 
+констант вещественного типа описан в гл.4.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">7 Error in integer constant (Ошибка в целой константе).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Синтаксис констант целого типа описан в гл.4. Учтите, что после целых 
+действительных чисел, превышающих диапазон представления целых чисел 
+(-2147483648..+2147483647), должны ставиться точка и ноль, например, 
+12345678912.0.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">8 String constant exceeds line (Строковая константа превышает допустимые 
+размеры).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Вероятно, Вы забыли поставить апостроф в конце строковой константы.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">9 Too many nested files (Слишком много вложенных файлов).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Компилятор допускает не более пяти уровней вложенности включаемых файлов 
+(т.е. в исходном файле есть ссылка на включаемый файл, в котором есть ссылка на 
+еще один включаемый файл и т.д.).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">10 Unexpected end of file (He найден конец файла).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Вы могли получить это сообщение об ошибке по одной из следующих причин:</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> Ваш исходный файл закончился перед последним END основного раздела 
+операторов; вероятно, в Вашей программе неодинаковое количество операторов BEGIN 
+и END;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> включаемый файл заканчивается в середине раздела операторов; каждый раздел 
+операторов должен целиком помещаться в одном файле;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> Вы не закончили комментарий.</font></li>
+</ul>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">11 Line too long (Слишком длинная строка).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Максимальная длина строки, обрабатываемой компилятором, равна 126 символам 
+(обратите внимание: редактор среды может обрабатывать строки практически 
+неограниченной длины).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">12 Type identifier expected (Здесь нужен идентификатор типа).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Не указан тип 
+идентификатора.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">13 Too many open files (Слишком много открытых файлов).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Появление этой ошибки означает, что конфигурационный файл CONFIG.SYS 
+операционной системы не включает параметр FlLES=xx или этот параметр указывает 
+слишком мало файлов. Увеличьте число файлов до нужного значения, например, до 
+80.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">14 Invalid file name (Неверное имя файла).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Имя файла неверно или указан 
+несуществующий путь.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">15 File not found (Файл не найден).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Файл не был найден в просмотренных 
+каталогах.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">16 Disk full (Диск заполнен).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Удалите некоторые файлы или воспользуйтесь 
+новым диском.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">17 Invalid compiler directive (Неправильная директива компилятора).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Неверная 
+буква в директиве компилятора, один из параметров директивы компилятора 
+неверный, или Вы пользуетесь глобальной директивой компилятора, когда компиляция 
+тела программы уже началась.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">18 Too many files (Слишком много файлов).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В компиляции программы или программного модуля участвуют слишком много 
+файлов. Попытайтесь не использовать так много файлов, например, объединяя 
+включаемые файлы или делая короче имена файлов.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">19 Undefined type in pointer definition (Неопределенный тип в объявлении 
+указателя).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Попытка объявить типизированный указатель, связанный с ранее не объявленным 
+типом данных.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">20 Variable identifier expected (Отсутствует идентификатор переменной).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> На 
+этом месте должен быть идентификатор переменной.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">21 Error in type (Ошибка в объявлении типа).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Объявление типа не может 
+начинаться с этого символа.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">22 Structure too large (Слишком большая структура).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Максимально допустимый 
+размер любого структурного типа составляет 65520 байт.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">23 Set base type of range (Базовый тип множества нарушает границы).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Базовый 
+тип множества должен представлять собой тип-диапазон с границами в пределах от 0 
+до 255 или перечисляемый тип с не более чем 256 значениями.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">24 File components may not be files (Компонентами файла не могут быть файлы) 
+.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Конструкции типа file of file (файл файлов) или file of object (файл 
+объектов) не допускаются. Нельзя объявлять любые структурные типы, которые 
+используют в качестве компонентов объекты или файлы.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">25 Invalid string length (Неверная длина строки).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Объявляемая длина строки 
+должна находиться в диапазоне от 1 до 255.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">26 Type mismatch (Несоответствие типов).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Это сообщение может быть вызвано следующими причинами:</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> несовместимые типы переменной и выражения в операторе присваивания;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> несовместимые типы фактического и формального параметров в обращении к 
+процедуре или функции;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> тип выражения не совместим с типом индекса при индексировании массива;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> несовместимые типы операндов в выражении.</font></li>
+</ul>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">27 Invalid subrange base type(Неправильный базовый тип для типа-диапазона).</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Допустимыми базовыми типами являются все порядковые типы.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">28 Lower bound greater than upper bound (Нижняя граница больше верхней).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> 
+Описание типа-диапазона содержит неправильные границы.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">29 Ordinal type expected (Нужен порядковый тип) .</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Вещественные, строковые, структурные, процедурные типы и указатели в данном 
+месте программы не допускаются.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">30 Integer constant expected (Нужна целая константа).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">31 Constant expected (Нужна константа).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">32 Integer or real constant expected (Нужна целая или вещественная
+константа) 
+.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">33 Tуре identifier expected (Нужен идентификатор типа)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">34 Invalid function result type (Неправильный тип результата функции)&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> 
+Правильными типами результата функции являются все простые типы, строковые типы 
+и указатели.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">35 Label identifier expected (Нужен идентификатор метки).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Метка не обозначена с помощью идентификатора, как это требуется из контекста 
+программы.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">36 BEGIN expected (Нужен BEGIN).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">37 END expected (Нужен END).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">38 Integer expression expected (Нужно выражение типа
+INTEGER).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">39 Ordinal expression expected (Нужно выражение перечисляемого типа).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">40 Boolean expression expected (Нужно выражение типа
+BOOLEAN).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">41 Operand types do not match operator (Типы операндов не соответствуют 
+операции).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Данная операция не может быть применена к указанным операндам, например, ' А' 
+div ' 2 ' .</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">42 Error in expression (Ошибка в выражении).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Данный символ не может участвовать в выражении указанным образом. Возможно, 
+Вы забыли указать операцию между двумя операндами.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">43 Illegal assignment (Неверное присваивание).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Файлам и нетипизированным переменным нельзя присваивать значения. 
+Идентификатору функции можно присвоить значение только внутри раздела операторов 
+данной функции.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">44 Field identifier expected (Нужен идентификатор поля).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Попытка использовать запись целиком в том месте, где требуется ссылка на 
+какое-либо поле записи.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">45 Object file too large (Объектный файл слишком большой).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Турбо Паскаль не 
+может компоновать файлы .OBJ больше 64 Кбайт.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">46 Undefined external (Неопределенная внешняя процедура).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Внешняя процедура или функция не имеет соответствующего определения PUBLIC в 
+объектном файле. Убедитесь, что Вы указали все объектные файлы в директивах {$L 
+&lt;имя .OBJ-файлa&gt;} и проверьте написание идентификаторов процедуры или 
+функции в файле . ASM.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">47 Invalid object file record (Неправильная запись объектного файла).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Файл 
+.OBJ содержит неверную объектную запись. Убедитесь, что данный файл является 
+действительно файлом .OBJ.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">48 Code segment too large (Сегмент кода слишком большой).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Максимальный размер кода программы или программного модуля равняется 65520 
+байтам. Разбейте Вашу программу или модуль на два или более модулей.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">49 Data segment too large (Сегмент данных слишком велик).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Максимальный размер сегмента данных программы равен 65520 байтам, включая 
+данные, используемые программными модулями. Если Вам нужно большее количество 
+глобальных данных, опишите большие структуры с помощью указателей и выделяйте 
+для них память динамически с помощью процедуры
+NEW.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">50 DO expected (Нужен оператор
+DO).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">51 Invalid PUBLIC definition (Неверное PUBLIC-определение).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Возможные причины 
+сообщения:</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> данный идентификатор получил тип PUBLIC с помощью соответствующей директивы 
+языка ассемблера, но не соответствует описанию EXTERNAL в программе или 
+программном модуле Паскаля;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">две или более
+    директивы PUBLIC языка ассемблера
+    определяют один и тот же идентификатор;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> файлы .OBJ определяют символы PUBLIC, не находящиеся в сегменте
+    CODE.</font></li>
+</ul>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">52 Invalid EXTRN definition (Неправильное EXTRN-определение).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Возможные 
+причины сообщения:</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> программа на ассемблере ссылается с помощью директивы EXTRN на 
+идентификатор, который не описан в программе на Паскале и не был описан в 
+интерфейсных секциях используемых программных модулей;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> ассемблерная программа ссылается на идентификатор, обозначающий абсолютную 
+переменную (т.е. определенную словом ABSOLUTE);</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> ассемблерная программа ссылается на идентификатор процедуры или функции 
+типа INLINE.</font></li>
+</ul>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">53 Too many EXTRN definition (Слишком много EXTRN-определений).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Турбо Паскаль 
+не может обрабатывать файлы .OBJпри более чем 256 определениях
+EXTRN.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">54 OF expected (Требуется OF).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">55 INTERFACE expected (Требуется интерфейсная секция).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">56 Invalid relocatable reference (Неправильная перемещаемая ссылка).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> 
+Возможные причины сообщения:</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> файл .OBJ содержит данные и перемещаемые ссылки в сегментах, отличных от 
+CODE. Например, Вы пытаетесь описать инициализированные переменные в сегменте
+    DATA;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> файл .OBJ содержит ссылки с размерами в байтах на перемещаемые символы. 
+Такая ошибка происходит в случае, если Вы используете операторы HIGH и LOW с 
+перемещаемыми символами или если Вы ссылаетесь в директивах DB на перемещаемые 
+символы;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> операнд ссылается на перемещаемый символ, который не был определен в 
+сегменте CODE или в сегменте DATA;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> операнд ссылается на процедуру EXTRN или функцию EXTRN со сдвигом, 
+например, CALL SortProc+8.</font></li>
+</ul>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">57 THEN expected (Требуется THEN).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">58 TO or DOWNTO expected (Требуется ТО или
+DOWNTO).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">59 Undefined forward (Неопределенное опережающее описание).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Возможные причины 
+сообщения:</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> была рписана процедура или функция в интерфейсной секции программного 
+модуля, но ее определение отсутствует в секции реализации;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> процедуры или функции были описаны с помощью опережающего описания, но их 
+определение не найдено.</font></li>
+</ul>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">60 Too many procedures (Слишком иного процедур).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Турбо Паскаль допускает не более 512 процедур или функций в одном модуле. 
+Если Вы компилируете программу, то поместите некоторые процедуры или функции в 
+модули. Если Вы компилируете модуль, то разбейте его на два или несколько 
+модулей.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">61 Invalid typecast (Неверное преобразование типа).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Возможные причины 
+сообщения:</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> Вы пытаетесь разместить в памяти, занимаемой некоторой переменной, значение 
+выражения другого типа э случае, когда размер размещаемого значения не равен 
+размеру переменной;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> Вы пытаетесь осуществить преобразование типа выражения, когда разрешается 
+только ссылка на переменную, процедуру или функцию.</font></li>
+</ul>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">62 Division by zero (Деление на ноль).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Предшествующая операция пытается 
+выполнить деление на ноль.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">63 Invalid file type (Неверный файловый тип).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Данный файловый тип не обслуживается процедурой обработки файлов. Например, 
+процедура READLN используется для типизированного файла или процедура SEEK - для 
+текстового файла.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">64 Cannot Read or Write variables of this type (Нет возможности считать или 
+записать переменные данного типа).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Нарушены следующие ограничения:</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> процедуры READ и READLN могут считывать переменные символьного, целого, 
+действительного и строкового типов;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> процедуры WRITE и WRITELN могут выводить переменные символьного, целого, 
+действительного, булевского и строкового типов.</font></li>
+</ul>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">65 Pointer variable expected (Нужно использовать переменную-указатель).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> 
+Предыдущая переменная должна быть указателем.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">66 String variable expected ('Нужна строковая переменная) .&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Предшествующая 
+переменная должна иметь строковый тип.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">67 String expression expected (Нужно выражение строкового типа).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> 
+Предшествущее выражение должно иметь строковый тип.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">68 Circular unit reference (Перекрестная ссылка модулей).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Два модуля 
+ссылаются друг на друга:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Unit A;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Unit В;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses В;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Uses А;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">69 Unit name mismatch (Несоответствие имен программных модулей).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Имя 
+программного модуля, найденное в файле .TPU, не соответствует имени, указанному 
+в предложении USES.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">70 Unit version mismatch (Несоответствие версий модулей).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Один или несколько программных модулей, используемых данной программой, были 
+изменены после их компиляции. Воспользуйтесь опцией COMPILE/MAKE или 
+COMPILE/BUILD в интегрированной среде или опциями /М или /В в компиляторе ТРС, 
+что позволит автоматически скомпилировать программные модули, нуждающиеся в 
+перекомпиляции.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">71 Duplicate unit name (Повторное имя программного модуля).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Вы уже указали 
+этот программный модуль в операторе USES.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">72 Unit file format error (Ошибка формата файла модуля).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Файл .TPU не 
+соответствует стандарту Турбо Паскаля.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">73 IMPLEMENTATION expected (Отсутствует исполняемая часть модуля).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">74 Constant and case types do not match (Типы констант и тип выражения 
+оператора CASE не соответствуют друг другу).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Тип константы оператора CASE не совместим с выражением в операторе варианта.</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">75 Record variable expected (Нужна переменная типа запись) .&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Предшествующая 
+переменная должна иметь тип запись.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">76 Constant out of range (Константа нарушает границы).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Возможные причины 
+сообщения:</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> Вы пытаетесь указать индекс массива, выходящий за его границы;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> Вы пытаетесь присвоить переменной значение, выходящее за границы, 
+допустимые для типа этой переменной;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> Вы пытаетесь передать в качестве фактического параметра процедуре или 
+функции константу, выходящую за границы, допустимые для типа соответствующего 
+формального параметра.</font></li>
+</ul>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">77 File variable expected (Нужна файловая переменная).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Предшествующая 
+переменная должна иметь файловый тип.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">78 Pointer expression expected (Нужно выражение типа указатель).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> 
+Предшествующее выражение должно иметь тип указателя.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">79 Integer or real expression expected (Нужно выражение вещественного или 
+целого типа).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Предшествующее выражение должно иметь тип REAL или
+INTEGER.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">80 Label not within current block (Метка не находится внутри текущего блока) 
+.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Оператор GOTO не может ссылаться на метку, находящуюся вне текущего блока.</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">81 Label already defined (Метка уже определена).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Данная метка уже помечает 
+оператор.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">82 Undefined label in processing statement part (Неопределенная метка в 
+предшествующем разделе операторов).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Данная метка была описана, и на нее осуществлялась ссылка в предшествующем 
+разделе операторов, но она не указана в тексте программы.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">83 Invalid @ argument (Неправильный аргумент операции @).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Правильными 
+аргументами являются идентификаторы переменных, процедур и функций.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">84 Unit expected (Нужно кодовое слово
+UNIT).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">85«;» expected (Нужно указать»;») .</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">86«:» expected (Нужно указать*:») .</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">87«,» expected (Нужно указать»,») .</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">88 «(» expected (Нужно указать «(»).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">89«)» expected (Нужно указать»)»).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">90 «=» expected (Нужно указать «=») .</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">91«:=» expected (Нужно указать»:=»).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">92 «[» or «(.» expected (Нужно указать «[» или «(.»).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">93«]» or «.)» expected (Нужно указать»]» или».)»).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">94».» expected (Нужно указать».») ,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">95«..» expected (Нужно указать»..») .</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">96 Too many variables (Слишком много переменных).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Нарушены следующие ограничения:</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> общий размер глобальных переменных, описанных в программе или программном 
+модуле, не может превышать 64 Кбайт;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> размер локальных переменных, описанных в процедуре или функции, не может 
+превышать 64 Кбайт. .</font></li>
+</ul>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">97 Invalid FOR control variable(Неправильный параметр цикла оператора
+FOR).</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Параметр цикла оператора FOR должен быть переменной порядкового типа, 
+определенной в разделе описаний текущей подпрограммы.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">98 Integer variable expected (Нужна переменная целого типа).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Предшествующая 
+переменная должна иметь целый тип.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">99 File and procedure types are not allowed here (Здесь не могут 
+использоваться файлы или процедурные типы).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Типизированная константа не может иметь файловый или процедурный тип.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">100 String length mismatch (Несоответствие длины строки).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Длина строковой константы не соответствует количеству элементов символьного 
+массива.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">101 Invalid ordering of fields (Неверный порядок полей).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Поля в константе 
+типа запись должны записываться в порядке их описания.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">102 String constant expected (Нужна константа строкового типа).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">103 Integer or real variable expected (Нужна переменная типа INTEGER или
+REAL).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Предшествующая переменная должна иметь целый или вещественный тип.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">104 Ordinal variable expected (Нужна переменная порядкового типа).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> 
+Предшествующая переменная должна иметь порядковый тип.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">105 INLINE error (Ошибка в операторе
+INLINE).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Оператор «&lt;» не допускается в сочетании с перемещаемыми ссылками на 
+переменные. Такие ссылки всегда имеют размер в слово.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">106 Character expression expected (Предшествующее выражение должно иметь 
+символьный тип).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">107 Too many relocation items (Слишком много перемещаемых Элементов).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Размер таблицы перемещения файла .ЕХЕ превышает 64 Кбайта, что является 
+верхним пределом в Турбо Паскале. Если Вы обнаружили эту ошибку, то это значит, 
+что программа просто слишком велика для обработки компоновщиком Турбо Паскаля. 
+Возможно также, что она слишком велика для выполнения в MS-DOS. В таком случае 
+нужно выделить в программе основной раздел, который выполнял бы обращение к двум 
+или более вспомогательным разделам с помощью процедуры ЕХЕС из модуля DOS (см. 
+гл.11).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">108 Overflow in arithmetic operator (Переполнение при выполнении 
+арифметического оператора).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Результат предыдущей арифметической операции не лежит в диапазоне -2 146 483 
+648...+2 147 483 647. Исправьте операцию или используйте вещественные типы 
+вместо целочисленных.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">109 No enclosing FOR, WHILE or REPEAT statment (Нет операторов, заканчивающих 
+операторы FOR, WHILE или REPEAT) .</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Процедуры BREAK и CONTINUE не могут вызываться вне тела оператора цикла.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">110 Debug information table overflow (Переполнение информационной таблицы 
+отладки).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возможно, программа содержит более 65536 имен или 65536 строк. Отключите 
+генерацию таблиц отладки директивой компилятора {$D-} или исправьте один или 
+более модулей.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">111</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Ошибка с этим кодом не описана в версии 7.0 системы Турбо Паскаль.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">112 CASE constant out of range(Константа CASE нарушает допустимые границы).</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Целочисленные константы оператора CASE должны находиться в диапазоне от 
+-32768 до 32767.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">113 Error in statement (Ошибка в операторе).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Данный символ не может быть 
+первым символом в операторе.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">114 Cannot call an interrupt procedure (Невозможно вызвать процедуру 
+прерывания) .</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Вы не можете непосредственно вызвать процедуру обработки прерывания.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">115</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Ошибка с этим кодом не описана в версии 7.0 системы Турбо Паскаль.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">116 Must be in 8087 mode to compile this (Для компиляции необходим режим 
+8087) .</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Данная программа может быть скомпилирована только в режиме {$N+}. В состоянии 
+{SN-} операции с типами SINGLE, DOUBLE, EXTENDED и СОМР не допускаются.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">117 Target address not found (Указанный адрес не найден).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Команда COMPILE/FIND ERROR в среде Турбо Паскаля (или поиск с помощью опции 
+/F в командной строке компилятора ТРС.ЕХЕ) не обнаружила оператор, 
+соответствующий заданному адресу.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">118 Include files are not allowed here (Здесь не допускаются включаемые 
+файлы) .</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Раздел операторов должен целиком размещаться в одном файле.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">119 No inherited methods are accessible here (В этом месте программы нет 
+унаследованных методов).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Вы используете зарезервированное слово INHERITED вне метода объекта или в 
+методе, который не унаследован от родительского объекта.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">120</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Ошибка с этим кодом не описана в версии 7.0 системы Турбо Паскаль. .</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">121 Invalid qualifier (Неверный квалификатор).&nbsp;</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Возможные причины сообщения:</font> 
+</P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> Вы пытаетесь индексировать переменную, которая не является массивом;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> Вы пытаетесь указать поля в переменной, которая не является записью;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> Вы используете в качестве указателя переменную, которая не является 
+указателем.</font></li>
+</ul>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">122 Invalid variable reference (Недействительная ссылка на переменную).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Предыдущая конструкция удовлетворяет синтаксису ссылки на переменную, но она 
+не указывает адрес памяти. Возможно Вы вызываете функцию-указатель, но забываете 
+сослаться на результат с помощью знака.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">123 Too many symbols'(Слишком много символов) .</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Программа или программный модуль содержат более 64 Кбайт символов. Если Вы 
+компилируете программу с директивой {$D+}, то попробуйте отключить эту директиву 
+или разбейте программу на несколько модулей.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">124 Statement part too large (Слишком большой раздел операторов).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Турбо Паскаль ограничивает размер раздела операторов до величины примерно 24 
+Кбайта. Если Вы обнаружили эту ошибку, поместите части раздела операторов в одну 
+или несколько процедур и вообще сделайте Вашу программу более структурированной.</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">125</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Ошибка с этим кодом не описана в версии 7.0 системы Турбо Паскаль.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">126 Files must be var parameters (Файлы должны передаваться как 
+параметры-переменные) .</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Вы пытаетесь передать процедуре или функции параметр-значение файлового типа. 
+Параметры файлового типа должны быть параметрами-переменными.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">127 Too many conditional symbols (Слишком много условных символов).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> 
+Недостаточно памяти для определения условных символов (слов, управляющих 
+командами условной компиляции). Попытайтесь удалить некоторые символы или 
+уменьшить их длину.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">128 Misplaced conditional directive (Пропущена условная директива).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> 
+Компилятор обнаружил директиву {$ELSE} или {$ENDIF} без соответствующих директив 
+{$IFDEF}, {$IFNDEF} или {$IFOPT}.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">129 ENDIF directive missing (Пропущена директива
+ENDIF).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Исходный файл закончился внутри конструкции условной компиляции. В исходном 
+файле должно быть равное количество директив {$IFxxx} и
+{$ENDIF}.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">130 Error in initial conditional defines (Ошибка в условных определениях).</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Исходные условные символы.указанные в опции OPTIONS/COMPILER /CONDITIONAL 
+DEFINES являются недействительными. Турбо Паскаль требует нуля или более 
+идентификаторов, разделенных пробелами, запятыми или точками с запятой.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">131 Header does not match previous definition (Заголовок не соответствует 
+предыдущему определению).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Возможные причины сообщения:</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> заголовок процедуры или функции, указанный в интерфейсной секции, не 
+соответствует заголовку в исполняемой части.</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> заголовок процедуры или функции, указанный с помощью опережающего описания 
+FORWARD, не соответствует заголовку найденной далее одноименной процедуры или 
+функции.</font></li>
+</ul>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">132 Critical disk error (Критическая ошибка диска).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Во время компиляции произошла критическая ошибка диска (например, дисковод 
+находится в состоянии «не готов»).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">133 Cannot evaluate this expression (Нельзя вычислить данное выражение).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В выражении-константе или в отладочном выражении Вы пытаетесь использовать 
+неподдерживаемые средства, например, в описании константы пытаетесь использовать 
+функцию SIN или вызвать в отладочном выражении определенную пользователем 
+функцию.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">134 Expression incorrectly terminated (Некорректное завершение выражения).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> 
+Контекстуально в данном месте программы должен быть конец выражения или 
+оператора.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">135 Invalid format specifier (Неверный спецификатор формата).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Используется 
+неверный спецификатор формата или числовой аргумент спецификатора формата 
+выходит за допустимые границы.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">136 Invalid indirect reference (Недопустимая косвенная ссылка).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Оператор пытается осуществить недопустимую косвенную ссылку. Например, Вы 
+используете абсолютную переменную, базовая переменная которой в текущем модуле 
+неизвестна, или используете программу типа INLINE, в которой делается ссылка на 
+переменную, неопределенную в текущем модуле.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">137 Structured variable are not allowed here (Здесь нельзя использовать 
+переменную структурного типа).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Делается попытка выполнить над переменной структурного типа неподдерживаемую 
+операцию. Например, Вы пытаетесь перемножить две записи.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">138 Cannot evaluate without System unit (Нельзя вычислить выражение без 
+модуля SYSTEM).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Чтобы отладчик смог вычислить выражение, в файле TURBO.TPL должен содержаться 
+модуль SYSTEM.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">139 Cannot access this symbol (Нет доступа к данному символу).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Как только Вы 
+скомпилируете программу, все множество ее символов становится доступным. Однако 
+к отдельным символам (например, к переменным) нельзя получить доступ, пока Вы не 
+запустите программу.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">140 Invalid floating-point operation (Недопустимая операция с плавающей 
+запятой) .</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">При выполнении операции с плавающей запятой произошло переполнение или 
+деление на ноль.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">141 Cannot compile overlay to memory (Нельзя выполнить компиляцию оверлейных 
+модулей в память).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Программа, использующая оверлейные модули, должна компилироваться на диск.</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">142 Procedure or function variable expected (Должна использоваться переменная 
+процедурного типа).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В этом контексте оператор получения адреса @ может использоваться только с 
+переменной процедурного типа.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">143 Invalid procedure or function reference (Недопустимая ссылка на процедуру 
+или функцию).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возможные причины сообщения:</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> Вы пытаетесь вызвать процедуру в выражении;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> процедура или функция, использующаяся в качестве параметра вызова другой 
+процедуры или функции, должна компилироваться в состоянии {$F+} и не может 
+описываться с помощью зарезервированных слов INLINE или
+    INTERRUPT.</font></li>
+</ul>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">144 Cannot overlay this unit (Этот модуль не может использоваться в качестве 
+оверлейного).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Попытка использовать в качестве оверлейного модуль, который не был 
+скомпилирован с директивой {$O+}.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">145 Too many nested scopes (Слишком много вложений).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В программе не может быть больше 512 вложений с не более чем 128 вложениями в 
+каждом модуле. Вложениями считаются:</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> каждый модуль в предложении
+    USES;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> каждая вложенная запись в типе
+    RECORD;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> каждый вложенный оператор
+    WITH.</font></li>
+</ul>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">146 File access denied (Отказано в доступе к файлу).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Возможные причины:</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> Вы пытаетесь использовать файл с атрибутом «только для чтения» в качестве 
+выводного файла;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> Вы используете имя каталога вместо имени выводного файла.</font></li>
+</ul>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">147 Object type expected (Здесь должен быть тип OBJECT).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Этот идентификатор 
+должен принадлежать к типу OBJECT.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">148 Local object types are not allowed (Нельзя объявлять локальные объекты).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> 
+Нельзя объявить объект в процедуре (функции).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">149 VIRTUAL expected (Пропущено слово
+VIRTUAL).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">150 Method identifier expected (Пропущен идентификатор инкапсулированного 
+правила).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">151 Virtual constructor are not allowed (Конструктор не может быть 
+виртуальным) .</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">153 Destructor identifier expected (Пропущен идентификатор деструктора).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">154 Fail only allowed within constructor (Обращение к стандартной процедуре 
+FAIL может содержаться только в конструкторе).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">155 Invalid combination of opcode and operands (Недопустимая комбинация кода 
+команды и операндов).</font></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Код ассемблерной команды не может иметь такие операнды. Причины ошибки:</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> указано слишком много или слишком мало операндов для данной команды, 
+например, INC AX, BX или MOV AX;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> количество операндов правильное, но их типы или порядок следования не 
+соответствуют данной команде, например, DEC 1, MOV AX, CL или MOV 1,AX.</font></li>
+</ul>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">156 Memory reference expected (Отсутствует адрес).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Операнд ассемблерной команды не содержит адрес. Вероятно, Вы забыли выделить 
+квадратными скобками индексный регистр, например, MOV АХ, BX+SI вместо MOV АХ, 
+[BX+SI] .</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">157 Cannot add or subtract relocatable symbols (Нельзя складывать или 
+вычитать перемещаемые символы).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В ассемблерных выражениях обоими операндами в операциях сложения или 
+вычитания могут быть только ссылки на константу. Идентификаторы переменных, 
+процедур, функций и меток являются перемещаемыми</font>
+<font face="Arial, Helvetica, sans-serif" size="3">символами и не могут использоваться в качестве двух операндов одновременно в 
+таких операциях. Если VAR -идентификатор переменной, a CONST - константы, то 
+предложения MOV AX, CONST+CONST и MOVE AX, VAR+CONST будут правильными, в то 
+время как выражение MOV AX, VAR+VAR недопустимо.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">158 Invalid register combination (Недопустимая комбинация регистров).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> 
+Допустимыми комбинациями индексных регистров являются [ВХ] , [BpJ, [SI], [DI] , 
+[BX+SI] , [BX+DI] , [BP+SI] и [BP+DI] . Другие комбинации (например, [АХ] , 
+[BP+BX] , [SI+DX]) недопустимы. Заметим, что локальные переменные размещаются в 
+стеке и доступ к ним организуется через регистр ВР. Ассемблер автоматически 
+добавляет [ВР] в ссылках на такие переменные, поэтому в операндах типа LOCAL 
+[ВХ] , где LOCAL - локальная переменная, образуется недопустимая ссылка
+LOCAL[BP+BX].</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">159 286/287 instructions are not enabled (Недоступен набор команд 
+микропроцессоров 286/287) .</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Используйте директиву {$G+}, но учтите, что такую программу можно исполнять 
+только на ПК, оснащенных микропроцессором Intel 80286/80287 или более поздним.</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">160 Invalid symbol reference (Недопустимая ссылка на символ).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> К указанному 
+символу нельзя обратиться в ассемблерной программе. Это может быть следствием 
+таких причин:</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> Вы пытаетесь использовать ссылки на стандартные процедуры (функции) или 
+специальные массивы MEM, MEMW, MEML, PORT и PORTW в ассемблерных операндах;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> Вы обращаетесь к строковой, вещественной константе или константе типа SET в 
+операнде ассемблерной команды;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">в ассемблерном
+    операнде Вы обращаетесь к процедуре или
+    функции, написанной в режиме INLINE;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> Вы пытаетесь получить с помощью операции @Result доступ к результату, 
+возвращаемому функцией;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> Вы пытаетесь использовать короткую форму команды JMP для передачи 
+управления в непомеченный оператор программы.</font></li>
+</ul>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">161 Code generation error (Ошибка генерации кода).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Ошибка возникает, в частности, при компиляции ассемблерных фрагментов, 
+содержащих команды LOOP, LOOPE, LOOPNE, JCXZ, если команда ссылается на 
+недоступную метку.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">162 ASM expected (Отсутствует зарезервированное слово
+ASM).</font> </P>
+<p>&nbsp;</p>
+<table COLS="3" width="%">
+<tr>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr3_1.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</BODY></HTML>

@@ -1,0 +1,256 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl4_5.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl4_7.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Записи
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Запись - это структура данных, состоящая из фиксированного числа компонентов, 
+называемых полями записи. В отличие от массива, компоненты (поля) записи могут
+быть различного типа. Чтобы можно было ссылаться на тот или иной компонент 
+записи, поля именуются. 
+</P>
+<P>Структура объявления типа записи такова: </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&lt;имя типа&gt; = RECORD &lt;сп.полей&gt; END</font> </P>
+<P>Здесь &lt;имя типа&gt; - правильный идентификатор; </P>
+<P>RECORD, END - зарезервированные слова (запись,конец); &lt;сп.полей&gt; - 
+список полей; представляет собой последовательность разделов записи, между 
+которыми ставится точка с запятой. </P>
+<P>Каждый раздел записи состоит из одного или нескольких идентификаторов полей, 
+отделяемых друг от друга запятыми. За идентификатором (идентификаторами) 
+ставится двоеточие и описание типа поля (полей), например: </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">BirthDay = record&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> day,month : Byte;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> year : Word&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">a,b : Birthday;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P>В этом примере тип BIRTHDAY (день рождения) есть запись с полями DAY, MONTH и 
+YEAR (день, месяц и год); переменные А и В содержат записи типа BIRTHDAY. </P>
+<P>Как и в массиве, значения переменных типа записи можно присваивать другим 
+переменным того же типа, например </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">а := b;</font> </P>
+<P>К каждому из компонентов записи можно получить доступ, если использовать 
+составное имя, т.е. указать имя переменной, затем точку и имя поля: </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">а.day := 27;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> b.year := 1939;</font> </P>
+<P>Для вложенных полей приходится продолжать уточнения: </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">BirthDay = record&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">day,month: Byte;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> year : Word&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">с : record</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">name : String;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> bd : BirthDay&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if c.bd.year = 1939 then ...&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P>Чтобы упростить доступ к полям записи, используется оператор присоединения 
+WITH: </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WITH &lt;переменная&gt; DO &lt;оператор&gt;</font> </P>
+<P>Здесь WITH, DO - ключевые слова (с, делать); </P>
+<P>&lt;переменная&gt; - имя переменной типа запись, за которым, возможно, 
+следует список вложенных полей; &lt;оператор&gt; - любой оператор Турбо Паскаля. 
+</P>
+<P>Например: </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">with c.bd do month := 9;</font> </P>
+<P>Это эквивалентно </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">with с do with bd do month := 9;</font> </P>
+<P>или </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">with c,bd do month := 9;</font> </P>
+<P>или </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">c.bd.month := 9;</font> </P>
+<P>Турбо Паскаль разрешает использовать записи с так называемыми вариантными 
+полями, например: </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Forma = record&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Name: String;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> case Byte of</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">0: (Birthplace: String [40]);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 1: (Country : String [20];&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> EntryPort : String 
+[20];&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> EntryDate : 1. . 31;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> ExitDate : 1..31)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P>В этом примере тип FORMA определяет запись с одним фиксированным полем NAME и 
+вариантной частью, которая задается предложением CASE... OF. Вариантная часть 
+состоит из нескольких вариантов (в примере - из двух вариантов: 0 и 1). Каждый 
+вариант определяется константой выбора, за которой следует двоеточие и список 
+полей, заключенный в круглые скобки. В любой записи может быть только одна 
+вариантная часть, и, если она есть, она должна располагаться за всеми 
+фиксированными полями. </P>
+<P>Замечательной особенностью вариантной части является то обстоятельство, что 
+все заданные в ней варианты «накладываются» друг на друга, т.е. каждому из них 
+выделяется одна и та же область памяти. Это открывает дополнительные возможности 
+преобразования типов, например: </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mem4 : record case Byte of</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">0 : (by : array'[0..3] of Byte);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">1 : (wo : array [0..1] of Word);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">2 : (lo : longint);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P>В этом примере запись МЕМ4 имеет три варианта, каждый из которых занимает в 
+памяти один и тот же участок из 4 байт. В зависимости от того, к какому полю 
+записи мы обращаемся в программе, этот участок может рассматриваться как массив 
+из 4 байт (поле ВТ), массив из двух целых типа WORD (поле WO) или, наконец, как 
+одно целое число типа LONGINT (поле LO). Например, этой записи можно сначала 
+присвоить значение как длинному целому, а затем проанализировать результат по 
+байтам или словам: </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">х : Word;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">xb: Byte;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">x1: Longint;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">with m do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">lo := trunc(2*pi*x);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if wo[1] = 0&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> then if by[l] = 0 then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">xb := x[0]&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">x := wo[0]&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">x1 := lo&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P>Предложение CASE... OF, открывающее вариантную часть, внешне похоже на 
+соответствующий оператор выбора, но на самом деле лишь играет роль своеобразного 
+служебного слова, обозначающего начало вариантной части. Именно поэтому в конце 
+вариантной части не следует ставить END как пару к CASE... OF. (Поскольку 
+вариантная часть - всегда последняя в записи, за ней все же стоит END, но лишь 
+как пара к RECORD). Ключ выбора в предложении CASE... OF фактически игнорируется 
+компилятором: единственное требование, предъявляемое к нему Турбо Паскалем, 
+состоит в том, чтобы ключ определял некоторый стандартный или предварительно 
+объявленный порядковый тип. Причем сам этот тип никак не влияет ни на количество 
+следующих ниже вариантных полей, ни даже на характер констант выбора. В 
+стандартном Паскале в качестве ключа выбора необходимо указывать некоторую 
+переменную порядкового типа, причем в исполняемой части программы можно 
+присваивать значение этой переменной и таким образом влиять на выбор полей. В 
+Турбо Паскале также можно в поле ключа выбора указывать переменную порядкового типа и даже присваивать ей 
+в программе значение, что однако не влияет на выбор поля: значения констант 
+выбора в Турбо Паскале могут быть произвольными, в том числе повторяющимися, 
+например: </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">reel = record</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">a : Byte;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">b : Word;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> rec2 = record</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">с : longint;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">case x : Byte of</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">1 : (d : Word);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">2 : (e : record</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">case Boolean of</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">3 :( freel);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">3 :( g Single);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'3':( с Word);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">r : rec2;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">r.x := 255;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if r.e.g = 0 then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn('O.K. ')&nbsp;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(r.e.g)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P>В этом примере предложение </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">case Boolean of</font> </P>
+<P>в записи, определяемой в поле Е, объявляет ключом выбора логический тип, 
+который, как известно, имеет лишь два значения -
+<i> TRUE</i> и <i>FALSE</i>. Константы же 
+выбора следующих далее вариантов не только содержат совершенно не свойственные 
+этому типу значения, но и две из них повторяются, а общее количество вариантов - 
+три, а не два, как следовало бы ожидать. </P>
+<P>Имена полей должны быть уникальными в пределах той записи, где они объявлены, 
+однако, если записи содержат поля-записи, т.е. вложены одна в другую, имена 
+могут повторяться на разных уровнях вложенности (см. поле С в последнем 
+примере). </P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl4_5.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl4_7.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

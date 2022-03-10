@@ -1,0 +1,325 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Untitled</title>
+</head>
+
+<body lang=RU style="'tab-interval:35.4pt'" background="bgrwhite.gif">
+<p><div align="center"><b><font size="+1" face="Arial">4. Концепция типа для данных </font></b></div></p>
+<p><span
+style="mso-spacerun: yes">   </span>В математике<span style="mso-spacerun:
+yes">  </span>принято классифицировать переменные в соответствии с
+
+<p>некоторыми
+важными характеристиками. Производится строгое разграниче-
+
+<p>ние
+между вещественными, комплексными и логическими переменными, меж-
+
+<p>ду
+переменными, представляющими отдельные значения и множество значе-
+
+
+<p>ний и
+так далее.
+
+<p><span
+style="mso-spacerun: yes">   </span>При обработке данных на ЭВМ такая
+классификация еще более важна. В
+
+<p>любом
+алгоритмическом языке каждая константа,<span style="mso-spacerun: yes"> 
+</span>переменная,<span style="mso-spacerun: yes">  </span>выражение
+
+<p>или
+функция бывают определенного типа.
+
+<p><span
+style="mso-spacerun: yes">   </span>В языке<span style="mso-spacerun: yes"> 
+</span>ПАСКАЛЬ существует правило:<span style="mso-spacerun: yes">  </span>тип
+явно задается в описании
+
+<p>переменной
+или функции,<span style="mso-spacerun: yes">  </span>которое предшествует их
+использованию.<span style="mso-spacerun: yes">  </span>Кон-
+
+<p>цепция
+типа языка ПАСКАЛЬ имеет следующие основные свойства:
+
+<p><span
+style="mso-spacerun: yes">   </span>-любой тип данных определяет множество
+значений,<span style="mso-spacerun: yes">  </span>к которому<span
+style="mso-spacerun: yes">  </span>при-
+
+<p>надлежит
+константа, которые может принимать переменная или выражение,
+
+<p>или
+вырабатывать операция или функция;
+
+<p><span
+style="mso-spacerun: yes">   </span>-тип значения,<span style="mso-spacerun:
+yes">  </span>задаваемого константой, переменной или выражением,
+
+<p>можно
+определить по их виду или описанию;
+
+<p><span
+style="mso-spacerun: yes">   </span>-каждая операция или функция требует
+аргументов фиксированного ти-
+
+<p>па и
+выдает результат фиксированного типа.
+
+<p><span
+style="mso-spacerun: yes">   </span>Отсюда следует, что транслятор может
+использовать информацию о ти-
+
+<p>пах для
+проверки вычислимости и правильности различных конструкций.
+
+<p><span
+style="mso-spacerun: yes">   </span>Тип определяет:
+
+<p><span
+style="mso-spacerun: yes">   </span>-возможные значения переменных, констант,
+функций, выражений, при-
+
+<p>надлежащих
+к данному типу;
+
+<p><span
+style="mso-spacerun: yes">   </span>-внутреннюю форму представления данных в
+ЭВМ;
+
+<p><span
+style="mso-spacerun: yes">   </span>-операции и<span style="mso-spacerun:
+yes">  </span>функции,<span style="mso-spacerun: yes">   </span>которые<span
+style="mso-spacerun: yes">  </span>могут выполняться над величинами,
+
+<p>принадлежащими
+к данному типу.
+
+<p><span
+style="mso-spacerun: yes">   </span>Обязательное описание типа приводит к
+избыточности в тексте прог-
+
+<p>рамм,<span
+style="mso-spacerun: yes">  </span>но<span style="mso-spacerun: yes"> 
+</span>такая избыточность является важным вспомогательным средс-
+
+<p>твом
+разработки программ и рассматривается как необходимое<span style="mso-spacerun:
+yes">  </span>свойство
+
+<p>современных
+алгоритмических языков высокого уровня.<span style="mso-spacerun: yes"> 
+</span>В языке ПАСКАЛЬ
+
+<p>существуют
+скалярные и структурированные типы данных.
+
+<p><span
+style="mso-spacerun: yes">   </span>К<span style="mso-spacerun: yes"> 
+</span>cкалярным типам относятся стандартные типы и типы, определяе-
+
+<p>мые
+пользователем.
+
+<p><span
+style="mso-spacerun: yes">   </span>Стандартные типы<span style="mso-spacerun:
+yes">  </span>включают<span style="mso-spacerun: yes">  </span>целые,<span
+style="mso-spacerun: yes">   </span>действительные,<span style="mso-spacerun:
+yes">   </span>символьный,
+
+<p>логические
+и адресный типы. Типы, определяемые пользователем, - пере-
+
+<p>числяемый
+и интервальный.
+
+<p><span
+style="mso-spacerun: yes">   </span>Структурированные типы имеют четыре
+разновидности:<span style="mso-spacerun: yes">  </span>массивы,<span
+style="mso-spacerun: yes">  </span>мно-
+
+<p>жества,
+записи и файлы.
+
+<p><span
+style="mso-spacerun: yes">   </span>Кроме перечисленных,<span
+style="mso-spacerun: yes">  </span>TURBO PASCAL<span style="mso-spacerun:
+yes">  </span>включает еще два типа - проце-
+
+<p>дурный
+и объектный.
+
+<p><span
+style="mso-spacerun: yes">   </span>Из группы скалярных типов можно выделить<span
+style="mso-spacerun: yes">  </span>порядковые<span style="mso-spacerun: yes"> 
+</span>типы,
+
+<p>которые
+характеризуются следующими свойствами:
+
+<p><span
+style="mso-spacerun: yes">   </span>-все возможные значения порядкового типа
+представляют собой
+
+<p>ограниченное
+упорядоченное множество;
+
+<p><span
+style="mso-spacerun: yes">   </span>-к любому порядковому типу может быть
+применена стандартная
+
+<p>функция
+Ord, которая в качестве результата возвращает порядко-
+
+<p>вый
+номер конкретного значения в данном типе;
+
+<p><span
+style="mso-spacerun: yes">   </span>-к любому порядковому типу могут быть
+применены стандартные
+
+<p>функции
+Pred и Succ, которые возвращают предыдущее и последую-
+
+<p>щее
+значения соответственно;
+
+<p><span
+style="mso-spacerun: yes">   </span>-к любому порядковому типу могут быть
+применены стандартные функ-
+
+<p>ции Low
+и High,<span style="mso-spacerun: yes">  </span>которые возвращают наименьшее и
+наибольшее значения
+
+<p>величин
+данного типа.
+
+<p><span
+style="mso-spacerun: yes">   </span>В языке ПАСКАЛЬ введены понятия
+эквивалентности и совместимости типов.
+
+<p><span
+style="mso-spacerun: yes">   </span>Два типа Т1 и Т2 являются эквивалентными
+(идентичными),<span style="mso-spacerun: yes">  </span>если выполняется
+
+<p>одно из
+двух условий:
+
+<p><span
+style="mso-spacerun: yes">   </span>-Т1 и Т2 представляют собой одно и то же
+имя типа;
+
+<p><span
+style="mso-spacerun: yes">   </span>-тип Т2<span style="mso-spacerun: yes"> 
+</span>описан<span style="mso-spacerun: yes">  </span>с использованием типа Т1
+с помощью равенства или
+
+<p>последовательности
+равенств. Например:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>type
+
+<p><span
+style="mso-spacerun: yes">      </span>T1 = Integer;
+
+<p><span
+style="mso-spacerun: yes">      </span>T2 = T1;
+
+<p><span
+style="mso-spacerun: yes">      </span>T3 = T2;
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Менее строгие ограничения определены
+совместимостью типов. Напри-
+
+<p>мер,
+типы являются совместимыми, если:
+
+<p><span
+style="mso-spacerun: yes">   </span>-они эквивалентны;
+
+<p><span
+style="mso-spacerun: yes">   </span>-являются оба либо целыми, либо
+действительными;
+
+<p><span
+style="mso-spacerun: yes">   </span>-один тип - интервальный, другой - его
+базовый;
+
+<p><span
+style="mso-spacerun: yes">   </span>-оба интервальные с общим базовым;
+
+<p><span
+style="mso-spacerun: yes">   </span>один тип - строковый, другой - символьный.
+
+<p><span
+style="mso-spacerun: yes">   </span>В ТУРБО ПАСКАЛЬ ограничения на
+совместимость типов можно обойти с
+
+<p>помощью
+приведения<span style="mso-spacerun: yes">  </span>типов.<span
+style="mso-spacerun: yes">  </span>Приведение типов позволяет рассматривать
+
+<p>одну и
+ту же величину в памяти ЭВМ как принадлежащую<span style="mso-spacerun: yes"> 
+</span>разным<span style="mso-spacerun: yes">  </span>типам.
+
+<p>Для
+этого используется конструкция
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Имя_Типа(переменная или значение).
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Напрмер,
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">    </span>Integer('Z')
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p>представляет
+собой значение кода символа 'Z' в двухбайтном представ-
+
+<p>лении
+целого числа, а
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">    </span>Byte(534)
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p>даст
+значение 22, поскольку целое число 534 имеет тип Word и занима-
+
+<p>ет два
+байта, а тип Byte занимает один байт, и в процессе приведения
+
+<p>старший
+байт будет отброшен.
+
+<p><div align="center"><a href="../Pascal. Курс лекций.html">	<img src="../../soder.gif" width=120 height=31 border=0 alt=""></a></div></p>
+
+
+</body>
+</html>

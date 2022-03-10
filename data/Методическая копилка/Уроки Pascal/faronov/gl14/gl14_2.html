@@ -1,0 +1,500 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl14_1.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl14_3.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Процедуры и функции
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Процедура InitGraph. Инициирует графический режим работы адаптера. Заголовок 
+процедуры:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure InitGraph(var Driver,Mode:
+Integer; Path: String);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь Driver - переменная типа Integer, определяет тип графического драйвера; 
+Mode - переменная того же типа, задающая режим работы графического адаптера; 
+Path - выражение типа String, содержащее имя файла драйвера и, возможно, маршрут 
+его поиска.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">К моменту вызова процедуры на одном из дисковых носителей информации должен 
+находиться файл, содержащий нужный графический драйвер. Процедура загружает этот 
+драйвер в оперативную память и переводит адаптер в графический режим работы. Тип 
+драйвера должен соответствовать типу графического адаптера. Для указания типа 
+драйвера в модуле предопределены следующие константы:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Detect=0;{Режим автоопределения типа}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">CGA=1;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MCGA=2;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">EGA=3;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">EGA64=4;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">EGAMono=5;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">IBM8514=6;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">HercMono=7;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ATT400=8;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">VGA=9;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PC3270=10;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Большинство адаптеров могут работать в различных режимах. Для того, чтобы 
+указать адаптеру требуемый режим работы, используется переменная Mode, значением 
+которой в момент обращения к процедуре могут быть такие константы:</font> </P>
+<TABLE border=0 frame=box rules=all >
+  <TBODY>
+  <TR>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">const</font></P></TD>
+    <TD ><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD>
+    <TD ><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{ Адаптер CGA : }</font></P></TD>
+    <TD ><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font>  </TD>
+    <TD ><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font>  </TD></TR>
+  <TR>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">CGACO = 0;</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Низкое разрешение, палитра</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">0}</font></P></TD></TR>
+  <TR>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">CGAC1 = 1;</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Низкое разрешение, палитра</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">1}</font></P></TD></TR>
+  <TR>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">CGAC2 = 2;</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Низкое разрешение, палитра</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">2}</font></P></TD></TR>
+  <TR>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">CGAC3 = 3;</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Низкое разрешение, палитра</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">3}</font></P></TD></TR>
+  <TR>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">CGAHi = 4;</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Высокое разрешение}</font></P></TD>
+    <TD ><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Адаптер MCGA:}</font></P></TD>
+    <TD ><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font>  </TD>
+    <TD ><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MCGACO = 0;</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Эмуляция CGACO}</font></P></TD>
+    <TD ><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MCGAC1 = 1;</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Эмуляция CGAC1}</font></P></TD>
+    <TD ><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MCGAC2 = 2;</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Эмуляция CGAC2}</font></P></TD>
+    <TD ><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MCGAC3 = 3;</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Эмуляция CGAC3}</font></P></TD>
+    <TD ><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MCGAMed = 4;</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Эмуляция CGAHi}</font></P></TD>
+    <TD ><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MCGAHi = 5;</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{640x480}</font></P></TD>
+    <TD ><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Адаптер EGA :}</font></P></TD>
+    <TD ><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font>  </TD>
+    <TD ><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">EGALo = 0;</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{640x200, 16 цветов}</font></P></TD>
+    <TD ><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">EGAHi = 1;</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{640x350, 16 цветов}</font></P></TD>
+    <TD ><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">EGAMonoHi = 3;</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{640x350, 2 цвета}</font></P></TD>
+    <TD ><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Адаптеры HGC и</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">HGC+:}</font></P></TD>
+    <TD ><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">HercMonoHi = 0;</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{720x348}</font></P></TD>
+    <TD ><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{АдаптерАТТ400:}</font></P></TD>
+    <TD >
+      <P></P></TD>
+    <TD ><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ATT400CO = 0;</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Аналог режима CGACO}</font></P></TD>
+    <TD ><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ATT400C1 = 1;</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">(Аналог режима CGAC1}</font></P></TD>
+    <TD ><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ATT400C2 = 2;</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Аналог режима CGAC2}</font></P></TD>
+    <TD ><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ATT400C3 = 3;</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Аналог режима CGAC3}</font></P></TD>
+    <TD ><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ATT400Med = 4;</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Аналог режима CGAHi}</font></P></TD>
+    <TD ><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ATT400H1 = 5;</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{640x400, 2 цвета}</font></P></TD>
+    <TD ><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR></TBODY></TABLE>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Адаптер VGA:}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">VGALo = 0;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{640x200}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">VGAMed = 1;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{640x350}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">VGAHi = 2;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{640x480}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PC3270H1 = 0;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{Аналог HercMonoHi}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Адаптер 1ВМ8514}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">IBM8514LO =0;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{640x480, 256 цветов}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">IBM8514H1 = 1;&nbsp;&nbsp;&nbsp;&nbsp; {1024x768, 256 цветов}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Пусть, например, драйвер CGA.BGI находится в каталоге TP\BGI на диске С и 
+устанавливается режим работы 320x200 с палитрой 2. Тогда обращение к процедуре 
+будет таким:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Graph;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Driver, Mode : Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Driver := CGA;{Драйвер}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Mode := CGAC2;{Режим работы}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InitGraph(Driver, Mode,' С:\TP\BGI') ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если тип адаптера ПК неизвестен или если программа рассчитана на работу с 
+любым адаптером, используется обращение к процедуре с требованием 
+автоматического определения типа драйвера:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Driver := Detect;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InitGraph(Driver, Mode, 'C:\TP\BGI');</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">После такого обращения устанавливается графический режим работы экрана, а при 
+выходе из процедуры переменные Driver и Mode содержат целочисленные значения, 
+определяющие тип драйвера и режим его работы. При этом для адаптеров, способных 
+работать в нескольких режимах, выбирается старший режим, т.е. тот, что 
+закодирован максимальной цифрой. Так, при работе с CGA -адаптером обращение к 
+процедуре со значением Driver = Detect вернет в переменной Driver значение 1 
+(CGA) и в Mode -значение 4 (CGAHi), а такое же обращение к адаптеру VGA вернет 
+Driver = 9 (VGA) и Mode = 2 (VGAHi).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Функция GraphResult. Возвращает значение типа Integer, в котором закодирован 
+результат последнего обращения к графическим процедурам. Если ошибка не 
+обнаружена, значением функции будет ноль, в противном случае - отрицательное 
+число, имеющее следующий смысл:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">grOk = 0;{Нет ошибок}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> grlnitGraph =-1;{He инициирован графический режим}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+grNotDetected =-2;{Не определен тип драйвера}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> grFileNotFind =-3;{Не найден 
+графический драйвер}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> grlnvalidDriver =-4;{Неправильный тип драйвера}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">grNoLoadMem =- 5;{Нет памяти для размещения драйвера}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">grNoScanMem = - 6;{Нет памяти для просмотра областей}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">grNoFloodMem =- 7;{Нет памяти для закраски областей}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">grFontNotFound = -8;{Не найден файл со шрифтом}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">grNoFontMem =- 9;{Нет памяти для размещения шрифта}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">grlnvalidMode =-10;{Неправильный графический режим}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">grError =-11;{Общая ошибка}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">grIOError =-12;{Ошибка ввода-вывода}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">grlnvalidFont =-13;{Неправильный формат шрифта}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">grInvalidFontNum=-14;  {Неправильный номер шрифта}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">После обращения к функции GraphResult признак ошибки сбрасывается, поэтому 
+повторное обращение к ней вернет ноль.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция </b> GraphErrorMsg.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возвращает значение типа String, в котором по 
+указанному коду ошибки дается соответствующее текстовое сообщение. Заголовок 
+функции:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function GraphErrorMsg(Code: Integer):
+String;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь Code - код ошибки, возвращаемый функцией GraphResult.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Например, типичная последовательность операторов для инициации графического 
+режима с автоматическим определением типа драйвера и установкой максимального 
+разрешения имеет следующий вид:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Driver, Mode, Error:Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Driver := Detect;{Автоопределение драйвера}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InitGraph(Driver, Mode,' ');{Инициируем графику}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Error := GraphResult;{Получаем результат}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if Error &lt;&gt; grOk then{Проверяем ошибку}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin{Ошибка в процедуре 
+инициации}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(GraphErrorMsg(Error));{Выводим сообщение}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">else{Нет ошибки}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Чаще всего причиной возникновения ошибки при обращении к процедуре InitGraph 
+является неправильное указание местоположения файла с драйвером графического 
+адаптера (например, файла CGA.BGI для адаптера CGA). Настройка на местоположение 
+драйвера осуществляется заданием маршрута поиска нужного файла в имени драйвера 
+при вызове процедуры InitGraph. Если, например, драйвер зарегистрирован в 
+подкаталоге DRIVERS каталога PASCAL на диске D, то нужно использовать вызов:</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InitGraph(Driver, Mode, 'd:\Pascal\Drivers');</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Замечание. Во всех следующих примерах процедура InitGraph вызывается с 
+параметром Driver в виде пустой строки. Такая форма обращения будет корректна 
+только в том случае, когда нужный файл графического драйвера находится в текущем 
+каталоге. Для упрощения повторения примеров скопируйте файл, соответствующий 
+адаптеру Вашего ПК, в текущий каталог.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> CloseGraph.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Завершает работу адаптера в графическом режиме и 
+восстанавливает текстовый режим работы экрана. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure CloseGraph;</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> RestoreCRTMode.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Служит для кратковременного возврата в текстовый 
+режим. В отличие от процедуры CloseGraph не сбрасываются установленные параметры 
+графического режима и не освобождается память, выделенная для размещения 
+графического драйвера. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure RestoreCRTMode;</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция </b> GetGraphMode.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возвращает значение типа Integer, в котором содержится 
+код установленного режима работы графического адаптера. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function GetGraphMode: Integer;</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b>
+SetGraphMode.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Устанавливает новый графический режим работы 
+адаптера. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure SetGraphMode(Mode: Integer);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь Mode - код устанавливаемого режима.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Следующая программа иллюстрирует переход из графического режима в текстовый и 
+обратно:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Graph;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var .</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Driver, Mode, Error : Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Инициируем графический режим}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Driver := Detect;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InitGraph(Driver, Mode, '');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Error := GraphResult;  {Запоминаем результат}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">i&pound; Error &lt;&gt; grOk then  {Проверяем ошибку}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(GraphErrorMsg(Error))  {Есть ошибка}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin  {Нет ошибки}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn ('Это графический режим');&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> WriteLn ('Нажмите "Enter"...':20);&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Переходим в текстовый режим}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">RestoreCRTMode;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn (' А это текстовый...');&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Возвращаемся в графический режим}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> SetGraphMode (GetGraphMode);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> WriteLn 
+('Опять графический режим...');&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> CloseGraph&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В этом примере для вывода сообщений как в графическом, так и в текстовом 
+режиме используется стандартная процедура WriteLn. Если Ваш ПК оснащен 
+нерусифицированным адаптером CGA, вывод кириллицы в графическом режиме таким 
+способом невозможен, в этом случае замените соответствующие сообщения так, чтобы 
+использовать только латинские буквы.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> DetectGraph.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возвращает тип драйвера и режим его работы. Заголовок:&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+Procedure DetectGraph(var Driver,Mode: Integer);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь Driver - тип драйвера; Mode - режим работы.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В отличие от функции GetGraphMode описываемая процедура возвращает в 
+переменной Mode максимально возможный для данного адаптера номер графического 
+режима.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция</b> GetDriverName.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возвращает значение типа String, содержащее имя 
+загруженного графического драйвера. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function GetDriverName: String;</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция</b> GetMaxMode.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возвращает значение типа Integer, содержащее количество 
+возможных режимов работы адаптера. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function GetMaxMode: Integer;</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция</b> GetModeName.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возвращает значение типа String, содержащее разрешение 
+экрана и имя режима работы адаптера по его номеру. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function GetModName(ModNumber: Integer):
+String;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь ModNumber - номер режима.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Следующая программа после инициации графического режима выводит на экран 
+строку, содержащую имя загруженного драйвера, а также все возможные режимы его 
+работы.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Graph;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">a,b: Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">a := Detect;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InitGraph(a, b, '');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(GetDriverName);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for a := 0 to GetMaxMode do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(GetModeName(a):10);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">CloseGraph&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура </b> GetModeRange.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возвращает диапазон возможных режимов работы 
+заданного графического адаптера. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure GetModeRange(Drv: Integer; var
+Min, Max: Integer);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь Drv - тип адаптера; Min - переменная типа Integer, в которой 
+возвращается нижнее возможное значение номера режима; Мах - переменная того же 
+типа, верхнее значение номера.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если задано неправильное значение параметра Drv, процедура вернет в обеих 
+переменных значение -1. Перед обращением к процедуре можно не устанавливать 
+графический режим работы экрана. Следующая программа выводит на экран названия 
+всех адаптеров и диапазоны возможных номеров режимов их работы.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Graph;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">D,L,H: Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">N: array [1..11] of String [8] =</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">('CGA ', 'MCGA ', 'EGA ',&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 'EGA64 ', 'EGAMono ', ЧВМ8514 ',&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'HercMono', 
+'ATT400 ', 'VGA ',&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 'PC3270 ', 'Ошибка ');&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn('Адаптер Мин. Макс.');&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for D := 1 to 11 do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetModeRange(D, L, H);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(N[D], L:7, H:10)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl14_1.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl14_3.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

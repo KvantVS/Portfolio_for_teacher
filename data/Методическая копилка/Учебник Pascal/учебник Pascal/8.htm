@@ -1,0 +1,292 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+   <META NAME="Author" CONTENT="DimichG">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.04 [en] (Win95; I) [Netscape]">
+   <TITLE>ЧАСТЬ 8</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<CENTER><B><FONT FACE="Times New Roman"><FONT SIZE=+2>8. Множества.</FONT></FONT></B></CENTER>
+
+<CENTER>
+<HR WIDTH="100%"></CENTER>
+
+
+<P><B><I><FONT FACE="Times New Roman">Множество</FONT></I> </B>- неупорядоченная
+совокупность неповторяющихся элементов одного типа, имеющих общее имя.
+Количество элементов множества может меняться в пределах от 1 до 255. Описание
+типа множество имеет вид:
+
+<P><FONT FACE="Arial Cyr"><FONT COLOR="#800000"><B>&lt; </B>имя типа <B>>
+= Set Of &lt; </B>базовый тип <B>>;</B></FONT></FONT>
+
+<P><FONT FACE="Times New Roman">Здесь &lt;базовый тип> - это тип элементов
+множества, в качестве которого может использоваться любой порядковый тип,
+кроме </FONT><B><FONT COLOR="#006600">Integer</B></FONT><FONT FACE="Times New Roman">. (В Турбо-Паскале
+также кроме типов </FONT><B><FONT COLOR="#006600">Word, Shortint, Longint</FONT>).</B>
+<BR><FONT FACE="Times New Roman">&nbsp;&nbsp;&nbsp; Для задания множества
+используется конструктор множества, заключенный в квадратные скобки список
+элементов множества, отделяемых друг от друга запятыми. Элементами могут
+быть константы или выражения базового типа, а также - тип-диапазон того
+же базового типа. Конструктор пустого множества имеет вид - [ ].</FONT>
+
+<P><B><FONT FACE="Times New Roman">Пример 11.</FONT></B></FONT>
+<BR>Пример определения и задания множеств:</FONT><FONT COLOR="#006600"></FONT>
+
+<P><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; Type</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+digitChar = Set Of ‘0’ .. ‘9’;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+digit = Set Of 0 .. 9;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; Var</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+s1, s2, s3 : digitChar;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+s4, s5, s6 : digit;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+. . . . . .</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+s1 := [‘1’, ‘2’, ‘3’];</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+s2 := [‘3’, ‘2’, ‘1’];</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+s3 := [‘2’, ‘3’];</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+s4 := [0. .3, 6];</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+s5 := [4, 5];</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+s6 := [3. .9];. . . . . .</FONT></FONT>
+
+<P><FONT FACE="Times New Roman">Над множествами определены следующие операции:</FONT>
+<BR>&nbsp;
+<CENTER><TABLE BORDER CELLPADDING=4 WIDTH="90%" >
+<TR>
+<TD VALIGN=TOP WIDTH="15%">
+<CENTER><B><FONT FACE="Times New Roman">Операция</FONT></B></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="49%">
+<CENTER><B><FONT FACE="Times New Roman">Смысл</FONT></B></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="17%">
+<CENTER><B><FONT FACE="Times New Roman">Пример*</FONT></B></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="19%">
+<CENTER><B><FONT FACE="Times New Roman">Результат</FONT></B></CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="15%">
+<CENTER>*</CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="49%">
+<CENTER><FONT FACE="Times New Roman">пересечение множеств</FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="17%">
+<CENTER>s1*s3</CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="19%">
+<CENTER>[‘2’, ‘3’]</CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="15%">
+<CENTER>+</CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="49%">
+<CENTER><FONT FACE="Times New Roman">объединение множеств</FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="17%">
+<CENTER>s4+s5</CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="19%">
+<CENTER>[0. .6]</CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="15%">
+<CENTER>-</CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="49%">
+<CENTER><FONT FACE="Times New Roman">разность множеств</FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="17%">
+<CENTER>s2-s3</CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="19%">
+<CENTER>[‘1’]</CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="15%">
+<CENTER>=</CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="49%">
+<CENTER><FONT FACE="Times New Roman">True, если множества&nbsp;</FONT></CENTER>
+
+<CENTER><FONT FACE="Times New Roman">эквивалентны</FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="17%">
+<CENTER>s1=s2</CENTER>
+
+<CENTER>s1=s3</CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="19%">
+<CENTER>True</CENTER>
+
+<CENTER>False</CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="15%">
+<CENTER>&lt;></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="49%">
+<CENTER><FONT FACE="Times New Roman">True, если множества неэквивалентны</FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="17%">
+<CENTER>s1&lt;>s2</CENTER>
+
+<CENTER>s1&lt;>s3</CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="19%">
+<CENTER>False</CENTER>
+
+<CENTER>True</CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="15%">
+<CENTER>&lt;=</CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="49%">
+<CENTER>T<FONT FACE="Times New Roman">rue, если первое множество содержится
+во втором</FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="17%">
+<CENTER>s5&lt;=s6</CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="19%">
+<CENTER>True</CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="15%">
+<CENTER>>=</CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="49%">
+<CENTER><FONT FACE="Times New Roman">True, если второе множество содержится
+в первом</FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="17%">
+<CENTER>s2>=s3</CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="19%">
+<CENTER>True</CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="15%">
+<CENTER>In</CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="49%">
+<CENTER><FONT FACE="Times New Roman">проверка принадлежности значения выражения,
+стоящего слева множеству, стоящему справа&nbsp;</FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="17%">
+<CENTER>7-5 In s4</CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="19%">
+<CENTER>True</CENTER>
+</TD>
+</TR>
+</TABLE></CENTER>
+<FONT FACE="Times New Roman">* - примеры приведены согласно описаниям и
+конструкторам множеств в примере 11.</FONT>
+
+<P><B><FONT FACE="Times New Roman">Пример 12.</FONT></B></FONT>
+<BR><FONT FACE="Times New Roman">Организовать ввод
+элементов трех множеств </FONT><I>A, B, C.</I><FONT FACE="Times New Roman">
+Вычислить и напечатать множества</FONT><I> A + B, B * C, C - A.</I></FONT><FONT COLOR="#006600"></FONT>
+
+<P><FONT COLOR="#006600"><FONT FACE="Courier New">Program CalcSet;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">Type SetChar: Set Of
+Char;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">Var A, B, C : SetChar;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">{Процедура ввода множества}</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">Procedure EnterSet(Var
+D: SetChar);</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">Var ch: Char;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">Begin</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; Writeln(‘Введите
+элементы множества, точка - конец ввода’);</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; Read(ch);</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; D:=[];</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; While
+ch&lt;>‘.’ Do</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Begin D := D + [ch]; Read(ch) End;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">End;{EnterSet}</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">{Процедура вывода множества}</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">Procedure PrintSet(D:
+SetChar);</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">Var i: Byte;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">Begin For i := 0 To
+255 Do</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+If Chr(i) in D Then Writeln(Chr(i))</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">End;{PrintSet}</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">Begin {Основная программа}</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; Writeln(‘Введите
+элементы множества A’);</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; EnterSet(A);</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; Writeln(‘Введите
+элементы множества B’);</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; EnterSet(B);</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; Writeln(‘Введите
+элементы множества C’);</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; EnterSet(C);</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; PrintSet(A+B);
+PrintSet(B*C); PrintSet(C-A)</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">End.</FONT></FONT>
+<BR>&nbsp;
+<CENTER><FONT SIZE=-1></FONT>&nbsp;</CENTER>
+
+</BODY>
+</HTML>

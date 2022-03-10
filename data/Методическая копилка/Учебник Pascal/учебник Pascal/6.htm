@@ -1,0 +1,184 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+   <META NAME="Author" CONTENT="DimichG">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.04 [en] (Win95; I) [Netscape]">
+   <TITLE>ЧАСТЬ 6</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<CENTER><B><FONT SIZE=+2>6. <FONT FACE="Times New Roman">Процедуры</FONT>
+<FONT FACE="Times New Roman">и функции.</FONT></FONT></B></CENTER>
+
+<CENTER>
+<HR WIDTH="100%"></CENTER>
+
+
+<P><FONT FACE="Times New Roman">Процедуры и функции в Паскале (как и во
+многих других языках программирования) являются удобным средством для однократного
+автономного описания тех фрагментов алгоритма, которые повторяются в разных
+его частях. Такие описания образуют раздел, который должен быть последним
+из числа разделов описаний программы. Для выполнения описанных в этом разделе
+фрагментов алгоритма в разделе операторов программы должны содержаться
+обращения к соответствующим процедурам и функциям.</FONT>
+<BR><FONT FACE="Times New Roman">В некоторых языках программирования (например,
+Бейсик, Фортран) такие автономные описания частей алгоритма называют <B><I>подпрограммами.</I></B>
+Здесь этот термин будет использоваться для общего обозначения процедур
+и функций.</FONT>
+<BR><FONT FACE="Times New Roman">Описание подпрограммы состоит из заголовка
+и блока. Заголовок процедуры имеет вид:</FONT>
+
+<P><FONT FACE="Arial Cyr"><FONT COLOR="#800000"><B>Procedure &lt; </B>имя
+<B>> (&lt; </B>список формальных параметров <B>>);</B></FONT></FONT>
+
+<P><FONT FACE="Times New Roman">Заголовок функции:</FONT>
+
+<P><FONT FACE="Arial Cyr"><FONT COLOR="#80000"><B>Function &lt; </B>имя
+<B>>(&lt; </B>список формальных параметров <B>>): &lt; </B>тип <B>>;</B></FONT></FONT>
+
+<P><FONT FACE="Times New Roman">Список формальных параметров необязателен
+и может отсутствовать. Если же он есть, то в нем должны быть перечислены
+имена формальных параметров и их тип. Несколько однотипных параметров можно
+объединять в подсписки, например:</FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; Procedure
+SB( a : Real; b,d : Integer; c : Char);</FONT></FONT>
+<BR><FONT FACE="Times New Roman">Операторы подпрограммы рассматривают список
+формальных параметров как своеобразное расширение раздела описаний: все
+переменные из этого списка могут использоваться внутри подпрограммы.</FONT>
+<BR><FONT FACE="Times New Roman">Обращение к подпрограммам осуществляется
+указанием имени подпрограммы и <B><I>списка фактических параметров</I></B>,
+в качестве которых могут выступать константы, переменные и выражения, отделяемые
+друг от друга запятой. Количество и типы фактических параметров при обращении
+к подпрограмме должны точно соответствовать количеству и типам ее формальных
+параметров. В момент обращения к подпрограмме происходит замена формальных
+параметров на фактические. Таким образом осуществляется настройка алгоритма
+подпрограммы на конкретную задачу. Само обращение к процедурам и функциям
+происходит по разному. Для обращения к процедуре используется специальный
+оператор, состоящий из имени процедуры и списка фактических параметров.
+Для обращения к функции ее имя со списком фактических параметров должно
+войти как операнд в некоторое выражение. Отсюда вытекает несколько отличий
+описания функции от описания процедуры:</FONT>
+<BR><FONT FACE="Times New Roman">&nbsp;&nbsp;&nbsp; - в виде функции описывается
+алгоритм, результатом выполнения которого является скалярная величина;</FONT>
+<BR><FONT FACE="Times New Roman">&nbsp;&nbsp;&nbsp; - в блоке функции должен
+быть хотя бы один оператор присваивания с именем функции в левой части;</FONT>
+<BR><FONT FACE="Times New Roman">&nbsp;&nbsp;&nbsp; - в заголовке функции
+должен быть указан тип функции (тип возвращаемого через имя функции результата).</FONT>
+<BR><FONT FACE="Times New Roman">Любой из формальных параметров подпрограммы
+может быть либо <B><I>параметром-значением</I></B>, либо <B><I>параметром-переменной</I></B></FONT>.
+<BR><FONT FACE="Times New Roman">В предыдущем примере параметры были определены
+как параметры-значения. Если параметры определяются как параметры-переменные,
+перед ними необходимо ставить зарезервированное слово </FONT><B><FONT COLOR="#006600">Var</B></FONT><FONT FACE="Times New Roman">,
+например:</FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; Procedure
+FF( Var a : Real);</FONT></FONT>
+<BR><FONT FACE="Times New Roman">Если формальный параметр объявлен как
+параметр-переменная, то при обращении к подпрограмме ему должен соответствовать
+фактический параметр в виде переменной нужного типа; если формальный параметр
+объявлен как параметр-значение, то при обращении ему может соответствовать
+выражение.</FONT>
+<BR><FONT FACE="Times New Roman">Для того, чтобы понять, в каких случаях
+использовать параметры-значения, а в каких - параметры переменные, рассмотрим,
+как осуществляется замена формальных параметров на фактические в момент
+обращения к подпрограмме.</FONT>
+<BR><FONT FACE="Times New Roman">Если параметр определен как параметр-значение,
+то перед вызовом подпрограммы это значение вычисляется, полученный результат
+копируется во временную память и передается подпрограмме. Если же параметр
+определен как параметр-переменная, то при вызове подпрограммы передается
+сама переменная, а не ее копия. Любые возможные изменения в подпрограмме
+параметра-значения никак не воспринимаются вызывающей программой, так как
+в этом случае изменяется копия фактического параметра, в то время как изменения
+параметра-переменной приводит к изменению самого фактического параметра
+в вызывающей программе.</FONT>
+<BR><FONT FACE="Times New Roman">Поэтому параметры-переменные могут использоваться
+как "средство связи" алгоритма, реализованного в подпрограмме, с “внешним
+миром”, в частности, с помощью этих параметров процедура передает результаты
+своей работы вызывающей программе.</FONT>
+<BR><FONT FACE="Times New Roman">Однако, злоупотребление этими возможностями
+делает программу, как правило, трудной в понимании и сложной в отладке.
+В соответствии с требованиями хорошего стиля программирования рекомендуется
+использовать передачу результатов через фактические параметры для процедур
+и через имя для функций.</FONT>
+<BR><FONT FACE="Times New Roman">Переменные, описанные в разделе описаний
+переменных подпрограммы, называются <B><I>локальными переменными</I></B>
+этой подпрограммы и доступны только в ней.</FONT>
+<BR><FONT FACE="Times New Roman">Концепция глобальных и локальных имен
+относится не только к переменным но и к другим описываемым объектам Паскаля:
+константам, типам, процедурам и функциям.</FONT>
+
+<P><B><FONT FACE="Times New Roman">Пример.</B></FONT>
+<BR><FONT FACE="Times New Roman">В программе задается
+два целых числа 5 и 7, эти числа передаются процедуре </FONT><B>Inc2,</B><FONT FACE="Times New Roman">
+в которой они удваиваются. Один из параметров передается как параметр-переменная,
+другой - как параметр-значение. Значения параметров до и после вызова процедуры,
+а так же результат их удвоения выводятся на экран.</FONT></FONT><FONT COLOR="#006600"></FONT>
+
+<P><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; Program
+Exampl;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; Var
+a,b: Integer;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; Procedure
+Inc2(Var c: Integer; b: Integer);</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Begin</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+c := c + c;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+b := b + b;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Writeln(‘Удвоенные :’, c:5, b:5)</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+End; {Inc2}</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; Begin
+{Main}</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+a:=5; b:=7;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Writeln(‘Исходные :’, a:5, b:5); Inc2(a, b);</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Writeln(‘Результат :’, a:5, b:5)</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT COLOR="#006600">&nbsp;&nbsp;&nbsp; End.
+{Main}</FONT></FONT><FONT COLOR="#006600"></FONT>
+<CENTER><FONT FACE="Times New Roman">В результате
+прогона программы будет выведено:</FONT></FONT></CENTER>
+
+<CENTER><FONT FACE="Times New Roman">Исходные : 5&nbsp;&nbsp;&nbsp;
+7</FONT></FONT></CENTER>
+
+<CENTER><FONT FACE="Times New Roman">Удвоенные :
+10&nbsp;&nbsp;&nbsp; 14</FONT></FONT></CENTER>
+
+<CENTER><FONT FACE="Times New Roman">Результат :
+10&nbsp;&nbsp;&nbsp; 7</FONT></FONT></CENTER>
+<FONT COLOR="#006600"></FONT>
+
+<P><B><FONT FACE="Times New Roman">Пример.</FONT></B></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Times New Roman">Описать функцию,
+вычисляющую факториал и использовать ее для вычисления</FONT></FONT>
+<BR><IMG SRC="f19.JPG" ALT="формула" NOSAVE HEIGHT=53 WIDTH=103 ALIGN=TEXTTOP><FONT COLOR="#006600"></FONT><FONT COLOR="#006600"></FONT>
+
+<P><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; Program
+Calc;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; Var
+n,m: Integer; f: Real;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; Function
+fact(n: Integer): Integer;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; Var
+i,p : Integer;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; Begin
+p:=1;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+For i:=2 To n do p := p* i;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+fact:= p</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; End;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; Begin</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read(m,n);</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+f:= fact(n) * fact(m) / fact(n+m);</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT COLOR="#006600">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Writeln(f)</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT COLOR="#006600">&nbsp;&nbsp;&nbsp; End.</FONT></FONT>
+</BODY>
+</HTML>

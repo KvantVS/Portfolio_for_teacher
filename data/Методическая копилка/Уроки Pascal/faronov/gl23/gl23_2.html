@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_1.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_3.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Обработка ошибок инициации и модальных состояний
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Каждый видимый элемент наследует виртуальный метод TView.Valid (Command: 
+Word): Boolean. С помощью этого метода решаются две задачи: если параметр 
+обращения Command = cmValid = О, метод должен проверить правильность инициации 
+объекта и выдать True, если инициация прошла успешно; при обращении с параметром 
+Command о cmValid метод возвращает True только тогда, когда модальное состояние 
+диалогового элемента можно завершить командой Command. По умолчанию метод Valid 
+возвращает True. Вы должны перекрыть этот метод, если хотите автоматизировать 
+контроль за инициацией объекта и/или за завершением работы модального элемента.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Поскольку метод Valid автоматически вызывается из метода ValidView, в нем нет 
+необходимости контролировать правильность использования кучи - это делает 
+ValidView. С другой стороны, в методе Valid можно проверить другие условия 
+правильного функционирования объекта. Например, если в объекте используется 
+дисковый файл, можно проверить существование этого файла.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Типичный метод Valid имеет такой вид:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function TMyView. Valid (Command: Word): Boolean;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Valid := True;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Проверяем корректность инициации:}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if Command = cmValid then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if not 
+Correctlylnit then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReportErrorlnit;  {Сообщяем о некорректной инициации}&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Valid := False&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Проверяем корректность завершения:}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else if Command &lt;&gt; EnableCommand 
+then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> ReportErrorEnd  {Сообщяем о некорректном выходе}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Valid := False&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В этом фрагменте предполагается, что результат проверки правильности создания 
+элемента возвращается в логической переменной Correctlylnit, проверка 
+корректности</font> <font face="Arial, Helvetica, sans-serif" size="3">завершения работы модального элемента осуществляется сравнением команды 
+завершения с ожидаемой командой EnableCommand, а сообщения об обнаруженных 
+отклонениях от нормы выдаются процедурами ReportErrorInit и ReportErrorEnd. 
+Заметим, что сообщения об ошибках инициации, не связанных с динамическим 
+распределением объекта в куче, реализуются в методе Valid, в то время как 
+сообщения об ошибках кучи - в методе ValidView.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если видимый элемент - модальный, метод Valid перекрывается также для того, 
+чтобы сообщить вызывающей программе о том, будет ли корректным в данном 
+контексте завершение модального состояния командой Command или нет. Таким 
+способом можно, например, перехватить выход из окна редактора в случае, если в 
+нем остался несохраненный в файле текст. Разумеется, в подобной ситуации 
+программа может не только выдать сообщение пользователю, но и предпринять 
+необходимые действия для корректного завершения работы модального элемента. 
+Метод Valid автоматически вызывается методом Execute модального элемента перед 
+завершением работы.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Перекрытие методов Valid особенно полезно на этапе создания сложных программ: 
+автоматический вызов проверки состояния используемого видимого элемента и выдача 
+исчерпывающей диагностики могут дать неоценимую помощь программисту. Если Вы 
+перекрываете методы Valid, Вы можете программировать, не заботясь о 
+многочисленных проверках - методы сделают это за Вас.</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_1.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_3.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

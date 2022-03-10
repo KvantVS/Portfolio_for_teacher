@@ -1,0 +1,161 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl6_1.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+ 
+Указатели и динамическая память
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3"></font>
+<ul>
+    <li><font face="Arial, Helvetica, sans-serif" size="3">
+      Динамическая память</font>
+    </li>
+    <li><font face="Arial, Helvetica, sans-serif" size="3">Адреса и
+      указатели</font>
+    </li>
+    <li><font face="Arial, Helvetica, sans-serif" size="3">Объявление указателей</font></li>
+    <li><font face="Arial, Helvetica, sans-serif" size="3">Выделение и освобождение динамической
+      памяти</font>
+    </li>
+    <li><font face="Arial, Helvetica, sans-serif" size="3">Использование
+      указателей</font>
+    </li>
+    <li><font face="Arial, Helvetica, sans-serif" size="3">Процедуры
+      и функции для работы с динамической памятью</font>
+    </li>
+    <li><font face="Arial, Helvetica, sans-serif" size="3">Администратор
+      кучи</font>
+    </li>
+  </ul>
+</ul>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+ 
+Динамическая память
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p><font face="Arial, Helvetica, sans-serif" size="3">Все переменные,
+объявленные в программе, размещаются в
+одной непрерывной области оперативной
+памяти, которая называется сегментом
+данных. Длина сегмента данных определяется
+архитектурой микропроцессоров 80x86 и
+составляет 65536 байт, что может вызвать
+известные затруднения при обработке
+больших массивов данных. С другой стороны,
+объем памяти ПК (обычно не менее 640 Кбайт)
+достаточен для успешного решения задач с
+большой размерностью данных. Выходом из
+положения может служить использование так
+называемой динамической памяти.</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Динамическая память -
+это оперативная память ПК, предоставляемая
+программе при ее работе, за вычетом
+сегмента данных (64 Кбайт), стека (обычно 16
+Кбайт) и собственно тела программы. Размер
+динамической памяти можно варьировать в
+широких пределах (см. прил.1). По умолчанию
+этот размер определяется всей доступней
+памятью ПК и, как правило, составляет не
+менее 200...300 Кбайт.</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Динамическая память -
+это фактически единственная возможность
+обработки массивов данных большой
+размерности. Многие практические задачи
+трудно или невозможно решить без
+использования динамической памяти. Такая
+необходимость возникает, например, при
+разработке систем автоматизированного
+проектирования (САПР): размерность
+математических моделей, используемых в
+САПР, может значительно отличаться в разных
+проектах; статическое (т.е. на этапе
+разработки САПР) распределение памяти в
+этом случае, как правило, невозможно.
+Наконец, динамическая память широко
+используется для временного запоминания
+данных при работе с графическими и
+звуковыми средствами ПК.</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Динамическое
+размещение данных означает использование
+динамической памяти непосредственно при
+работе программы. В отличие от этого
+статическое размещение осуществляется
+компилятором Турбо Паскаля в процессе
+компиляции программы. При динамическом
+размещении заранее не известны ни тип, ни
+количество размещаемых данных, к ним нельзя
+обращаться по именам, как к статическим
+переменным.</font></p>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl6_1.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

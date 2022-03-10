@@ -1,0 +1,77 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+   <META NAME="Author" CONTENT="DimichG">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.04 [en] (Win95; I) [Netscape]">
+   <TITLE>ЧАСТЬ 9</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<CENTER><B><FONT SIZE=+2>9<FONT FACE="Times New Roman">. Записи.</FONT></FONT></B></CENTER>
+
+<CENTER>
+<HR WIDTH="100%"></CENTER>
+
+
+<P><B><I><FONT FACE="Times New Roman">Запись</FONT></I> - </B>это структура
+данных, состоящих из фиксированного числа компонентов, называемых<B> <I>полями</I>
+</B><FONT FACE="Times New Roman">записи. В отличие от массива, компоненты
+(поля) записи могут быть различного типа. Чтобы можно было ссылаться на
+тот или иной компонент записи, поля именуются.</FONT>
+<BR><FONT FACE="Times New Roman">Описание записи имеет вид:</FONT>
+
+<P><FONT FACE="Arial Cyr"><FONT COLOR="#800000"><B>&lt; </B>имя типа <B>>=
+Record &lt; </B>список полей <B>> End</B></FONT></FONT>
+
+<P><FONT FACE="Times New Roman">Список полей содержит описания полей с
+указанием их имен и типов. Тип определяется от имени двоеточием, описания
+полей определяются друг от друга точкой с запятой. Описания нескольких
+полей одного типа можно объединить, перечислив через запятую их имена и
+затем указав их общий тип.</FONT>
+<BR><FONT FACE="Times New Roman">Пример:</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; Type</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+birthday = Record</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+day : 1..31;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+month : 1..12;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+year: Integer;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+end;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Var a,b: birthday;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.......</FONT></FONT>
+<BR><FONT FACE="Times New Roman">В этом примере тип </FONT><I>birthday</I><FONT FACE="Times New Roman">
+(день рождения) содержит три поля с именами </FONT><I>day, month, year
+(</I><FONT FACE="Times New Roman">день месяц и год), переменные </FONT><I>a</I><FONT FACE="Times New Roman">
+и </FONT><I>b </I><FONT FACE="Times New Roman">содержат записи типа</FONT><I>
+birthday.</I>
+<BR><FONT FACE="Times New Roman">К каждому из компонентов записи можно
+получить доступ, если использовать составное имя, т.е. указать имя переменной,
+затем точку и имя поля:</FONT>
+<BR><I>a.day</I> := 27; <I>b.year</I> := 1984;
+
+<P><FONT FACE="Times New Roman">Поля могут быть любого типа (кроме файла),
+в том числе и типа запись</FONT>
+<BR><FONT FACE="Courier New">&nbsp;&nbsp;<FONT COLOR="#006600">&nbsp; Var
+c : Record</FONT></FONT><FONT COLOR="#006600"></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+name : String;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+bd : birthday;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; End;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; .........</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT COLOR="#006600">&nbsp;&nbsp;&nbsp; If
+c.bd.year=1984 Then . . .</FONT></FONT><FONT COLOR="#006600"></FONT>
+
+<P><FONT FACE="Times New Roman">Имена полей должны быть уникальными в пределах
+той записи, где они объявлены, однако, если записи содержат поля-записи,
+то имена могут повторяться на разных уровнях вложенности.</FONT>
+<BR>&nbsp;
+<CENTER><FONT SIZE=-1></FONT>&nbsp;</CENTER>
+
+</BODY>
+</HTML>

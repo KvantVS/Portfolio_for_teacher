@@ -1,0 +1,1231 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl12_3.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl12_5.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Система команд
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+В приводимых ниже таблицах указывается мнемоника всех допустимых инструкций 
+для МП 8086/8088. Для удобства пользования все команды разбиты на 6 
+функциональных групп - пересылки данных, арифметические, битовые, строковые, 
+передачи управления, прерываний. Внутри каждой группы команды объединяются в 
+подгруппы по общим дополнительным признакам.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Детальный анализ всех команд МП 8086/8088 занял бы слишком много места, 
+поэтому в идущих за таблицами пояснениях рассматриваются лишь наиболее 
+популярные команды. Исчерпывающее описание всех команд Вы найдете в [1], [20].</font> 
+</P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Команды пересылки данных</font>
+</b> </P>
+<center>
+<TABLE border=1 frame=box rules=all >
+  <TBODY>
+  <TR>
+    <TD align="center" >
+      <P><b><font face="Arial, Helvetica, sans-serif" size="3">Мнемоника</font></b></P></TD>
+    <TD align="center" >
+      <P><b><font face="Arial, Helvetica, sans-serif" size="3">Формат</font></b></P></TD>
+    <TD align="center" >
+      <P><b><font face="Arial, Helvetica, sans-serif" size="3">Пояснение</font></b></P></TD></TR>
+  <TR>
+    <TD colSpan=3 >
+      <P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Команды общего назначения</font></b></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">MOV</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">MOV приемник, источник</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Переслать значение</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">PUSH</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">PUSH источник</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Поместить в стек</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">POP</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">POP приемник</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Извлечь из стека</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">XCHG</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">XCHG приемник, источник</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Обменять значения</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">XLAT</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">XLAT таблица</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Загрузить в AL байт из таблицы</font></P></TD></TR>
+  <TR>
+    <TD colSpan=3 align="center" >
+      <P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Команды ввода-вывода</font></b></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">IN</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">IN аккумулятор, порт</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Читать из порта</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">OUT</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">OUT порт, аккумулятор</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Записать в порт</font></P></TD></TR>
+  <TR>
+    <TD colSpan=3 align="center" >
+      <P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Команды пересылки адреса</b></font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">LEA</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">LEA регистр 16, память 16</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Загрузить исполнительный адрес</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">LDS</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">LDS регистр 16, память32</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Загрузить в DS:регистр16 полный адрес</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">LES</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">LES регистр 16, память32</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Загрузить в ES:регистр16 полный адрес</font></P></TD></TR>
+  <TR>
+    <TD colSpan=3 align="center" >
+      <P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Команды пересылки флагов</b></font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">LAHF</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">LAHF</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Загрузить флаги в АН</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">SAHF</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">SAHF</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Установить флаги из АН</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">PUSHF</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">PUSHF</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Поместить флаги в стек</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">POPF</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">POPF</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Извлечь флаги из стека</font></P></TD></TR></TBODY></TABLE>
+</center>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Одна из наиболее часто используемых команд - МОV позволяет в защищенном 
+режиме переслать байт или слово из регистра в регистр, из памяти в регистр или 
+из регистра в память. Тип пересылаемых данных (байт или слово) определяется 
+регистром, участвующим в пересылке. Ниже приводятся примеры использования 
+команды:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ах,Table  {Пересылка слова из памяти в АХ}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> mov Table,ah  {Пересылка байта 
+из АН в память}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ds,ax  {Пересылка в сегмент данных}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov es:[bx],ax  {Пересылка слова в память: базовая</font>
+<font size="3">адресация с заменой сегмента}</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ch,-17  {Переслать константу в регистр}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> mov Table,$FF  {Переслать константу 
+в память}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">С помощью MOV нельзя пересылать:&nbsp;</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> из памяти в память, например, вместо</font></li>
+</ul>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov Mem1,Mem2</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">следует использовать</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ax,Mem2&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> mov Mem1,ax</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">константу или переменную в DS, например, нельзя</font></li>
+</ul>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov DS,Data_Seg</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">нужно:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ax,Data_Seg&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> mov ds,ax</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">один сегментный регистр в другой, например, нельзя</font></li>
+</ul>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov es, ds&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> но можно</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ax,ds&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> mov es,ax</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">в регистр CS; значение этого регистра (сегмента кода) автоматически меняется 
+при выполнении дальних команд CALL и JMP; кроме того, он загружается из стека 
+при выполнении команды RETF (выход из дальней процедуры).</font></li>
+</ul>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для временного сохранения регистров и данных, а также для обмена значениями 
+между регистрами широко используются стековые команды PUSH и POP. Каждая из них 
+работает со словом, т.е. в стек нельзя поместить или извлечь из него одиночный 
+байт. При выполнении PUSH вначале уменьшается на 2 содержимое указателя SP, а 
+затем операнд помещается по адресу SS: SP. При извлечении из стека сначала 
+читается память по адресу SS: SP, а затем SP увеличивается на 2. Таким образом, 
+при заполнении указатель вершины стека SP смещается к младшим адресам, а при 
+освобождении -к старшим. При работе со стеком следует помнить о специфике 
+использования стековой памяти («последним пришел - первым ушел»), а также о том, 
+что эта память интенсивно используется при вызове процедур, т.е. состояние стека 
+к моменту выхода из процедуры должно быть строго согласовано с дальнейшей 
+работой программы. Первое условие определяет порядок извлечения данных из стека 
+- он должен быть обратным порядку, в котором эти данные помещались в стек. 
+Второе условие фактически означает, что после выхода из процедуры указатель SP 
+должен содержать то же смещение, что и к моменту входа в нее. Иными словами, 
+процедура не должна «забыть» в стеке лишнее слово или взять из него больше 
+нужного.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Команда загрузки адреса LEA загружает в регистр адрес (смещение) нужного 
+участка памяти. Этого же можно достичь с помощью зарезервированного слова 
+OFFSET, стоящего перед именем переменной. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">X: Word;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">..........</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">asm</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ax, OFFSET X  {Загружаем смещение X в АХ}&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> lea ax,X  {To же действие}&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end ;</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Разница состоит в том, что в случае команды LEA разрешается использовать 
+индексную адресацию, что особенно удобно при пересылке массивов данных.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Две другие команды адресной загрузки - LDS и LES загружают первое 
+16-разрядное слово из источника в регистр-приемник, а затем следующее слово - в 
+регистр DS или ES, т.е. они рассчитаны на загрузку полного адреса операнда 
+(сегмента и смещения).</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Арифметические команды</font>
+</b> </P>
+<center>
+<TABLE border=1 frame=box rules=all >
+  <TBODY>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Мнемоника</b></font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Формат</b></font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Комментарий</b></font></P></TD></TR>
+  <TR>
+    <TD colSpan=3 align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Команды сложения</b></font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">ADD</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">ADD приемник, источник</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Сложить</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">ADC</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">ADC приемник, источник</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Сложить, добавить перенос</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">ААА</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">ААА</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Скорректировать сложение для таблицы ASCII</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">DAA</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">DAA</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Скорректировать сложение для двоично-десятичных чисел</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">INC</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">INC приемник</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Увеличить на единицу</font></P></TD></TR>
+  <TR>
+    <TD colSpan=3 align="center" >
+      <P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Команды вычитания</b></font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">SUB</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">SUB приемник, источник</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Вычесть</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">SBB</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">SBB приемник, источник</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Вычесть с заемом</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">AAS</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">AAS</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Скорректировать вычитание для таблицы ASCII</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">DAS</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">DAS</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Скорректировать вычитание для двоично-десятичных чисел</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">DEC</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">DEC приемник</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Уменьшить на единицу</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">NEG</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">NEG приемник</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Обратить знак</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">СМР</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">СМР приемник, источник</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Сравнить</font></P></TD></TR>
+  <TR>
+    <TD colSpan=3 align="center" >
+      <P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Команды умножения</b></font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">MUL</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">MUL источник</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Умножить без знака</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">IMUL</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">IMUL источник</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Умножить со знаком</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">AАМ</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">ААМ</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Скорректировать умножение для таблицы ASCII</font></P></TD></TR>
+  <TR>
+    <TD colSpan=3 align="center" >
+      <P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Команды деления</b></font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">DIV</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">DIV источник</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Делить без знака</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">IDIV</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">IDIV источник</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Делить со знаком</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">AAD</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">AAD</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Скорректировать деление для таблицы ASCII</font></P></TD></TR>
+  <TR>
+    <TD colSpan=3 align="center" >
+      <P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Команды расширения знака</b></font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">CBW</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">CBW</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Преобразовать байт в слово</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">CWD</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">CWD</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Преобразовать слово в двойное слово</font></P></TD></TR></TBODY></TABLE>
+</center>
+<P><font face="Arial, Helvetica, sans-serif" size="3">При использовании арифметических команд следует помнить о том, что МП может 
+обрабатывать знаковые числа, числа без знака, а также двоично-десятичные числа. 
+В беззнаковых числах для представления значения используются все биты. т.е. они 
+эквивалентны типам Byte и Word, в то время как знаковые числа в старшем разряде 
+хранят знак числа и эквивалентны типам Shortlnt и Integer. Двоично-десятичные 
+числа используют по 4 бита для каждого десятичного разряда и могут быть 
+упакованными или неупакованными. В первом случае один байт хранит 2 десятичные 
+цифры (старшая - в старшем полубайте), во втором - только одну (старший полубайт 
+не используется). Основные арифметические команды МП (ADD, SUB, MUL, DIV) не 
+учитывают двоично-десятичную форму представления чисел, поэтому в архитектуру МП 
+включены команды коррекции результата.</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Битовые команды</font>
+</b> </P>
+<center>
+<TABLE border=1 frame=box rules=all >
+  <TBODY>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Мнемоника</b></font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Формат</b></font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Комментарий</b></font></P></TD></TR>
+  <TR>
+    <TD colSpan=3 align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Логические команды</b></font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">AND</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">AND приемник, источник</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Выполнить AND</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">OR</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">OR приемник, источник</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Выполнить OR</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">XOR</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">XOR приемник, источник</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Выполнить XOR</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">NOT</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">NOT приемник</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Выполнить NOT</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">TEST</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">TEST приемник, источник</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Проверить</font></P></TD></TR>
+  <TR>
+    <TD colSpan=3 align="center" >
+      <P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Сдвиговые команды</b></font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">SAL/SHL</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">SAL приемник, счетчик</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Сдвинуть влево</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">SAR/SHR</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">SAR приемник, счетчик</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Сдвинуть вправо</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">ROL</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">ROL приемник, счетчик</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Сдвинуть влево циклически </font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">ROR</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">ROR приемник, счетчик</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Сдвинуть вправо циклически</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">RCL</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">RCL приемник, счетчик</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Сдвинуть влево с переносом</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">RCR</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">RCR приемник, счетчик</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Сдвинуть вправо с переносом</font></P></TD></TR></TBODY></TABLE>
+</center>      
+<P><font face="Arial, Helvetica, sans-serif" size="3">Битовые команды используются при исчислении логических выражений, а также в 
+тех случаях, когда необходимо изменить отдельные разряды операнда. Логические 
+команды AND, OR, XOR и NOT эквивалентны соответствующим операциям Турбо Паскаля 
+в случае, когда операндами являются целочисленные выражения. Команда TEST 
+выполняет целочисленную операцию поразрядного суммирования AND, но не изменяет 
+значения операндов, а лишь устанавливает флаги в соответствии со значением 
+результата сравнения: обнуляет CF и OF, изменяет PF, ZF, SF и не меняетAF (флаг 
+ZF установится в 1 в том случае, когда оба операнда содержат по единице хотя бы 
+в одном соответствующем разряде). Команды сдвига SHL/SHR эквивалентны 
+одноименным операциям Турбо Паскаля и отличаются от команд циклического сдвига 
+ROLIROR тем, что вытесненные в ходе их выполнения значащие разряды теряются, в 
+то время как при циклическом сдвиге эти разряды появляются «с другой стороны». 
+Например, если выполнить фрагмент</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov al,1  {Загружаем в AL единицу}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">shr al,1  {Сдвигаем вправо ,на 1 разряд}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">регистр AL будет содержать 0 (вытесненная вправо единица будет помещена в 
+CF), в то время как после замены команды SHR на ROR в нем будет значение $80=128 
+(вытесненная единица будет помещена в старший бит регистра).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Заметим, что счетчиком в командах сдвига может быть цифра 1 или количество 
+сдвигов, указываемое в регистре CL.</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Команды передачи управления</font>
+</b> </P>
+<center>
+<TABLE border=1 frame=box rules=all >
+  <TBODY>
+  <TR>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Мнемоника</b></font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Формат</b></font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Комментарий</b></font></P></TD></TR>
+  <TR>
+    <TD colSpan=3  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Безусловные переходы</b></font></P></TD></TR>
+  <TR>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">CALL</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">CALL имя</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Войти в процедуру</font></P></TD></TR>
+  <TR>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">RET</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">RET [количество параметров]</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Вернуться из процедуры</font></P></TD></TR>
+  <tr>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JUMP</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JUMP имя</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Перейти</font></P></TD>
+  </tr>
+  <TR>
+    <TD  colspan="3">
+      <p align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Условные переходы</b></font></TD>
+  </TR>
+  <tr>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JA/JNBE</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JA близкая_метка</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Перейти, если выше (после сравнения</font></P>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">беззнаковых операндов)</font></P></TD>
+  </tr>
+  <tr>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JAE/JNB</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JAE близкая_метка</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Перейти, если выше или равно</font></P></TD>
+  </tr>
+  <tr>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JB/JBAE/JC</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JB близкая_метка</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Перейти, если ниже</font></P></TD>
+  </tr>
+  <tr>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JBE/JNA</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JBE близкая_метка</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Перейти, если ниже или равно</font></P></TD>
+  </tr>
+  <tr>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JCXZ</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JCXZ близкая_метка</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Перейти, если СХ=0</font></P></TD>
+  </tr>
+  <tr>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JE/JZ</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JE близкая_метка</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Перейти, если равно</font></P></TD>
+  </tr>
+  <tr>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JG/JNLE</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JG близкая_метка</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Перейти, если больше (после сравнения</font></P>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">знаковых операндов)</font></P></TD>
+  </tr>
+  <tr>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JGE/JNL</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">LGE близкая_метка</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Перейти, если больше или равно</font></P></TD>
+  </tr>
+  <tr>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JL/JNGE</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JL близкая_метка</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Перейти, если меньше</font></P></TD>
+  </tr>
+  <tr>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JLE/JNG</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JLE близкая_метка</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Перейти, если меньше или равно</font></P></TD>
+  </tr>
+  <tr>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JNC</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JNC близкая_метка</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Перейти, если нет переноса</font></P></TD>
+  </tr>
+  <tr>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JNE/JNZ</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JNE близкая_метка</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Перейти, если не равно</font></P></TD>
+  </tr>
+  <tr>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JNO</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JNO близкая_метка</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Перейти, если нет переполнения</font></P></TD>
+  </tr>
+  <tr>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JNP/ JPO</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JNP близкая_метка</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Перейти, если нечетный</font></P></TD>
+  </tr>
+  <tr>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JO</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JO близкая_метка</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Перейти, если перенос</font></P></TD>
+  </tr>
+  <tr>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JP/JPE</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JP близкая_метка</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Перейти, если четный</font></P></TD>
+  </tr>
+  <tr>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JS</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JS близкая_метка</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Перейти, если отрицательный</font></P></TD>
+  </tr>
+  <TR>
+    <TD  colspan="3">
+      <p align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Команды управления циклами</b></font></TD>
+  </TR>
+  <tr>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">LOOP</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">LOOP близкая_метка</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Повторить цикл</font></P></TD>
+  </tr>
+  <tr>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">LOOPE/LOOPZ</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">LOOPE близкая_метка</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Повторять, пока равны</font></P></TD>
+  </tr>
+  <tr>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">LOOPNE/LOOPNZ</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">LOOPNE близкая_метка</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Повторять, пока не равны</font></P></TD>
+  </tr>
+  </TBODY></TABLE>
+  </center>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Команды безусловных переходов CALL, RET, JMP могут использовать дальнюю или 
+ближнюю модель памяти, в то время как команды условных переходов - только малую 
+(в пределах -128...+127 байтов). При дальней модели памяти (устанавливается 
+опцией Options/Compiler/Force far calls среды Турбо Паскаля или директивой 
+компилятора {F+}) осуществляется как внутрисегментная, так и межсегментная 
+передача управления, при ближней - только внутрисегментная.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Инструкция CALL работает следующим образом. Вначале адрес следующей за CALL 
+инструкции (адрес возврата) помещается в стек, затем в регистр IP (или в пару 
+CS:IP) помещается адрес точки входа в процедуру, таким образом сразу за командой 
+CALL будет исполняться уже первая команда процедуры. Оба адреса (точки входа и 
+возврата) будут 16-битовыми смещениями для внутрисегментного вызова или 
+32-битовыми полными адресами - для межсегментного. Все процедуры (функции) 
+Паскаля, оттранслированные в режиме {F+} или содержащие зарезервированное слово 
+FAR в заголовке, должны вызываться как дальние. Для этого за инструкцией CALL 
+следует указать модель памяти:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure MyProc; Far;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">asm</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">call FAR MyProc  {Вызов дальней процедуры}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Таким же способом должны вызываться все библиотечные подпрограммы (т.е. 
+объявленные в интерфейсных частях модулей). При дальнем вызове в стек сначала 
+заталкивается содержимое сегмента кода CS, а уже затем - смещение возврата.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">При выходе из дальней процедуры команда RET извлекает из стека оба 
+16-разрядных слова и помещает первое в IP, а второе в CS, а при выходе из 
+ближней извлекает из стека только смещение и помещает его в IP.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Команды условных переходов способны передавать управление на метку, 
+расположенную в пределах ближайших плюс-минус 128 байт от самой команды. Если 
+нужно передать управление на метку, расположенную дальше в том же сегменте, или 
+на метку в другом сегменте, сразу за командой условной передачи располагают 
+безусловную команду JMP или CAL, например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">стр ах,0  {Проверяем АХ}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> jne@NotZero  {AX=0 ?}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> jmp IsZero  {Да - переходим на 
+дальнюю метку}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">....... {Нет - продолжаем работу}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В таблице термин «выше/ниже» используется применительно к сравнению 
+беззнаковых операндов, а «больше/меньше» - знаковых.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Поскольку условные переходы реализуют ветвление программы на основе проверки 
+флагов, обычно непосредственно перед ними располагаются команды, изменяющие эти 
+флаги, чаще всего - команда сравнения СМР. Ниже показаны комбинации 
+СМР - условный_переход для различных соотношений приемника и источника (первого и 
+второго операнда) команды СМР:</font> </P>
+<center>
+<TABLE border=1 frame=box rules=all >
+  <TBODY>
+  <TR>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Условие</b></font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Для беззнаковых чисел</b></font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Для чисел со знаками</b></font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Приемник больше источника</font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JA</font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JG</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Приемник и источник равны</font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JE</font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JE</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Приемник меньше источника</font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JB</font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JL</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Приемник не меньше источника</font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JAE</font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JGE</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Приемник не больше источника</font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JBE</font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JLE</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Приемник и источник не равны</font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JNE</font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">JNE</font></P></TD></TR></TBODY></TABLE>
+      </center>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">сmр ах,5  {АХ&gt;5 ?}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> ja @AboveS  {Да, больше - переходим}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> стр bх,- 3  
+{ВХ&lt;=-3 ?}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> jle @LessM3  {Да, меньше или равен}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Команды LOOP/LOOPE/LOOPNE служат для организации циклов. Все они используют 
+содержимое регистра СХ как счетчик числа повторений. Команда LOOP уменьшает СХ 
+на единицу и передает управление на метку начала цикла, если содержимое этого 
+регистра отлично от нуля. Команды LOOPE/LOOPNE также уменьшают счетчик СХ, но 
+передают управление в начало цикла при совместном условии установки (или сброса) 
+флага ZF и неравенства нулю счетчика СХ.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Вот как, например, можно отыскать нулевой байт в массиве АОВ:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">АОВ: array [1..1000] of Byte;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">asm</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ex, It)00  {Инициируем счетчик СХ}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> lea bx,AOB  {Помещаем адрес АОВ в ВХ}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+dec bx  {Готовим цикл}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Здесь начало цикла проверки}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">@@Test: inc bx  {Адрес очередного байта}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmp BYTE PTR [bx],0  {Проверяем байт}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> loopne ©Test  {Замыкаем цикл}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> jnz 
+©NotZero {Если не найден нулевой байт}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......  {Нашли нулевой байт}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P></P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Строковые команды</font>
+</b> </P>
+<center>
+<TABLE border=1 frame=box rules=all >
+  <TBODY>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Мнемоника</b></font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Формат</b></font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Комментарий</b></font></P></TD></TR>
+  <TR>
+    <TD colSpan=3 align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Пересылка строк</b></font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">MOVSB</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">MOVSB</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Пересылать байты</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">MOVSW</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">MOVSW</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Пересылать слова</font></P></TD></TR>
+  <TR>
+    <TD colSpan=3 align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Сравнение строк</b></font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">CMPSB</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">CMPSB</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Сравнивать байты</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">CMPSW</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">CMPSW</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Сравнивать слова</font></P></TD></TR>
+  <TR>
+    <TD colSpan=3 align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Сканирование</b></font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">SCASB</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">SCASB</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Искать байт</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">SCASW</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">SCASW</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Искать слово</font></P></TD></TR>
+  <TR>
+    <TD colSpan=3 align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Загрузка и сохранение</b></font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">LODSB</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">LODSB</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Загружать байты</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">LODSW</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">LODSW</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Загружать слова</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">STOSB</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">STOSB</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Сохранять байты</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">STOSW</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">STOSW</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Сохранять слова</font></P></TD></TR></TBODY></TABLE>
+      </center>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Строковые команды рассчитаны на обработку строк. Замечу, что термин «строка» 
+здесь отнюдь не эквивалентен аналогичному термину Турбо Паскаля и означает 
+произвольную цепочку байт или слов длиной до 64 Кбайт. Эти команды оперируют 
+пятью примитивами, каждый из которых обрабатывает лишь один байт или одно слово 
+за раз. Перед примитивом обычно указывается префикс повторения REP/REPE/REPNE, 
+заставляющий выполняться примитив до тех пор, пока не обнулится счетчик 
+повторений СХ или не будет нарушено соответствующее условие.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">При использовании строковых команд важно помнить два обстоятельства. 
+Во-первых, эти команды всегда берут адрес строки-источника из пары DS:SI, а 
+строки-приемника - из пары ES:DI. Таким образом, перед исполнением строковой 
+команды необходимо инициировать сегментные регистры нужным образом. Во-вторых, 
+строковые команды используют индексную адресацию с автоматическим изменением 
+смещения в SI/DI после однократного исполнения примитива. Содержимое этих регистров изменяется на 1 при обработке байтов и на 2 при обработке слов, причем 
+наращивается, если флаг направления DF сброшен, и уменьшается, если он равен 1.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Вот как можно осуществить пересылку массива А в массив В:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">А,В: array [1..250] of Integer;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">asm</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">lea si, A  {Смещение А - в SI (источник)'}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> push ds pop es {Инициируем ES := 
+DS}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> lea di,B  {Смещение В - в DI (приемник)}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> mov ex,250  {Счетчик- переноса}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> сld  
+{Направление переноса - наращивать}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">rep movsw  {Переносим 500 байт}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В программе на Турбо Паскале регистр DS всегда содержит сегмент данных, 
+поэтому инициировать его необязательно. Что касается регистра дополнительного 
+сегмента ES, такого правила нет, и хотя в большинстве случаев он также ссылается 
+на сегмент данных, рекомендуется проводить его инициацию перед использованием 
+строковой команды (см. выше команды push ds, popes).</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Команды прерываний</font>
+</b> </P>
+<center>
+<TABLE border=1 frame=box rules=all >
+  <TBODY>
+  <TR>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Мнемоника</b></font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Формат</b></font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Комментарий</b></font></P></TD></TR>
+  <TR>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">INT</font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">INT номер</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Выполнить прерывание</font></P></TD></TR>
+  <TR>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">INTO</font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">INTO</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Выполнить прерывание по переполнению</font></P></TD></TR>
+  <TR>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">IRET</font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">IRET</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Вернуться из прерывания</font></P></TD></TR></TBODY></TABLE>
+      </center>
+      
+<P><font face="Arial, Helvetica, sans-serif" size="3">Выполнение прерываний во многом напоминает косвенный вызов дальней процедуры. 
+По команде INT (INTO) в стек помещается регистр флагов, сегмент CS и указатель 
+IP, а новые значения этих регистров берутся из 4-байтного вектора прерывания, 
+соответствующего номеру прерывания в команде INT, или из вектора 4 -для команды 
+INTO. Таким образом, единственным отличием от команды CALL является то, что в 
+стек предварительно заносится регистр флагов. Следует, правда, оговориться: 
+перед передачей управления программе обработки прерывания микропроцессор 
+сбрасывает флаги трассировки TF и прерываний IF; сброс TF необходим для 
+обеспечения нормальной работы отладчиков, использующих прерывание по вектору 1 
+или 4, сброс IF блокирует вмешательство других процессов в ход обработки 
+прерывания.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Команда INTO представляет собой условное прерывание и выполняется, если в 
+этот момент взведен флаг переполнения OF. Команда IRET реализует правильный 
+выход из программы обработки прерывания: она считывает из стека 3 двухбайтные 
+слова и помещает их в регистры IP, CS и регистр флагов.</font> </P>
+<P></P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Команды управления</font>
+</b> </P>
+<center>
+<TABLE border=1 frame=box rules=all >
+  <TBODY>
+  <TR>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Мнемоника</b></font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Формат</b></font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Комментарий</b></font></P></TD></TR>
+  <TR>
+    <TD colSpan=3 align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Управление флагами</b></font></P></TD></TR>
+  <TR>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">STC</font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">STC</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Установить перенос</font></P></TD></TR>
+  <TR>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">CLC</font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">CLC</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Очистить перенос</font></P></TD></TR>
+  <TR>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">CMC</font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">CMC</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Инвертировать CF</font></P></TD></TR>
+  <TR>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">STD</font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">STD</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Установить направление</font></P></TD></TR>
+  <TR>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">CLD</font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">CLD</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Очистить направление</font></P></TD></TR>
+  <TR>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">STI</font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">STI</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Разрешить прерывания</font></P></TD></TR>
+  <TR>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">CLI</font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">CLI</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Запретить прерывания</font></P></TD></TR>
+  <TR>
+    <TD colSpan=3 align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Внешняя синхронизация</b></font></P></TD></TR>
+  <TR>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">HLT</font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">HLT</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Остановить вычисления</font></P></TD></TR>
+  <TR>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">WAIT</font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">WAIT</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Ждать активности на шине</font></P></TD></TR>
+  <TR>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">ESC</font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">ESC код, источник</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Передать команду</font></P></TD></TR>
+  <TR>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">LOCK</font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">LOCK</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Захватить шину</font></P></TD></TR>
+  <TR>
+    <TD colSpan=3 align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Пустая команда</b></font></P></TD></TR>
+  <TR>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">NOP</font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">NOP</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Нет операции</font></P></TD></TR></TBODY></TABLE>
+      </center>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Команды внешней синхронизации работают следующим образом.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">HAL Т переводит МП в состояние останова, из которого его можно вывести только 
+при перезагрузке системы или при наступлении немаскируемого прерывания.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">WAIT заставляет МП выполнять холостой режим работы и каждые 5 тактов 
+проверять уровень сигнала на входной шине: пока на этой шине нет сигнала 
+активности, процессор выполняет WAIT, но как только шина активизируется, он 
+продолжит исполнение программы. Эта инструкция обычно используется для ожидания 
+сигнала обслуживания (прерывания) высокоприоритетного устройства типа 
+контроллера прямого доступа к памяти.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Команда ESC используется для передачи указанного в ней операнда на шину 
+данных. Тем самым обеспечивается возможность передачи команд другим процессорам. 
+Эта команда чаще всего используется для управления работой арифметического 
+сопроцессора. В этом случае код представляет собой код команды сопроцессора, а 
+источник - используемый в этой команде операнд.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Команда LOCK фактически представляет собой однобайтовый префикс, который 
+можно использовать совместно с любой другой командой микропроцессора. По этой 
+команде МП активизирует одноименный сигнал на своей шине, что исключает 
+возможность использования этой шины любым другим внешним устройством 
+(процессором).</font> </P>
+
+
+<p>&nbsp;</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl12_3.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl12_5.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</BODY></HTML>

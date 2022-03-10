@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl7_2.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl7_4.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Константы - записи
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Определение константы-записи имеет следующий вид:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&lt;идентификатор&gt; : &lt;тип&gt; = (&lt;сп.знач.полей&gt;)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь &lt;идентификатор&gt; - идентификатор константы;&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;тип&gt; - тип 
+записи;&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;сп.знач.полей&gt; - список значений полей.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Список значений полей представляет собой список из последовательностей вида: 
+имя поля, двоеточие и константа. Элементы списка отделяются друг от друга 
+двоеточиями, например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">point = record</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">х, у : Real&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">vect = array [0..1] of point;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> month = (Jan, Feb, Mar, Apr, May, Jun,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Jly, Aug, Sep, Oct, Nov, Dec);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> date = record</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">d : 1..31;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">m : month;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">у : 1900..1999&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">origon :point = (x :0; у : -1) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">line:vector = ((x:-3.1; у: 1.5) , (x: 5.9; у: 3.0)) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SomeDay: date = (d : 16; m : Mar; у : 1989);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Поля должны указываться в той последовательности, в какой они перечислены в 
+объявлении типа. Если в записи используется хотя бы одно поле файлового типа, 
+такую запись нельзя объявить типизированной константой. Для записей с 
+вариантными полями указывается только один из возможных вариантов констант. 
+Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">forma = record</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">case Boolean of</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">true : (Birthplace: String [40]);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> false : (Country : String [20] ; EntryPort 
+: String [20] ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; EntryDate : array [1..3] of Word; count : Word)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Perconl : forma = (Country : 'Норвегия'; EntryPort :&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+'Мурманск'; EntryDate : 
+(16, 3, 89); count : 12) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Percon2 : forma = (Birthplace : 'Москва');</font> </P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl7_2.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl7_4.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

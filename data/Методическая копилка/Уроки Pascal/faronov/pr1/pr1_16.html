@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr1_15.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Вызов Турбо Паскаля
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">
+Полный формат команды ДОС, осуществляющей вызов Турбо Паскаля, имеет вид:</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">[PATH]turbo [Options] [FileName]</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь PATH- путь к системному каталогу (см. гл.1 и п.5.1.1);&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Optoins - список 
+опций;&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> FileName- имя PAS-файла.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В квадратных скобках указаны необязательные параметры команды.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Параметр FileName, если он указан, задает имя текстового файла, который будет 
+автоматически загружен средой в активное окно редактора. Если в имени файла не 
+указано расширение, среда добавляет стандартное расширение.PAS.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">С помощью параметров Options среде можно передать указание изменить нужным 
+образом свою настройку. Каждый параметр задается в формате /Z, где Z - буква, 
+определяющая настройку среды (см. ниже), -знаки «+» (включить настройку) или «-» 
+(отключить настройку); несколько параметров отделяются друг от друга пробелами.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В списке Options можно использовать следующие управляющие параметры:</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">/С&lt;имя&gt; - загрузить нужный файл конфигурации (эквивалентно опции 
+OPTIONS/OPEN среды); &lt;имя&gt; - имя конфигурационного файла, например: /СМу. 
+tp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">/D+ - использовать дополнительный монитор (эквивалентно опции 
+OPTIONS/ENVIRONMENT/STARTUP/DUAL MONITOR SUPPORT);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">/Е&lt;размер&gt; - установить нужный размер памяти для экранного буфера 
+(эквивалентно опции OPTIONS/ENVIRONMENT/STARTUP/EDITOR HEAP SIZE); 
+&lt;размер&gt; - устанавливаемый размер (килобайт); например /Е15 - установить 
+размер экранного буфера в 15 Кбайт;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">/G+ - сохранять копию графического экрана (эквивалентно опции 
+OPTIONS/ENVIRONMENT/STARTUP/GRAPHICS SCREENSAVE);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">/L+ - ПК оснащен жидкокристаллическим дисплеем (эквивалентно опции 
+OPTIONS/ENVI-RONMENT/STARTUP/LCD COLOR SET);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">/N+ - ПК оснащен адаптером типа CGA (эквивалентно опции 
+OPTIONS/ENVIRONMENT/STARTUP/CGA SNOW CHECKING);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">/О&lt;размер&gt; - установить нужный размер памяти для хранения оверлейных 
+модулей системы Турбо Паскаль (эквивалентно опции 
+OPTIONS/ENVIRONMENT/STARTUP/OVERLAY HEAP SIZE);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">/P+ - сохранять цветовую палитру экрана (эквивалентно опции
+OPTIONS/ ENVIRONMENT/STARTUP/EGA/VGA PALETTE SA УЕ);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">/S&lt;путь&gt; - определяет путь к «быстрому» диску (эквивалентно опции 
+OPTIONS/ENVIRONMENT/STARTUP/SWAP FILE DIRECTORY);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">/Т+ - загружать в память библиотеку SYSTEM. TPU из файла TURBO. TPL 
+(эквивалентно опции OPTIONS/ENVIRONMENT/STARTUP/LOAD TURBO. TPL);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">/W&lt;paзмep&gt; - установить нужный размер памяти для хранения окон Турбо 
+Паскаля (эквивалентно опции OPTIONS/ENVIRONMENT/STARTUP/WINDOW HEAP SIZE);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">/X+ - использовать EMS-память (эквивалентно опции OPTIONS/ENVIRONMENT/ 
+STARTUP/USE EXPANDED MEMORY).</font> </P>
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr1_15.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

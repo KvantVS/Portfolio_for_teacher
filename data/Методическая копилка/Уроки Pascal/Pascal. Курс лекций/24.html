@@ -1,0 +1,251 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Untitled</title>
+</head>
+
+
+<body lang=RU style="'tab-interval:35.4pt'" background="bgrwhite.gif">
+<p><div align="center"><b><font size="+1" face="Arial">24. Строки </font></b></div></p>
+<p><span
+style="mso-spacerun: yes">   </span>Особое место в языке ПАСКАЛЬ занимают
+массивы символов.<span style="mso-spacerun: yes">  </span>Стандарт-
+
+<p>ный
+ПАСКАЛЬ допускает два способа хранения символьных массивов в<span
+style="mso-spacerun: yes">  </span>па-
+
+<p>мяти
+ЭВМ: распакованный и упакованный. Распакованные массивы символов
+
+<p>хранятся
+в памяти ЭВМ по одному символу в машинном слове, упакованные
+
+<p>- по
+одному символу в байте. При описании упакованного массива симво-
+
+
+<p>лов
+используют служебное слово PACKED, например:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">            </span>var<span style="mso-spacerun:
+yes">   </span>MAS: Packed Array[1..20] of Char;
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p>Описание
+распакованного массива символов имеет вид:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">            </span>var<span style="mso-spacerun:
+yes">   </span>M: Array[1..20] of char;
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Для преобразования символьного массива
+из<span style="mso-spacerun: yes">  </span>распакованной<span
+style="mso-spacerun: yes">  </span>формы<span style="mso-spacerun: yes"> 
+</span>в
+
+<p>упакованную
+и наоборот,<span style="mso-spacerun: yes">  </span>из упакованной в
+распакованную,<span style="mso-spacerun: yes">  </span>в язык ПАС-
+
+<p>КАЛЬ
+введены две стандартные функции Pack, UnPack.
+
+<p><span
+style="mso-spacerun: yes">   </span>Упакованный массив символов образует
+символьную строку. Символьная
+
+<p>строка
+может быть либо строковой константой, либо строковой<span style="mso-spacerun:
+yes">  </span>перемен-
+
+<p>ной.
+Строковая константа, или строка, представляет собой совокупность
+
+<p>символов,
+заключенную<span style="mso-spacerun: yes">  </span>в апострофы.<span
+style="mso-spacerun: yes">  </span>Строка - это элементарная<span
+style="mso-spacerun: yes">  </span>конс-
+
+<p>трукция
+языка ПАСКАЛЬ. Строковые константы могут входить в состав вы-
+
+<p>ражений.
+Как<span style="mso-spacerun: yes">  </span>и числовые константы,<span
+style="mso-spacerun: yes">  </span>они могут быть описаны в разделе
+
+<p>описания
+констант.
+
+<p><span
+style="mso-spacerun: yes">   </span>Строковые переменные - это одномерные
+упакованные<span style="mso-spacerun: yes">  </span>массивы<span
+style="mso-spacerun: yes">  </span>симво-
+
+<p>лов,
+для описания которых в TURBO PASCAL введен тип String.
+
+<p><span
+style="mso-spacerun: yes">   </span>Например, если строка содержит до 30 символов,<span
+style="mso-spacerun: yes">  </span>ее тип будет опре-
+
+<p>делен
+как
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">    </span>type<span style="mso-spacerun: yes">  
+</span>s= String[30];
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Длина строки не может содержать более, чем
+255 символов.
+
+<p><span
+style="mso-spacerun: yes">   </span>В TURBO PASCAL определено понятие строки
+переменной длины,<span style="mso-spacerun: yes">  </span>в этом
+
+<p>случае
+ее описание задается как
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">    </span>type<span style="mso-spacerun: yes"> 
+</span>s= String;
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Тип String без указания длины совместим со
+всеми типами строк.
+
+<p><span
+style="mso-spacerun: yes">   </span>Особенностью строковых переменных является
+то, что к ним можно об-
+
+<p>ращаться
+как к скалярным переменным, так и к массивам. Во втором слу-
+
+<p>чае
+применяется конструкция &quot;переменная с индексом&quot;, что обеспечивает
+
+<p>доступ
+к<span style="mso-spacerun: yes">   </span>отдельным символам строки.<span
+style="mso-spacerun: yes">  </span>При этом нижняя граница идекса
+
+<p>равна
+1. Отдельный символ строки совместим с типом Char.
+
+<p><span
+style="mso-spacerun: yes">   </span>В памяти ЭВМ строка занимает количество
+байтов, на единицу большее
+
+<p>ее
+длины. Нулевой байт строки содержит ее длину.
+
+<p><span
+style="mso-spacerun: yes">   </span>Для строк определены операции присваивания,
+слияния (конкатенации)
+
+<p>и
+сравнения.
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Для сравнения строк применяются все
+операции отношения.<span style="mso-spacerun: yes">  </span>Сравнение
+
+<p>строк
+происходит посимвольно,<span style="mso-spacerun: yes">  </span>начиная с
+первого символа. Строки рав-
+
+<p>ны, если
+имеют одинаковую длину и посимвольно эквивалентны.
+
+<p><span
+style="mso-spacerun: yes">   </span>Строки могут быть элементами списка ввода -
+вывода, при этом запи-
+
+<p>сывается
+имя строки без индекса.
+
+<p><span
+style="mso-spacerun: yes">   </span>При вводе<span style="mso-spacerun: yes"> 
+</span>строковых переменных количество вводимых символов может
+
+<p>быть
+меньше,<span style="mso-spacerun: yes">  </span>чем длина строки. В этом случае
+вводимые символы разме-
+
+<p>щаются
+с начала строки, а оставшиеся байты заполняются пробелами. Ес-
+
+<p>ли
+количество<span style="mso-spacerun: yes">  </span>вводимых<span
+style="mso-spacerun: yes">  </span>символов<span style="mso-spacerun: yes"> 
+</span>превышает<span style="mso-spacerun: yes">  </span>длину<span
+style="mso-spacerun: yes">  </span>строки,<span style="mso-spacerun: yes">  
+</span>лишние
+
+<p>символы
+отбрасываются.
+
+<p><span
+style="mso-spacerun: yes">   </span>Инициализация строк может производиться как
+с помощью типизирован-
+
+<p>ных
+констант:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>const sName: String[9]= 'IBM PC/AT';
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p>так и с
+использованием второй разновидности функции FillChar:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>FillChar( var V; NBytes: Word; C: Char );
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p>например:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>FillChar(A, SizeOf(A), '0');
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Для работы<span style="mso-spacerun: yes"> 
+</span>со<span style="mso-spacerun: yes">  </span>строками в TURBO PASCAL
+включены процедуры и функ-
+
+<p>ции,
+которые обеспечивают редактирование и преобразование строк.
+<p><div align="center"><a href="../Pascal. Курс лекций.html">	<img src="../../soder.gif" width=120 height=31 border=0 alt=""></a></div></p>
+
+</body>
+</html>

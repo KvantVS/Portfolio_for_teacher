@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl20_5.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl20_7.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Методы Store и Load
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Метод Store осуществляет запись данных в поток. Для этого он использует метод 
+низкого уровня Write, передавая ему в качестве параметров имя записываемого поля 
+и длину поля в байтах. Заметим, что Вам нет нужды записывать все поля объекта: 
+для записи наследуемых полей достаточно просто обратиться к методу Store 
+объекта-родителя. Ваш метод Store должен записывать только те поля, которые 
+добавляются к полям родителя. Если, например, создан объект</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TMyDialog = object (TDialog)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">St: String;{Новое поле}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Store(var S: TStream); Virtual;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end ;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">то метод TMyDialog.Store может иметь такую реализацию:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TMyDialog.Store(var S: TStream);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TDialog.Store(S);  {Сохраняем наследуемые поля}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SA.Write(St, SizeOf(St));  
+{Сохраняем новое поле}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Аналогичным образом реализуется и конструктор Load: с помощью обращения к 
+низкоуровневому методу TStream.Read он получает из потока только дополнительные 
+поля и только в том порядке, как они были записаны в поток методом Store:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor TMyDialog.Load(var S: TStream);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TDialog.Load(S);  {Получаем наследуемые поля}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">S.Read(St, SizeOf(St));  
+{Получаем новое поле}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Вы должны тщательно следить за соответствием методов Store и Load: метод 
+Load' должен прочитать ровно столько байт и строго в той последовательности, 
+сколько байт и в какой последовательности поместил в поток метод Store. В Turbo 
+Vision нет средств контроля За правильностью считываемых данных!</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если Ваш объект - группа, следует включить в него поля-указатели на каждый из 
+элементов и использовать методы PutSubViewPtr и GetSubViewPtr соответственно для 
+записи в поток и чтения из него. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TMyDialog = object (TDialog)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">St: String;  {Текстовое поле}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PB: PButton;  {Указатель на кнопку}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Store(var S: TStream); Virtual;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor Load(var S: TStream);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TMyDialog.Store(var S: TStream);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TDialog.Store(S); {Сохраняем наследуемые поля}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">S.write(ST, SizeOf(St));  
+{Сохраняем текстовое поле}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PutSubViewPtr(S, PB) ;  {Сохраняем кнопку}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor TMyDialog.Load(var S: TStream);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TDialog.Load(S);  {Получаем наследуемые поля}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">S.Read(St, SizeOf(St));  
+{Получаем тестовое поле}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetSubViewPtr(S, PB);  {Получаем кнопку}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl20_5.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl20_7.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+</BODY></HTML>

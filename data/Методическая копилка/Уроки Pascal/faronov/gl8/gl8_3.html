@@ -1,0 +1,262 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl8_2.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl8_4.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Параметры
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Список формальных параметров необязателен и может отсутствовать. Если же он 
+есть, то в нем должны быть перечислены имена формальных параметров и их типы, 
+например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure SB(a: Real; b: Integer; c: Char);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Как видно из примера, параметры в списке отделяются друг от друга точками с 
+запятой. Несколько следующих подряд однотипных параметров можно объединять в 
+подсписки, например, вместо</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function F(a: Real; b: Real): Real;&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> можно написать проще:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function F(a,b: Real): Real;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Операторы тела подпрограммы рассматривают список формальных параметров как 
+своеобразное расширение раздела описаний: все переменные из этого списка могут 
+использоваться в любых выражениях внутри подпрограммы. Таким способом 
+осуществляется настройка алгоритма подпрограммы на конкретную задачу.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Рассмотрим следующий пример. В языке Турбо Паскаль нет операции возведения в 
+степень, однако с помощью встроенных функций LN(X) и ЕХР(Х) нетрудно реализовать 
+новую функцию с именем, например, POWER, осуществляющую возведение любого 
+вещественного числа в любую вещественную степень. В программе (пример 8.1) 
+вводится пара чисел X и Y и выводится на экран дисплея результат возведения X 
+сначала в степень +Y, а затем - в степень -Y. Для выхода из программы нужно 
+ввести Ctrl-Z и Enter.</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Пример 8.1</font>
+</b> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">х,у:Real;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function Power (a, b : Real):&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Real;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin  {Power}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if a &gt; 0 then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Power := exp(b * In (a))&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else if a &lt; 0 then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Power := exp(b * ln(abs(a))&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else if b = 0 then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Power := 1&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Power := 0&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end  {Power} ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{--------------------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin {main}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> repeat</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">readln(x,y) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">writeln (Power (x,y) :12:10, Power (x, -y) : 15 : 10)&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> until EOF&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end  {main} .</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для вызова функции POWER мы просто указали ее в качестве параметра при 
+обращении к встроенной процедуре WRITELN. Параметры X и Y в момент обращения к 
+функции - это фактические параметры. Они подставляются вместо формальных 
+параметров А и В в заголовке функции и затем над ними осуществляются нужные 
+действия. Полученный результат присваивается идентификатору функции - именно он 
+и будет возвращен как значение функции при выходе из нее. В программе функция 
+POWER вызывается дважды - сначала с параметрами Х и Y, а затем Х и -Y, поэтому 
+будут получены два разных результата.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Механизм замены формальных параметров на фактические позволяет нужным образом 
+настроить алгоритм, реализованный в подпрограмме. Турбо Паскаль следит за тем, 
+чтобы количество и тип формальных параметров строго соответствовали количеству и 
+типам фактических параметров в момент обращения к подпрограмме. Смысл 
+используемых фактических параметров зависит от того, в каком порядке они 
+перечислены при вызове подпрограммы. В примере 8.1 первый по порядку фактический 
+параметр будет возводиться в степень, задаваемую вторым параметром, а не 
+наоборот. Пользователь должен сам следить за правильным порядком перечисления 
+фактических параметров при обращении к подпрограмме.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Любой из формальных параметров подпрограммы может быть либо 
+параметром-значением, либо параметром-переменной, либо, наконец, 
+параметром-константой.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В предыдущем примере параметры А и В определены как параметры-значения. Если 
+параметры определяются как параметры-переменные, перед ними необходимо ставить 
+зарезервированное слово VAR, а если это параметры-константы,- слово CONST, 
+например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure MyProcedure (var a: Real; b: Real; const c: String);&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь A - 
+параметр-переменная, В -параметр-значение, а С - параметр-константа.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Определение формального параметра тем или иным способом существенно, в ос</font><font face="Arial, Helvetica, sans-serif" size="3">новном, только для вызывающей программы: если формальный параметр объявлен</font>
+<font face="Arial, Helvetica, sans-serif" size="3">как параметр-переменная, то при вызове подпрограммы ему должен 
+соответствовать</font> <font face="Arial, Helvetica, sans-serif" size="3">фактический параметр в виде переменной нужного типа; если формальный параметр</font>
+<font face="Arial, Helvetica, sans-serif" size="3">объявлен как параметр-значение или параметр-константа, то при вызове ему 
+может</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">соответствовать произвольное выражение. Контроль за неукоснительным 
+соблюдени</font><font face="Arial, Helvetica, sans-serif" size="3">ем этого правила осуществляется компилятором Турбо Паскаля. Если бы для 
+преды</font><font face="Arial, Helvetica, sans-serif" size="3">дущего примера был использован такой заголовок функции:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function Power (var a, b : Real) : Real;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">то при втором обращении к функции компилятор указал бы на несоответствие типа 
+фактических и формальных параметров (параметр -Уесть выражение, в то время как 
+соответствующий ему формальный параметр описан как параметр-переменная).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для того чтобы понять, в каких случаях использовать тот или иной тип 
+параметров, рассмотрим, как осуществляется замена формальных параметров на 
+фактические в момент обращения к подпрограмме.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если параметр определен как параметр-значение, то перед вызовом подпрограммы 
+это значение вычисляется, полученный результат копируется во временную память и 
+передается подпрограмме. Важно учесть, что даже если в качестве фактического 
+параметра указано простейшее выражение в виде переменной или константы, все 
+равно подпрограмме будет передана лишь копия переменной (константы). Любые 
+возможные изменения в подпрограмме параметра-значения никак не воспринимаются 
+вызывающей программой, так как в этом случае изменяется копия фактического 
+параметра.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если параметр определен как параметр-переменная, то при вызове подпрограммы 
+передается сама переменная, а не ее копия (фактически в этом случае подпрограмме 
+передается адрес переменной). Изменение параметра-переменной приводит к 
+изменению самого фактического параметра в вызывающей программе.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В случае параметра-константы в подпрограмму также передается адрес области 
+памяти, в которой располагается переменная или вычисленное значение. Однако 
+компилятор блокирует любые присваивания параметру-константе нового значения в 
+теле подпрограммы.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Представленный ниже пример 8.2 поясняет изложенное. В программе задаются два</font>
+<font face="Arial, Helvetica, sans-serif" size="3">целых числа 5 и 7, эти числа передаются процедуре INC2, в которой они 
+удваиваются.</font> <font face="Arial, Helvetica, sans-serif" size="3">Один из параметров передается как параметр-переменная, другой - как параметр</font>-<font face="Arial, Helvetica, sans-serif" size="3">значение. Значения параметров до и после вызова процедуры, а также результат 
+их</font> <font face="Arial, Helvetica, sans-serif" size="3">удвоения выводятся на экран.</font> 
+</P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Пример 8.2</font>
+</b> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">а : Integer = 5;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> b : Integer = 7 ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-----------------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Inc2 (var c: Integer; b: Integer) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin {Inc2}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> с := с + с;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> b := b 
++ b;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> WriteLn ( 'удвоенные: ', c:5, b:5)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end {inc2};&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {--------------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin  {main}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn('исходные: ', a:5, b:5);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Inc2(a,b);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn('результат: ', a:5, b:5)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end  {main}.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В результате прогона программы будет выведено:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">исходные:&nbsp;&nbsp; 5&nbsp; 7</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">удвоенные: 10 14</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">результат: 10&nbsp; 7</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Как видно из примера, удвоение второго формального параметра в процедуре INC2 
+не вызвало изменения фактической переменной В, так как этот параметр описан в 
+заголовке процедуры как параметр-значение. Этот пример может служить еще и 
+иллюстрацией механизма «накрывания» глобальной переменной одноименной локальной: 
+хотя переменная В объявлена как глобальная (она описана в вызывающей программе 
+перед описанием процедуры), в теле процедуры ее «закрыла» локальная переменная 
+В, объявленная как параметр-значение.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Итак, параметры-переменные используются как средство связи алгоритма, 
+реализованного в подпрограмме, с внешним миром: с помощью этих параметров 
+подпрограмма может передавать результаты своей работы вызывающей программе. 
+Разумеется, в распоряжении программиста всегда есть и другой способ передачи 
+результатов - через глобальные переменные. Однако злоупотребление глобальными 
+связями делает программу , как правило, запутанной, трудной в понимании и 
+сложной в отладке. В соответствии с требованиями хорошего стиля, 
+программирования рекомендуется там, где это возможно, использовать передачу 
+результатов через фактические параметры-переменные.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">С другой стороны, описание всех формальных параметров как 
+параметров-переменных нежелательно по двум причинам. Во-первых, это исключает 
+возможность вызова подпрограммы с фактическими параметрами в виде выражений, что 
+делает программу менее компактной. Во-вторых, и главных, в подпрограмме возможно 
+случайное использование формального параметра, например, для временного хранения 
+промежуточного результата, т.е. всегда существует опасность непреднамеренно 
+испортить фактическую переменную. Вот почему параметрами-переменными следует 
+объявлять только те, через которые подпрограмма в действительности передает 
+результаты вызывающей программе. Чем меньше параметров объявлено 
+параметрами-переменными и чем меньше в подпрограмме используется глобальных 
+переменных, тем меньше опасность получения непредусмотренных программистом 
+побочных эффектов, связанных с вызовом подпрограммы, тем проще программа в 
+понимании и отладке. По той же причине не рекомендуется использовать 
+параметры-переменные в заголовке функции: если результатом работы функции не 
+может быть единственное значение, то логичнее использовать процедуру или нужным 
+образом декомпозировать алгоритм на несколько подпрограмм.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Существует еще одно обстоятельство, которое следует учитывать при выборе вида 
+формальных параметров. Как уже говорилось, при объявлении параметра-значения</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">осуществляется копирование фактического параметра во временную память. Если</font>
+<font face="Arial, Helvetica, sans-serif" size="3">этим параметром будет массив большой размерности, то существенные затраты 
+времени и памяти на копирование при многократных обращениях к подпрограмме можно</font>
+<font face="Arial, Helvetica, sans-serif" size="3">минимизировать, объявив этот параметр параметром-константой. 
+Параметр-константа</font> <font face="Arial, Helvetica, sans-serif" size="3">не копируется во временную область памяти, что сокращает затраты времени на 
+вызов</font> <font face="Arial, Helvetica, sans-serif" size="3">подпрограммы, однако любые его изменения в теле подпрограммы невозможны - за</font>
+<font face="Arial, Helvetica, sans-serif" size="3">этим строго следит компилятор.</font> 
+</P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl8_2.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl8_4.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl5_1.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+ 
+Файлы
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3"></font>
+<ul>
+
+    <li><font face="Arial, Helvetica, sans-serif" size="3">Доступ к
+      файлам</font>
+
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Имена
+          файлов</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Логические устройства</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Инициация
+          файла</font></li>
+
+    </li>
+    <li><font face="Arial, Helvetica, sans-serif" size="3">Процедуры и функции для работы с файлами</font>
+    </li>
+    <li><font face="Arial, Helvetica, sans-serif" size="3">Текстовые файлы</font></li>
+    <li><font face="Arial, Helvetica, sans-serif" size="3">Типизированные файлы</font>
+    </li>
+    <li><font face="Arial, Helvetica, sans-serif" size="3">Нетипизированные
+      файлы</font>
+    </li>
+ 
+</ul>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Под файлом понимается либо именованная область внешней памяти ПК (жесткого 
+диска, гибкой дискеты, электронного «виртуального» диска), либо логическое 
+устройство - потенциальный источник или приемник информации.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Любой файл имеет три характерные особенности. Во-первых, у него есть имя, что 
+лает возможность программе работать одновременно с несколькими файлами. 
+Во-вторых, он содержит компоненты одного типа. Типом компонентов может быть 
+любой тип Турбо Паскаля, кроме файлов. Иными словами, нельзя создать «файл 
+файлов». В-третьих, длина вновь создаваемого файла никак не оговаривается при 
+его объявлении и ограничивается только емкостью устройств внешней памяти.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Файловый тип или переменную файлового типа можно задать одним из трех 
+способов:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&lt;имя&gt; = FILE OF &lt;тип&gt;;&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> &lt;имя&gt; = TEXT;&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> &lt;имя&gt; = FILE;</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь &lt;имя&gt; - имя файлового типа (правильный идентификатор);&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">FILE, OF - 
+зарезервированные слова (файл, из);&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> TEXT - имя стандартного типа текстовых 
+файлов;&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> &lt;тип&gt; - любой тип Турбо Паскаля, кроме файлов.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">product = record</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">name : String;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">code : Word;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cost : comp&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">textSO = file of String [80] ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">fl : file of char;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">f2 : text;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">f3 : file;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">f4 : text80;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">f5 : file of product;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В зависимости от способа объявления можно выделить три вида файлов:</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">типизированные файлы (задаются предложением FILE OF...);</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">текстовые файлы (определяются типом TEXT);</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">нетипизированные файлы (определяются типом FILE).</font></li>
+</ul>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В наших примерах F1, F4 и F5- типизированные файлы, F2 - текстовый файл, F3 
+-нетипизированный файл. Вид файла, вообще говоря, определяет способ хранения</font>
+<font face="Arial, Helvetica, sans-serif" size="3">информации в файле. Однако в Турбо Паскале нет средств контроля вида ранее 
+созданных файлов. При объявлении уже существующих файлов программист должен сам 
+следить за соответствием вида объявления характеру файла.</font> 
+</P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl5_1.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

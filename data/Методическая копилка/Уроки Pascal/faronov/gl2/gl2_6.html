@@ -1,0 +1,348 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" >
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl2_5.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td >
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl2_7.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p align="left">
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+ 
+Процедуры и функции
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Процедуры и функции представляют собой важный инструмент Турбо Паскаля, 
+позволяющий писать хорошо структурированные программы. В структурированных 
+программах обычно легко прослеживается основной алгоритм, их нетрудно понять 
+любому читателю, они проще в отладке и менее чувствительны к ошибкам 
+программирования. Все эти свойства являются следствием важной особенности 
+процедур (функций), каждая из которых представляет собой во многом 
+самостоятельный фрагмент программы, связанный с основной программой лишь с 
+помощью нескольких параметров. Самостоятельность процедур (функций) позволяет 
+локализовать в них все детали программной реализации того или иного 
+алгоритмического действия и поэтому изменение этих деталей, например, в процессе 
+отладки обычно не приводит к изменениям основной программы.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Многие примеры в этой книге невелики по размерам (не более 30-40 строк), 
+поэтому написать такие программы можно и без процедур. Иное дело - создание 
+крупных программ в сотни, тысячи и десятки тысяч строк. Писать такие программы 
+как нечто единое целое, без расчленения на относительно самостоятельные 
+фрагменты, т.е. без структурирования, просто невозможно. Практически во всех 
+языках программирования имеются средства структурирования. Языки, в которых 
+предусмотрены такие механизмы, называются процедурно-ориентированными. К их 
+числу принадлежит и Турбо Паскаль.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Процедурой в Турбо Паскале называется особым образом оформленный фрагмент 
+программы, имеющий собственное имя. Упоминание этого имени в тексте программы 
+приводит к активизации процедуры и называется ее вызовом. Сразу после 
+активизации процедуры начинают выполняться входящие в нее операторы, после 
+выполнения последнего из них управление возвращается обратно в основную 
+программу и выполняются операторы, стоящие непосредственно за оператором вызова 
+процедуры (рис.2.2).</font> </P>
+<P align="center"><img border="0" src="2_2.jpg"    > </P>
+<p align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Рис.2.2.</b> Взаимодействие вызывающей программы и процедуры</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Для обмена информацией между основной программой и процедурой используется 
+один или несколько параметров вызова. Как мы увидим дальше (см. гл. 8), 
+процедуры могут иметь и другой механизм обмена данными с вызывающей программой, 
+так что параметры вызова могут и не использоваться. Если они есть, то они 
+перечисляются в круглых скобках за именем процедуры и вместе с ним образуют 
+оператор вызова процедуры.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Функция отличается от процедуры тем, что результат ее работы возвращается в 
+виде значения этой функции, и, следовательно, вызов функции может использоваться 
+наряду с другими операндами в выражениях.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">С примерами процедур и функций мы уже сталкивались - это стандартные 
+процедуры чтения И записи READ, READLN, WRITE, WRITELN, функции ORD, CHR, 
+математические функции и др. Стандартными они называются потому, что созданы 
+одновременно с системой Турбо Паскаль и являются ее неотъемлемой частью. В Турбо 
+Паскале имеется много стандартных процедур и функций. Наличие богатой библиотеки 
+таких программных заготовок существенно облегчает разработку прикладных 
+программ. Однако в большинстве случаев некоторые специфичные для данной 
+прикладной программы действия не находят прямых аналогов в библиотеках Турбо 
+Паскаля, и тогда программисту приходится разрабатывать свои, нестандартные 
+процедуры и функции.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Нестандартные процедуры и функции необходимо описать, чтобы компилятор мог 
+установить связь между оператором вызова и теми действиями, которые 
+предусмотрены в процедуре (функции). Описание процедуры (функции) помещается в 
+разделе описаний и внешне выглядит как программа, но вместо заголовка программы 
+фигурирует заголовок процедуры (функции).</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Не вдаваясь в дальнейшие подробности, попробуем составить собственную 
+процедуру, чтобы пояснить сказанное. Пусть в этой процедуре преобразуется 
+некоторая символьная строка таким образом, чтобы все строчные буквы заменялись 
+соответствующими прописными. В Турбо Паскале имеется стандартная функция UPCASE 
+(см. гл.4), которая выполняет аналогичные действия над одиночным символом. Наша 
+процедура (назовем ее UPSTRING) будет преобразовывать сразу все символы строки, 
+причем сделаем ее пригодной не только для латинских букв, но и для букв русского 
+алфавита.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Разработку программы проведем в два этапа. Сначала сконструируем основную 
+(вызывающую) часть программы. Ее действия очень просты: она должна ввести 
+входную строку (назовем ее Sinp) с клавиатуры, преобразовать ее с помощью 
+процедуры UpString в выходную строку Sout и напечатать результат. Эти действия 
+нетрудно запрограммировать, например:</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Program CharsConvert;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure UpString(si: String; var s2:
+String);</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin <i>{UpString}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s2 := s1 <i> {Пока еще нет преобразования!}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i> {UpString}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Sinp, Sout : String; <i> {Исходная и преобразованная строки}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin <i> {Начало основной (вызывающей) программы}</i>&nbsp;</font> 
+</P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write('Введите строку: ');</font> 
+</P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn(Sinp); <i> {Вводим исходную строку}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">UpString(Sinp,Sout); <i> {Преобразуем ее.к 
+прописным буквам}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn (' Результат: ',Sout) <i> {Печатаем результат}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end. <i> {Конец вызывающей программы}</i></font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">В этой программе используется замещение процедуры UPSTRING так называемой 
+«заглушкой», т.е. процедурой, в которой на самом деле не осуществляется нужных 
+нам действий, а выходная строка просто копирует входную. (Однако эта программа 
+синтаксически абсолютно правильна и при желании ее можно запустить на счет.) 
+Заглушка понадобилась нам по двум причинам. Во-первых, приведенная программа 
+очень проста, в ней отсутствует детальная реализация процедуры и это позволяет 
+наглядно проиллюстрировать механизм ее описания. Во-вторых, на ее примере мы 
+знакомимся с универсальным методом конструирования сложных программ, получившим 
+название нисходящее программирование. В соответствии с этим методом создание 
+программы начинается «сверху», т.е. с разработки самого главного, генерального 
+алгоритма. На верхнем уровне обычно еще не ясны детали реализации той или иной 
+части программы, поэтому эти части следует заменить временными заглушками. 
+Желательно, чтобы временный вариант программы был синтаксически правильным, 
+тогда можно его откомпилировать и убедиться в отсутствии в нем синтаксических 
+ошибок. Такой прогон даст определенную уверенность перед разработкой и 
+реализацией алгоритмов нижнего уровня, т.е. перед заменой заглушек реально 
+работающими процедурами. Если реализуемый в заглушке алгоритм достаточно сложен, 
+его вновь структурируют, выделяя главный алгоритм и применяя новые заглушки, и 
+т.д. Процесс продолжается «вниз» до тех пор, пока не будет создан полностью 
+работоспособный вариант программы.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">В дальнейшем мы еще не раз будем использовать метод нисходящего 
+программирования, а сейчас вернемся к описанию нашей процедуры. Как видим, это 
+описание начинается зарезервированным словом Procedure, за которым следуют имя 
+процедуры и список формальных параметров. Список параметров заключается в 
+круглые скобки и содержит перечень параметров с указанием их типа. Заметим, что 
+перед параметром s2, с помощью которого в вызывающую программу возвращается 
+результат преобразования, стоит зарезервированное слово VAR. Именно таким 
+способом компилятору указываются те параметры, в которых процедура возвращает 
+вызвавшей ее программе результат своей работы (подробнее см. гл. 8). 
+Зарезервированное слово Procedure, имя процедуры и список ее параметров образуют 
+заголовок процедуры. За заголовком следует тело процедуры, содержащее новый 
+раздел описаний (этот раздел пока еще пуст) и раздел исполняемых операторов 
+(оператор s2 : = s1).</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Приступим к разработке алгоритма процедуры. Для этого обратимся к таблице 
+кодировки символов, используемой в ПК (см. прил. 2). В соответствии с этой 
+таблицей коды символов латинских строчных букв от а до z образуют непрерывный 
+массив монотонно нарастающих чисел от 97 до 122, а коды соответствующих им 
+прописных букв - непрерывный массив чисел от 65 до 90. Преобразование строчных 
+латинских букв в прописные, следовательно, состоит в уменьшении кода буквы на 
+32. Сложнее обстоит дело с символами русского алфавита (кириллицей). В 
+зависимости от принятого способа кодировки русские строчные буквы могут 
+образовывать один сплошной массив (кодировки ГОСТ и MIC), два массива 
+(альтернативная кодировка), несплошной массив (кодировка типа ЕСТЕЛ), 
+неупорядоченный массив (кодировка КОИ-8). Если исключить два последних варианта 
+кодировки, использовавшихся на устаревших ПК, то задача преобразования буквы 
+состоит в том, чтобы к внутреннему коду русской буквы А (для букв от а до п) или 
+к коду буквы Р (для букв от р до я) прибавить разницу в кодах текущего символа и 
+кодах букв а и и. Например, если преобразуется</font>
+<font face="Arial, Helvetica, sans-serif" size="3">буква б, то к коду А нужно прибавить разницу между кодами а и б, т.е. 
+единицу, в результате получим код буквы Б. Точно так же при преобразовании буквы 
+ф к коду буквы П будет прибавлено число 5 (как разница кодов ф и п), поэтому в 
+результате получится код буквы Ф. С учетом этого можно составить следующий 
+алгоритм реализации процедуры: для каждого символа исходной строки s1 
+определить, к какому подмассиву a...z, a...p или п...я принадлежит код этого 
+символа, и затем изменить его, добавив к кодам букв А (латинская), А (русская) 
+или Я соответствующую разницу. Если символ не принадлежит ни к какому из 
+подмассивов, нужно поместить его код в выходную строку без изменений.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Вот возможный вариант процедуры:</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure UpString(sl: String; var s2: String);&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">i: Integer; <i> {Счетчик цикла преобразования}&nbsp;</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> с: Char; <i> {Рабочая переменная 
+преобразования}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin <i>{UpString}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s2 := ' '; <i> {Вначале выходная строка пуста}</i></font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Цикл посимвольного анализа 
+исходной строки}&nbsp;</font> </i> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for i := 1 to Length(si) do</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Берем из входной строки очередной символ}</font> </i> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">с := sl[i];</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Проверяем символ на принадлежность к одному из трех подмассивов}</font> </i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if (с &gt;= 
+'a') and (с &lt;= 'z') then</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">с := chr(ord('A')+ord(c)-ord('a1)) <i> {А,а - латинские!}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else if (c &gt;= 'a') 
+and (c &lt;= 'n') then</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">с := chr(ord('A')+ord(с)-ord('a')) <i> {А,а - русские!}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else if (c &gt;= 'p') and 
+(с &lt;= 'я') then</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">с := chr(ord('PI)+ord(c)-ord('p'));</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s2 := s2+c&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i> {UpString}</i></font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">В процедуре вначале с помощью оператора</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s2 := '';</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">подготавливается «пустая» выходная строка, т.е. строка нулевой длины. Затем 
+используется цикл от 1 до длины входной строки s1 (эта длина получается с 
+помощью стандартной функции Length), в ходе которого проверяется принадлежность 
+очередного символа указанным подмассивам и осуществляется необходимая коррекция 
+его внутреннего кода. Для доступа к отдельным символам строки используется 
+замечательное свойство типа данных STRING, позволяющее рассматривать строку как 
+набор (массив) символов. Первый символ этого набора имеет индекс 1, второй - 2 и 
+т.д. Индекс указывается сразу за именем строки в квадратных скобках. Таким 
+образом, s1 [i] -это i-ый символ строки s1. Преобразованный символ добавляется в 
+конец выходной строки.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Добавив комментарии и поместив тело процедуры вместо заглушки в 
+первоначальный вариант программы, получим окончательно ее рабочий вариант 
+(пример 2.10).</font> </P>
+<p align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Пример 2.10</font>
+</b> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Program CharsConvert;</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Программа вводит произвольную текстовую строку, преобразует все входящие в 
+нее буквы в прописные и печатает результат преобразования}</font> </i> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PROCEDURE UpString(sl : String; var s2 :
+String);</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Эта процедура преобразует буквы входной строки si в прописные буквы 
+латинского или русского алфавита и помещает результат преобразования в выходную 
+строку s2. Используется предположение о том, что последовательности латинских 
+букв от «а» до «z» и русских букв. от «а» до «п» и от «р» до «я», а также 
+последовательности соответствующих им прописных букв образуют непрерывные 
+массивы}</font> </i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">i: Integer; <i> {Счетчик цикла преобразования}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> с: Char; <i> {Рабочая переменная 
+преобразования}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin <i>{UpString}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s2 :=' ' ; <i> {Вначале выходная строка пуста}</i>&nbsp;</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Цикл посимвольного анализа 
+исходной строки}</font> </i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for i := 1 to Length(s1) do&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Берем из входной строки очередной символ}</font> </i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> с := s1[i] ;</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Проверяем символ на принадлежность к одному из трех подмассивов}</font> </i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if (с &gt;= 
+'a') and (с &lt;= 'z') then</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">с := chr(ord('А')+ord(c)-ord('a')) <i> {A,a - латинские!}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else if (c &gt;= 'a') 
+and (c &lt;= 'n') then</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">с := chr(ord('A')+ord(c)-ord('a')) <i> {A,a -русские!}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else if (c &gt;= 'p') and 
+(с &lt;= 'я') then</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">с := chr(ord('P')+ord(c)-ord('p'));&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> s2 := s2+c&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i> {UpString}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Sinp, Sout : String; <i> {Исходная и преобразованная строки}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin {<i>Начало основной (вызывающей) программы}</i>&nbsp;</font> 
+</P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write('Введите строку: ');</font> 
+</P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn(Sinp); <i> {Вводим исходную строку}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">UpString(Sinp,Sout); <i> {Преобразуем ее к 
+прописным буквам}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(' Результат: ',Sout) <i> {Печатаем результат}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end. <i> {Конец вызывающей программы}</i></font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Рассмотрим иной способ реализации той же программы: оформим алгоритм 
+преобразования в виде функции. Кроме того, с помощью стандартной функции UPCASE 
+преобразуем каждый очередной символ (это преобразование осуществляется только 
+для букв латинского алфавита) и тем самым исключим проверку принадлежности 
+символа к строчным латинским буквам:</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function UpString(s1: String): String;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">i : Integer; с : Char;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s2: String; <i> {Результат преобразования}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin <i>{UpString}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s2 := ' ';</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for i := 1 to Length(si) do&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Получаем и преобразуем очередной символ}</font></i> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">с := UpCase(si [i]);</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if (с &gt;= 'a') and (с &lt;= 'п') then</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">с := chr(ord('A')+orcKcJ-ord('a'))&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if (c &gt;= 'p') and (с &lt;= 'я') then</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">с := chr(ord('P')+ord(c)-ord('p'));</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;s2 := s2+c&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">UpString := s2 <i> {Присваиваем значение функции UpString}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i> {UpString}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Sinp: String;&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin <i> {Начало основной программы}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write('Введите строку: ') ;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn(Sinp);</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(' Результат: ',UpString(Sinp))</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;end. <i> {Конец основной программы}</i></font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Программа получилась несколько проще за счет того, что функцию можно 
+использовать в качестве параметра обращения к другой процедуре (в нашем случае к 
+WriteLn). Обратите внимание: в теле любой функции нужно осуществить присваивание 
+ей вычисленного значения (см. оператор UpString := s2). В левой части оператора 
+присваивания в этом случае указывается имя функции.</font> </P> 
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" >
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl2_5.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td >
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl2_7.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</body>
+</html>

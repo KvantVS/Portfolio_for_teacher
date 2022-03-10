@@ -1,0 +1,779 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" >
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl2_7_2.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td >
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p align="left">
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+ 
+Игра ним
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Ним - одна из самых старых и увлекательных математических игр. Для игры в ним 
+необходим партнер (в ним играют вдвоем), стол и набор фишек. В качестве фишек 
+обычно используются камешки или монетки. В наиболее известном варианте нима 12 
+фишек раскладываются в три ряда так, как показано на рис. 2.3.</font> </P>
+<P align="center"><img border="0" src="2_3.jpg"     > </P>
+<p align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Рис.2.3.</b> Фишки, расположенные для игры в ним по схеме 3-4-5</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Правила нима просты. Игроки по очереди забирают одну или несколько фишек из 
+любого</font> <font face="Arial, Helvetica, sans-serif" size="3">ряда. Не разрешается за один ход брать фишки из нескольких рядов. Выигрывает 
+тот, кто возьмет последнюю фишку (фишки).</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Если Вы сыграете несколько партий в ним, то скоро заметите, что существует 
+некоторая оптимальная последовательность ходов, которая гарантирует победу, если 
+только Вы начинаете игру и первым ходом берете две фишки из первого ряда. Любой 
+другой ход даст шанс Вашему сопернику, который в этом случае наверняка победит, 
+если, в свою очередь, воспользуется оптимальной стратегией.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Полный анализ игры с обобщением на любое число рядов с любым числом фишек в 
+каждом ряду впервые опубликовал в 1901 г. профессор математики из Гарвардского 
+университета Чарльз Л.Бутон, который и назвал игру «ним» от устаревшей формы 
+английских глаголов «стянуть», «украсть». Открытая им оптимальная стратегия 
+основана на двоичной системе счисления и довольно проста. Каждую комбинацию 
+фишек Бутон назвал либо опасной, либо безопасной: если позиция, создавшаяся 
+после очередного хода игрока, гарантирует ему победу, она называется безопасной, 
+если такой гарантии нет - опасной. Бутон строго доказал, что любую опасную 
+позицию всегда можно превратить в безопасную нужным ходом. Наоборот, если перед 
+очередным ходом игрока уже сложилась безопасная позиция, то любой его ход 
+превращает позицию в опасную. Таким образом, оптимальная стратегия состоит в 
+том, чтобы каждым ходом опасную позицию превращать в безопасную и заставлять 
+противника «портить» ее. Использование оптимальной стратегии гарантирует победу 
+игроку только тогда, когда он открывает партию и начальная позиция фишек опасна 
+или он делает второй ход, а начальная позиция безопасна.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Чтобы определить, опасна позиция или безопасна, нужно количество фишек в 
+каждом ряду записать в двоичной системе счисления. Если сумма чисел в каждом 
+столбце (разряде) равна нулю или четна, позиция безопасна. Если же сумма нечетна 
+хотя бы в одном разряде, то позиция опасна. Например, для начальной позиции по 
+схеме 3-4-5 получим:</font> </P>
+<center>
+<table border="1" >
+  <tr>
+    <td  align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Десятичная запись количества фишек</b></font> </td>
+    <td  align="center"><font face="Arial, Helvetica, sans-serif" size="3"> <b> Двоичная запись количества фишек</b></font> </td>
+  </tr>
+  <tr>
+    <td  align="center">3</td>
+    <td  align="center">011</td>
+  </tr>
+  <tr>
+    <td  align="center">4</td>
+    <td  align="center">100</td>
+  </tr>
+  <tr>
+    <td  align="center">5</td>
+    <td  align="center">101</td>
+  </tr>
+</table>
+</center>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;Сумма по разрядам 212</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Сумма цифр в среднем столбце равна 1 - нечетному числу, что свидетельствует 
+об опасности этой позиции. Поэтому первый игрок может сделать ее безопасной для 
+себя, если он возьмет две фишки из первого ряда. В результате в первом ряду 
+остается только 1 фишка (двоичное число также 1), и сумма чисел в среднем 
+столбце изменится на ноль.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">В привычной нам десятичной системе счисления емкость каждого разряда равна 
+10, а для записи значений разряда используются цифры от 0 до 9. В двоичной 
+системе счисления емкость каждого разряда равна 2, а из всех цифр используются 
+только 0 и 1. В этой системе число записывается в виде суммы степеней двойки и 
+при переходе от одного разряда к соседнему левому вес разряда увеличивается в 2 
+раза. Если нужно записать число 2 в двоичной системе, следует действовать точно 
+так же, как при записи числа 10 в десятичной системе: записать ноль в первом 
+(младшем) разряде и единицу - слева от него, т.е. 10 в двоичной системе означает 
+2 в десятичной системе. Точно так же 100 в двоичной системе означает 4 в 
+десятичной, 1000 - 8 и т.д.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Для перевода любого целого положительного числа из десятичной системы в 
+двоичную можно использовать прием последовательного деления числа на 2. 
+Например, для перевода десятичного числа 11 в двоичную систему используется 
+такая цепочка делении:</font> </P>
+<center>
+<TABLE border=1 frame=box rules=all  >
+  <TBODY>
+  <TR>
+    <TD   align="center">
+      <p align="left"><font face="Arial, Helvetica, sans-serif" size="3"><b>Делимое</b></font></P></TD>
+    <TD   align="center">
+      <p align="left"><font face="Arial, Helvetica, sans-serif" size="3"><b>Результат</b></font></P></TD>
+    <TD   align="center">
+      <p align="left"><font face="Arial, Helvetica, sans-serif" size="3"><b>Остаток</b></font></P></TD></TR>
+  <TR>
+    <TD   align="center">
+      <font face="Arial, Helvetica, sans-serif" size="3">11</font></TD>
+    <TD   align="center">
+      <font face="Arial, Helvetica, sans-serif" size="3">5</font></TD>
+    <TD  align="center">
+      <font face="Arial, Helvetica, sans-serif" size="3">1</font></TD></TR>
+  <TR>
+    <TD   align="center">
+      <font face="Arial, Helvetica, sans-serif" size="3">1</font></TD>
+    <TD   align="center">
+      <font face="Arial, Helvetica, sans-serif" size="3">2</font></TD>
+    <TD   align="center">
+      <font face="Arial, Helvetica, sans-serif" size="3">1</font></TD></TR>
+  <TR>
+    <TD   align="center">
+      <p align="left"><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;2</font></P></TD>
+    <TD   align="center">
+      <p align="left"><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;1</font></P></TD>
+    <TD   align="center">
+      <p align="left"><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;0</font></P></TD></TR></TBODY></TABLE>
+	  </center>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Если, начиная с последнего результата, остатки от деления записать в обратном 
+порядке, получим 1011 - это и есть двоичное представление десятичного числа 11. 
+В этом легко убедиться, записав двоичное число 1011 как сумму степеней 2:</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">1х23+1х22+1х21+1 = 11</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Попробуем разработать программу, которая будет выполнять роль партнера в 
+игре, причем это будет весьма опасный противник, так как он будет «знать» 
+оптимальную стратегию и умело ею пользоваться.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Представим себе на минутку, что Вы уже создали программу и начинаете работу с 
+ней. Как организовать удобное взаимодействие с программой? Конечно, возможно 
+простейшее решение: Вы предварительно раскладываете на столе монетки, по запросу 
+программы вводите в нее Ваш ход, затем читаете на экране ход программы, делаете 
+нужные изменения в раскладке монет и т.д. Вряд ли Вас удовлетворит такая 
+программа. Гораздо эффектнее имитировать на экране игровое поле с фишками и 
+своеобразное табло игры, в котором сообщается об очередных ходах противников. 
+Однако использованные ранее средства вывода данных (процедуры WRITE и WRITELN) 
+недостаточны для этих целей, ведь с их помощью нельзя указать конкретное место 
+на экране, куда нужно поместить выводимую информацию. Вывод этими процедурами 
+всегда начинается с той позиции на экране, которую в данный момент занимает 
+курсор. Следовательно, для вывода текста в нужное место экрана требуется перед 
+обращением к этим процедурам изменить положение курсора. Для этих целей служит 
+процедура GOTOXY, которая хотя и является стандартной, но располагается в 
+отдельной библиотеке (модуле) с именем CRT. Подробнее о модулях мы поговорим в 
+гл.9, а сейчас просто учтем, что процедуры и функции из дополнительных библиотек 
+становятся доступны в программе, если в самом ее начале объявить об их 
+использовании. Так, указание об использовании библиотеки CRT делается таким 
+образом:</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses CRT;</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">После такого указания программе становятся доступны дополнительные процедуры 
+и функции, с помощью которых можно организовать гибкое управление текстовым 
+экраном, в том числе процедура GOTOXY, перемещающая курсор в произвольное место 
+на экране.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Теперь попробуем составить алгоритм главной программы. В простейшем виде он 
+таков:</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses CRT; <i> {Подключение библиотеки дополнительных</i></font><i>
+</i><font size="3"><i>процедур и функций для управления экраном}</i>&nbsp;</font></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">exit: Boolean; <i> {Признак окончания работы}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Подготовить экран к работе}</font> </i> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">repeat</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Ввести, проконтролировать и отобразить ход игрока</font></i><font face="Verdana, Arial, Helvetica, sans-serif" size="3"><i>}</i></font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Найти и отобразить ход программы}</font> </i> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">until exit&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">В этом алгоритме выделяются три главных действия и организуется цикл, который 
+будет выполняться до тех пор, пока где-то в программе переменной EXIT (выход) не 
+будет присвоено значение TRUE.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Вначале экран подготавливается к работе: формируется игровое поле с фишками и 
+выводится информация о правилах игры. Как уже говорилось, ним позволяет играть с 
+произвольным количеством фишек. Разумно ввести в программу возможность, которая 
+бы позволила пользователю самому указывать число рядов и количество фишек в 
+рядах, т.е. настраивать программу на нужную раскладку фишек. Можно несколько 
+модифицировать главную программу, чтобы предусмотреть эту возможность:</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses CRT; <i> {Подключение библиотеки дополнительных</i></font><i>
+<font size="3">процедур и функций для управления экраном}</font></i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">exit : Boolean; <i> {Признак окончания работы}&nbsp;</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> change : Boolean; <i> {Признак 
+изменения условий игры}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{----------------------}</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Prepare; <i> {Готовит экран к игре}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin <i>{Prepare}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i>{Prepare}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{----------------------}</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure GetPlayerMove;</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Получает, контролирует и отображает ход игрока}</font> </i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin <i>{GetPlayerMove}&nbsp;</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i>{GetPlayerMove}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{----------------------}</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure SetOwnerMove;</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Находит и отображает очередной ход программы}</font> </i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin <i>{SetOwnerMove}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i>{SetOwnerMove}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{----------------------}</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin <i> {Главная программа}</i>&nbsp;</font> 
+</P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Подготовить начальную расстановку фишек}</font> 
+</i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> 
+</P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> repeat <i> 
+{Цикл изменения условий игры}&nbsp;</i></font> 
+</P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Prepare; <i> {Подготовить экран}</i>&nbsp;</font> 
+</P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> repeat <i> {Игровой цикл}</i></font> 
+</P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetPlayerMove; <i> {Получить ход пользователя}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if not (exit or change) then</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetOwnerMove <i> {Определить собственный ход}</i> until exit or change&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> until exit&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">В этом варианте главная программа содержит два вложенных друг в друга цикла 
+Repeat. . .Until: внутренний цикл управляет игрой, внешний отвечает за изменение 
+условий игры. Оба цикла управляются двумя логическими переменными, которые 
+являются глобальными для трех основных процедур PREPARE, GETPLAYERMOVE, 
+SETOWNERMOVE и, следовательно, могут изменяться внутри этих процедур.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Теперь настал момент подумать о том, каким способом в программе будет 
+храниться и использоваться информация о текущем состоянии игры. Судя по всему, 
+нам понадобятся хотя бы две переменные: в одной, назовем ее NROW, будет 
+содержаться число рядов фишек, в другой (NCOL) - количество фишек в каждом ряду. 
+Переменная NROW содержит одно целое положительное число, поэтому ее тип должен 
+быть INTEGER. В переменной NCOL должно быть не менее NROW целых чисел, т.е. ее 
+тип - это массив целых чисел. Поскольку в программе предусмотрена возможность 
+изменения условий игры самим игроком, переменная NROW может меняться от партии к 
+партии. В соответствии с этим должна была бы меняться и длина массива NCOL. 
+Однако в Турбо Паскале нельзя использовать массивы, длина которых меняется 
+динамически, т.е. в процессе работы программы. Эта длина должна определяться 
+статически (на этапе компиляции) и не может меняться в работающей программе. 
+Значит, понадобится массив достаточно большой длины, чтобы его хватило на все 
+случаи. На экране одновременно можно отобразить максимум 25 строк по 80 символов 
+в каждой строке. Однако использовать все строчки экрана как возможные ряды фишек 
+вряд ли целесообразно: во-первых, сама игра при большом количестве рядов 
+становится неинтересной, так как игрок не сможет проанализировать в уме все 
+варианты ходов; во-вторых, на экране не останется места для вывода другой 
+информации. Будем считать, что максимальное количество рядов фишек не должно 
+превышать 14. Укажем это константой MAXROW - теперь, если Вы захотите назначить 
+другое максимальное количество рядов, понадобится изменить значение этой 
+константы и перекомпилировать программу. Именно таким способом программам 
+придается дополнительная гибкость: Вы сосредоточиваете в нескольких константах 
+параметры, которые выбраны Вами произвольно и которые Вы или кто-то другой, 
+возможно, захочет изменить. Все размерности массивов или другие особенности 
+программной реализации следует определять через эти константы, тогда процедура 
+переделки программы предельно упростится.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">С учетом сказанного назначим следующие глобальные константы и переменные:</font> 
+</P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MAXROW = 14; <i> {Максимальное количество рядов}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> MAXCOL = 20; <i> {Максимальное 
+количество фишек в ряду}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ColType= array [I..MAXROW] of Integer;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">exit :Boolean; <i> {Признак окончания работы}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">change:Boolean; <i> {Признак изменения условий игры}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">nrow :Integer; <i> {Количество рядов}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ncol :ColType; <i> {Максимальное колич-во фишек по рядам}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">col :ColType; <i> {Текущее количество фишек по рядам}</i></font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Константа MAXCOL не участвует в формировании массивов, она будет 
+использоваться для контроля горизонтальных размеров игрового поля. Поэтому она, 
+а также пять переменных сделаны глобальными. Если считать, что начальная 
+раскладка фишек соответствует схеме 3-4-5, то можно написать такой окончательный 
+вариант главной программы:</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses CRT; <i> {Подключение библиотеки дополнительных</i></font><i>
+<font size="3">процедур и функций для управления экраном}</font></i></font> </P>
+<TABLE border=0 frame=box rules=all>
+  <TBODY>
+  <TR>
+    <TD>
+      <p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font></P></TD>
+    <TD><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD>
+      <p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MAXROW = 14;</font></P></TD>
+    <TD>
+      <p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Максимальное количество рядов}</font></i></P></TD></TR>
+  <TR>
+    <TD>
+      <p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MAXCOL =20;</font></P></TD>
+    <TD>
+      <p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Максимальное количество фишек в ряду}</font></i></P></TD></TR>
+  <TR>
+    <TD>
+      <p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font></P></TD>
+    <TD><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD>
+      <p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ColType = array</font></P></TD>
+    <TD>
+      <p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">[1.. MAXROW] of Integer;</font></P></TD></TR>
+  <TR>
+    <TD>
+      <p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font></P></TD>
+    <TD><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD>
+      <p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">exit : Boolean;</font></P></TD>
+    <TD>
+      <p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Признак окончания работы}</font></i></P></TD></TR>
+  <TR>
+    <TD>
+      <p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">change : Boolean;</font></P></TD>
+    <TD>
+      <p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Признак изменения условий игры}</font></i></P></TD></TR>
+  <TR>
+    <TD>
+      <p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">nrow : Integer;</font></P></TD>
+    <TD>
+      <p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Количество рядов.}</font></i></P></TD></TR>
+  <TR>
+    <TD>
+      <p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ncol : ColType;</font></P></TD>
+    <TD>
+      <p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Максимальное колич-во фишек по рядам}</font></i></P></TD></TR>
+  <TR>
+    <TD>
+      <p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">col : ColType;</font> </P></TD>
+    <TD>
+      <p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Текущее количество фишек по рядам}</font></i></P></TD></TR></TBODY></TABLE>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{------------------------}</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Prepare; <i> {Готовит экран к игре}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin <i>{Prepare}&nbsp;</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i>{Prepare}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{------------------------}</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure GetPlayerMove;</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Получает, контролирует и отображает ход игрока}</font> </i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin <i> {GetPlayerMove}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end ; <i>{Get PlayerMove}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{------------------------}</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure SetOwnerMove;</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Находит и отображает очередной ход программы}</font> </i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin <i>{SetOwnerMove}&nbsp;</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i>{SetOwnerMove}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{------------------------}</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin <i> {Главная программа}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">nrow := 3; <i> {Готовим игру... }&nbsp;</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> ncol [1]:= 3; <i> { на поле из трех }&nbsp;</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> ncol [2]:= 4; <i> 
+{ рядов фишек }&nbsp;</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> ncol [3]:= 5; <i> { по схеме 3-4-5.}&nbsp;</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> repeat <i> {Цикл изменения условий 
+игры}&nbsp;</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Prepare; <i> {Подготовить экран}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">repeat <i> {Игровой цикл}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetPlayerMove; <i> {Получить ход пользователя}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if not (exit or change) then</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetOwnerMove <i> {Определить собственный ход}&nbsp;</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> until exit or change&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> until exit&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Приступим к конструированию процедуры PREPARE. В ходе ее работы формируется 
+значение переменной COL, соответствующее начальной раскладке фишек, и выводится 
+информация о правилах игры. Чтобы было понятнее дальнейшее описание программной 
+реализации, на рис. 2.4 показан вид экрана в начальном состоянии игры.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Процедура начинает свою работу с очистки экрана от имеющейся на нем 
+информации. Это достигается обращением к стандартной процедуре без параметров 
+CLRSCR. Затем выводятся три строчки с названием игры и кратким описанием ее 
+правил. Кроме того, слева и справа на экране формируются заголовки для двух 
+колонок цифр, в которых затем будут отображаться номер ряда (слева) и текущее 
+количество фишек в ряду (справа). Эта информация поможет игроку сообщить 
+программе свой ход. Для размещения информации на нужных участках экрана 
+используется процедура GOTOXY(X,Y) , с помощью которой курсор перемещается 
+нужным образом. Параметры X и Y этой процедуры задают новые координаты курсора. 
+Начало координат соответствует точке (1,1) и размещается в левом верхнем углу 
+экрана, поэтому горизонтальная координата увеличивается слева направо, а 
+вертикальная - сверху вниз.</font> </P>
+<P align="center"><img border="0" src="2_4.jpg"    > </P>
+<p align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Рис.2.4.</b> Вид экрана в начале игры ним</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Prepare;</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Подготовка данных и экрана к игре}</font> </i> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Header0 = 'ИГРА НИМ';</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Headerl = 'Вы можете взять любое число фишек из любого ряда.';</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Header2 = 'Выигрывает тот, кто возьмет последнюю фишку.';</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Headers = 'Номер ряда';</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Header4 = 'Количество фишек';</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">i : Integer; begin <i> {Prepare}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ClrScr; <i> {Очищаем экран}</i></font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Выводим строки заголовка:}</font> </i> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY((80-Length(Header0)) div 2,1);</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write(HeaderO) ;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY((80-Length(Headerl)) div 2,2);</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write(Headerl);</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY((80-Length(Header2)) div2,3);&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Writeln(Header2);</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write(Header3);&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY(80-Length(Header4),4);&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write(Header4);&nbsp;</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Готовим 
+начальную раскладку:}&nbsp;</font> </i> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for i := 1 to nrow do</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">col [i] := ncol[i]&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i> {Prepare}</i></font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Для вывода верхних строк строго посередине экрана используется задание 
+горизонтальной координаты курсора для процедуры GotoXY как половины от разницы 
+между полной длиной экрана (80 позиций) и длиной выводимой строки (определяется 
+с помощью функции LENGTH).</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">В процедуре GetPlayerMove осуществляются ввод, контроль и отображение на 
+экране очередного хода игрока. Предварительно нужно показать игроку текущее 
+состояние игрового поля. Поскольку поле будет обновляться как минимум дважды 
+(после хода игрока и после хода программы), действия, связанные с изображением 
+поля на экране, следует вынести в отдельную процедуру. Назовем ее ShowField и 
+займемся ее реализацией.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Судя по всему, нам понадобится организовать цикл; в ходе цикла для каждого 
+ряда игрового поля будет выведена строка, в левой части которой указывается 
+номер ряда, в правой - текущее количество фишек в нем, а посередине выводятся 
+символы, имитирующие фишки. В принципе, можно выбрать любой символ ПК для 
+обозначения фишки, например, X или О. Я предпочел воспользоваться символом 
+псевдографики с кодом 220: этот символ представляет собой небольшой квадратик и 
+легко ассоциируется с фишкой.</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure ShowField;</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{ Отображает на экране текущее состояние игрового поля }</font> </i> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">FISH = #220; {<i>Символ-указатель фишки}</i>&nbsp;</font> 
+</P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Х0 = 4; <i> {Левая колонка номеров рядов}</i>&nbsp;</font> 
+</P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+X1 =72; <i> {Правая колонка количества фишек}</i>&nbsp;</font> 
+</P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> X = 20; <i> {Левый край игрового поля}</i>&nbsp;</font> 
+</P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> 
+</P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">i,j : Integer;&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin <i> {ShowField}&nbsp;</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for i := 1 to nrow do begin</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY(X0,i+4);</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write(i); <i> {Номер ряда}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY(X1,i+4);</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write(col[i]:2); <i> {Количество фишек в ряду}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for j := 1 to ncol[i] do <i> {Вывод ряда фишек:}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY(X+2*j,i+4); if j[i] then</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write(FISH)&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write('.')&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i> {ShowField}</i></font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Символы FISH (квадратики) выводятся через одну позицию, чтобы не сливались на 
+экране. В те позиции, в которых ранее стояли уже снятые с поля фишки, выводится 
+точка.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Теперь вернемся к процедуре GETPLAYERMOVE. При вводе любого очередного хода 
+игрок должен задать два целых числа X1 и Х2. Первое из них указывает номер ряда, 
+а второе - количество фишек, которые игрок хочет забрать из этого ряда. 
+Программа должна проконтролировать правильность задания этих чисел: X1 должно 
+указывать непустой ряд, Х2 не может превышать количество фишек в этом ряду. 
+Кроме того, мы должны условиться о двух особых случаях:</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> пользователь больше не хочет играть и дает команду завершить работу 
+программы;</font> </li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> пользователь хочет изменить условия игры.</font> </li>
+</ul>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Пусть ввод числа X1 =0 означает команду выхода из программы, а X1 = -1 - 
+команду изменения условий игры. Тогда можно написать такой начальный вариант 
+процедуры:</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure GetPlayerMove;</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Получает, контролирует и отображает ход игрока}</font></i> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">correctly : Boolean; <i> {Признак правильности сделанного хода}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> xl,x2 : Integer; <i> 
+{Вводимый ход}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin <i> {GetPlayerMove}</i></font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Показываем начальное состояние игрового поля}</font> </i> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ShowField;</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{</font><font size="3">Сообщаем, игроку правила ввода хода}</font></font></i> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">repeat</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Приглашаем игрока ввести ход}</font> </i> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn(xl,x2); <i> {Вводим очередной ход}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> exit := xl=0; <i> {Контроль команды выхода}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+change := xl=-l; <i> {Контроль команды изменения}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if not (exit or change) then</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Проверить правильность хода и установить нужное значение переменной 
+CORRECTLY. Если ход правильный, сделать нужные изменения в раскладке фишек и 
+показать поле.}</font> </i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">correctly := true <i> {Случай EXIT или CHANGE}</i>&nbsp;</font> 
+</P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> until correctly; if change then</font> 
+</P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{ Изменить условия игры }</font> </i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i> {GetPlayerMove}</i></font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">В этом варианте в процедуре GetPlayerMove нет описания процедуры SHOWFIELD. 
+Сделано это не случайно: процедура ShowField может понадобиться</font>
+<font face="Arial, Helvetica, sans-serif" size="3">также и при реализации процедуры SetOwnerMove, поэтому она должна быть 
+глобальной по отношению и к GetPlayerMove, и к SetOwnerMove, т.е. ее описание 
+должно в тексте программы предшествовать описаниям двух использующих ее процедур.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Действия</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3"><i>{ Сообщить игроку правила ввода хода } ,</i></font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3"><i>{ Пригласить игрока ввести ход }</i>&nbsp;</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3"> и</font> </P>
+<p align="left"><i><font face="Arial, Helvetica, sans-serif" size="3">{Проверить правильность хода и установить нужное значение</font>
+<font face="Arial, Helvetica, sans-serif" size="3">переменной Correctly. Если ход правильный, сделать нужные</font>
+<font face="Arial, Helvetica, sans-serif" size="3">изменения в раскладке фишек и показать поле.}</font></i> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">не очень сложны в реализации, поэтому их можно осуществить непосредственно в 
+теле процедуры GETPLAYERMOVE. Иное дело - изменение условий игры. Это действие 
+полезно реализовать в отдельной процедуре GETCHANGE. С учетом этого второй 
+вариант процедуры GETPLAYERMOVE примет такой вид:</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure GetPlayerMove;</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Получает, контролирует и отображает ход игрока}</font> </i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ТЕХТ1 = 'Введите Ваш ход в формате РЯД КОЛИЧ ';</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ТЕХТ01= ' (например, 2 3- взять из 2 ряда 3 фишки) ' ;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ТЕХТ2 = 'или введите 0 0 для выхода из игры; ' ; .&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> ТЕХТ02= '-1 0 для 
+настройки игры';</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ТЕХТЗ = 'Ваш ход:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+';</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Y = 20; <i> {Номер строки для вывода сообщений}&nbsp;</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">correctly : Boolean; <i> {Признак правильности сделанного хода}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">xl,x2 : Integer; <i> {Вводимый ход}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-----------------}</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure GetChange;</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Устанавливает новую настройку игры (количество рядов и количество фишек в 
+каждом ряду}</font> </i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin <i>{GetChange}&nbsp;</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i>{GetChange}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-----------------}</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin <i> {GetPlayerMove}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ShowField; <i> {Показываем начальное состояние поля}</i></font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Сообщить игроку правила ввода хода:}</font> </i> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY((80-Length(TEXT1+TEXT01)) div2,Y);</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write(TEXT1+TEXT01);</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY((80-Length(TEXT2+TEXT02)) div2,Y+l);</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write(TEXT2+TEXT02);</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">repeat</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Пригласить игрока ввести ход:}</font> </i> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY(l,Y+2);</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write(TEXTS); <i> {Выводим приглашение и стираем предыдущий ход}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY(WhereX-16,Y+2); <i> {Курсор влево на 16 позиций}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn(xl,x2); <i> {Вводим очередной ход}</i>&nbsp;</font> 
+</P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> exit := xl=0; <i> {Контроль команды выхода}</i>&nbsp;</font> 
+</P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+change := xl=-l; <i> {Контроль команды изменения}</i></font> 
+</P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;if not (exit or change) then&nbsp;</font> 
+</P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> 
+</P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">correctly := (xl &gt; 0) and (xl &lt;= nrow) and</font>
+<font face="Arial, Helvetica, sans-serif" size="3">(x2 &lt;= col[xl]) and (x2 &gt; 0) ;&nbsp;</font></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if correctly then</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin <i> {Ход правильный:}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">col[xl] := col[xl]-x2; <i> {Изменяем раскладку фишек}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> ShowField <i> {Показываем поле}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+end&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">else</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write(#7) <i> {Ход неправильный: дать звуковой сигнал}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">correctly := true <i> {Случай EXIT или CHANGE}</i>&nbsp;</font> 
+</P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> until correctly;&nbsp;</font> 
+</P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if change then</font> 
+</P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetChange end; <i> {GetPlayerMove}</i></font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Обратите внимание: константа</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ТЕХТЗ = 'Ваш ход:</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">имеет длинный «хвост» из пробелов (их 17), поэтому после вывода этого 
+приглашения курсор возвращается влево на 16 позиций оператором</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY(WhereX-16,Y+2); <i> {курсор влево на 16 позиций}</i></font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">(функция WHEREX возвращает текущую горизонтальную координату курсора, а 
+функция WHEREY - его вертикальную координату). Сделано это для того, чтобы в 
+случае, если игрок ввел неверный ход и программа повторяет вывод приглашения, 
+пробелы в константе ТЕХТЗ затерли бы строку предыдущего ввода.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Чтобы завершить создание процедуры GETPLAYERMOVE, нужно спроектировать 
+процедуру GETCHANGE, в которой осуществляется изменение условий игры. Я привожу 
+текст этой процедуры без пояснений и приглашаю Вас самостоятельно разобраться в 
+том, как она работает:</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure GetChange;</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Устанавливает новую настройку игры (количество рядов и количество фишек в 
+каждом ряду}&nbsp;</font> </i> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">tl='HACTPOЙKA ИГРЫ';</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">t2 ='(ввод количества рядов и количества
+'+'фишек в каждом ряду)';&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">correctly : Boolean;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">i : Integer; begin <i>{GetChange}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ClrScr;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY( (80 -Length (tl) ) div2,l);</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write(tl) ;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY( (80 -Length (t2) ) div2,2);</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write (t2);</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">repeat</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXYd, 3) ;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write ( 'Введите количество рядов (максимум ',</font>
+<font size="3">MAXROW, '):');&nbsp;</font></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY(WhereX-6,WhereY) ;&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> ReadLn (nrow) ;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">correctly := (nrow &lt;= MAXROW) and (nrow &gt; 1) ;&nbsp;</font> 
+</P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if not correctly then</font> 
+</P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write (#7)&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> until correctly;&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for i := 1 to nrow do&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> repeat</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY(l,i+3) ;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write (' ряд ',i,', количество фишек (максимум ',</font>
+<font size="3">MAXCOL , ' ) : ' ) ;&nbsp;</font></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> GotoXY (WhereX - 6 , WhereY) ;&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> ReadLn (ncol [i] ) ;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">correctly := (ncol [i] &lt;= MAXCOL) and (ncol[i] &gt; 0) ;&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if not correctly 
+then</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write (#7)&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> until correctly&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i> {GetChange}</i></font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Переходим к конструированию процедуры SETOWNERMOVE, в которой программа 
+должна проконтролировать текущую ситуацию на игровом поле и выбрать собственный 
+ход. Работа процедуры начинается с подсчета числа непустых рядов. В зависимости 
+от этого подсчета реализуются следующие действия:</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> если все ряды пусты, значит предыдущим ходом игрок забрал последнюю фишку и 
+он победил; нужно поздравить его с победой, усложнить игру и предложить сыграть 
+еще раз;</font> </li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> если есть только один непустой ряд, то очередной ход программы очевиден 
+-забрать все фишки, что означает победу машины: сообщить об этом и предложить 
+сыграть еще раз;</font> </li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> если осталось два или более непустых ряда, выбрать собственный ход на
+    основе оптимальной стратегии. Начальный вариант процедуры:</font></li>
+</ul>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure SetOwnerMove;</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Находит и отображает очередной ход программы}</font> </i> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-----------------}</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function CheckField : Integer;</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Проверяет состояния игры. Возвращает 0, если нет ни одной фишки (победа 
+игрока) , 1 - есть один ряд (победа машины) и - количество непустых рядов в 
+остальных случаях}</font> </i> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin <i>{CheckField}&nbsp;</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i>{CheckField}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-----------------}</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure PlayerVictory;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Поздравить игрока с победой и усложнить игру} </font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin <i>{PlayerVictory}&nbsp;</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i>{PlayerVictory}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-----------------}</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure OwnVictory;&nbsp;</font> 
+</P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{</font><font size="3">Победа машины}&nbsp;</font> 
+</font></i> 
+</P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin <i>{OwnVictory}&nbsp;</i></font> 
+</P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i>{OwnVictory}</i></font> 
+</P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-----------------}</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure ChooseMove;</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Выбор очередного хода}</font> </i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin <i>{ChooseMove}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i>{ChooseMove}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-----------------}</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin <i> {SetOwnerMove}&nbsp;</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> case CheckField of <i> {Проверяем количество непустых рядов}&nbsp;</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+0 : PlayerVictory; <i> {Все ряды пусты - победа игрока}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 1 : OwnVictory; <i> {Один 
+непустой ряд - победа машины}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ChooseMove; <i> {Выбираем очередной ход}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i> {case}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i> {SetOwnerMove}</i></font> </P>
+<p align="left"></P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Функция CHECKFIELD и процедуры PLAYERVICTORY и OWNVICTORY достаточно просты и 
+их текст помещается без каких-либо пояснений в окончательный вариант программы 
+(см. прил.5.3). Отмечу лишь, что в случае победы игрока нет смысла повторять 
+партию заново с той же самой раскладкой фишек. Поэтому игра усложняется: в 
+исходную раскладку добавляется еще по одной фишке в каждый ряд.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">В процедуре CHOOSEMOVE анализируется позиция и выбирается очередной ход 
+программы. Описание оптимальной стратегии уже приводилось выше. Действия 
+программы заключаются в поиске первого слева (старшего) двоичного разряда, для 
+которого сумма чисел нечетная. Если такой разряд не обнаружен, то текущая 
+позиция безопасна для игрока, а значит любой ход программы сделает ее опасной. В 
+этом случае для программы не существует оптимального выбора и она лишь убирает 
+одну фишку из любого непустого ряда. Такая тактика означает пассивное ожидание 
+ошибки игрока.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Если обнаружен разряд<i> i
+</i> с нечетной суммой, программа приступает к реализации 
+оптимальной стратегии и тогда игрок обречен на поражение. Для выбора ряда, из 
+которого следует взять фишки, программа просматривает последовательно все ряды и 
+отыскивает тот ряд <i>j</i>, количество фишек в котором (в двоичном представлении) дает 
+единицу в разряде<i> i</i>. Значение этого разряда для количества фишек в ряду
+<i> j</i> 
+заменяется нулем. Затем программа продолжает подсчет суммы для оставшихся 
+младших разрядов. Если в каком-либо из них вновь обнаружена нечетность, значение 
+этого разряда</font> <font face="Arial, Helvetica, sans-serif" size="3">для количества фишек в рядуj инвертируется, т.е.
+0 заменяется на 1, а 1 на 0. 
+Например, если двоичные представления числа фишек и четности сумм таковы:</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">число фишек в ряду j: 01001&nbsp;</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3"> четность сумм: 01011</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">(единицей указаны разряды с нечетными суммами), то в результате этой операции 
+получим:</font> </P>
+<p align="left"></P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">число фишек в ряду j: 00010&nbsp;</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3"> четность сумм: 00000</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Таким образом, в исходном состоянии в ряду
+<i> j</i> было 1001 =9 фишек, безопасная 
+позиция требует, чтобы в ряду осталось 0010 = 2 фишки, следовательно, из него 
+нужно забрать 9-2 = 7 фишек.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Окончательный вариант программы представлен в прил.5.3. Попробуйте 
+разобраться в ее деталях самостоятельно.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">В программной реализации алгоритма широко используется то обстоятельство, что 
+Ваш компьютер, как и все остальные вычислительные машины, работает с числами, 
+представленными в двоичной системе счисления. Поэтому для получения двоичного 
+представления числа в процедуре BITFORM оно проверяется на четность с помощью 
+стандартной функции ODD, затем сдвигается вправо на один двоичный разряд 
+(операция SHR), вновь осуществляется проверка на четность и т.д. до тех пор, 
+пока не будут проверены все разряды. Максимальное число двоичных разрядов, 
+достаточное для двоичного представления количества фишек в ряду MAXCOL=63, 
+задается константой ВIТ=6.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Для получения суммы двоичных разрядов в процедуре CHOOSEMOVE используется 
+суммирование разрядов по модулю 2 с помощью операции XOR. Такое суммирование 
+дает 0, если количество единиц четное или равно нулю, и 1 - если нечетное. В 
+этой же процедуре для инверсии двоичного разряда применяется оператор</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if nbit[i] = 1 then</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ncbit[j,i] := ord(ncbit[j,i]=0); <i> {Инверсия разрядов}</i>,</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">в котором используется соглашение о внутреннем представлении логических 
+величин в Турбо Паскале: 0 соответствует FALSE, а 1 - TRUE.</font> </P>  
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" >
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl2_7_2.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td >
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</body>
+</html>

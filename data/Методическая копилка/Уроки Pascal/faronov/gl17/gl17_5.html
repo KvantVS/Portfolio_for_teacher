@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl17_4.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl17_6.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Создание группы и изменение ее состава
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Создание группы осуществляется за счет создания экземпляра объекта-наследника 
+TGroup и присоединения к нему всех видимых элементов группы. Любой видимый 
+объект, т.е. наследник TView, имеет два поля: Owner и Next. Поле Owner указывает 
+на владельца этого элемента, а поле Next - на следующий равный ему подэлемент 
+группы. При включении видимого элемента в группу его поля изменяются так, что 
+Owner содержит ссылку на экземпляр группы-владельца, a Next имеет значение NIL. 
+После добавления к группе еще одного элемента поле Next ранее включенного 
+элемента изменяет свое значение и содержит ссылку на этот новый элемент. Таким 
+образом создается связанный список подэлементов группы (рис. 17.4).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для присоединения элемента должны использоваться методы Insert или ExecView. 
+Метод Insert присоединяет очередной видимый элемент к списку подэлементов 
+группы. В зависимости от набора связанных с подэлементом признаков этот элемент 
+может размещаться в центре (признаки ofCenterX и/или ofCenterY), стать активным 
+(ofSelectable) и, наконец, появиться на экране (sfVisible). После создания 
+подэлемента управление передается следующему за обращением к Insert оператору 
+программы.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Метод ExecView осуществляет те же действия, что и метод Insert, однако после 
+создания видимого подэлемента управление будет передано в него и оператор, 
+следующий за обращением к ExecView, получит управление только после уничтожения 
+этого подэлемента. Более точно процесс взаимодействия с программой элемента, 
+присоединенного к группе методом ExecView, можно описать следующим образом. 
+Любой видимый элемент наследует виртуальный метод Valid, с помощью которого он 
+может сигнализировать своему владельцу о том, насколько успешно он выполнил 
+возложенные на него обязанности. Обычно Valid возвращает True, если успешно 
+создан и размещен в динамической памяти экземпляр объекта, и False,- в противном 
+случае. Объект может перекрыть метод Valid и возвратить False, если он хочет 
+оставить управление у себя,- именно так, например, поступает объект TDialog. 
+Метод ExecView приостанавливает исполнение следующего оператора программы до тех 
+пор, пока все подэлементы группы не вернут Valid = True. Таким образом, метод 
+ExecView используется в том случае, когда среди подэлементов группы есть хотя бы 
+один элемент, реализующий диалог с пользователем.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Метод Delete удаляет подэлемент группы из связанного списка.</font> </P>
+<P align="center"><img border="0" src="17_4.jpg"  > </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Puc. 17.4.</b> Связанный список элементов группы</font> </P>
+<p>&nbsp;</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl17_4.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl17_6.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

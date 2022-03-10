@@ -1,0 +1,204 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr1_4.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr1_6.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Меню опции FILE
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">
+<i>NEW.</i> Создает и открывает новое окно редактора с именем NONAMExx.PAS. 
+Порядковый номер XX окна зависит от количества окон со стандартным именем 
+NONAME, открытых к моменту обращения к опции.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>OPEN.</i> Открывает новое окно редактора и помещает в него указанный дисковый 
+файл. При обращении к этой опции открывается диалоговое окно (рис.П1.2), в поле 
+ввода которого можно написать нужное имя файла. Если в имени опущено расширение, 
+среда добавит стандартное расширение .PAS. Имени файла может предшествовать 
+путь. Нужный файл Вы можете также выбрать из поля выбора, предварительно 
+активизировав это поле мышью или клавишей Tab; при работе с мышью для загрузки 
+нужного файла из списка в поле выбора укажите на имя файла мышью и дважды подряд 
+с небольшим интервалом нажмите левую кнопку. Вы можете открыть доступ к 
+протоколу использования этой опции и выбрать в этом протоколе одно из ранее 
+использованных имен. Для этого при активном поле ввода нажмите клавишу смещения 
+курсора вниз или укажите мышью на</font> <font face="Arial, Helvetica, sans-serif" size="3">поле
+<img border="0" src="9.jpg"  > справа от поля ввода и нажмите ее левую кнопку. В открывшемся окне 
+протокола подведите указатель клавишами смещения курсора к нужной строчке и 
+нажмите Enter. Командное поле OPEN (открыть) используется для команды чтения 
+файла в новое редакторское окно, REPLACE (заменить) - для замены существующего в 
+активном редакторском окне текста на текст, считанный из файла.</font> </P>
+<P align="center"><img border="0" src="p1_2.jpg"  > </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><i><b>Рис.П1.2.</b> Диалоговое окно опции File/Open</i></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Опция вызывается непосредственно из редактора клавишей F3.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>SAVE. </i> Записывает содержимое активного окна редактора в дисковый файл. Если 
+это окно связано с именем NONAMExx.PAS, среда запросит новое имя файла (см. ниже 
+опцию SA VE AS). Опция вызывается непосредственно из редактора клавишей F2.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>SAVE AS.</i> Записывает содержимое активного окна редактора в дисковый файл под 
+другим именем. Диалоговое окно этой опции изображено на рис.П1.3. В поле ввода 
+Вы должны написать имя того файла, в который будет переписано содержимое 
+активного окна редактора. Вы можете выбрать уже существующий файл из поля выбора 
+или из протокола опции. В этом случае в зависимости от настройки среды старое 
+содержимое файла будет уничтожено или сохранено в виде страховочной копии с 
+расширением .ВАК (настройку среды см. в опции OPTIONS/ENVIRONMENT).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>SAVE ALL.</i> Записывает содержимое всех окон редактора в соответствующие 
+дисковые файлы.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>CHANGE DIR.</i> Позволяет изменить текущий каталог пользователя. В поле выбора 
+диалогового окна этой опции (рис.П1.4) приводится дерево каталогов текущего 
+диска.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Перемещаясь по этому дереву, можно указать на нужный каталог, после чего с 
+помощью командного поля CHDIR (CHange DIRectory - изменить каталог) сменить 
+текущий каталог. Если выбран указатель DRIVES (дисководы), можно изменить также 
+текущий диск. Командное поле REVERT (возвращаться) позволит восстановить прежний 
+текущий каталог, если Вы по каким-либо причинам решите отказаться от сделанного 
+Вами изменения (эта команда действует до момента закрытия окна).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>PRINT. </i> Печатает содержимое активного окна редактора на принтере или выводит 
+его в файл (см. опцию PRINTER SETUP).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>PRINTER SETUP.</i> Настраивает среду на печать текущего файла. Поле ввода Filter 
+path должно содержать имя программы-фильтра PRNFLTR.EXE и, возможно, путь к этой 
+программе. Поле ввода Command line содержит выбор принтера/файла и параметров 
+печати. Турбо Паскаль поддерживает три типа принтеров: матричные принтеры Epson, 
+лазерные принтеры HP LaserJet и так называемые постскрипт-принтеры, т.е. 
+принтеры, «понимающие» язык описания страниц PostScript. Для указания нужного 
+типа принтера в поле Command line помещаются следующие строки:</font> </P>
+<P align="center"><img border="0" src="p1_3.jpg"  > </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><i><b>Рис.П1.3.</b> Диалоговое окно опции File/Save as</i></font> </P>
+<P align="center"><img border="0" src="p1_4.jpg"  > </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><i><b>Рис.П1.4.</b> Диалоговое окно опции File/Change dir</i></font> </P>
+<TABLE border=1 frame=box rules=all >
+  <TBODY>
+  <TR>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Строка</b></font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Смысл</b></font></P></TD></TR>
+  <TR>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">$NOSWAP /ASCII</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Неизвестный тип принтера; в выводной поток помещаются только текстовые 
+      символы и коды перевода строки</font></P></TD></TR>
+  <TR>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">$NOSWAP /EPSON</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Принтер Epson или совместимый с ним; система команд Epson 
+      поддерживается большинством матричных принтеров других фирм</font></P></TD></TR>
+  <TR>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">$NOSWAP /HP</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Принтер HP LaserJet или совместимый с ним; система команд HP LaserJet 
+      поддерживается большинством лазерных принтеров других фирм</font></P></TD></TR>
+  <TR>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">$NOSWAP /PS</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Постскрипт-принтер, воспринимающий команды на аппаратно-независимом 
+      языке описания страниц PostScript</font></P></TD></TR>
+  <TR>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">$NOSWAP /Oxxxx</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Вывод в файл; имя файла ХХХХ должно следовать сразу за символами /О без 
+      пробелов; если файл не существует, он будет создан в процессе 
+  вывода</font></P></TD></TR>
+  <TR>
+    <TD colSpan=2 >
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><i>Эти команды могут дополняться следующими параметрами</i>:</font></P></TD></TR>
+  <TR>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">/Рхххх</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Определяет количество строк на одной странице (по умолчанию 
+  55)</font></P></TD></TR>
+  <TR>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">/Тхххх</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Количество символов пробела, заменяющих один символ табуляции (по 
+      умолчанию 8)</font></P></TD></TR></TBODY></TABLE>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>DOS SHELL.</i> Обеспечивает временный выход в ДОС. Турбо Паскаль остается 
+резидентным в оперативной памяти и занимает значительную ее часть, поэтому под 
+управлением ДОС в этом состоянии могут выполняться только сравнительно небольшие 
+по объему программы. Чтобы увеличить объем свободной памяти для ДОС, необходимо 
+перед обращением к этой опции сбросить режим отладки клавишами Ctrl-F2. Для 
+возврата в Турбо Паскаль нужно в ответ на запрос ДОС напечатать слово EXIT и 
+нажать Enter.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>EXIT.</i> Завершает работу с Турбо Паскалем. Опция вызывается непосредственно из 
+редактора командой Alt-X.</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr1_4.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr1_6.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+</BODY></HTML>

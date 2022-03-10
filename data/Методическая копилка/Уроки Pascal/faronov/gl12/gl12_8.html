@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl12_7.html">
+<img SRC="Back.gif" BORDER="0">
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0">
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Ассемблерные прграммы
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Ассемблерные подпрограммы - это процедуры и функции, объявленные с директивой 
+Assembler. В таких подпрограммах исполняемая часть не содержит begin... end и 
+состоит из единственного ассемблерного оператора asm... end. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function LongMul(X,Y:Integer):LongInt; Assembler;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> asm</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ax, X</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">imul Y  {DX/AX содержат "длинный" результат}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">При компиляции ассемблерных подпрограмм выполняется ряд оптимизаций кода, в 
+том числе:</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> параметры-значения строкового типа, а также длиной в 1, 2 и 4 байта не 
+копируются во временную память, т.е. внутри подпрограммы они считаются 
+параметрами-переменными ;</font> </li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> компилятор не создает переменную @Result для результата функции, и ссылка 
+на эту переменную в ассемблерной функции недопустима; исключением являются 
+функции, возвращающие значения строкового типа, для них разрешается использовать 
+ссылку на @Result;</font> </li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> генерируются следующие команды на входе в подпрограмму и на ее выходе:</font> </li>
+</ul>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">push bp  {Сохраняется ВР}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov bp,sp  {ВР содержит текущую границу стека}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">sub sp,Locals  {Резервируется часть стека для размещения локальных переменных}</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov sp,bp  {Восстанавливается граница стека}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">pop bp  {Восстанавливается ВР}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ret Params  {Из стека удаляются параметры</font>
+<font size="3">подпрограммы и осуществляется выход из нее}</font></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь Locals - общая длина в байтах всех объявленных в подпрограмме локальных
+переменных, a Params - длина (в байтах) всех формальных параметров. Если Locals 
+и Params равны нулю, входной код не создается, а выходной содержит единственную 
+инструкцию RET.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Все локальные переменные Турбо Паскаль размещает в стеке. Это относится как к 
+обычным, так и к ассемблерным подпрограммам. Для ссылки на локальные переменные 
+используется адресация по базе, задаваемой парой DS: ВР, поэтому при входе в 
+процедуру всегда создается так называемый
+локальный стек: в регистр ВР 
+помещается текущая граница стека, а сама эта граница смещается вверх на 
+суммарную длину всех локальных переменных, чтобы работа со стеком внутри 
+подпрограммы не разрушила локальные переменные. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure ...;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Assembler;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">X: Word;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Y: Byte;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> asm</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov X, ax  {Компилируется в mov [BP-2], ax}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ah,Y  {Компилируется в mov ah,[BP-3]}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Ассемблерные функции должны следующим образом возвращать результат своей 
+работы:</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;длиной 1 байт (Byte, Char и т.п.) - в регистре
+    AL;</font> </li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;длиной 2 байта (Integer, Word) - в регистре АХ;</font> </li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;длиной 4 байта (Pointer,
+    LongInt) - в регистрах DX (старшее слово) и АХ 
+(младшее слово);</font> </li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;типа Real - в регистрах DX, BX, АХ (старшее слово - в DX, младшее в АХ);</font> 
+  </li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;вещественных типов Single, Double, Extended, Comp - в регистре ST (0) 
+сопроцессора;</font> </li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;строкового типа - во временной области памяти, на которую ссылается
+    @Result.</font> </li>
+</ul>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl12_7.html">
+<img SRC="Back.gif" BORDER="0">
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0">
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

@@ -1,0 +1,709 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl3_3.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl3_5.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+ 
+Операции
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">В Турбо Паскале определены следующие операции:</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">унарные&nbsp;</font><font face="Arial, Helvetica, sans-serif" size="3">          
+</font><font face="Verdana, Arial, Helvetica, sans-serif" size="3">not, @;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">мультипликативные&nbsp;</font><font face="Arial, Helvetica, sans-serif" size="3">
+</font><font face="Verdana, Arial, Helvetica, sans-serif" size="3">*, /, div, mod, and, shl, shr;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">аддитивные&nbsp;</font><font face="Arial, Helvetica, sans-serif" size="3"> </font><font face="Arial, Helvetica, sans-serif" size="3">      
+</font><font face="Verdana, Arial, Helvetica, sans-serif" size="3">+, -, or, xor;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">отношения&nbsp;</font><font face="Arial, Helvetica, sans-serif" size="3">        
+</font><font face="Verdana, Arial, Helvetica, sans-serif" size="3">=, &lt;&gt;, &lt;, &gt;, &lt;=, &gt;=,in.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Приоритет операций убывает в указанном порядке, т.е. наивысшим приоритетом 
+обладают унарные операции, низшим - операции отношения. Порядок выполнения 
+нескольких операций равного приоритета устанавливается компилятором из условия 
+оптимизации кода программы и не обязательно слева направо. При исчислении 
+логических выражений операции равного приоритета всегда вычисляются слева 
+направо, причем будут вычисляться все или только достаточные операции в 
+зависимости от установленной в среде Турбо Паскаля опции OPTIONS/COMPILER/ 
+COMPLETE BOOLEAN EVAL: при установленном значении этой опции вычисляются все 
+операции отношения, при не установленном - только те, которые достаточны для 
+получения результата.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Это обстоятельство необходимо учитывать при использовании операций отношения 
+с функциями, в которых изменяются глобальные переменные или параметры, 
+передаваемые по имени, например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function AddI(var x: Integer): Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin {AddI}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">inc(x);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">AddI := x end  {AddI} ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">a,b : Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin  {main}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if (a &gt; b) or (Addl (a) &gt; 100) then b :=
+a;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">При выполнении этого фрагмента значение переменной А будет зависеть от 
+настройки опции: если опция активизирована, значение А всегда наращивается на 1, 
+если не активизирована - только в случае А &lt;= В .</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Правила использования операций с операндами различного типа приводятся в 
+табл. 3.1.</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Таблица 3.1</font>
+</b> </P>
+<center>
+<TABLE border=1 frame=box rules=all >
+  <TBODY>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Операция</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Действие</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Тип операндов</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Тип результата</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">not</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Отрицание</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Логический</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Логический</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">not</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">То же</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Любой целый</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Тип операнда</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">@</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Адрес</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Любой</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Указатель</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">*</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Умножение</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Любой целый</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Наименьший целый</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">*</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">То же</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Любой вещественный</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Exended</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">*</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Пересечение множеств</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Множественный</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Множественный</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">/</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Деление</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Любой вещественный</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Extended</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">div</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Целочисленное деление</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Любой целый</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Наименьший целый</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">mod</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Остаток от деления</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">То же</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">То же</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">and</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Логическое И</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Логический</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Логический</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">and</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">То же</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Любой целый</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Наименьший целый</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">shl</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Левый сдвиг</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">То же</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">То же</font></P></TD></TR>
+  <tr>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">shr</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Правый сдвиг</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">То же</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">То же</font></P></TD>
+  </tr>
+  <tr>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">+</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Сложение</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">То же</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">То же</font></P></TD>
+  </tr>
+  <tr>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">+</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">То же</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Любой вещественный</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Extended</font></P></TD>
+  </tr>
+  <tr>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">+</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Объединение множеств</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Множественный</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Множественный</font></P></TD>
+  </tr>
+  <tr>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">+</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Сцепление строк</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Строковый</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Строковый</font></P></TD>
+  </tr>
+  <tr>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Вычитание</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Любой целый</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Наименьший целый</font></P></TD>
+  </tr>
+  <tr>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">То же</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Любой вещественный</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Extenden</font></P></TD>
+  </tr>
+  <tr>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">or</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Логическое ИЛИ</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Логический</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Логический</font></P></TD>
+  </tr>
+  <tr>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">or</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Тоже</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Любой целый</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Наименьший целый</font></P></TD>
+  </tr>
+  <tr>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">=</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Равно</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Любой простой или строковый</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Логический</font></P></TD>
+  </tr>
+  <tr>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">&lt;&gt;</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Не равно</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">То же</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">То же</font></P></TD>
+  </tr>
+  <tr>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">&lt;</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Меньше</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Логический</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Логический</font></P></TD>
+  </tr>
+  <tr>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">&lt;=</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Меньше или равно</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">То же</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">То же</font></P></TD>
+  </tr>
+  <tr>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">&gt;</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Больше</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">То же</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">То же</font></P></TD>
+  </tr>
+  <tr>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">&gt;=</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Больше или равно</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">То же</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">То же</font></P></TD>
+  </tr>
+  </TBODY></TABLE></center>
+<P><font face="Arial, Helvetica, sans-serif" size="3">При действиях с вещественным типом одним из операндов может быть значение 
+любого целого типа. Результат операций имеет указанный в таблице тип EXTENDED 
+только для установленного в среде Турбо Паскаля режима генерации кода, 
+рассчитанного на арифметический сопроцессор или на его эмуляцию (см. прил.1). 
+Если этот режим не установлен, результат будет иметь значение типа REAL.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Унарная операция @ применяется к операнду любого типа и возвращает результат 
+типа POINTER (см. гл.6), в котором содержится адрес операнда. Пусть, например, 
+задано описание</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TwoChar = array [1..2] of char; var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Int : integer; TwoCharPtr : ATwoChar;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Тогда оператор</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TwoCharPtr := @Int;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">приведет к тому, что в TwoCharPtr будет храниться адрес целочисленной 
+переменной INT, которая может теперь интерпретироваться как совокупность двух 
+символов. Поэтому возможен, например, такой оператор:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if TwoCharPtr^[1] = 'С' then...</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если операция @ применяется к процедуре, функции или методу в объекте, ее 
+результатом будет адрес точки входа в эту процедуру (функцию, метод). Этот адрес 
+можно использовать только в подпрограмме, написанной на ассемблере, или в 
+фрагментах INLINE.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В Турбо Паскале определены следующие логические операции:</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">not - логическое НЕ;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">and - логическое И;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">or - логическое ИЛИ;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">хоr - исключительное ИЛИ.&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Логические операции применимы к операндам целого и логического типов. Если 
+операнды - целые числа, то результат логической операции есть тоже целое число, 
+биты которого (двоичные разряды) формируются из битов операндов по правилам, 
+указанным в табл. 3.2.</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Таблица 3.2</font>
+</b> </P>
+<center>
+<TABLE border=1 frame=box rules=all >
+  <TBODY>
+  <TR>
+    <TD colSpan=6>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Логические операции над данными типа INTEGER (поразрядно)</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Операнд 1</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Операнд 2</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">not</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">and</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">or</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">xor</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">1</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">1</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">1</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">1</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">1</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">1</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">1</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">1</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">1</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">1</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">1</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">1</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD></TR></TBODY></TABLE>
+      </center>
+<P><font face="Arial, Helvetica, sans-serif" size="3">К логическим же в Турбо Паскале обычно относятся и две сдвиговые операции над 
+целыми числами:</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">i shl j - сдвиг содержимого i на j разрядов влево; освободившиеся младшие</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">     &nbsp;
+разряды заполняются нулями;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">i shr j - сдвиг содержимого i на j разрядов 
+вправо; освободившиеся старшие</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">     &nbsp;
+разряды заполняются нулями.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В этих операциях i и j - выражения любого целого типа.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">С помощью программы примера 3.1 можно вывести на экран результат применения 
+логических операций к двум целым числам.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><u>Пример 3.1</u></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">{Программа вводит два целых числа и печатает результат применения к ним 
+логических операций. Для выхода из программы ввести Ctrl-z и нажать Enter}&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">n,m : integer; begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">while not EOF do begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write('n,m='); ReadLn(n,m);</font> </P>
+<TABLE border=0 frame=box rules=all>
+  <TBODY>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn( '</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">not=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">1 , not n, 'not m);</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLnC</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">and=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">' , n and m)</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLnC</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">or =</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">1 , n or m) ;</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLnC</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">xor=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">1 , n xor m)</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn( '</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">shl=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">1 ,n shl m)</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn( '</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">shr=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">1 , n shr m)</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end</font></P></TD>
+    <TD><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD>
+    <TD><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR></TBODY></TABLE>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В программе организуется ввод двух произвольных целых чисел и печать 
+результата применения к ним всех логических операций. Для выхода из программы 
+следует нажать Ctrl-z, и Enter.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Логические операции над логическими данными дают результат логического типа 
+по правилам, указанным в табл. 3.3.</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Таблица 3.3</font>
+</b> </P>
+<center>
+<TABLE border=1 frame=box rules=all >
+  <TBODY>
+  <TR>
+    <TD colSpan=6  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Логические операции над данными типа Boolean</font></P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Операнд 1</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Операнд 2</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">not</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">and</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">or</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">xor</font></P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">True</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">False</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">False</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">True</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">False</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">False</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">False</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">False</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">False</font></P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">False</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">True</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">False</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">True</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">True</font></P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">True</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">False</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">False</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">True</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">True</font></P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">True</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">True</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">True</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">True</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">False</font></P></TD></TR></TBODY></TABLE>
+      </center>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Операция отношения IN применяется к двум операндам. Первым (левым) операндом 
+должно быть выражение любого порядкового типа, вторым - множество, состоящее из 
+элементов того же типа, или идентификатор множественного типа. Операция дает 
+TRUE, если левый операнд принадлежит множеству, например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">с: char; type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">digit = set of ' 0 '..' 9 ' ; begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if с in digit then .......</font> </P>
+
+<p>&nbsp;</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl3_3.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl3_5.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+</BODY></HTML>

@@ -1,0 +1,689 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Untitled</title>
+</head>
+<body  background="../../bgrwhite.gif">
+<p><div align="center"><b><font size="+1" face="Arial">Процедуры и функции работы с файлами </font></b></div></p>
+
+<div style='border:none;border-bottom:solid windowtext .75pt;padding:0cm 0cm 1.0pt 0cm'>
+
+<p class=MsoSubtitle style='border:none;mso-border-bottom-alt:solid windowtext .75pt;
+padding:0cm;mso-padding-alt:0cm 0cm 1.0pt 0cm'><span lang=EN-US
+style='font-size:10.0pt'>Модуль System</span><span style='font-size:10.0pt;
+mso-ansi-language:RU'><o:p></o:p></span></p>
+
+</div>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Procedure AssignFile(var
+F; </span></b><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>FileName</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>: </span></b><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>String</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>);<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Для избежания
+конфликтов, AssignFile заменяет стандартную процедуру </span><span lang=EN-US
+style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;layout-grid-mode:
+line'>Assign</span><span style='font-size:10.0pt;color:black;layout-grid-mode:
+line'> в Delphi. Однако для обратной совместимости вы можете использовать </span><span
+lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>Assign</span><span style='font-size:10.0pt;color:black;
+layout-grid-mode:line'>. Процедура AssignFile сопоставляет имя внешнего файла с
+файловой переменной.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>F - файловая
+переменная любого файлового типа, </span><span lang=EN-US style='font-size:
+10.0pt;color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>FileName</span><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'> - выражение типа </span><span
+lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>String</span><span style='font-size:10.0pt;color:black;
+layout-grid-mode:line'> или выражение типа PChar, если допускается расширенный
+синтаксис. Все дальнейшие операции с F производятся с внешним файлом.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Не используйте
+AssignFile с уже открытой файловой переменной.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Procedure CloseFile(var
+F);<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Из-за конфликтов
+наименования, процедура CloseFile заменяет стандартную процедуру </span><span
+lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>Close </span><span style='font-size:10.0pt;color:black;
+layout-grid-mode:line'>из Borland </span><span lang=EN-US style='font-size:
+10.0pt;color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>Pascal</span><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>. Используйте
+CloseFile чтобы разорвать связь между файловой переменной и внешним дисковым
+файлом и закрыть файл.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>F - файловая
+переменная любого файлового типа, открытая процедурами </span><span lang=EN-US
+style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;layout-grid-mode:
+line'>Reset, Rewrite </span><span style='font-size:10.0pt;color:black;
+layout-grid-mode:line'>или </span><span lang=EN-US style='font-size:10.0pt;
+color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>Append</span><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>. Внешний файл,
+связанный с F, полностью модифицируется и затем закрывается, освобождая
+дескриптор файла для повторного использования.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Директива {$I+}
+позволяет вам обрабатывать ошибки во время выполнения программы, используя
+обработку исключительных ситуаций.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>При выключенной
+директиве {$I-}, вы должны использовать IOResult для проверки ошибок ввода -
+вывода.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Function Eof(var F): </span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-bidi-font-family:"Times New Roman";color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>Boolean</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>;<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'>(типизированные или нетипизированные файлы)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Function Eof[(var F:
+Text)]: </span></b><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>Boolean</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>;<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'>(текстовые файлы)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Проверяет, является
+или нет текущая позиция файла концом файла.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Eof(F) возвращает </span><span
+lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>True</span><span style='font-size:10.0pt;color:black;
+layout-grid-mode:line'>, если текущая позиция файла находится за последним
+символом файла или если файл пуст; иначе, Eof (F) возвращает </span><span
+lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>False</span><span style='font-size:10.0pt;color:black;
+layout-grid-mode:line'>.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Директива {$I+}
+позволяет вам обрабатывать ошибки во время выполнения программы, используя
+обработку исключительных ситуаций.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>При выключенной
+директиве {$I-}, вы должны использовать IOResult для проверки ошибок ввода -
+вывода.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Procedure </span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-bidi-font-family:"Times New Roman";color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>Erase</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>(var F);<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Удаляет внешний
+файл, связанный с F.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>F - файловая
+переменная любого файлового типа.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Перед вызовом
+процедуры </span><span lang=EN-US style='font-size:10.0pt;color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>Erase</span><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>, файл необходимо закрыть.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Директива {$I+}
+позволяет вам обрабатывать ошибки во время выполнения программы, используя
+обработку исключительных ситуаций.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>При выключенной
+директиве {$I-}, вы должны использовать IOResult для проверки ошибок ввода -
+вывода.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Function </span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-bidi-font-family:"Times New Roman";color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>FileSize</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>(var F): Integer;<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Возвращает размер в
+байтах файла F. Однако, если F - типизированный файл, </span><span lang=EN-US
+style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;layout-grid-mode:
+line'>FileSize</span><span style='font-size:10.0pt;color:black;layout-grid-mode:
+line'> возвратит число записей в файле.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Перед использованием
+функции </span><span lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:
+EN-US;layout-grid-mode:line'>FileSize</span><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'>, файл должен быть открыт. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Если файл пуст, </span><span
+lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>FileSize</span><span style='font-size:10.0pt;color:black;
+layout-grid-mode:line'>(F) возвращает 0.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>F - переменная любого
+файлового типа.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Function FilePos(var F): </span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-bidi-font-family:"Times New Roman";color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>LongInt</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>;<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Возвращает текущую
+позицию файла внутри файла.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-align:justify'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Перед использованием
+функции FilePos, файл должен быть открыт. Функция </span><span lang=EN-US
+style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;layout-grid-mode:
+line'>FilePos</span><span style='font-size:10.0pt;color:black;layout-grid-mode:
+line'> не используется с текстовыми файлами.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>F - переменная
+любого файлового типа, кроме типа </span><span lang=EN-US style='font-size:
+10.0pt;color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>Text</span><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Procedure </span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-bidi-font-family:"Times New Roman";color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>Reset</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>(var F [: </span></b><b style='mso-bidi-font-weight:normal'><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>File</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>; RecSize: </span></b><b style='mso-bidi-font-weight:normal'><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>Word</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>]);<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Открывает
+существующий файл.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>F - переменная
+любого файлового типа, связанного с внешним файлом с помощью AssignFile.
+RecSize - необязательное выражение, которое используется, если F - нетипизированный
+файл. Если F - нетипизированный файл, RecSize определяет размер записи, который
+используется при передаче данных. Если RecSize опущен, заданный по умолчанию
+размер записи равен 128 байт.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Процедура </span><span
+lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>Reset</span><span style='font-size:10.0pt;color:black;
+layout-grid-mode:line'> открывает существующий внешний файл, ассоциированный с
+файловой переменной F. Если внешнего файла с таким именем нет, возникает ошибка
+времени выполнения. Если файл, связанный с F уже открыт, он сначала закрывается
+и затем вновь открывается. Текущая позиция файла устанавливается к началу
+файла.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Procedure </span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-bidi-font-family:"Times New Roman";color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>Rewrite</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>(var F: File [; Recsize: Word]);<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Создает и открывает
+новый файл.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>F - переменная
+любого файлового типа, связанного с внешним файлом с использованием
+AssignFile.RecSize - необязательное выражение, которое используется, если F -
+нетипизированный файл. Если F - нетипизированный файл, RecSize определяет
+размер записи, который используется при передаче данных. Если RecSize опущен,
+заданный по умолчанию размер записи равен 128 байт.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Процедура </span><span
+lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>Rewrite</span><span style='font-size:10.0pt;color:black;
+layout-grid-mode:line'> создает новый внешний файл с именем, связанным с F.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Если внешний файл с
+тем же самым именем уже существует, он удаляется, и создается новый пустой
+файл.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Procedure </span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-bidi-font-family:"Times New Roman";color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>Seek</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>(var F; N: </span></b><b style='mso-bidi-font-weight:normal'><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>LongInt</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>);<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Перемещает текущую
+позицию файла к определенному компоненту. Вы можете использовать процедуру
+только с открытыми типизированными или нетипизированными файлами.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Текущая позиция
+файла F перемещается к номеру N. Номер первого компонента файла - 0.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Инструкция Seek(F, </span><span
+lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>FileSize</span><span style='font-size:10.0pt;color:black;
+layout-grid-mode:line'>(F)) перемещает текущую позицию файла в конец файла.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Procedure </span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-bidi-font-family:"Times New Roman";color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>Append</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>(var </span></b><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>F</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>: </span></b><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>Text</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>);<o:p></o:p></span></b></p>
+
+<p class=MsoBodyText style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt'>Открывает существующий текстовый файл для добавления
+информации в конец файла (дозаписи).<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Если внешнего файла
+с данным именем не существует, происходит ошибка времени выполнения. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Если файл F уже
+открыт, он закрывается и вновь открывается. Текущая позиция файла устанавливается
+к концу файла.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Function Eoln[(var F: </span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-bidi-font-family:"Times New Roman";color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>Text</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>)]: </span></b><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>Boolean</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>;<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Проверяет, является
+ли текущая позиция файла концом строки текстового файла.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Eoln(F) возвращает </span><span
+lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>True</span><span style='font-size:10.0pt;color:black;
+layout-grid-mode:line'>, если текущая позиция файла - в конце строки или файла;
+иначе Eoln(F) возвращает </span><span lang=EN-US style='font-size:10.0pt;
+color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>False</span><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+mso-bidi-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>Procedure</span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+color:black;layout-grid-mode:line'> Read(F, V1 [, V2, ..., Vn]);<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'>(типизированные и нетипизированные файлы)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+mso-bidi-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>Procedure</span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+color:black;layout-grid-mode:line'> Read([var F: </span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-bidi-font-family:"Times New Roman";color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>Text</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>;] V1 [, V2, ..., Vn]);<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'>(текстовые файлы)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Для типизированных
+файлов процедура читает компонент файла в переменную. При каждом считывании
+текущая позиция в файле продвигается к следующему элементу.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Для текстовых файлов
+читается одно или несколько значений в одну или несколько переменных.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>С переменными типа </span><span
+lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>String<b style='mso-bidi-font-weight:normal'> </b>Read</span><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'> считывает все
+символы вплоть до следующей метки конца строки (но не включая ее), или пока
+функция Eof(F) не примет значение </span><span lang=EN-US style='font-size:
+10.0pt;color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>True</span><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>. Переменной
+присваивается получившаяся в результате символьная строка.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>В случае переменной
+целого или вещественного типа процедура ожидает поступления последовательности
+символов, образующих число по правилам синтаксиса языка </span><span
+lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>Object Pascal</span><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'>. Считывание прекращается при обнаружении
+первого пробела, символа табуляции или метки конца строки, или в том случае,
+если функция </span><span lang=EN-US style='font-size:10.0pt;color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>Eof(F)</span><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'> принимает значение </span><span
+lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>True</span><span style='font-size:10.0pt;color:black;
+layout-grid-mode:line'>. Если числовая строка не соответствует ожидаемому
+формату, то происходит ошибка ввода-вывода.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Procedure Readln([var F: </span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-bidi-font-family:"Times New Roman";color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>Text</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>;] V1 [, V2, ..., Vn]);<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Является расширением
+процедуры </span><span lang=EN-US style='font-size:10.0pt;color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>Read</span><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'> и определена для
+текстовых файлов. Считывает строку символов в файле (включая маркер конца
+строки) и переходит к началу следующей строки. Вызов функции </span><span
+lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>Readln(F)</span><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'> без параметров приводит к перемещению
+текущей позиции файла на начало следующей строки, если она имеется, в противном
+случае происходит переход к концу файла.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Function SeekEof[(var F: </span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-bidi-font-family:"Times New Roman";color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>Text</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>)]: </span></b><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>Boolean</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>;<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Возвращает признак
+конца файла и может использоваться только для открытых текстовых файлов. Обычно
+применяется для считывания числовых значений из текстовых файлов.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Function SeekEoln[(var F: </span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-bidi-font-family:"Times New Roman";color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>Text</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>)]: </span></b><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>Boolean</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>;<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Возвращает признак
+конца строки в файле и может использоваться только для открытых текстовых
+файлов. Обычно применяется для считывания числовых значений из текстовых
+файлов.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Procedure </span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-bidi-font-family:"Times New Roman";color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>Write</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>([var F: </span></b><b style='mso-bidi-font-weight:normal'><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>Text</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>;] P1 [, P2, ..., Pn]);<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'>(текстовые файлы)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Записывает одну или
+более величин в текстовый файл.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Каждый параметр
+записи должен иметь тип Char, один из целочисленных типов (</span><span
+lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>Byte</span><span style='font-size:10.0pt;color:black;
+layout-grid-mode:line'>, </span><span lang=EN-US style='font-size:10.0pt;
+color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>ShortInt, Word,
+LongInt, Cardinal</span><span style='font-size:10.0pt;color:black;layout-grid-mode:
+line'>), один из типов с плавающей запятой (</span><span lang=EN-US
+style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;layout-grid-mode:
+line'>Single</span><span style='font-size:10.0pt;color:black;layout-grid-mode:
+line'>, Real, </span><span lang=EN-US style='font-size:10.0pt;color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>Double</span><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>, Extended, </span><span
+lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>Currency</span><span style='font-size:10.0pt;color:black;
+layout-grid-mode:line'>), один из строковых типов (PChar, AnsiString,
+ShortString), или одного из логических типов (</span><span lang=EN-US
+style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;layout-grid-mode:
+line'>Boolean</span><span style='font-size:10.0pt;color:black;layout-grid-mode:
+line'>, Bool).<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Procedure </span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-bidi-font-family:"Times New Roman";color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>Write</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>(F, V1, ..., Vn);<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'>(типизированные файлы)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Записывает
+переменную в компонент файла. Переменные </span><span lang=EN-US
+style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;layout-grid-mode:
+line'>V1,...,Vn</span><span style='font-size:10.0pt;color:black;layout-grid-mode:
+line'> должны быть того же типа, что и элементы файла. При каждой записи переменной
+текущая позиция в файле передвигается к следующему элементу.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Procedure Writeln([var F: </span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-bidi-font-family:"Times New Roman";color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>Text</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>;] P1 [, P2, ..., Pn]);<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'>(текстовые файлы)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Выполняет операцию </span><span
+lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>Write</span><span style='font-size:10.0pt;color:black;
+layout-grid-mode:line'>, затем помещает метку конца строки в файл.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Вызов Writeln(F) без
+параметров записывает в файл маркер конца строки.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Файл должен быть
+открыт для вывода.<o:p></o:p></span></p>
+
+<p><div align="center"><a href="../Object Pascal.htm">	<img src="../../soder.gif" width=120 height=31 border=0 alt=""></a></div></p>
+
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl11_3.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl11_5.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Запуск внешних программ
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Из программы, написанной на Турбо Паскале, можно запустить любую другую 
+готовую к работе программу. Для этого используется процедура ЕХЕС из 
+библиотечного модуля DOS. Формат обращения к процедуре:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ЕХЕС (&lt;имя&gt;,&lt;параметры&gt;)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь &lt;имя&gt; - выражение типа STRING; имя файла с вызываемой программой; 
+&lt;параметры&gt; - выражение типа STRING; параметры вызова.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Имени запускаемой программы может предшествовать путь к файлу. Параметры 
+передаются запускаемой программе в виде текстовой строки и могут быть 
+проанализированы ею с помощью двух следующих функций.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция </b>PARAMCOUNT. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возвращает общее количество параметров вызова программы 
+(значение типа WORD). Обращение:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PARAMCOUNT</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Параметры вызова обычно следуют в командной строке ДОС сразу за именем 
+вызываемой программы и отделяются от этого имени и друг от друга пробелами, 
+например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">C:\TP\TURBO MYPROG.PAS&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">C:\SIAM A:\SYSTEM1.SIA</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь MYPROG.PAS и A:\SYSTEM1.SIA - параметры, передаваемые программам TURBO 
+и SIAM.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">При вызове программы непосредственно из среды Турбо Паскаля ей можно передать 
+параметры с помощью опции OPTIONS/PARAMETERS (см. прил.1).</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция</b> PARAMSTR. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возвращает значение типа STRING, соответствующее нужному 
+параметру вызова. Формат обращения:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PARAMSTR (&lt;D&gt;)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь &lt;D&gt; - выражение типа WORD; порядковый номер параметра.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Заметим, что программе всегда передается параметр, соответствующий N = 0. В 
+этом параметре ДОС сообщает полное имя запущенной программы с указанием диска и 
+каталога, откуда она была загружена.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Использование процедуры ЕХЕС имеет ряд особенностей. Прежде всего необходимо 
+отметить, что сама вызывающая программа остается резидентной в памяти, поэтому 
+она не должна занимать всю оперативную память. Объем выделяемой программе памяти 
+регулируется опцией OPTIONS/MEMORY SIZES (см. прил.1). По умолча</font><font face="Arial, Helvetica, sans-serif" size="3">нию параметры LOW HEAP LIMIT и HIGH HEAP LIMIT этой опции таковы 
+(соответственно 0 и 655360 байт), что вызывающая программа, написанная на Турбо 
+Паскале, занимает весь доступный объем памяти, и вызываемая программа не будет 
+загружена. Полезно включить в текст вызывающей программы директиву компилятора, 
+в которой изменяются принятые по умолчанию размеры памяти. Например, так:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{$М 2048, 0, 0}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Такая директива ограничивает используемую программой область стека величиной 
+2 Кбайта и исключает возможность использования в ней динамической памяти. 
+Разумеется, Вы можете установить и другие значения параметров в этой директиве.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Специфические особенности исполнения программ Турбо Паскаля требуют изменения 
+стандартных значений некоторых векторов прерываний. К ним относятся векторы со 
+следующими шестнадцатеричными номерами:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">$00, $02, $18, $23, $24, $34, $35, $36, $37,&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> $38, $39, $ЗА, $ЗВ, $ЗС, $3D, 
+$3E, $3F, $75.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Начальные значения этих векторов сохраняются в восемнадцати переменных с 
+именами SA VEINTXX из библиотечного модуля SYSTEM, где XX - шестнадцатеричный 
+номер прерывания. Поэтому непосредственно перед запуском внешней программы и 
+сразу после возврата из нее рекомендуется вызывать библиотечную процедуру без 
+параметров SWAPVECTORS, которая обменивает содержимое векторов прерывания и 
+перечисленных переменных.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Программа из примера 11.4 читает с клавиатуры любую команду ДОС, затем 
+вызывает командный процессор COMMAND. COM операционной системы и передает ему 
+эту команду.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Обратите внимание: для указания файла COMMAND.COM и пути к нему используется 
+обращение к библиотечной функции GETENV, с помощью которой можно получить 
+параметры настройки операционной системы. В частности, параметр COMSPEC 
+определяет спецификацию файла, содержащего командный процессор.</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Пример 11.4&nbsp;</font>
+</b> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{$М 1024, 0, 0}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Uses DOS;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">st : string [79];&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">write ('Введите команду ДОС: ');&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">readln (st); if st &lt;&gt; '' then&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">st := '/C '+st;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SwapVectors;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Exec (GetEnv ('COMSPEC'), st) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> SwapVectors&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция </b>ENVCOUNT.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возвращает значение типа INTEGER, в котором содержится 
+общее количество установленных в ДОС параметров. Обращение:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ENVCOUNT</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция </b>ENVSTR.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возвращает значение типа STRING, содержащее имя и значение 
+нужного параметра настройки операционной системы. Формат обращения:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ENVSTR (&lt;D&gt;)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь &lt;D&gt; - выражение типа INTEGER; номер параметра.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Эта функция возвращает строку типа NAME-VALUE, где NAME - имя, a VALUE 
+-значение соответствующего параметра настройки.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция</b> GETENV.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возвращает значение типа STRING, в котором содержится 
+параметр настройки ДОС. Формат обращения:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GETENV (&lt;имя&gt;)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь &lt;имя&gt; - выражение типа STRING; имя параметра.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Эта функция имеет параметр обращения NAME, а возвращает значение VALUE (см. 
+функцию ENVSTR).</font> </P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl11_3.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl11_5.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

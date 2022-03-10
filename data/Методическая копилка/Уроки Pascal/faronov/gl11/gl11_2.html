@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl11_1.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl11_3.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Обращения к функциям операционной системы
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Турбо Паскаль предоставляет программисту практически неограниченные 
+возможности использования любых функций стандартной операционной системы MS-DOS. 
+При внимательном анализе материала этой книги Вы, очевидно, заметите, что 
+значительную его часть составляет описание многочисленных библиотечных процедур 
+и функций. Собственно язык Паскаль весьма прост и лаконичен, что, по мнению 
+многих специалистов, и послужило одной из причин его широкого распространения. 
+Библиотечные же процедуры и функции, в своей значительной части, являются, по 
+существу, своеобразным интерфейсом между языковыми средствами Турбо Паскаля и 
+функциями операционной системы. Разумеется, можно только приветствовать усилия 
+разработчиков Турбо Паскаля по созданию мощных библиотек
+TURBO.TPL и GRAPH.TPU, однако ясно, что таким способом невозможно запрограммировать все допустимые 
+обращения к средствам ДОС. Вот почему в Турбо Паскаль включены две процедуры, с</font>
+<font face="Arial, Helvetica, sans-serif" size="3">помощью которых программист может сам сформировать вызов той или иной функции 
+дисковой операционной системы (ДОС).</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Следует учесть, что единственным механизмом обращения к функциям ДОС является 
+инициация программного прерывания. Прерывание - это особое состояние 
+вычислительного процесса. В момент прерывания нарушается нормальный порядок 
+выполнения команд программы и управление передается специальной процедуре, 
+которая входит в состав ДОС и называется процедурой обработки прерывания. Каждое 
+прерывание характеризуется в рамках ДОС порядковым номером и связано со своей 
+процедурой обработки. В архитектуре центрального процессора ПК предусмотрены 
+прерывания двух типов - аппаратные и программные. Аппаратные прерывания 
+создаются схемами контроля и управления ПК и сигнализируют операционной системе 
+о переходе какого-либо устройства в новое состояние или о возникновении 
+неисправности. Программные прерывания инициируются при выполнении одной из двух 
+специальных команд микропроцессора (INT или INTO) и служат для обращения к 
+средствам ДОС.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Описываемые ниже процедуры входят в состав библиотечного модуля DOS.TPU и 
+становятся доступными после объявления USES DOS. При возникновении программного 
+прерывания в большинстве случаев необходимо передать процедуре обработки 
+прерывания некоторые параметры, в которых конкретизируется запрос нужной 
+функции. Эти параметры, а также выходная информация (результат обработки 
+прерывания) передаются от программы к процедуре и обратно через регистры 
+центрального процессора. В составе модуля DOS.TPU для этих целей определен 
+специальный тип:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Registers = record case integer of</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">0 : (AX, BX, CX, BP, SI, DI, DS, ES, Flags :
+word);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 1 : (AL, AH, BL, BH, CL, 
+CH, DL, DH : byte)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end ;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Этот тип имитирует регистры центрального процессора и дает возможность 
+обращаться к ним как к 16-битным или 8-битным регистрам.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Процедура INTR. С помощью этой процедуры инициируется программное прерывание 
+с требуемым номером. Обращение:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">INTR (&lt;N&gt;,&lt;регистры&gt;)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь &lt;N&gt; - выражение типа BYTE; номер прерывания;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">&lt;регистры&gt; - переменная типа REGISTERS; в этой переменной процедуре 
+обработки прерывания передается содержимое регистров и в ней же возвращается 
+выходная информация.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Например, прерывание с номером 18 ($12) возвращает в регистре АХ объем 
+оперативной памяти ПК. Короткая программа, представленная в примере 11.1, 
+выведет на экран сообщение об этом объеме.</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Пример 11.1.&nbsp;</font>
+</b> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Uses DOS;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">r : registers;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Intr ($12, r);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> writeln ('Объем памяти = ',r.AX, ' Кбайт')</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Процедура MSDOS. Инициирует прерывание с номером 33 ($21). Формат обращения:</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MSDOS (&lt;регистры&gt;)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Программное прерывание с номером 33 ($21) стоит особняком, так как оно дает 
+доступ к большому количеству функций ДОС (этим прерыванием вызывается 85 
+функций). Рассматриваемая процедура полностью эквивалентна вызову процедуры INTR 
+с номером прерывания 33. Например, следующая программа (пример 11.2) выведет на 
+экран версию операционной системы:</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Пример 11.2&nbsp;</font>
+</b> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Uses DOS;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">r : registers;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">r.АН := $30;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MsDos(r);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn('Версия операционной системы: ',</font>
+<font size="3">r.AL, '.' r.АН)&nbsp;</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl11_1.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl11_3.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

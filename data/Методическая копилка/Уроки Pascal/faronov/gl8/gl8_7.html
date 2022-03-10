@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl8_6.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl8_8.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Рекурсия и опережающее описание
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">Рекурсия - это такой способ организации вычислительного процесса, при котором 
+подпрограмма в ходе выполнения составляющих ее операторов обращается сама к 
+себе.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Рассмотрим классический пример - вычисление факториала (пример 18). Программа 
+вводит с клавиатуры целое число N и выводит на экран значение
+N!, которое 
+вычисляется с помощью рекурсивной функции РАС. Для выхода из программы 
+необходимо либо ввести достаточно большое целое число, чтобы вызвать 
+переполнение при умножении чисел с плавающей запятой, либо нажать
+ Ctrl-Z и Enter.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">При выполнении правильно организованной рекурсивной подпрограммы осущест</font><font face="Arial, Helvetica, sans-serif" size="3">вляется многократный переход от некоторого текущего уровня организации 
+алгоритма</font> <font face="Arial, Helvetica, sans-serif" size="3">к нижнему уровню последовательно до тех пор, пока, наконец, не будет получено</font>
+<font face="Arial, Helvetica, sans-serif" size="3">тривиальное решение поставленной задачи. В примере 8.5 решение при N = 0 
+триви</font><font face="Arial, Helvetica, sans-serif" size="3">ально и используется для остановки рекурсии.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><u>Пример 8.5</u></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Program Factorial;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{$S+} {Включаем контроль переполнения стека}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">n: Integer;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function Facfn: Integer): Real;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Рекурсивная функция, вычисляющая n ! }&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin  
+{Fac}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;if n &lt; 0 then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn ('Ошибка в задании N')&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if n = 0 then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Fac := 1</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">else Fac := n * Fac(n-l)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end  {Fac} ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{---------------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin {main} repeat</font> </P>
+<P>&nbsp; </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn (n) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> WriteLn ('n!= ',Fac(n))&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> until EOF&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end {main} .</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Рекурсивная форма организации алгоритма обычно выглядит изящнее итерационной 
+и дает более компактный текст программы, но при выполнении, как правило, 
+медленнее и может вызвать переполнение стека (при каждом входе в подпрограмму ее 
+локальные переменные размещаются в особым образом организованной области памяти, 
+называемой программным стеком). Переполнение стека особенно ощутимо сказывается 
+при работе с сопроцессором: если программа использует арифметический 
+сопроцессор, результат любой вещественной функции возвращается через аппаратный 
+стек сопроцессора, рассчитанный всего на 8 уровней. Если, например, попытаться 
+заменить тип REAL функции FAC (см. пример 8.5) на EXTENDED, программа перестанет 
+работать уже при N = 8. Чтобы избежать переполнения стека сопроцессора, следует 
+размещать промежуточные результаты во вспомогательной переменной. Вот правильный 
+вариант примера 8.5 для работы с типом EXTENDED:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Program Factorial;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{$S+,N+,E+} {Включаем контроль Стека и работу сопроцессора}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">n: Integer;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function Fac(n: Integer): extended;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">F: extended;  {Буферная переменная</font>
+<font size="3">для разгрузки стека сопроцессора}</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Рекурсивная функция, вычисляющая п! }&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin {Рас}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if n &lt; 0 then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn ('Ошибка в задании N') else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if n = 0 then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Fac := 1 else begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">F := Fac(n-l) ; Fac := F * n end end {Fac} ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{--------------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin {main}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> repeat</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn (n) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn ('n! = ',Fac(n))&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> until EOF&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end  {main} .</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Рекурсивный вызов может быть косвенным. В этом случае подпрограмма обращается 
+к себе опосредованно, путем вызова другой подпрограммы, в которой содержится 
+обращение к первой, например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure A (i : Byte) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">В (i);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure В (j : Byte) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">A(j);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если строго следовать правилу, согласно которому каждый идентификатор перед 
+употреблением должен быть описан, то такую программную конструкцию использовать 
+нельзя. Для того, чтобы такого рода вызовы стали возможны, вводится опережающее 
+описание:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure В(j : Byte); forward;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure A(i : Byte);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">В (i) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P></P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure В;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">A(j);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Как видим, опережающее описание заключается в том, что объявляется лишь 
+заголовок процедуры В, а ее тело заменяется стандартной директивой FORWARD. 
+Теперь в процедуре А можно использовать обращение к процедуре В - ведь она уже 
+описана, точнее, известны ее формальные параметры, и компилятор может правильным 
+образом организовать ее вызов. Обратите внимание: тело процедуры В начинается 
+заголовком, в котором уже не указываются описанные ранее формальные параметры.</font> 
+</P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl8_6.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl8_8.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

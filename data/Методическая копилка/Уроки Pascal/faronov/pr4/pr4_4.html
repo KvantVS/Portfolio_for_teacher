@@ -1,0 +1,257 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr4_3.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr4_5.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Модуль DOS
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Модуль Dos реализует ряд очень полезных программ операционной системы и 
+обработки файлов. Ни одна из программ модуля Dos не определена в стандартом 
+Паскале и поэтому они размещены в собственном модуле.</font> </P>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Константы
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>Константы регистра флагов</i></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Следующие константы используются для проверки отдельных битов флага в 
+регистре Flags после вызова Intr или MSDOS:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">FCarry= $0001;&nbsp;&nbsp; FAuxiliary = $0010; FSign = $0080;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">FParity= $0004;&nbsp; FZero = 
+$0040;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FOverFlow = $0800;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>Константы режима доступа к файлу</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">fmClosed =$D7BO; <i> {Маска режима файл закрыт}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">fmInput =$D7B1; <i> {Маска режима открыт для чтения}</i><b>&nbsp;</b></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> fmOutput =$D7B2; <i> {Маска 
+режима открыт для записи}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">fmInOut =$D7B3; <i> {Маска режима открыт для чтения и записи}</i></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>Константы атрибутов файла</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Readonly = $01;<i>{Маска только для чтения}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Hidden = $02;<i>{Маска скрытого файла}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SysFile = $04;<i>{Маска системного файла}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> VolumelD = $08;<i>{Маска заголовка тома}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+Directory= $10;<i>{Маска каталога}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Archive = $20;<i>{Маска архивного, файла}&nbsp;</i></font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> AnyFile = $3F;<i>{Маска любого файла}</i></font> 
+</P>
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Типы
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Типизированные и нетипизированные файлы}&nbsp;</font></i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> FileRec = record&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Handle : Word;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+Mode : Word;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> RecSize : Word;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Private : array [1..6] of Byte;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> UserData : array [1..16] of Byte;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Name : array [0..79] of Char;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Текстовые файлы}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> TextBuf = array [0..127] of Char;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TextRec = record</font> </P>
+<TABLE border=0 frame=box rules=all>
+  <TBODY>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Handle</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Word;</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Mode</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Word;</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">BufSize</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Word;</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Private</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Word;</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">BufPos</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Word;</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">BufEnd</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Word;</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">BufPtr</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">^TextBuf ;</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OpenFunc</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Pointer;</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InOutFunc</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Pointer;</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">FlushFunc</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Pointer;</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">CloseFunc</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Pointer;</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">UserData</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">array [1..16] of Byte;</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Name</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">array [0..79] of Char;</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Buffer</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TextBuf ;</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font></P></TD>
+    <TD><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR></TBODY></TABLE>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Registers = record&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> case Integer of</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">0: (AX, BX, CX, DX, BP, SI, DI, DS, ES,
+Flags: Word);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">1: (AL, AH, BL, BH, CL, CH, DL, DH: Byte);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DataTime = record</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Year, Month, Day, Hour, Min, Sec: Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SearchRec = record</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">File: array [1..21] of Byte;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Attr: Byte;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Time: Longlnt;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Size: Longlnt;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Name: String [12] ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DirStr = String [67];<i>{Диск и каталог}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NarneStr = String [8] ;<i>{Имя файла}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ExtStr = String [4];<i>{Расширение файла}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ComStr = String [127] ;<i>{Командная строка}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PathStr = String [79];<i>{Полный маршрут поиска файла}</i></font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr4_3.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr4_5.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+</BODY></HTML>

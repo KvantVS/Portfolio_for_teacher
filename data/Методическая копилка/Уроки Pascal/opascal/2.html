@@ -1,0 +1,230 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Untitled</title>
+</head>
+
+<body  background="../../bgrwhite.gif">
+<p><div align="center"><b><font size="+1" face="Arial">Строковые процедуры и функции </font></b></div></p>
+
+<div style='border:none;border-bottom:solid windowtext .75pt;padding:0cm 0cm 1.0pt 0cm'>
+
+<p class=MsoSubtitle style='border:none;mso-border-bottom-alt:solid windowtext .75pt;
+padding:0cm;mso-padding-alt:0cm 0cm 1.0pt 0cm'><span style='font-size:10.0pt;
+mso-ansi-language:RU'>Модуль</span><span lang=EN-US style='font-size:10.0pt'>
+System</span><span style='font-size:10.0pt;mso-ansi-language:RU'><o:p></o:p></span></p>
+
+</div>
+
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+color:black;layout-grid-mode:line'>Function </span></b><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+mso-bidi-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>Copy</span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+color:black;layout-grid-mode:line'>(S: </span></b><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+mso-bidi-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>String</span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+color:black;layout-grid-mode:line'>; </span></b><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+mso-bidi-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>Index</span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+color:black;layout-grid-mode:line'>, </span></b><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+mso-bidi-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>Count</span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+color:black;layout-grid-mode:line'>: Integer): </span></b><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+mso-bidi-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>String</span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+color:black;layout-grid-mode:line'>;<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Возвращает подстроку
+строки.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>S - выражение типа </span><span
+lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>String</span><span style='font-size:10.0pt;color:black;
+layout-grid-mode:line'>. </span><span lang=EN-US style='font-size:10.0pt;
+color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>Index</span><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'> и </span><span
+lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>Count</span><span style='font-size:10.0pt;color:black;
+layout-grid-mode:line'> - выражения целого типа. Функция возвращает строку,
+содержащую Count символов, начинающихся с позиции </span><span lang=EN-US
+style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;layout-grid-mode:
+line'>Index</span><span style='font-size:10.0pt;color:black;layout-grid-mode:
+line'>. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Если </span><span
+lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>Index</span><span style='font-size:10.0pt;color:black;
+layout-grid-mode:line'> больше, чем длина S, функция возвращает пустую строку. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Procedure </span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-bidi-font-family:"Times New Roman";color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>Delete</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>(var S: </span></b><b style='mso-bidi-font-weight:normal'><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>String</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>; </span></b><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>Index</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>, Count:Integer);<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Удаляет подстроку
+символов длиной Count из строки S, начиная с позиции </span><span lang=EN-US
+style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;layout-grid-mode:
+line'>Index</span><span style='font-size:10.0pt;color:black;layout-grid-mode:
+line'>.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>S - переменная типа </span><span
+lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>String</span><span style='font-size:10.0pt;color:black;
+layout-grid-mode:line'>. </span><span lang=EN-US style='font-size:10.0pt;
+color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>Index</span><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'> и </span><span
+lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>Count</span><span style='font-size:10.0pt;color:black;
+layout-grid-mode:line'> - выражения целого типа. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Если </span><span
+lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>Index</span><span style='font-size:10.0pt;color:black;
+layout-grid-mode:line'> больше, чем длина S, символы не удаляются.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+color:black;layout-grid-mode:line'>Procedure </span></b><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+mso-bidi-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>Insert</span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+color:black;layout-grid-mode:line'>(Source: </span></b><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+mso-bidi-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>String</span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+color:black;layout-grid-mode:line'>; var S: </span></b><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+mso-bidi-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>String</span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+color:black;layout-grid-mode:line'>; Index: Integer);<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Объединяет подстроку
+в строку, начиная с определенной позиции.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>Source</span><span style='font-size:10.0pt;color:black;
+layout-grid-mode:line'> - выражение типа </span><span lang=EN-US
+style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;layout-grid-mode:
+line'>String</span><span style='font-size:10.0pt;color:black;layout-grid-mode:
+line'>. S - переменная типа String любой длины. Index - выражение целочисленного
+типа.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>Insert</span><span style='font-size:10.0pt;color:black;
+layout-grid-mode:line'> вставляет </span><span lang=EN-US style='font-size:
+10.0pt;color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>Source</span><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'> в S, начиная с
+позиции S[</span><span lang=EN-US style='font-size:10.0pt;color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>Index</span><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>].<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Function </span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-bidi-font-family:"Times New Roman";color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>Length</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>(S: </span></b><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>String</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>): Integer;<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Возвращает число
+символов, фактически используемое в строке S.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Обратите внимание:
+при использовании строк с нуль-окончанием, число символов не обязательно равно
+числу байтов.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Function Pos(Substr: </span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-bidi-font-family:"Times New Roman";color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>String</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>; S: </span></b><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>String</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>): Integer;<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Ищет подстроку в
+строке.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Pos ищет Substr внутри
+S и возвращает целочисленное значение, которое является индексом первого
+символа Substr внутри S.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Если Substr не
+найден, Pos возвращает ноль.<o:p></o:p></span></p>
+<p><div align="center"><a href="../Object Pascal.htm">	<img src="../../soder.gif" width=120 height=31 border=0 alt=""></a></div></p>
+</body>
+</html>

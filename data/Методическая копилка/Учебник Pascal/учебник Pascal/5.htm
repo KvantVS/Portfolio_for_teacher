@@ -1,0 +1,127 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+   <META NAME="Author" CONTENT="DimichG">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.04 [en] (Win95; I) [Netscape]">
+   <TITLE>ЧАСТЬ 5</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<CENTER><B><FONT SIZE=+2>5. <FONT FACE="Times New Roman">Массивы.</FONT></FONT></B></CENTER>
+
+<CENTER>
+<HR WIDTH="100%"></CENTER>
+
+
+<P><B><FONT SIZE=+1>Массив<I> </I></FONT></B>- это структурированный тип
+данных, который используется для описания упорядоченной совокупности фиксированного
+числа элементов одного типа, имеющих общее имя. Для обозначения элементов
+массива используются имя переменной-массива и индекс.
+
+<P><FONT FACE="Arial Cyr"><FONT COLOR="#800000"><B>Type &lt; </B>имя типа
+массив <B>> = Array [ &lt;</B>тип индекса<B>>] Of &lt; </B>тип элементов
+<B>><FONT SIZE=+1>;</FONT></B></FONT></FONT><FONT FACE="Arial Cyr"><FONT COLOR="#800000"></FONT></FONT>
+
+<P><FONT FACE="Arial Cyr"><FONT COLOR="#800000"><B>Var &lt; </B>имя переменной
+<B>> <FONT SIZE=+1>: </FONT>&lt; </B>имя типа массив <B>>;</B></FONT></FONT><FONT FACE="Arial Cyr"><FONT COLOR="#000099"></FONT></FONT>
+
+<P>&nbsp;&nbsp;&nbsp; &lt; тип индекса > - перечисляемый, логический, символьный,
+диапазон
+
+<P>Поскольку тип массив относится к стандартным типам языка Паскаль, то
+он может быть использован в описаниях переменных и без определения для
+него специального имени в разделе описания типов.<FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT FACE="Arial Cyr"><FONT COLOR="#800000"><B>Var &lt; </B>имя переменной
+<B>> <FONT SIZE=+1>:</FONT> Array [ &lt; </B>тип индекса <B>> ] Of &lt;
+</B>тип элементов <B>><FONT SIZE=+1>;</FONT></B></FONT></FONT>
+
+<P><FONT FACE="Times New Roman">Массивы обычно используются в тех программах,
+где требуется сохранять во время выполнения программы в памяти ЭВМ некоторую
+совокупность величин одного типа. Например, это требуется для задач, алгоритмы
+решения для которых предполагают неоднократное обращение к элементам заданной
+последовательности.</FONT>
+<BR><FONT FACE="Times New Roman">Кроме того, массивы часто используются
+и в тех случаях, когда для решения задачи достаточно однократного использования
+каждого элемента последовательности и, следовательно, нет необходимости
+хранить все элементы в памяти ЭВМ. Примерами таких задач являются все задачи
+с последовательностями из предыдущего параграфа.</FONT>
+
+<P><B><FONT FACE="Times New Roman">Пример</FONT></B>.</FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Times New Roman">Дана последовательность
+из </FONT><I>n</I><FONT FACE="Times New Roman"> вещественных чисел. Упорядочить
+ее элементы по возрастанию.</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Times New Roman">&nbsp;&nbsp;&nbsp;
+Решение: рассмотрим&nbsp; <B><I>метод сортировки выбором.</I></B></FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Times New Roman">&nbsp;&nbsp;&nbsp;
+Отыскивается максимальный элемент и переносится в конец массива; затем
+этот метод применяется ко всем элементам, кроме последнего (он уже находится
+на своем окончательном месте), и т.д.</FONT><FONT FACE="Courier New"><FONT SIZE=+1>&nbsp;</FONT></FONT></FONT><FONT COLOR="#666600"></FONT>
+
+<P><FONT COLOR="#006600"><FONT FACE="Courier New">Program SortCase;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">Const n=10;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">Type mas:Array[1..n]
+Of Real;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">Var&nbsp;&nbsp;&nbsp;&nbsp;
+x : Mas;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; i,j,m
+: Integer;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+r : Real;</FONT></FONT><FONT COLOR="#666600"></FONT>
+
+<P><FONT COLOR="#006600"><FONT FACE="Courier New">Begin</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; {ввод
+элементов массива}</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; For
+i:=1 To n Do Readln(x[i]);</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; For
+j:=n Downto 2 Do</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Begin {поиск <I>m</I>-номера <I>max x[1..j]</I></FONT>}</FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+m:=1;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New Cyr">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+For i:=2 To j Do If x[i]>x[m] Then m:=i;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{перестановка элементов<I> x[m]</I> и <I>x[j]</I></FONT>}</FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+r:=x[j]; x[j]:=x[m]; x[m]:=r</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+End;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;
+{вывод элементов упорядоченного массива}</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;
+For i:=1 To n Do Writeln(x[i])</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New,Courier">End.</FONT></FONT>
+
+<P><A NAME="5_1"></A><B>5.1. Одномерные массивы.</B>
+<BR>Использованный в описанном выше примере массив относится к тому виду
+массивов, элементы которых имеют простой тип (целый, вещественный, логический
+и т.д.). Для указания конкретного элемента массива используется один индекс.
+Такие массивы называют <B><I>одномерными.</I></B>
+<BR>&nbsp;
+
+<P><A NAME="5_2"></A><B>5.2. Многомерные массивы.</B>
+<BR>Элементы массива не обязательно должны иметь простой тип, но и сами
+могут являться массивами, например:<FONT COLOR="#006600"></FONT>
+
+<P><FONT COLOR="#006600"><FONT FACE="Courier New">Type mas=Array[1..10]
+Of Array[1..20] Of Integer;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">Var A:mas;</FONT></FONT>
+
+<P>Тогда<FONT SIZE=+1><FONT FACE="Times New Roman">&nbsp; </FONT><B><FONT FACE="Courier,Courier New">A[i][j]</FONT></B></FONT>-
+это<B><FONT FACE="Times New Roman"><FONT SIZE=+1> </FONT></FONT><I>j<FONT SIZE=+1>
+</FONT></I></B>-ый элемент<B> <I>i </I></B>-го элемента массива <B>A</B>.
+В языке Паскаль такие конструкции можно записывать в более короткой форме.
+
+<P><FONT COLOR="#006600"><FONT FACE="Courier New">Type mas=Array[1..10,1..20]
+Of Integer</FONT></FONT>
+<BR><FONT FACE="Times New Roman">и указывать элемент массива такого типа
+в виде </FONT><FONT FACE="Courier,Courier New">A[i,j].</FONT><FONT FACE="Times New Roman">
+Т.к. здесь используется два индекса для задания элементов, то массив называют
+<B><I>двумерным.</I></B></FONT>
+<BR><FONT FACE="Times New Roman">В общем случае можно использовать и <B><I>r
+- мерные массивы</I></B>. Двумерные массивы являются той структурой данных,
+которая наиболее естественна для задач с матрицами.</FONT>
+</BODY>
+</HTML>

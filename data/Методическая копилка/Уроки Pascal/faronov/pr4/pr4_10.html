@@ -1,0 +1,237 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr4_9.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr4_11.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Переменные
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GraphGetMemPrt : Pointer;<i>{Распределение кучи}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> GraphFreeMemPrt: 
+Pointer;<i>{Освобождение кучи}</i></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Эти переменные указывают на программы управления кучей модуля Graph. Если 
+Ваша программа использует собственный алгоритм управления памятью, присвойте 
+адреса Ваших программ распределения и освобождения памяти переменным 
+GraphGetMemPrt и GraphFreeMemPrt.</font> </P>
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Процедуры
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Arc(X, Y: Integer; StAngle, EndAngle, Radius: Word) Рисует дугу 
+радиусом Radius от начального угла StAngle к конечному EndAngle, используя X, Y 
+как координаты центра.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Bar (X1, Y1, X2, Y2 : Integer) Рисует полосу заданного размера, 
+используя текущий стиль и цвет.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Bar3D(X1, Y1, X2, Y2: Integer; Depth: Word; Top: Boolean) Рисует 
+трехмерную полосу, используя текущий стиль и цвет.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Circle (X, Y: Integer; R: word) Рисует окружность радиуса R, 
+используя X,Y как координаты центра.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> ClearDevice  Очищает экран.&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b> Procedure</b> ClearViewPort Очищает окно.&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b> 
+Procedure</b> CloseGraph Закрывает графический режим.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> DetectGraph (var Driver, Mode: Integer) Возвращает тип Driver 
+установленного драйвера и текущий режим Mode его работы.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> DrawPoly (NumPoints: Word; var PolyPoints) Рисует многоугольник из 
+NumPoints вершин с координатами в PolyPoints текущим цветом и типом линии.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Ellipse (X, Y; Integer; StAngle, EndAngle, XR, YR: Word) Рисует 
+эллиптическую дугу от начального угла StAngle к конечному углу EndAngle, 
+используя X, Y как координаты центра и XR. YR - как горизонтальный и 
+вертикальный радиусы.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> FillEllipse(X, Y; Integer; XR, YR: Word) Рисует заштрихованный 
+эллипс, используя X, Y как центр uXR, YR как горизонтальный и вертикальный 
+радиусы.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> FillPoly (NumPoints: word; var PolyPoints) Рисует и штрихует 
+многоугольник, содержащий NPoints вершин с координатами в PolyPoints.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> FloodFill (X, Y; Integer; Border; Word)
+ Штрихует замкнутую область, 
+содержащую внутреннюю точку с координатами X, Y и ограниченную линией с цветом 
+Border. Используется текущий образец штриховки и цвет.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> GetArcCoords (var ArcCoo: ArcCoordsType) Возвращает координаты 
+центра, начала и конца дуги.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> GetAspectRatio (var XAsp, YAsp: Word)
+ Возвращает два числа, 
+позволяющие оценить отношение сторон графического экрана (XAsp/YAsp).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> GetDefaultPalette(var Palette; PaletteType) Возвращает текущую 
+палитру в записи PaletteType.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> GetFillPattern(var FillPatt: FillPatternType)
+ Возвращает текущий 
+образец штриховки.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> GetFillSettings (var FillInfo: FillSettingsType)
+ Возвращает текущий 
+образец и цвет штриховки.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> GetImage(X1, Y1, X2, Y2; Integer; var BitMap) Сохраняет в 
+переменной BitMap битовый образ указанной части экрана.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> GetLineSettings (var LineInfo; LineSettingsType) Возвращает текущий 
+стиль, шаблон и толщину линии.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> GetModeRange(GraphDriver: Integer; var LoMode, HiLode: Integer) Для 
+графического драйвера GraphDriver возвращает диапазон возможных режимов работы.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> GetPalette (var Palette: PaletteType)
+ Возвращает текущую палитру и 
+ее размер.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> GetTextSettings (var TextInfo; TextSettingsType) Возвращает текущий 
+шрифт, направление, размер и выравнивание текста, установленные процедурами 
+SetTextStyle и SetTextJustify.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> GetViewSettings (var viewport: NiewPortType)
+ Возвращает координаты 
+и признак отсечки текущего окна.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> GraphDefaults Устанавливает стандартные параметры графического 
+режима.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> InitGraph(var Driver, Mode; Integer; Path: String) Инициализирует 
+графический режим. Переменные Driver и Mode должны содержать тип графического 
+драйвера и его режим работы. Допускается указать Driver = 0 для автоматического 
+определения этих параметров по результатам тестирования аппаратуры. Параметр 
+Path определяет маршрут поиска файла графического драйвера.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Line (X1, Y1, Х2, Y2: Integer) Рисует линию от точки X1, Y1 до 
+точки Х2, Y2.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> LineRel(DX, DY: Integer) Рисует линию от текущего указателя к 
+точке, заданной приращением координат.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> LineTo(X, Y: Integer) Рисует линию от текущего указателя к точке X, 
+Y.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> MoveRel (DX, DY) Смещает текущий указатель к точке, заданной 
+приращением координат.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> MoveTo(X, Y: Integer) Смещает текущий указатель к точкеX,Y.&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b> 
+Procedure</b> OutText (TextString: String) Выводит текстовую строку на экран.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> OutTextXY(X, Y: Integer; TextString: String) Выводит текст в 
+заданное место экрана.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> PieSlice(X, Y: Integer; StAngle, EndAngle, Radius: Word) Рисует и 
+штрихует сектор окружности радиусом Radius с центром в X.Y от начального угла 
+StAngle к конечному углу EndAngle.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> PutImage(X, Y: Integer; var BitMap; BitBlt: Word) Выводит битовый 
+образ на экран.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> PutPixel(X, Y; Integer; Color: Word)
+ Выводит точку цветом Color с 
+координатами X. Y.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Rectangle (XI, Yl, X2, Y2: Integer) Рисует прямоугольник, используя 
+текущий цвет и тип линии.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> RestoreCRTMode Восстанавливает текстовый режим работы экран.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Sector(X, Y: Integer; StAngle, EndAngle, XR, YR: Word) Рисует и 
+штрихует сектор эллипса радиусами XR, YR с центром в X, Y от начального угла 
+StAngle к конечному углу EndAngle.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> SetActivePage(Page; Word) Устанавливает активную страницу для 
+графического вывода.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> SetAllPalette(var Palette) Изменяет все цвета палитры.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> SetAspectRatio(XAsp, YAsp: Word) Изменяет масштабный коэффициент 
+отношения сторон графического экрана.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> SetBkColor (Color: Word) Устанавливает цвет фона.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> SetColor (Color: Word) Устанавливает основной цвет, которым будет 
+осуществляться рисование.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> SetFillPattern (Pattern: FillPatternType; Color: Word) 
+Устанавливает произвольный образец штриховки.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> SetFillStyle (Pattern, Color: Word) Устанавливает образец штриховки 
+и цвет.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> SetGraphBuf Size (Size: Word) Позволяет изменить размер буфера для 
+функций штриховки.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> SetGraphMode(Mode: Integer) Устанавливает новый графический режим и 
+очищает экран.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> SetLineStyle(LineStyle, Pattern, Thickness: Word) Устанавливает 
+толщину и стиль линии.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> SetPalette(ColorNum, Color: Word)
+ Заменяет цвет палитры с номером 
+ColorNum на цвет Color.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> SetRGBPallete(ColorNum, Red, Green, Blue: Integer) Позволяет 
+модифицировать палитру для IBM 8514 и VGA.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> SetText Justify (Horiz, Vert: Word) Устанавливает выравнивание 
+текста, ис: пользуемое в процедурах OutText и OutTextXY.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> SetTextStyle (Font, Direction, CharSize; Word) Устанавливает 
+текущий шрифт, стиль и размер текста.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> SetUserCharSize(MultX, DivX, MultY, DivY: Word) Изменяет пропорции 
+шрифта.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> SetViewPort (X1, Y1, X2, Y2: Integer; ClipOn; Boolean) 
+Устанавливает текущее окно для графического вывода.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">SetVisualPage(PageNo: Word)  Устанавливает номер видимой графической страницы.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">SetWriteMode(WriteMode; Integer) Устанавливает режим вывода (копирование или 
+XOR) для линий, рисуемых процедурами DrawPoly, Line, LineRel, LineTo, Rectangle.</font> 
+</P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr4_9.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr4_11.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+</BODY></HTML>

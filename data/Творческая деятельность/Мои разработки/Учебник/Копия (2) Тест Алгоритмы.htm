@@ -1,0 +1,205 @@
+<HTML><HEAD><TITLE>Тест "Алгоритмы"</TITLE>
+<META content="text/html; charset=windows-1251" http-equiv=Content-Type>
+<SCRIPT language=JavaScript>
+
+var res="2311324133"
+
+function check_me()
+{
+	var count=0
+	with(document.test)
+	{
+		if (!Q1[0].checked&&!Q1[1].checked&&!Q1[2].checked&&!Q1[3].checked) {count+=1};
+		if (!Q2[0].checked&&!Q2[1].checked&&!Q2[2].checked&&!Q2[3].checked) {count+=1};
+		if (!Q3[0].checked&&!Q3[1].checked&&!Q3[2].checked&&!Q3[3].checked) {count+=1};
+		if (!Q4[0].checked&&!Q4[1].checked&&!Q4[2].checked) {count+=1};
+		if (!Q5[0].checked&&!Q5[1].checked&&!Q5[2].checked&&!Q5[3].checked) {count+=1};
+		if (!Q6[0].checked&&!Q6[1].checked&&!Q6[2].checked&&!Q6[3].checked) {count+=1};
+		if (!Q7[0].checked&&!Q7[1].checked&&!Q7[2].checked&&!Q7[3].checked) {count+=1};
+		if (!Q8[0].checked&&!Q8[1].checked&&!Q8[2].checked&&!Q8[3].checked&&!Q8[4].checked) {count+=1};
+		if (!Q9[0].checked&&!Q9[1].checked&&!Q9[2].checked) {count+=1};
+		if (!Q10[0].checked&&!Q10[1].checked&&!Q10[2].checked&&!Q10[3].checked) {count+=1};
+		if (count>0) {alert("Вы выполнили не все задания. Проверьте себя.")} 
+		else answer()
+	}
+}
+
+function control(k,f1,f2,f3,f4,f5,f6,f7,f8,f9,f10)
+{
+	if (k==1&&f1.checked) return true;
+	if (k==2&&f2.checked) return true;
+	if (k==3&&f3.checked) return true;
+	if (k==4&&f4.checked) return true;
+	if (k==5&&f5.checked) return true;
+	if (k==6&&f6.checked) return true;
+	if (k==7&&f7.checked) return true;
+	if (k==8&&f8.checked) return true;
+	if (k==9&&f9.checked) return true;
+	if (k==10&&f10.checked) return true;
+	return false;
+}
+
+function answer()
+{
+	answ="";
+	with(document)
+	{
+		answ+=control(res.charAt(0),test.Q1[0],test.Q1[1],test.Q1[2],test.Q1[3])?"1":"0"
+		answ+=control(res.charAt(1),test.Q2[0],test.Q2[1],test.Q2[2],test.Q2[3])?"1":"0"
+		answ+=control(res.charAt(2),test.Q3[0],test.Q3[1],test.Q3[2],test.Q3[3])?"1":"0"
+		answ+=control(res.charAt(3),test.Q4[0],test.Q4[1],test.Q4[2])?"1":"0"
+		answ+=control(res.charAt(4),test.Q5[0],test.Q5[1],test.Q5[2],test.Q5[3])?"1":"0"
+		answ+=control(res.charAt(5),test.Q6[0],test.Q6[1],test.Q6[2],test.Q6[3])?"1":"0"
+		answ+=control(res.charAt(6),test.Q7[0],test.Q7[1],test.Q7[2],test.Q7[3])?"1":"0"
+		answ+=control(res.charAt(7),test.Q8[0],test.Q8[1],test.Q8[2],test.Q8[3],test.Q8[4])?"1":"0"
+		answ+=control(res.charAt(8),test.Q9[0],test.Q9[1],test.Q9[2])?"1":"0"
+		answ+=control(res.charAt(9),test.Q10[0],test.Q10[1],test.Q10[2],test.Q10[3])?"1":"0"
+		showResult();
+	}
+}
+
+function showResult()
+{
+	var nok=0;
+	var i,s;
+	for (i=0;i<answ.length;i++) {nok+=answ.charAt(i)=="1"?1:0;}
+	 if(nok<=4) s='"НЕУДОВЛЕТВОРИТЕЛЬНО"';
+	if(nok>4 && nok<6) s='"УДОВЛЕТВОРИТЕЛЬНО"';
+	if(nok>6 && nok<8) s='"УДОВЛЕТВОРИТЕЛЬНО"';
+	if(nok==8) s='"ХОРОШО"';
+	if(nok>=9) s='"ОТЛИЧНО"';
+	document.test.s1.value="Количество правильных ответов "+nok+". Ваша оценка "+s+". Загляните в окно рядом с номером задания. Если ответ правильный, то там (+). Если Вы ошиблись, там (-).";
+	with(document.test)
+	{
+		if (answ.charAt(0)=="1") {T1.value=" +"} else {T1.value=" -"};
+		if (answ.charAt(1)=="1") {T2.value=" +"} else {T2.value=" -"};
+		if (answ.charAt(2)=="1") {T3.value=" +"} else {T3.value=" -"};
+		if (answ.charAt(3)=="1") {T4.value=" +"} else {T4.value=" -"};
+		if (answ.charAt(4)=="1") {T5.value=" +"} else {T5.value=" -"};
+		if (answ.charAt(5)=="1") {T6.value=" +"} else {T6.value=" -"};
+		if (answ.charAt(6)=="1") {T7.value=" +"} else {T7.value=" -"};
+		if (answ.charAt(7)=="1") {T8.value=" +"} else {T8.value=" -"};
+		if (answ.charAt(8)=="1") {T9.value=" +"} else {T9.value=" -"};
+		if (answ.charAt(9)=="1") {T10.value=" +"} else {T10.value=" -"};
+	}
+}
+
+</SCRIPT>
+
+<META content="MSHTML 5.00.2614.3500" name=GENERATOR></HEAD>
+<BODY background="Тест Алгоритмы.files/bgrnd1.gif" bgColor=#ffffff onload=scroll()>
+<SCRIPT language=JavaScript>
+<!-- hide
+
+var scrtxt =  ; 
+var length = scrtxt.length;
+var width = 100;
+var pos = -(width + 2);
+
+function scroll() {
+  pos++;
+  var scroller = "";
+  if (pos == length) {
+    pos = -(width + 2);
+  }
+
+  if (pos < 0) {
+    for (var i = 1; i <= Math.abs(pos); i++) {
+      scroller = scroller+" ";}
+    scroller = scroller + scrtxt.substring(0, width - i + 1);
+  }
+  else {
+    scroller = scroller + scrtxt.substring(pos, width + pos);
+  }
+
+  window.status = scroller;
+  setTimeout("scroll()", 100);
+}
+
+// -->
+</SCRIPT>
+<P align=center><IMG alt=Тестирование 
+src="Тест Алгоритмы.files/CheckYourself.gif"></P>
+<FORM name=test>
+<CENTER>
+
+
+<H1><FONT color=#ff0000 face=Arial,Helvetica,sans-serif>Тест&nbsp; 
+</FONT></H1></CENTER>
+<FONT color=#000099 face=Arial,Helvetica,sans-serif>
+<OL>
+  <LI>
+  <H4><INPUT name=T1 size=1> Алгоритм - это</H4><INPUT name=Q1 type=radio> 
+  способ отражения информации <BR><INPUT name=Q1 type=radio> конечная 
+  последовательность действий <BR><INPUT name=Q1 type=radio> устройство вывода 
+  <BR><INPUT name=Q1 type=radio> устройство ввода <BR><BR>
+  <LI>
+  <H4><INPUT name=T2 size=1> Что является одним из свойств алгоритма? 
+  </H4><INPUT name=Q2 type=radio> неоднозначность <BR><INPUT name=Q2 type=radio> 
+  скорость <BR><INPUT name=Q2 type=radio> результативность <BR><INPUT name=Q2 
+  type=radio> бессвязность <BR><BR>
+  <LI>
+  <H4><INPUT name=T3 size=1> С помощью каких способов может быть описан 
+  алгоритм?... </H4><INPUT name=Q3 type=radio> словесно <BR><INPUT name=Q3 
+  type=radio> с помощью указателей <BR><INPUT name=Q3 type=radio> с помощью 
+  элементов таблицы Менделеева <BR><INPUT name=Q3 type=radio> посредством 
+  дорожных знаков<BR>
+  <P> </P>
+  <LI>
+  <H4><INPUT name=T4 size=1> Какие блочные символы Вам известны?...</H4><INPUT 
+  name=Q4 type=radio> действие <BR><INPUT name=Q4 type=radio> преобразование 
+  <BR><INPUT name=Q4 type=radio> замыкание<BR>
+  <P> </P>
+  <LI>
+  <H4><INPUT name=T5 size=1> Внутри какого блока  осуществляется выбор 
+  условия?</H4><INPUT name=Q5 type=radio> прямоугольник <BR> <INPUT name=Q5 
+  type=radio> шестигранник <BR><INPUT name=Q5 type=radio> ромб <BR><INPUT 
+  name=Q5 type=radio> ввод-вывод<BR>
+  <P> </P>
+  <LI>
+  <H4><INPUT name=T6 size=1> Алгоритм циклической структуры -&nbsp;</H4><INPUT 
+  name=Q6 type=radio> алгоритм, символы которого изображены на схеме в той 
+  последовательности, в которой должны выполняться действия <BR><INPUT name=Q6 
+  type=radio> алгоритм, в котором предусмотрено неоднократное выполнение одной и 
+  той же&nbsp;&nbsp; последовательности действий 
+  <BR><INPUT name=Q6 type=radio> алгоритм, в котором последовательность действий 
+  зависит от результата проверки какого-либо условия <BR><INPUT name=Q6 
+  type=radio> алгоритм, в котором последовательность действий идет естественным 
+  образом 
+  <P><BR></P>
+  <LI>
+  <H4><INPUT name=T7 size=1> Определение какого свойства алгоритма приведено 
+  ниже?</H4>
+  <P><B>... - это возможность многократного решения серии однотипных задач для 
+  заданного диапазона исходных данных</B></P><INPUT name=Q7 type=radio> 
+  однозначность <BR><INPUT name=Q7 type=radio> определенность <BR><INPUT name=Q7 
+  type=radio> дискретность <BR><INPUT name=Q7 type=radio> массовость <BR>
+  <P> </P>
+  <LI>
+  <H4><INPUT name=T8 size=1> Будет ли решаться задача в соответствии с 
+  алгоритмом, в котором блок  "действие" стоит перед 
+  "ввод-вывод"</H4><INPUT name=Q8 type=radio> нет <BR><INPUT name=Q8 
+  type=radio>&nbsp; да 
+  <P> </P>
+  <LI>
+  <H4><INPUT name=T9 size=1> Алгоритм какой структуры предполагает выбор 
+  направления решения в зависимости от выполнения условия</H4><INPUT name=Q9 
+  type=radio> циклической <BR><INPUT name=Q9 type=radio> линейной <BR><INPUT 
+  name=Q9 type=radio> разветвляющейся <BR><BR>
+  <LI>
+  <H4><INPUT name=T10 size=1> Поддаются ли алгоритмизации не только задачи 
+  математики? </H4><INPUT name=Q10 type=radio> нет <BR><INPUT name=Q10 
+  type=radio> не уверен <BR><INPUT name=Q10 type=radio> да</LI></OL><BR>
+<CENTER>
+<P><TEXTAREA cols=70 name=s1 rows=4> </TEXTAREA> </P><INPUT onclick=check_me() type=button value="Показать результат">&nbsp;&nbsp;&nbsp;&nbsp; 
+<INPUT type=reset value="Сбросить ответы"> </CENTER><BR><BR></FORM></FONT>
+<HR>
+<FONT color=#000099 face=Arial,Helvetica,sans-serif>
+<TABLE border=0 width="100%">
+  <TBODY>
+  <TR>
+    <TD align=middle width="33%">&nbsp;</TD>
+    <TD align=middle width="33%">&nbsp;</TD>
+    <TD align=middle width="33%">&nbsp;</TD>
+   </TR></TBODY></TABLE>
+</CENTER><H5><BR><FONT color=#000000></FONT></H5></BODY></HTML>

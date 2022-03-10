@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Untitled</title>
+</head>
+
+
+<body lang=RU style="'tab-interval:35.4pt'" background="bgrwhite.gif">
+<p><div align="center"><b><font size="+1" face="Arial">37.  Динамические структуры данных </font></b></div></p>
+<p><span
+style="mso-spacerun: yes">   </span>Структурированные типы данных,<span
+style="mso-spacerun: yes">  </span>такие, как массивы, множества, за-
+
+<p>писи,
+представляют<span style="mso-spacerun: yes">   </span>собой статические
+структуры,<span style="mso-spacerun: yes">  </span>так как их размеры
+
+<p>неизменны
+в течение всего времени выполнения программы.
+
+<p><span
+style="mso-spacerun: yes">   </span>Часто требуется, чтобы структуры данных
+меняли свои размеры в ходе
+
+<p>решения
+задачи.<span style="mso-spacerun: yes">   </span>Такие структуры данных
+называются динамическими,<span style="mso-spacerun: yes">  </span>к
+
+<p>ним
+относятся стеки,<span style="mso-spacerun: yes">  </span>очереди, списки,
+деревья и другие. Описание ди-
+
+<p>намических
+структур<span style="mso-spacerun: yes">  </span>с помощью массивов,<span
+style="mso-spacerun: yes">  </span>записей и файлов приводит к
+
+<p>неэкономному
+использованию памяти ЭВМ и увеличивает время решения за-
+
+<p>дач.
+
+<p><span
+style="mso-spacerun: yes">   </span>Каждая компонента любой динамической
+структуры представляет<span style="mso-spacerun: yes">  </span>собой
+
+<p>запись,
+содержащую<span style="mso-spacerun: yes">   </span>по крайней мере два
+поля:<span style="mso-spacerun: yes">  </span>одно поле типа указа-
+
+<p>тель,
+а<span style="mso-spacerun: yes">  </span>второе - для размещения данных.<span
+style="mso-spacerun: yes">  </span>В общем случае запись может
+
+<p>содержать
+не<span style="mso-spacerun: yes">   </span>один,<span style="mso-spacerun:
+yes">  </span>а несколько укзателей и несколько полей данных.
+
+<p>Поле
+данных может быть переменной,<span style="mso-spacerun: yes">  </span>массивом,
+множеством или записью.
+
+<p><span
+style="mso-spacerun: yes">   </span>Для дальнейшего рассмотрения представим
+отдельную компоненту в ви-
+
+<p>де:
+
+<p><span
+style="mso-spacerun: yes">                               </span>ЙННННН»
+
+<p><span
+style="mso-spacerun: yes">                               </span>є<span
+style="mso-spacerun: yes">  </span>D<span style="mso-spacerun: yes">  </span>є
+
+<p><span
+style="mso-spacerun: yes">                               </span>єНННННє
+
+<p><span
+style="mso-spacerun: yes">                               </span>є<span
+style="mso-spacerun: yes">  </span>p<span style="mso-spacerun: yes">  </span>є
+
+<p><span
+style="mso-spacerun: yes">   </span><span style="mso-spacerun:
+yes">                            </span>ИНННННј
+
+<p>где
+поле p - указатель;
+
+<p><span
+style="mso-spacerun: yes">    </span>поле D - данные.
+
+<p><span
+style="mso-spacerun: yes">   </span>Описание этой компоненты дадим следующим
+образом:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>type
+
+<p><span
+style="mso-spacerun: yes">    </span>Pointer = ^Comp;
+
+<p><span
+style="mso-spacerun: yes">    </span>Comp = record
+
+<p><span
+style="mso-spacerun: yes">            </span>D:T;
+
+<p><span
+style="mso-spacerun: yes">            </span>pNext:Pointer
+
+<p><span
+style="mso-spacerun: yes">         </span>end;
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p>здесь T
+- тип данных.
+
+<p><span
+style="mso-spacerun: yes">   </span>Рассмотрим основные правила<span
+style="mso-spacerun: yes">  </span>работы<span style="mso-spacerun: yes"> 
+</span>с<span style="mso-spacerun: yes">  </span>динамическими<span
+style="mso-spacerun: yes">  </span>структурами
+
+<p>данных
+типа стек, очередь и список, базируясь на приведенное описание
+
+<p>компоненты.
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p><div align="center"><a href="../Pascal. Курс лекций.html">	<img src="../../soder.gif" width=120 height=31 border=0 alt=""></a></div></p>
+
+</body>
+</html>

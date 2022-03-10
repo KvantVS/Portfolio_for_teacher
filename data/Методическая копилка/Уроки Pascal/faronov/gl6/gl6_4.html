@@ -1,0 +1,284 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl6_3.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl6_5.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Использование указателей
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Подведем некоторые
+итоги. Итак, динамическая память составляет
+200...300 Кбайт или больше, ее начало хранится в
+переменной HEAPORG, а конец соответствует
+адресу переменной HEAPEND. Текущий адрес
+свободного участка динамической памяти
+хранится в указателе HEAPPTR.</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Посмотрим, как можно
+использовать динамическую память для
+размещения крупных массивов данных. Пусть,
+например, требуется обеспечить доступ к
+элементам прямоугольной матрицы 100x200 типа
+EXTENDED. Для размещения такого массива
+требуется память 200000 байт (100*200*10).</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Казалось бы, эту
+проблему можно решить следующим образом:</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">i,j : Integer;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PtrArr : array [1..100, 1...200] of&nbsp; Real;&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for i := 1 to 100 do&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for j := 1 to 200
+do</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">new(PtrArr[i,j]);</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Теперь к любому
+элементу вновь созданного динамического
+массива можно обратиться по адресу,
+например:</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PtrArr[1,1] := 0;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if PtrArr[i,j*2] &gt; 1 then ......</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Вспомним, однако, что
+длина внутреннего представления указателя
+составляет 4 байта, поэтому для размещения
+массива PTRARR потребуется 100*200*4 = 80000 байт, что
+превышает размер сегмента данных (65536 байт),
+доступный, как уже отмечалось, программе
+для статического размещения данных.</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Выходом из положения
+могла бы послужить адресная арифметика, т.е.
+арифметика над указателями, потому что в
+этом случае можно было бы отказаться от
+создания массива указателей PTRARR. и
+вычислять адрес любого элемента
+прямоугольной матрицы непосредственно
+перед обращением к нему. Однако в Турбо
+Паскале над указателями не определены
+никакие операции, кроме операций
+присвоения и отношения.</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Тем не менее, решить
+указанную задачу все-таки можно. Как мы уже
+знаем, любой указатель состоит из двух слов
+типа WORD, в которых хранятся сегмент и
+смещение. В Турбо Паскале определены две
+встроенные функции типа WORD, позволяющие
+получить содержимое этих слов:</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">SEG(X) - возвращает
+сегментную часть адреса;&nbsp;</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">OFS(X) - возвращает
+смещение.</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Аргументом X при
+обращении к этим функциям может служить
+любая переменная, з том числе и та, на
+которую указывает указатель. Например, если
+имеем</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">р :  Real;&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">......</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">new(p);</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">р := 3.14;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">то функция SEG(P) вернет
+сегментную часть адреса, по которому
+располагается 4-байтный указатель Р, в то
+время как SEG(P^) - сегмент 6-байтного участка
+кучи, в котором хранится число 3.14 .</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">С другой стороны, с
+помощью встроенной функции</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PTR(SEG,OFS: WORD): POINTER</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">можно создать
+значение указателя, совместимое с
+указателями любого типа. Таким образом
+возможна такая последовательность
+действий. Вначале процедурой GETMEM из кучи
+забираются несколько фрагментов
+подходящей длины (напомню, что за одно
+обращение к процедуре можно
+зарезервировать не более 65521 байт
+динамической памяти). Для рассматриваемого
+примера удобно резервировать фрагменты
+такой дли</font><font face="Arial, Helvetica, sans-serif" size="3">ны, чтобы в них могли,
+например, разместиться строки
+прямоугольной матрицы, т.е. 100 * 10 = 2000 байт.
+Начало каждого фрагмента, т.е. фактически
+начало размещения в</font> <font face="Arial, Helvetica, sans-serif" size="3">памяти каждой строки,
+запоминается в массиве PTRSTR, состоящем из 100
+указателей, теперь для доступа к любому
+элементу строки нужно вычислить смещение
+этого элемента от начала строки и
+сформировать соответствующий указатель:</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">i,j:Integer;&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> PtrStr : array [1..100] of pointer;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SizeOfReal = 6;&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for i := 1 to 100 do</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetMem (PtrStr [i] , SizeOfReal*200) ;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Обращение к элементу
+матрицы [i,j]}&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> pr := ptr(seg(PtrStr[i]),</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ofs(PtrStr[i])+(j-1)*SizeOfReal);&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if
+рr &gt; 1 then</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Поскольку оператор
+вычисления адреса PR := PTR... будет, судя по
+всему, использоваться в программе
+неоднократно, полезно ввести
+вспомогательную функцию GETR, возвращающую
+значение элемента матрицы, и процедуру PUTR,
+устанавливающую новое значение элемента (правила
+объявления процедур и функций изложены в гл.
+8). Каждая из них, в свою очередь, обращается
+к функции ADDRR для вычисления адреса. В
+примере 6.1 приводится программа, создающая
+в памяти матрицу из NxM случайных чисел и
+вычисляющая их среднее значение.</font></p>
+<p align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Пример 6.1&nbsp;</font></b></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SizeOfReal = 6;  {Длина
+переменной типа REAL}</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">N = 100; {Количество
+столбцов}</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">М = 200;  {Количество
+строк}&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">i,j : Integer;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PtrStr: array [1..N] of pointer;.</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s : Real ;&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> type</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">RealPoint =^Real;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-------------------}</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function AddrR(i,j: word): RealPoint;&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {По
+сегменту i и смещению j выдает адрес
+вещественной переменной}&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">AddrR := ptr(seg (PtrStr [i]),</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ofs{ PtrStr [i]) + (j -1) * SizeOfReal)&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end {AddrR} ;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-------------------}</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function GetR(i,j: Integer): Real;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Выдает значение
+вещественной переменной по сегменту i</font> <font size="3">и смещению j ее адреса}</font></font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetR := AddrR(i,j)</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end {GetR};</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-------------------}</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procepure PutR(i,j : Integer; x: Real);</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Помещает в
+переменную, адрес которой имеет сегмент i</font>
+<font size="3">и смещение j,
+вещественное значение x}</font></font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">AddrR ( i , j ) : = x&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end {PutR};</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-------------------}</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin {Main}</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for i :=1 to N do&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetMem (PtrStr [i] , M*SizeOfReal) ;&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">
+for j := 1 to M do PutR(i, j, Random)&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> S := 0;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for i := 1 to N do&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for j := 1 to M do</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s := s +GetR(i,j);</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(s/(N * М) :12:10)</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end {Main} .</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">В рассмотренном
+примере предполагается, что каждая строка
+размещается в куче, начиная с границы
+параграфа, и смещение для каждого указателя
+PTRSTR равно нулю. В действительности при
+последовательных обращениях к процедуре
+GETMEM начало очередного фрагмента следует
+сразу за концом предыдущего и может не
+попасть на границу сегмента. В результате,
+при размещении фрагментов максимальной
+длины (65521 байт) может возникнуть
+переполнение при вычислении смещения
+последнего байта.</font></p>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl6_3.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl6_5.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+   <META NAME="Author" CONTENT="DimichG">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.04 [en] (Win95; I) [Netscape]">
+   <TITLE>ЧАСТЬ 7</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<CENTER><B><FONT SIZE=+2>7. <FONT FACE="Times New Roman">Строки.</FONT></FONT></B></CENTER>
+
+<CENTER>
+<HR WIDTH="100%"></CENTER>
+
+
+<P><B><FONT COLOR="#006600">String</B></FONT><FONT FACE="Times New Roman"> (строка) - это один из дополнительных
+типов данных, введенных в системе программирования Турбо-Паскаль. Структура
+данных типа </FONT><B><FONT COLOR="#006600">String [<I>N</I>] </FONT></B><FONT FACE="Times New Roman">
+аналогична
+структуре данных типа </FONT><FONT COLOR="#006600"><B>Array [1..<I>N</I>]Of Char. </B></FONT><FONT FACE="Times New Roman">
+Количество символов в данных типа</FONT><B><FONT COLOR="#006600"> String [<I>N</I>]</B></FONT>
+<FONT FACE="Times New Roman">
+может быть любым от 1 до </FONT><I>N</I><FONT FACE="Times New Roman">.
+Максимальное возможное значение константы </FONT><I>N=</I><FONT FACE="Times New Roman">255.
+Это максимальное значение принимается по умолчанию, если в описании строки
+отсутствует конструкция </FONT><B>[<I>N</I>].</B><FONT FACE="Times New Roman">
+В отличие от массивов строки (а не только их отдельные элементы) могут
+быть параметрами в процедурах ввода и вывода.</FONT>
+<BR><FONT FACE="Times New Roman">К любому символу в строке можно обратиться
+точно также, как к элементу одномерного массива, указав имя строки и индекс.
+В системе Турбо-Паскаль для работы со строками предусмотрен ряд процедур
+и функции:</FONT>
+<BR><FONT FACE="Times New Roman">К строкам можно применять операцию <B>“<FONT SIZE=+1>+</FONT>”
+</B>- сцепление, например:</FONT>
+<BR><FONT FACE="Courier New"><FONT COLOR="#006600">&nbsp;&nbsp;&nbsp; st:=
+‘a’ + ‘b’;</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT COLOR="#006600">&nbsp;&nbsp;&nbsp; st:=
+st + ‘c’; {st содержит ‘abc’}</FONT></FONT>
+
+<P><B><FONT FACE="Courier New"><FONT COLOR="#006600">Copy(st, index, count)</FONT></FONT></B><FONT FACE="Times New Roman">
+- функция типа </FONT><FONT COLOR="#006600"><B>String</FONT></B><FONT FACE="Times New Roman">; копирует
+из строки </FONT>st count<FONT FACE="Times New Roman"> символов, начиная
+с символа с номером </FONT>index.
+<BR><B><FONT FACE="Courier New"><FONT COLOR="#006600">Delete(st, index, count)</FONT></FONT></B><FONT FACE="Times New Roman">
+- процедура; удаляет сount символов в строке </FONT>st<FONT FACE="Times New Roman">,
+начиная с символа с номером </FONT>index.
+<BR><B><FONT FACE="Courier New"><FONT COLOR="#006600">Insert(subst, st, index)</FONT></FONT></B><FONT FACE="Times New Roman">
+- процедура; вставляет подстроку </FONT>subst<FONT FACE="Times New Roman">
+в строку </FONT>st<FONT FACE="Times New Roman">, начиная с символа с номером
+</FONT>index.
+<BR><FONT FACE="Courier New"><FONT COLOR="#006600"><B>Length(st)</B> </FONT></FONT><FONT FACE="Times New Roman">-
+функция типа Integer; возвращает длину строки </FONT>st.
+<BR><B><FONT FACE="Courier New"><FONT COLOR="#006600">Pos(subst,st)</FONT></FONT></B><FONT FACE="Times New Roman">
+- функция типа </FONT>Integer<FONT FACE="Times New Roman">; отыскивает
+в строке </FONT>st<FONT FACE="Times New Roman"> первое вхождение подстроки
+</FONT>subst <FONT FACE="Times New Roman">и возвращает номер позиции, с
+которой она начинается; если подстрока не найдена, возвращается 0.</FONT>
+<BR><FONT FACE="Courier New"><FONT COLOR="#006600"><B>Str(x:[width[ : decimals]
+], st)</B> </FONT></FONT><FONT FACE="Times New Roman">- процедура; преобразует
+число </FONT>x <FONT FACE="Times New Roman">вещественного или целого типов
+в строку символов </FONT>st<FONT FACE="Times New Roman"> так, как это делает
+процедура </FONT><B><FONT COLOR="#006600">Writeln</B></FONT><FONT FACE="Times New Roman"> перед выводом.</FONT>
+<BR><B><FONT FACE="Courier New"><FONT COLOR="#006600">Val(st,x,code)</FONT></FONT></B><FONT FACE="Times New Roman">
+- процедура; преобразует строку символов </FONT>st<FONT FACE="Times New Roman">
+во внутреннее представление целой или вещественной переменной </FONT>x<FONT FACE="Times New Roman">,
+которое определяется типом этой переменной; параметр </FONT>code <FONT FACE="Times New Roman">содержит
+ноль, если преобразование прошло успешно, и тогда в </FONT>x<FONT FACE="Times New Roman">
+помещается результат преобразования, в противном случае он содержит номер
+позиции в строке </FONT>st<FONT FACE="Times New Roman">, где обнаружен
+ошибочный символ, и в этом случае содержимое </FONT>x <FONT FACE="Times New Roman">не
+меняется; ведущие пробелы в строке </FONT>st<FONT FACE="Times New Roman">
+должны отсутствовать.</FONT>
+<BR><FONT FACE="Times New Roman">Операции отношения&nbsp;&nbsp;<FONT COLOR="#000099">
+</FONT></FONT><B><FONT FACE="Courier New,Courier"><FONT SIZE=+1>=,
+&lt;>, >, &lt;, >=, &lt;=</FONT></FONT></FONT></B><FONT FACE="Times New Roman">&nbsp;&nbsp;
+выполняются над двумя строками посимвольно, слева направо с учетом внутренней
+кодировки символов.</FONT>
+<BR>&nbsp;
+<CENTER>&nbsp;</CENTER>
+
+</BODY>
+</HTML>

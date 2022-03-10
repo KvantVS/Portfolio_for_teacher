@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_9.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_11.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Строка статуса
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">В следующей программе создается строка статуса, содержание которой зависит от 
+установленного контекста подсказки (определяется значением поля 
+TProgram.HelpCtx). В зависимости от действий пользователя эта строка будет 
+содержать текст</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Esc Выход F1 Сменить контекст на 1&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Однажды в студеную, зимнюю пору</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">либо</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ESC Выход F2 Сменить контекст на 0&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Я из лесу вышел. Был сильный мороз...</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Переключение строки осуществляется клавишами F1 и F2, для выхода из программы 
+используется клавиша Esc.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Objects,App,Menus,Drivers,Views;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PMyStatusLine = TMyStatusLine;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> TMyStatusLine = object (TStatusLine)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function Hint(Cntx: Word): String; Virtual;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> MyApp = object (TApplication)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">StatLine: PMyStatusLine;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Constructor Init;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure InitStatusLine; Virtual;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Procedure HandleEvent(var Event: Tevent); 
+Virtual;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmCntxl =200;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> cmCntx2 = 201;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-----------------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor MyApp.Init ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Inherited Init;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert (StatLine)  {Использовать нестандартную строку статуса}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end  {MyApp 
+.Init} ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure MyApp. Ini tstatusLine ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Инициация нестандартного поля
+MyApp. StatLine}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R: Trect;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetExtent (R) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.A.Y := pred(R.B.Y) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">StatLine := New(PMyStatusLine, Init(R,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewStatusDef (0, 0,  {Первый вариант строки}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewStatusKey ( ' ~Esc~ Выход1 , kbEsc,
+cmQuit,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewStatusKey (' ~F1~ Сменить контекст на 1', kbF1 , cmCntxl , NIL) ) ,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewStatusDef (1, 1,  {Второй вариант строки}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewStatusKey (' ~Esc~ Выход ', kbEsc,
+cmQuit,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewStatusKey (' ~F2~ Сменить контекст на 0 ' , kbF2 , cmCntx2 ,
+NIL)) ,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NIL) ) ) ) ; end {MyApp. Ini tstatusLine} ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{--------------------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure MyApp. HandleEvent;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Переключение контекста и обновление строки статуса}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Inherited HandleEvent (Event) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> case Event . Command of&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmCntxl: HelpCtx := 
+1;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> cmCntx2: HelpCtx := 0;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ClearEvent (Event) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if Event. What &lt;&gt; evNothing then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">StatLine. Update;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> ClearEvent (Event)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end  {MyApp . HandleEvent } ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{---------------------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function TMyStatusLine. Hint (Cntx: Word):String;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Переключение поля подсказки}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Prompt: array [0..1] of String =(</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'Однажды в студеную, зимнюю пору',</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'Я из лесу вышел. Был сильный мороз...');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Hint : = Prompt [Cntx]&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end  {TMyStatusLine.Hint} ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{---------------------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">P : MyApp ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">P.Init;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">P . Run ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">P . Done&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end .</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_9.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_11.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

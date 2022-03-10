@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl19_1.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl19_3.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Создание коллекций
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для создания коллекции следует прежде всего определить тип тех данных, 
+которые будут в ней храниться. Например, Вам необходимо создать электронный 
+каталог Вашей личной библиотеки. В этом случае для каждой указанной в каталоге 
+книги можно выделить пять полей данных: автор, название, издательство, год 
+издания и количество страниц. Создадим новый объект TBook следующего вида:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Objects;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PBook = TBook;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TBook = object (TObject)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Autor: PSbring;  {Автор}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Title: PString;  {Название}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PubHouse: PString;  {Издательство}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Year: Word;  {Год издания}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Pages: Word;  {Количество страниц}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor Init(A,T,PH: String; Y,P: Word);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Destructor Done; Virtual;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end ;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Мы включили' в объект поля и два основных метода работы с ними: конструктор 
+Init используется для размещения в динамической памяти очередной записи 
+каталога, деструктор Done удаляет записи из кучи. Заметим, что в объекте 
+задаются не сами текстовые строки, а указатели на них (тип PString в Turbo 
+Vision описан как указатель на тип String). Такое размещение данных как правило 
+дает значительную экономию памяти. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor TBook.Init(А,Т,РН: String; Y,P: Word);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Autor := NewStr(A);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Title := NewStr(T);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> PubHouse := NewStr(PH);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Year := Y;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+Pages := P&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;  {TBook.Init}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Используемые в конструкторе функции NewStr размещают в динамической памяти 
+текстовую строку, выделяя под нее минимально необходимую память, что значительно 
+выгоднее по сравнению с типичным описанием текстовых полей вида</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TBook = object (TObject)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Autor, Title, PubHouse: String;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для освобождения динамической памяти в деструкторе Done используется 
+процедура DisposeStr:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Destructor TBook.Done;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DisposeStr(Autor);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DisposeStr(Title);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> DisposeStr (PubHouse)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; {TBook.Init}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">После того как тем или иным способом определены типы данных, создание 
+коллекции не вызывает проблем. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">BookList: PCollection;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">BookList := New(PCollection, Init(50,10));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> with BookList do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert(New(PBook, Init('Джордейн Р.',</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'Справочник программиста персональных компьютеров'+</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">' типа IBM PC, XT и AT','Финансы и статистика',</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">1991,544)));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert(New(PBook, Init('Шелдон',</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'Язык Си для профессионалов','И.В.К.-СОФТ',1991,383))); Insert(New(PBook, 
+Init('Скэнлон Л.',</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'Персональные ЭВМ IBM PC и
+XT. '+</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'Программирование на языке ассемблера',</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'Радио и связь',1991,336)));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert(New(PBook,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Init('Йенсен К., Вирт Н.',</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'Паскаль. Руководство для пользователя '+</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'и описание языка','Финансы и Статистика',1982,151)));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Dispose(BookList, Done);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для создания коллекции мы обратились к методу TCollection.Init, указав ему 
+начальную длину коллекции (50 элементов) и шаг наращивания (10 элементов). 
+Руководствуясь этими указаниями, Turbo Vision зарезервирует в динамической 
+памяти место для размещения 50 указателей. Если в ходе наполнения коллекции ее 
+длина превысит начальную, Turbo Vision будет наращивать коллекцию порциями, 
+каждая из которых достаточна для размещения 10 указателей.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Смысл параметров, передаваемых методу TCollection.Init, станет понятнее, если 
+рассмотреть механизм создания и обновления коллекции. Вначале в куче 
+резервируется участок памяти, достаточный для размещения массива из N0 
+указателей (N0 - начальный размер коллекции). Если в ходе наполнения коллекции 
+ее длина превысит N0 элементов, резервируется новый участок памяти, достаточный 
+для размещения массива из NO + DN указателей (DN - шаг наращивания коллекции), 
+затем старый массив переносится на новое место, а память, выделенная под его 
+размещение, возвращается в кучу. Таким образом, чем больше начальная длина 
+коллекции и шаг ее наращивания, тем меньше суммарные потери времени на 
+расширение коллекции, но и тем больше</font> <font face="Arial, Helvetica, sans-serif" size="3">могут стать потери памяти, есди реальная длина коллекции окажется значительно 
+меньше NO + k*DN (k = О, 1, 2,...).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Операторы Insert размещают в динамической памяти элементы коллекции. В 
+реальной программе наполнение коллекции будет, судя по всему, осуществляться 
+каким-то иным способом, чем простое программирование обращений к методу Insert 
+(см., например, программу Notebook из гл.15). Для нас сейчас важно другое: мы 
+нигде не говорили коллекции, какого типа объекты она будет хранить; для 
+обеспечения нужных действий по размещению в памяти очередного элемента мы просто 
+обращаемся к соответствующему методу Init, а уж он делает остальное - ведь он 
+«знает» как это следует сделать.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Отметим, что обращение</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Dispose(BookList, Done);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">вызывает автоматическое обращение к методу TBook.Done перед уничтожением 
+каждого элемента коллекции, после чего уничтожается экземпляр TCollection. Это 
+стало возможным потому, что объект TBooh объявлен нами как потомок от TObject. 
+Если бы мы его объявили независимым объектом</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TBook = object</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;&nbsp;</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> мы должны были бы сами позаботиться об освобождении кучи, а обращение</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Dispose(BookList, Done);&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> привело бы к «зависанию» программы.</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl19_1.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl19_3.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

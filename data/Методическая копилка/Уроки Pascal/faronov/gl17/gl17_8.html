@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl17_7.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl17_9.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Модальные видимые элементы
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Все программы в среде Turbo Vision рассчитаны на диалоговый способ 
+взаимодействия с пользователем, а следовательно, в них активно используются 
+точки ветвления, управляемые командами пользователя (точки диалога). В точке 
+диалога создается активный видимый элемент, называемый модальным элементом.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Примером модального элемента является диалоговое окно. Когда в программе 
+создается и активизируется модальный элемент, только этот элемент и его 
+подэлементы могут взаимодействовать с пользователем. Любая часть дерева видимых 
+элементов, не являющаяся модальным элементом или не принадлежащая ему, не может 
+быть активна в этот момент. Если, например, на экране развернуто диалоговое 
+окно, любые отметки мышью вне его пределов или нажатие на не предусмотренные в 
+этом окне командные клавиши будут игнорироваться.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Единственным исключением из этого правила являются командные клавиши и 
+соответствующие поля для мыши, определенные в строке статуса. Эти клавиши (поля) 
+всегда доступны пользователю и нажатие на них (отметка их мышью) обрабатывается 
+модальным элементом точно также, как если бы они были определены в нем, хотя 
+этот элемент может и не владеть строкой статуса.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Чтобы временно исключить из списка активных команду (или группу команд), 
+определенную в строке статуса, используется метод DisableCommands. После 
+завершения работы модального элемента можно восстановить активность команд 
+методом EnableCommands. Параметром обращения к этим методам служит произвольное 
+множество типа TCommandSet, содержащее до 256 кодов команд. В Turbo Vision тип 
+TCommandSet определен следующим образом:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TCommandSet = set of Byte;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Таким образом запрещать (и разрешать) можно только те команды, коды которых 
+принадлежат диапазону 0...255.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Временно запрещенные команды выделяются в строке статуса пониженной яркостью 
+(оттенком).</font> </P>
+<P>&nbsp; </P>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl17_7.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl17_9.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</BODY></HTML>

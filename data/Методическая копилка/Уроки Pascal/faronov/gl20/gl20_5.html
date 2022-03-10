@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl20_4.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl20_6.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Методы Put и Get
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Чтобы поместить объект в 
+поток, нужно обратиться к методу Put, передав ему в качестве параметра 
+инициированный экземпляр объекта. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MyStream: 
+TBufStream;{Экземпляр потока}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MyWindow: 
+TMyWindow;{Экземпляр объекта}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">
+MyStream.Put(MyWindow);{Помещаем объект в поток}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Предварительно объект 
+должен быть зарегистрирован обращением к RegisterType, а поток - инициирован с 
+помощью TXXXStream.Init.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Метод Put вначале 
+отыскивает объект в регистрационном списке, создаваемом процедурой RegisterType, 
+и получает из этого списка регистрационный номер объекта и адрес его метода 
+Store. Затем в поток записывается регистрационный номер и вызывается метод 
+Store, который делает остальное, т.е. копирует в поток все поля объекта.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">По такой же схеме работает 
+и метод Get: вначале он считывает из потока регистрационный номер объекта, затем 
+отыскивает его в регистрационном списке и вызывает соответствующий конструктор 
+Load. Конструктор размещает в динамической памяти экземпляр считываемого объекта, 
+а затем считывает из потока все его поля. Результатом работы Get является 
+нетипизированный указатель на вновь созданный и инициированный объект. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MyStream: 
+TBufStream;{Экземпляр потока}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PWindow: 
+PMyWindow;{Указатель на экземпляр объекта}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PWindow := 
+MyStream.Get;{Получаем объект из потока}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Заметим, что количество 
+считываемых из потока данных и тип ТВМ, который назначен вновь созданному 
+объекту, определяется не типом PWindow (см. выше), а регистрационным номером, 
+полученным из потока. Вы можете ошибочно поместить в левой части оператора 
+присваивания указатель на объект другого типа и Turbo Vision не сможет 
+предупредить Вас об этом!</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Методы Put и Get позволяют 
+автоматически сохранять в потоке и получать из него сложные объекты (группы). 
+Эта возможность реализуется внутри методов Store и Load.</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl20_4.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl20_6.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+</BODY></HTML>

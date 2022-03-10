@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_3.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_5.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Маршрутизация событий
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Как уже говорилось, любая программа, работающая в среде Turbo Vision, 
+является прямым или косвенным (через TApplicatiori) потомком TProgram и основана 
+на обращении к трем главным методам этого объекта: Init, Run и Done. Например:</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses App,...;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TMyProgram = object (TApplication)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MyProgram = TMyProgram;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin  {Исполняемая часть программы:}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MyProgram.Init;  {Инициировать программу}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> MyProgram.Run;  {Выполнить программу}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+MyProgram.Done  {Завершить работу}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Процесс получения и обработки событий инициируется методом TProgram.Run, 
+который для этого обращается к методу TGroup.Execute (любая .программа является 
+потомком TGroup). Метод TGroup.Execute реализует следующий цикл:&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Event: TEvent;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Event.What := evNothing;  {Инициировать пустое событие}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> repeat  {Основной цикл 
+программы}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if Event.What &lt;&gt; evNothing then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">EventError(Event);  {Событие не очищено - ошибка}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> GetEvent(Event);  {Получить 
+событие}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> HandleEvent(Event);  {Передать событие обработчику}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> until EndState 
+&lt;&gt; Continue;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Метод GetEvent наследуется всеми видимыми элементами от TView и является 
+основным источником событий. Этот метод вначале проверяет, не подготовил ли 
+событие метод PutEvent и, если это так, возвращает его. Затем GetEvent проверяет 
+клавиатуру и мышь. Если какое-то из этих устройств изменило свое состояние, 
+метод формирует и возвращает соответствующее событие. Если изменения не 
+произошло, GetEvent обращается к методу TProgram.Idle, чтобы запустить «фоновую» 
+задачу (подробнее об этом см. п. 18.6).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">С помощью вызова метода TGroup.Execute события всегда начинают свой путь с 
+модального видимого элемента. Напомню, что модальный элемент определяет точку 
+диалога; в программе в каждый момент времени есть один и только один модальный 
+элемент (см. п. 17.4). В самом начале программы таким элементом является обычно 
+экземпляр объекта TProgram или его потомка. Если в программе открыто модальное 
+диалоговое окно, оно обратится к TGroup.Execute и, следовательно, путь событий 
+начнется с этого окна. В любом случае начинает обработку события метод 
+HandleEvent модального видимого элемента. Дальнейший маршрут события зависит от 
+того, является ли событие позиционированным, активным или общим.</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_3.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_5.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

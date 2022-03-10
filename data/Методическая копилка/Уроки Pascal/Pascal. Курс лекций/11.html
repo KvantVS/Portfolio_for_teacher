@@ -1,0 +1,276 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Untitled</title>
+</head>
+
+<body lang=RU style="'tab-interval:35.4pt'" background="bgrwhite.gif">
+<p><div align="center"><b><font size="+1" face="Arial">11. Структрура программы </font></b></div></p>
+<p><span
+style="mso-spacerun: yes">   </span>Программа на языке ПАСКАЛЬ состоит из
+заголовка, разделов описаний
+
+<p>и
+раздела операторов.
+
+<p><span
+style="mso-spacerun: yes">   </span>Заголовок программы содержит имя программы,
+например:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">      </span>Program PRIM;
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Описания могут<span style="mso-spacerun:
+yes">  </span>включать в себя раздел подключаемых библиотек (мо-
+
+<p>дулей),
+раздел<span style="mso-spacerun: yes">  </span>описания меток, раздел описания
+констант, раздел опи-
+
+<p>сания
+типов,<span style="mso-spacerun: yes">  </span>раздел описания переменных,<span
+style="mso-spacerun: yes">  </span>раздел описания процедур и
+
+<p>функций.
+
+<p><span
+style="mso-spacerun: yes">   </span>Раздел описания<span style="mso-spacerun:
+yes">  </span>модулей<span style="mso-spacerun: yes">  </span>определяется
+служебным словом USES и со-
+
+<p>держит
+имена подключаемых модулей (библиотек)<span style="mso-spacerun: yes"> 
+</span>как входящих в<span style="mso-spacerun: yes">  </span>состав
+
+<p>системы
+TURBO PASCAL, так и написанных пользователем. Раздел описания
+
+<p>модулей
+должен быть первым среди разделов описаний. Имена модулей от-
+
+<p>деляются
+друг от друга запятыми:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">    </span>uses<span style="mso-spacerun: yes"> 
+</span>CRT, Graph;
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Любой оператор<span style="mso-spacerun:
+yes">  </span>в программе может быть помечен меткой.<span style="mso-spacerun:
+yes">  </span>В качестве
+
+<p>метки
+используются произвольные целые без знака,<span style="mso-spacerun: yes"> 
+</span>содержащие не более
+
+<p>четырех
+цифр, либо имена. Метка ставится перед оператором и отделяет-
+
+<p>ся от
+него двоеточием.<span style="mso-spacerun: yes">  </span>Все метки,<span
+style="mso-spacerun: yes">  </span>используемые в программе,<span
+style="mso-spacerun: yes">  </span>должны
+
+<p>быть
+перечислены в разделе описания меток, например:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">      </span>label 3, 471, 29, Quit;
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Описание констант<span style="mso-spacerun:
+yes">  </span>позволяет использовать имена как синонимы конс-
+
+<p>тант,
+их необходимо определить в разделе описаний констант:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">      </span>const K= 1024;<span style="mso-spacerun:
+yes">   </span>MAX= 16384;
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>В разделе описания переменных необходимо
+определить тип всех пере-
+
+<p>менных,
+используемых в программе:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">      </span>var P,Q,R: Integer;
+
+<p><span
+style="mso-spacerun: yes">          </span>A,B:<span style="mso-spacerun:
+yes">   </span>Char;
+
+<p><span
+style="mso-spacerun: yes">          </span>F1,F2: Boolean;
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Описание типов,<span style="mso-spacerun:
+yes">  </span>прцедур и функций будет рассмотрено ниже. Отдель-
+
+<p>ные
+разделы описаний могут отсутствовать,<span style="mso-spacerun: yes"> 
+</span>но следует помнить,<span style="mso-spacerun: yes">  </span>что в
+
+<p>ПАСКАЛЬ
+- программе<span style="mso-spacerun: yes">   </span>должны<span
+style="mso-spacerun: yes">  </span>быть обязательно описаны все компоненты
+
+<p>программы.
+
+<p><span
+style="mso-spacerun: yes">   </span>Раздел операторов<span style="mso-spacerun:
+yes">  </span>представляет собой составной оператор,<span style="mso-spacerun:
+yes">  </span>который
+
+<p>содержит
+между служебными словами
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">         </span>begin.......end
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p>последовательность<span
+style="mso-spacerun: yes">  </span>операторов.<span style="mso-spacerun: yes"> 
+</span>Операторы<span style="mso-spacerun: yes">  </span>отделяются<span
+style="mso-spacerun: yes">  </span>друг от друга
+
+<p>символом
+;.
+
+<p><span
+style="mso-spacerun: yes">   </span>Текст программы заканчивается символом
+точка.
+
+<p><span
+style="mso-spacerun: yes">   </span>Кроме описаний<span style="mso-spacerun:
+yes">  </span>и<span style="mso-spacerun: yes">  </span>операторов<span
+style="mso-spacerun: yes">  </span>ПАСКАЛЬ - программа может содержать
+
+<p>комментарии,
+которые<span style="mso-spacerun: yes">  </span>представляют собой
+произвольную<span style="mso-spacerun: yes">  </span>последователь-
+
+<p>ность
+символов,<span style="mso-spacerun: yes">  </span>расположенную между
+открывающей скобкой комментариев
+
+<p>{ и
+закрывающей скобкой комментариев }.
+
+<p><span
+style="mso-spacerun: yes">   </span>Текст ПАСКАЛЬ - программы может содержать
+ключи компиляции,<span style="mso-spacerun: yes">  </span>кото-
+
+<p>рые
+позволяют управлять режимом компиляции.<span style="mso-spacerun: yes"> 
+</span>Синтаксически ключи ком-
+
+<p>пиляции
+записываются как комментарии. Ключ компиляции содержит символ
+
+<p>$ и
+букву-ключ с последующим знаком + (включить режим)<span style="mso-spacerun:
+yes">  </span>или - (выклю-
+
+<p>чить
+режим). Например:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>{$E+} - эмулировать математический
+сопроцессор;
+
+<p><span
+style="mso-spacerun: yes">   </span>{$F+} - формировать дальний тип вызова
+процедур и функций;
+
+<p><span
+style="mso-spacerun: yes">   </span>{$N+} - использовать математический
+сопроцессор;
+
+<p><span
+style="mso-spacerun: yes">   </span>{$R+} - проверять выход за границы
+диапазонов.
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Некоторые ключи компиляции могут содержать
+параметр, например:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>{$I имя файла} - включить в текст
+компилируемой программы<span style="mso-spacerun: yes">  </span>назван-
+
+<p>ный
+файл.
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">    </span>Пример записи простой программы:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">         </span>Program TRIANG;
+
+<p><span
+style="mso-spacerun: yes">          </span>var A, B, C, S, P: Real;
+
+<p><span
+style="mso-spacerun: yes">          </span>begin
+
+<p><span
+style="mso-spacerun: yes">           </span>Read(A,B,C);
+
+<p><span
+style="mso-spacerun: yes">  </span><span style="mso-spacerun:
+yes">         </span>WriteLn(A,B,C);
+
+<p><span
+style="mso-spacerun: yes">            </span>P:=(A+B+C)/2;
+
+<p><span
+style="mso-spacerun: yes">            </span>S:=Sqrt(P*(P-A)*(P-B)*(P-C));
+
+<p><span
+style="mso-spacerun: yes">           </span>WriteLn('S=',S:8:3)
+
+<p><span
+style="mso-spacerun: yes">          </span>end.
+<p><div align="center"><a href="../Pascal. Курс лекций.html">	<img src="../../soder.gif" width=120 height=31 border=0 alt=""></a></div></p>
+
+</body>
+</html>

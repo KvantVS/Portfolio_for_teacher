@@ -1,0 +1,229 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_5.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_7.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Программирование диалоговых запросов
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+В обработчике событий TNotebook.HandleEvent мы предусмотрели вызовы 
+нескольких процедур, с помощью которых реализуются конкретные действия 
+программы. Настала пора запрограммировать эти действия.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Начнем с процедуры FileOpen. Ее задача - выбрать один из возможных файлов с 
+данными и подготовить его к работе. Конечно, программу можно было бы сделать 
+менее гибкой, раз и навсегда «привязав» ее к какому-то одному файлу, скажем, с 
+именем notebook.dat. Но даже и в этом случае следует решить проблему с 
+местоположением файла данных, а также определить, что должна делать программа, 
+если нужный файл не найден. Наша программа будет весьма гибкой в этом отношении: 
+она позволит указать интересующий нас файл мышью или клавишами курсора, либо 
+ввести имя файла с помощью клавиатуры или взять его из буфера ранее введенных 
+имен. Иными словами, поведение нашей программы будет в точности повторять 
+поведение среды Турбо Паскаль в момент нажатия на клавишу F3.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если Вы когда-либо программировали подобные действия в Турбо Паскале, Вы по 
+достоинству оцените простоту их реализации в Turbo Vision:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure FileOpen;  {Открывает файл данных}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PF: PFileDialog;  {Диалоговое окно выбора файла}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Control: Word;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s: PathStr;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Создаем экземпляр динамического объекта:}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">New(PF, Init('*.dat','Выберите 
+нужный файл:','Имя файла',fdOpenButton,0));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {С помощью следующего оператора окно выводится 
+на экран</font> <font size="3">и результат работы пользователя с ним
+помещается в</font> <font size="3">переменную Control:}&nbsp;</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Control := DeskTop.ExecView(PF);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Анализируем результат 
+запроса:}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> case Control of</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">StdDlg. cmFileOpen, cmOk:&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin  {Пользователь указал имя файла:}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PF.QetFileName(s) ;  {s содержит имя файла}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-----------} {Открыть файл}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; {case Control}&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Dispose (PF, Done)  {Уничтожаем экземпляр}&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;  {FileOpen}</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для реализации этого фрагмента необходимо указать имя модуля StdDlg в 
+предложении Uses - в этом модуле описан тип PFileDialog и предусмотрены все 
+необходимые методы для работы с ним. Кроме того, в программе используется 
+переменная S</font> <font face="Arial, Helvetica, sans-serif" size="3">типа PathStr. Этот тип описан в модуле DOS - сошлитесь также и на него. 
+Сделайте нужные изменения в тексте программы, не раскрывая пока сущности 
+действий</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Открыть файл}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">запустите программу на счет и нажмите клавишу F3 - экран приобретет вид, 
+показанный на рис.15.3.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Тип PFileDialog - это указатель на объект TFileDialog, создающий и 
+обслуживающий стандартное диалоговое окно выбора файлов. Все действия по 
+созданию и использованию диалогового окна, показанного на рис.15.3, реализуются 
+двумя операторами:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewfPF, Init('*.dat','Выберите нужный файл:',</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'Имя файла',fdOpenButton, 0));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Control := DeskTopA.ExecView(PF);</font> </P>
+<p align="center"><img border="0" src="15_3.jpg"    ></p>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Puc. 15.3.</b> Диалоговое окно выбора файлов</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Первый оператор инициирует новый экземпляр объекта TFileDialog. Три строковых 
+параметра обращения к конструктору Init этого объекта задают, соответственно, 
+маску выбираемых файлов ('*.dat'), заголовок диалогового окна ('Выберите нужный 
+файл:') и заголовок окна ввода ('Имя файла'). Параметр fdOpenButton указывает на 
+необходимость включить в диалоговое окно кнопку Open. Последним параметром 
+задается идентификатор протокола ввода. Доступ к этому протоколу открывается 
+кнопкой [</font><font face="Verdana, Arial, Helvetica, sans-serif" size="3">|</font><font face="Arial, Helvetica, sans-serif" size="3">] справа от окна ввода. Сам протокол хранится в куче в виде 
+последовательности вводившихся ранее текстовых строк. Идентификатор протокола 
+ввода позволяет при необходимости использовать один и тот же протокол в разных 
+диалоговых окнах.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Второй оператор</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Control := DeskTop.ExecView(PF);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">помещает вновь созданное окно в основное поле экрана программы (ссылка 
+DeskTop) и инициирует диалог с пользователем. Результат диалога возвращается в 
+переменной Control, значение этой переменной анализируется оператором</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">case Control of</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если Control содержит коды команд cmOk или cmFileOpen, то с помощью метода 
+GetFileName объекта TFileDialog в переменную S записывается полное имя файла (с 
+предшествующим путем).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В методе TFileDialog.GetFileName (var Name: Pathstr) параметр обращения 
+должен иметь тип PathStr. Этот тип определен в модуле DOS,- вот почему нам 
+понадобилось</font> <font face="Arial, Helvetica, sans-serif" size="3">сослаться на этот модуль в предложении Uses. Если указать компилятору на 
+необходимость</font> <font face="Arial, Helvetica, sans-serif" size="3">смягчить проверку строковых типов (директива компилятора {$V-}), то при 
+обращении к</font> <font face="Arial, Helvetica, sans-serif" size="3">GetFileName можно использовать переменнуюлюбого строкового типа, в том числе
+String.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Перед выходом из процедуры FileOpen экземпляр объекта TFileDialog 
+уничтожается (удаляется из кучи) обращением к деструктору Done.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">По описанной схеме в Turbo Vision создаются и используются любые другие 
+диалоговые окна.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для реализации диалогового запроса необходимо создать диалоговое окно и с 
+помощью функции ExecView объекта-владельца (программы) инициировать диалог с 
+пользователем. Результат, возвращаемый этой функцией, будет содержать выбранную 
+пользователем команду.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Чтобы запрограммировать действия, связанные с открытием файла, следует 
+вначале решить, какие именно данные он будет содержать. Напомню, что мы 
+разрабатываем диалоговую программу управления «записной книжкой». Структура 
+типичной записи в такой книжке состоит из трех полей: имя, телефон, адрес. 
+Учитывая это, будем считать, что данные в файле хранятся в виде следующих 
+записей:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">LName = 25;{Длина поля Name}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">LPhone= 11;{Длина поля Phone}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">LAddr =40;{длина поля Addr}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DataType = record  {Тип данных в файле}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Name : String[LName];  {Имя}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Phone: String[LPhone]  {Телефон}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Addr : String[LAddr]  {Адрес}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Поместим эти строки в начале программы, а перед описанием процедуры FileOpen 
+вставим определения следующих глобальных переменных:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DataFile: file of DataType;  {Файловая переменная}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> OpFileF : Boolean;  {Флаг 
+открытого файла}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Дополним текст процедуры FileOpen такими строками:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">case Control of</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">StdDlg.cmFileOpen,cmOk:&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PFA.GetFileName(s);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Assign(DataFile,s);  {Отсюда начинаются новые строки}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{$I-}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Reset(DataFile);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if lOResult &lt;&gt; 0 then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Rewrite{DataFile); OpFileF := IOResult=0;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{$I+}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if OpFileF then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DisableCommands(WinCom2);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">EnableCommands(WinComl)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">С помощью оператора DisableCommands мы временно запрещаем набор команд, 
+указанный в константе WinComl. Эта константа в нашем случае должна содержать 
+команду стОреn; ее определение нужно включить сразу за определением константы
+WinComl:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WinComl: TCommandSet = [cmSave, cmWork];&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> WinCom2: TCommandSet = [cmOpen];</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Обращение к процедуре EnableCommands разрешает использовать команды cmSave
+vicmWork.</font> </P>
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_5.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_7.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</BODY></HTML>

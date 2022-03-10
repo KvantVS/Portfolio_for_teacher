@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl3_4.html">
+<img SRC="Back.gif" BORDER="0">
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0">
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+ 
+Структура программы
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">Структура любой программной единицы (программы, процедуры или функции) должна 
+быть такой: ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&lt;Объявление программной единицы&gt;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Раздел описаний}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> BEGIN</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Раздел исполняемых операторов}&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> END &lt;символ конца программной единицы&gt;</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь «Объявление программной единицы&gt; - заголовок программы, процедуры 
+или функции; заголовок программы можно опускать без каких-либо последствий для 
+программы; для процедур и функций наличие заголовка обязательно; &lt;символ 
+конца программной единицы&gt; - символ «.» для программы или символ «;» - для 
+процедуры и функции.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Любой из двух разделов программной единицы - раздел описаний или исполняемых 
+операторов, или оба одновременно могут быть пустыми, т.е. не содержать никаких 
+описаний или исполняемых операторов.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В разделе описаний должны содержаться описания всех идентификаторов, 
+используемых в разделе исполняемых операторов. Исключением являются 
+идентификаторы, определенные в интерфейсных частях программных модулей 
+(библиотек), а также</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">глобальные для процедуры или функции идентификаторы (см. гл. 8). Если 
+программная единица использует идентификатор из интерфейсной части, какого-либо 
+модуля (см. гл. 9), в начале программы в предложении USES необходимо указать имя 
+этого модуля. Последнее не относится к идентификаторам, определенным в 
+стандартном модуле SYSTEM, т.е. имя этого модуля в предложении USES указывать не 
+нужно. Более того, модуль SYSTEM считается предварительно объявленным, поэтому 
+объявление</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses System;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">компилятор расценит как попытку двойного объявления модуля SYSTEM и даст 
+соответствующее сообщение об ошибке. В разделе описаний объявляются 
+идентификаторы типов, объектов, констант, пе</font><font face="Arial, Helvetica, sans-serif" size="3">ременных, а также метки, процедуры и функции. Описанию типов и объектов 
+должно предшествовать зарезервированное слово TYPE, описанию констант - CONST, 
+переменных - VAR и меток - LABEL, например:&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DigType = set of '0' .. '9' ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> StrType = string [40];&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">N = 100;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> EPS = 1e-9;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">x,y:real ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> st :StrType;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">label</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">1b1, 1b2;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В отличие от стандартного Паскаля разделы TYPE, CONST, VAR, LABEL могут 
+следовать друг за другом в любом порядке и встречаться в разделе описаний 
+сколько угодно раз.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Описание процедуры или функции заключается в указании заголовка этой 
+процедуры (функции) и ее тела (подробнее см. в гл. 8).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Структура программных библиотек (модулей) описана в гл.9.</font> </P>
+
+<p>&nbsp;</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl3_4.html">
+<img SRC="Back.gif" BORDER="0">
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0">
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

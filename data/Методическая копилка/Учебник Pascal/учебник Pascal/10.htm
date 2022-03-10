@@ -1,0 +1,235 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+   <META NAME="Author" CONTENT="DimichG">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.04 [en] (Win95; I) [Netscape]">
+   <TITLE>ЧАСТЬ 10</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<CENTER><B><FONT FACE="Times New Roman"><FONT SIZE=+2>10. Файлы.</FONT></FONT></B></CENTER>
+
+<CENTER>
+<HR WIDTH="100%"></CENTER>
+
+
+<P><FONT FACE="Times New Roman">В языке Паскаль <B><I>файл</I></B> - это
+состоящая из некоторого числа компонент одного типа структура данных со
+следующими особенностями:</FONT>
+<BR><FONT FACE="Times New Roman">- число компонент файла не фиксируется
+(в отличие от массива) и не ограничивается сверху некоторым числом (в отличие
+от строк и множеств);</FONT>
+<BR><FONT FACE="Times New Roman">- доступ к компонентам файла возможен
+только путем их последовательного перебора от начала файла (с первой компоненты);</FONT>
+<BR><FONT FACE="Times New Roman">- компоненты файла создаются только процедурой
+вывода и доступны только процедуре ввода.</FONT>
+<BR><FONT FACE="Times New Roman">В Паскале определены файлы двух видов,
+описываемые следующим образом:</FONT>
+
+<P><FONT FACE="Arial Cyr"><FONT COLOR="#800000"><B>&lt; </B>имя <B>> =
+File Of &lt; </B>тип <B>> ;</B></FONT></FONT>
+<BR><FONT FACE="Arial Cyr"><FONT COLOR="#800000"><B>&lt; </B>имя <B>> =
+Text ;</B></FONT></FONT>
+<BR><FONT FACE="Times New Roman">Первые называются <B><I>типизированными
+файлами</I></B>, а вторые -<B><I>текстовыми.</I></B></FONT>
+
+<P><FONT FACE="Times New Roman">В Турбо-Паскале описанные выше файлы называются
+<B><I>логическими</I></B> (кроме того, в системе Турбо-Паскаль есть логические
+файлы третьего вида - <B><I>не типизированные</I></B>). Основное назначение
+логического файла - обеспечить программе средства для обмена данными с
+периферийными устройствами компьютера. В связи с этом вводится понятие
+физического файла, как совокупности данных во внешней памяти (дискета,
+жесткий диск, магнитная лента и др.) Кроме того, в качестве физического
+файла могут использоваться и сами периферийные устройства, например, принтер).</FONT>
+<BR><FONT FACE="Times New Roman">Средством установления связи между логическими
+и физическими файлами в Турбо-Паскале является процедура </FONT><B>Assign.</B>
+
+<P><FONT FACE="Arial Cyr"><FONT COLOR="#800000"><B>Assign (&lt; </B>ф.п<B>.
+>, &lt; </B>имя файла <B>>);</B></FONT></FONT>
+<BR><B>&lt; </B><FONT FACE="Times New Roman">ф.п. ></FONT><B> - </B><FONT FACE="Times New Roman">файловая
+переменная (переменная файлового типа), описанная в программе (имя логического
+файла).</FONT>
+<BR><B>&lt; </B><FONT FACE="Times New Roman">имя файла </FONT><B>> -</B><FONT FACE="Times New Roman">
+текстовое выражение, значением которого является записанное по правилам
+операционной системы </FONT>MS DOS <FONT FACE="Times New Roman">имя файла
+(имя физического файла). Типы компонент логического и физического файла
+должны совпадать. Затем необходимо инициализировать файл, указав для него
+направление передачи данных, т.е. открыть файл для записи или чтения.</FONT>
+<BR><FONT FACE="Times New Roman">Для чтения файл открывается стандартной
+процедурой</FONT> <FONT FACE="Arial Cyr"><FONT COLOR="#800000"><B>Reset
+(&lt; </B>ф.п<B>. >);</B></FONT></FONT><B> </B><FONT FACE="Times New Roman">при
+этом специальная переменная-указатель устанавливается на начало файла.</FONT>
+<BR><FONT FACE="Times New Roman">Стандартная процедура </FONT><FONT FACE="Arial Cyr"><FONT COLOR="#800000"><B>Rewrite
+(&lt; </B>ф.п<B>. >)</B></FONT></FONT><FONT FACE="Times New Roman"> открывает
+файл для записи, при этом файл всегда создается заново, с потерей информации
+в данном физическом файле, если она была туда ранее записана.</FONT>
+<BR><FONT FACE="Times New Roman">Стандартная процедура </FONT><B><FONT FACE="Arial Cyr"><FONT COLOR="#800000">Append(&lt;
+ф.п. >)</FONT></FONT></B><FONT FACE="Times New Roman"> открывает для записи
+существующий текстовой файл с целью его расширения, при этом переменная-указатель
+ставится в конец файла.</FONT>
+<BR><FONT FACE="Times New Roman">Чтение и запись происходят при помощи
+уже знакомых нам процедур ввода-вывода </FONT><B>Read</B><FONT FACE="Times New Roman">
+и </FONT><B>Write</B><FONT FACE="Times New Roman">, с тем лишь отличием,
+что в них необходимо указать в качестве первого параметра файловую переменную.
+После каждой операции переменная-указатель перемещается на одну компоненту.</FONT>
+<BR><FONT FACE="Times New Roman">После завершения в программе операций
+по обмену данными с файлом его необходимо закрыть стандартной процедурой.
+</FONT><B><FONT FACE="Arial Cyr"><FONT COLOR="#800000">Close(&lt; ф.п.
+>)</FONT></FONT>.</B>
+<BR><FONT FACE="Times New Roman">При работе с файлами используется функция
+</FONT><FONT FACE="Arial Cyr"><FONT COLOR="#800000"><B>Eof(&lt; </B>ф.п<B>.
+>)</B></FONT></FONT><B>,</B><FONT FACE="Times New Roman"> которая возвращает
+значение </FONT><B>True</B><FONT FACE="Times New Roman">, если переменная-указатель
+стоит в конце файла, и </FONT><B>False</B><FONT FACE="Times New Roman">
+- в противном случае.</FONT>
+
+<P><B><FONT FACE="Times New Roman">Пример 13.</FONT></B></FONT>
+<BR><FONT FACE="Times New Roman">Дан файл </FONT><I>f
+</I><FONT FACE="Times New Roman">компоненты которого являются целыми числами.
+Получить в файле</FONT><I> g</I><FONT FACE="Times New Roman"> все четные
+компоненты файла</FONT><I> f,</I><FONT FACE="Times New Roman"> а в файле
+</FONT><I>h</I><FONT FACE="Times New Roman"> все нечетные.</FONT></FONT><FONT COLOR="#006600"></FONT>
+
+<P><FONT COLOR="#006600"><FONT FACE="Courier New">Program Dfile;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">Var f,h,g: File Of Integer;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; i:
+Integer;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">Begin {Установка связи
+между файловыми переменными и соответствующими именами файлов}</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; Assign(
+f ,’Data.dat’);</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; Assign(g
+, ‘Chet.dat’);</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; Assign(h
+, ‘Nechet.dat’);</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; {Открытие
+файлов для чтения и записи}</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; Reset(f);
+Rewrite(h); Rewrite(g);</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; While
+Not(Eof(f)) Do</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Begin</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read( f, i); {чтение из файла f}</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+If Odd(i)</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Then Write(h,i) {запись в файл h}</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Else Write(g, i) {запись в файл g}</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+End; {Закрытие файлов}</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">Close(f); Close(g);
+Close(h);</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">End.</FONT></FONT><FONT COLOR="#006600"></FONT>
+
+<P><B><FONT FACE="Times New Roman">Пример 14.</FONT></B></FONT>
+<BR><FONT FACE="Times New Roman">Дан текстовой файл.
+Получить копию файла.</FONT></FONT><FONT COLOR="#006600"></FONT>
+
+<P><FONT COLOR="#006600"><FONT FACE="Courier New">Program CopyFile;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">Var f,g: Text;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; s:
+String;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">Begin</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; {установка
+связи файловых переменных с именами файлов}</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; Assign(f,
+‘data1.txt’);</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; Assign(g,
+‘data2.txt’);</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; {открытие
+файлов для чтения и записи}</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; Reset(f);
+Rewrite(g);</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; While
+Not(Eof(f)) Do</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Begin</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Readln(f,s); {чтение из файла в строку}</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Writeln(g,s) {запись в файл из строки}</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+End;</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; {закрытие
+файлов}</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; Close(f);
+Close(g)</FONT></FONT>
+<BR><FONT COLOR="#006600"><FONT FACE="Courier New">End.</FONT></FONT>
+<BR><FONT COLOR="#006600">&nbsp;</FONT>
+<BR>&nbsp;
+<CENTER><FONT SIZE=-1></FONT>&nbsp;</CENTER>
+
+
+
+
+
+<B><FONT FACE="Times New Roman"><P>Процедуры и функции для текстовых файлов</P></B></FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=7 WIDTH=568>
+<TR><TD WIDTH="50%" VALIGN="TOP">
+<B><FONT FACE="Times New Roman" SIZE=2><P ALIGN="CENTER">Обращение</B></FONT></TD>
+<TD WIDTH="50%" VALIGN="TOP">
+<B><FONT FACE="Times New Roman" SIZE=2><P ALIGN="CENTER">Действие</B></FONT></TD>
+</TR>
+<TR><TD WIDTH="50%" VALIGN="TOP">
+<FONT SIZE=2><P>Append(f)</FONT></TD>
+<TD WIDTH="50%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Открывает файл для добавления в конец файла</FONT></TD>
+</TR>
+<TR><TD WIDTH="50%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Read(f, СписокВвода)</FONT></TD>
+<TD WIDTH="50%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Считывает из файла одно или более значений в одну или более переменных</FONT></TD>
+</TR>
+<TR><TD WIDTH="50%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>ReadLn(f, СписокВвода)</FONT></TD>
+<TD WIDTH="50%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>То же с переходом к следующей строке файла</FONT></TD>
+</TR>
+<TR><TD WIDTH="50%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Write(f, СписокВывода)</FONT></TD>
+<TD WIDTH="50%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Записывает одно или несколько значений в файл, заранее открытый для вывода</FONT></TD>
+</TR>
+<TR><TD WIDTH="50%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>WriteLn(f, СписокВывода)</FONT></TD>
+<TD WIDTH="50%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>То же с выводом маркера – признака конца строки</FONT></TD>
+</TR>
+<TR><TD WIDTH="50%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>SetTextBuf(f, Буфер [, Размер])</FONT></TD>
+<TD WIDTH="50%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Назначает буфер ввода/вывода для файла (по умолчанию размер буфера – 128 байт)</FONT></TD>
+</TR>
+<TR><TD WIDTH="50%" VALIGN="TOP">
+<FONT SIZE=2><P>Flash(f)</FONT></TD>
+<TD WIDTH="50%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Выталкивает буфер файла вывода</FONT></TD>
+</TR>
+<TR><TD WIDTH="50%" VALIGN="TOP">
+<FONT SIZE=2><P>Eoln(f)</FONT></TD>
+<TD WIDTH="50%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Возвращает признак конца строки</FONT></TD>
+</TR>
+<TR><TD WIDTH="50%" VALIGN="TOP">
+<FONT SIZE=2><P>SeekEoln(f)</FONT></TD>
+<TD WIDTH="50%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Возвращает признак конца строки, предварительно пропустив все пробелы и символы табуляции</FONT></TD>
+</TR>
+<TR><TD WIDTH="50%" VALIGN="TOP">
+<FONT SIZE=2><P>SeekEof(f)</FONT></TD>
+<TD WIDTH="50%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Возвращает признак конца файла, предварительно пропустив все пробелы, символы табуляции и признаки конца строки</FONT></TD>
+</TR>
+</TABLE>
+
+
+
+
+
+
+
+</BODY>
+</HTML>

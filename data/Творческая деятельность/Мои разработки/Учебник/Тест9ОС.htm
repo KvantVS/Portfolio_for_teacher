@@ -1,0 +1,185 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0040)http://www.junior.ru/wwwexam/t_perif.htm --><HTML><HEAD><TITLE>Операционая система</TITLE>
+<META content="text/html; charset=windows-1251" http-equiv=Content-Type>
+<META content="Иванов С.В." name=Author>
+<SCRIPT language=JavaScript>
+<!-- hide
+
+var scrtxt = "Тест.Операционная система Windows'98./Школа-лицей при ПГУ  март 2004 год." ; 
+var length = scrtxt.length;
+var width = 100;
+var pos = -(width + 2);
+
+function scroll() {
+  pos++;
+  var scroller = "";
+  if (pos == length) {
+    pos = -(width + 2);
+  }
+
+  if (pos < 0) {
+    for (var i = 1; i <= Math.abs(pos); i++) {
+      scroller = scroller+" ";}
+    scroller = scroller + scrtxt.substring(0, width - i + 1);
+  }
+  else {
+    scroller = scroller + scrtxt.substring(pos, width + pos);
+  }
+
+  window.status = scroller;
+  setTimeout("scroll()", 100);
+}
+
+// -->
+</SCRIPT>
+
+<META content="MSHTML 5.00.2919.6307" name=GENERATOR></HEAD>
+<BODY background="Тест9ОС.files\fon.gif" bgColor=white link=#800000 onload=scroll()>
+<SCRIPT language=JavaScript>
+<!--Начало сценария
+var res="2411324133"
+
+function check_me()
+{
+	var count=0
+	with(document.test)
+	{
+		if (!Q1[0].checked&&!Q1[1].checked&&!Q1[2].checked&&!Q1[3].checked) {count+=1};
+		if (!Q2[0].checked&&!Q2[1].checked&&!Q2[2].checked&&!Q2[3].checked) {count+=1};
+		if (!Q3[0].checked&&!Q3[1].checked&&!Q3[2].checked&&!Q3[3].checked) {count+=1};
+		if (!Q4[0].checked&&!Q4[1].checked&&!Q4[2].checked) {count+=1};
+		if (!Q5[0].checked&&!Q5[1].checked&&!Q5[2].checked&&!Q5[3].checked) {count+=1};
+		if (!Q6[0].checked&&!Q6[1].checked&&!Q6[2].checked&&!Q6[3].checked) {count+=1};
+		if (!Q7[0].checked&&!Q7[1].checked&&!Q7[2].checked&&!Q7[3].checked) {count+=1};
+		if (!Q8[0].checked&&!Q8[1].checked&&!Q8[2].checked&&!Q8[3].checked&&!Q8[4].checked) {count+=1};
+		if (!Q9[0].checked&&!Q9[1].checked&&!Q9[2].checked) {count+=1};
+		if (!Q10[0].checked&&!Q10[1].checked&&!Q10[2].checked&&!Q10[3].checked) {count+=1};
+		if (count>0) {alert("Вы выполнили не все задания. Проверьте себя.")} 
+		else answer()
+	}
+}
+
+function control(k,f1,f2,f3,f4,f5,f6,f7,f8,f9,f10)
+{
+	if (k==1&&f1.checked) return true;
+	if (k==2&&f2.checked) return true;
+	if (k==3&&f3.checked) return true;
+	if (k==4&&f4.checked) return true;
+	if (k==5&&f5.checked) return true;
+	if (k==6&&f6.checked) return true;
+	if (k==7&&f7.checked) return true;
+	if (k==8&&f8.checked) return true;
+	if (k==9&&f9.checked) return true;
+	if (k==10&&f10.checked) return true;
+	return false;
+}
+
+function answer()
+{
+	answ="";
+	with(document)
+	{
+		answ+=control(res.charAt(0),test.Q1[0],test.Q1[1],test.Q1[2],test.Q1[3])?"1":"0"
+		answ+=control(res.charAt(1),test.Q2[0],test.Q2[1],test.Q2[2],test.Q2[3])?"1":"0"
+		answ+=control(res.charAt(2),test.Q3[0],test.Q3[1],test.Q3[2],test.Q3[3])?"1":"0"
+		answ+=control(res.charAt(3),test.Q4[0],test.Q4[1],test.Q4[2])?"1":"0"
+		answ+=control(res.charAt(4),test.Q5[0],test.Q5[1],test.Q5[2],test.Q5[3])?"1":"0"
+		answ+=control(res.charAt(5),test.Q6[0],test.Q6[1],test.Q6[2],test.Q6[3])?"1":"0"
+		answ+=control(res.charAt(6),test.Q7[0],test.Q7[1],test.Q7[2],test.Q7[3])?"1":"0"
+		answ+=control(res.charAt(7),test.Q8[0],test.Q8[1],test.Q8[2],test.Q8[3],test.Q8[4])?"1":"0"
+		answ+=control(res.charAt(8),test.Q9[0],test.Q9[1],test.Q9[2])?"1":"0"
+		answ+=control(res.charAt(9),test.Q10[0],test.Q10[1],test.Q10[2],test.Q10[3])?"1":"0"
+		showResult();
+	}
+}
+
+function showResult()
+{
+	var nok=0;
+	var i,s;
+	for (i=0;i<answ.length;i++) {nok+=answ.charAt(i)=="1"?1:0;}
+	 if(nok<=4) s='"НЕУДОВЛЕТВОРИТЕЛЬНО"';
+	if(nok>4 && nok<6) s='"УДОВЛЕТВОРИТЕЛЬНО"';
+	if(nok==6) s='"УДОВЛЕТВОРИТЕЛЬНО"';
+	if(nok>6 && nok<8) s='"ХОРОШО"';
+	if(nok==8) s='"ХОРОШО"';
+	if(nok>8) s='"ОТЛИЧНО"';
+	document.test.s1.value="Количество правильных ответов "+nok+". Ваша оценка "+s+". Загляните в окно рядом с номером задания. Если ответ правильный, то там (+). Если Вы ошиблись, там (-).";
+	with(document.test)
+	{
+		if (answ.charAt(0)=="1") {T1.value=" +"} else {T1.value=" -"};
+		if (answ.charAt(1)=="1") {T2.value=" +"} else {T2.value=" -"};
+		if (answ.charAt(2)=="1") {T3.value=" +"} else {T3.value=" -"};
+		if (answ.charAt(3)=="1") {T4.value=" +"} else {T4.value=" -"};
+		if (answ.charAt(4)=="1") {T5.value=" +"} else {T5.value=" -"};
+		if (answ.charAt(5)=="1") {T6.value=" +"} else {T6.value=" -"};
+		if (answ.charAt(6)=="1") {T7.value=" +"} else {T7.value=" -"};
+		if (answ.charAt(7)=="1") {T8.value=" +"} else {T8.value=" -"};
+		if (answ.charAt(8)=="1") {T9.value=" +"} else {T9.value=" -"};
+		if (answ.charAt(9)=="1") {T10.value=" +"} else {T10.value=" -"};
+	}
+}
+
+</SCRIPT>
+
+<FORM name=test>
+<CENTER><FONT color=#000099 face=Arial,Helvetica,sans-serif>
+<H3> Объекты Windows </H3></CENTER>
+<OL>
+  <LI>
+  <H4><INPUT name=T1 size=1> Контекстное меню, это: ...</H4><INPUT name=Q1 
+  type=radio> Меню, появляющееся после нажатия кнопки Пуск.  <BR><INPUT name=Q1 type=radio> 
+  Меню, появляющееся после щелчка правой кнопкой мышки по выбранному объекту <BR><INPUT name=Q1 type=radio> Меню, расположенное в верхней части окна приложения.  
+  <BR><INPUT name=Q1 type=radio> Меню, появляющееся после двойного щелчка по выбранному объекту. <BR><BR>
+  <LI>
+  <H4><INPUT name=T2 size=1> Текстовый редактор Блокнот (Notepad) позволяет:  
+  </H4><INPUT name=Q2 type=radio> Просматривать текстовые файлы. <BR><INPUT 
+  name=Q2 type=radio> Изменять текстовые файлы <BR><INPUT name=Q2 type=radio> 
+   Создавать текстовые файлы.<BR><INPUT name=Q2 type=radio> Все вышеперечисленное   <BR><BR>
+  <LI>
+  <H4><INPUT name=T3 size=1> Ярлык - это:  
+  </H4><INPUT name=Q3 type=radio> Представитель папки, устройства, файла с документом или программы. <BR><INPUT name=Q3 
+  type=radio> Цветной рисунок с надписью.  <BR><INPUT name=Q3 type=radio> Программа, запускающая программы обслуживания. 
+  <BR><INPUT name=Q3 type=radio> Правильного ответа нет.  <BR><BR>
+  <LI>
+  <H4><INPUT name=T4 size=1> Кнопки на панели задач показывают: ...</H4><INPUT 
+  name=Q4 type=radio> Какие программы в данный момент открыты.  <BR><INPUT name=Q4 
+  type=radio> Какие файлы заражены вирусом.  <BR><INPUT name=Q4 type=radio> 
+   Какие программы зависли.  <BR><BR>
+  <LI>
+  <H4><INPUT name=T5 size=1> Команда Найти из Главного меню позволяет найти: ...</H4>
+  <INPUT name=Q5 type=radio> Все файлы с указанным содержимым.  
+  <BR><INPUT name=Q5 type=radio> Все файлы, созданные за последнюю неделю.  <BR>
+<INPUT name=Q5 type=radio> Все ответы правильные.  <BR><INPUT name=Q5 type=radio> Все файлы указанного типа.  <BR><BR>
+  <LI>
+  <H4><INPUT name=T6 size=1> Чтобы в приложении Мой компьютер скопировать файл из папки А в папку В, необходимо:</H4><INPUT name=Q6 
+  type=radio> Выделить файл в папке А, открыть папку В и выбрать команду Правка - Копировать. <BR>
+ <INPUT name=Q6 type=radio> Выделить файл в папке А, выбрать команду Правка - Копировать, открыть папку В и выбрать команду Правка - Вставить. <BR>
+<INPUT  name=Q6 type=radio> Выделить файл в папке А, открыть папку В и выбрать команду Правка - Вставить.  <BR>
+<INPUT name=Q6 type=radio> Выделить файл в папке А, выбрать команду Правка - Вставить, открыть папку В и выбрать команду Правка - Копировать.  <BR><BR>
+  <LI>
+  <H4><INPUT name=T7 size=1> Чтобы найти нужный файл или папку с помощью главного меню, нужно: ..</H4><INPUT 
+  name=Q7 type=radio> Нажать кнопку Пуск и выбрать команду Выполнить. <BR><INPUT name=Q7 type=radio> 
+     В главном меню Windows  нет подходящей команды. <BR><INPUT name=Q7 type=radio> Нажать кнопку Пуск и выбрать команду Документы. <BR><INPUT name=Q7 
+  type=radio> Нажать кнопку Пуск и выбрать команду Найти <BR><BR>
+  <LI>
+  <H4><INPUT name=T8 size=1> Сочетание клавиш, с помощью которого можно удалить папку или файл, минуя корзину. ...</H4><INPUT name=Q8 
+  type=radio> SHIFT+DEL. <BR><INPUT name=Q8 type=radio> ALT+CTRL <BR><INPUT name=Q8 
+  type=radio> CTRL+DEL. <BR><INPUT name=Q8 type=radio> ALT+CTRL+DEL <BR><INPUT name=Q8 
+  type=radio> ALT+DEL<BR><BR>
+  <LI>
+  <H4><INPUT name=T9 size=1> Если программа перестала реагировать на Ваши действия, необходимо: ...</H4><INPUT 
+  name=Q9 type=radio> Нажать клавишу ESC. 
+  <BR><INPUT name=Q9 type=radio> Нажать клавиши ALT+F4 <BR><INPUT name=Q9 type=radio> Нажать клавиши ALT+CTRL+DEL. 
+  <BR><BR>
+  <LI>
+  <H4><INPUT name=T10 size=1> После нажатия кнопки Вырезать на панели инструментов приложения 
+  ... </H4><INPUT name=Q10 type=radio> Удаляется все содержимое текущей папки.  <BR><INPUT name=Q10 type=radio>	Удаляется выбранный объект (файл или папка). <BR><INPUT 
+  name=Q10 type=radio> Выбранный объект удаляется в буфер обмена.  <BR><INPUT name=Q10 type=radio> 
+  Выбранный объект перемещается в Корзину.  <BR></LI></OL><BR>
+<CENTER>
+<P><TEXTAREA cols=70 name=s1 rows=4> </TEXTAREA> </P><INPUT onclick=check_me() type=button value="Показать результат">&nbsp;&nbsp;&nbsp;&nbsp; 
+<INPUT type=reset value="Сбросить ответы"> </CENTER><BR><BR></FORM>
+<P>
+<H5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</H5>
+<P></P></FONT></BODY></HTML>

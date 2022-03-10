@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_7.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_9.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Другие методы
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Порядок вызова наследуемого метода зависит от конкретного алгоритма. В 
+большинстве случаев наследуемый метод вызывается первым, но могут использоваться 
+и другие последовательности. Особое значение имеет вызов наследуемого 
+обработчика событий HandleEvent. В самом общем виде структура нового обработчика 
+будет такой:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure MyObject.HandleEvent(var Event: TEvent);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Изменение наследуемых свойств}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Вызов наследуемого обработчика}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Добавление 
+новых свойств}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Таким образом, вначале Вы должны запрограммировать те действия, которые 
+изменяют стандартное поведение перекрытого обработчика, затем вызвать его и, 
+наконец, осуществить новую обработку событий. Разумеется, любая из этих трех 
+частей может отсутствовать. Например, стандартный обработчик TDialog.HandleEvent 
+лишь расширяет свойства наследуемого метода TWindow.HandleEvent, добавляя в него 
+обработку событий от клавиатуры и событий-команд:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TDialog.HandleEvent(var Event: TEvent);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Inherited HandleEvent(Event);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">case Event.what of</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">evKeyDown:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">evCommand:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Этот обработчик перехватывает все события от клавиатуры и мыши, в том числе и 
+нажатие на клавишу Tab. Если Вы хотите обработать событие от клавиши Tab особым 
+способом, Вы должны перехватить это событие до вызова стандартного обработчика. 
+Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TNoTabsDialog.HandleEvent(var
+Event: TEvent);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if (Event.What = evKeyDown) then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if (Event.KeyCode = kbTab) or</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">(Event.KeyCode = kbShiftTab) then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ClearEvent(Event); Inherited HandleEvent(Event);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_7.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_9.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

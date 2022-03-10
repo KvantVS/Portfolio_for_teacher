@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl16_2.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl16_4.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Функциональность объектов
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+В функциональном отношении все потомки объекта TObject делятся на две группы: 
+видимые элементы и невидимые объекты (рис. 16.3).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Видимые элементы могут быть терминальными видимыми объектами или группами 
+видимых элементов. Любой элемент группы в свою очередь может быть группой 
+элементов, однако все группы в конце концов заканчиваются терминальными видимыми 
+объектами.</font> </P>
+<P align="center"><img border="0" src="16_3.jpg"  > </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Рис. 16.3.</b> Видимые и невидимые объекты</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Все терминальные видимые объекты (или просто видимые объекты) являются 
+потомками объекта TView, который придает им специальные свойства, отсутствующие 
+у невидимых объектов. Объект TView - это прямой потомок TObject (см. рис. 16.2), 
+представляющий собой пустую прямоугольную область экрана. В программе почти 
+никогда не используются экземпляры этого объекта, однако от него прямо или 
+косвенно порождаются все видимые элементы - как стандартные для Turbo Vision, 
+так и создаваемые программистом. Каждый порождаемый от TView видимый объект 
+владеет прямоугольной частью экрана и наследует его псевдоабстрактные методы 
+Draw и HandleEvent. Метод Draw является основой специализированных методов, 
+обеспечивающих создание изображений. Метод HandleEvent - это центральный метод, 
+с помощью которого реализуется цепочка связанных друг с другом обработчиков 
+событий. Каждый видимый элемент может обрабатывать связанные с ним события - это 
+является одним из важнейших отличительных свойств видимых элементов.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Семейство невидимых объектов включает в себя потоки, ресурсы, контролеры, 
+коллекции и списки строк. Невидимые объекты по существу представляют собой 
+обобщение таких важных механизмов Турбо Паскаля, как файлы и массивы, 
+учитывающее особенности объектно-ориентированных программ. Вы можете 
+использовать невидимые объекты в любых программах, в том числе и не пользующихся 
+изобразительными возможностями Turbo Vision. В частности, они могут оказаться 
+полезными при разработке программ, рассчитанных на графический режим работы 
+дисплея (видимые объекты Turbo Vision рассчитаны исключительно на текстовый 
+режим работы).</font> </P><p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl16_2.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl16_4.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</BODY></HTML>

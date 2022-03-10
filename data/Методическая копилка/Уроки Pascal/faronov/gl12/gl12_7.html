@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl12_6.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl12_8.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Директивы ассемблера
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Встроенный ассемблер не поддерживает никакие директивы, обычно используемые в 
+других ассемблерах, за исключением DB, DW, DD. Структура директив такова:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Dx &lt;константа&gt; [,&lt;константа&gt;,...,&lt;константа&gt;]</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь Dx - DB, DW или DD; &lt;константа&gt; - ассемблерная константа или 
+константное выражение.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">DB определяет цепочку байт, DW- слов, DD - двойных слов. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">db 'Турбо Паскаль',13,10</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">dw 0,$ FFFF, NearProc</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">dd 'ABCD1,999999999, FarProc</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В качестве константных выражений разрешается использовать любые ассемблерные 
+константы со значением, не выходящим из диапазона байта (DB), слова (DW) или 
+двойного слова (DD). В любой директиве можно определять строковую константу, 
+которая приводит к побайтовому заполнению памяти ASCII-кодами символов. 
+Поскольку слово (двойное слово) размещается в памяти, начиная со своего младшего 
+байта, старший (старшие) байт в директивах DW и DD при размещении строкой 
+константы может остаться неопределенным и заполняется нулем. Например, два 
+следующих объявления эквивалентны:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">dw '5'&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> dw $35 {$35 - ASCII-код символа '5'}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В директивах DW и DD разрешается также указывать имена, которые в этом случае 
+интерпретируются как адреса соответствующих объектов, причем для DW это - 
+ближний адрес (смещение), а для DD - дальний. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">dw X  {Размещает смещение переменной X}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> dd Proc  {Размещает FAR-адрес процедуры 
+Рrос}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Данные, определяемые директивами Dx, всегда размещаются в текущем кодовом 
+сегменте. Разместить таким образом данные в сегменте данных (т.е. определить 
+константу или типизированную константу) невозможно - для этого используются 
+стандартные средства Турбо Паскаля. Более того, директивы не могут снабжаться 
+именами, а поэтому использовать размещаемые с их помощью данные не так-то 
+просто. В следующем примере на экран выводится текстовое сообщение. Для этого 
+используется функция 9 вызова ДОС, в соответствии с которой в регистрах DS:DX 
+должен содержаться адрес текстовой строки, а сама строка должна заканчиваться 
+символом «$»:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">asm</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">jmp ©NextCode  {Обходим фрагмент данных}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">@:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">db 'Текстовая строка,13,10,'$'</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">@NextCode:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">push ds  {Сохраняем DS}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">push cs</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">pop ds  {DS = CS}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov dx,OFFSET @  {DS:DX - адрес строки}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ah,9  {AH - код функции вывода}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">int 21h  {Выводим строку}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">pop ds  {Восстанавливаем
+DS}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Обратите внимание на использование регистра DS. В соответствии с требованиями 
+функции 9, он должен содержать сегмент выводимой строки. В нашем случае строка 
+располагается в кодовом сегменте, поэтому мы вынуждены сначала сохранить 
+значение DS в стеке, а затем восстановить его. Если бы мы этого не сделали, по 
+завершении ассемблерного оператора регистр DS указывал бы на сегмент кода и была 
+бы потеряна связь программы Турбо Паскаля с глобальными переменными и 
+константами.</font> </P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl12_6.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl12_8.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

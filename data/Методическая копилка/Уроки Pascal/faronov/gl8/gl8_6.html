@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl8_5.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl8_7.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Нетипизированные параметры - переменные
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Еще одно очень полезное нововведение фирмы Borland - возможность 
+использования нетипизированных параметров. Параметр считается нетипизированным, 
+если тип формального параметра-переменной в заголовке подпрограммы не указан, 
+при этом соответствующий ему фактический параметр может быть переменной любого 
+типа. Заметим, что нетипизированными могут быть только параметры-переменные.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Нетипизированные параметры обычно используются в случае, когда тип данных 
+несущественен. Такие ситуации чаще всего возникают при разного рода копированиях 
+одной области памяти в другую, например, с помощью процедур BLOCKREAD, 
+BLOCKWRITE, MOVE и т.п.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Нетипизированные параметры в сочетании с механизмом совмещения данных в 
+памяти (см. п.4.4) можно использовать для передачи подпрограмме одномерных 
+массивов переменной длины (этот способ можно использовать в Турбо Паскале версии 
+6.0 и более ранней, в которых нет открытых массивов).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В примере 8.4 функция NORMA вычисляет норму вектора, длина которого меняется 
+случайным образом. Стандартная константа MAXINT содержит максимальное значение 
+целого типа INTEGER и равна 32767.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Следует учесть, что при обращении к функции NORMA массив X помещается в стек 
+и передается по ссылке, поэтому описание локальной переменной А в виде 
+одномерного массива максимально возможной длины в 65532 байта (встроенная 
+константа MAXINT определяет максимально возможное значение типа INTEGER и равна 
+32767), совпадающего с X, на самом деле не приведет к выделению дополнительного 
+объема памяти под размещение этой переменной. Иными словами, переменная А - 
+фиктивная переменная, размер которой никак не влияет на объем используемой 
+памяти. С таким же успехом можно было бы объявить ее в виде массива из одного 
+элемента, правда, в</font> <font face="Arial, Helvetica, sans-serif" size="3">этом случае необходимо позаботиться об отключении контроля выхода индекса за</font>
+<font face="Arial, Helvetica, sans-serif" size="3">границы диапазона.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><u>Пример 8.4&nbsp;</u></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NN = 100;  {Максимальная длина вектора}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">а : array [1..NN] of Real;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">i, j, N : Integer;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{----------------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function Norma (var x; N: Integer) : Real;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">a : array [1..2*MaxInt div SizeOf (Real) ] of Real absolute x;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">i : Integer;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s : Real;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin  {Norma}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s := 0;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for i := 1 to N do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> s := s + sqr (a [i] ) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Norma := sqrt(s)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end  {Norma} ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-------------------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin  {main}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for i := 1 to 10 do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">N := Random (NN) + 1;  {Текущая длина вектора}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for j := 1 to N do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">a [ j ] : = Random ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> WriteLn ('N = ', N:2,норма=',Norma(a, N):10:7)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end  {main} .</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Как видно из рассмотренного примера, передача одномерных массивов переменной 
+длины не вызывает никаких трудностей. Сложнее обстоит дело с многомерными 
+массивами, однако и в этом случае использование описанного приема 
+(нетипизированный параметр и совмещение его в памяти с фиктивной переменной) 
+все-таки проще, чем описанная в гл. 6 индексная арифметика. Еще раз напомню, что 
+в случае многомерных массивов их элементы располагаются в памяти так, что при 
+переходе от младших адресов к старшим наиболее быстро меняется самый правый 
+индекс массива.</font> </P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl8_5.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl8_7.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

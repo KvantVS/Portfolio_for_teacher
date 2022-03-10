@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_5.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_7.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Фаза событий
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Обычно активные события (evKeyDown и evCommand) получают и обрабатывают 
+видимые элементы, принадлежащие цепочке активности. Однако часто возникают 
+ситуации, когда необходимо, чтобы активное событие обработал неактивный элемент. 
+Например, если на экране активно окно скроллера с полосами скроллинга, то 
+события от клавиатуры будут передаваться окну. Как заставить в этом случае 
+полосы реагировать на нажатие клавиш PgUp или PgDn? Для этого в Turbo Vision 
+предусмотрен специальный механизм, основанный на так называемой фазе события. 
+Когда модальный элемент получает событие, его передача выполняется в следующей 
+последовательности:</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> событие посылается в Z-порядке всем видимым элементам, которые принадлежат 
+модальному элементу и у которых поле Options имеет установленный флаг 
+ofPreProcess;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> если событие не очищено ни одним из них, оно посылается активным элементам 
+(по цепочке активности);</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> если событие все еще не очищено, оно посылается в Z-порядке всем видимым 
+элементам, у которых установлен флаг ofPostProcess.</font></li>
+</ul>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Таким образом, Вы должны установить флаги ofPreProcess или ofPostProcess (или 
+оба вместе) при инициации видимого элемента, если хотите, чтобы он мог получить 
+активное событие до или после (или и до и после) того, как его получат активные 
+элементы.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для предыдущего примера необходимо инициировать полосы скроллинга с 
+установленными флагами ofPostProcess, если требуется, чтобы полосы «увидели» и 
+обработали нажатие на клавиши смещения курсора, PgUp, PgDn и т.д. Разумеется, в 
+этом случае полосы получат событие evKeyDown только при условии, что скроллер 
+сам не обработает это событие.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В некоторых ситуациях элемент, перехватывающий событие и до, и после активных 
+элементов, должен модифицировать свое поведение в зависимости от фазы события. 
+Рассмотрим такой типичный пример. Пусть в программе создано диалоговое окно, 
+имеющее строку ввода и три кнопки, для которых определены командные клавиши Q, 
+W, Е. Как добиться того, чтобы эти клавиши использовались в качестве командных 
+клавиш, т.е. приводили к «нажатию» соответствующих кнопок при условии, что 
+активна любая кнопка, а в сочетании с клавишей Аlt - если активна строка ввода 
+(именно так используются командные клавиши в диалоговом окне среды Турбо 
+Паскаля)? Если инициировать кнопки с флагом ofPreProcess, они смогут без труда 
+определить факт нажатия на командную клавишу, однако в строке ввода пользователь 
+не сможет ввести буквы Q, W и E, так как они будут перехвачены кнопками до того, 
+как событие от клавиши получит строка ввода. Если инициировать кнопки с флагом 
+ofPostProcess, пользователь не сможет использовать сочетания Аlt-&lt;клавиша&gt; 
+для нажатия кнопки, если активна строка ввода: все события evKeyDown будут в 
+этом случае направляться в строку. Решение очевидно: нужно определить оба флага, 
+но на препроцессорной фазе следует проверять ввод Аlt-&lt;клавиша&gt;, а на 
+постпроцессорной - &lt;клавиша&gt;.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для реализации этих проверок обработчик событий объекта TButton должен 
+каким-то образом определить текущую фазу события. С этой целью в любой группе 
+предусмотрено поле Phase. Это поле доступно только для чтения и содержит одно из 
+значений phPreProcess, phFocused или phPostProcess в зависимости от фазы 
+события.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Следующий фрагмент иллюстрирует ту часть обработчика событий кнопок, которая 
+проверяет командную клавишу:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">evKeyDown:  {Это часть оператора саsе}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">С := HotKey(Title*);  {Получаем в С букву клавиши}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Проверяем Alt-&lt;клавиша&gt;:}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if (Event.KeyCode = GetAltCode(С)) or&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+{Проверяем &lt;клавиша&gt;:}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">(Owner*.Phase = phPostProcess) and (C &lt;&gt; #0)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> and 
+(UpCase(Event.CharCode) = C) or&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Проверяем активность и нажатие пробела:}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> (State 
+and sfFocused &lt;&gt; 0) and (Event.CharCode = ' ') then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Press  {Да, кнопка 
+выбрана: выдаем нужную команду}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В этом фрагменте не показанная здесь функция HotKey выделяет из надписи на 
+кнопке символ командной клавиши (он обрамляется символом «~»), а стандартная для 
+Turbo Vision функция GetAltCode преобразует этот символ в расширенный код клавиш 
+Аlt-&lt;клавиша&gt;. Метод TButton.Press реализует «нажатие» на кнопку и выдает 
+сообщение evBroadcast с командой TButton. Command.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Отметим, что рассмотренный пример приведен только в качестве иллюстрации: 
+стандартный объект TButton реализует свой обработчик событий именно таким 
+образом и Вам нет нужды переопределять его (по умолчанию экземпляр TButton 
+инициируется с установленными флагами ofPreProcess и ofPostProcess).</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_5.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_7.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

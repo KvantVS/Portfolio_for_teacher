@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Untitled</title>
+</head>
+<body  background="../../bgrwhite.gif">
+<p><div align="center"><b><font size="+1" face="Arial">Процедуры работы с динамической памятью </font></b></div></p>
+
+<div style='border:none;border-bottom:solid windowtext .75pt;padding:0cm 0cm 1.0pt 0cm'>
+
+<p class=MsoSubtitle style='border:none;mso-border-bottom-alt:solid windowtext .75pt;
+padding:0cm;mso-padding-alt:0cm 0cm 1.0pt 0cm'><span lang=EN-US
+style='font-size:10.0pt'>Модуль System</span><span style='font-size:10.0pt;
+mso-ansi-language:RU'><o:p></o:p></span></p>
+
+</div>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Procedure </span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-bidi-font-family:"Times New Roman";color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>Dispose</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>(var P: </span></b><b style='mso-bidi-font-weight:normal'><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>Pointer</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>);<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Освобождает память,
+распределенную для динамической переменной.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>После вызова </span><span
+lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>Dispose</span><span style='font-size:10.0pt;color:black;
+layout-grid-mode:line'> значение P не определено. При включенной директиве
+{$I+}, вы можете использовать исключительные ситуации, чтобы обработать эту
+ошибку.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Procedure FreeMem(var P: </span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-bidi-font-family:"Times New Roman";color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>Pointer</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'> [; </span></b><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>Size</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>: Integer]);<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Освобождает память,
+выделенную динамической переменной данного размера.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>P - переменная
+любого типа-указателя, предварительно созданная процедурой GetMem.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>Size</span><span style='font-size:10.0pt;color:black;
+layout-grid-mode:line'> определяет размер динамической переменной в байтах. Для
+корректной работы этой процедуры, </span><span lang=EN-US style='font-size:
+10.0pt;color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>Size</span><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'> должно быть точно
+равно числу байтов, предварительно распределенных для этой переменной
+процедурой GetMem. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>FreeMem уничтожает
+переменную P и возвращает память «куче». Если P не указывает на память в
+«куче», возникает ошибка времени выполнения. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>После вызова
+FreeMem, значение P не определено, и происходит ошибка, если Вы впоследствии
+ссылаетесь на P^. Вы можете использовать исключительные ситуации, чтобы обработать
+эту ошибку.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Procedure GetMem(var P:
+Pointer; Size: Integer);<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>GetMem создает
+динамическую переменную определенного размера и помещает адрес блока в
+переменную Р.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>P - переменная
+любого типа-указателя. Size - выражение, определяющее размер в байтах
+динамической переменной. Вы должны ссылаться на созданную переменную как P^. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Procedure </span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-bidi-font-family:"Times New Roman";color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>New</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>(var P: </span></b><b style='mso-bidi-font-weight:normal'><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>Pointer</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>);<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Создает новую
+динамическую переменную и помещает ее адрес в переменную Р. P - переменная
+любого типа-указателя. Размер распределенного блока памяти равен размеру типа,
+на который указывает P. Если памяти недостаточно, чтобы распределить динамическую
+переменную, возникает исключительная ситуация EOutOfMemory.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>При завершении
+программы, все динамические переменные, созданные процедурами </span><span
+lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>New </span><span style='font-size:10.0pt;color:black;
+layout-grid-mode:line'>или </span><span lang=EN-US style='font-size:10.0pt;
+color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>GetMem</span><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>, должны быть
+уничтожены соответственно процедурами </span><span lang=EN-US style='font-size:
+10.0pt;color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>Dispose</span><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'> или </span><span
+lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>FreeMem</span><span style='font-size:10.0pt;color:black;
+layout-grid-mode:line'>.<o:p></o:p></span></p>
+<p><div align="center"><a href="../Object Pascal.htm">	<img src="../../soder.gif" width=120 height=31 border=0 alt=""></a></div></p>
+
+
+</body>
+</html>

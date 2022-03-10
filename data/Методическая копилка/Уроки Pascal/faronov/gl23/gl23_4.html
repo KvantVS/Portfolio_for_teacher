@@ -1,0 +1,186 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_3.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_5.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Использование оверлея
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Модули Turbo Vision разработаны с учетом возможного использования их в 
+оверлейных программах. Все они могут быть оверлейными за исключением модуля 
+Drivers, который содержит процедуры обработки прерываний и другой системный 
+интерфейс низкого уровня.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">При разработке оверлейных программ старайтесь спроектировать логические 
+последовательности вызовов тех или иных модулей так, чтобы по возможности 
+уменьшить свопинг (динамический обмен оверлеев). Поскольку программы Turbo 
+Vision рассчитаны на интенсивное использование диалога с пользователем, 
+размещайте (если это возможно) все процедуры, связанные с некоторой точкой 
+диалога, в том же модуле, в котором создается и исполняется соответствующий 
+модальный элемент. Например, используемые в программе диалоговые окна, как 
+правило, порождаются от TDialog, а диалоговые элементы этих окон - от TInputLine 
+и TListViewer. Если Вы поместите все три порожденных типа в один модуль, Ваша 
+программа будет исполняться быстрее, так как взаимосвязанные вызовы объектов не 
+будут приводить к свопингу оверлеев.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Заметим, что размеры всех основных оверлейных модулей - Арр, Objects, Views, 
+Menus приблизительно одинаковы и составляют около 50 Кбайт. С учетом Ваших 
+собственных объектов, обеспечивающих интенсивное взаимодействие с пользователем 
+и порожденных от TWindow или TDialog, типичный размер оверлейного буфера 
+составит не менее 64 КБайт. Если Вы хотите минимизировать потери времени на 
+свопинг и в то же время создать достаточно компактную программу, Вам придется 
+поэкспериментировать с размером оверлейного буфера и/или испытательной зоны. Вы 
+можете также возложить на пользователя Вашей программы ответственность за выбор 
+размера оверлейного буфера, предусмотрев соответствующий параметр в строке 
+вызова программы.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В следующем примере показан возможный способ инициации оверлея.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{$F+,0+,S-}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{$М 8192,65536,655360}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Overlay, Drivers, Memory, Objects, Views, Menus,&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Dialogs,istList, 
+StdDlg, App;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Объявляем оверлейные модули:}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {$0 App }&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{$O Dialogs }&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {$0 HistList 
+}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {$0 Memory }&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {$0 Menus }&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {$0 Objects }&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {$0 StdDlg }&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{$O Views }&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OvrBufDisk=96*1024;{Размер буфера без EMS-памяти}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OvrBufEMS=72*1024;{Размер буфера при использовании EMS-памяти}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ТМуАрр = object (TApplication)&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Constructor Init; Destructor Done; Virtual;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; {TMyApp}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure InitOverlays;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">FileName: String [79] ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">FileName := ParamStr(0);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Ovrlnit(FileName) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if OvrResult &lt;&gt; 0 then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PrintStr('Невозможно открыть оверлейный файл ', FileName);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Halt;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OvrinitEMS;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if OvrResult = 0 then OvrSetBuf(OvrBufEMS)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OvrSetBuf(OvrBufDisk) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OvrSetRetry(OvrBufDisk div 2);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;  {InitOverlays}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Constructor TMyApp.Init;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InitOverlays;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TApplication.Init;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; {TMyApp.Init}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Destructor TMyApp.Done;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TApplication.Done;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; {TMyApp.Done}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MyApp: TMyApp;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MyApp.Init;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MyApp.Run;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MyApp. Done;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В этой программе используется механизм размещения оверлеев в исполняемом 
+EXE-файле. Для этого после компиляции программы используйте команду ДОС</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">copy/b MyProg.exe+MyProg.ovr MyProg.exe</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Чтобы определить маршрут поиска EXE-файла, в процедуре InitOverlays 
+проверяется параметр вызова с номером 0. Заметим, что в этот параметр 
+автоматически помещается маршрут доступа к загруженной программе только в том 
+случае, когда Ваш ПК работает под управлением MS-DOS версии 3.0 и выше.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Обратите внимание: размер оверлейного буфера можно сделать меньшим, если 
+программа обнаружит доступную EMS-память, ведь в этом случае потери времени на 
+свопинг будут минимальными. Разумеется, инициация оверлея осуществляется до 
+обращения к TApplication.Init, т.к. модуль Арр, в котором находится этот метод, 
+сделан в программе оверлейным.</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_3.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_5.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

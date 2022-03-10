@@ -1,0 +1,216 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_1.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_3.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Формирование строки статуса
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Стандартный вид экрана, показанный на рис. 15.1, можно изменять. Попробуем 
+придать ему некоторый специфический для нашей программы вид. Например, заменим в 
+строке статуса стандартное сообщение</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Alt-X Exit&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> на русифицированное</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Alt-X Выход</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Таким образом, нам необходимо модифицировать стандартное поведение объекта 
+Notebook. Для этого мы должны отыскать в типе TApplication метод, ответственный 
+за создание строки статуса. Если мы обратимся к прил.П6, то обнаружим, что 
+объект типа TApplication содержит методы Init и Done, с помощью которых 
+создаются и уничтожаются экземпляры объекта, но в нем нет метода, ответственного 
+за строку статуса. Однако из таблицы наследования нетрудно определить, что этот 
+метод (InitStatusLine) он наследует от своего родителя TProgram. Как изменить 
+работу метода? В рамках объектно-ориентированной библиотеки для этого поступают 
+следующим образом: объявляется объект-потомок от стандартного объекта, поведение 
+которого необходимо изменить, и в новом объекте описывается свой метод, 
+ответственный за это поведение.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Изменим программу следующим образом;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Арр, Objects, Menus, Drivers, Views;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TNotebook = object (TApplication)  {Создаем объект-потомок от TApplication}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+Procedure InitStatusLine; Virtual;  {Перекрываем старый метод InitStatusLine 
+новым}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-----------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TNotebook. InitStatusLine;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Описание нового метода, с помощью которого создается строка статуса}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R: TRect;  {Границы строки статуса}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetExtent (R) ;  {Получаем в R координаты всего экрана}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> R.A.Y := pred(R.B.Y) ; 
+{Помещаем в R координаты строки</font> <font size="3">статуса}</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Создаем строку статуса:}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> StatusLine := New(PStatusLine, Init(R,&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Определяем 
+один вариант строки статуса:}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> NewStatusDef (0, $FFFF,  {Устанавливаем для этого 
+варианта</font> <font size="3">максимальный диапазон контекстной справочной службы}</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Определяем единственную клавишу Alt-X: }&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewStatusKey('~Alt-X~ Выход' , 
+kbAltX, cmQuit,&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NIL),  {Нет других клавиш}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NIL)  {Нет других строк статуса}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">))</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; {TNotebook. InitStatusLine}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{---------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Notebook: TNotebook;{Изменен тип переменной!}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Notebook. Init;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Notebook. Run;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Notebook. Done&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end .</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Как видим, программа сразу же усложнилась. Во-первых, в ней используются 
+идентификаторы, которые определены в других модулях Turbo Vision, - эти модули 
+мы перечислили в предложении Uses. Во-вторых, нам потребовалось объявить новый 
+объект TNotebook как потомок от объекта TApplication. Объект-потомок наследует 
+от своего объекта-родителя все поля и методы и при необходимости может их 
+дополнять своими полями и методами, а также перекрывать методы родителя. Как раз 
+для того, чтобы перекрыть унаследованный от TProgram стандартный метод 
+InitStatusLine, ответственный за создание строки статуса, нам и понадобилось 
+объявление нового типа TNotebook. Строка</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure InitStatusLine; Virtual;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">в объявлении этого типа указывает, что новый объект будет пользоваться 
+одноименным, но иным, чем объект-родитель, методом. Возможность замены методов 
+на одноименные, но с другим содержанием называется полиморфизмом.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Процедура TNotebookJnitStatusLine раскрывает суть нового метода. В ней 
+используется обращение к методам NewStatusDef vi NewStatusKey, с помощью которых 
+создается динамический объект типа TStatusLine. Программа TApplication 
+обращается к методам этого объекта для обслуживания строки статуса.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Turbo Vision позволяет определять несколько вариантов строки статуса. Каждый 
+вариант создается с помощью метода NewStatusDef. В зависимости от текущего 
+состояния программы (от контекста программы) Turbo Vision автоматически помещает</font>
+<font face="Arial, Helvetica, sans-serif" size="3">в строку статуса нужный вариант. Так как в нашей программе используется 
+единственный вариант строки статуса, мы указали максимально возможный диапазон 
+контекста программы при обращении к методу
+NewStatmDef.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">С помощью метода NewStatusKey в строке статуса определяется очередная 
+командная клавиша. При обращении к методу сначала указывается текст, 
+высвечиваемый в строке статуса, причем символом «~» выделяется та часть 
+сообщения, которая будет подсвечена в строке статуса другим цветом: таким 
+способом в Turbo Vision указываются командные клавиши. Идентификатор kbAltX 
+задает комбинацию клавиш, а cmQuit - связанную с ней команду.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В программе объявляется переменная R типа TRect. С помощью такого типа 
+переменных программист задает координаты прямоугольного участка экрана. Эта 
+переменная необходима нам для указания того места на экране, где будет помещено 
+сообщение</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Alt-X Выход</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">определяющее командные клавиши Alt-X. Для правильного задания этих координат 
+мы использовали два предложения:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetExtent(R);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.A.Y := pred(R.B.Y);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В первом вызывается стандартный метод Turbo Vision GetExtent, с помощью 
+которого в R помещаются координаты доступной в данный момент части экрана. Во 
+втором - номер той строки (строки статуса), куда будет выводиться сообщение. В 
+Turbo Vision тип TRect объявляется в виде следующей записи:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TRect = record</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">A: record  {Координаты верхнего левого угла}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">X: Byte; Y: Byte&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">В: record  {Координаты правого нижнего угла}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">X: Byte; Y: Byte&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Таким образом, второе предложение лишь уменьшает на единицу вертикальную 
+координату самой нижней доступной строки и устанавливает полученное значение в 
+поле R.A. Y (это поле задает вертикальную координату верхнего левого угла 
+прямоугольного участка). Заметим, что в Turbo Vision минимальные координаты 
+задаются значением 0, в то время как в стандартном модуле CRT Турбо Паскаля 
+минимальные координаты имеют значение 1.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Обратите внимание на характерный прием, широко используемый в Turbo Vision: 
+при обращении к методам NewStatusDef и NewStatusKey последним параметром 
+указывается переменная типа Pointer. Внутри методов эта переменная трактуется 
+как ссылка на новый метод, что позволяет организовать цепочку последовательных 
+определений. Вложенная последовательность вызовов заканчивается 
+зарезервированной константой NIL, указывающей на конец цепочки. Если бы мы, 
+например, захотели добавить в</font> <font face="Arial, Helvetica, sans-serif" size="3">строку статуса определение клавиши F10, связав ее с закрытием активного окна, 
+мы могли бы использовать такую конструкцию:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewStatusDef(0, $FFFF,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewStatusKey('~Alt-X~ Выход', kbAltX,
+cmQuit,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewStatusKey('~F10~ Закрыть окно', kbFl0,
+cmClose,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NIL)),  {Нет других клавиш}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NIL)  {Нет других определений}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Описанный пример позволяет нам сделать очень важный вывод:</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Чтобы модифицировать стандартное поведение объекта,
+необходимо создать объект-потомок от этого объекта и</font>
+<font face="Arial, Helvetica, sans-serif" size="3">перекрыть в нем нужный метод.</font> </P>
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_1.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_3.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</BODY></HTML>

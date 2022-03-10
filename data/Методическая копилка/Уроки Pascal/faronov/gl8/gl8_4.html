@@ -1,0 +1,184 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl8_3.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl8_5.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Параметры - массивы и параметры - строки
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Может сложиться впечатление, что объявление переменных в списке формальных 
+параметров подпрограммы ничем не отличается от объявления их в разделе описания 
+переменных. Действительно, в обоих случаях много общего, но есть одно 
+существенное различие: типом любого параметра в списке формальных параметров 
+может быть только стандартный или ранее объявленный тип. Поэтому нельзя, 
+например, объявить следующую процедуру:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure S (a: array [1..10] of Real);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">так как в списке формальных параметров фактически объявляется тип-диапазон, 
+указывающий границы индексов массива.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если мы хотим передать какой-то элемент массива, то проблем, как правило, не 
+возникает, но если в подпрограмму передается весь массив, то следует 
+первоначально описать его тип. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">atype = array [1..10]of Real;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Procedure S (a: atype);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Поскольку строка является фактически своеобразным массивом, ее передача в 
+подпрограмму осуществляется аналогичным образом:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">intype = String [15] ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">outype = String [30] ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Function St (s : intype): outype;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Требование описать любой тип-массив или тип-строку перед объявлением 
+подпрограммы на первый взгляд кажется несущественным. Действительно, в рамках
+простейших вычислительных задач обычно заранее известна структура всех 
+используемых в программе данных, поэтому статическое описание массивов не 
+вызывает проблем. Однако разработка программных средств универсального 
+назначения связана со значительными трудностями. По существу, речь идет о том, 
+что в Турбо Паскале невозможно использовать в</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">подпрограммах массивы с «плавающими» границами изменения индексов. Например, 
+если разработана программа, обрабатывающая матрицу 10х10 элементов, то для 
+обработки матрицы 9x11 элементов необходимо переопределить тип, т.е. 
+перекомпили</font><font face="Arial, Helvetica, sans-serif" size="3">ровать всю программу (речь идет не о динамическом размещении массивов в куче, 
+а о</font> <font face="Arial, Helvetica, sans-serif" size="3">статическом описании массивов и передаче их как параметров в подпрограммы). 
+Этот недостаток, как и отсутствие в языке средств обработки исключительных 
+ситуаций (прерываний), унаследован из стандартного Паскаля и представляет собой 
+объект постоянной и вполне заслуженной его критики. Разработчики Турбо Паскаля 
+не рискнули кардинально изменить свойства базового языка, но, тем не менее, 
+включили в него некоторые средства, позволяющие в известной степени смягчить 
+отмеченные недостатки.Эти недостатки практически полностью устранены в языке Object Pascal, 
+используемом в визуальной среде программирования Delphi.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Прежде всего, в среде Турбо Паскаля можно установить режим компиляции, при 
+котором отключается контроль за совпадением длины фактического и формального 
+параметра-строки (см. прил.1). Это позволяет легко решить вопрос о передаче 
+подпрограмме строки произвольной длины. При передаче строки меньшего размера 
+формальный параметр будет иметь ту же длину, что и параметр обращения; передача 
+строки большего размера приведет к ее усечению до максимального размера 
+формального параметра. Следует сказать, что контроль включается только при 
+передаче строки, объявленной как формальный параметр-переменная. Если, 
+соответствующий параметр объявлен параметром-значением, эта опция игнорируется и 
+длина не контролируется.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Значительно сложнее обстоит дело с передачей массивов произвольной длины. 
+Наиболее универсальным приемом в этом случае будет, судя по всему, работа с 
+указателями и использование индексной арифметики. Несколько проще можно решить 
+эту проблему при помощи нетипизированных параметров (см. п.8.5). В версии Турбо 
+Паскаля 7.0 язык поддерживает так называемые открытые массивы, легко решающие 
+проблему передачи подпрограмме одномерных массивов переменной длины.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Открытый массив представляет собой формальный параметр подпрограммы, 
+описывающий базовый тип элементов массива, но не определяющий его размерности и 
+границы:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure MyProc(OpenArray: array of Integer);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Внутри подпрограммы такой параметр трактуется как одномерный массив с нулевой 
+нижней границей. Верхняя граница открытого массива возвращается функцией HIGH, 
+упоминавшейся в п.4.1.1. Используя 0 как минимальный индекс и значение, 
+возвращаемое функцией HIGH, как максимальный индекс, подпрограмма может 
+обрабатывать одномерные массивы произвольной длины:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Иллюстрация использования открытых массивов: программа выводит на экран 
+содержимое двух одномерных массивов разной длины с помощью одной процедуры 
+ArrayPrint}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure&nbsp; ArrayPrint(aArray: array of Integer);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k: Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for k := 0 to High(aArray) do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Write(aArray[k]:8);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">A:array [-1..2] of Integer = (0,1,2,3);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> B: array [5..7] of Integer = (4,5,6);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ArrayPrint(A);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ArrayPrint(B)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Как видно из этого примера, фактические границы массивов А и В, передаваемых 
+в качестве параметров вызова процедуре ArrayPrint, не имеют значения. Однако 
+размерность открытых массивов (количество индексов) всегда равна 1 - за этим 
+следит компилятор. Если бы, например, мы добавили в программу двумерный массив С</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">С: array [1..3,1..5] of Integer;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">то обращение</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ArrayPrint(С)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">вызывало бы сообщение об ошибке</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Error26: Type mismatch.&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> (Ошибка 26: Несоответствие типов.)</font> </P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl8_3.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl8_5.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl9_5.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl9_7.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Компиляция модулей
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+В среде Турбо Паскаля имеются средства, управляющие способом компиляции 
+модулей и облегчающие разработку крупных программных проектов. В частности, 
+определены три режима компиляции: COMPILE, MAKE и BUILD (см. прил.1). Режимы 
+отличаются только способом связи компилируемого модуля или основной программы с 
+другими модулями, объявленными в предложении USES,</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">При компиляции модуля или основной программы в режиме COMPILE все 
+упоминающиеся в предложении USES модули должны быть предварительно 
+откомпилированы и</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">результаты компиляции помещены в одноименные файлы с расширением TPU. 
+Например, если в программе (модуле) имеется предложение</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Global;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">то на диске в каталоге, объявленном опцией UNIT DIRECTORIES (см. прил.1), уже 
+должен</font> <font face="Arial, Helvetica, sans-serif" size="3">находиться файл GLOBAL.TPU. Файл с расширением TPU (от англ. Turbo Pascal
+Unit)</font> <font face="Arial, Helvetica, sans-serif" size="3">создается автоматически в результате компиляции модуля (если основная 
+программа мо</font><font face="Arial, Helvetica, sans-serif" size="3">жет компилироваться без создания исполняемого ЕХЕ-файла, то компиляция модуля 
+всегда</font> <font face="Arial, Helvetica, sans-serif" size="3">приводит к созданию TPU-файла).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В режиме МАКЕ компилятор проверяет наличие TPU-файлов для каждого 
+объявленного</font> <font face="Arial, Helvetica, sans-serif" size="3">модуля. Если какой-либо из файлов не обнаружен, система пытается отыскать 
+одноименный</font> <font face="Arial, Helvetica, sans-serif" size="3">файл с расширением PAS, т.е. файл с исходным текстом модуля, и, если искомый 
+файл найден,</font> <font face="Arial, Helvetica, sans-serif" size="3">приступает к его компиляции. Кроме того, в этом режиме система следит за 
+возможными из</font><font face="Arial, Helvetica, sans-serif" size="3">менениями исходного текста любого используемого модуля. Если в PAS-файл 
+(исходный текст</font> <font face="Arial, Helvetica, sans-serif" size="3">модуля) внесены какие-либо изменения, то независимо от того, есть ли уже в 
+каталоге соответ</font><font face="Arial, Helvetica, sans-serif" size="3">ствующий TPU-файл или нет, система осуществляет его компиляцию перед 
+компиляцией</font> <font face="Arial, Helvetica, sans-serif" size="3">основной программы. Более того, если изменения внесены в интерфейсную часть 
+модуля, то</font> <font face="Arial, Helvetica, sans-serif" size="3">будут перекомпилированы также и все другие модули, обращающиеся к нему. Режим 
+МАКЕ,</font> <font face="Arial, Helvetica, sans-serif" size="3">таким образом, существенно облегчает процесс разработки крупных программ с 
+множеством модулей: программист избавляется от необходимости следить за 
+соответствием существующих TPU-файлов их исходному тексту, так как система 
+делает это автоматически.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В режиме BUILD существующие TPU-файлы игнорируются, и система пытается 
+отыскать (и компилировать) соответствующий РAS-файл для каждого объявленного в 
+предложении USES модуля. После компиляции в режиме BUILD программист может быть 
+уверен в том, что учтены все сделанные им изменения в любом из модулей.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Подключение модулей к основной программе и их возможная компиляция 
+осуществляются в порядке их объявления в предложении USES. При переходе к 
+очередному модулю система предварительно отыскивает все модули, на которые он 
+ссылается. Ссылки модулей друг на друга могут образовывать древовидную структуру 
+любой сложности, однако запрещается явное или</font>
+<font face="Arial, Helvetica, sans-serif" size="3">косвенное обращение модуля к самому себе. Например, недопустимы следующие 
+объявления:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Unit A;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Unit В;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Interface&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Interface</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses В;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Uses А;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Implementation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Implementation&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+end.</font> </P>
+<P></P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Это ограничение можно обойти, если «спрятать» предложение USES в исполняемые 
+части зависимых модулей:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Unit A;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Unit В;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Interface&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Interface</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Implementation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Implementation&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Uses B;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Uses A;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">......&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Дело в том, что Турбо Паскаль разрешает ссылки на частично откомпилированные 
+модули, что приблизительно соответствует опережающему описанию подпрограммы. 
+Если интерфейсные части любых двух модулей независимы (это непременное 
+условие!), Турбо Паскаль сможет идентифицировать все глобальные идентификаторы в 
+каждом из модулей, после чего откомпилирует тела модулей обычным способом.</font> </P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl9_5.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl9_7.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

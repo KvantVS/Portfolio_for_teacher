@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl17_9.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl17_11.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Поле Options
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Поле Options представляет собой шестнадцатиразрядное слово, биты (разряды) 
+которого показаны на рис. 17.8.</font> </P>
+<P align="center"><img border="0" src="17_8.jpg"  > </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Рис.17.8.</b> Разряды поля Options</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">ofSelectable</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если этот флаг установлен (имеет значение 1), пользователь может выбрать 
+видимый элемент мышью или клавишей Tab. Если Вы поместили на экран 
+информационный элемент, Вам может потребоваться, чтобы пользователь не мог 
+выбрать его. Например, статические текстовые объекты и рамки окон обычно не 
+могут выбираться и имеют ofSelectable = 0.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">ofTopSelect</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Видимый элемент будет передвигаться наверх в смысле Z-упорядочения, пока не 
+станет самым верхним среди других равных ему видимых элементов. Этот флаг в 
+основном используется для окон в рабочей зоне экрана. Вы не должны использовать 
+его для видимых элементов в группе.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">ofFirstClick</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если флаг сброшен, отметка элемента мышью игнорируется, и наоборот - 
+установленный флаг разрешает выбор элемента мышью. Если в диалоговое окно 
+помещена кнопка, Вы наверняка захотите, выбрать ее мышью, поэтому кнопка имеет 
+ofFirstClick установленным по умолчанию. Но если Вы создаете окно, Вы можете 
+сбросить этот флаг, если хотите, чтобы оно не откликалось на выбор мышью.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">ofFramed&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Если флаг установлен, видимый элемент имеет рамку.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">ofPreProcess</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если флаг установлен, видимый элемент будет получать и, возможно, 
+обрабатывать активные события до того, как их получит и обработает активный 
+элемент. См. раздел «Фаза» в гл.18.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">ofPostProcess</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Установленный в 1 флаг ofPostProcess позволяет видимому элементу обрабатывать 
+события после того, как они были получены активным элементом, и при условии, что 
+активный элемент не очистил событие. См. раздел «Фаза» в гл.18.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">ofBuffered</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Когда этот бит установлен, образ группы при первой ее визуализации 
+автоматически сохраняется в буфере. В следующий раз, когда группе нужно будет 
+визуализиро-ваться, она копирует образ из буфера на экран вместо прорисовки всех 
+своих подэле-ментов, что ускоряет процесс создания изображений. Если программа 
+испытывает недостаток в динамической памяти, монитор памяти Turbo Vision 
+освобождает буферы групп до тех пор, пока запрос к динамической памяти не сможет 
+быть выполнен.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если группа имеет буфер, вызов метода Lock будет блокировать вывод 
+изображения на экран до тех пор, пока не будет вызван метод Unlock. Сразу после 
+вызова UnLock буфер группы целиком выводится на экран. Блокирование уменьшает 
+мерцание во время сложных корректировок экрана. Например, TDesktop блокирует 
+себя, когда выводит свои подэлементы каскадом или черепицей.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">ofTileable</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Объекг TDesktop может располагать связанные с ним окна каскадом или 
+черепицей. Если окна располагаются каскадом, каждое следующее окно накладывается 
+на предыдущее и почти полностью перекрывает его; при расположении окон черепицей 
+каждое окно располагается так, чтобы не перекрывать другие окна. Если Вы хотите, 
+чтобы окна располагались каскадом, Вам следует очистить флаг ofTileable, если 
+черепицей - установить его в 1. Если для окна установлен режим вывода каскадом, 
+оно будет занимать одно и то же место на экране, в то время как расположение 
+окон черепицей приводит к изменению их размеров и положения при открытии каждого 
+нового окна.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Расположение видимых элементов черепицей или каскадом 'выполняется в 
+TApplication.HandleEvent очень просто:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmTile:&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DeskTopA.GetExtent(R);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DeskTopA.Tile(R);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmCascade:&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DeskTop^.GetExtent(R);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DeskTop^.Cascade(R);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">ofCenterX</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Этот флаг следует установить в 1, если Вы хотите, чтобы видимый элемент 
+центрировался по горизонтали, т.е. вставлялся в группу так, чтобы слева и справа 
+от него было приблизительно одинаковое расстояние до границ группы.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">ofCenterY</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Флаг обеспечивает центрирование элемента по вертикали. Если Вы хотите, чтобы 
+Ваши окна выглядели одинаково хорошо в режимах 25 и 43/50 строк на экране, 
+следует установить ofCenterY = 1.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">ofCentered</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Установка этих разрядов обеспечивает центровку видимого элемента относительно 
+границ группы одновременно по горизонтальной и вертикальной осям.</font> </P>
+<p>&nbsp;</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl17_9.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl17_11.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</BODY></HTML>

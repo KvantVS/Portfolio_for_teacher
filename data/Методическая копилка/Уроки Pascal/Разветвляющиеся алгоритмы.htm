@@ -1,0 +1,2582 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1251">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 12">
+<meta name=Originator content="Microsoft Word 12">
+<link rel=File-List href="Разветвляющиеся%20алгоритмы.files/filelist.xml">
+<link rel=Edit-Time-Data href="Разветвляющиеся%20алгоритмы.files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>ТЕМА 1</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Pc_3</o:Author>
+  <o:LastAuthor>Kvant</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>141</o:TotalTime>
+  <o:LastPrinted>2006-02-20T05:12:00Z</o:LastPrinted>
+  <o:Created>2011-06-23T01:33:00Z</o:Created>
+  <o:LastSaved>2011-06-23T01:33:00Z</o:LastSaved>
+  <o:Pages>6</o:Pages>
+  <o:Words>1781</o:Words>
+  <o:Characters>10153</o:Characters>
+  <o:Company>ipkpk</o:Company>
+  <o:Lines>84</o:Lines>
+  <o:Paragraphs>23</o:Paragraphs>
+  <o:CharactersWithSpaces>11911</o:CharactersWithSpaces>
+  <o:Version>12.00</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]-->
+<link rel=themeData href="Разветвляющиеся%20алгоритмы.files/themedata.thmx">
+<link rel=colorSchemeMapping
+href="Разветвляющиеся%20алгоритмы.files/colorschememapping.xml">
+<!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:TrackMoves>false</w:TrackMoves>
+  <w:TrackFormatting/>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:DoNotPromoteQF/>
+  <w:LidThemeOther>RU</w:LidThemeOther>
+  <w:LidThemeAsian>X-NONE</w:LidThemeAsian>
+  <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+  <w:Compatibility>
+   <w:SelectEntireFieldWithStartOrEnd/>
+   <w:UseWord2002TableStyleRules/>
+   <w:DontUseIndentAsNumberingTabStop/>
+   <w:FELineBreak11/>
+   <w:WW11IndentRules/>
+   <w:DontAutofitConstrainedTables/>
+   <w:AutofitLikeWW11/>
+   <w:UnderlineTabInNumList/>
+   <w:HangulWidthLikeWW11/>
+   <w:UseNormalStyleForList/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+  <m:mathPr>
+   <m:mathFont m:val="Cambria Math"/>
+   <m:brkBin m:val="before"/>
+   <m:brkBinSub m:val="--"/>
+   <m:smallFrac m:val="off"/>
+   <m:dispDef/>
+   <m:lMargin m:val="0"/>
+   <m:rMargin m:val="0"/>
+   <m:defJc m:val="centerGroup"/>
+   <m:wrapIndent m:val="1440"/>
+   <m:intLim m:val="subSup"/>
+   <m:naryLim m:val="undOvr"/>
+  </m:mathPr></w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="true"
+  DefSemiHidden="true" DefQFormat="false" DefPriority="99"
+  LatentStyleCount="267">
+  <w:LsdException Locked="false" Priority="0" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Normal"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="heading 1"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="heading 2"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="heading 3"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 4"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 5"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 6"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 7"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 8"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 9"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 1"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 2"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 3"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 4"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 5"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 6"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 7"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 8"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 9"/>
+  <w:LsdException Locked="false" Priority="35" QFormat="true" Name="caption"/>
+  <w:LsdException Locked="false" Priority="10" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Title"/>
+  <w:LsdException Locked="false" Priority="0" Name="Default Paragraph Font"/>
+  <w:LsdException Locked="false" Priority="11" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtitle"/>
+  <w:LsdException Locked="false" Priority="22" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Strong"/>
+  <w:LsdException Locked="false" Priority="20" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Emphasis"/>
+  <w:LsdException Locked="false" Priority="59" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Table Grid"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Placeholder Text"/>
+  <w:LsdException Locked="false" Priority="1" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="No Spacing"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 1"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 1"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Revision"/>
+  <w:LsdException Locked="false" Priority="34" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="List Paragraph"/>
+  <w:LsdException Locked="false" Priority="29" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Quote"/>
+  <w:LsdException Locked="false" Priority="30" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Quote"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 1"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 1"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 2"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 2"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 2"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 3"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 3"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 3"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 4"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 4"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 4"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 5"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 5"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 5"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 6"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 6"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 6"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="19" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Emphasis"/>
+  <w:LsdException Locked="false" Priority="21" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Emphasis"/>
+  <w:LsdException Locked="false" Priority="31" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Reference"/>
+  <w:LsdException Locked="false" Priority="32" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Reference"/>
+  <w:LsdException Locked="false" Priority="33" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Book Title"/>
+  <w:LsdException Locked="false" Priority="37" Name="Bibliography"/>
+  <w:LsdException Locked="false" Priority="39" QFormat="true" Name="TOC Heading"/>
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:1;
+	mso-generic-font-family:roman;
+	mso-font-format:other;
+	mso-font-pitch:variable;
+	mso-font-signature:0 0 0 0 0 0;}
+@font-face
+	{font-family:"Arial Unicode MS";
+	panose-1:2 11 6 4 2 2 2 2 2 4;
+	mso-font-charset:128;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-134238209 -371195905 63 0 4129279 0;}
+@font-face
+	{font-family:"\@Arial Unicode MS";
+	panose-1:2 11 6 4 2 2 2 2 2 4;
+	mso-font-charset:128;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-134238209 -371195905 63 0 4129279 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-next:Обычный;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-font-kerning:0pt;
+	mso-ansi-language:EN-US;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+h2
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-next:Обычный;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+h3
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-next:Обычный;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:18.0pt;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:center 233.85pt right 467.75pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoBodyTextIndent, li.MsoBodyTextIndent, div.MsoBodyTextIndent
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	mso-pagination:widow-orphan;
+	font-size:14.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoBodyText2, li.MsoBodyText2, div.MsoBodyText2
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	text-decoration:underline;
+	text-underline:single;}
+p.MsoBodyTextIndent3, li.MsoBodyTextIndent3, div.MsoBodyTextIndent3
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:36.0pt;
+	mso-pagination:widow-orphan;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";}
+p
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Arial Unicode MS","sans-serif";
+	mso-bidi-font-family:"Times New Roman";}
+ /* Page Definitions */
+ @page
+	{mso-footnote-separator:url("Разветвляющиеся%20алгоритмы.files/header.htm") fs;
+	mso-footnote-continuation-separator:url("Разветвляющиеся%20алгоритмы.files/header.htm") fcs;
+	mso-endnote-separator:url("Разветвляющиеся%20алгоритмы.files/header.htm") es;
+	mso-endnote-continuation-separator:url("Разветвляющиеся%20алгоритмы.files/header.htm") ecs;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:1.0cm 37.4pt 42.55pt 36.0pt;
+	mso-header-margin:35.45pt;
+	mso-footer-margin:35.45pt;
+	mso-even-footer:url("Разветвляющиеся%20алгоритмы.files/header.htm") ef1;
+	mso-footer:url("Разветвляющиеся%20алгоритмы.files/header.htm") f1;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:420028734;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-481518620 -2003560418 68747289 68747291 68747279 68747289 68747291 68747279 68747289 68747291;}
+@list l0:level1
+	{mso-level-tab-stop:43.5pt;
+	mso-level-number-position:left;
+	margin-left:43.5pt;
+	text-indent:-25.5pt;}
+@list l1
+	{mso-list-id:476653993;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-761905658 -138636982 68747267 68747269 68747265 68747267 68747269 68747265 68747267 68747269;}
+@list l1:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0FC;
+	mso-level-tab-stop:34.0pt;
+	mso-level-number-position:left;
+	margin-left:34.0pt;
+	text-indent:-19.8pt;
+	font-family:Wingdings;}
+@list l2
+	{mso-list-id:526601883;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1870737788 -2003560418 68747289 68747291 68747279 68747289 68747291 68747279 68747289 68747291;}
+@list l2:level1
+	{mso-level-tab-stop:43.5pt;
+	mso-level-number-position:left;
+	margin-left:43.5pt;
+	text-indent:-25.5pt;}
+@list l3
+	{mso-list-id:632759131;
+	mso-list-type:hybrid;
+	mso-list-template-ids:102553900 -138636982 68747267 68747269 68747265 68747267 68747269 68747265 68747267 68747269;}
+@list l3:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0FC;
+	mso-level-tab-stop:34.0pt;
+	mso-level-number-position:left;
+	margin-left:34.0pt;
+	text-indent:-19.8pt;
+	font-family:Wingdings;}
+@list l4
+	{mso-list-id:640766046;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-968348622 -2003560418 68747289 68747291 68747279 68747289 68747291 68747279 68747289 68747291;}
+@list l4:level1
+	{mso-level-tab-stop:43.5pt;
+	mso-level-number-position:left;
+	margin-left:43.5pt;
+	text-indent:-25.5pt;}
+@list l5
+	{mso-list-id:803347925;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1094361032 -2003560418 68747289 68747291 68747279 68747289 68747291 68747279 68747289 68747291;}
+@list l5:level1
+	{mso-level-tab-stop:43.5pt;
+	mso-level-number-position:left;
+	margin-left:43.5pt;
+	text-indent:-25.5pt;}
+@list l6
+	{mso-list-id:834959612;
+	mso-list-type:simple;
+	mso-list-template-ids:68747281;}
+@list l6:level1
+	{mso-level-text:"%1\)";
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;}
+@list l7
+	{mso-list-id:1830093835;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1943656492 -2003560418 68747289 68747291 68747279 68747289 68747291 68747279 68747289 68747291;}
+@list l7:level1
+	{mso-level-tab-stop:43.5pt;
+	mso-level-number-position:left;
+	margin-left:43.5pt;
+	text-indent:-25.5pt;}
+@list l8
+	{mso-list-id:2033066084;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1134624800 -2003560418 68747289 68747291 68747279 68747289 68747291 68747279 68747289 68747291;}
+@list l8:level1
+	{mso-level-tab-stop:43.5pt;
+	mso-level-number-position:left;
+	margin-left:43.5pt;
+	text-indent:-25.5pt;}
+@list l9
+	{mso-list-id:2144035429;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1992993352 -2003560418 68747289 68747291 68747279 68747289 68747291 68747279 68747289 68747291;}
+@list l9:level1
+	{mso-level-tab-stop:43.5pt;
+	mso-level-number-position:left;
+	margin-left:43.5pt;
+	text-indent:-25.5pt;}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Обычная таблица";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="2050"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=RU style='tab-interval:35.4pt'>
+
+<div class=Section1>
+
+<p class=MsoBodyText align=center style='text-align:center'><b
+style='mso-bidi-font-weight:normal'><span style='font-size:12.0pt;mso-bidi-font-size:
+10.0pt;text-transform:uppercase'>Разветвляющиеся алгоритмы</span></b><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><o:p></o:p></span></p>
+
+<p style='margin:0cm;margin-bottom:.0001pt'><strong><span
+style='mso-spacerun:yes'> </span>Условный оператор.</strong><span
+style='font-family:"Times New Roman","serif"'><br>
+&nbsp; Условный оператор позволяет выполнять или пропускать операторы программы
+в зависимости от некоторого условия. Условный оператор может иметь две
+формы:&nbsp;&nbsp;полную и сокращенную. &nbsp; В некоторых случаях после слов THEN
+и ELSE надо выполнить не один оператор, а несколько. Тогда эти операторы
+заключаются в так называемые <u>операторные скобки</u>, где BEGIN - открывающая
+скобка, END - закрывающая скобка. Все операторы находящиеся внутри операторных
+скобок называются <u>составным оператором</u>. Перед словом ELSE точка с
+запятой никогда <u>не ставится</u>.<br style='mso-special-character:line-break'>
+<![if !supportLineBreakNewLine]><br style='mso-special-character:line-break'>
+<![endif]><o:p></o:p></span></p>
+
+<p style='margin:0cm;margin-bottom:.0001pt'><span style='font-family:"Times New Roman","serif"'>Формы
+реализации ветвления:<o:p></o:p></span></p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='margin-left:5.4pt;border-collapse:collapse;border:none;mso-border-alt:
+ solid windowtext .5pt;mso-padding-alt:0cm 5.4pt 0cm 5.4pt;mso-border-insideh:
+ .5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr>
+  <td width=198 style='width:148.85pt;border:solid windowtext 1.0pt;mso-border-alt:
+  solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <h1><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:
+  RU'>Блок-схема<o:p></o:p></span></h1>
+  </td>
+  <td width=180 valign=top style='width:134.65pt;border:solid windowtext 1.0pt;
+  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+  solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b
+  style='mso-bidi-font-weight:normal'><span style='mso-fareast-language:KO'>А</span>лгоритмический
+  язык<o:p></o:p></b></p>
+  </td>
+  <td width=246 style='width:184.5pt;border:solid windowtext 1.0pt;border-left:
+  none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <h1><span lang=EN-US style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>Pascal</span><span
+  style='font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:RU'><o:p></o:p></span></h1>
+  </td>
+ </tr>
+ <tr style='mso-yfti-lastrow:yes'>
+  <td width=198 valign=top style='width:148.85pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><!--[if gte vml 1]><v:group
+   id="_x0000_s1026" style='position:absolute;left:0;text-align:left;
+   margin-left:1.55pt;margin-top:8.35pt;width:145.25pt;height:235.2pt;
+   z-index:1;mso-position-horizontal-relative:text;
+   mso-position-vertical-relative:text' coordorigin="1440,8128" coordsize="2905,4704"
+   o:allowincell="f">
+   <v:group id="_x0000_s1027" style='position:absolute;left:1457;top:8128;
+    width:2888;height:2236' coordorigin="1440,5125" coordsize="2888,2236">
+    <v:group id="_x0000_s1028" style='position:absolute;left:2219;top:5430;
+     width:1330;height:576' coordorigin="1982,5430" coordsize="1330,576">
+     <v:shapetype id="_x0000_t110" coordsize="21600,21600" o:spt="110" path="m10800,l,10800,10800,21600,21600,10800xe">
+      <v:stroke joinstyle="miter"/>
+      <v:path gradientshapeok="t" o:connecttype="rect" textboxrect="5400,5400,16200,16200"/>
+     </v:shapetype><v:shape id="_x0000_s1029" type="#_x0000_t110" style='position:absolute;
+      left:1982;top:5430;width:1296;height:576'/>
+     <v:shapetype id="_x0000_t202" coordsize="21600,21600" o:spt="202" path="m,l,21600r21600,l21600,xe">
+      <v:stroke joinstyle="miter"/>
+      <v:path gradientshapeok="t" o:connecttype="rect"/>
+     </v:shapetype><v:shape id="_x0000_s1030" type="#_x0000_t202" style='position:absolute;
+      left:2016;top:5472;width:1296;height:432' filled="f" stroked="f">
+      <v:textbox style='mso-next-textbox:#_x0000_s1030'>
+       <![if !mso]>
+       <table cellpadding=0 cellspacing=0 width="100%">
+        <tr>
+         <td><![endif]>
+         <div>
+         <p class=MsoNormal align=center style='text-align:center'><b
+         style='mso-bidi-font-weight:normal'>условие<o:p></o:p></b></p>
+         </div>
+         <![if !mso]></td>
+        </tr>
+       </table>
+       <![endif]></v:textbox>
+     </v:shape></v:group><v:line id="_x0000_s1031" style='position:absolute'
+     from="2863,5125" to="2863,5413">
+     <v:stroke endarrow="open"/>
+    </v:line><v:line id="_x0000_s1032" style='position:absolute;flip:x' from="1965,5709"
+     to="2253,5709"/>
+    <v:line id="_x0000_s1033" style='position:absolute' from="1982,5726" to="1982,6336">
+     <v:stroke endarrow="open"/>
+    </v:line><v:line id="_x0000_s1034" style='position:absolute' from="3515,5718"
+     to="3803,5718"/>
+    <v:line id="_x0000_s1035" style='position:absolute;flip:x' from="3786,5718"
+     to="3786,6328">
+     <v:stroke endarrow="open"/>
+    </v:line><v:group id="_x0000_s1036" style='position:absolute;left:1440;
+     top:6353;width:1067;height:432' coordorigin="1381,8302" coordsize="1872,432">
+     <v:shape id="_x0000_s1037" type="#_x0000_t202" style='position:absolute;
+      left:1381;top:8302;width:1872;height:432' filled="f" stroked="f">
+      <v:textbox style='mso-next-textbox:#_x0000_s1037'>
+       <![if !mso]>
+       <table cellpadding=0 cellspacing=0 width="100%">
+        <tr>
+         <td><![endif]>
+         <div>
+         <p class=MsoNormal align=center style='text-align:center'><b
+         style='mso-bidi-font-weight:normal'>серия1</b></p>
+         </div>
+         <![if !mso]></td>
+        </tr>
+       </table>
+       <![endif]></v:textbox>
+     </v:shape><v:shapetype id="_x0000_t109" coordsize="21600,21600" o:spt="109"
+      path="m,l,21600r21600,l21600,xe">
+      <v:stroke joinstyle="miter"/>
+      <v:path gradientshapeok="t" o:connecttype="rect"/>
+     </v:shapetype><v:shape id="_x0000_s1038" type="#_x0000_t109" style='position:absolute;
+      left:1466;top:8302;width:1728;height:432' filled="f"/>
+    </v:group><v:group id="_x0000_s1039" style='position:absolute;left:3261;
+     top:6353;width:1067;height:432' coordorigin="1381,8302" coordsize="1872,432">
+     <v:shape id="_x0000_s1040" type="#_x0000_t202" style='position:absolute;
+      left:1381;top:8302;width:1872;height:432' filled="f" stroked="f">
+      <v:textbox style='mso-next-textbox:#_x0000_s1040'>
+       <![if !mso]>
+       <table cellpadding=0 cellspacing=0 width="100%">
+        <tr>
+         <td><![endif]>
+         <div>
+         <p class=MsoNormal align=center style='text-align:center'><b
+         style='mso-bidi-font-weight:normal'>серия2</b></p>
+         </div>
+         <![if !mso]></td>
+        </tr>
+       </table>
+       <![endif]></v:textbox>
+     </v:shape><v:shape id="_x0000_s1041" type="#_x0000_t109" style='position:absolute;
+      left:1466;top:8302;width:1728;height:432' filled="f"/>
+    </v:group><v:line id="_x0000_s1042" style='position:absolute' from="1982,6785"
+     to="1982,7073"/>
+    <v:line id="_x0000_s1043" style='position:absolute' from="3786,6785" to="3786,7073"/>
+    <v:line id="_x0000_s1044" style='position:absolute' from="1999,7073" to="3778,7073"/>
+    <v:line id="_x0000_s1045" style='position:absolute' from="2863,7073" to="2863,7361">
+     <v:stroke endarrow="open"/>
+    </v:line></v:group><v:group id="_x0000_s1046" style='position:absolute;
+    left:1440;top:10596;width:2363;height:2236' coordorigin="1584,12932"
+    coordsize="2363,2236">
+    <v:group id="_x0000_s1047" style='position:absolute;left:2363;top:13237;
+     width:1330;height:576' coordorigin="1982,5430" coordsize="1330,576">
+     <v:shape id="_x0000_s1048" type="#_x0000_t110" style='position:absolute;
+      left:1982;top:5430;width:1296;height:576'/>
+     <v:shape id="_x0000_s1049" type="#_x0000_t202" style='position:absolute;
+      left:2016;top:5472;width:1296;height:432' filled="f" stroked="f">
+      <v:textbox style='mso-next-textbox:#_x0000_s1049'>
+       <![if !mso]>
+       <table cellpadding=0 cellspacing=0 width="100%">
+        <tr>
+         <td><![endif]>
+         <div>
+         <p class=MsoNormal align=center style='text-align:center'><b
+         style='mso-bidi-font-weight:normal'>условие</b></p>
+         </div>
+         <![if !mso]></td>
+        </tr>
+       </table>
+       <![endif]></v:textbox>
+     </v:shape></v:group><v:line id="_x0000_s1050" style='position:absolute'
+     from="3007,12932" to="3007,13220">
+     <v:stroke endarrow="open"/>
+    </v:line><v:line id="_x0000_s1051" style='position:absolute;flip:x' from="2109,13516"
+     to="2397,13516"/>
+    <v:line id="_x0000_s1052" style='position:absolute' from="2126,13533" to="2126,14143">
+     <v:stroke endarrow="open"/>
+    </v:line><v:line id="_x0000_s1053" style='position:absolute' from="3659,13525"
+     to="3947,13525"/>
+    <v:line id="_x0000_s1054" style='position:absolute;flip:x' from="3930,13536"
+     to="3930,14900"/>
+    <v:group id="_x0000_s1055" style='position:absolute;left:1584;top:14160;
+     width:1067;height:432' coordorigin="1381,8302" coordsize="1872,432">
+     <v:shape id="_x0000_s1056" type="#_x0000_t202" style='position:absolute;
+      left:1381;top:8302;width:1872;height:432' filled="f" stroked="f">
+      <v:textbox style='mso-next-textbox:#_x0000_s1056'>
+       <![if !mso]>
+       <table cellpadding=0 cellspacing=0 width="100%">
+        <tr>
+         <td><![endif]>
+         <div>
+         <p class=MsoNormal align=center style='text-align:center'><b
+         style='mso-bidi-font-weight:normal'>серия</b> </p>
+         </div>
+         <![if !mso]></td>
+        </tr>
+       </table>
+       <![endif]></v:textbox>
+     </v:shape><v:shape id="_x0000_s1057" type="#_x0000_t109" style='position:absolute;
+      left:1466;top:8302;width:1728;height:432' filled="f"/>
+    </v:group><v:line id="_x0000_s1058" style='position:absolute' from="2126,14592"
+     to="2126,14880"/>
+    <v:line id="_x0000_s1059" style='position:absolute' from="2143,14880" to="3922,14880"/>
+    <v:line id="_x0000_s1060" style='position:absolute' from="3007,14880" to="3007,15168">
+     <v:stroke endarrow="open"/>
+    </v:line></v:group><v:shape id="_x0000_s1061" type="#_x0000_t202" style='position:absolute;
+    left:1787;top:8326;width:576;height:432' filled="f" stroked="f">
+    <v:textbox style='mso-next-textbox:#_x0000_s1061'>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal align=center style='text-align:center'><b
+       style='mso-bidi-font-weight:normal'>да</b></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:shape id="_x0000_s1062" type="#_x0000_t202" style='position:absolute;
+    left:1728;top:10808;width:576;height:432' filled="f" stroked="f">
+    <v:textbox style='mso-next-textbox:#_x0000_s1062'>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal align=center style='text-align:center'><b
+       style='mso-bidi-font-weight:normal'>да</b></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:shape id="_x0000_s1063" type="#_x0000_t202" style='position:absolute;
+    left:3422;top:8368;width:720;height:432' filled="f" stroked="f">
+    <v:textbox style='mso-next-textbox:#_x0000_s1063'>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal align=center style='text-align:center'><b
+       style='mso-bidi-font-weight:normal'>нет</b></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:shape id="_x0000_s1064" type="#_x0000_t202" style='position:absolute;
+    left:3405;top:10816;width:720;height:432' filled="f" stroked="f">
+    <v:textbox style='mso-next-textbox:#_x0000_s1064'>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal align=center style='text-align:center'><b
+       style='mso-bidi-font-weight:normal'>нет</b></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape></v:group><![endif]--><![if !vml]><span style='mso-ignore:vglayout;
+  position:absolute;z-index:1;left:0px;margin-left:2px;margin-top:10px;
+  width:198px;height:317px'><img width=198 height=317
+  src="Разветвляющиеся%20алгоритмы.files/image001.gif" v:shapes="_x0000_s1026 _x0000_s1027 _x0000_s1028 _x0000_s1029 _x0000_s1030 _x0000_s1031 _x0000_s1032 _x0000_s1033 _x0000_s1034 _x0000_s1035 _x0000_s1036 _x0000_s1037 _x0000_s1038 _x0000_s1039 _x0000_s1040 _x0000_s1041 _x0000_s1042 _x0000_s1043 _x0000_s1044 _x0000_s1045 _x0000_s1046 _x0000_s1047 _x0000_s1048 _x0000_s1049 _x0000_s1050 _x0000_s1051 _x0000_s1052 _x0000_s1053 _x0000_s1054 _x0000_s1055 _x0000_s1056 _x0000_s1057 _x0000_s1058 _x0000_s1059 _x0000_s1060 _x0000_s1061 _x0000_s1062 _x0000_s1063 _x0000_s1064"></span><![endif]></p>
+  </td>
+  <td width=180 valign=top style='width:134.65pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Команда ветвления:</p>
+  <p class=MsoNormal><o:p>&nbsp;</o:p></p>
+  <p class=MsoNormal>а) полная форма:</p>
+  <p class=MsoNormal><span style='mso-spacerun:yes'>    </span><u>если</u> <i
+  style='mso-bidi-font-style:normal'>условие</i></p>
+  <p class=MsoNormal><span style='mso-spacerun:yes'>            </span><u>то</u>
+  <i style='mso-bidi-font-style:normal'>серия 1</i></p>
+  <p class=MsoNormal><span style='mso-spacerun:yes'>            </span><u>иначе</u>
+  <i style='mso-bidi-font-style:normal'>серия 2</i></p>
+  <p class=MsoNormal><span style='mso-spacerun:yes'>    </span><u>все<o:p></o:p></u></p>
+  <p class=MsoNormal><u><o:p><span style='text-decoration:none'>&nbsp;</span></o:p></u></p>
+  <p class=MsoNormal>б) сокращенная форма:</p>
+  <p class=MsoNormal><span style='mso-spacerun:yes'>     </span><u>если</u> <i
+  style='mso-bidi-font-style:normal'>условие</i></p>
+  <p class=MsoNormal><span style='mso-spacerun:yes'>            </span><u>то</u>
+  <i style='mso-bidi-font-style:normal'>серия <o:p></o:p></i></p>
+  <p class=MsoNormal><span style='mso-spacerun:yes'>     </span><u>все<o:p></o:p></u></p>
+  <p class=MsoNormal><u><o:p><span style='text-decoration:none'>&nbsp;</span></o:p></u></p>
+  <p class=MsoNormal><o:p>&nbsp;</o:p></p>
+  </td>
+  <td width=246 valign=top style='width:184.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><b><span style='mso-fareast-language:KO'>У</span>словный
+  оператор:<o:p></o:p></b></p>
+  <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><o:p>&nbsp;</o:p></b></p>
+  <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+  style='mso-ansi-language:EN-US'>if</span></b><span lang=EN-US
+  style='mso-ansi-language:EN-US'> </span><i style='mso-bidi-font-style:normal'>условие</i><i
+  style='mso-bidi-font-style:normal'><span style='mso-ansi-language:EN-US'> </span></i><b
+  style='mso-bidi-font-weight:normal'><span lang=EN-US style='mso-ansi-language:
+  EN-US'>then</span></b><span lang=EN-US style='mso-ansi-language:EN-US'> </span></p>
+  <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+  style='mso-ansi-language:EN-US'>begin</span></b><span lang=EN-US
+  style='mso-ansi-language:EN-US'><o:p></o:p></span></p>
+  <p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+  style='mso-spacerun:yes'>   </span></span>серия<span lang=EN-US
+  style='mso-ansi-language:EN-US'> 1</span><span lang=EN-US style='mso-ansi-language:
+  EN-US;mso-fareast-language:KO'>;</span><span lang=EN-US style='mso-ansi-language:
+  EN-US'> <o:p></o:p></span></p>
+  <p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+  style='mso-spacerun:yes'> </span><b style='mso-bidi-font-weight:normal'>end<o:p></o:p></b></span></p>
+  <p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+  style='mso-spacerun:yes'> </span><b style='mso-bidi-font-weight:normal'>else
+  begin<o:p></o:p></b></span></p>
+  <p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+  style='mso-spacerun:yes'>        </span></span>серия<span lang=EN-US
+  style='mso-ansi-language:EN-US'> 2; <o:p></o:p></span></p>
+  <p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+  style='mso-spacerun:yes'>  </span><b style='mso-bidi-font-weight:normal'>end</b></span><b
+  style='mso-bidi-font-weight:normal'>;<o:p></o:p></b></p>
+  <p class=MsoBodyText><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>В
+  сокращенной форме отсутствует служебное слово </span><b style='mso-bidi-font-weight:
+  normal'><span lang=EN-US style='font-size:12.0pt;mso-bidi-font-size:10.0pt;
+  mso-ansi-language:EN-US;mso-fareast-language:KO'>else</span></b><span
+  style='font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-fareast-language:KO'> и
+  соответствующая серия команд. Если серия состоит из одной команды, то <b
+  style='mso-bidi-font-weight:normal'>операторные скобки</b> </span><span
+  lang=EN-US style='font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:
+  EN-US'>begin</span><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt;
+  mso-fareast-language:KO'>…</span><span lang=EN-US style='font-size:12.0pt;
+  mso-bidi-font-size:10.0pt;mso-ansi-language:EN-US'>end</span><span
+  style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>;<b style='mso-bidi-font-weight:
+  normal'> </b></span><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt;
+  mso-fareast-language:KO'>можно опустить.<o:p></o:p></span></p>
+  <p class=MsoNormal style='text-align:justify'><o:p>&nbsp;</o:p></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><b><span style='mso-fareast-language:KO'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal><b><span style='mso-fareast-language:KO'>Демонстрация (слайд
+1)<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-right:58.05pt;mso-hyphenate:none;mso-layout-grid-align:
+none;text-autospace:none'>Задача 1.<span style='mso-spacerun:yes'>  
+</span>Написать программу, которая вычисляет частное от деления двух чисел.
+Программа, должна проверять правильность введенных пользователем данных и если
+делитель равен нулю, выдавать сообщение об ошибке.</p>
+
+<p class=MsoNormal style='mso-hyphenate:none;mso-layout-grid-align:none;
+text-autospace:none'><span lang=EN-US style='mso-bidi-font-size:10.0pt;
+mso-ansi-language:EN-US'>program v_6;<o:p></o:p></span></p>
+
+<p style='margin:0cm;margin-bottom:.0001pt;mso-hyphenate:none;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='mso-bidi-font-size:10.0pt;
+font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>var<span style='mso-spacerun:yes'>  </span>x,y,c:real;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-hyphenate:none;mso-layout-grid-align:none;
+text-autospace:none'><span style='mso-bidi-font-size:10.0pt'>begin<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-hyphenate:none;mso-layout-grid-align:none;
+text-autospace:none'><span style='mso-bidi-font-size:10.0pt'>writeln ('введите
+делимое и делитель: X,Y ');<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-hyphenate:none;mso-layout-grid-align:none;
+text-autospace:none'><span lang=EN-US style='mso-bidi-font-size:10.0pt;
+mso-ansi-language:EN-US'>readln(x,y);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-hyphenate:none;mso-layout-grid-align:none;
+text-autospace:none'><span lang=EN-US style='mso-bidi-font-size:10.0pt;
+mso-ansi-language:EN-US'>if y&lt;&gt;0 then<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-hyphenate:none;mso-layout-grid-align:none;
+text-autospace:none'><span lang=EN-US style='mso-bidi-font-size:10.0pt;
+mso-ansi-language:EN-US'>begin<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-hyphenate:none;mso-layout-grid-align:none;
+text-autospace:none'><span lang=EN-US style='mso-bidi-font-size:10.0pt;
+mso-ansi-language:EN-US'>c:=x/y;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-hyphenate:none;mso-layout-grid-align:none;
+text-autospace:none'><span style='mso-bidi-font-size:10.0pt'>writeln('частное
+от деления ',x:6:2,' на ',y:6:2,' равно ',c:6:2); <o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-hyphenate:none;mso-layout-grid-align:none;
+text-autospace:none'><span style='mso-bidi-font-size:10.0pt'>end<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-hyphenate:none;mso-layout-grid-align:none;
+text-autospace:none'><span style='mso-bidi-font-size:10.0pt'>else
+writeln('Ошибка, делитель не может быть равен 0')<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-hyphenate:none;mso-layout-grid-align:none;
+text-autospace:none'><span style='mso-bidi-font-size:10.0pt'>end.<o:p></o:p></span></p>
+
+<p class=MsoNormal><b><span style='mso-fareast-language:KO'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal><b><span style='mso-fareast-language:KO'>Б</span>езусловный
+оператор </b>(практически не используется, поскольку Паскаль содержит
+конструкции, позволяющие полностью обойтись в программе без него): </p>
+
+<p class=MsoBodyText>Осуществляет переход к оператору, перед которым указана <i
+style='mso-bidi-font-style:normal'>метка</i>, объявленная в разделе <i
+style='mso-bidi-font-style:normal'><span lang=EN-US style='mso-ansi-language:
+EN-US'>label</span></i>. (<b style='mso-bidi-font-weight:normal'><span
+lang=EN-US style='mso-ansi-language:EN-US'>goto</span><span lang=EN-US> </span></b><i
+style='mso-bidi-font-style:normal'>метка</i><span style='mso-bidi-font-style:
+italic'>;) </span>Метка (<span style='mso-fareast-language:KO'>целое число от
+0-9999 или набор буквенных символов) располагается перед оператором и
+отделяется от него двоеточием.</span></p>
+
+<p class=MsoNormal><b><span style='mso-fareast-language:KO'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal><b><span style='mso-fareast-language:KO'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal><b><span style='mso-fareast-language:KO'>Демонстрация (слайд
+2)<o:p></o:p></span></b></p>
+
+<h1 align=left style='text-align:left'><span lang=EN-US style='font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-weight:normal;mso-bidi-font-weight:bold'>program</span><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:RU;
+font-weight:normal;mso-bidi-font-weight:bold'> _14; {Угадайка}<o:p></o:p></span></h1>
+
+<p class=MsoNormal style='mso-hyphenate:none;mso-layout-grid-align:none;
+text-autospace:none'><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='mso-ansi-language:EN-US'>label</span></b><span lang=EN-US
+style='mso-ansi-language:EN-US'> 1, 2;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-hyphenate:none;mso-layout-grid-align:none;
+text-autospace:none'><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='mso-ansi-language:EN-US'>var </span></b><span lang=EN-US
+style='mso-ansi-language:EN-US'>x, y: real;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-hyphenate:none;mso-layout-grid-align:none;
+text-autospace:none'><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='mso-ansi-language:EN-US'>begin<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:-18.0pt;mso-hyphenate:
+none;mso-layout-grid-align:none;text-autospace:none'><span lang=EN-US
+style='mso-ansi-language:EN-US'>randomize;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:-18.0pt;mso-hyphenate:
+none;mso-layout-grid-align:none;text-autospace:none'><span lang=EN-US
+style='mso-ansi-language:EN-US'>y:= random(101); <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:-18.0pt;mso-hyphenate:
+none;mso-layout-grid-align:none;text-autospace:none'>1:<span style='mso-ansi-language:
+RU-MO'> </span>writeln ('Введите число от <span lang=RU-MO style='mso-ansi-language:
+RU-MO'>0</span> до 100'); rea<span lang=EN-US style='mso-ansi-language:EN-US'>dln</span>(x);</p>
+
+<p class=MsoNormal style='margin-left:34.8pt;text-indent:-18.0pt;mso-hyphenate:
+none;mso-layout-grid-align:none;text-autospace:none'><b style='mso-bidi-font-weight:
+normal'><span style='mso-ansi-language:RU-MO'><span
+style='mso-spacerun:yes'> </span></span></b><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='mso-ansi-language:EN-US'>if </span></b><span
+lang=EN-US style='mso-ansi-language:EN-US'>x=y <b style='mso-bidi-font-weight:
+normal'>then<o:p></o:p></b></span></p>
+
+<p class=MsoNormal style='margin-left:34.8pt;text-indent:-18.0pt;mso-hyphenate:
+none;mso-layout-grid-align:none;text-autospace:none'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>     </span>begin<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:34.8pt;text-indent:-18.0pt;mso-hyphenate:
+none;mso-layout-grid-align:none;text-autospace:none'><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>     </span><span
+style='mso-tab-count:1'> </span><span style='mso-spacerun:yes'> </span>writeln
+('</span>Поздравляю<span lang=EN-US style='mso-ansi-language:EN-US'>'); <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:88.8pt;text-indent:-18.0pt;mso-hyphenate:
+none;mso-layout-grid-align:none;text-autospace:none'><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'> </span>goto 2;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:35.4pt;text-indent:-18.0pt;mso-hyphenate:
+none;mso-layout-grid-align:none;text-autospace:none'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>     </span>end;<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:-18.0pt;mso-hyphenate:
+none;mso-layout-grid-align:none;text-autospace:none'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'> </span>if </span></b><span lang=EN-US
+style='mso-ansi-language:EN-US'>x&gt;y <b style='mso-bidi-font-weight:normal'>then</b>
+writeln ('</span>Ваше<span style='mso-ansi-language:EN-US'> </span>число<span
+style='mso-ansi-language:EN-US'> </span>больше<span lang=EN-US
+style='mso-ansi-language:EN-US'>'); <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:34.8pt;text-indent:-18.0pt;mso-hyphenate:
+none;mso-layout-grid-align:none;text-autospace:none'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'> </span>if</span></b><span lang=EN-US
+style='mso-ansi-language:EN-US'> x&lt;y <b style='mso-bidi-font-weight:normal'>then</b>
+writeln ('</span>Ваше<span style='mso-ansi-language:EN-US'> </span>число<span
+style='mso-ansi-language:EN-US'> </span>меньше<span lang=EN-US
+style='mso-ansi-language:EN-US'>'); <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:34.8pt;text-indent:-18.0pt;mso-hyphenate:
+none;mso-layout-grid-align:none;text-autospace:none'><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+style='mso-spacerun:yes'>   </span>goto 1;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-hyphenate:none;mso-layout-grid-align:none;
+text-autospace:none'><span lang=EN-US style='mso-ansi-language:EN-US'>2: <b
+style='mso-bidi-font-weight:normal'>end.<o:p></o:p></b></span></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>Для построения <u>сложных условий </u>в Паскале имеются
+четыре логических операции: <br>
+&nbsp;&nbsp;NOT - отрицание (НЕТ),<span
+style='mso-spacerun:yes'>                          </span>&nbsp;&nbsp;AND -
+логическое умножение (И),<br>
+&nbsp;&nbsp;OR&nbsp; - логическое сложение (ИЛИ),<span
+style='mso-spacerun:yes'>        </span>&nbsp;&nbsp;XOR - исключающее
+&quot;или&quot;.<br>
+Операции отношений имеют более низкий приоритет, чем логические операции,
+поэтому их <u>следует заключать в скобки</u> при использовании с логическими
+операциями.<br style='mso-special-character:line-break'>
+<![if !supportLineBreakNewLine]><br style='mso-special-character:line-break'>
+<![endif]></p>
+
+<p class=MsoBodyText2>В качестве выполняемого в условном операторе действия
+может быть другой условный оператор.</p>
+
+<p class=MsoNormal>При форме записи со сдвигом вправо для каждого внутреннего
+действия, легко понять, к какому из двух слов IF относится слово ELSE.<b><span
+style='mso-fareast-language:KO'><o:p></o:p></span></b></p>
+
+<p class=MsoNormal><b><span style='mso-fareast-language:KO'>Демонстрация (слайд
+3)<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+style='mso-bidi-font-size:10.0pt'>Задача 2.Даны действительные числа </span><span
+lang=EN-US style='mso-bidi-font-size:10.0pt;mso-ansi-language:EN-US'>a</span><span
+lang=RU-MO style='mso-bidi-font-size:10.0pt;mso-ansi-language:RU-MO'>,</span><span
+lang=EN-US style='mso-bidi-font-size:10.0pt;mso-ansi-language:EN-US'>b</span><span
+lang=RU-MO style='mso-bidi-font-size:10.0pt;mso-ansi-language:RU-MO'>,</span><span
+lang=EN-US style='mso-bidi-font-size:10.0pt;mso-ansi-language:EN-US'>c</span><span
+lang=RU-MO style='mso-bidi-font-size:10.0pt;mso-ansi-language:RU-MO'>.
+Проверить выполняется ли неравенство </span><span lang=EN-US style='mso-bidi-font-size:
+10.0pt;mso-ansi-language:EN-US'>a</span><span lang=RU-MO style='mso-bidi-font-size:
+10.0pt;mso-ansi-language:RU-MO'>&lt;</span><span lang=EN-US style='mso-bidi-font-size:
+10.0pt;mso-ansi-language:EN-US'>b</span><span lang=RU-MO style='mso-bidi-font-size:
+10.0pt;mso-ansi-language:RU-MO'>&lt;</span><span lang=EN-US style='mso-bidi-font-size:
+10.0pt;mso-ansi-language:EN-US'>c</span><span lang=RU-MO style='mso-bidi-font-size:
+10.0pt;mso-ansi-language:RU-MO'>.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><!--[if gte vml 1]><v:shape
+ id="_x0000_s1065" type="#_x0000_t202" style='position:absolute;margin-left:0;
+ margin-top:12.65pt;width:225pt;height:198pt;z-index:2;
+ mso-position-horizontal:left'>
+ <v:textbox>
+  <![if !mso]>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div>
+    <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+    lang=EN-US style='mso-bidi-font-size:10.0pt;mso-ansi-language:EN-US'>program
+    v2;<o:p></o:p></span></p>
+    <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+    lang=EN-US style='mso-bidi-font-size:10.0pt;mso-ansi-language:EN-US'>var<o:p></o:p></span></p>
+    <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+    lang=EN-US style='mso-bidi-font-size:10.0pt;mso-ansi-language:EN-US'>a,b,c:real;<o:p></o:p></span></p>
+    <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+    lang=EN-US style='mso-bidi-font-size:10.0pt;mso-ansi-language:EN-US'>begin<o:p></o:p></span></p>
+    <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+    lang=EN-US style='mso-bidi-font-size:10.0pt;mso-ansi-language:EN-US'>writeln('</span><span
+    style='mso-bidi-font-size:10.0pt'>введите</span><span style='mso-bidi-font-size:
+    10.0pt;mso-ansi-language:EN-US'> </span><span style='mso-bidi-font-size:
+    10.0pt'>значения</span><span lang=EN-US style='mso-bidi-font-size:10.0pt;
+    mso-ansi-language:EN-US'> a,b,c');<o:p></o:p></span></p>
+    <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+    lang=EN-US style='mso-bidi-font-size:10.0pt;mso-ansi-language:EN-US'>readln(a,b,c);<o:p></o:p></span></p>
+    <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+    lang=EN-US style='mso-bidi-font-size:10.0pt;mso-ansi-language:EN-US'>if
+    a&lt;b<span style='mso-spacerun:yes'>  </span>then<o:p></o:p></span></p>
+    <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+    lang=EN-US style='mso-bidi-font-size:10.0pt;mso-ansi-language:EN-US'><span
+    style='mso-spacerun:yes'>        </span>if b&lt;c then<o:p></o:p></span></p>
+    <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+    lang=EN-US style='mso-bidi-font-size:10.0pt;mso-ansi-language:EN-US'><span
+    style='mso-spacerun:yes'>        </span>writeln</span><span lang=RU-MO
+    style='mso-bidi-font-size:10.0pt;mso-ansi-language:RU-MO'> ('</span><span
+    style='mso-bidi-font-size:10.0pt'>условие выполнено</span><span lang=RU-MO
+    style='mso-bidi-font-size:10.0pt;mso-ansi-language:RU-MO'>')<o:p></o:p></span></p>
+    <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+    lang=RU-MO style='mso-bidi-font-size:10.0pt;mso-ansi-language:RU-MO'><span
+    style='mso-spacerun:yes'>        </span></span><span lang=EN-US
+    style='mso-bidi-font-size:10.0pt;mso-ansi-language:EN-US'>else</span><span
+    lang=RU-MO style='mso-bidi-font-size:10.0pt;mso-ansi-language:RU-MO'><o:p></o:p></span></p>
+    <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+    lang=RU-MO style='mso-bidi-font-size:10.0pt;mso-ansi-language:RU-MO'><span
+    style='mso-spacerun:yes'>        </span></span><span lang=EN-US
+    style='mso-bidi-font-size:10.0pt;mso-ansi-language:EN-US'>writeln</span><span
+    lang=RU-MO style='mso-bidi-font-size:10.0pt;mso-ansi-language:RU-MO'> ('2-</span><span
+    style='mso-bidi-font-size:10.0pt'>е условие не выполнено</span><span
+    lang=RU-MO style='mso-bidi-font-size:10.0pt;mso-ansi-language:RU-MO'>')<o:p></o:p></span></p>
+    <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+    lang=EN-US style='mso-bidi-font-size:10.0pt;mso-ansi-language:EN-US'>else</span><span
+    lang=EN-US style='mso-bidi-font-size:10.0pt'> </span><span lang=EN-US
+    style='mso-bidi-font-size:10.0pt;mso-ansi-language:EN-US'>writeln</span><span
+    lang=RU-MO style='mso-bidi-font-size:10.0pt;mso-ansi-language:RU-MO'> ('1-</span><span
+    style='mso-bidi-font-size:10.0pt'>е условие не выполнено</span><span
+    lang=RU-MO style='mso-bidi-font-size:10.0pt;mso-ansi-language:RU-MO'>');<o:p></o:p></span></p>
+    <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+    style='mso-bidi-font-size:10.0pt'>end.</span></p>
+    <p class=MsoNormal><o:p>&nbsp;</o:p></p>
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  <![endif]></v:textbox>
+ <w:wrap type="square"/>
+</v:shape><![endif]--><![if !vml]><img width=306 height=270
+src="Разветвляющиеся%20алгоритмы.files/image002.gif" align=left hspace=12
+alt="Подпись: program v2;&#13;&#10;var&#13;&#10;a,b,c:real;&#13;&#10;begin&#13;&#10;writeln('введите значения a,b,c');&#13;&#10;readln(a,b,c);&#13;&#10;if a&lt;b  then&#13;&#10;        if b&lt;c then&#13;&#10;        writeln ('условие выполнено')&#13;&#10;        else&#13;&#10;        writeln ('2-е условие не выполнено')&#13;&#10;else writeln ('1-е условие не выполнено');&#13;&#10;end.&#13;&#10;&#13;&#10;"
+v:shapes="_x0000_s1065"><![endif]><span lang=EN-US style='mso-bidi-font-size:
+10.0pt;mso-ansi-language:EN-US'>program</span><span lang=EN-US
+style='mso-bidi-font-size:10.0pt;mso-ansi-language:RU-MO'> </span><span
+lang=EN-US style='mso-bidi-font-size:10.0pt;mso-ansi-language:EN-US'>v</span><span
+style='mso-bidi-font-size:10.0pt'>2</span><span lang=RU-MO style='mso-bidi-font-size:
+10.0pt;mso-ansi-language:RU-MO'>;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+lang=EN-US style='mso-bidi-font-size:10.0pt;mso-ansi-language:EN-US'>var</span><span
+lang=RU-MO style='mso-bidi-font-size:10.0pt;mso-ansi-language:RU-MO'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+lang=EN-US style='mso-bidi-font-size:10.0pt;mso-ansi-language:EN-US'>a</span><span
+lang=RU-MO style='mso-bidi-font-size:10.0pt;mso-ansi-language:RU-MO'>,</span><span
+lang=EN-US style='mso-bidi-font-size:10.0pt;mso-ansi-language:EN-US'>b</span><span
+lang=RU-MO style='mso-bidi-font-size:10.0pt;mso-ansi-language:RU-MO'>,</span><span
+lang=EN-US style='mso-bidi-font-size:10.0pt;mso-ansi-language:EN-US'>c</span><span
+lang=RU-MO style='mso-bidi-font-size:10.0pt;mso-ansi-language:RU-MO'>:</span><span
+lang=EN-US style='mso-bidi-font-size:10.0pt;mso-ansi-language:EN-US'>real</span><span
+lang=RU-MO style='mso-bidi-font-size:10.0pt;mso-ansi-language:RU-MO'>;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+lang=EN-US style='mso-bidi-font-size:10.0pt;mso-ansi-language:EN-US'>begin</span><span
+lang=RU-MO style='mso-bidi-font-size:10.0pt;mso-ansi-language:RU-MO'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+lang=EN-US style='mso-bidi-font-size:10.0pt;mso-ansi-language:EN-US'>writeln('</span><span
+style='mso-bidi-font-size:10.0pt'>введите</span><span style='mso-bidi-font-size:
+10.0pt;mso-ansi-language:EN-US'> </span><span style='mso-bidi-font-size:10.0pt'>значения</span><span
+lang=EN-US style='mso-bidi-font-size:10.0pt;mso-ansi-language:EN-US'> a,b,c');<o:p></o:p></span></p>
+
+<p style='margin:0cm;margin-bottom:.0001pt;mso-layout-grid-align:none;
+text-autospace:none'><span lang=EN-US style='mso-bidi-font-size:10.0pt;
+font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>readln(a,b,c);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+lang=EN-US style='mso-bidi-font-size:10.0pt;mso-ansi-language:EN-US'>if
+(a&lt;b) and (b&lt;c) then<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+lang=EN-US style='mso-bidi-font-size:10.0pt;mso-ansi-language:EN-US'>writeln</span><span
+lang=RU-MO style='mso-bidi-font-size:10.0pt;mso-ansi-language:RU-MO'> ('</span><span
+style='mso-bidi-font-size:10.0pt'>условие выполнено</span><span lang=RU-MO
+style='mso-bidi-font-size:10.0pt;mso-ansi-language:RU-MO'>')<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+lang=EN-US style='mso-bidi-font-size:10.0pt;mso-ansi-language:EN-US'>else</span><span
+lang=RU-MO style='mso-bidi-font-size:10.0pt;mso-ansi-language:RU-MO'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+lang=EN-US style='mso-bidi-font-size:10.0pt;mso-ansi-language:EN-US'>writeln</span><span
+lang=RU-MO style='mso-bidi-font-size:10.0pt;mso-ansi-language:RU-MO'> ('</span><span
+style='mso-bidi-font-size:10.0pt'>условие не выполнено</span><span lang=RU-MO
+style='mso-bidi-font-size:10.0pt;mso-ansi-language:RU-MO'>');<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+lang=EN-US style='mso-bidi-font-size:10.0pt;mso-ansi-language:EN-US'>end. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+lang=EN-US style='mso-bidi-font-size:10.0pt;mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoBodyText2><o:p><span style='text-decoration:none'>&nbsp;</span></o:p></p>
+
+<p class=MsoBodyText2><o:p><span style='text-decoration:none'>&nbsp;</span></o:p></p>
+
+<p class=MsoBodyText2><o:p><span style='text-decoration:none'>&nbsp;</span></o:p></p>
+
+<p class=MsoBodyText2><o:p><span style='text-decoration:none'>&nbsp;</span></o:p></p>
+
+<p class=MsoBodyText2>В программировании существует целый класс задач, где
+действия производятся только с целыми числами. При решении подобных задач
+обычно используются операции над целыми MOD и DIV.</p>
+
+<p class=MsoNormal><b><span style='mso-fareast-language:KO'>Демонстрация (слайд
+4)<o:p></o:p></span></b></p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 align=left
+ style='border-collapse:collapse;border:none;mso-border-alt:solid windowtext .5pt;
+ mso-table-lspace:9.0pt;margin-left:6.75pt;mso-table-rspace:9.0pt;margin-right:
+ 6.75pt;mso-table-anchor-vertical:page;mso-table-anchor-horizontal:margin;
+ mso-table-left:left;mso-table-top:702.05pt;mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+ mso-border-insideh:.5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr>
+  <td width=187 valign=top style='width:140.4pt;border:solid windowtext 1.0pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='mso-element:frame;mso-element-frame-hspace:9.0pt;
+  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
+  margin;mso-element-top:702.05pt;mso-height-rule:exactly'>операция</p>
+  </td>
+  <td width=132 valign=top style='width:99.0pt;border:solid windowtext 1.0pt;
+  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+  solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='mso-element:frame;mso-element-frame-hspace:9.0pt;
+  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
+  margin;mso-element-top:702.05pt;mso-height-rule:exactly'>Обозначение</p>
+  </td>
+  <td width=156 valign=top style='width:117.0pt;border:solid windowtext 1.0pt;
+  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+  solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='mso-element:frame;mso-element-frame-hspace:9.0pt;
+  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
+  margin;mso-element-top:702.05pt;mso-height-rule:exactly'>Тип операндов</p>
+  </td>
+  <td width=156 valign=top style='width:117.0pt;border:solid windowtext 1.0pt;
+  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+  solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='mso-element:frame;mso-element-frame-hspace:9.0pt;
+  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
+  margin;mso-element-top:702.05pt;mso-height-rule:exactly'>Тип результатов</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=187 valign=top style='width:140.4pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='mso-element:frame;mso-element-frame-hspace:9.0pt;
+  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
+  margin;mso-element-top:702.05pt;mso-height-rule:exactly'>Деление вещественное</p>
+  </td>
+  <td width=132 valign=top style='width:99.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='mso-element:frame;mso-element-frame-hspace:9.0pt;
+  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
+  margin;mso-element-top:702.05pt;mso-height-rule:exactly'><span lang=EN-US
+  style='mso-ansi-language:EN-US'>A/B<o:p></o:p></span></p>
+  </td>
+  <td width=156 valign=top style='width:117.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='mso-element:frame;mso-element-frame-hspace:9.0pt;
+  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
+  margin;mso-element-top:702.05pt;mso-height-rule:exactly'><span lang=EN-US
+  style='mso-ansi-language:EN-US'>INTEGER</span>, <span lang=EN-US
+  style='mso-ansi-language:EN-US'>REAL<o:p></o:p></span></p>
+  </td>
+  <td width=156 valign=top style='width:117.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='mso-element:frame;mso-element-frame-hspace:9.0pt;
+  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
+  margin;mso-element-top:702.05pt;mso-height-rule:exactly'><span lang=EN-US
+  style='mso-ansi-language:EN-US'>REAL</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=187 valign=top style='width:140.4pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='mso-element:frame;mso-element-frame-hspace:9.0pt;
+  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
+  margin;mso-element-top:702.05pt;mso-height-rule:exactly'>Целая часть от
+  деления</p>
+  </td>
+  <td width=132 valign=top style='width:99.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='mso-element:frame;mso-element-frame-hspace:9.0pt;
+  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
+  margin;mso-element-top:702.05pt;mso-height-rule:exactly'><span lang=EN-US
+  style='mso-ansi-language:EN-US'>A DIV B<o:p></o:p></span></p>
+  </td>
+  <td width=156 valign=top style='width:117.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='mso-element:frame;mso-element-frame-hspace:9.0pt;
+  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
+  margin;mso-element-top:702.05pt;mso-height-rule:exactly'><span lang=EN-US
+  style='mso-ansi-language:EN-US'>INTEGER<o:p></o:p></span></p>
+  </td>
+  <td width=156 valign=top style='width:117.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='mso-element:frame;mso-element-frame-hspace:9.0pt;
+  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
+  margin;mso-element-top:702.05pt;mso-height-rule:exactly'><span lang=EN-US
+  style='mso-ansi-language:EN-US'>INTEGER<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-lastrow:yes'>
+  <td width=187 valign=top style='width:140.4pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='mso-element:frame;mso-element-frame-hspace:9.0pt;
+  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
+  margin;mso-element-top:702.05pt;mso-height-rule:exactly'>Остаток<span
+  style='mso-ansi-language:EN-US'> </span>деления<span lang=EN-US
+  style='mso-ansi-language:EN-US'><o:p></o:p></span></p>
+  </td>
+  <td width=132 valign=top style='width:99.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='mso-element:frame;mso-element-frame-hspace:9.0pt;
+  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
+  margin;mso-element-top:702.05pt;mso-height-rule:exactly'><span lang=EN-US
+  style='mso-ansi-language:EN-US'>A MOD B<o:p></o:p></span></p>
+  </td>
+  <td width=156 valign=top style='width:117.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='mso-element:frame;mso-element-frame-hspace:9.0pt;
+  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
+  margin;mso-element-top:702.05pt;mso-height-rule:exactly'><span lang=EN-US
+  style='mso-ansi-language:EN-US'>INTEGER<o:p></o:p></span></p>
+  </td>
+  <td width=156 valign=top style='width:117.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='mso-element:frame;mso-element-frame-hspace:9.0pt;
+  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
+  margin;mso-element-top:702.05pt;mso-height-rule:exactly'><span lang=EN-US
+  style='mso-ansi-language:EN-US'>INTEGER<o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p style='margin:0cm;margin-bottom:.0001pt'><span style='font-family:"Times New Roman","serif";
+mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>Дано двухзначное число. Определить, какая из его цифр
+больше.</p>
+
+<p class=MsoNormal style='mso-hyphenate:none;mso-layout-grid-align:none;
+text-autospace:none'><span lang=EN-US style='mso-ansi-language:EN-US'>P</span>rogram
+<span lang=EN-US style='mso-ansi-language:EN-US'>v</span>3; <br>
+Var n,x1,x2:integer;<br>
+Begin<br>
+&nbsp; Write('введите двузначное число');<br>
+&nbsp; Readln(n);<br>
+&nbsp; X1:=n mod 10;&nbsp;&nbsp; {выделяем из числа единицы}<br>
+&nbsp; X2:=n div 10;&nbsp;&nbsp; <span
+style='mso-spacerun:yes'>  </span>{получает число десятков в числе}<br>
+<span style='mso-spacerun:yes'> </span>&nbsp;<span lang=EN-US style='mso-ansi-language:
+EN-US'>if</span> X1= X2 <span lang=EN-US style='mso-ansi-language:EN-US'>then</span><span
+style='mso-spacerun:yes'>  </span><span lang=EN-US style='mso-ansi-language:
+EN-US'>writeln</span>('равны')</p>
+
+<p class=MsoNormal style='text-indent:35.4pt;mso-hyphenate:none;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-spacerun:yes'>  </span><span
+lang=EN-US style='mso-ansi-language:EN-US'>else<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:35.4pt;text-indent:35.4pt;mso-hyphenate:
+none;mso-layout-grid-align:none;text-autospace:none'><span lang=EN-US
+style='mso-ansi-language:EN-US'>if X1&gt; X2<span style='mso-spacerun:yes'> 
+</span>then<span style='mso-spacerun:yes'>   </span>writeln('</span>единицы<span
+style='mso-ansi-language:EN-US'> </span>больше<span lang=EN-US
+style='mso-ansi-language:EN-US'>')<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-hyphenate:none;mso-layout-grid-align:none;
+text-autospace:none'><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>                                </span></span>else<span
+style='mso-spacerun:yes'>    </span>writeln('десятки больше')</p>
+
+<p class=MsoNormal style='mso-hyphenate:none;mso-layout-grid-align:none;
+text-autospace:none'>end.</p>
+
+<p class=MsoNormal style='mso-hyphenate:none;mso-layout-grid-align:none;
+text-autospace:none'><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><i>Если результат объявлен как <b>целочисленный</b>,<span
+style='mso-spacerun:yes'>  </span>например: </i><i><span lang=EN-US
+style='mso-ansi-language:EN-US'>int</span>(), то нельзя использовать наклонную
+черту деления. Результатом <b>операции деления</b> всегда будет <b>вещественное</b>
+число. Даже если целое число делится нацело на другое число.<o:p></o:p></i></p>
+
+<p class=MsoNormal><b><i>Нельзя </i></b><i>использовать операцию </i><i><span
+lang=EN-US style='mso-ansi-language:EN-US'>div</span>, </i><i><span lang=EN-US
+style='mso-ansi-language:EN-US'>mod</span> для вещественных чисел<o:p></o:p></i></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal style='text-indent:35.4pt;mso-hyphenate:none;mso-layout-grid-align:
+none;text-autospace:none'>Очень часто необходимо чтобы программа определила, из
+каких <u>цифр состоит число</u>, или определила разряд заданной цифры или
+наоборот цифру в заданном разряде. Если вы попросите человека решить эту
+задачу, проблем не возникнет, а как быть с компьютером. Для него любое число
+это набор нулей и единиц, т.е. двоичный код. В отличие от нас компьютер все
+действия выполняет в двоичной системе. Например, число 27 хранится в его памяти
+как 11011. И где здесь 2 и 7? <br>
+&nbsp; Для решения этих задач надо вспомнить, что собой представляет любое
+число десятичной системы счисления (т.е. той, к которой мы с вами привыкли). В
+позиционной системе счисления (к которой относится десятичная система) <u>величина,
+обозначаемая</u> <u>цифрой в записи числа, зависит от ее позиции</u>. Например,
+в числе 326 первая цифра обозначает три сотни, вторая - два десятка, третья -
+шесть единиц. Любое число можно записать в виде: 333=3*100+2*10+6<br>
+<b>Задания для тренировки:<o:p></o:p></b></p>
+
+<p class=MsoBodyText style='margin-left:43.5pt;text-indent:-25.5pt;mso-list:
+l9 level1 lfo1;tab-stops:list 43.5pt'><![if !supportLists]><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-list:Ignore'>1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:12.0pt;mso-bidi-font-size:
+10.0pt'>Две сестры подсчитали свои накопления. Какая сестра должна дать другой
+денег и столько, чтобы у обеих сестер суммы стали равными.<o:p></o:p></span></p>
+
+<p class=MsoBodyText style='margin-left:43.5pt;text-indent:-25.5pt;mso-list:
+l9 level1 lfo1;tab-stops:list 43.5pt'><![if !supportLists]><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-list:Ignore'>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:12.0pt;mso-bidi-font-size:
+10.0pt'>Написать программу, которая выводит пример на умножение двух
+однозначных чисел (заданных случайным образом), запрашивает ответ пользователя,
+проверяет его, выводит сообщение «правильно» или «Вы ошиблись» и правильный
+результат.<o:p></o:p></span></p>
+
+<p class=MsoBodyText style='margin-left:43.5pt;text-indent:-25.5pt;mso-list:
+l9 level1 lfo1;tab-stops:list 43.5pt'><![if !supportLists]><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-list:Ignore'>3.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:12.0pt;mso-bidi-font-size:
+10.0pt'>В кассе имеются купюры достоинством в К тенге и в 1 тенге. Выдать N
+рублей минимальным набором купюр заданного достоинства. (Рассмотреть случай </span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:
+EN-US'>N</span><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>&lt;</span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:
+EN-US'>K</span><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>).<o:p></o:p></span></p>
+
+<p class=MsoBodyText style='margin-left:43.5pt;text-indent:-25.5pt;mso-list:
+l9 level1 lfo1;tab-stops:list 43.5pt'><![if !supportLists]><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-list:Ignore'>4.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:12.0pt;mso-bidi-font-size:
+10.0pt'>Определить, попадет ли число Х в интервал от –2 до 13. (предусмотреть
+сообщение «Х больше 13», «Х меньше –2»).<o:p></o:p></span></p>
+
+<p class=MsoBodyText style='margin-left:43.5pt;text-indent:-25.5pt;mso-list:
+l9 level1 lfo1;tab-stops:list 43.5pt'><![if !supportLists]><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-list:Ignore'>5.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:12.0pt;mso-bidi-font-size:
+10.0pt'>Написать программу определения стоимости разговора по телефону с учетом
+скидки 20%, предоставляемой по субботам и воскресеньям.<o:p></o:p></span></p>
+
+<p class=MsoBodyText style='margin-left:43.5pt;text-indent:-25.5pt;mso-list:
+l9 level1 lfo1;tab-stops:list 43.5pt'><![if !supportLists]><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-list:Ignore'>6.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:12.0pt;mso-bidi-font-size:
+10.0pt'>За контрольную работу ученики получили А – пятерок, В – четверок, С –
+троек, </span><span lang=EN-US style='font-size:12.0pt;mso-bidi-font-size:10.0pt;
+mso-ansi-language:EN-US'>D</span><span style='font-size:12.0pt;mso-bidi-font-size:
+10.0pt'> – двоек. Сколько учеников получили оценку больше среднего балла.<o:p></o:p></span></p>
+
+<p class=MsoBodyText style='margin-left:43.5pt;text-indent:-25.5pt;mso-list:
+l9 level1 lfo1;tab-stops:list 43.5pt'><![if !supportLists]><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-list:Ignore'>7.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:12.0pt;mso-bidi-font-size:
+10.0pt'>Проверьте, есть ли среди 3-х заданных чисел равные.<o:p></o:p></span></p>
+
+<p class=MsoBodyText style='margin-left:43.5pt;text-indent:-25.5pt;mso-list:
+l9 level1 lfo1;tab-stops:list 43.5pt'><![if !supportLists]><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-list:Ignore'>8.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:12.0pt;mso-bidi-font-size:
+10.0pt'>Составьте программу которая выбирает из 3-х чисел, то которое лежит
+между двумя другими.<o:p></o:p></span></p>
+
+<p class=MsoBodyText style='margin-left:43.5pt;text-indent:-25.5pt;mso-list:
+l9 level1 lfo1;tab-stops:list 43.5pt'><![if !supportLists]><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-list:Ignore'>9.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:12.0pt;mso-bidi-font-size:
+10.0pt'>Дано трехзначное число. Определить, какая из его цифр больше: первая
+или вторая.<o:p></o:p></span></p>
+
+<p class=MsoBodyText style='margin-left:43.5pt;text-indent:-25.5pt;mso-list:
+l9 level1 lfo1;tab-stops:list 43.5pt'><![if !supportLists]><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-list:Ignore'>10.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>Дано трехзначное число.
+Определить:<span style='mso-spacerun:yes'>  </span>является ли оно четным,
+начинается ли оно с цифры 5, делится ли оно на 13, в противном случае выдать
+сообщение, какое из условий не выполнено (1 или 2 или 3).<o:p></o:p></span></p>
+
+<p class=MsoBodyText style='margin-left:43.5pt;text-indent:-25.5pt;mso-list:
+l9 level1 lfo1;tab-stops:list 43.5pt'><![if !supportLists]><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-list:Ignore'>11.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>Найти двузначное число сумма
+цифр которого равна 11 и если к этому числу прибавить 27, то получится число
+записанное теми же цифрами, но в обратном порядке.<o:p></o:p></span></p>
+
+<p class=MsoBodyText style='margin-left:43.5pt;text-indent:-25.5pt;mso-list:
+l9 level1 lfo1;tab-stops:list 43.5pt'><![if !supportLists]><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-list:Ignore'>12.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>Дано четырехзначное число.
+Определить, сколько раз в нем встречается цифра, равная старшей.<o:p></o:p></span></p>
+
+<p class=MsoBodyText style='margin-left:43.5pt;text-indent:-25.5pt;mso-list:
+l9 level1 lfo1;tab-stops:list 43.5pt'><![if !supportLists]><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-list:Ignore'>13.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>Дано трехзначное число.<span
+style='mso-spacerun:yes'>  </span>Является ли произведение его цифр трехзначным
+числом.<o:p></o:p></span></p>
+
+<p class=MsoBodyText style='margin-left:43.5pt;text-indent:-25.5pt;mso-list:
+l9 level1 lfo1;tab-stops:list 43.5pt'><![if !supportLists]><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-list:Ignore'>14.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>Дано четырехзначное число.
+Определите, все ли цифры в числе различны. Выдать соответствующее сообщение,
+если какие-либо цифры равны.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-indent:36.0pt;mso-layout-grid-align:none;
+text-autospace:none'><span style='mso-bidi-font-size:10.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<h2><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>Контрольная работа<o:p></o:p></span></h2>
+
+<p class=MsoBodyTextIndent><b><span style='font-size:12.0pt'>В-1<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:-18.0pt;mso-list:l7 level1 lfo4;
+tab-stops:list 18.0pt'><![if !supportLists]><span style='mso-list:Ignore'>1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><![endif]>Написать
+программу вычисления стоимости покупки с учетом скидки. Скидка в 3%
+предоставляется, если сумма покупки больше 5000 тенге, в<span
+style='mso-spacerun:yes'>  </span>5% - если сумма больше 10000 тенге.</p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:-18.0pt;mso-list:l7 level1 lfo4;
+tab-stops:list 18.0pt'><![if !supportLists]><span style='mso-list:Ignore'>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><![endif]>Верно
+ли, что для заданного четырехзначного числа выполняется соотношение: сумма
+первой и последней цифры равна разности второй и третьей цифры?</p>
+
+<p class=MsoNormal>&nbsp;<span style='mso-tab-count:1'>           </span><b>В-2<o:p></o:p></b></p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:-18.0pt;mso-list:l0 level1 lfo7;
+tab-stops:list 18.0pt'><![if !supportLists]><span style='mso-bidi-font-size:
+10.0pt'><span style='mso-list:Ignore'>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='mso-bidi-font-size:10.0pt'>Составьте
+программу, которая подсчитывает количество четных чисел из трех данных.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:-18.0pt;mso-list:l0 level1 lfo7;
+tab-stops:list 18.0pt'><![if !supportLists]><span style='mso-bidi-font-size:
+10.0pt'><span style='mso-list:Ignore'>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='mso-bidi-font-size:10.0pt'>Дано
+трехзначное число. Написать программу определения: <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:34.0pt;text-indent:-19.8pt;mso-list:l1 level1 lfo6;
+tab-stops:list 34.0pt;mso-layout-grid-align:none;text-autospace:none'><![if !supportLists]><span
+style='mso-bidi-font-size:10.0pt;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>&uuml;<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+style='mso-bidi-font-size:10.0pt'>равна ли вторая цифра в его записи цифре
+шесть;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:34.0pt;text-indent:-19.8pt;mso-list:l1 level1 lfo6;
+tab-stops:list 34.0pt;mso-layout-grid-align:none;text-autospace:none'><![if !supportLists]><span
+style='mso-bidi-font-size:10.0pt;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>&uuml;<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+style='mso-bidi-font-size:10.0pt'>кратна ли сумма его цифр шести;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:34.0pt;text-indent:-19.8pt;mso-list:l1 level1 lfo6;
+tab-stops:list 34.0pt;mso-layout-grid-align:none;text-autospace:none'><![if !supportLists]><span
+style='mso-bidi-font-size:10.0pt;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>&uuml;<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+style='mso-bidi-font-size:10.0pt'>оканчивается ли число цифрой 5;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:14.2pt;mso-layout-grid-align:none;
+text-autospace:none'><span style='mso-bidi-font-size:10.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<h3>В-3</h3>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:-18.0pt;mso-list:l5 level1 lfo5;
+tab-stops:list 18.0pt'><![if !supportLists]><span style='mso-list:Ignore'>1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><![endif]>Написать
+программу, которая вычисляет дату следующего дня.</p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:-18.0pt;mso-list:l5 level1 lfo5;
+tab-stops:list 18.0pt'><![if !supportLists]><span style='mso-list:Ignore'>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><![endif]>Дано
+четырехзначное число. Определить, является ли разность его максимальной и
+минимальной цифр четным числом.</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<h1><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt;text-transform:
+uppercase;mso-ansi-language:RU'><o:p>&nbsp;</o:p></span></h1>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<h1><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt;text-transform:
+uppercase;mso-ansi-language:RU'><o:p>&nbsp;</o:p></span></h1>
+
+<h1><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt;text-transform:
+uppercase;mso-ansi-language:RU'><o:p>&nbsp;</o:p></span></h1>
+
+<h1><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt;text-transform:
+uppercase;mso-ansi-language:RU'>Команда выбора<span style='mso-spacerun:yes'> 
+</span>(</span><span lang=EN-US style='font-size:12.0pt;mso-bidi-font-size:
+10.0pt'>Case</span><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt;
+mso-ansi-language:RU'>)<span style='text-transform:uppercase'><o:p></o:p></span></span></h1>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='mso-tab-count:1'>            </span>Если
+в команде ветвления необходимо указать более двух вариантов действий, то ее
+запись становится неудобной. Для реализации этих ситуаций в средствах
+представления алгоритмов имеется команда выбора, которая позволяет представить
+алгоритм более просто и наглядно, чем при использовании команды ветвления.</p>
+
+<p class=MsoNormal>Если условный оператор напоминает дорожную развилку, то
+оператор выбора - это разделение пути на множество дорог, по одной из которых
+пойдет выполнение программы.</p>
+
+<p class=MsoNormal>Если при выборе альтернативы необходимо выполнение
+нескольких операторов, то нужно <u>заключить их в операторные скобки BEGIN . .
+. END</u>; т.е. использовать составной оператор.</p>
+
+<h1 align=left style='text-align:left'><span style='font-size:12.0pt;
+mso-bidi-font-size:10.0pt;mso-ansi-language:RU'><o:p>&nbsp;</o:p></span></h1>
+
+<p class=MsoNormal style='margin-right:58.05pt;mso-hyphenate:none;mso-layout-grid-align:
+none;text-autospace:none'>Приступая к решению задач этого раздела, следует
+помнить что:</p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:58.05pt;margin-bottom:
+0cm;margin-left:34.0pt;margin-bottom:.0001pt;text-indent:-19.8pt;mso-list:l3 level1 lfo9;
+mso-hyphenate:none;tab-stops:list 34.0pt;mso-layout-grid-align:none;text-autospace:
+none'><![if !supportLists]><span style='font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>&uuml;<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]>Инструкция
+Case используется для выбора одного из нескольких направлений дальнейшего хода
+программы;</p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:58.05pt;margin-bottom:
+0cm;margin-left:34.0pt;margin-bottom:.0001pt;text-indent:-19.8pt;mso-list:l3 level1 lfo9;
+mso-hyphenate:none;tab-stops:list 34.0pt;mso-layout-grid-align:none;text-autospace:
+none'><![if !supportLists]><span style='font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>&uuml;<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]>Выбор
+последовательности инструкций осуществляется во время выполнения программы в
+зависимости от равенства значения переменной-селектора константе, указанной
+перед группой инструкций;</p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:58.05pt;margin-bottom:
+0cm;margin-left:34.0pt;margin-bottom:.0001pt;text-indent:-19.8pt;mso-list:l3 level1 lfo9;
+mso-hyphenate:none;tab-stops:list 34.0pt;mso-layout-grid-align:none;text-autospace:
+none'><![if !supportLists]><span style='font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>&uuml;<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]>В
+качестве переменной-селектора можно использовать переменную целого (<span
+lang=EN-US style='mso-ansi-language:EN-US'>integer</span>) или символьного (<span
+lang=EN-US style='mso-ansi-language:EN-US'>char</span>) типа.</p>
+
+<p class=MsoNormal style='text-align:justify'><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal style='text-align:justify'>Формы реализации выбора</p>
+
+<p class=MsoNormal style='text-align:justify'><o:p>&nbsp;</o:p></p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='margin-left:5.4pt;border-collapse:collapse;border:none;mso-border-alt:
+ solid windowtext .5pt;mso-padding-alt:0cm 5.4pt 0cm 5.4pt;mso-border-insideh:
+ .5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr>
+  <td width=208 style='width:155.95pt;border:solid windowtext 1.0pt;mso-border-alt:
+  solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b
+  style='mso-bidi-font-weight:normal'><span style='mso-fareast-language:KO'>Б</span>лок-схема<span
+  style='text-transform:uppercase'><o:p></o:p></span></b></p>
+  </td>
+  <td width=208 valign=top style='width:155.9pt;border:solid windowtext 1.0pt;
+  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+  solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b
+  style='mso-bidi-font-weight:normal'>Алгоритмический язык<span
+  style='text-transform:uppercase'><o:p></o:p></span></b></p>
+  </td>
+  <td width=236 style='width:177.2pt;border:solid windowtext 1.0pt;border-left:
+  none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b
+  style='mso-bidi-font-weight:normal'><span lang=EN-US style='mso-ansi-language:
+  EN-US;mso-fareast-language:KO'>Pascal</span></b><b style='mso-bidi-font-weight:
+  normal'><span style='text-transform:uppercase;mso-fareast-language:KO'><o:p></o:p></span></b></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-lastrow:yes'>
+  <td width=208 valign=top style='width:155.95pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><!--[if gte vml 1]><v:group
+   id="_x0000_s1066" style='position:absolute;left:0;text-align:left;
+   margin-left:1.95pt;margin-top:11.55pt;width:149.5pt;height:156.55pt;
+   z-index:3;mso-position-horizontal-relative:text;
+   mso-position-vertical-relative:text' coordorigin="1457,8174" coordsize="2990,3131"
+   o:allowincell="f">
+   <v:shape id="_x0000_s1067" type="#_x0000_t110" style='position:absolute;
+    left:2069;top:8479;width:1017;height:576'/>
+   <v:shape id="_x0000_s1068" type="#_x0000_t202" style='position:absolute;
+    left:2079;top:8555;width:1017;height:432' filled="f" stroked="f">
+    <v:textbox style='mso-next-textbox:#_x0000_s1068'>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal align=center style='text-align:center'><b
+       style='mso-bidi-font-weight:normal'><span style='font-size:8.0pt;
+       mso-bidi-font-size:12.0pt'>условие1<o:p></o:p></span></b></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:line id="_x0000_s1069" style='position:absolute' from="2574,8174"
+    to="2574,8462">
+    <v:stroke endarrow="open"/>
+   </v:line><v:line id="_x0000_s1070" style='position:absolute;flip:x' from="1869,8758"
+    to="2095,8758"/>
+   <v:line id="_x0000_s1071" style='position:absolute' from="1882,8775" to="1882,9385">
+    <v:stroke endarrow="open"/>
+   </v:line><v:line id="_x0000_s1072" style='position:absolute' from="3086,8767"
+    to="3312,8767"/>
+   <v:line id="_x0000_s1073" style='position:absolute;flip:x' from="3299,8767"
+    to="3299,9377">
+    <v:stroke endarrow="open"/>
+   </v:line><v:group id="_x0000_s1074" style='position:absolute;left:1457;
+    top:9402;width:838;height:432' coordorigin="1381,8302" coordsize="1872,432">
+    <v:shape id="_x0000_s1075" type="#_x0000_t202" style='position:absolute;
+     left:1381;top:8302;width:1872;height:432' filled="f" stroked="f">
+     <v:textbox style='mso-next-textbox:#_x0000_s1075'>
+      <![if !mso]>
+      <table cellpadding=0 cellspacing=0 width="100%">
+       <tr>
+        <td><![endif]>
+        <div>
+        <p class=MsoNormal align=center style='text-align:center'><b
+        style='mso-bidi-font-weight:normal'><span style='font-size:8.0pt;
+        mso-bidi-font-size:12.0pt'>серия1</span><o:p></o:p></b></p>
+        </div>
+        <![if !mso]></td>
+       </tr>
+      </table>
+      <![endif]></v:textbox>
+    </v:shape><v:shape id="_x0000_s1076" type="#_x0000_t109" style='position:absolute;
+     left:1466;top:8302;width:1728;height:432' filled="f"/>
+   </v:group><v:line id="_x0000_s1077" style='position:absolute' from="1882,9806"
+    to="1882,11040"/>
+   <v:shape id="_x0000_s1078" type="#_x0000_t110" style='position:absolute;
+    left:2764;top:9374;width:1035;height:576'/>
+   <v:shape id="_x0000_s1079" type="#_x0000_t202" style='position:absolute;
+    left:2791;top:9467;width:1035;height:432' filled="f" stroked="f">
+    <v:textbox style='mso-next-textbox:#_x0000_s1079'>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal align=center style='text-align:center'><b
+       style='mso-bidi-font-weight:normal'><span style='font-size:8.0pt;
+       mso-bidi-font-size:12.0pt'>условие2<o:p></o:p></span></b></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:line id="_x0000_s1080" style='position:absolute;flip:x' from="2562,9653"
+    to="2792,9653"/>
+   <v:line id="_x0000_s1081" style='position:absolute' from="2575,9670" to="2575,10280">
+    <v:stroke endarrow="open"/>
+   </v:line><v:line id="_x0000_s1082" style='position:absolute' from="3798,9662"
+    to="4028,9662"/>
+   <v:line id="_x0000_s1083" style='position:absolute;flip:x' from="4015,9662"
+    to="4015,10272">
+    <v:stroke endarrow="open"/>
+   </v:line><v:group id="_x0000_s1084" style='position:absolute;left:2143;
+    top:10297;width:851;height:432' coordorigin="1381,8302" coordsize="1872,432">
+    <v:shape id="_x0000_s1085" type="#_x0000_t202" style='position:absolute;
+     left:1381;top:8302;width:1872;height:432' filled="f" stroked="f">
+     <v:textbox style='mso-next-textbox:#_x0000_s1085'>
+      <![if !mso]>
+      <table cellpadding=0 cellspacing=0 width="100%">
+       <tr>
+        <td><![endif]>
+        <div>
+        <p class=MsoNormal align=center style='text-align:center'><b
+        style='mso-bidi-font-weight:normal'><span style='font-size:8.0pt;
+        mso-bidi-font-size:12.0pt'>серия</span></b><b style='mso-bidi-font-weight:
+        normal'><span lang=EN-US style='font-size:8.0pt;mso-bidi-font-size:
+        12.0pt;mso-ansi-language:EN-US'>2</span></b><b style='mso-bidi-font-weight:
+        normal'><span lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></b></p>
+        </div>
+        <![if !mso]></td>
+       </tr>
+      </table>
+      <![endif]></v:textbox>
+    </v:shape><v:shape id="_x0000_s1086" type="#_x0000_t109" style='position:absolute;
+     left:1466;top:8302;width:1728;height:432' filled="f"/>
+   </v:group><v:group id="_x0000_s1087" style='position:absolute;left:3596;
+    top:10297;width:851;height:432' coordorigin="1381,8302" coordsize="1872,432">
+    <v:shape id="_x0000_s1088" type="#_x0000_t202" style='position:absolute;
+     left:1381;top:8302;width:1872;height:432' filled="f" stroked="f">
+     <v:textbox style='mso-next-textbox:#_x0000_s1088'>
+      <![if !mso]>
+      <table cellpadding=0 cellspacing=0 width="100%">
+       <tr>
+        <td><![endif]>
+        <div>
+        <p class=MsoNormal align=center style='text-align:center'><b
+        style='mso-bidi-font-weight:normal'><span style='font-size:8.0pt;
+        mso-bidi-font-size:12.0pt'>серия</span></b><span lang=EN-US
+        style='mso-ansi-language:EN-US'><o:p></o:p></span></p>
+        </div>
+        <![if !mso]></td>
+       </tr>
+      </table>
+      <![endif]></v:textbox>
+    </v:shape><v:shape id="_x0000_s1089" type="#_x0000_t109" style='position:absolute;
+     left:1466;top:8302;width:1728;height:432' filled="f"/>
+   </v:group><v:line id="_x0000_s1090" style='position:absolute' from="2575,10729"
+    to="2575,11017"/>
+   <v:line id="_x0000_s1091" style='position:absolute' from="4015,10729" to="4015,11017"/>
+   <v:line id="_x0000_s1092" style='position:absolute' from="1889,11017" to="4025,11017"/>
+   <v:line id="_x0000_s1093" style='position:absolute' from="2973,11017" to="2973,11305">
+    <v:stroke endarrow="open"/>
+   </v:line><v:shape id="_x0000_s1094" type="#_x0000_t202" style='position:absolute;
+    left:1618;top:8392;width:576;height:432' filled="f" stroked="f">
+    <v:textbox style='mso-next-textbox:#_x0000_s1094'>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal align=center style='text-align:center'><b
+       style='mso-bidi-font-weight:normal'>да<o:p></o:p></b></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:shape id="_x0000_s1095" type="#_x0000_t202" style='position:absolute;
+    left:2304;top:9281;width:576;height:432' filled="f" stroked="f">
+    <v:textbox style='mso-next-textbox:#_x0000_s1095'>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal align=center style='text-align:center'><b
+       style='mso-bidi-font-weight:normal'>да<o:p></o:p></b></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:shape id="_x0000_s1096" type="#_x0000_t202" style='position:absolute;
+    left:3617;top:9298;width:720;height:432' filled="f" stroked="f">
+    <v:textbox style='mso-next-textbox:#_x0000_s1096'>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal align=center style='text-align:center'><b
+       style='mso-bidi-font-weight:normal'>нет<o:p></o:p></b></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:shape id="_x0000_s1097" type="#_x0000_t202" style='position:absolute;
+    left:2914;top:8403;width:737;height:432' filled="f" stroked="f">
+    <v:textbox style='mso-next-textbox:#_x0000_s1097'>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal align=center style='text-align:center'><b
+       style='mso-bidi-font-weight:normal'>нет<o:p></o:p></b></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape></v:group><![endif]--><![if !vml]><span style='mso-ignore:vglayout;
+  position:absolute;z-index:3;left:0px;margin-left:3px;margin-top:14px;
+  width:203px;height:212px'><img width=203 height=212
+  src="Разветвляющиеся%20алгоритмы.files/image003.gif" v:shapes="_x0000_s1066 _x0000_s1067 _x0000_s1068 _x0000_s1069 _x0000_s1070 _x0000_s1071 _x0000_s1072 _x0000_s1073 _x0000_s1074 _x0000_s1075 _x0000_s1076 _x0000_s1077 _x0000_s1078 _x0000_s1079 _x0000_s1080 _x0000_s1081 _x0000_s1082 _x0000_s1083 _x0000_s1084 _x0000_s1085 _x0000_s1086 _x0000_s1087 _x0000_s1088 _x0000_s1089 _x0000_s1090 _x0000_s1091 _x0000_s1092 _x0000_s1093 _x0000_s1094 _x0000_s1095 _x0000_s1096 _x0000_s1097"></span><![endif]></p>
+  </td>
+  <td width=208 valign=top style='width:155.9pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Команда выбора:</p>
+  <p class=MsoNormal><o:p>&nbsp;</o:p></p>
+  <p class=MsoNormal>а) полная форма:</p>
+  <p class=MsoNormal><span style='mso-spacerun:yes'>    </span><u>выбор<o:p></o:p></u></p>
+  <p class=MsoNormal><span style='mso-spacerun:yes'>         </span><u>при</u> <i
+  style='mso-bidi-font-style:normal'>условие 1: <o:p></o:p></i></p>
+  <p class=MsoNormal><i style='mso-bidi-font-style:normal'>серия 1</i></p>
+  <p class=MsoNormal><span style='mso-spacerun:yes'>         </span><u>при</u> <i
+  style='mso-bidi-font-style:normal'>условие 2: <o:p></o:p></i></p>
+  <p class=MsoNormal><i style='mso-bidi-font-style:normal'>серия 2</i></p>
+  <p class=MsoNormal><span style='mso-spacerun:yes'>         </span><u>иначе</u>
+  <i style='mso-bidi-font-style:normal'>серия</i></p>
+  <p class=MsoNormal><span style='mso-spacerun:yes'>    </span><u>все<o:p></o:p></u></p>
+  <p class=MsoNormal><u><o:p><span style='text-decoration:none'>&nbsp;</span></o:p></u></p>
+  <p class=MsoNormal><o:p>&nbsp;</o:p></p>
+  <p class=MsoNormal>б) сокращенная форма:</p>
+  <p class=MsoNormal><span style='mso-spacerun:yes'>     </span><u>выбор<o:p></o:p></u></p>
+  <p class=MsoNormal><span style='mso-spacerun:yes'>         </span><u>при</u> <i
+  style='mso-bidi-font-style:normal'>условие 1: <o:p></o:p></i></p>
+  <p class=MsoNormal><i style='mso-bidi-font-style:normal'>серия 1</i></p>
+  <p class=MsoNormal><span style='mso-spacerun:yes'>         </span><u>при</u> <i
+  style='mso-bidi-font-style:normal'>условие 2: <o:p></o:p></i></p>
+  <p class=MsoNormal><i style='mso-bidi-font-style:normal'>серия 2</i></p>
+  <p class=MsoNormal><span style='mso-spacerun:yes'>     </span><u>все<o:p></o:p></u></p>
+  <p class=MsoNormal><o:p>&nbsp;</o:p></p>
+  </td>
+  <td width=236 valign=top style='width:177.2pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='mso-fareast-language:
+  KO'>Оператор выбора:<o:p></o:p></span></p>
+  <p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+  normal'><span lang=EN-US style='mso-ansi-language:EN-US;mso-fareast-language:
+  KO'>case</span></b><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+  style='mso-fareast-language:KO'> </span></b><i style='mso-bidi-font-style:
+  normal'><span style='mso-fareast-language:KO'>выражение</span></i><span
+  style='mso-fareast-language:KO'> </span><b style='mso-bidi-font-weight:normal'><span
+  lang=EN-US style='mso-ansi-language:EN-US;mso-fareast-language:KO'>of</span></b><b
+  style='mso-bidi-font-weight:normal'><span style='mso-fareast-language:KO'><o:p></o:p></span></b></p>
+  <p class=MsoNormal style='text-align:justify'><span style='mso-fareast-language:
+  KO'>константа1: </span><b style='mso-bidi-font-weight:normal'><span
+  lang=EN-US style='mso-ansi-language:EN-US;mso-fareast-language:KO'>begin</span></b><b
+  style='mso-bidi-font-weight:normal'><span lang=EN-US style='mso-fareast-language:
+  KO'> </span></b><span style='mso-fareast-language:KO'><o:p></o:p></span></p>
+  <p class=MsoNormal style='text-align:justify'><span style='mso-fareast-language:
+  KO'><span style='mso-spacerun:yes'>                        </span>серия 1;<o:p></o:p></span></p>
+  <p class=MsoNormal style='text-align:justify'><span style='mso-fareast-language:
+  KO'><span style='mso-spacerun:yes'>                      </span></span><b
+  style='mso-bidi-font-weight:normal'><span lang=EN-US style='mso-ansi-language:
+  EN-US;mso-fareast-language:KO'>end</span></b><b style='mso-bidi-font-weight:
+  normal'><span style='mso-fareast-language:KO'>;<o:p></o:p></span></b></p>
+  <p class=MsoNormal style='text-align:justify'><span style='mso-fareast-language:
+  KO'>константа2: </span><b style='mso-bidi-font-weight:normal'><span
+  lang=EN-US style='mso-ansi-language:EN-US;mso-fareast-language:KO'>begin</span></b><b
+  style='mso-bidi-font-weight:normal'><span lang=EN-US style='mso-fareast-language:
+  KO'> </span></b><span style='mso-fareast-language:KO'><o:p></o:p></span></p>
+  <p class=MsoNormal style='text-align:justify'><span style='mso-fareast-language:
+  KO'><span style='mso-spacerun:yes'>                          </span>серия 2;<o:p></o:p></span></p>
+  <p class=MsoNormal style='text-align:justify'><span style='mso-fareast-language:
+  KO'><span style='mso-spacerun:yes'>                      </span></span><b
+  style='mso-bidi-font-weight:normal'><span lang=EN-US style='mso-ansi-language:
+  EN-US;mso-fareast-language:KO'>end</span></b><b style='mso-bidi-font-weight:
+  normal'><span style='mso-fareast-language:KO'>;<o:p></o:p></span></b></p>
+  <p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+  normal'><span style='mso-fareast-language:KO'><span
+  style='mso-spacerun:yes'>              </span><span
+  style='mso-spacerun:yes'>        </span>…<o:p></o:p></span></b></p>
+  <p class=MsoNormal style='text-align:justify'><span style='mso-fareast-language:
+  KO'>константа</span><span lang=EN-US style='mso-ansi-language:EN-US;
+  mso-fareast-language:KO'>N</span><span style='mso-fareast-language:KO'>: </span><b
+  style='mso-bidi-font-weight:normal'><span lang=EN-US style='mso-ansi-language:
+  EN-US;mso-fareast-language:KO'>begin</span></b><b style='mso-bidi-font-weight:
+  normal'><span lang=EN-US style='mso-fareast-language:KO'> </span></b><span
+  style='mso-fareast-language:KO'><o:p></o:p></span></p>
+  <p class=MsoNormal style='text-align:justify'><span style='mso-fareast-language:
+  KO'><span style='mso-spacerun:yes'>                          </span></span><span
+  lang=EN-US style='mso-ansi-language:EN-US;mso-fareast-language:KO'>серия N;<o:p></o:p></span></p>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='mso-ansi-language:EN-US;mso-fareast-language:KO'><span
+  style='mso-spacerun:yes'>                      </span><b style='mso-bidi-font-weight:
+  normal'>end<o:p></o:p></b></span></p>
+  <p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+  normal'><span lang=EN-US style='mso-ansi-language:EN-US;mso-fareast-language:
+  KO'><span style='mso-spacerun:yes'>               </span>else</span></b><span
+  lang=EN-US style='mso-ansi-language:EN-US;mso-fareast-language:KO'> <b
+  style='mso-bidi-font-weight:normal'>begin</b><o:p></o:p></span></p>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='mso-ansi-language:EN-US;mso-fareast-language:KO'><span
+  style='mso-spacerun:yes'>                          </span></span><span
+  style='mso-fareast-language:KO'>серия</span><span lang=EN-US
+  style='mso-ansi-language:EN-US;mso-fareast-language:KO'>; <o:p></o:p></span></p>
+  <p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+  normal'><span lang=EN-US style='mso-ansi-language:EN-US;mso-fareast-language:
+  KO'><span style='mso-spacerun:yes'>                       </span>end;<o:p></o:p></span></b></p>
+  <p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+  normal'><span lang=EN-US style='mso-ansi-language:EN-US;mso-fareast-language:
+  KO'>end;</span></b><span lang=EN-US style='mso-ansi-language:EN-US;
+  mso-fareast-language:KO'><o:p></o:p></span></p>
+  <p class=MsoNormal style='text-align:justify'><span style='mso-fareast-language:
+  KO'><o:p>&nbsp;</o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoBodyTextIndent3><span style='font-size:12.0pt;mso-bidi-font-size:
+10.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoBodyText><u><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt;
+letter-spacing:-.2pt;mso-fareast-language:KO'>Константа должна быть целочисленного,
+булевского<span style='mso-spacerun:yes'>  </span>или символьного типа.<o:p></o:p></span></u></p>
+
+<p class=MsoNormal style='text-align:justify'><u><span style='mso-fareast-language:
+KO'>Условие можно записать: <o:p></o:p></span></u></p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-align:justify;text-indent:
+-18.0pt;mso-list:l6 level1 lfo8;tab-stops:list 18.0pt'><![if !supportLists]><span
+style='mso-fareast-language:KO'><span style='mso-list:Ignore'>1)<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><u><span
+style='mso-fareast-language:KO'>через запятую;<o:p></o:p></span></u></p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-align:justify;text-indent:
+-18.0pt;mso-list:l6 level1 lfo8;tab-stops:list 18.0pt'><![if !supportLists]><span
+style='mso-fareast-language:KO'><span style='mso-list:Ignore'>2)<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><u><span
+style='mso-fareast-language:KO'>как диапазон значений (через две точки: 1..5).<o:p></o:p></span></u></p>
+
+<p class=MsoBodyTextIndent3 style='text-indent:0cm'><span style='font-size:
+12.0pt;mso-bidi-font-size:10.0pt;mso-fareast-language:KO'>В сокращенной форме отсутствует
+служебное слово </span><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:EN-US;
+mso-fareast-language:KO'>else</span></b><b style='mso-bidi-font-weight:normal'><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-fareast-language:
+KO'> </span></b><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt;
+mso-fareast-language:KO'>и соответствующая серия команд.<o:p></o:p></span></p>
+
+<p class=MsoBodyTextIndent3 style='text-indent:0cm'><span style='font-size:
+12.0pt;mso-bidi-font-size:10.0pt'>Исполнитель последовательно проверяет все
+условия команды выбора, пока не обнаружит первое из них, которое соблюдается.
+Найдя такое условие, исполнитель выполняет стоящую за ним серию команд, и на
+этом выполнение команды выбора заканчивается. Если, например, соблюдается и
+условие 1 и условие 2, то исполнитель все равно выполнит только серию 1.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='mso-tab-count:1'>            </span>Когда
+ни одно из условий не соблюдается, исполняется команда, записанная после слова <u>иначе</u>.
+В сокращенной форме в этом случае не предусмотрено никаких действий.</p>
+
+<p class=MsoNormal style='text-align:justify'><b><span style='mso-fareast-language:
+KO'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify'><b><span style='mso-fareast-language:
+KO'>Демонстрация (слайд 5)</span></b></p>
+
+<p class=MsoNormal style='text-align:justify'><o:p>&nbsp;</o:p></p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 align=left
+ style='border-collapse:collapse;border:none;mso-border-alt:solid windowtext .5pt;
+ mso-table-lspace:9.0pt;margin-left:6.75pt;mso-table-rspace:9.0pt;margin-right:
+ 6.75pt;mso-table-anchor-vertical:page;mso-table-anchor-horizontal:margin;
+ mso-table-left:left;mso-table-top:100.4pt;mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+ mso-border-insideh:.5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr>
+  <td width=264 valign=top style='width:198.0pt;border:solid windowtext 1.0pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;mso-element:frame;
+  mso-element-frame-hspace:9.0pt;mso-element-wrap:around;mso-element-anchor-vertical:
+  page;mso-element-anchor-horizontal:margin;mso-element-top:100.4pt;mso-height-rule:
+  exactly'><b style='mso-bidi-font-weight:normal'>Алгоритмический язык<span
+  style='text-transform:uppercase'><o:p></o:p></span></b></p>
+  </td>
+  <td width=360 style='width:270.0pt;border:solid windowtext 1.0pt;border-left:
+  none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;mso-element:frame;
+  mso-element-frame-hspace:9.0pt;mso-element-wrap:around;mso-element-anchor-vertical:
+  page;mso-element-anchor-horizontal:margin;mso-element-top:100.4pt;mso-height-rule:
+  exactly'><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+  style='mso-ansi-language:EN-US;mso-fareast-language:KO'>Pascal</span></b><b
+  style='mso-bidi-font-weight:normal'><span style='text-transform:uppercase;
+  mso-fareast-language:KO'><o:p></o:p></span></b></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-lastrow:yes'>
+  <td width=264 valign=top style='width:198.0pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='mso-element:frame;mso-element-frame-hspace:9.0pt;
+  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
+  margin;mso-element-top:100.4pt;mso-height-rule:exactly'>Команда выбора</p>
+  <p class=MsoNormal style='mso-element:frame;mso-element-frame-hspace:9.0pt;
+  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
+  margin;mso-element-top:100.4pt;mso-height-rule:exactly'>полная форма:</p>
+  <p class=MsoNormal style='mso-element:frame;mso-element-frame-hspace:9.0pt;
+  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
+  margin;mso-element-top:100.4pt;mso-height-rule:exactly'><o:p>&nbsp;</o:p></p>
+  <p class=MsoNormal style='mso-element:frame;mso-element-frame-hspace:9.0pt;
+  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
+  margin;mso-element-top:100.4pt;mso-height-rule:exactly'><span
+  style='mso-spacerun:yes'>  </span><span style='mso-spacerun:yes'>  </span><u>выбор<o:p></o:p></u></p>
+  <p class=MsoNormal style='mso-element:frame;mso-element-frame-hspace:9.0pt;
+  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
+  margin;mso-element-top:100.4pt;mso-height-rule:exactly'><span
+  style='mso-spacerun:yes'>         </span><u>при</u> <i style='mso-bidi-font-style:
+  normal'>условие 1: <o:p></o:p></i></p>
+  <p class=MsoNormal style='mso-element:frame;mso-element-frame-hspace:9.0pt;
+  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
+  margin;mso-element-top:100.4pt;mso-height-rule:exactly'><i style='mso-bidi-font-style:
+  normal'>серия 1</i></p>
+  <p class=MsoNormal style='mso-element:frame;mso-element-frame-hspace:9.0pt;
+  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
+  margin;mso-element-top:100.4pt;mso-height-rule:exactly'><span
+  style='mso-spacerun:yes'>         </span><u>при</u> <i style='mso-bidi-font-style:
+  normal'>условие 2: <o:p></o:p></i></p>
+  <p class=MsoNormal style='mso-element:frame;mso-element-frame-hspace:9.0pt;
+  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
+  margin;mso-element-top:100.4pt;mso-height-rule:exactly'><i style='mso-bidi-font-style:
+  normal'>серия 2</i></p>
+  <p class=MsoNormal style='mso-element:frame;mso-element-frame-hspace:9.0pt;
+  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
+  margin;mso-element-top:100.4pt;mso-height-rule:exactly'><span
+  style='mso-spacerun:yes'>         </span><u>иначе</u> <i style='mso-bidi-font-style:
+  normal'>серия</i></p>
+  <p class=MsoNormal style='mso-element:frame;mso-element-frame-hspace:9.0pt;
+  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
+  margin;mso-element-top:100.4pt;mso-height-rule:exactly'><span
+  style='mso-spacerun:yes'>    </span><u>все</u></p>
+  </td>
+  <td width=360 valign=top style='width:270.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-element:frame;mso-element-frame-hspace:
+  9.0pt;mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
+  margin;mso-element-top:100.4pt;mso-height-rule:exactly'><span
+  style='mso-fareast-language:KO'>Оператор выбора<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-element:frame;mso-element-frame-hspace:9.0pt;
+  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
+  margin;mso-element-top:100.4pt;mso-height-rule:exactly'>полная форма:</p>
+  <p class=MsoNormal style='text-align:justify;mso-element:frame;mso-element-frame-hspace:
+  9.0pt;mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
+  margin;mso-element-top:100.4pt;mso-height-rule:exactly'><span
+  style='mso-fareast-language:KO'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal style='text-align:justify;mso-element:frame;mso-element-frame-hspace:
+  9.0pt;mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
+  margin;mso-element-top:100.4pt;mso-height-rule:exactly'><b style='mso-bidi-font-weight:
+  normal'><span lang=EN-US style='mso-ansi-language:EN-US;mso-fareast-language:
+  KO'>case</span></b><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+  style='mso-fareast-language:KO'> </span></b><i style='mso-bidi-font-style:
+  normal'><span style='mso-fareast-language:KO'>выражение</span></i><span
+  style='mso-fareast-language:KO'> </span><b style='mso-bidi-font-weight:normal'><span
+  lang=EN-US style='mso-ansi-language:EN-US;mso-fareast-language:KO'>of</span></b><b
+  style='mso-bidi-font-weight:normal'><span style='mso-fareast-language:KO'><o:p></o:p></span></b></p>
+  <p class=MsoNormal style='text-align:justify;mso-element:frame;mso-element-frame-hspace:
+  9.0pt;mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
+  margin;mso-element-top:100.4pt;mso-height-rule:exactly'><span
+  style='mso-fareast-language:KO'>константа1: серия 1;<o:p></o:p></span></p>
+  <p class=MsoNormal style='text-align:justify;mso-element:frame;mso-element-frame-hspace:
+  9.0pt;mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
+  margin;mso-element-top:100.4pt;mso-height-rule:exactly'><span
+  style='mso-fareast-language:KO'>константа2: серия 2;<o:p></o:p></span></p>
+  <p class=MsoNormal style='text-align:justify;mso-element:frame;mso-element-frame-hspace:
+  9.0pt;mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
+  margin;mso-element-top:100.4pt;mso-height-rule:exactly'><span
+  style='mso-fareast-language:KO'><span style='mso-spacerun:yes'>     </span><b
+  style='mso-bidi-font-weight:normal'><span
+  style='mso-spacerun:yes'>     </span>…<o:p></o:p></b></span></p>
+  <p class=MsoNormal style='text-align:justify;mso-element:frame;mso-element-frame-hspace:
+  9.0pt;mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
+  margin;mso-element-top:100.4pt;mso-height-rule:exactly'><span
+  style='mso-fareast-language:KO'>константа</span><span lang=EN-US
+  style='mso-ansi-language:EN-US;mso-fareast-language:KO'>N</span><span
+  style='mso-fareast-language:KO'>: </span><b style='mso-bidi-font-weight:normal'><span
+  lang=EN-US style='mso-ansi-language:EN-US;mso-fareast-language:KO'>begin</span></b><b
+  style='mso-bidi-font-weight:normal'><span lang=EN-US style='mso-fareast-language:
+  KO'> </span></b><span style='mso-fareast-language:KO'><o:p></o:p></span></p>
+  <p class=MsoNormal style='text-align:justify;mso-element:frame;mso-element-frame-hspace:
+  9.0pt;mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
+  margin;mso-element-top:100.4pt;mso-height-rule:exactly'><span
+  style='mso-fareast-language:KO'><span
+  style='mso-spacerun:yes'>                          </span>серия</span><span
+  lang=EN-US style='mso-ansi-language:EN-US;mso-fareast-language:KO'> N;<o:p></o:p></span></p>
+  <p class=MsoNormal style='text-align:justify;mso-element:frame;mso-element-frame-hspace:
+  9.0pt;mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
+  margin;mso-element-top:100.4pt;mso-height-rule:exactly'><span lang=EN-US
+  style='mso-ansi-language:EN-US;mso-fareast-language:KO'><span
+  style='mso-spacerun:yes'>                      </span><b style='mso-bidi-font-weight:
+  normal'>end<o:p></o:p></b></span></p>
+  <p class=MsoNormal style='text-align:justify;mso-element:frame;mso-element-frame-hspace:
+  9.0pt;mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
+  margin;mso-element-top:100.4pt;mso-height-rule:exactly'><b style='mso-bidi-font-weight:
+  normal'><span lang=EN-US style='mso-ansi-language:EN-US;mso-fareast-language:
+  KO'>else</span></b><span lang=EN-US style='mso-ansi-language:EN-US;
+  mso-fareast-language:KO'><span style='mso-spacerun:yes'>    </span></span><span
+  style='mso-fareast-language:KO'>серия</span><span lang=EN-US
+  style='mso-ansi-language:EN-US;mso-fareast-language:KO'>; <o:p></o:p></span></p>
+  <p class=MsoNormal style='text-align:justify;mso-element:frame;mso-element-frame-hspace:
+  9.0pt;mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
+  margin;mso-element-top:100.4pt;mso-height-rule:exactly'><b style='mso-bidi-font-weight:
+  normal'><span lang=EN-US style='mso-ansi-language:EN-US;mso-fareast-language:
+  KO'>end</span></b><b style='mso-bidi-font-weight:normal'><span
+  style='mso-fareast-language:KO'>;</span></b><span style='mso-fareast-language:
+  KO'><o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='text-align:justify'><o:p>&nbsp;</o:p></p>
+
+<p class=MsoBodyText2><o:p><span style='text-decoration:none'>&nbsp;</span></o:p></p>
+
+<p class=MsoBodyText2><o:p><span style='text-decoration:none'>&nbsp;</span></o:p></p>
+
+<p class=MsoBodyText2><o:p><span style='text-decoration:none'>&nbsp;</span></o:p></p>
+
+<p class=MsoBodyText2><o:p><span style='text-decoration:none'>&nbsp;</span></o:p></p>
+
+<p class=MsoBodyText2><o:p><span style='text-decoration:none'>&nbsp;</span></o:p></p>
+
+<p class=MsoBodyText2><o:p><span style='text-decoration:none'>&nbsp;</span></o:p></p>
+
+<p class=MsoBodyText2><o:p><span style='text-decoration:none'>&nbsp;</span></o:p></p>
+
+<p class=MsoBodyText2><o:p><span style='text-decoration:none'>&nbsp;</span></o:p></p>
+
+<p class=MsoBodyText2><o:p><span style='text-decoration:none'>&nbsp;</span></o:p></p>
+
+<p class=MsoBodyText2><o:p><span style='text-decoration:none'>&nbsp;</span></o:p></p>
+
+<p class=MsoBodyText2><o:p><span style='text-decoration:none'>&nbsp;</span></o:p></p>
+
+<p class=MsoBodyText2><o:p><span style='text-decoration:none'>&nbsp;</span></o:p></p>
+
+<p class=MsoBodyText2><o:p><span style='text-decoration:none'>&nbsp;</span></o:p></p>
+
+<p class=MsoBodyText2><o:p><span style='text-decoration:none'>&nbsp;</span></o:p></p>
+
+<p class=MsoBodyText2><span style='text-decoration:none;text-underline:none'>Определить
+по номеру месяца соответствующее время года.<o:p></o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+ mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-lastrow:yes'>
+  <td width=571 valign=top style='width:428.4pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyTextIndent><span lang=EN-US style='font-size:12.0pt;
+  color:black;mso-ansi-language:EN-US;mso-bidi-font-weight:bold'>program</span><b
+  style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:12.0pt;
+  color:black;mso-ansi-language:EN-US'>_16; {</span></b><b style='mso-bidi-font-weight:
+  normal'><span style='font-size:12.0pt;color:black'>Время</span></b><b
+  style='mso-bidi-font-weight:normal'><span style='font-size:12.0pt;color:black;
+  mso-ansi-language:EN-US'> </span></b><b style='mso-bidi-font-weight:normal'><span
+  style='font-size:12.0pt;color:black'>года</span></b><b style='mso-bidi-font-weight:
+  normal'><span lang=EN-US style='font-size:12.0pt;color:black;mso-ansi-language:
+  EN-US'>}<o:p></o:p></span></b></p>
+  <p class=MsoBodyTextIndent><span lang=EN-US style='font-size:12.0pt;
+  color:black;mso-ansi-language:EN-US;mso-fareast-language:KO'>var<b
+  style='mso-bidi-font-weight:normal'> n: byte;<o:p></o:p></b></span></p>
+  <p class=MsoBodyTextIndent><span lang=EN-US style='font-size:12.0pt;
+  color:black;mso-ansi-language:EN-US;mso-fareast-language:KO'>begin<o:p></o:p></span></p>
+  <p class=MsoBodyTextIndent><b style='mso-bidi-font-weight:normal'><span
+  lang=EN-US style='font-size:12.0pt;color:black;mso-ansi-language:EN-US;
+  mso-fareast-language:KO'><span style='mso-spacerun:yes'>     </span>readln
+  (n);<o:p></o:p></span></b></p>
+  <p class=MsoBodyTextIndent><b style='mso-bidi-font-weight:normal'><span
+  lang=EN-US style='font-size:12.0pt;color:black;mso-ansi-language:EN-US;
+  mso-fareast-language:KO'><span style='mso-spacerun:yes'>     </span></span></b><span
+  lang=EN-US style='font-size:12.0pt;color:black;mso-ansi-language:EN-US;
+  mso-fareast-language:KO'>case <b style='mso-bidi-font-weight:normal'>n</b> of<o:p></o:p></span></p>
+  <p class=MsoBodyTextIndent><b style='mso-bidi-font-weight:normal'><span
+  lang=EN-US style='font-size:12.0pt;mso-ansi-language:EN-US;mso-fareast-language:
+  KO'><span style='mso-spacerun:yes'>          </span>1,2,12: writeln (‘</span></b><b
+  style='mso-bidi-font-weight:normal'><span style='font-size:12.0pt;mso-fareast-language:
+  KO'>зима</span></b><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+  style='font-size:12.0pt;mso-ansi-language:EN-US;mso-fareast-language:KO'>’);<o:p></o:p></span></b></p>
+  <p class=MsoBodyTextIndent><b style='mso-bidi-font-weight:normal'><span
+  lang=EN-US style='font-size:12.0pt;mso-ansi-language:EN-US;mso-fareast-language:
+  KO'><span style='mso-spacerun:yes'>          </span>3..5: writeln (‘весна’);<o:p></o:p></span></b></p>
+  <p class=MsoBodyTextIndent><b style='mso-bidi-font-weight:normal'><span
+  lang=EN-US style='font-size:12.0pt;mso-ansi-language:EN-US;mso-fareast-language:
+  KO'><span style='mso-spacerun:yes'>          </span>6..8: writeln (‘лето’);<o:p></o:p></span></b></p>
+  <p class=MsoBodyTextIndent><b style='mso-bidi-font-weight:normal'><span
+  lang=EN-US style='font-size:12.0pt;mso-ansi-language:EN-US;mso-fareast-language:
+  KO'><span style='mso-spacerun:yes'>          </span>9..11: writeln (‘осень’);<o:p></o:p></span></b></p>
+  <p class=MsoBodyTextIndent><b style='mso-bidi-font-weight:normal'><span
+  lang=EN-US style='font-size:12.0pt;mso-ansi-language:EN-US;mso-fareast-language:
+  KO'><span style='mso-spacerun:yes'>     </span></span></b><span lang=EN-US
+  style='font-size:12.0pt;mso-ansi-language:EN-US;mso-fareast-language:KO'>end;<o:p></o:p></span></p>
+  <p class=MsoBodyTextIndent><span lang=EN-US style='font-size:12.0pt;
+  mso-ansi-language:EN-US'>end</span><span style='font-size:12.0pt'>.<o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal style='margin-left:43.5pt;text-indent:-25.5pt;mso-list:l8 level1 lfo10;
+mso-hyphenate:none;tab-stops:list 43.5pt;mso-layout-grid-align:none;text-autospace:
+none'><![if !supportLists]><span style='mso-bidi-font-size:10.0pt'><span
+style='mso-list:Ignore'>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='mso-bidi-font-size:10.0pt'>Написать
+программу, вычисляющую стоимость междугороднего телефонного разговора.
+Исходными данными для программы являются код города и продолжительность разговора.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:58.05pt;margin-bottom:
+0cm;margin-left:43.5pt;margin-bottom:.0001pt;text-indent:-25.5pt;mso-list:l8 level1 lfo10;
+mso-hyphenate:none;tab-stops:list 43.5pt;mso-layout-grid-align:none;text-autospace:
+none'><![if !supportLists]><span style='mso-list:Ignore'>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Составить программу которая выдает сообщения: «доброе
+утро», «добрый день», «добрый вечер», «спокойной ночи» в зависимости от
+введенного времени суток.</p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:58.05pt;margin-bottom:
+0cm;margin-left:43.5pt;margin-bottom:.0001pt;text-indent:-25.5pt;mso-list:l8 level1 lfo10;
+mso-hyphenate:none;tab-stops:list 43.5pt;mso-layout-grid-align:none;text-autospace:
+none'><![if !supportLists]><span style='mso-list:Ignore'>3.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Составьте программу, определения гласных и согласных
+букв алфавита.</p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:58.05pt;margin-bottom:
+0cm;margin-left:43.5pt;margin-bottom:.0001pt;text-indent:-25.5pt;mso-list:l8 level1 lfo10;
+mso-hyphenate:none;tab-stops:list 43.5pt;mso-layout-grid-align:none;text-autospace:
+none'><![if !supportLists]><span style='mso-list:Ignore'>4.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Написать программу, которая после введенного с
+клавиатуры числа в диапазоне от 1 до 99, обозначающего денежную единицу,
+дописывает слово «копейка» в правильной форме.</p>
+
+<p class=MsoNormal style='margin-left:43.5pt;text-indent:-25.5pt;mso-list:l8 level1 lfo10;
+tab-stops:list 43.5pt'><![if !supportLists]><span style='mso-list:Ignore'>5.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Составить программу, которая читает натуральное число N
+в десятичном представлении (N&lt;=1000), а на выходе выдает это же число в
+десятичном представлении и на естественном языке. Например: 7 - семь, 204 -
+двести четыре, 519 – пятьсот девятнадцать, 322 – триста двадцать два.</p>
+
+<p class=MsoNormal style='text-align:justify'><o:p>&nbsp;</o:p></p>
+
+</div>
+
+</body>
+
+</html>

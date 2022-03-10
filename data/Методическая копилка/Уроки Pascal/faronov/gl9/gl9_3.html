@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl9_2.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl9_4.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Интерфейсная часть
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Интерфейсная часть открывается зарезервированным словом INTERFACE. В этой 
+части содержатся объявления всех глобальных объектов модуля (типов, констант, 
+переменных и подпрограмм), которые должны стать доступными основной программе 
+и/или другим</font> <font face="Arial, Helvetica, sans-serif" size="3">модулям. При объявлении глобальных подпрограмм в интерфейсной части 
+указывается только их заголовок, например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Unit Cmplx;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Interface</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">tуре</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">complex = record</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">re, im : real&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure AddC (x, у : complex; var z : complex);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Procedure MulC (x, у : 
+complex; var z : complex);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если теперь в основной программе написать предложение</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Cmplx;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">то в программе станут доступными тип COMPLEX и две процедуры - ADDC и MULC из 
+мдуля CMPLX</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Отметим, что объявление подпрограмм в интерфейсной части автоматически 
+сопровождается их компиляцией с использованием дальней модели памяти (см. гл.8). 
+Таким образом обеспечивается доступ к подпрограммам из основной программы и 
+других модулей. Следует учесть, что все константы и переменные, объявленные в 
+интерфейсной части модуля, равно как и глобальные константы и переменные 
+основной программы, помещаются компилятором Турбо Паскаля в общий сегмент данных 
+(максимальная длина сегмента 65536 байт). Порядок появления различных разделов 
+объявлений и их количество может быть произвольным. Если в интерфейсной части 
+объявляются внешние подпрограммы или подпрограммы в машинных кодах (см. гл. И), 
+их тела (т.е. зарезервированное слово EXTERNAL, в первом случае, и машинные коды 
+вместе со словом INLINE - во втором) должны следовать сразу за их заголовками в 
+исполняемой части модуля (не в интерфейс</font><font face="Arial, Helvetica, sans-serif" size="3">ной!). В интерфейсной части модулей нельзя использовать опережающее описание.</font> </P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl9_2.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl9_4.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

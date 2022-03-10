@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl20_1.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl20_2.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Регистрация объектов
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для регистрации любого объекта используется обращение к глобальной процедуре 
+Register-Type, определенной в интерфейсной части модуля Objects. Единственным 
+параметром обращения к этой процедуре является запись типа TStreamRec, в которой 
+группируются некоторые важные для Turbo Vision характеристики объекта:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PStreamRec = ATStreamRec;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> TStreamRec = record</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ObjType: Word;  {Регистрационный номер объекта}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">VMTLink: Word;  {Смещение таблицы виртуальных методов}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Load : Pointer;  {Адрес метода чтения}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Store : Pointer;  {Адрес метода записи}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Next : Word;  {Связь в списке}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для каждого объекта Вашей программы (как стандартного, так и нестандартного) 
+должна быть создана своя запись типа TStreamRec, если только Вы собираетесь 
+помещать соответствующий объект в поток или получать его из потока. Однако для 
+стандартных объектов такие записи уже существуют и Вам нет нужды создавать их 
+зано</font><font face="Arial, Helvetica, sans-serif" size="3">во: по принятому в Turbo Vision соглашению запись TStreamRec для стандартного 
+объекта имеет такое же имя, как имя объекта, с заменой начальной буквы Т на R. 
+Например, для TWindow регистрационная запись называется RWindow, для TDialog 
+-RDialog и т.д. Имеет смысл следовать этому соглашению, определяя идентификаторы 
+регистрационных записей для нестандартных объектов.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Итак, для каждого нестандартного объекта Вы должны подготовить запись 
+TStreamRec, причем фактически определяются только первые четыре поля этой 
+записи, так как поле Next используется для организации связанного списка и 
+заполняется внутри процедуры RegisterType.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В поле ObjType Вы должны поместить константу-идентификатор объекта. В Turbo 
+Vision константы 0...99 уже используются в стандартных регистрационных записях 
+RXXXX, таким образом, если Вы собираетесь использовать стандартные 
+регистрационные записи, в Вашем распоряжении остаются константы в диапазоне от 
+100 до 65535. Выбор констант из этого диапазона может быть произвольным, однако 
+Turbo Vision требует, чтобы каждый объект характеризовался уникальной 
+константой. Заметим, что Turbo Vision следит за уникальностью регистрационных 
+констант и аварийно завершает исполнение программы (код ошибки 212), если в 
+программе делается попытка зарегистрировать два разных объекта с одинаковыми 
+регистрационными номерами.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Поле VMTLink должно содержать смещение адреса таблицы виртуальных методов 
+(ТВМ) объекта. Турбо Паскаль имеет стандартную функцию TypeOf (Type: object) , 
+которая возвращает адрес ТВМ для указанного типа Туре объекта, поэтому поле 
+VMTLink обычно заполняется значением Ofs (TypeOf (TName)^), где TName - имя 
+нестандартного объекта.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Поля Load и Store должны содержать адреса соответствующих виртуальных методов 
+(см. п.20.3), обеспечивающих чтение объектов из потока и их запись в поток.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Например, если в программе определен объект</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TMyWindow = object (TWindow)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor Load(var S: TStream);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Procedure Store(var S: TStream);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end ;&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> то 
+для его регистрации создается запись</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">RMyWindow: TStreamRec = (&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ObjType: 100;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">VMTLink: Ofs(TypeOf(TMyWindow)^);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Load : @TMyWindow.Load;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Store : @TMyWindow.Store);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Обычно регистрация осуществляется в конструкторе Init вновь созданного 
+объекта, например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor TMyWindow.Init;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">RegisterType(RMyWindow);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Однако, если в программе предполагается помещать в поток (или считывать из 
+потока) объекты разного типа, регистрацию объектов как правило реализуют 
+отдельной процедурой, вызываемой в конструкторе Init программы или в любом 
+другом удобном месте, но перед фактическим обращением к потоку. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure RegisterMyProgram;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">RegisterType(RWindow);  {Регистрация стандартного объекта}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">RegisterType(RMyWindow);  {Регистрация нового объекта}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для упрощения регистрации стандартных объектов в модулях Turbo Vision 
+предусмотрены процедуры RegisterXXXX, где ХХХХ - имя соответствующего модуля. 
+Например, процедура RegisterDialogs осуществляет регистрацию всех неабстрактных 
+объектов модуля Dialogs, т.е. TButton, TCluster, TInputLine и т.д.; процедура 
+RegisterViews регистрирует объекты модуля Views и т.д.</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl20_1.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl20_3.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+</BODY></HTML>

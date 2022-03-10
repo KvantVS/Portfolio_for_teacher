@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl5_2.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl5_4.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Логические устройства
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">Стандартные аппаратные средства ПК, такие как клавиатура, экран дисплея, 
+печатающее устройство (принтер) и коммуникационные каналы ввода-вывода, 
+определяются в Турбо Паскале специальными именами, которые называются 
+логическими устройствами. Все они в Турбо Паскале рассматриваются как 
+потенциальные источники или приемники текстовой информации.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>CON</i> - логическое имя, которое определяет консоль - клавиатуру или экран 
+дисплея. Турбо Паскаль устанавливает различие между этими физическими 
+устройствами по направлению передачи данных: чтение данных возможно только с 
+клавиатуры, а запись - только на экран. Таким образом, с помощью логического 
+устройства <i> CON</i> нельзя, например, прочитать данные с экрана ПК, хотя такая 
+аппаратная возможность существует.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Ввод с клавиатуры буферируется: символы по мере нажатия на клавиши помещаются 
+в специальный строковый буфер, который передается программе только после нажатия 
+на клавишу Enter. Буферизация ввода обеспечивает возможность редактирования 
+вводимой строки стандартными средствами ДОС. При вводе символов осуществляется 
+их эхо-повтор на экране ПК. В Турбо Паскале можно прочитать любой символ 
+клавиатуры, в том числе и символ CR, вырабатываемый клавишей Enter, сразу после 
+нажатия на соответствующую клавишу без эхо-повтора.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>PRN</i> - логическое имя принтера. Если к ПК подключено несколько принтеров, 
+доступ к ним осуществляется по логическим именам
+<i>LPT1</i>, <i> LPT2</i> и <i> LPT3</i> . Имена <i> PRN </i> и<i> 
+LPT1</i> первоначально - синонимы. Средствами ДОС можно присвоить имя
+<i> PRN</i> любому 
+другому логическому устройству, способному принимать информацию.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Стандартный библиотечный модуль
+<i>PRINTER</i>, входящий в библиотеку <i>TURBO.TPL</i>, 
+объявляет имя файловой переменной <i> LST</i> и связывает его с логическим</font>
+<font face="Arial, Helvetica, sans-serif" size="3">устройством LPT1. Это дает возможность использовать простое обращение к 
+принтеру. Например, программа</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Printer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(LST, 'Привет, мир!')&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">выведет на принтер фразу «Привет, мир!», а все необходимые операции по 
+открытию логического устройства выполнит библиотечный блок
+<i> PRINTER</i> (подробности 
+работы с модулями см. в гл. 9).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>AUX</i> - логическое имя коммуникационного канала, который обычно используется 
+для связи ПК с другими машинами. Коммуникационный канал может осуществлять и 
+прием, и передачу данных, однако в программе в каждый момент времени ему можно 
+назначить только одну из этих функций. Как правило, в составе ПК имеются два 
+коммуникационных канала, которым даются имена логических устройств
+<i> СОМ1</i> и<i> COM2</i>. 
+Первоначально имена<i> AUX</i> и <i> СОМ1</i> - синонимы.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>NUL</i> - логическое имя «пустого» устройства. Это устройство чаще всего 
+используется в отладочном режиме и трактуется как устройство-приемник информации 
+неограниченной емкости. При обращении к <i> NUL</i> как источнику информации выдается 
+признак конца файла <i>EOF</i>.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Связывание логического устройства с файловой переменной осуществляется 
+процедурой <i>ASSIGN</i>, например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">fi,fo : text;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">assign(fi,'AUX');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">assign(fо,'LPT2');&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Турбо Паскаль никогда не связывает имена логических устройств с дисковыми 
+файлами, в этом смысле эти имена можно считать зарезервированными. Иными 
+словами, нельзя, например, обратиться к дисковому файлу с именем
+<i>PRN</i>, так как 
+Турбо Паскаль всегда интерпретирует такой запрос как обращение к принтеру.</font> </P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl5_2.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl5_4.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

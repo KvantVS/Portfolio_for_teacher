@@ -1,0 +1,294 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" >
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl2_2.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td >
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl2_4_1.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p align="left">
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+ 
+Преобразованя типов и действия над ними
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Как уже говорилось, тип переменной позволяет не только устанавливать длину ее 
+внутреннего представления, но и контролировать те действия, которые выполняются 
+над ней в программе. Контроль за использованием переменных еще на этапе 
+компиляции программы - важное преимущество Турбо Паскаля перед другими языками 
+программирования, в которых допускается автоматическое преобразование типов. В 
+Турбо Паскале почти невозможны неявные (автоматические) преобразования типов. 
+Исключение сделано только в отношении констант и переменных типа INTEGER 
+(целые), которые разрешается использовать в выражениях типа REAL (вещественные). 
+Если, например, переменные X и Y описаны следующим образом:</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">х: Integer;&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> у: Real;</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">то оператор</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">у := х + 2;</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">будет синтаксически правильным: хотя справа от знака присваивания стоит 
+целочисленное выражение, а слева - вещественная переменная, компилятор сделает 
+необходимые преобразования автоматически. В то же время оператор</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">х := 2.0;</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">будет неверным, так как автоматическое преобразование типа REAL (константа 
+2.0 содержит десятичную точку и, следовательно, принадлежит к типу REAL) в тип 
+INTEGER в Турбо Паскале запрещено.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Разумеется, запрет на автоматическое преобразование типов еще не означает, 
+что в Турбо Паскале нет средств преобразования данных. Они, конечно же, есть, но 
+их нужно использовать явно (подробнее об этом см. гл.4). Для преобразования 
+данных в языке существуют встроенные функции, которые получают в качестве 
+параметра значение одного типа, а возвращают результат в виде значения другого 
+типа. В частности, для преобразования REAL в INTEGER имеются даже две встроенные 
+функции такого рода: ROUND округляет REAL до ближайшего целого, a TRUNC усекает 
+REAL путем отбрасывания дробной части.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Например, ошибочным будет оператор</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">х := у/х;&nbsp;</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3"> но правильным</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">х := round(у/х);</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">(объявления переменных см. выше).</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Понятие функции в Турбо Паскале близко к понятию процедуры. Как и 
+процедура, функция вызывается своим именем и может содержать произвольное число 
+операторов Турбо Паскаля и даже внутренних процедур и функций. Существенным 
+отличием функции от процедуры является то обстоятельство, что функция имеет 
+собственное значение и, следовательно, может использоваться наравне с 
+переменными в выражениях соответствующего типа.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Для преобразования данных типа CHAR (символ) в целое число предназначена 
+функция ORD, обратное преобразование INTEGER в CHAR осуществляет функция CHR.</font> 
+</P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">С помощью следующей несложной программы (пример 2.3) Вы сможете узнать 
+внутренний код произвольного символа.</font> </P>
+<p align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Пример 2.3</b></font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Program Code_pf_Char;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Программа читает символ с клавиатуры и выводит на экран</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">этот символ несоответствующий ему внутренний код}</font>  </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ch: Char;  {В эту переменную читается символ}</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write('Введите любой символ: ');&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn(ch);  {Читаем один символ}</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(ch, 
+' = ',ord(ch));  {Преобразуем его к 
+целому и выводим на экран}</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">END.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Обратите внимание: при вызове</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLntch,' = ',ord(ch));</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">третьим параметром обращения указан вызов функции ORD (СН) , что с точки 
+зрения языка является выражением; как мы увидим дальше (см. гл.8), во многих 
+случаях при вызове процедур и функций в качестве параметров вызова можно 
+указывать не только переменные или константы, но и выражения с их участием.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">По мере надобности мы будем знакомиться с другими функциями преобразования 
+типов данных, а сейчас - о тех операциях, которые разрешены над различными 
+типами.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Конечно же, в Турбо Паскале есть все четыре арифметические операции над 
+переменными REAL И INTEGER:</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">+ - сложение;</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;- - вычитание;&nbsp;</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3"> * - умножение;&nbsp;</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3"> / - деление вещественное;&nbsp;</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3"> div - 
+деление целочисленное.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Наличие двух операций деления есть еще одно проявление основополагающего 
+принципа Турбо Паскаля: программист должен явно подтверждать компилятору, что он 
+готов к возможным последствиям преобразования типов. Если, например, в языке 
+Фортран используется выражение 1/2 , то результат этого выражения будет зависеть 
+от того, переменной какого типа он будет присвоен: если N есть переменная целого 
+типа, а Х- вещественного, то в программе на Фортране присваивания</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">N = 1/2</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">X = 1/2</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">дадут значения 0 для N и 0.5 для X. В Турбо Паскале такой двусмысленности 
+нет: выражение 1/2 всегда имеет значение 0.5 и поэтому оператор</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">N :Integer;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">N := 1/2;</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">просто недопустим. В то же время допустимый в Турбо Паскале оператор</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">X : Real;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">X := 1 div 2;</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">самим фактом использования операции целочисленного деления DIV 
+свидетельствует о том, что программист сознательно отбрасывает дробную часть 
+результата. (Надеюсь, что читатель извинит явную искусственность этих примеров, 
+которая вызвана лишь стремлением проиллюстрировать обсуждаемые особенности 
+языка).</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Для данных типа INTEGER в Турбо Паскале есть еще одна операция MOD - 
+получение остатка от целочисленного деления. Например:</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">5 mod 2 = 1&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 31 mod 16 = 15&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 18 mod 3 = 0</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">В Турбо Паскале отсутствует операция возведения в степень, что, очевидно, 
+будет вызывать определенные неудобства при реализации вычислительных алгоритмов. 
+Некоторым утешением может служить наличие встроенной функции SQR, возвращающей 
+квадрат от значения параметра, причем тип результата определяется типом 
+параметра.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">И еще об одном существенном недостатке Турбо Паскаля: в нем отсутствуют 
+комплексный тип и соответствующие операции над ним. Вообще, в отношении 
+реализации разнообразных вычислительных процедур Турбо Паскаль значительно 
+уступает некоторым другим языкам программирования, в частности, тому же 
+Фортрану. В частности, в нем намного беднее набор встроенных математических 
+функций (см. гл. 4).</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">При работе с целыми числами могут оказаться полезными две процедуры (здесь и 
+далее в квадратных скобках указываются необязательные параметры):</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">DEC (X [, N] ) - уменьшает содержимое переменной X на значение выражения N 
+(если N не задано, то на 1); тип переменной X и выражения N - INTEGER (точнее, 
+любой целый, см. гл. 4);</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">INC (X [, N] ) - увеличивает значение X на N (если N не задано, то на 1).</font> 
+</P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Над символами и строками символов определена единственная операция - 
+сцепление двух строк. Операция обозначается символом «+». Например, программа</font> 
+</P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">st: String;&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">st := 'Турбо'+'-'+'Паскаль';&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> WriteLn(st);</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">напечатает строку</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Турбо-Паскаль</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Все остальные действия над строками и символами реализуются с помощью 
+встроенных процедур и функций (см. гл.4).</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">И, наконец, об операциях отношения и логических операциях.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Над данными типа REAL, INTEGER, CHAR, STRING определены следующие операции 
+отношения (сравнения):</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">= - равно;</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">&lt;&gt; - не равно;</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">&lt; - меньше;</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">&gt; - больше;</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">&lt;= - меньше или равно,</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">&gt;= - больше или равно.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">В операциях сравнения должны участвовать однотипные операнды. Исключение 
+сделано опять-таки в отношении REAL и INTEGER, которые могут сравниваться друг с 
+другом. Результат применения операции отношения к любым операндам имеет тип 
+BOOLEAN.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Сравнение двух строк осуществляется следующим образом. Символы строк 
+сравниваются попарно друг с другом так, что первый символ первой строки 
+сравнивается с первым символом второй строки, второй символ первой строки - со 
+вторым символом второй и т.д. Символы сравниваются путем сравнения их кодов во 
+внутреннем представлении (см. гл. 4). Если одна строка короче другой, 
+недостающие символы заменяются нулем. Отношение первой несовпадающей друг с 
+другом пары символов и принимается за отношение двух строк.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">При сравнении данных типа BOOLEAN учитывается внутреннее соглашение Турбо 
+Паскаля, в соответствии с которым FALSE есть нулевой байт, a TRUE - байт с 
+единицей в младшем разряде. Заметим, что функция ORD преобразует к целому не 
+только символы, но и логические величины, поэтому</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ord(false) = 0,</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ord(true) = 1.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">В Турбо Паскале определены следующие логические операции:</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">not - логическое НЕ;&nbsp;&nbsp;&nbsp;
+or - логическое ИЛИ;</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">and - логическое И;&nbsp;&nbsp;&nbsp;&nbsp;
+хоr - исключающее ИЛИ.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Логические операции применимы к операндам целого и логического типов. Если 
+операнды - целые числа, то результат логической операции есть тоже целое число 
+(подробнее об этом сказано в гл.4). Логические операции над логическими данными 
+дают результат логического типа.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">При вычислении выражений любого типа приоритет вычислений определяется 
+расставленными скобками, а при их отсутствии - по табл. 2.1 (в порядке убывания 
+приоритета).</font> </P>
+<p align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Таблица 2.1</b>  Приоритет операций</font> </P>
+<center><TABLE border=1 frame=box rules=all>
+  <TBODY>
+  <TR>
+    <TD align="center">
+      <p><font face="Arial, Helvetica, sans-serif" size="3"><b>Приоритет</b></font></P></TD>
+    <TD  align="center">
+      <p><font face="Arial, Helvetica, sans-serif" size="3"><b>Операция</b></font></P></TD></TR>
+  <TR>
+    <TD align="center">
+      <p><font face="Arial, Helvetica, sans-serif" size="3">1</font></P></TD>
+    <TD align="center">
+      <p><font face="Arial, Helvetica, sans-serif" size="3">not, @</font></P></TD></TR>
+  <TR>
+    <TD align="center">
+      <p><font face="Arial, Helvetica, sans-serif" size="3">2</font></P></TD>
+    <TD align="center">
+      <p><font face="Arial, Helvetica, sans-serif" size="3">*, /, div, mod, and, shl , shr</font></P></TD></TR>
+  <TR>
+    <TD align="center">
+      <p><font face="Arial, Helvetica, sans-serif" size="3">3</font></P></TD>
+    <TD align="center">
+      <p><font face="Arial, Helvetica, sans-serif" size="3">+, - , or, xor</font></P></TD></TR>
+  <TR>
+    <TD align="center">
+      <p><font face="Arial, Helvetica, sans-serif" size="3">4</font></P></TD>
+    <TD align="center">
+      <p><font face="Arial, Helvetica, sans-serif" size="3">=, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, in</font></P></TD></TR></TBODY></TABLE>
+      </center>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Примечание. Операции @ (получение адреса), shl (сдвиг влево), shr (сдвиг 
+вправо) и in (принадлежность к множеству) описаны в гл.4.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Следует учесть, что в отличие от многих других языков программирования в 
+Турбо Паскале логические операции имеют более высокий приоритет, чем операции 
+отношения. В связи с этим, в сложных логических выражениях обычно необходимо 
+расставлять скобки. Если, например, b и с имеют тип INTEGER , то выражение</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">а = b and с &lt; d</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">вызовет сообщение о синтаксической ошибке, так как сначала выполнится 
+операция b and с. Правильным будет выражение:</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">(а = b) and (с &lt; d)</font> </P> 
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" >
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl2_2.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td >
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl2_4_1.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</body>
+</html>

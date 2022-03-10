@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_13.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_15.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Неиспользованное время
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Поскольку программа, работающая в среде Turbo Vision, рассчитана на диалог с 
+пользователем, в ней всегда найдутся такие промежутки времени, в течение которых 
+она просто пассивно ожидает действий пользователя. Turbo Vision предоставляет 
+Вам удобное средство, позволяющее в этот момент загрузить процессор не слишком 
+долгой, но нужной для Вас работой.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Стандартный метод TView.GetEvent построен таким образом, что если нет никаких 
+событий, он обращается к псевдоабстрактному методу TView.Idle. По умолчанию 
+TView.Idle ничего не делает, он просто возвращает управление методу GetEvent, 
+заставляя его непрерывно сканировать клавиатуру и мышь. Вы можете перекрыть 
+TView.Idle, чтобы выполнить нужные действия.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В следующем примере каждые 5 сек в правый верхний угол экрана выводится 
+системное время. Для упрощения программы вывод осуществляется стандартными 
+средствами Турбо Паскаля.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses DOS,CRT,App;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TProg = object (TApplication)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Idle; Virtual;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TProg.Idle;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">old: Byte = 0; {Старое значение секунд}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> dt = 5; {Шаг вывода}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ho,mi,se,s100: Word; Function TimeStr(k: Word): String;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s: String [2];&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">str(k,s);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if k &lt; 10 then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s := '0'+s;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> TimeStr := s&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;  {TimeStr}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin {TProg.Idle}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetTime(ho,mi,se,s100);&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if (se mod dt = 0) and (old &lt;&gt; se) then&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Old := Se; T</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">extColor(Black) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> TextBackGround(White);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> GotoXY(72,1);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write(TimeStr(ho)+ ':'+TimeStr(mi) + ':'+TimeStr(se))&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;  {TProg.Idle}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Prog:TProg;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Prog.Init;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Prog.Run;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Prog.Done&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Разумеется, не следует поручать методу TView.Idle слишком сложную работу, 
+иначе пользователь Вашей программы будет безуспешно нажимать на клавиши, пытаясь 
+вернуть к жизни «зависшую» программу. Предполагается, что рабочий цикл метода не 
+будет превышать нескольких сотен миллисекунд. Если все-таки Вы хотите выполнить 
+достаточно длинную фоновую задачу, попытайтесь разбить ее на серию мелких шагов.</font> 
+</P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_13.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_15.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

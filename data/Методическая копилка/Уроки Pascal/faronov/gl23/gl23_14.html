@@ -1,0 +1,205 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_13.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_15.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Окно со скроллером
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Скроллером называется специальное окно, обеспечивающее просмотр (скроллинг) 
+текста. Типичный скроллер - это окно редактора интегрированной среды системы 
+Турбо Паскаля; его поведение Вам, очевидно, хорошо знакомо. Средства Turbo 
+Vision обеспечивают стандартные функции скроллера для окна, создаваемого в 
+приводимой даже программе. В частности, это окно (см. рис.23.4) управляется 
+мышью, реагирует на клавиши смещения курсора, оно может изменять размеры и свое 
+положение на экране, его можно «распахнуть» на весь экран.</font> </P>
+<P align="center"><img border="0" src="23_4.jpg"    > </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Рис.23.4.</b> Окно со скроллером</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Objects,App,Drivers,Menus,Views; var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Lines: PCollection;  {Коллекция для хранения текстовых строк}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ТМуАрр = object (TApplication)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Run; Virtual;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PInterior =TInterior;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TInterior = object (TScroller)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor Init(R: TRect; SX,SY: PScrollBar);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Draw; Virtual;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TMyApp.Run;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Читает строки из, текстового файла и обеспечивает их просмотр}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R: TRect;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">W: PWindow;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s,name: String;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">f: text;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Получаем в NAME имя файла с текстом программы:}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">name := copy(ParamStr(0),1,pos('.',Paramstr(0)))+'PAS';</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Создаем коллекцию текстовых строк:}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Lines := New(PCollection, Init(10,5));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">assign(f,name);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{$I-}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">reset (f);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{$I+}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if IOResult = 0 then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin  {Файл успешно открыт}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> with Lines do while not EOF(f) do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn ( f , s ) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Insert (NewStr (s) )&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Close (f)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else  {Файл не был открыт}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Lines . Insert (NewStr (' Нет доступа к файлу '+name));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Создаем окно со 
+скроллером: }&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> DeskTop.GetExtent (R) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">W := New (PWindow, Init (R, 'Просмотр файла '+name,0));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> with W do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetClipRect(R) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> R.Grow(-1, -1) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert (New (PInterior , Init (R, StandardScrollBar (&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> sbHorizontal+ 
+sbHandleKeyboard) ,&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> StandardScrollBar (sbvertical+sbHandleKeyboard) ) ) )&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end ;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DeskTop . Insert (W) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Ждем действий пользователя:}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Inherited Run end 
+{TMyApp.Run} ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{----------------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor TInterior.Init;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Создает окно скроллера}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Inherited Init (R, SX, SY) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GrowMode := gfGrowHiX+gfGrowHiY;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetLimit(128, Lines .count- 1)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end  {TInterior.Init};</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{----------------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TInterior.Draw;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Выводит на экран содержимое окна скроллера}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Y: Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> В: TDrawBuffer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> S: String;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for Y := 0 to pred(Size.Y) do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MoveChar(B,' ' ,GetColor (1) , Size.X) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if (Y+Delta.Y &lt; Lines. Count) 
+and</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">(Lines. At (Y+Delta.Y) &lt;&gt; NIL) then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">S := PString (Lines. At (Y+Delta.Y) );&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> MoveStr (В, copy (s, Delta. X+1, 
+Length (s) -</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Delta. X), GetColor(1) )&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLine(0,Y,Size.X,1,B)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end  {TInterior.Draw} ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{----------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">P : TMyApp ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">P.Init;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">P. Run;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">P. Done&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В программе перекрывается метод TApplication.Run. В потомке TMyApp этот метод 
+вначале считывает текстовые строки из файла с текстом программы в коллекцию 
+Lines и создает на экране окно со скроллером. После этого вызывается стандартный 
+метод TApplication.Run.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Метод TInterior.Draw обеспечивает вывод нужных строк в окно скроллера. Для 
+определения порядкового номера выводимых строк и их положения относительно 
+границ скроллера используется поле TScroller.Delta. Обратите внимание: если в 
+коллекцию помещается «пустая» строка, т.е. строка нулевой длины, глобальная 
+функция NewStr возвращает значение NIL. В методе TInterior.Draw оператор</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if (Y+Delta.Y &lt; Lines. count) and&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> (Lines.At(Y+Delta.Y) &lt;&gt; NIL) 
+then ...</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">осуществляет проверку значения получаемого из коллекции указателя на NIL; 
+если бы мы не предусмотрели эту проверку, прогон программы (использование 
+NIL-указателя) на некоторых ПК мог бы привести к аварийному останову.</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_13.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_15.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

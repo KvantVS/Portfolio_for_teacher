@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl6_5.html">
+<img SRC="Back.gif" BORDER="0">
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0">
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Администратор кучи
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Как уже отмечалось,
+администратор кучи - это служебная
+подпрограмма, которая обеспечивает
+взаимодействие пользовательской программы
+с кучей. Администратор кучи обрабатывает
+запросы процедур NEW, GETMEM, DISPOSE, FREEMEM и др. и
+изменяет значения указателей HEAPPTR и FREELIST.
+Указатель HEAPPTR содержит адрес нижней
+границы свободной части кучи, а указатель
+FREELIST - адрес описателя первого свободного
+блока. В модуле SYSTEM указатель FREELIST описан
+как POINTER, однако фактически он указывает на
+следующую структуру данных:</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PFreeRec = ATFreeRec;&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> TFreeRec = record</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Next : pointer;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Size : pointer&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Эта списочная
+структура предназначена для описания всех
+свободных блоков памяти, которые
+расположены ниже границы HEAPPTR.
+Происхождение блоков связано со случайной
+последовательностью использования
+процедур NEW-DISPOSE или GETMEM-FREEMEM («ячеистая»
+структура кучи). Поле NEXT, в записи TFREEREC
+содержит адрес описателя следующего по
+списку свободного блока кучи или адрес,
+совпадающий с HEAPEND, если этот участок
+последний в списке. Поле SIZE содержит
+ненормализованную длину свободного блока
+или 0, если ниже адреса, содержащегося в HEAPPTR,
+нет свободных блоков. Ненормализованная
+длина определяется так: в старшем слове
+этого поля содержится количество свободных
+параграфов, а в младшем - количество
+свободных байт в диапазоне 0... 15. Следующая
+функция преобразует значение поля SIZE в
+фактическую длину свободного блока:</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function BlbckSize(Size: pointer): Longint;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3"><font size="3">{Функция преобразует
+ненормализованную длину</font> <font size="3">свободного блока в
+байты}</font></font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PtrRec = record</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Lo, Hi : word</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">LengthBlock: Longint;&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">BlockSize :=
+Longint(PtrRec(Size).Hi)*16 + PtrRec(Size).Lo&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Сразу после загрузки
+программы указатели HEAPPTR и FREELIST содержат
+один и тот же адрес, который совпадает с
+началом кучи (этот адрес содержится в
+указателе HEAPORG). При этом в первых 8 байтах
+кучи хранится запись, соответствующая типу
+TFREEREC (поле NEXT содержит адрес, совпадающий со
+значением HEAPEND, a поле SIZE - ноль, что служит
+дополнительным признаком отсутствия «ячеек»
+в динамической памяти). При работе с кучей
+указатели HEAPPTR и FREELIST будут иметь</font> <font face="Arial, Helvetica, sans-serif" size="3">одинаковые значения
+до тех пор, пока в куче не образуется хотя бы
+один свободный блок ниже границы,
+содержащейся в указателе HEAPPTR. Как только
+это произойдет, указатель FREELIST станет
+ссылаться на начало этого блока, а в первых 8
+байтах освобожденного участка памяти будет
+размещена запись TFREEREC. Используя FREELIST как
+начало списка, программа пользователя
+всегда сможет просмотреть весь список
+свободных блоков и при необходимости
+модифицировать его.</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Описанный механизм
+вскрывает один не очень существенный
+недостаток, связанный с работой
+администратора кучи, а именно: в любой
+освободившийся блок администратор должен
+поместить описатель этого блока, а это
+означает, что длина блока не может быть
+меньше 8 байтов. Администратор кучи всегда
+выделяет память блоками, размер которых
+кратен размеру записи TFREEREC, т.е. кратен 8
+байтам. Даже если программа запросит 1 байт,
+администратор выделит ей фактически 8 байт.
+Те же 8 байт будут выделены при запросе 2, 3
+,..., 8 байт; при запросе 9 байт будет выделен
+блок в 16 байт и т.д. Это обстоятельство
+следует учитывать, если Вы хотите
+минимизировать возможные потери
+динамической памяти. Если запрашиваемый
+размер не кратен 8 байтам, в куче образуется
+&lt;дырка&gt; размером от 1 до 7 байт, причем она
+не может использоваться ни при каком другом
+запросе динамической памяти вплоть до того
+момента, когда связанная с ней переменная
+не будет удалена из кучи.</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Если при очередном
+обращении к функции NEW или GETMEM
+администратор не может найти в куче нужный
+свободный блок, он обращается к функции,
+адрес которой содержит переменная HEAPERROR.
+Эта функция соответствует следующему
+процедурному типу:</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">HeapErrorFun = function (Size:word):
+Integer;</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Здесь SIZE - размер той
+переменной, для которой нет свободной
+динамической памяти. Стандартная функция,
+адрес которой при запуске программы
+содержит переменная HEAPERROR, возвращает 0, что
+приводит к останову программы по ошибке
+периода счета с кодом 203 (см. прил. 3). Вы
+можете переопределить эту функцию и таким
+образом блокировать останов программы. Для
+этого необходимо написать собственную
+функцию и поместить ее адрес в указатель
+HEAPERROR. Например:</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function HeapFunc(Size: Word): Integer; far;&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">HeapFunc := 1 end;&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin  {Основная
+программа}</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">HeapError := @HeapFunc;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Отметим, что функция
+типа HEAPERRORFUN вызывается только в том случае,
+когда обращение с требованием выделения
+динамической памяти было неуспешным. Она
+может возвращать одно из трех значений:</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">0 - прекратить работу
+программы;</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">1 - присвоить
+соответствующему указателю значение NIL и
+продолжить работу программы;</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">2 - повторить
+выделение памяти; разумеется, в этом случае
+внутри функции типа HEAPERRORFUN необходимо
+освободить память нужного размера.</font></p>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl6_5.html">
+<img SRC="Back.gif" BORDER="0">
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0">
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

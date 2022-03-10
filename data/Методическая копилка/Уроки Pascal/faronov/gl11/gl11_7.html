@@ -1,0 +1,374 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl11_6.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Длинные строки
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Среда Турбо Паскаль 7.0 обладает весьма интересным новшеством: в ней введена 
+поддержка длинных строк, т.е. строк, длина которых может превышать 255 байт. Как 
+известно, тип String в Турбо Паскале имеет максимальную длину 255 байт. Это 
+связано с тем, что истинная длина строки в этом типе указывается первым байтом, 
+мощность которого не позволяет определять строки большей длины. В то же время в 
+языке С используется другой подход к заданию текстовых строк: первый байт строки 
+является ее первым символом, второй байт - вторым символом и т.д. пока не 
+встретится байт с символом #0. Таким образом, длина строки не указывается явно, 
+как в типе String, а определяется по замыкающему символу #0. Ясно, что такие 
+строки могут иметь произвольную длину, ограничиваемую лишь объемом оперативной 
+памяти или принятой схемой ее адресации: в MS-DOS такой границей является длина 
+сегмента, поэтому максимально возможная длина С-строки для ПК составляет 65535 
+символов. Такие строки в дальнейшем будем называть ASCIIZ-строками.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для реализации операций над ASCIIZ-строками в язык введен новый тип PChar, 
+определяемый как указатель на символ:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PChar =Char;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Однако такой обычный для Паскаля тип-указатель в рамках Турбо Паскаля 7.0 
+трактуется необычным способом: считается, что он указывает на цепочку символов, 
+заканчивающуюся терминальным нулем, т.е. на ASCIIZ-строку. Более того, с этим 
+типом совместим любой одномерный символьный массив с нулевой левой границей, а 
+переменные типа PChar можно индексировать, как если бы они были массивами 
+символов. Следующая программа напечатает все заглавные буквы английского 
+алфавита:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{$Х+}  {Включаем расширенный синтаксис}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Chars : array [0..26] of Char;  {Массив символов}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PChars: PChar;  {Указатель на символ}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k : Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for k := 0 to 25 do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Chars[k] := Chr(k+ord('A');  {Наполняем массив}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PChars := Chars;  {Указателю присваиваем массив!}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PChars[26] := #0;  
+{Индексируем указатель!}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(PChars)  {Печатаем указатель!}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Три последние оператора программы недопустимы в стандартном Паскале и в 
+ранних версиях Турбо Паскаля, но возможны в версии 7.0, если включен расширенный 
+синтаксис (директивой {$Х+} или опцией Options/Compiler/Extended syntax). 
+Обратите внимание: процедура WriteLn этой версии умеет работать с 
+ASCIIZ-строками.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для поддержки ASCIIZ-строк разработан модуль Strings, в котором реализованы
+необходимы процедуры и функции.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция</b> StrCat.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Объединяет строки. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function StrCat(Dest, Source: PChar): PChar;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Копирует строку Source в конец строки Dest и возвращает указатель на начало 
+Dest.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция </b> StrComp. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Сравнивает строки. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function StrComp(Strl, Str2: PChar):
+Integer;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Побайтно сравнивает строку Strl со строкой Strl и возвращает следующий 
+резуль</font><font face="Arial, Helvetica, sans-serif" size="3">тат:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">=0 Strl=Str2;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> &gt;0 Strl&gt;Str2;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> &lt;0 Strl&lt;Str2.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция</b> StrCopy.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Копирует строку. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function StrCopy(Dest, Source: PChar):
+PChar;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Копирует строку Source в строку Dest и возвращает указатель на Dest. StrCopy 
+не проверяет реальный размер памяти, связанный с Dest (он должен быть не меньше 
+StrLen(Source)+1).</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> StrDispose. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Удаляет строку из кучи. Заголовок:&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Procedure StrDispose(Str: PChar);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Строка Str должна быть предварительно помещена в кучу функцией StrNew. Если 
+Str=NIL, процедура ничего не делает.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция</b> StrECopy. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Объединяет строки. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function StrECopy(Dest, Source: PChar):
+PChar;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Эта функция работает в точности как StrCat, но возвращает указатель на конец 
+сцепленных строк, т.е. на терминальный ноль.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция </b> StrEnd. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возвращает конец строки. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function StrEnd(Str: PChar): PChar;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Функция возвращает указатель на терминальный ноль ASCIIZ-строки Str.&nbsp;</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b> Функция</b> 
+StrlComp. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Сравнивает строки. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function StrlComp(Strl, Str2: PChar): PChar;</font><font face="Arial, Helvetica, sans-serif" size="3"> .</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Функция сравнивает строки, игнорируя возможную разницу в высоте букв. 
+Возвращает такой же результат, как и StrComp. Замечу, что функция правильно 
+работает лишь с латиницей. Для кириллицы ее нужно модифицировать (см. ниже).</font> 
+</P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция </b> StrLCat. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Объединяет строки. Заголовок:&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Function StrLCat(Dest, Source: PChar;
+MaxLen: Word): PChar;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Копирует символы строки Source в конец строки Dest до тех пор, пока не будут 
+скопированы все символы или когда длина сцепленной строки Dest не достигнет 
+MaxLen. Возвращает указатель на сцепленную строку.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В отличие от StrCopy эта функция блокирует возможное переполнение области 
+памяти, связанной с Dest. Обычно в качестве MaxLen используется выражение SizeOf 
+(Dest) -1. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{$Х+}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Strings;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">S: array [0..9] of Char;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">StrCopy(S, 'Turbo');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">StrLCat(S, ' ', SizeOf(S)-1);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">StrLCat(S, 'Pascal', SizeOf(S)-1);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(S)  {Напечатает "Turbo Pas"}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция </b> StrLComp. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Сравнивает строки. Заголовок:&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Function StrLComp(Dest, Source: PChar;
+MaxLen: Word): PChar;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В отличие от StrComp сравнивает не более MaxLen символов строк. Возвращаемый 
+результат такой же, как и у StrComp.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция</b> StrLCopy. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Заголовок:&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Function StrLCopy(Dest, Source: PChar;
+MaxLen: Word): PChar;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Копирует символы из строки Source в строку Dest до тех пор, пока не будет 
+скопирована вся строка или пока не будет скопировано MaxLen символов. В отличие 
+от StrCopy блокирует возможное переполнение области памяти, связанной с Dest. В 
+качестве MaxLen обычно используется выражение SizeOf (Dest) -1. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{$Х+}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Strings;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">S: array [0..9] of Char;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">StrLCopy(S, 'Turbo Pascal', SizeOf(S)-1);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(S) {Напечатает "Turbo Pas"}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция</b> StrLen.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возвращает длину строки. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function StrCattStr: PChar): Word;</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция</b> StrLIComp. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Сравнивает строки с учетом регистра. Заголовок:&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Function StrLIComp(Str1, Str2: PChar; MaxLen: Word): PChar;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Сравнивает не более MaxLen символов строк, проверяя точное соответствие 
+высоты букв. Возвращаемый результат см. StrComp. Функция правильно работает 
+только с латиницей.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция</b> StrLower. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Преобразует в строчные буквы. Заголовок:&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Function StrLower(Str: PChar): PChar;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Преобразует заглавные буквы строки Str к строчным и возвращает указатель на 
+результат. Функция правильно работает только с латиницей.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция </b> StrMove. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Копирует строку. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function StrMove(Dest, Source: PChar; Count:
+Word): PChar;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Копирует точно Count символов строки Source в строку Dest и возвращает 
+указатель на результат. Функция игнорирует действительные размеры строк и может 
+выйти за их пределы.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция</b> StrNew. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Помещает строку в кучу. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function StrNew(Str: PChar): PChar;</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция </b> Str Pas.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Преобразует ASCHZ-строку в строку String. Заголовок:&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+Function StrPas(Str: PChar,) : String;</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция</b> StrPCopy. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Преобразует строку String в ASCIIZ-строку. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function StrPCopy(Str: PChar; S: String): PChar;&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Возвращает указатель на Str.&nbsp;</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b> 
+Функция </b> StrPos. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Ищет подстроку. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function StrPos(Strl, Str2: PChar): PChar;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Ишет подстроку Str2 в строке Strl и возвращает указатель на первое вхождение 
+Str2 или NIL, есди подстрока не найдена.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция</b> StrRScan. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Ищет последний символ. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function StrRScan(Str: PChar; Ch: Char):
+PChar;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Ищет символ Ch в строке Str и возвращает указатель на последний обнаруженный 
+символ Ch или NIL, если символ не найден.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция</b> StrScan. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Ищет первый символ. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function StrScan(Str: PChar; Ch: Char):
+PChar;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Ищет символ Ch в строке Str и возвращает указатель на первый обнаруженный 
+символ Ch или NIL, если символ не найден.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция</b> StrUpper. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function StrLower(Str: PChar): PChar;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Преобразует строчные буквы строки Str к заглавным и возвращает указатель на 
+результат. Функция правильно работает только с латиницей.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Четыре функции модуля Strings (StrLower, StrUpper, StrlComp и StrLIComp) 
+используют преобразование высоты букв и работают корректно только для букв 
+латинского алфавита (латиницы). Для русских букв эти функции можно изменить 
+следующим образом:</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">{Этот модуль содержит модификацию функций стандартного модуля Strings для 
+работы с кириллицей (альтернативный вариант кодировки}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{$Х+}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Unit StringsR;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">INTERFACE</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function LoCase(Ch: Char): Char;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function UpCase(Ch: Char): Char;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function StrLower(Str: PChar): PChar;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function StrUpper(Str: PChar): PChar;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function StrlComp(Strl, Str2: PChar):
+Integer;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function StrLIComp(Strl, Str2: PChar;
+MaxLen: Word): Integer;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">IMPLEMENTATION</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Strings;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function LoCase(Ch: Char): Char;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Преобразует латинскую или русскую букву Ch к строчной}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> case Ch of</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'A' . .'Z':LoCase:= Chr(ord('a')+ord(Ch)-ord('A'));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'A' . .'П':LoCase:= Chr(ord('a')+ord(Ch)-ord('A'));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'P' . .'Я':LoCase:= Chr(ord('p')+ord(Ch)-ord('P'));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">LoCase:= Ch</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-------------------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function UpCase(Ch: Char): Char;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Преобразует латинскую или русскую букву Ch к заглавной}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">case Ch of</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'a'..'z': UpCase := Chr(ord('A')+ord(Ch)-ord('a'));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'a'..'n': UpCase := Chr(ord('A')+ord(Ch)-ord('a'));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'p'..'я': UpCase := Chr(ord('P')+ord(Ch)-ord('p'));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">UpCase:= Ch&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-------------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function StrLower(Str: PChar): PChar;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Преобразует латинские и русские буквы строки Str к строчным}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k: Word;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for k := 0 to StrLen(Str)-1 do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Str[k]:= LoCase(Str[k]);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">StrLower:= Str</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-----------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function StrUpper(Str: PChar): PChar;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Преобразует латинские и русские буквы строки Str к заглавным}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k: Word;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for k :=0 to StrLen(Str)-1 do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Str[k]:= UpCase(Str[k]);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">StrUpper:= Str</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{------------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function StrlComp (Str1, Str2 : PChar): Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Сравнивает две строки, 
+игнорируя возможную разницу в высоте латинских или русских букв}</font><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k: Word;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Max: Word;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Определяем максимальное количество сравниваемых символов</font>
+<font size="3">как минимум длин строк}</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Мах := StrLen(Str1) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if StrLen (Str2).&lt;Max then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Max := StrLen(Str2) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Проверяем символы до первого несовпадения.Буквы преобразуем к заглавным}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for k := 0 to Max-1 do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if UpCase(Strl[k])&lt;&gt;UpCase(Str2[k]) then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Строки не равны}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">StrIComp := ord(UpCase(StrlCk]))-ord(UpCase(Str2[k]));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Exit&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Разницы нет - результат зависит от совпадения длин}</font><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> StrIComp := StrLen(Str1)-StrLen(Str2)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{--------------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function StrLIComp(Str1, Str2: PChar; MaxLen: Word): Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Сравнивает не 
+более MaxLen символов строк, проверяя точное соответствие высоты букв}</font><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k. Max: Word;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Определяем максимальное количество сравниваемых символов</font>
+<font size="3">как минимум длин строк и MaxLen}</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Мах := MaxLen;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if StrLen(Strl)&lt;Max then Max := StrLen(Strl);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if StrLen(Str2)&lt;Max then Max := StrLen(Str2);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Проверяем символы до первого несовпадения.Буквы преобразуем к заглавным}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for k := 0 to Max do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if UpCase(Str1 [k])&lt;&gt;UpCase(Str2[k]) then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">StrLIComp := ord(UpCase(Str1[k]))-ord(UpCase(Str2[k]));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Exit&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Разницы нет. Если проверено MaxLen символов, строки считаются равными, в 
+противном случае результат зависит от совпадения длин строк}&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if Max=MaxLen then</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">StrLIComp := 0&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">StrLIComp := StrLen(Str1)-StrLen(Str2)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если Вы будете использовать этот модуль, ссылайтесь на него в предложении 
+Uses после ссылки на стандартный модуль Strings:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Strings, StringsR, ...</font> </P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl11_6.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

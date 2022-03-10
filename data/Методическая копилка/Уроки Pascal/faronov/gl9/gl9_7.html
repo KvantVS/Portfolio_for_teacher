@@ -1,0 +1,219 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl9_6.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl9_8.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Доступ к объявленным в модуле объектам
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Пусть, например, мы создаем модуль, реализующий арифметику комплексных чисел 
+(такая арифметика ни в стандартном Паскале, ни в Турбо Паскале не 
+предусмотрена). К сожалению, в Турбо Паскале нельзя использовать функции, 
+значения которых имели бы структурированный тип (запись, например), поэтому 
+арифметика комплексных чисел реализуется четырьмя процедурами:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">UNIT Cmplx;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{---------------------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">INTERFACE</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{---------------------}</font> </P>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type complex = record&nbsp;</font></P>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">re, im:real</font></P>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font></P>
+<TABLE border=0 frame=box rules=all >
+  <TBODY>
+  <TR>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure AddC</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">(x, у</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">: complex;</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var z</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">: complex) ;</font></P></TD></TR>
+  <TR>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure SubC</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">(x, у</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">: complex;</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var z</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">: complex) ;</font></P></TD></TR>
+  <TR>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure MulC</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">(x, у</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">: complex;</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var z</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">: complex) ;</font></P></TD></TR>
+  <TR>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure DivC</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">(x, у</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">: complex;</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var z</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">: complex) ;</font></P></TD></TR>
+  <TR>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font></P></TD>
+  </TR>
+  <TR>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">с : complex =</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">(re :</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">0.1; im :</font></P></TD>
+    <TD >
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">-1);</font></P></TD>
+    <TD ><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  </TBODY></TABLE>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{---------------------}</font></P>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">IMPLEMENTATION</font></P>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{---------------------}</font></P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure AddC; begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">z.re := x.re + y.re; z . im := x.im + y. im</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end {AddC};</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure SubC;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">z.re := x.re - y. re ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> z.im := x.im - y.im</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end {SubC};</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure MulC;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">z.re := x.re*y.re - x.im*y. im;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">z.im := x.re*у.im + x.im*y.re</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end {MulC};</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure DivC;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">zz : real;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">zz := sqr(y.re) + sqr(y.im);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">z. re := (x.re * y.re + x.im * y.im) / zz;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> z.im 
+:= (x.re * y.im - x.im * y.re) / zz</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end {DivC};</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Текст этого модуля следует поместить в файл CMPLX.PAS. Вы можете его 
+откомпилировать, создав TPU-файл, после чего Вашей программе станут доступны 
+процедуры из новой библиотеки. Например, в следующей программе (пример 9.1) 
+осуществляются четыре арифметические операции над парой комплексных чисел.</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Пример 9.1</font>
+</b> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Cmplx;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">а, Ь, с : complex;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">a.re := 1; a.im := 1;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> b.re := 1; b.im := 2;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">AddC(a, b, c);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn('Сложение: 'c.re:5:1, c.im:5:1,'i') ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SubC(a, b, c) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn('Вычитание: 'с.re:5:1, 
+с.im:5:1,'i');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MulC(a, b, c);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn('Умножение: 'c.re:5:1, c.im:5:l,'i') ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DivC(a, b, 
+c);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn('Деление: 'c.re:5:l, с.im:5:1,'i');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">После объявления Uses Cmplx программе стали доступны все объекты, объявленные 
+в интерфейсной части модуля CMPLX. При необходимости можно переопределить любой 
+их этих объектов, как это произошло, например, с объявленной в модуле 
+типизированной константой С. Переопределение объекта означает, что вновь 
+объявленный объект «закрывает» ранее определенный в модуле одноименный объект. 
+Чтобы получить доступ к «закрытому» объекту, нужно воспользоваться составным 
+именем: перед именем объекта поставить имя модуля и точку. Например, оператор</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(cmplx.c.re:5:l, cmplx.с.im:5:1,'i');</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">выведет на экран содержимое «закрытой» типизированной константы из 
+предыдущего примера.</font> </P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl9_6.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl9_8.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

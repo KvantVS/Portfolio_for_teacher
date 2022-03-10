@@ -1,0 +1,399 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl5_4.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl5_6.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Процедуры и функции для работы с файлами
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Ниже описываются процедуры и функции, которые можно использовать с файлами 
+любого вида. Специфика работы с типизированными, текстовыми и нетипизированными 
+файлами рассматривается в следующих разделах.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> Close. </font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Закрывает файл, однако связь файловой переменной с именем 
+файла, установленная ранее процедурой ASSIGN, сохраняется. Формат обращения:</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">CLOSE (&lt;ф.п.&gt;)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">При создании нового или расширении старого файла процедура обеспечивает 
+сохранение в файле всех новых записей и регистрацию файла в каталоге. Функции 
+процедуры CLOSE выполняются автоматически по отношению ко всем открытым файлам 
+при нормальном завершении программы. Поскольку связь файла с файловой переменной 
+сохраняется, файл можно повторно открыть без дополнительного использования 
+процедуры ASSIGN.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> RENAME. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Переименовывает файл. Формат обращения:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">RENAME (&lt;ф.п.&gt;, &lt;новое имя&gt;)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь &lt;новое имя&gt; - строковое выражение, содержащее новое имя файла. 
+Перед выполнением процедуры необходимо закрыть файл, если он ранее был открыт 
+процедурами RESET, REWRITE или APPEND.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> ERASE. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Уничтожает-файл. Формат обращения:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ERASE (&lt;ф.п.&gt;)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Перед выполнением процедуры необходимо закрыть файл, если он ранее был открыт 
+процедурами RESET, REWRITE или APPEND.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Следующий фрагмент программы показывает, как можно использовать процедуры 
+RENAME и CLOSE при работе с файлами. Предположим, что требуется отредактировать 
+файл, имя которого содержит переменная NAME. Перед редактированием необходимо 
+убедиться, что нужный файл имеется на диске, и переименовать его - заменить 
+расширение этого файла на ВАК (страховочная копия). Если файл с таким 
+расширением уже существует, его надо стереть.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">fi : text; <i> {Исходный файл}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">fo : text; <i> {Отредактированный файл}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">name : String;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">name_bak: String;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k, i: Word;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">bak = '.bak';&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Получаем в name bak имя файла с расширением .ВАК:}</font></i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k := pos('.',name);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if k = 0 then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k := length(name) +1;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> name_bak := copy(name,1,k-1) + bak;&nbsp;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Проверяем 
+существование исходного файла:}&nbsp;</font></i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">assign(fi,name);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{$I-} ' reset(fi);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if lOResult &lt;&gt; 0 then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">halt; {Завершаем программу: файла не существует}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">close(fi); ,&nbsp;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Проверяем 
+существование .ВАК-файла:}&nbsp;</font></i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">assign(fо,name_bak);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> reset (fo);&nbsp;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{$I+}</font></i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if lOResult = 0 then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin <i> {Файл .ВАК существует:}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">close(fo); <i> {Закрываем его}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">erase(fo) <i> {и уничтожаем}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Проверки закончены, подготовка к работе:}&nbsp;</font></i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">rename(f i,name_bak);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">reset(fi);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">assign(fo,name);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">rewrite(fo);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Обратите внимание: проверка на существование файла .ВАК в данном примере 
+необходима, так как обращение</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">rename(fi,name_bak);&nbsp;</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> вызовет ошибку в случае, если такой файл существует.</font> 
+</P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> FLUSH. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Очищает внутренний буфер файла и, таким образом, гарантирует 
+сохранность всех последних изменений файла на диске. Формат обращения:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">FLUSH (&lt;ф.п.&gt;)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Любое обращение к файлу в Турбо Паскале осуществляется через некоторый буфер, 
+что необходимо для согласования внутреннего представления файлового компонента 
+(записи) с принятым в ДОС форматом хранения данных на диске. В ходе выполнения 
+процедуры FLUSH все новые записи будут действительно записаны на диск. Процедура 
+игнорируется, если файл был инициирован для чтения процедурой RESET.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция</b> EOF (&lt;ф. п. &gt;) : BOOLEAN. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Логическая функция, тестирующая конец 
+файла. Возвращает TRUE, если файловый указатель стоит в конце файла. При записи 
+это означает, что очередной компонент будет добавлен в конец файла, при чтении 
+-что файл исчерпан.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> CHDIR. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Изменение текущего каталога. Формат обращения:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">CHDIR (&lt;путь&gt;)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь &lt;путь&gt; - строковое выражение, содержащее путь к устанавливаемому 
+по умолчанию каталогу.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура </b> GETDIR. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Позволяет определить имя текущего каталога (каталога по 
+умолчанию). Формат обращения:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GETDIR (&lt;устройство&gt;, &lt;каталог&gt;)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь &lt;устройство&gt; - выражение типа WORD , содержащее номер устройства: 
+0 -</font> <font face="Arial, Helvetica, sans-serif" size="3">устройство по умолчанию, 1 - диск А, 2 - диск В и т.д.;&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> &lt;каталог&gt; - 
+переменная типа STRING, в которой возвращается путь к текущему каталогу на 
+указанном диске.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> MKDIR. </font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Создает новый каталог на указанном диске. Формат обращения:</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MKDIR (&lt;каталог&gt;)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь &lt;каталог&gt; - выражение типа STRING, задающее путь к каталогу. 
+Последним именем в пути, т.е. именем вновь создаваемого каталога не может быть 
+имя уже существующего каталога.^</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> RMDIR. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Удаляет каталог. Формат обращения:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">RMDIR (&lt;каталог&gt;)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Удаляемый каталог должен быть пустым, т.е. не содержать файлов или имен 
+каталогов нижнего уровня.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция</b> IORESULT: WORD. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возвращает условный признак последней операции 
+ввода-вывода.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если операция завершилась успешно, функция возвращает ноль. Коды ошибочных 
+операций ввода-вывода представлены в прил.З. Следует помнить, что IORESULT 
+становится доступной только при отключенном автоконтроле ошибок ввода-вывода. 
+Директива компилятора {$I-} отключает, а директива {$I+} включает автоконтроль. 
+Если автоконтроль отключен, а операция ввода-вывода привела к возникновению 
+ошибки, устанавливается флаг ошибки и все последующие обращения к вводу-выводу 
+блокируются, пока не будет вызвана функция IORESULT.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Ряд полезных файловых процедур и функций становится доступным при 
+использовании библиотечного модуля DOS.TPU, входящего в стандартную библиотеку 
+TURBO. TPL . Эти процедуры и функции указаны ниже. Доступ к ним возможен только 
+после объявления USES DOS в начале программы (подробнее о работе с модулями см. 
+гл.9).</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция</b> DISKFREE (&lt;диск&gt;) : LONGINT. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возвращает объем в байтах 
+свободного пространства на указанном диске. При обращении к функции выражение 
+&lt;диск&gt; типа BYTE определяет номер диска: 0 - устройство по умолчанию, 1 - 
+диск А , 2 - диск В и т.д. Функция возвращает значение -1, если указан номер 
+несуществующего диска.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция</b> DISKSIZE (&lt;диск&gt;) : LONGINT. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возвращает полный объем диска в 
+байтах или -1 , если указан номер несуществующего диска.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> FINDFIRST. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возвращает атрибуты первого из файлов, 
+зарегистрированных в указанном каталоге. Формат обращения:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">FINDFIRST (&lt;маска&gt;, &lt;атрибуты&gt;, &lt;имя&gt;)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь &lt;маска&gt; - строковое выражение, содержащее маску файла;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">&lt;атрибуты&gt; - выражение типа BYTE, содержащее уточнение к маске 
+(атрибуты); &lt;имя&gt; - переменная типа SEARCHREC, в которой будет возвращено 
+имя</font> <font face="Arial, Helvetica, sans-serif" size="3">файла.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">При формировании маски файла используются следующие символы-заменители ДОС:</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">* означает, что на месте этого символа может стоять сколько угодно (в том 
+числе ноль) разрешенных символов имени или расширения файла;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">? означает, что на месте этого символа может стоять один из разрешенных 
+символов.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">* . *&nbsp;</font><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;&nbsp;&nbsp;&nbsp;
+выбирает все файлы из каталога;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">с* . *&nbsp;</font><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;&nbsp;
+выбирает все файлы с именами, начинающимися на с
+(cl.pas,сс!2345, c.dat и т.д.);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> a?.dat</font><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;&nbsp;&nbsp;&nbsp;
+выбирает имена файлов типа a0.dat, az.dat и 
+т.д.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Маске может предшествовать путь'. Например, команда</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">с:\dir\subdir\*.pas</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">эзначает выбирать все файлы с расширением .PAS из каталога SUBDIR, 
+находящегося на диске С; каталог SUBDIR зарегистрирован в каталоге верхнего 
+уровня DIR, который, в свою очередь, входит в корневой каталог.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Байт &lt;атрибуты&gt; содержит двоичные разряды (биты), уточняющие, к каким 
+именно файлам разрешен доступ при обращении к процедуре FINDFIRST . Вот как 
+объявляются файловые атрибуты в модуле DOS.
+TPU:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Readonly = $01; <i> {только чтение}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Hidden = $02; <i> {скрытый файл}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SysFile = $04; <i> {системный файл}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">VolumeID = $08; <i> {идентификатор тома}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Directory = $10; <i> {имя подкаталога}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Archive =$20; <i> {архивный файл}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">AnyFile= $3F; <i> {любой файл}</i></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Комбинацией бит в этом байте можно указывать самые разные варианты, например 
+$ 06 - выбирать все скрытые и/или системные файлы.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Результат работы процедуры FINDFIRST возвращается в переменной типа 
+SEARCHREC. Этот тип в модуле DOS. TPU определяется следующим образом:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SearchRec = record</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Fill : array [1..21] of Byte;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Attr : Byte;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Time : LongInt;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Size : LongInt;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Name : String.[12]&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь Attr - атрибуты файла (см. выше);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Time - время создания или последнего обновления файла; возвращается в 
+упакованном формате; распаковать параметр можно процедурой UNPACKTIME (см.ниже);&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> 
+Size - длина файла в байтах;&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Name - имя и расширение файла. Для распаковки 
+параметра TIME используется процедура</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">UNPACKTIME(Time: Longlnt; var T:DateTime).</font><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> В модуле DOS. TPU объявлен 
+следующий тип DateTime:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DateTime = record</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">year:Word; <i> {год в формате 19ХХ}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">month:Word; <i> {месяц I..12}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">day:Word; <i> {день 1..31}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">hour:Word; <i> {час 0..23}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">min:Word; <i> {минуты 0..59}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">sec:Word <i> {секунды 0..59}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Результат обращения к процедуре FINDFIRST можно проконтролировать с помощью 
+функции DOSERROR типа WORD, которая возвращает значения:</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">0 - нет ошибок;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">2 - не найден каталог;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">18 - каталог пуст (нет указанных файлов).</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> FINDNEXT. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возвращает имя следующего файла в каталоге. Формат 
+обращения:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">FINDNEXT (&lt;сл.файл&gt;)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь &lt;сл.фаш&gt; - запись типа SEARCHREC (см. выше), в которой 
+возвращается информация о файле.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Следующая простая программа иллюстрирует способ использования процедур 
+FINDFIRST и FINDNEXT. Программа выводит на экран список всех PAS-файлов текущего 
+каталога:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses DOS;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">S: SearchRec;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">FindFirst('*.pas',AnyFile,S);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> while DosError = 0 do begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">with S do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(Name:12,Size:12);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">FindNext(S)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> GETFTIME. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возвращает время создания или последнего обновления 
+файла. Формат обращения:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GETFTIME (&lt;ф.п.&gt;, &lt;время&gt;)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь &lt;время&gt; - переменная типа LONGINT, в которой возвращается время в 
+упакованном формате.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> SETFTIME. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Устанавливает новую дату создания или обновления файла. 
+Формат обращения:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SETFTIME (&lt;ф.п.&gt;, &lt;время&gt;)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь &lt;время&gt; - время и дата в упакованном формате.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Упаковать запись типа DATETIME в переменную типа LONGINT можно процедурой</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PACKTIME (var T:DateTime; var Time:LongInt).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> (Описание типа DA TETIME см. 
+выше).</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> GETFATTR. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Позволяет получить атрибуты файла. Формат обращения:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GETFATTR (&lt;ф.п.&gt;, &lt;атрибуты&gt;)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь &lt;атрибуты&gt; - переменная типа WORD, в младшем байте которой 
+возвращаются устанавливаемые атрибуты файла.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> SETFATTR. </font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Позволяет установить атрибуты файла. Формат обращения:</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SETFATTR (&lt;ф.п.&gt;, &lt;атрибуты&gt;)&nbsp;</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b> Функция</b> FSEARCH: PATHSTR. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Ищет файл 
+в списке каталогов. Формат вызова:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">FSEARCH (&lt;имя&gt;, &lt;сп.каталогов&gt;)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь &lt;имя&gt; - имя отыскиваемого файла (строковое выражение или 
+переменная</font> <font face="Arial, Helvetica, sans-serif" size="3">типа PATHSTR; имени может предшествовать путь); &lt;сп.каталогов&gt; - список 
+каталогов, в которых отыскивается файл (строковое выражение или переменная типа 
+STRING); имена каталогов разделяются точкой с запятой.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Результат поиска возвращается функцией FSEARCH в виде строки типа PATHSTR. В 
+строке содержится путь и имя файла, если поиск был успешным, в противном случае 
+возвращается пустая строка.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Тип PATHSTR в модуле DOS.TPU объявлен следующим образом:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PathStr = String[79];</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Следует учесть, что поиск файла всегда начинается в текущем каталоге и только 
+после этого продолжается в тех, что перечислены в &lt;сп.каталогов&gt;. Если 
+файл обнаружен, дальнейший поиск прекращается, даже если часть каталогов 
+осталась непросмотренной. В частности, если файл зарегистрирован в текущем 
+каталоге, он «заслонит» собой одноименные файлы в других каталогах.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Пусть, например, на диске имеется файл \SUBDIR\MYFILE.PAS. Тогда в случае, 
+если текущий каталог - корневой, обращение</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">FSEARCH ('MYFILE,PAS','\SUB; \SUBDIR').</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">вернет строку \SUBDIR\MYFILE.PAS, а обращение</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">FSEARCH ('MYFILE.PAS1,'\SUB')</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">вернет пустую строку. Однако, если текущим установлен каталог SUBDIR, то в 
+обоих случаях вернется строка MYFILE.PAS (если файл находится в текущем 
+каталоге,в выходной строке путь к нему не указывается).</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> FSPLIT. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">«Расщепляет» имя файла, т.е. возвращает в качестве 
+отдельных параметров путь к файлу, его имя и расширение. Формат обращения:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">FSPLIT (&lt;файл&gt;, &lt;путь&gt;, &lt;имя&gt;, &lt;расширение&gt;)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь &lt;файл&gt; - строковое выражение, содержащее спецификацию файла (имя 
+с</font> <font face="Arial, Helvetica, sans-serif" size="3">расширением и, возможно, с предшествующим путем);&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> &lt;путь&gt; - переменная 
+типа DIRSTR=STRING [67], в которой возвращается</font> <font face="Arial, Helvetica, sans-serif" size="3">путь к файлу;&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> &lt;имя&gt; - переменная типа NAMESTR=STRING [8], в которой 
+возвращается</font> <font face="Arial, Helvetica, sans-serif" size="3">имя файла;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">&lt;расширение&gt; - переменная типа EXTSTR=STRING [4], в которой 
+возвращается расширение с предшествующей ему точкой.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Процедура не проверяет наличие на диске указанного файла. В качестве входного 
+параметра может использоваться переменная типа PATHSTR.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция</b> FEXPAND: PATHSTR. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Дополняет файловое имя до полной спецификации, т.е. 
+с указанием устройства и пути. Формат вызова:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">FEXPAND (&lt;файл&gt;)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь &lt;файл&gt; - строковое выражение или переменная типа PATHSTR.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Функция не проверяет наличие указанного файла на диске, а просто дополняет 
+имя файла недостающими параметрами - текущим устройством и путем к текущему 
+каталогу. Результат возвращается в строке типа
+PATHSTR.</font> </P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl5_4.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl5_6.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

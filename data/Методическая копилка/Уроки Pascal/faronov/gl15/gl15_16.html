@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_15.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_17.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Удаление записи
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+При реализации режима удаления записи нам нужно учесть тот факт, что порядок 
+следования записей в файле и коллекции может быть различным. Поэтому в процедуре
+DeleteItem организуется цикл поиска в файле удаляемой записи:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure DeleteItem;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Удаляет указанный в Location элемент данных}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">D: Integer;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PStr: PString;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s: String;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Data: DataType;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PStr := PS.At(Location){Получаем текущую запись}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s := copy(PSr,1,LName)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">seek(DataFile,0);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">D := -1;{D - номер записи в файле}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">repeat{Цикл поиска по совпадению поля
+Name:}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">inc(D);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">read(DataFile,Data);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">with Data do while Length(Name) &lt; LName do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Name := Name+' '&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> until Data.Name=s;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">seek(DataFile,pred(FileSize(DataFile)));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">read(DataFile,Data);  {Читаем 
+последнюю запись}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">seek(DataFile,D);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">write(DataFile,Data);  {Помещаем ее на место удаляемой}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">seek(DataFile,pred(FileSize(DataFile)));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">truncate(DataFile);  {Удаляем последнюю 
+запись}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> with РS do D := IndexOf(At(Location));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PS.AtFree(D);  {Удаляем строку 
+из коллекции}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Draw  {Обновляем окно}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; {DeleteItem}</font> </P>
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_15.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_17.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</BODY></HTML>

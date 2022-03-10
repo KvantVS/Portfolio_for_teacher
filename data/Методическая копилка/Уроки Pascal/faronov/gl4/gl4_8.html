@@ -1,0 +1,205 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl4_7.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl4_9.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Строки
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Тип STRING (строка) в Турбо Паскале широко используется для обработки 
+текстов. Он во многом похож на одномерный массив символов ARRAY[O..N] OF CHAR, 
+однако, в отличие от последнего, количество символов в строке-переменной может 
+меняться от 0 до N, где N - максимальное количество символов в строке. Значение 
+N определяется объявлением типа STRING [N] и может быть любой константой 
+порядкового типа, но не больше 255 . Турбо Паскаль разрешает не указывать N, в 
+этом случае длина строки принимается максимально возможной, а именно N=255 . 
+</P>
+<P>Строка в Турбо Паскале трактуется как цепочка символов. К любому символу в
+строке можно обратиться точно так же, как к элементу одномерного массива ARRAY 
+[0..N] OF CHAR, например: </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> st : String;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if st[5] = 'A' then...&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P>Самый первый байт в строке имеет индекс 0 и содержит текущую длину строки, 
+первый значащий символ строки занимает второй байт и имеет индекс 1. Над длиной 
+троки можно осуществлять необходимые действия и таким способом изменять длину. 
+Например, удалить из строки все ведомые пробелы можно следующим образом: </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">st : String;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> i : Byte;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">i := ord(st [0] ) ; <i> {i - текущая длина строки}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> while (i &lt;&gt; 0) and 
+(st[i] = ' ') do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">dec(i);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">st[0] := chr(i)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P>Значение ORD(st[0]) , т.е. текущую длину строки, можно получить и с помощью 
+функции LENGTH(st), например: </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">while (Length(st)&lt;&gt;0) and (st[Length(st)]=' ') do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">st[0] := 
+chr(Length(st)-1)</font> </P>
+<P>К строкам можно применять операцию «+» - сцепление, например: </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">st := 'а1 + 'b';&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> st := st + 'с'; <i> {st содержит &quot;abc&quot;}</i></font> </P>
+<P>Если длина сцепленной строки превысит максимально допустимую длину N, то 
+«лишние» символы отбрасываются. Следующая программа, например, напечатает символ 
+1: </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">st: String [1] ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">St:='123';&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(st)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P>Все остальные действия над строками и символами реализуются с помощью 
+описываемых ниже стандартных процедур и функций. </P>
+<P><u>CONCAT(S1 [,S2, ... , SN] )</u> - функция типа STRING; возвращает строку, 
+представляющую собой сцепление строк-параметров SI, S2, ...,
+SN. </P>
+<P><u>COPY(ST, INDEX, COUNT)</u> - функция типа STRING; копирует из строки ST COUNT 
+символов, начиная с символа с номером INDEX. </P>
+<P><u>DELETE (ST, INDEX, COUNT)</u> - процедура; удаляет СОUNT
+символов из строки ST, 
+начиная с символа с номером INDEX. </P>
+<P><u>INSERT (SUBST, ST, INDEX)</u> - процедура; вставляет подстроку SUBST в строку ST, 
+начиная с символа с номером INDEX. </P>
+<P><u>LENGTH (ST)</u> - функция типа INTEGER; возвращает длину строки ST. </P>
+<P><u>POS (SUBST, ST) </u> - функция типа INTEGER; отыскивает в строке STпервое 
+вхождение подстроки SUBST и возвращает номер позиции, с которой она начинается; 
+если подстрока не найдена, возвращается ноль. </P>
+<P><u>STR(X [; WIDTH [: DECIMALS] ], ST)</u> - процедура; преобразует число X любого 
+вещественного или целого типов в строку символов ST так, как это делает 
+процедура WRITELN перед выводом; параметры WIDTH и DECIMALS, если они 
+присутствуют, задают формат преобразования: WIDTH определяет общую ширину поля, 
+выделенного под соответствующее символьное представление вещественного или 
+целого числа X, a DECIMALS - количество символов в дробной части (этот параметр 
+имеет смысл только в том случае, когда Х- вещественное число). </P>
+<P><u>VAL(ST, X, CODE)</u> - процедура; преобразует строку символов
+<i> ST</i> во внутреннее
+представление целой или вещественной переменной
+<i>X</i>, которое определяется типом 
+этой переменной; параметр <i> CODE</i> содержит ноль, если преобразование прошло 
+успешно, и тогда в <i> X</i> помещается результат преобразований, в противном случае он 
+содержит номер позиции в строке <i>ST</i>, где обнаружен ошибочный символ, и в этом 
+случае содержимое <i> Х</i> не меняется; в строке
+<i> ST</i> могут быть ведущие пробелы, однако 
+ведомые пробелы недопустимы; например, обращение val (' 123',k,i) пройдет
+успешно: <i> k</i> получит значений 123, в <i>i</i> будет помещен 0, в то время как 
+обращение val (' 123 ' , k, i) будет ошибочным: значение
+<i> k</i> не изменится, a <i> i</i> будет 
+содержать 4. 
+</P>
+<P><u>UPCASE (СН)</u> - функция типа <i>CHAR</i>; возвращает для символьного выражения
+<i> СН</i>,
+которое должно представлять собой строчную латинскую букву, соответствующую 
+заглавную букву; если значением <i> СН</i> является любой другой символ (в том числе 
+строчная буква русского алфавита), функция возвращает его без преобразования. 
+</P>
+<P>Примеры: </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">х : Real;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> у : Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> st,st1: String;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">st := concat('12','345'); <i> {строка st содержит 12345}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> st1 := 
+copy(st,3,Length(st)-2); <i>{st1 содержит 345}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">insert('-',st1,2); <i> {строка st1 содержит 3-45}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">delete(st,pos('2',at),3); <i> 
+{строка st содержит 15}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">str(pi:6:2,st); <i> {строка st содержит 3.14}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">val(''3,1415' 
+,x,y) ; <i> {у содержит 2, х остался без изменения}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P>Операции отношения =, о, &gt;, &lt;, &gt;=, &lt;= выполняются над двумя 
+строками посимвольно, слева направо с учетом внутренней кодировки символов (см. 
+табл.4.1 и прил.2). Если одна строка меньше другой по длине, недостающие символы 
+короткой строки заменяются значением СНR(0) . </P>
+<P>Следующие операции отношения дадут значение TRUE: </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'''' &lt; ' . '</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'А' &gt; '1'</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'Turbo' &lt;' Turbo Pascal'</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'Паскаль' &gt;'Turbo Pascal'</font> </P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl4_7.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl4_9.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

@@ -1,0 +1,171 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_2.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_4.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+События от мыши
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Существуют 4 вида событий от мыши: событие evMouseDown возникает как отклик 
+на нажатие кнопки мыши; когда кнопка отпускается, возникает событие evMouseUp; 
+перемещение указателя мыши порождает событие evMouseMove; наконец, если кнопка 
+мыши удерживается в нажатом состоянии, Turbo Vision периодически генерирует 
+событие evMouseAuto. С каждым событием от мыши в записи TEvent передаются также 
+координаты, которые имеет указатель мыши в данный момент. Отметим, что в отличие 
+о.т других координат Turbo Vision координаты мыши задаются относительно границ 
+экрана, а не относительно границ какого-либо видимого элемента. Горизонтальная 
+координата мыши меняется в диапазоне от 0 до 79, вертикальная - от 0 до 24 
+(режим 25 строк на экране) или от 0 до 42/49 (режим 43/50 строк).</font> </P>
+<center>
+<P align="center"><img border="0" src="18_1.jpg"  > </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Рис. 18.1.</b> Разряды поля What</font> </P>
+</center>
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+События от клавиатуры
+
+</font>
+</b>
+<br>
+</font>
+</p>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В этом классе событий имеется единственное событие evKeyDown, связанное с 
+нажатием на клавишу. В поле TEvent.KeyCode в этом случае содержится так 
+называемый расширенный код клавиши, который Вы можете интерпретировать как 
+совокупность двух байт: CharCode и ScanCode. При нажатии на алфавитно-цифровую 
+клавишу поле CharCode содержит соответствующий ASCII-символ, при нажатии на 
+функциональную клавишу поле CharCode содержит символ #0, а поле ScanCode - код 
+сканирования нажатой клавиши. Для облегчения идентификации нажатой клавиши можно 
+использовать константы kbXXXX, определенные в интерфейсной части модуля
+Drivers.</font> 
+</P>
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Сообщения
+
+</font>
+</b>
+<br>
+</font>
+</p>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Сообщения бывают трех видов: команды, общие сообщения и пользовательские 
+сообщения. Команды помечаются в поле What флагом evCommand, общие сообщения 
+-флагом evBroadcast и пользовательские сообщения - константой, определенной 
+пользователем. Большинство событий преобразуется в команды. Например, если 
+пользователь отметит мышью какое-то поле строки статуса, сообщение от мыши 
+поступит в конечном счете в обработчик событий строки статуса (любой видимый 
+элемент имеет метод HandleEvent, называемый обработчиком событий, см. п.16.6.2), 
+который определит, какое именно поле было отмечено. С каждым полем строки 
+статуса обычно связана какая-то команда, поэтому обработчик очистит пришедшее к 
+нему сообщение от мыши и создаст новое сообщение, содержащее выбранную команду. 
+Общие и пользовательские сообщения не являются исключением и обычно также 
+преобразуются в команды.</font> </P>
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Пустые события
+
+</font>
+</b>
+<br>
+</font>
+</p>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Пустым событие становится после его обработки каким-либо видимым элементом. 
+Технически пустое событие соответствует значению TEvent. What = evNothing = 0. 
+Когда событие обработано, видимый элемент вызывает метод ClearEvent, с помощью</font>
+<font face="Arial, Helvetica, sans-serif" size="3">которого в поле What устанавливается значение evNothing. Объекты должны 
+игнорировать событие evNothing, поскольку оно уже обработано каким-то видимым 
+элементом.</font> 
+</P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_2.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_4.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_3.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_5.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Команды
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Необходимо пояснить назначение вновь введенных констант стХХХХ. Это так 
+называемые команды, точнее их коды (шифр). Сразу же замечу, что префикс cm в 
+идентификаторах команд не является следствием каких-либо требований со стороны 
+Turbo Vision, просто он принят для предопределенных (стандартных) команд, таких 
+как</font> <font face="Arial, Helvetica, sans-serif" size="3">cmQuit и cmClose. Вновь вводимые команды не являются предопределенными, при 
+их описании я заимствовал стандартный префикс только по соображениям стилистики.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Что же такое команды Turbo Vision? Внимательный анализ предыдущего варианта 
+программы показывает, что.эти коды еще никак не используются, они понадобились 
+лишь для синтаксически правильного обращения к стандартным методам инициации 
+строк меню и статуса. В новом варианте программной реализации Вы можете вызвать 
+любую опцию главного меню или нажать любую командную клавишу - это не приведет 
+ни к каким последствиям: пока работает только команда Alt-X, завершающая работу 
+программы, и клавиши F2, F3 и F10. Происходит это потому, что эти клавиши мы 
+связали со стандартными командами cmQuit, cmSave, cmOpen и стМепи и 
+обрабатываются они где-то внутри Turbo Vision. Новые команды не известны 
+системе, и их обработку мы должны взять на себя.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Как мы увидим дальше, в Turbo Vision есть средства контроля командных клавиш. 
+Эти средства определяют факт нажатия на клавишу с помощью генерации кода 
+соответствующей команды, который (код) будет в этом случае передан нашей 
+программе. Таким образом, обработка команд заключается в расшифровке получаемых 
+от Turbo Vision кодов и передаче управления соответствующим частям программы.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для шифровки команд в Turbo Vision используется 16-разрядное слово, что 
+позволяет определить до 65535 различных команд. Некоторые из этих кодов 
+зарезервированы для использования внутри Turbo Vision, остальные доступны 
+программисту:</font> </P>
+<center>
+<TABLE border=1 frame=box rules=all >
+  <TBODY>
+  <TR>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Код команды</b></font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Зарезервировано</b></font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Можно запретить</b></font></P></TD></TR>
+  <TR>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0. . .99</font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Да</font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Да</font></P></TD></TR>
+  <TR>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">100.. .255</font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Нет</font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Да</font></P></TD></TR>
+  <TR>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">256. . .999</font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Да</font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Нет</font></P></TD></TR>
+  <TR>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">1000. . .65535</font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Нет</font></P></TD>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Нет</font></P></TD></TR></TBODY></TABLE>
+      </center>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Команды с кодами от 0 до 255 при необходимости могут быть временно запрещены, 
+остальные команды запретить нельзя - вот почему используется два диапазона 
+доступных для программиста кодов команд. Временное запрещение команд связано с 
+тем очевидным свойством диалоговых программ, что отнюдь не любая команда может 
+исполняться в каждом возможном состоянии программы. Например, бессмысленно 
+использовать команду «Закрыть файл», если файл еще не открыт. Наоборот, если 
+файл уже открыт, команда «Открыть файл» может стать временно недоступной 
+пользователю. Механизм маскирования (временного запрещения) команд позволяет 
+избавиться от многочисленных проверок контекстуальной корректности тех или иных 
+команд: программист может их запретить впредь до наступления какого-либо 
+события, а запрещенные команды игнорируются средствами Turbo Vision и в 
+программу пользователя не передаются.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В нашей программе имеет смысл запретить команды cmSave и cmWork до тех пор, 
+пока пользователь не откроет нужный файл с данными. Запрет команд достигается 
+обращением к стандартной процедуре DisableCommands (см. предыдущий вариант 
+программы). Указанные в обращении к ней команды задаются в виде множества кодов 
+(мощность любого множества в Турбо Паскале не может превышать 256, вот почему 
+могут быть запрещены только первые 256 команд) и становятся недоступны впредь до 
+обращения к процедуре EnableCommands (разрешить команды).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Запрещенные опции меню (как и временно недоступные командные клавиши) 
+выделяются на экране оттенком (пониженной яркостью).</font> </P>
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_3.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_5.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</BODY></HTML>

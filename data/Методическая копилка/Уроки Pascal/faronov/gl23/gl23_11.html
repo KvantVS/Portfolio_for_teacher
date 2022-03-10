@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_10.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_12.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Меню
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Стандартная программа содержит поле MenuBar типа ТМепиВаr. По умолчанию Метод 
+TApplicatlon.InitMenuBar устанавливает это поле в NIL, что означает отказ от 
+меню. Если Вы хотите использовать меню в Вашей программе, необходимо перекрыть 
+этот метод. В следующем примере создается двухуровневое меню, показанное на 
+рис.23. 1.</font> </P>
+<P align="center"><img border="0" src="23_1.jpg"    > </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Рис. 23.1</b>. Двухуровневое меню</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Опцию «Подменю...» можно выбрать следующими способами:</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> нажатием клавиш F10 - &lt;смещение указателя&gt; -
+    Enter;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> командой Alt-S;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">отметкой мышью.</font></li>
+</ul>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Опции «Первый выбор» и «Второй выбор» можно выбрать клавишами F1 и F2 без 
+развертывания подменю. После развертывания подменю можно использовать те же 
+клавиши, а также использовать клавиши с цифрами 1 и 2, отметку мышью или 
+смещение указателя к нужной опции и Enter. Опция «Третий выбор» доступна только 
+после развертывания подменю. Выбор каждой из этих трех опций приводит к 
+появлению на экране окна с сообщением. Кроме того, опция «Третий выбор» 
+попеременно запреща-ет или разрешает действие команд cm1, cm2 и cmQuit.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{$X+}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Objects,App,Menus,Drivers,Views,MsgBox;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MyApp = object (TApplication)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Procedure InitMenuBar; Virtual;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure HandleEvent(var Event: TEvent);
+Virtual;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cm1 = 201;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> cm2 = 202;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> cm3 = 203;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{----------------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure MyApp. InitMenuBar;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R: TRect;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetExtent (R) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.B.Y := succ(R.A.Y) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MenuBar := New ( PMenuBar , Init(R,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewMenu (  {Главная полоса меню}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewSubMenu (  {Первый элемент главного меню}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">' ~S~ Подменю. ..', hcNoContext,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewMenu (  {Определить выпадающее подменю}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewItem( '~1~ Первый выбор ' , ' F1 ' ,
+kbF1, cm1, 0,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewItem('~2~ Второй выбор' , ' F2 ' , kbF2, cm2, 0,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewLine(  {Определить разделяющую линию}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewItem('~3~ Третий выбор' , ' ' , 0, cm3, 0,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NIL) ) ) ) ) ,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewItem(  {Второй элемент главного меню}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'-ESO Выход' , '~ESC~' , kbEsc,cmQuit, 0, NIL))))); end
+{MyApp. InitMenuBar} 
+;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{------------------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure MyApp . HandleEvent ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Flag: Boolean = True;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> cms = [cm1, cm2, cmQuit] ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Inherited HandleEvent (Event) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> case Event . Command of</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cm1: MessageBox (#3 'Первый выбор', NIL,0);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> cm2 : MessageBox (#3 'Второй 
+выбор', NIL,0);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> cm3 :&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MessageBox (#3' Третий выбор', NIL,0);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if Flag then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DisableCommands (cms)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">EnableCommands (cms) ;&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Flag := not Flag&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end  {MyApp .HandleEvent } ;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{------------------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">P: MyApp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">P.Init;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">P.Run;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> P.Done&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_10.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_12.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

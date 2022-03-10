@@ -1,0 +1,214 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl8_4.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl8_6.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Процедурные типы. Параметры - функции и параметры - процедуры.
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Процедурные типы - это нововведение фирмы Borland (в стандартном Паскале 
+таких типов нет). Основное назначение этих типов - дать программисту гибкие 
+средства передачи функций и процедур в качестве фактических параметров обращения 
+к другим процедурам и функциям.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для объявления процедурного типа используется заголовок процедуры (функции), 
+в котором опускается ее имя, например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Prod = Procedure (a, b, c: Real; var d: Real);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Proc2 = Procedure (var a, b) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">РгосЗ = Procedure;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Func1 = Function: String;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Func2 = Function (var s: String): Real;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Как видно из приведенных примеров, существует два процедурных типа: 
+тип-процедура и тип-функция.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Пример 8.3 иллюстрирует механизм передачи процедур в качестве фактических 
+параметров вызова. Программа выводит на экран таблицу двух функций:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">sin1(х) = (sin(x) + 1) * ехр(-х)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cos1(x) = (cos(x) + 1) * exp(-x).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Вычисление и печать значений этих функций реализуются в процедуре PRINTFUNC, 
+которой в качестве параметров передаются номер позиции N на экране, куда будет 
+выводиться очередной результат (с помощью этого параметра реализуется вывод в 
+две колонки), и имя нужной функции.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><u>Пример 8.3.</u></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses CRT;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Func = Function (x: Real) : Real;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{----------------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure PrintFunc (XPos: Byte; F:Func) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Осуществляет печать функции F . 
+(XPos - горизонтальная позиция начала вывода) }&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">np = 20;  {Количество вычислений функций}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">х : Real; i : Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin {PrintFunc}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for i := 1 to np do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">x := i * (2 * pi / np) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> GotoXY (XPos, WhereY) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> WriteLn (x:5:3, F(x):18:5)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end; {PrintFunc}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-----------------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function Sin1fx: Real): Real; far;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">sinl := (sin(x) + 1) * exp(-x)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function Cos1(x: Real): Real; far;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cosl := (cos(x) + 1) * exp(-x)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{---------------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin  {основная программа}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> ClrScr;  {Очищаем экран}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PrintFunc (1, sin1); GotoXY (1,1); {Переводим курсор</font>
+<font size="3">в левый верхний угол}</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PrintFunc (40, cos1)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Обратите внимание: для установления правильных связей функций SIN1 и COS1 с 
+процедурой PRINTFUNC они должны компилироваться с расчетом на дальнюю модель 
+памяти. Вот почему в программу вставлены стандартные директивы FAR сразу</font>
+<font face="Arial, Helvetica, sans-serif" size="3">за заголовками функций. В таком режиме должны компилироваться любые процедуры 
+(функции), которые будут передаваться в качестве фактических параметров вызова.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Стандартные процедуры (функции) Турбо Паскаля не могут передаваться 
+рассмотренным способом.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В программе могут быть объявлены переменные процедурных типов, например, так:</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">p1 : Proc1;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">f1, f2 : Func2;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">р : array [1..N] of Proc1;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Переменным процедурных типов допускается присваивать в качестве значений 
+имена соответствующих подпрограмм. После такого присваивания имя переменной 
+становится синонимом имени подпрограммы, например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Proc = Procedure (n: word; var a: Byte);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ProcVar: Proc; x, у : Byte;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Procl(x: word; var y: Byte); far;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if x &gt; 255 then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">у := x mod 255&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">у := Byte(x)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin {Главная программа}&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> ProcVar := Proc1;&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for x := 150 to' 180 do&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ProcVar (x + 100, y);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Write (y:8)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Разумеется, такого рода присваивания допустимы и для параметров-функций, 
+например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">FuncType = Function (i : Integer) : Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">VarFunc : FuncType;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">i : Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Function MyFunc (count : Integer) : Integer; far;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;  {MyFunc}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin  {Основная программа}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">i := MyFunc(1);  {Обычное использование результата функции}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">VarFunc := MyFunc;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Присваивание переменной процедурного типа имени функции MyFunc}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Отметим, что присваивание</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">VarFunc := MyFunc(1);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">будет недопустимым, так как слева и справа от знака присваивания используются 
+несовместимые типы: слева - процедурный тип, а справа - INTEGER; имя функции со 
+списком фактических параметров MyFunc(1) трактуется Турбо Паскалем как обращение 
+к значению функции, в то время как имя функции без списка параметров 
+рассматривается как имя функции.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В отличие от стандартного Паскаля, в Турбо Паскале разрешается использовать в 
+передаваемой процедуре (функции) любые типы параметров: параметры-значения, 
+параметры-переменные, параметры-константы (в стандартном Паскале только 
+параметры-значения).</font> </P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl8_4.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl8_6.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

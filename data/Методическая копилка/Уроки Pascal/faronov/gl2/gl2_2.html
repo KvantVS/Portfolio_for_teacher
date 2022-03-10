@@ -1,0 +1,258 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" >
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl2_1.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td >
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl2_3.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p align="left">
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+ 
+Типы данных
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Структура рассмотренной программы имеет следующий вид:</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Program MyFirstProgram;&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> <i> {Раздел описаний}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"><i>{Раздел операторов}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Слова Program, begin и end выделяют две части программы - раздел описаний и 
+раздел операторов. Такая структура обязательна для любой программы, что является 
+следствием жесткого требования языка: любой нестандартный идентификатор, 
+используемый в исполняемых операторах, должен быть предварительно описан в 
+разделе описаний. (Стандартные идентификаторы связаны с предварительно 
+объявленными объектами и входят в стандартную библиотеку Турбо Паскаля. Таким, 
+например, является идентификатор WriteLn. Стандартные идентификаторы, если они 
+используются в программе, описывать не нужно).</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Требование предварительного описания идентификаторов кажется чрезмерно 
+строгим и делающим язык менее свободным. На самом деле в нем проявляется 
+тенденция развития языков программирования в сторону повышения надежности 
+создаваемых программ. Кто программировал на Фортране или Бэйсике (в этих языках 
+не требуется предварительное описание идентификаторов), знает, как порой бывает 
+трудно обнаружить в большой программе ошибочно введенный или пропущенный символ 
+в идентификаторе. Если, например, всюду в программе используется переменная с 
+именем EPSILON, а в одном месте ошибочно написано
+EPSLION, то программа может 
+благополучно откомпилироваться и даже давать почти правдоподобный результат для 
+некоторых наборов данных, но в какой-то момент начнет вести себя странно. 
+Обязательное предварительное описание идентификаторов в Турбо Паскале защищает 
+программы от такого рода ошибок и повышает их надежность.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Описать идентификатор - это значит указать тип связанного с ним объекта 
+программы (константы или переменной). Понятие типа - одно из фундаментальных 
+понятий Турбо Паскаля. В гл.4 подробно рассмотрены различные типы; чтобы 
+пояснить описываемые ниже особенности языка и при этом не слишком забегать 
+вперед, укажем, что тип определяет, во-первых, способ внутреннего для компьютера 
+представления объекта и, во-вторых, действия, которые разрешается над ним 
+выполнять.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">В рассматриваемых далее в этой главе программах понадобятся следующие типы 
+данных:</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">INTEGER - целочисленные данные, во внутреннем представлении занимают 2 байта; 
+диапазон возможных значений - от -32768 до +32767; данные представляются точно;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">REAL - вещественные данные, занимают 6 байт; диапазон возможных значений 
+модуля - от 2.9Е-39 до 1.7Е+38; точность представления данных - 11...12 значащих 
+цифр;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">CHAR - символ, занимает 1 байт;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">STRING - строка символов, занимает МАХ+1 байт, где МАХ - максимальное число 
+символов в строке;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">BOOLEAN - логический тип, занимает 1 байт и имеет два значения: FALSE</font>
+    <font face="Arial, Helvetica, sans-serif" size="3">(ложь) и TRUE (истина).</font></li></ul>
+
+     Тип константы определяется способом записи ее 
+значения. Например:
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cl = 17;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">с2 = 3 .14 ;&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> сЗ = 'А';</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">с4 = '3.14 ' ;&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> с5 = False;</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">При анализе этого фрагмента программы компилятор отнесет первую константу к 
+типу INTEGER, вторую - к типу REAL, третью - к CHAR, четвертую - к STRING и 
+последнюю - к BOOLEAN. Признаком, позволяющим отнести константу к REAL или к 
+INTEGER, является наличие или отсутствие десятичной точки в ее значении. 
+Разумеется, константы С2 и С4 относятся к разным типам: С2 - к REAL (в константе 
+есть десятичная точка), а С4 - к STRING (константа обрамлена апострофами). 
+Константу СЗ компилятор будет считать относящейся к типу CHAR: одиночный символ 
+в апострофах относится к CHAR, в то время как несколько символов - к STRING.</font> 
+</P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">В отличие от константы переменная именует объект программы, который может 
+изменять свое значение в ходе счета. При описании переменных за идентификатором 
+ставятся двоеточие и имя типа. Несколько однотипных переменных можно объединять 
+в список, разделяя их запятыми. В начале раздела описания переменных должно 
+стоять зарезервированное слово VAR (VARiables - переменные). Например:</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">sigma :Real; а,b,с,d :Char;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">textl :String[15];</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">text2 :String;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">flag :Boolean;.</font> </P>
+<p align="left"></P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Как уже говорилось, тип данных определяет длину внутреннего представления 
+соответствующих переменных. В частности, длина внутреннего представления 
+переменных типа STRING (строка символов) зависит от максимального числа 
+символов, которые могут составлять строку. В приведенном выше примере переменная 
+text l описана с указанием ее максимальной длины (15 символов), а в описании 
+переменной text2 максимальная длина не указана и компилятор установит для нее 
+предельно допустимую в Турбо Паскале длину - 255 символов.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Рассмотрим еще одну несложную программу (пример 2.2). Ее назначение: ввести с 
+клавиатуры два целых числа, найти результат деления первого числа на второе и 
+вывести полученный результат на экран.</font> </P>
+<p align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Пример 2.2</font>
+</b> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Program Input_0utput; <i> {Программа вводит два целых числа</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"><i>и выводит частное от деления 1-го на 2-е}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">n1,n2 : Integer; <i>{n1 и n2 - вводимые целые}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">х : Real;<i>{x - результат}</i></font></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">BEGIN</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write( 'n1 = ');<i>{Сообщаем о вводе
+n1}</i></font></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn (n1) ;<i>{Вводим n1}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write ( 'n2 = ');<i>{Сообщаем о вводе п2}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn (n2);<i>{Вводим п2}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">x := n1/n2;<i>{Находим результат}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn('n1/n2 =',х);<i>{Выводим его}</i></font></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">END.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Прежде всего бросается в глаза появление в программе поясняющих комментариев. 
+Комментарий в Турбо Паскале - это произвольная последовательность любых 
+символов, обрамленная фигурными скобками. Комментарий разрешается вставлять в 
+любое место программы, где по смыслу может стоять пробел. В качестве 
+ограничителей комментария допускается использование фигурных скобок «{» и «}», а 
+также пары символов: «(*» - слева от комментария и «*)» - справа от него:</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"><i>{ Это - комментарий }</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"><i>(* Это - тоже комментарий
+*)</i></font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Редактор Турбо Паскаля выделяет комментарии наклонным шрифтам (курсивом).</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Комментарии с однотипными ограничителями нельзя вкладывать друг в друга, т.е. 
+недопустимы последовательности вида</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{...{...}...}</font> <font face="Arial, Helvetica, sans-serif" size="3"> или
+</font> <font face="Verdana, Arial, Helvetica, sans-serif" size="3">(*...(*...*)...*)</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Однако можно вкладывать комментарии с ограничителями разных типов (не более 
+одной глубины вложения):</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{ ... (* ...*)...}</font><font face="Arial, Helvetica, sans-serif" size="3"> или
+</font><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> (* ... { ... } ... *)</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Последнее обстоятельство проясняет кажущуюся странной избыточность 
+ограничителей: если всюду в программе будут использоваться ограничители одного 
+типа, то для того, чтобы временно исключить из программы какой-либо фрагмент 
+текста, достаточно заключить его в ограничители другого типа.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Наличие комментариев в программе избавляет меня от необходимости пояснять 
+назначение отдельных строк программы. Несколько слов о вводе данных. Пары 
+операторов</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write (..);</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn(..);</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">работают следующим образом. Вначале оператор Write выводит строку на экран и 
+оставляет курсор в конце только что выведенной строки текста. Заметим, что 
+оператор</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(Text);</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">в примере 1 после вывода текста осуществлял перевод строки и устанавливал 
+курсор в начало следующей строки экрана. Именно в этом простом действии 
+(переводе строки) заключается единственное отличие в работе процедуры WriteLn от 
+процедуры</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Write.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Затем по оператору ReadLn вызывается встроенная процедура ввода данных и 
+программа останавливается в ожидании ввода. В этот момент необходимо набрать на 
+клавиатуре нужное число и нажать клавишу <i>Enter</i>. Сразу после этого программа 
+продолжит работу: проанализирует введенное число и перейдет к вводу следующего 
+числа или вычислению результата. Таким образом, сигналом окончания подготовки 
+очередного числа является нажатие на клавишу
+<i>Enter</i>, до этого момента можно 
+стирать любой ошибочно введенный символ клавишей
+<i>Backspace</i>.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Для вычисления отношения введенных чисел используется один из основных 
+операторов Турбо Паскаля - оператор присваивания. В его левой части указывается 
+имя переменной, правая часть представляет собой выражение того же типа, что и 
+переменная. Пара символов «: =», связывающая левую и правую части оператора 
+присваивания, означает «присвоить значение». Запомним: в операторах присваивания 
+Турбо Паскаля всегда используются символы «: =», в то время как при описании 
+констант -одиночный символ «=». С точки зрения синтаксиса языка, два символа «: 
+=» рассматриваются как один специальный символ и обязательно пишутся слитно.</font> 
+</P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Оператор присваивания используется практически во всех языках 
+программирования. В некоторых языках, например в Фортране или Бейсике, символом 
+присваивания является знак равенства, однако новичка, привыкшего к строгости 
+математических формул, может озадачить типичная форма записи фортран-оператора 
+присваивания, например, такая:</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">X = X + 1</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Вариант записи этого же оператора на Турбо Паскале:,</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">X := X + 1;</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">в этом смысле кажется более логичным. Разумеется, вряд ли кому-нибудь придет 
+в голову видеть уравнения там, где их нет и не может быть. Конечно же, и в том, 
+и в другом случае реализуется одно и то же алгоритмическое действие: к 
+содержимому X прибавляется 1 и полученный результат вновь присваивается 
+переменной X. Обратите внимание на оператор вывода результатов</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn('n1/n2 = ',х);</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">В нем в качестве одного из параметров явно указывается константа типа строка 
+символов 'nl/n2 = '. Конечно же, константы (в отличие от переменных) вовсе не 
+обязательно описывать в разделе описаний, так как их тип легко определяется 
+компилятором по форме записи константы. С учетом этого можно было бы записать 
+программу из примера 1 предельно лаконично:</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin WriteLn('Я программирую на Турбо Паскале');
+end.</font> </P> 
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" >
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl2_1.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td >
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl2_3.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Untitled</title>
+</head>
+
+<body lang=RU style="'tab-interval:35.4pt'" background="bgrwhite.gif">
+<p><div align="center"><b><font size="+1" face="Arial">23. Массивы </font></b></div></p>
+<p><span
+style="mso-spacerun: yes">   </span>Массивы представляют собой ограниченную
+упорядоченную совокупность
+
+<p>однотипных
+величин.<span style="mso-spacerun: yes">  </span>Каждая отдельная величина
+называется компонентой
+
+<p>массива.
+Тип<span style="mso-spacerun: yes">   </span>компонент может быть любым,<span
+style="mso-spacerun: yes">  </span>принятым в языке ПАСКАЛЬ,
+
+<p>кроме
+файлового типа. Тип компонент называется базовым типом.
+
+<p><span
+style="mso-spacerun: yes">   </span>Вся совокупность компонент определяется
+одним именем.<span style="mso-spacerun: yes">  </span>Для обозна-
+
+<p>чения
+отдельных компонент используется конструкция,<span style="mso-spacerun: yes"> 
+</span>называемая пере-
+
+<p>менной
+с индексом или с индексами:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">          </span>A[5]<span style="mso-spacerun:
+yes">     </span>S[k+1]<span style="mso-spacerun: yes">     </span>B[3,5].
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>В качестве индекса может быть использовано
+выражение. Тип индексов
+
+<p>может
+быть только интервальным или перечисляемым.<span style="mso-spacerun: yes">  
+</span>Действительный<span style="mso-spacerun: yes">  </span>и
+
+<p>целый
+типы недопустимы.<span style="mso-spacerun: yes">  </span>Индексы интервального
+типа, для которого ба-
+
+<p>зовым
+является целый тип,<span style="mso-spacerun: yes">  </span>могут принимать
+отрицательные,<span style="mso-spacerun: yes">  </span>нулевое<span
+style="mso-spacerun: yes">  </span>и
+
+<p>положительные
+значения.{}
+
+<p><span
+style="mso-spacerun: yes">  </span>В операторной части
+
+<p>программы
+один массив может быть присвоен другому, если их типы иден-
+
+<p>тичны,
+например:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">         </span>R1:=Z.
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Для ввода<span style="mso-spacerun: yes"> 
+</span>или вывода массива в список ввода или вывода помещается
+
+<p>переменная
+с индексом,<span style="mso-spacerun: yes">  </span>а операторы ввода или<span
+style="mso-spacerun: yes">  </span>вывода<span style="mso-spacerun: yes"> 
+</span>выполняются<span style="mso-spacerun: yes">  </span>в
+
+<p>цикле.
+
+<p>{}
+
+<p><span
+style="mso-spacerun: yes">   </span>Первый индекс<span style="mso-spacerun:
+yes">  </span>определяет<span style="mso-spacerun: yes">  </span>номер<span
+style="mso-spacerun: yes">  </span>строки,<span style="mso-spacerun: yes"> 
+</span>второй - номер столбца.
+
+<p>Двумерные
+массивы хранятся в памяти ЭВМ по строкам.
+
+<p><span
+style="mso-spacerun: yes">   </span>Инициализация массивов (присвоение
+начальных значений всем<span style="mso-spacerun: yes">  </span>компо-
+
+<p>нентам
+массивов) осуществляется двумя способами.
+
+<p><span
+style="mso-spacerun: yes">   </span>Первый способ - с использованием
+типизированных констант,<span style="mso-spacerun: yes">   </span>напри-
+
+<p>мер:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>type Dim10= Array[1..10] of Real;
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>const
+
+<p><span
+style="mso-spacerun: yes">    </span>raM10: Dim10 = ( 0, 2.1, 4, 5.65, 6.1,
+6.7, 7.2, 8, 8.7, 9.3 );
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>При инициализации двумерных массивов
+значения компонент каждого из
+
+<p>входящих
+в него одномерных массивов записывается в скобках:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>type Dim3x2= Array[1..3,1..2] of Integer;
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>const
+
+<p><span
+style="mso-spacerun: yes">    </span>iaM3x2: Dim3x2= ( (1, 2)
+
+<p><span
+style="mso-spacerun: yes">                      </span>(3, 4)
+
+<p><span
+style="mso-spacerun: yes">                      </span>(5, 6) );
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Второй способ инициализации - использование
+разновидности процеду-
+
+<p>ры
+FillChar:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>FillChar( var V; NBytes: Word; B: Byte );
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p>Эта
+процедура заполняет участок памяти однобайтовым значением. Напри-
+
+<p>мер,
+для обнуления массива A[1..10] of Real можно записать:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>FillChar(A, 40, 0);
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p>или
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>FillChar(A, SizeOf(A), 0);
+<p><div align="center"><a href="../Pascal. Курс лекций.html">	<img src="../../soder.gif" width=120 height=31 border=0 alt=""></a></div></p>
+
+</body>
+</html>

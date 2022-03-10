@@ -1,0 +1,269 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl22.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl22_2.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+TPXPictureValidator
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Объект TPXPictureValidator проверяет введенную пользователем строку на 
+соответствие некоторому шаблону ввода. Шаблон ввода определяется с помощью 
+специальных символов, подобно тому, как задается допустимый ввод в базе данных 
+Paradox корпорации Borland. В шаблоне можно использовать следующие специальные 
+символы:</font> </P>
+<center>
+<table border="1" >
+  <tr>
+    <td width="%"><font face="Arial, Helvetica, sans-serif" size="3"><b>Символ&nbsp;&nbsp;</b></font></td>
+    <td width="%"><font face="Arial, Helvetica, sans-serif" size="3"><b>Назначение</b></font></td>
+  </tr>
+  <tr>
+    <td width="%" align="center">#</td>
+    <td width="%"><font face="Arial, Helvetica, sans-serif" size="3"> Любая цифра</font></td>
+  </tr>
+  <tr>
+    <td width="%" align="center">?</td>
+    <td width="%"><font face="Arial, Helvetica, sans-serif" size="3"> Любая буква</font></td>
+  </tr>
+  <tr>
+    <td width="%" align="center">@</td>
+    <td width="%"><font face="Arial, Helvetica, sans-serif" size="3"> Любой символ (буква, цифра или специальный символ)</font></td>
+  </tr>
+  <tr>
+    <td width="%" align="center">&amp;</td>
+    <td width="%"><font face="Arial, Helvetica, sans-serif" size="3"> Любая буква с автоматическим преобразованием в верхний регистр</font></td>
+  </tr>
+  <tr>
+    <td width="%" align="center">!</td>
+    <td width="%"><font face="Arial, Helvetica, sans-serif" size="3"> Любой символ с автоматическим преобразованием букв в верхний регистр</font></td>
+  </tr>
+  <tr>
+    <td width="%" align="center">*</td>
+    <td width="%"><font face="Arial, Helvetica, sans-serif" size="3"> Повторение следующего символа произвольное число раз</font></td>
+  </tr>
+  <tr>
+    <td width="%" align="center">;</td>
+    <td width="%"><font face="Arial, Helvetica, sans-serif" size="3"> Следующий символ - не управляющий</font></td>
+  </tr>
+  <tr>
+    <td width="%" align="center">[]</td>
+    <td width="%"><font face="Arial, Helvetica, sans-serif" size="3"> Заключенная в скобки последовательность символов может отсутствовать</font></td>
+  </tr>
+  <tr>
+    <td width="%" align="center">,</td>
+    <td width="%"><font face="Arial, Helvetica, sans-serif" size="3"> Разделение вариантов</font></td>
+  </tr>
+  <tr>
+    <td width="%" align="center">{}</td>
+    <td width="%"><font face="Arial, Helvetica, sans-serif" size="3"> Создание группы</font></td>
+  </tr>
+</table>
+</center>
+<P>&nbsp; </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Любой другой символ шаблона представляет сам себя, т.е. не является 
+управляющим. Символ «;», предшествующий специальному символу, отменяет его 
+специальное назначение. Чтобы в шаблон вставить собственно символ «;», его нужно 
+удвоить.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Перечисленные символы позволяют формировать шаблоны любой сложности. 
+Например:</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> ### - трехзначное число; примеры правильного ввода: 123, 566, 080; 
+неправильный ввод: 12 (нет одной цифры), -12 (первый символ - не цифра);</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> *# - число с произвольным количеством цифр; допустимый ввод: 1, 12, 
+12345678987654321; неправильный ввод:-12, 0334А;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">[+,-]*#- произвольное
+    целое число; допустимый ввод: +123, -56, 7890;
+    недопустимый ввод:+-123, 1.23, 12345Е+02;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> {#[#]}-{#[#]}-{##[##]}- дата в формате ДД-ММ-ГТ; допустимый ввод: 1-2-33, 
+01-02-1933; недопустимый ввод: 1/2/33, 1 фев 33;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> #;**#- число в диапазоне 0...9 умножается (символ *) на произвольное 
+положительное целое число; правильный ввод: 2*2, 3*12345; неправильный ввод: 
+2/2, 123*12345.</font></li>
+</ul>
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">TFilterValidator
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Этот объект проверяет все введенные пользователем символы на их 
+принадлежность к набору допустимых символов. Если очередной вводимый символ не 
+принадлежит эталонному множеству, он игнорируется и при наборе просто не 
+появляется в строке ввода. Таким образом, объект TFilterValidator действительно 
+фильтрует вводимую строку, удаляя из нее неправильные символы. Например, 
+экземпляр объекта</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MyFilter := New(PFilterValidator,Init(['0'..'9']))&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> выбирает из ввода только 
+цифры.</font> </P>
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+TRangeValidator
+</font>
+</b>
+<br>
+</font>
+</p>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Объект TRangeValidator порожден от TFilterValidator. Он преобразует 
+символьный ввод в целое число и проверяет, находится ли оно в диапазоне 
+указанных значений Min...Max. Его метод IsValid вернет значение True только в 
+том случае, когда, во-первых, пользователь введет правильное число, и, 
+во-вторых, это число будет принадлежать нужному диапазону. Например, объект</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MyRange := New(PRangeValidator,Init(0,100))&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> позволяет вводить числа в 
+диапазоне от 0 до 100 включительно.</font> </P>
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+TLookupValidator
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Абстрактный объект TLookupValidator предназначен для контроля соответствия 
+введенной пользователем строки набору эталонных строк. Фактически он 
+модифицирует поведение базового объекта TValidator на случай, когда проверяется 
+произвольная текстовая строка. В его потомках должен перекрываться метод Lookup, 
+осуществляющий нужный контроль и возвращающий True только в том случае, когда 
+подготовленная пользователем строка соответствует одному из желаемых значений. 
+Например, с помощью объекта</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TMyLookupValidator = object(TLookupValidator)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function Lookup(const S: String): Boolean; Virtual;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function TMyLookupValidator.Lookup;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Textl = 'Turbo';</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Text2 = 'Pascal';&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Lookup := (S=Textl) or (S=Text2) or (S=Textl+' '+Text2)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">можно потребовать от пользователя ввода только одной из трех возможных строк: 
+Turbo, Pascal или Turbo Pascal.</font> </P>
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+TStringLookupValidator
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Этот объект порожден от TLookupValidator и сравнивает введенную пользователем 
+строку с набором допустимых строк, хранящихся в отсортированной коллекции. Чтобы 
+объект осуществлял сравнение с нужным набором строк, он инициируется следующим 
+образом:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MyCollection: PStringCollection; MyStrVal: PStringLookupValidator;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Создаем коллекцию строк}&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> MyCollection := New(PStringCollection,Init(1,1));</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Наполняем коллекцию - размещаем строки в куче}&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+MyCollection.Insert(NewStr('Турбо'));&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> MyCollection.Insert(NewStr('Паскаль')) ;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Создаем объект-контролер}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MyStrCol := New(PStringLookupValidator,Init(MyCollection))</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl22.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl22_2.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

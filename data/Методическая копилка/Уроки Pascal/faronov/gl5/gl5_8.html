@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl5_7.html">
+<img SRC="Back.gif" BORDER="0">
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0">
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Нетипизированные файлы
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Нетипизированные файлы объявляются как файловые переменные типа FILE и 
+отличаются тем, что для них не указан тип компонентов. Отсутствие типа делает 
+эти файлы, с одной стороны, совместимыми с любыми другими файлами, а с другой 
+-позволяет организовать высокоскоростной обмен данными между диском и памятью.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">При инициации нетипизированного файла процедурами RESET или REWRITE можно 
+указать длину записи нетипизированного файла в байтах. Например, так:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">f: file;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">assign(f, 'myfile.dat')&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">reset(f,512);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Длина записи нетипизированного файла указывается вторым параметром при 
+обращении к процедурам RESET или REWRITE, в качестве которого может 
+использоваться выражение типа WORD. Если длина записи не указана, она 
+принимается равной 128 байтам.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Турбо Паскаль не накладывает каких-либо ограничений на длину записи 
+нетипизированного файла, за исключением требования положительности и ограничения 
+максимальной длины 65535 байтами (емкость целого типа WORD). Однако для 
+обеспечения максимальной скорости обмена данными следует задавать длину, которая 
+была бы кратна длине физического сектора дискового носителя информации (512 
+байт). Более того, фактически пространство на диске выделяется любому файлу 
+порциями - кластерами, которые в зависимости от типа диска могут занимать 2 и 
+более смежных секторов. Как правило, кластер может быть прочитан или записан за 
+один оборот диска, поэтому наивысшую скорость обмена данными можно получить, 
+если указать длину записи, равную длине кластера.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">При работе с нетипизированными файлами могут применяться все процедуры и 
+функции, доступные типизированным файлам, за исключением READ и WRITE, которые 
+заменяются соответственно высокоскоростными процедурами BLOCKREAD и 3LOCKWRITE . 
+Для вызова этих процедур используются следующие предложения:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">BLOCKREAD (&lt;ф .п . &gt;, &lt;буф&gt;, &lt; [, &lt;NN&gt;] )&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> BLOCKWRITE 
+(&lt;ф . п . &gt;, &lt;буф&gt;, &lt; [, &lt;NN&gt;] )</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь &lt;буф&gt; - буфер: имя переменной, которая будет участвовать в обмене 
+данными с дисками;&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> &lt;D&gt; - количество записей, которые должны быть прочитаны 
+или записаны</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">за одно обращение к диску;&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> &lt;NN&gt; - необязательный параметр, содержащий 
+при выходе из процедуры</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">количество фактически обработанных записей.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">За одно обращение к процедурам может быть передано до N*RECS байт, где RECS - 
+длина записи нетипизированного файла. Передача идет, начиная с первого байта 
+переменной &lt;буф&gt;. Программист должен позаботиться о том, чтобы длина 
+внутреннего представления переменной &lt;буф&gt; была достаточной для размещения 
+всех N*RECS байт при чтении информации с диска. Если при чтении указана 
+переменная &lt;буф&gt; недостаточной длины или если в процессе записи на диск не 
+окажется нужного свободного пространства, возникнет ошибка ввода-вывода, которую 
+можно заблокировать, указав необязательный параметр &lt;NN&gt; (переменная типа 
+WORD).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">После завершения процедуры указатель смещается на &lt;NN&gt; записей. 
+Процедурами SEEK, FILEPOS и FILESIZE можно обеспечить доступ к любой записи 
+нетипизированного файла.</font> </P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl5_7.html">
+<img SRC="Back.gif" BORDER="0">
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0">
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr4_8.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr4_10.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Типы
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PaletteType = record <i> {Используется в GetPallete}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Size : Byte;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Colors : array [0..MaxColors] of Shortlnt;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> LineSettingsType = record <i> 
+{Используется в GetLineSettings}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">LineStyle Word;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Pattern Word;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Thickness Word;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> TextSettingsType = record <i> {Используется в 
+GetTextSettings}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Font :Word;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Direction : Word;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">CharSize : Word;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Horiz : Word;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Vert : Word;&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> FillSettingsType = record <i> {Используется в GetFillSettings}</i></font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Pattern : Word;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Color : Word;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">FillPatternType = array [1..8] of Byte;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> PointType = record <i> {Для задания 
+координат многоугольников}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">X,Y: Integer;&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> ViemPortType = record <i> {Используется в GetViewSettings}</i></font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">X1, Y1, X2, Y2: Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Clip : Boolean;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ArcCoordsType = record <i> {Используется в GetArcCoords}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> X, У : Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Xstart, 
+Ystart: Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Xend, Yend : Integer;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr4_8.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr4_10.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+</BODY></HTML>

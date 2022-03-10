@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl16_1.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl16_3.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Абстрактные объекты и методы
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Объект TObject никогда не используется самостоятельно и служит основой для 
+начинающегося с него дерева объектов. В Turbo Vision есть и другие объекты, не 
+предназначенные для самостоятельного использования в программах. Такие объекты 
+называются абстрактными. В правильно сконструированной программе никогда не 
+создаются и не используются экземпляры абстрактных объектов. Эти объекты просто 
+объединяют в себе некоторые общие для всех своих потомков поля и методы.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Во многих объектах Turbo Vision используются абстрактные методы, т.е. методы, 
+которые не содержат исполняемых операторов и служат заготовками для аналогичных 
+методов в объектах-потомках. Абстрактные методы всегда являются виртуальными и 
+должны перекрываться в потомках. Например, абстрактными являются деструктор 
+TObject.Done, используемый для удаления экземпляра объекта из кучи, метод 
+TSortedCollection.Compare, с помощью которого осуществляется сортировка 
+коллекций, метод TCluster.Press, ответственный за обработку события, связанного 
+с выбором элемента управления в диалоговом окне. В большинстве абстрактных 
+методов предусмотрен вызов глобальной процедуры Abstract, предназначенной для 
+аварийного завершения работы программы и выдачи соответствующего 
+диагностического сообщения.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Некоторые методы не являются абстрактными, но предоставляют лишь минимум 
+возможностей и поэтому почти всегда перекрываются в потомках. Такие методы 
+называются псевдоабстрактными. Примером псевдоабстрактного метода может служить 
+метод TView.Draw, ответственный за перерисовку видимого элемента: по умолчанию 
+он ничего не делает и оставляет выделенную ему часть экрана без изменений.</font> </P>
+<P align="center"><img border="0" src="16_2.jpg"  > </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Puc.16.2.</b> Иерархия объектов Turbo Vision</font> </P><p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl16_1.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl16_3.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</BODY></HTML>

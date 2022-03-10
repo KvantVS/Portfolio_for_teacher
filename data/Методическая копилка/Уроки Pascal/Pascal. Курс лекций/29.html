@@ -1,0 +1,277 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Untitled</title>
+</head>
+
+<body lang=RU style="'tab-interval:35.4pt'" background="bgrwhite.gif">
+<p><div align="center"><b><font size="+1" face="Arial">29. Записи </font></b></div></p>
+<p><span
+style="mso-spacerun: yes">   </span>Запись представляет собой совокупность
+ограниченного<span style="mso-spacerun: yes">  </span>числа<span
+style="mso-spacerun: yes">  </span>логи-
+
+<p>чески
+связанных компонент,<span style="mso-spacerun: yes">  </span>принадлежащих к
+разным типам.<span style="mso-spacerun: yes">  </span>Компоненты
+
+<p>записи
+называются полями, каждое из которых определяется именем. Поле
+
+<p>записи
+содержит имя поля, вслед за которым через двоеточие указывает-
+
+<p>ся тип
+этого поля. Поля записи могут относиться к любому типу, допус-
+
+<p>тимому
+в языке Паскаль, за исключением файлового типа.
+
+<p><span
+style="mso-spacerun: yes">   </span>Описание записи<span style="mso-spacerun:
+yes">   </span>в<span style="mso-spacerun: yes">   </span>языке<span
+style="mso-spacerun: yes">   </span>ПАСКАЛЬ<span style="mso-spacerun: yes">  
+</span>осуществляется<span style="mso-spacerun: yes">  </span>с<span
+style="mso-spacerun: yes">  </span>помощью
+
+<p>служебного
+слова RECORD,<span style="mso-spacerun: yes">  </span>вслед за которым
+описываются компоненты за-
+
+<p>писи.
+Завершается описание записи служебным словом END.
+
+<p><span
+style="mso-spacerun: yes">   </span>Например, записная книжка содержит
+фамилии,<span style="mso-spacerun: yes">  </span>инициалы и номера те-
+
+<p>лефона,
+поэтому отдельную строку в записной книжке удобно представить
+
+<p>в виде
+следующей записи:
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">         </span>type<span style="mso-spacerun:
+yes">   </span>Row=Record
+
+<p><span
+style="mso-spacerun: yes">                     </span>FIO: String[20];
+
+<p><span
+style="mso-spacerun: yes">                     </span>TEL: String[7]
+
+<p><span
+style="mso-spacerun: yes"> </span><span style="mso-spacerun:
+yes">                   </span>end;
+
+<p><span
+style="mso-spacerun: yes">         </span>var<span style="mso-spacerun:
+yes">    </span>str: Row;
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Описание записей возможно и без
+использования имени типа,<span style="mso-spacerun: yes">   </span>напри-
+
+<p>мер:
+
+<p><span
+style="mso-spacerun: yes">         </span>var<span style="mso-spacerun: yes"> 
+</span>str: Record
+
+<p><span
+style="mso-spacerun: yes">                    </span>FIO: String[20];
+
+<p><span
+style="mso-spacerun: yes">                    </span>TEL: String[7]
+
+<p><span
+style="mso-spacerun: yes">                   </span>end;
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Обращение к записи в целом допускается
+только в операторах присва-
+
+<p>ивания,
+где<span style="mso-spacerun: yes">  </span>слева и справа от знака
+присваивания используются<span style="mso-spacerun: yes">  </span>имена
+
+<p>записей
+одинакового типа. Во всех остальных случаях оперируют отдель-
+
+<p>ными
+полями записей.<span style="mso-spacerun: yes">  </span>Чтобы обратиться к
+отдельной компоненте записи,
+
+<p>необходимо
+задать<span style="mso-spacerun: yes">  </span>имя записи и через точку указать
+имя нужного поля,
+
+<p>например:
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">         </span>str.FIO,<span style="mso-spacerun:
+yes">   </span>str.TEL
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Такое имя называется составным. Компонентой
+записи может быть так-
+
+<p>же
+запись,<span style="mso-spacerun: yes">    </span>в таком случае составное имя
+будет содержать не два,<span style="mso-spacerun: yes">  </span>а
+
+<p>большее
+количество имен.
+
+<p><span
+style="mso-spacerun: yes">   </span>Обращение к<span style="mso-spacerun:
+yes">  </span>компонентам записей можно упростить,<span style="mso-spacerun:
+yes">  </span>если воспользо-
+
+<p>ваться
+оператором присоединения with.
+
+<p><span
+style="mso-spacerun: yes">   </span>Он позволяет заменить составные имена,<span
+style="mso-spacerun: yes">  </span>характеризующие каждое по-
+
+<p>ле,
+просто на имена полей, а имя записи определить в операторе присо-
+
+<p>единения:
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">         </span>with M do OP;
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Здесь М<span style="mso-spacerun: yes"> 
+</span>-<span style="mso-spacerun: yes">  </span>имя<span style="mso-spacerun:
+yes">  </span>записи,<span style="mso-spacerun: yes">   </span>ОР<span
+style="mso-spacerun: yes">  </span>- оператор,<span style="mso-spacerun: yes"> 
+</span>простой или составной.
+
+<p>Оператор
+ОР представляет собой область действия оператора присоедине-
+
+<p>ния, в
+пределах которой можно не использовать составные имена.
+
+<p><span
+style="mso-spacerun: yes">   </span>Иногда содержимое отдельной записи зависит
+от значения<span style="mso-spacerun: yes">  </span>одного<span
+style="mso-spacerun: yes">  </span>из
+
+<p>ее
+полей.<span style="mso-spacerun: yes">  </span>В языке ПАСКАЛЬ допускается
+описание записи,<span style="mso-spacerun: yes">  </span>состоящей из
+
+<p>общей и
+вариантной частей.<span style="mso-spacerun: yes">  </span>Вариантная часть
+задается с помощью конс-
+
+<p>трукции
+
+<p><span
+style="mso-spacerun: yes">         </span>case P of,
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p>где Р -
+имя<span style="mso-spacerun: yes">  </span>поля из общей<span
+style="mso-spacerun: yes">  </span>части<span style="mso-spacerun: yes"> 
+</span>записи. Возможные значения, прини-
+
+<p>маемые
+этим полем,<span style="mso-spacerun: yes">  </span>перечисляются так же, как и
+в операторе варианта.
+
+<p>Однако
+вместо указания выполняемого действия, как это делается в опе-
+
+<p>раторе
+варианта,<span style="mso-spacerun: yes">    </span>указываются поля
+варианта,<span style="mso-spacerun: yes">  </span>заключенные в круглые
+
+<p>скобки.
+Описание вариантной части завершается служебным словом end.
+
+<p><span
+style="mso-spacerun: yes">   </span>Тип поля Р можно указать в заголовке
+вариантной части, например:
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">         </span>case P: Integer of
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>Инициализация записей<span
+style="mso-spacerun: yes">  </span>осуществляется<span style="mso-spacerun:
+yes">  </span>с<span style="mso-spacerun: yes">  </span>помощью<span
+style="mso-spacerun: yes">   </span>типизированных
+
+<p>констант:
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>type
+
+<p><span
+style="mso-spacerun: yes">     </span>RecType= Record
+
+<p><span
+style="mso-spacerun: yes">               </span>x,y: Word;
+
+<p><span
+style="mso-spacerun: yes">               </span>ch: Char;
+
+<p><span
+style="mso-spacerun: yes">               </span>dim: Array[1..3] of Byte
+
+<p><span
+style="mso-spacerun: yes">              </span>end;
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>const
+
+<p><span
+style="mso-spacerun: yes">     </span>Rec: RecType= ( x: 127; y: 255;
+
+<p><span
+style="mso-spacerun: yes">                     </span>ch: 'A';
+
+<p><span
+style="mso-spacerun: yes">                     </span>dim: (2, 4, 8) );
+<p><div align="center"><a href="../Pascal. Курс лекций.html">	<img src="../../soder.gif" width=120 height=31 border=0 alt=""></a></div></p>
+
+
+</body>
+</html>

@@ -1,0 +1,400 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl14_2.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl14_5.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Линии и точки
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>Процедура</b> PutPixel. </font> </P>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Выводит заданным цветом точку по указанным координатам. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure PutPixel(X,Y: Integer; Color:
+Word);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь X, Y- координаты точки; Color - цвет точки.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Координаты задаются относительно левого верхнего угла окна или, если окно не 
+установлено, относительно левого верхнего угла экрана.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Следующая программа периодически выводит на экран «звездное небо» и затем 
+гасит его. Для выхода из программы нажмите любую клавишу.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses CRT, Graph;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PixelType = record</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">x, у : Integer; end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">N = 5000;  {Количество "звезд"}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">d,r,e,k: Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">x1,y1,x2,y2: Integer;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">a: array [1..N] of PixelType;  {Координаты}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Инициируем графику}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> d := Detect; InitGraph(d, r, ' ') ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> e := GraphResult; if 
+e&lt;&gt;grOk then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(GraphErrorMsg(e))&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Создаем окно в центре экрана}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">x1 := GetMaxX div 4;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">y1 := GetMaxY div 4;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> x2 
+:= 3*x1;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> y2 := 3*y1;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Rectangle(x1,y1,x2,y2);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetViewPort(x1+1,y1+1,x2-1,y2-1,ClipOn);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Создаем и запоминаем координаты 
+всех "звезд"}</font> <font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for k := 1 to N do with a[k] do begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">x := Random(x2-x1);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> у := Random(y2-y1)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Цикл вывода}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> repeat</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for k := 1 to N do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">with a[k] do  {Зажигаем "звезду"}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PutPixel(x,y,white);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if not KeyPressed then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for k := N downto 1 do with a[k] 
+do  {Гасим "звезду"}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PutPixel(x,y,black)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> until KeyPressed;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">while KeyPressed do k := ord(ReadKey);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> CloseGraph&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция </b> GetPixel.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возвращает значение типа Word, содержащее цвет пикселя с 
+указанными координатами. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function GetPixel(X,Y: Integer): Word;&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Здесь X, Y - координаты пикселя.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> Line.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Вычерчивает линию с указанными координатами начала и конца. 
+Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Line(X1,Y1,X2,Y2: Integer);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь XL. .Yl - координаты начала (XI, Y1) и конца (Х2, Y2) линии.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Линия вычерчивается текущим стилем и текущим цветом. В следующей программе в 
+центре экрана создается окно, которое затем расчерчивается случайными линиями. 
+Для выхода из программы нажмите любую клавишу.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses CRT, Graph;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">d,r,e : Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">x1,y1,x2,y2: Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Инициируем графику}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> d := Detect; InitGraph(d, r, '');&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> e := GraphResult; if e 
+&lt;&gt; grOk then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(GraphErrorMsg(e))&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Создаем окно в центре экрана}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">x1 := GetMaxX div 4;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">y1 := GetMaxY div 4;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> x2 
+:= 3*x1;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> y2 := 3*y1;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Rectangle(x1,y1,x2,y2);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetViewPort(x1+1,y1+1,x2-1,y2-1,ClipOn);&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Цикл вывода случайных линий}&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> repeat</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetColor(succ(Random(16))); {Случайный цвет}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Line(Random(x2-x1), 
+Random(y2-y1),</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Random(x2-x1), Random(y2-y1))</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">until KeyPressed;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if ReadKey=#0 then d:= ord(ReadKey);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">CloseGraph&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> LineTo.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Вычерчивает линию от текущего положения указателя до 
+положения, заданного его новыми координатами. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure LineTo(X,Y: Integer);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь X, Y - координаты нового положения указателя, они же - координаты 
+второго конца линии.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> LineRel.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Вычерчивает линию от текущего положения указателя до 
+положения, заданного приращениями его координат. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure LineRel (DX, DY: Integer);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь DX, DY- приращения координат нового положения указателя. В процедурах 
+LineTo и LineRel линия вычерчивается текущим стилем и текущим цветом.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> SetLineStyle.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Устанавливает новый стиль вычерчиваемых линий. 
+Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure SetLineStyle(Type,Pattern,Thick:
+Word)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь Type, Pattern, Thick - соответственно тип, образец и толщина линии. Тип 
+линии может быть задан с помощью одной из следующих констант:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SolidLn= 0;  {Сплошная линия}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DottedLn= 1;  {Точечная линия}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">CenterLn= 2;  {Штрих-пунктирная линия}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DashedLn= 3;  {Пунктирная линия}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">UserBitLn= 4; {Узор линии определяет пользователь}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Параметр Pattern учитывается только для линий, вид которых определяется 
+пользователем (т.е. в случае, когда Туре = UserBitLn). При этом два байта 
+параметра Pattern определяют образец линии: каждый установленный в единицу бит 
+этого слова соответствует светящемуся пикселю в линии, нулевой бит - 
+несветящемуся пикселю. Таким образом, параметр Pattern задает отрезок линии 
+длиной в 16 пикселей. Этот образец периодически повторяется по всей длине линии.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Параметр Thick может принимать одно из двух значений:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NormWidth = 1;  {Толщина в один пиксель}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> ThickWidth = 3;  {Толщина в три 
+пикселя}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Отметим, что установленный процедурой стиль линий (текущий стиль) 
+используется при построении прямоугольников, многоугольников и других фигур.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В следующем примере демонстрируются линии всех стандартных стилей, затем 
+вводятся слово-образец и линия с этим образцом заполнения (рис. 14.4). Для 
+выхода из программы введите ноль.</font> </P>
+<P align="center"><img border="0" src="14_4.jpg"    > </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>рис.14.4.</b> Образцы линий</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses CRT, Graph;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">style: array [0..4] of String [9] = (</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'SolidLn ', 'DottedLn ', 'CenterLn 
+'DashedLn', 'UserBitLn');&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">d,r,e,i,j,dx,dy: Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">p: Word;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Инициируем графику}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> d := Detect; InitGraph(d, r, '');&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> e := GraphResult; if e 
+&lt;&gt; grOk then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn (GraphErrorMsg(e))&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Вычисляем смещение линий}</font> <font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> dx := GetMaxX div 6;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> dy := GetMaxY div 10;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+{Выводим стандартные линии}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for j := 0 to 1 do  {Для двух толщин}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for i := 0 to 3 do  {Четыре типа линий}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetLineStyle(i, 0, j*2+1);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Line(0,(i+j*4+l)*dy,dx,(i+j*4+l)*dy);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OutTextXY(dx+10, 
+(i+j*4+l)*dy,style [i])&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Вводим образец и чертим линию}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;j := 0;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">dy := (GetMaxY+1) div 25;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> repeat</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OutTextXY(320,j*dy,'Pattern: ');&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY(50,j+1);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn(p); if p &lt;&gt; 0 
+then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetLineStyle(UserBitLn,p,NormWidth);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Line(440,j*dy+4, 600, j*dy+4);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">inc(j)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+end</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">until p = 0;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> CloseGraph&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> GetLineSettings.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возвращает текущий стиль линий. Заголовок:&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+Procedure GetLineSettings(var Stylelnfo: LineSettingsType)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь Stylelnfo - переменная типа LineSettingsType, в которой возвращается 
+текущий стиль линий.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Тип LineSettingsType определен в модуле Graph следующим образом:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">LineSettingsType = record</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">LineStyle: Word;  {Тип линии}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Pattern : Word;  {Образец}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Thickness: Word  {Толщина}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура </b> SetWriteMode.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Устанавливает способ взаимодействия вновь выводимых 
+линий с уже существующим на экране изображением. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure SetWriteMode(Mode);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь Mode - выражение типа Integer, задающее способ взаимодействия выводимых 
+линий с изображением.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если параметр Mode имеет значение 0, выводимые линии накладываются на 
+существующее изображение обычным образом (инструкцией МОV центрального 
+процессора). Если значение 1, то это наложение осуществляется с применением 
+логической операции XOR (исключительное ИЛИ): в точках пересечения выводимой 
+линии с имеющимся на экране изображением светимость пикселей инвертируется на 
+обратную, так что два следующих друг за другом вывода одной и той же линии на 
+экран не изменят его вид.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Режим, установленный процедурой SetWriteMode, распространяется на процедуры 
+Drawpoly, Line, LineRel, LineTo и Rectangle. Для задания параметра Mode можно 
+использовать следующие определенные в модуле константы:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">CopyPut = 0;{Наложение операцией MOV}&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> XORPut = 1;{Наложение операцией XOR}</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В следующем примере на экране имитируется вид часового циферблата (рис. 
+1.4.5). Для наглядной демонстрации темп хода «часов» ускорен в 600 раз (см. 
+оператор Delay (100)). При желании Вы сможете легко усложнить программу, связав 
+ее показания с системными часами и добавив секундную стрелку. Для выхода из 
+программы нажмите на любую клавишу.</font> </P>
+<P align="center"><img border="0" src="14_5.jpg"    > </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Рис. 14.5.</b> Часовой циферблат</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Graph, CRT;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">d,r,r1,r2,rr,k,&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">x1,y1,x2,y2,x01,y01: Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Xasp,Yasp : Word;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Инициируем графику}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> d := detect; InitGraph(d, r, '');&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> k := GraphResult; if k 
+&lt;&gt; grOK then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(GraphErrorMSG(k))&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Определяем отношение сторон и размеры экрана}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">x1 := GetMaxX div 2;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">y1 := GetMaxY div 2;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetAspectRatio(Xasp, Yasp);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Вычисляем радиусы:}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">r:= round(3*GetMaxY*Yasp/8/Xasp);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">r1 := round(0.9*r);  {Часовые деления}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">г2 := round(0.95*r); {Минутные деления}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Изображаем циферблат}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Circle(x1,y1,r);  {Первая внешняя окружность}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Circle(x1,y1,round(1.02*г) ); {Вторая окружность}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for k := 0 to 59 do  {Деления циферблата}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if k mod 5=0 then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">rr := r1 {Часовые деления}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">rr : = r2;  {Минутные деления}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Определяем координаты концов делений}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">x0l := x1+Round(rr*sin(2*pi*k/60));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">y0l := y1-Round(rr*Xasp*cos(2*pi*k/60)/Yasp);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">x2 := x1+Round(r*sin(2*pi*k/60));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">y2 := y1-Round(r*Xasp*cos(2*pi*k/60)/Yasp);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Line(x01,y01,x2,y2)  {Выводим деление}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Готовим вывод стрелок}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetWriteMode(XORPut);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetLineStyle(SolidLn,0,ThickWidth);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Счетчик минут в одном часе}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{k = минуты}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">r := 0;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Цикл вывода стрелок}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">repeat</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for k := 0 to 59 do if not KeyPressed then begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">(Координаты часовой стрелки} x2 := x1+Round(0.85*r1*sin(2*pi*r/60/12));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> y2 := 
+y1-Round(0.85*r1*Xasp*cos(2*pi*r/60/12)/Yasp);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Координаты минутной стрелки}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> x01 
+:= x1+Round(r2*sin(2*pi*k/60));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> y01 := y1-Round(r2*Xasp*cos(2*pi*k/60)/Yasp);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+{Изображаем стрелки}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Line(x1,y1,x2,y2);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Line(x1,y1,x01,y01) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Delay(100);  {Для 
+имитации реального темпа</font> <font size="3">нужно установить задержку 60000}&nbsp;</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Для удаления стрелок выводим их еще раз!}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+Line(x1,y1,x01,y01);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Line(x1,y1,х2,у2);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Наращиваем и корректируем счетчик минут в часе}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> inc(r); 
+if r=12*60 then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">r := 0</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> until KeyPressed;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if ReadKey=#0 then k := ord(ReadKey);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> CloseGraph&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+
+
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl14_3.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl14_5.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

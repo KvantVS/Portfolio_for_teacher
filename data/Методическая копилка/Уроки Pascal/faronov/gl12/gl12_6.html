@@ -1,0 +1,572 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl12_5.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl12_7.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Синтаксис ассемблерных команд
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Здесь и далее ассемблерными командами называются команды на языке встроенного 
+ассемблера, вставляемые в тело ассемблерного оператора asm... end. Структура 
+ассемблерной команды такова:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">[Метка] [Префикс] [Код [Операнд [,Операнд]]]&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> В квадратных скобках указываются 
+необязательные элементы структуры.</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Метки</font>
+</b> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Любой команде ассемблерного оператора может предшествовать одна или несколько 
+меток. В ассемблере используется два типа меток: глобальные и локальные. 
+Глобальные метки - это обычные метки Турбо Паскаля. Они объявляются в разделе 
+описаний после зарезервированного слова Label. С помощью глобальной метки можно 
+передать управление в тело ассемблерного оператора оператором GOTO. Например:</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Label</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">AltEnt;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Goto AltEnd;  {Передаем управление внутрь ассемблерного опера тора}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">asm</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">AltEnd:  {Сюда можно передать управление извне}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Локальные метки объявляются непосредственно в теле ассемблерного оператора. 
+Эти метки обязаны начинаться символом «@». Поскольку этот символ нельзя 
+использовать в именах Турбо Паскаля, он позволяет отличить локальную метку от 
+глобальной. Локальная метка не известна нигде вне ассемблерного оператора, 
+поэтому на нее нельзя передать управление оператором GOTO. По этой же причине в 
+разных ассемблерных операторах можно использовать одноименные локальные метки.</font> 
+</P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Префиксы&nbsp;</font>
+</b> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Встроенный ассемблер поддерживает следующие префиксы команд:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">LOCK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Захват шины</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">REP/REPE/REPNE&nbsp;</font><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;&nbsp;</font>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="3">Повтор строковой команды</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">REPZ/REPNZ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Синоним REPE/REPNE</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SEGCS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Перекрытие CS</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SEGDS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Перекрытие DS</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SEGSS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Перекрытие SS</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SEGES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Перекрытие ES</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Префиксы LOCK/REP/REPE/REPNE описаны в п. 12.1.3. Префиксы SEGxx определяют 
+сегментный регистр, который должен использоваться вместо умалчиваемого, и 
+распространяются только на следующие за ними ассемблерные команды.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если префикс указан без кода инструкции, он распространяет свое действие на 
+следующую ассемблерную команду.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Код инструкции очень редко имеет более одного префикса и никогда - более 
+трех: допускается следующая последовательность</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">LOCK SEGxx REPxx</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Замечу, что если при обработке строковой команды произошло аппаратное 
+прерывание, МП 8086/8088 «забывает» префиксы LOCK и SEGxx, которые, возможно, 
+определены в той же команде, так что использовать сложные префиксные конструкции 
+не рекомендуется.</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Коды инструкций</font>
+</b> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Встроенный ассемблер поддерживает мнемонику всех команд, перечисленных в 
+п.12.1.3. Кроме того, в ассемблерных командах может использоваться мнемоника 
+инструкций процессора 8087, а также команды процессоров 80286/80287. Замечу, что 
+инструкции 8087 допустимы только при активном состоянии {SN+}, 80286 - при 
+{$G+}, a 80287 - в случае {$G+,N+}.</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Операнды</font>
+</b> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Операндами встроенного ассемблера могут быть выражения, состоящие из 
+комбинации регистров, констант, имен и символов операций.</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Регистры</font>
+</b> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Во встроенном ассемблере используется мнемоника регистров, указанная в п. 
+12.1.1, а также имя ST для ссылки на регистры арифметического сопроцессора.</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Константы</font>
+</b> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Ассемблер поддерживает строковые и числовые константы.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Строковые константы заключаются в апострофы или кавычки. Если константа 
+объявлена с помощью кавычек, внутри нее символ апостроф рассматривается наравне 
+с другими символами, т.е. не считается ограничителем константы, точно так же 
+внутри константы, обрамленной апострофами, не считается ограничителем символ 
+кавычки. Если внутри константы необходимо указать ограничивающий ее символ, он 
+удваивается. Примеры:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'Строковая константа'</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">"Это - тоже строковая константа"</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'Символ '' не считается ограничителем'</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'внутри строки, обрамленной кавычками "..."'</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Числовые константы могут быть только целыми и их значение не может 
+превосходить емкости двойного слова, т.е. должно быть внутри диапазона</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">- 2 147 483 648...+ 4 294 967 295.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">По умолчанию при записи числовых констант используется десятичная нотация, но 
+ассемблер поддерживает также двоичные, восьмеричные и шестнадцатеричные 
+константы. Двоичная константа составляется как комбинация единиц и нулей, 
+заканчивающаяся символом В (от Binary - двоичный); при записи восьмеричной 
+константы используются символы 0...7, а в ее конце ставится символ О (Octal - 
+восьмеричный); шестнадцатеричная константа записывается по правилам Турбо 
+Паскаля (начинается с символа #) либо по правилам Турбо Ассемблера: начинается с 
+цифры, в конце ставится символ H (от Hexadecimal - шестнадцатеричный).</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Имена</font>
+</b> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Локальные метки - это единственные имена, которые разрешается определять 
+внутри ассемблерного оператора. Имена остальных объектов программы - констант,
+переменных, подпрограмм - должны определяться только с помощью средств Турбо 
+Паскаля.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Область определения имен подчиняется тем же правилам, что и в Турбо Паскале 
+-имена должны быть «видны» в том месте, где они используются, и они локализуются 
+в пределах блока, в котором описаны.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Во встроенном ассемблере могут использоваться три предопределенных имени:</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">@@Code - текущий сегмент кода</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">@Data - начальный сегмент данных</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">@Result - ссылка внутри функции на ее результат</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Имена @Code и @Data могут использоваться только в сочетании с директивой SEG 
+для ссылки на нужный сегмент. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">asm</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ax, SEG ©Data</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ds,ax&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Имя @Result используется для присвоения результата функции. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function Min(X,Y: Integer): Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Эта функция сравнивает два целых числа 
+и возвращает наименьшее из них)&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> asm</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ax,X  {Помещаем Х в АХ}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> cmp ax,Y  {X&lt;Y ?}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">jl @  {Да - на выход}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ax,Y  {Нет - помещаем Y в АХ}&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">@: mov ©Result,ax  {АХ содержит результат}</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для доступа к полям записей разрешается использование составных имен. 
+Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Point = record X,Y: Integer&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Rect = record</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">A,B: Point&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">P: Point;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R: Rect;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> asm</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ax,P.X&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> add ax,P.Y</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov R.A.X,ax&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Идентификаторы типов можно применять к операндам для уточнения данных, о 
+которых идет речь. Каждая из следующих команд реализует одно и то же действие: 
+загружает в регистр АХ слово по адресу ES: [DI+4 ]:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ax,(Rect PTR es:[di]).В.Х</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ax,Rect(es:[di]).В.Х</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ax,esrRect[di].B.X</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ax,Rect[es:di].B.X</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ax,es:[di].Rect.B.X</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Следующие имена не могут использоваться в операндах встроенного ассемблера:</font> 
+</P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">стандартные процедуры и функции (например, WriteLn, Chr);</font> </li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">предопределенные массивы Mem, MemW, MemL, Port, PortW;</font> </li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">константы с плавающей точкой, строковые и множественного типа;</font> </li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">макросы (процедуры и функции, полностью реализуемые одним InLine-оператором);</font> 
+  </li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">символ</font> </li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">@Result вне функции.</font> </li>
+</ul>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Выражения</font>
+</b> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Встроенный ассемблер использует выражения трех классов: регистровые, ссылки 
+на память и непосредственные.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Регистровое выражение - это выражение, состоящее из имени регистра. Все 
+следующие команды содержат только регистровые выражения:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">push ds&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> pop es&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> mov ah,bl&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> add ex,ax</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Непосредственные выражения - это нетипизированные константы и имена типов. 
+Примеры непосредственных выражений:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">dec =10;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">asm</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ax, dec&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> mov bx,0&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> add cx,2*dec+l&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> sub dh,- 5&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Все остальные выражения относятся к ссылкам на память. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">dec: Word = 10;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Step =12;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Х,Y: Byte;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">asm</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ax, dec</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ex, [Step]</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">add ah,X mov Y,bl</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ax,[bx]&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Важным отличием ассемблерных выражений от выражений Турбо Паскаля является то 
+обстоятельство, что они должны быть статическими, т.е. разрешены (вычислены) на 
+этапе создания программы. Если выражение может быть полностью вычислено к 
+моменту его трансляции, т.е. если оно состоит только из регистровых или 
+непосредственных значений, такое выражение называется абсолютным, компилятор 
+вычисляет его и использует для создания команды.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В ходе компиляции программы вырабатывается так называемый объектный код, 
+который затем преобразуется компоновщиком в готовую к работе программу. При 
+создании объектного кода компилятор не может вычислить значения выражений типа 
+«ссылка на память», так как не знает окончательного положения в памяти меток, 
+переменных, подпрограмм. В результате он создает так называемое перемещаемое 
+выражение, которое затем компоновщиком преобразуется в нужную ссылку на память.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Встроенный ассемблер разрешает любую операцию над абсолютным значением (см. 
+ниже), но ограничивает перемещаемые выражения до сложения или вычитания, одним 
+из операндов которого должна быть константа.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Другое важное отличие ассемблерных выражений от выражений Турбо Паскаля 
+заключается в способе интерпретации переменных. В выражениях Паскаля любая 
+ссылка на переменную интерпретируется как текущее содержимое этой переменной. В 
+ассемблерных выражениях это справедливо только тогда, когда все выражение в 
+целом состоит из имени переменной. Во всех остальных случаях ссылка на 
+переменную интерпретируется как адрес переменной. Например, выражение</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">х+10</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">в Паскале означает: «к содержимому переменной X прибавить 10». В ассемблерной 
+команде это означает: .«к адресу (смещению) переменной X прибавить 10». Однако 
+команда</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ах,X</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">означает: «поместить в регистр АХ первые два байта переменной X». Если бы нам 
+понадобилось загрузить в АХ адрес переменной X, мы должны были бы написать</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ax,OFFSET X</font> 
+<font face="Arial, Helvetica, sans-serif" size="3">&nbsp;</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Замечу, что попытка «перехитрить» ассемблер командами типа</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ax,X+0 mov ax,X+1-1</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">и т.п. не дает желаемого результата: ассемблер просто загружает в АХ 
+содержимое переменной X.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Как и в Паскале, ассемблерные выражения имеют тип, но в отличие от Паскаля 
+этот тип определяет только размер объекта в памяти и не ограничивает применяемые 
+к нему операции.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Встроенный ассемблер имеет следующие предопределенные типы:</font> </P>
+<center>
+<TABLE border=1 frame=box rules=all >
+  <TBODY>
+  <TR>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Тип</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Длина в памяти</font></P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">BYTE</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">1</font></P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">WORD</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">2</font></P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">DWORD</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">4</font></P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">QWORD</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">8</font></P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">TBYTE</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">10</font></P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">NEAR</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">FAR</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD></TR></TBODY></TABLE>
+      </center>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Имена предопределенных типов можно использовать для приведения типов 
+выражений. Например, если определены переменные</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Flag: Boolean;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> X : Word;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">то такие ассемблерные выражения недопустимы:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov Flag,bx&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> mov ah,X</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для корректного задания последней команды можно использовать следующие 
+варианты:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ah,BYTE PTR X&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> mov ah,Byte(X)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> mov ah,X.Byte</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Во всех случаях в АН будет загружен первый (младший) байт переменной X. 
+Встроенный ассемблер поддерживает операции, перечисленные в следующей таблице (в 
+порядке убывания приоритета).</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Операции встроенного ассемблера</font>
+</b> </P>
+<center>
+<TABLE border=1 frame=box rules=all>
+  <TBODY>
+  <TR>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Операция</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Комментарий</font></P></TD></TR>
+  <TR>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">&amp;</font></P></TD>
+    <TD align="left">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Перекрытие идентификатора</font></P></TD></TR>
+  <TR>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD>
+    <TD align="left">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Подвыражение</font></P></TD></TR>
+  <TR>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">[]</font></P></TD>
+    <TD align="left">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Ссылка на память</font></P></TD></TR>
+  <TR>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">. (точка)</font></P></TD>
+    <TD align="left">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Селектор структуры</font></P></TD></TR>
+  <TR>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">HIGH LOW</font></P></TD>
+    <TD align="left">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Доступ к байту в слове</font></P></TD></TR>
+  <TR>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">+ -</font></P></TD>
+    <TD align="left">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Унарные операции задания знака</font></P></TD></TR>
+  <TR>
+    <TD align="center"><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD>
+    <TD align="left">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Перекрытие сегмента</font></P></TD></TR>
+  <TR>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">OFFSET SEG TYPE PTR *</font></P></TD>
+    <TD align="left"><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">/ MOD SHL SHR</font></P></TD>
+    <TD align="left"><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">+ -</font></P></TD>
+    <TD align="left">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Бинарные операции</font></P></TD></TR>
+  <TR>
+    <TD align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">NOT AND OR XOR</font></P></TD>
+    <TD align="left">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Операции над битами</font></P></TD></TR></TBODY></TABLE>
+      </center>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Операция &amp;</font>
+</b> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Осуществляет перекрытие идентификатора: следующий за знаком &amp; 
+идентификатор считается определенным в программе, даже если он совпадает с 
+зарезервированным словом. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Ch: Byte;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ch,0 {Посылаем 0 в регистр СН}&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> mov &amp;Ch,0 {Посылаем 0 в переменную
+Ch}</font> 
+</P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Операция 
+0</font> </b> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Круглые скобки используются обычным для Паскаля образом - для изменения 
+порядка исчисления выражения (подвыражение, ограниченное скобками, вычисляется в 
+первую очередь). Если перед скобками стоит имя типа, все
+выражение приобретает 
+указанный тип. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ах,((1+2)*3+4)*5  {АХ = 65}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> mov bх,1+2*3+4*5  {ВХ = 27}</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Операция[]</font>
+</b> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Определяет ссылку на память. Выражение внутри скобок вычисляется в первую 
+очередь. Обычно оно связывается с регистрами
+BX, BP ,SI, DI и может использовать 
+операции + и - для указания индексации. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ah,100 mov ah,[100]</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{АН = 100}  {Загружаем в АН содержимое байта по адресу DS-.100}</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Операция . (точка)</font>
+</b> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Селектор элемента структуры. Результат - сумма выражений до и после точки с 
+типом второго выражения. Например:&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R: record</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">X: Word; У: Byte&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ax, R. X&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> mov R.Y,al</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Операции HIGH и LOW</font>
+</b> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">HIGH возвращает старший, a LOW - младший байт выражения типа слова, 
+следующего за символами операции. Выражение должно иметь абсолютное 
+непосредственное значение. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov al,High $1000 {AL = $10}</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Операция : (двоеточие)</font>
+</b> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Указывает ассемблеру, что выражение после операции должно относиться к 
+сегменту, указанному до операции. Результат - ссылка на память со значением 
+второго выражения. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ax, [10] {AX = слово по адресу DS:10}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> mov ax,BS:[10] {АХ = слово по 
+адресу BS:10}</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Операция OFFSET</font></b> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возвращает смещение выражения, следующего за операцией. Результат имеет 
+непосредственное значение. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ах,Х {АХ = слово по адресу переменной
+X}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ax,offset X {АХ = смещение адреса
+X}</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Операция SEG</font>
+</b> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возвращает сегмент выражения, следующего за операцией. Результат имеет 
+непосредственное значение.</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Операция PTR</font>
+</b> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Осуществляет приведение типа. Результат - ссылка на память со значением 
+выражения после операции и типом выражения до операции. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function Swap(X: Integer): Integer;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Меняет местами байты в слове
+X}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> asm</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ax,X</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov BYTE PTR @Result,ah&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> mov BYTE PTR @Result+l,al&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Операции * и /</font>
+</b> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">* - умножение, / - целочисленное деление. Оба выражения должны иметь 
+непосредственные абсолютные значения, такое же значение имеет и результат 
+операции. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ax,2*2  {АХ = 4}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ах,17/3.  {АХ = 5}</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Операция MOD</font>
+</b> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возвращает остаток от целочисленного деления. Оба выражения должны иметь 
+непосредственные абсолютные значения, такое же значение имеет и результат 
+операции. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ах,17 mod 3  {АХ =2}</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Операции SHL и SHR</font>
+</b> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Осуществляют логический сдвиг влево (SHL) или вправо (SHR) выражения, 
+стоящего до операции, на количество разрядов, определяемое выражением после 
+операции. Оба выражения должны иметь непосредственные абсолютные значения, такое 
+же значение имеет и результат операции. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ah,1 shl 7 {Ah = $80 = 128}</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Бинарная операция
++</font> </b> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Осуществляет сложение двух выражений. Выражения могут быть непосредственными 
+значениями или ссылками на память, но только одно из них может быть 
+перемещаемым. Если одно из выражений - ссылка на память, результат также 
+определяет ссылку на память, а если одно из выражений - перемещаемое, результат 
+будет перемещаемым.</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Бинарная операция</font>
+</b> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Вычитание двух выражений. Первое выражение может быть любого класса, а второе 
+должно быть абсолютным непосредственным значением. Результат относится к тому же 
+классу, что и первое выражение.</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Побитовые операции NOT, AND, OR, XOR</font>
+</b> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Имеют такой же смысл, что и одноименные операции Турбо Паскаля над целыми 
+числами. Оба выражения должны иметь непосредственные абсолютные значения, такое 
+же значение имеет и результат операции.</font> </P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl12_5.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl12_7.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

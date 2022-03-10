@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl14_9.html">
+<img SRC="Back.gif" BORDER="0">
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0">
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Включение драйвера и шрифтов в тело программы
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+В Турбо Паскале имеется 
+возможность включения графического драйвера и штриховых шрифтов непосредственно 
+в тело программы. Такое включение делает программу независимой от местоположения 
+и наличия на диске драйверов и шрифтов, а также ускоряет подготовку графических 
+программ к работе (шрифты и драйвер загружаются вместе с программой).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Включение драйвера и 
+шрифтов осуществляется по следующей общей схеме. Сначала с помощью 
+вспомогательной программы BINOBJ.EXE, входящей в комплект поставки Турбо Паскаля, 
+драйвер и шрифты преобразуются в OBJ-файл (файл с расширением .OBJ). Для этого 
+вне среды Турбо Паскаля необходимо вызвать утилиту BINOBJ с тремя параметрами: 
+именем преобразуемого файла, именем получаемого OBJ-файла и глобальным именем 
+процедуры. Эти имена, в принципе, могут быть произвольными, правильными для 
+MS-DOS именами. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">c:\tp\binobj 
+cga.bgi cga cgadrv</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В результате такого 
+обращения из каталога ТР на диске С будет вызвана программа BINOBJ и ей будут 
+переданы следующие параметры:</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">CGA.BGI - имя файла с 
+преобразуемым драйвером;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">CGA - имя файла с 
+расширением .OBJ, т.е. CGA.OBJ, который будет получен в результате исполнения 
+программы BINOBJ;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">CGADRV- глобальное имя, 
+под которым этот драйвер будет известен программе.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">После этого можно написать 
+следующий фрагмент программы:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Graph;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure CGADRV; 
+external;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{$L CGA.OBJ}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">d, r, e : 
+Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if 
+RegisterBGIDriver (@CGADRV) &lt; 0 then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn ('Ошибка 
+при регистрации драйвера');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">halt&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">d := CGA; r := 
+CGAHi;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> InitGraph (d, r, 
+'');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Как видно из этого примера, 
+в программе объявляется внешняя процедура с именем CGADRV (глобальное имя, 
+указанное при обращении к BINOBJ), причем дается директива компилятору отыскать 
+в текущем каталоге и загрузить файл CGA.OBJ, в котором находится эта процедура. 
+Затем осуществляется регистрация драйвера путем обращения к функции 
+RegisterBGIDriver. Единственным параметром этой функции является адрес начала 
+драйвера в памяти (@CGADRV). Функция возвращает значение типа Integer, которое 
+служит для контроля правильности завершения процедуры регистрации драйвера: если 
+это значение меньше нуля, обнаружена ошибка, в противном случае функция 
+возвращает номер зарегистрированного драйвера. В примере контролируется 
+правильность регистрации драйвера и, если ошибка не обнаружена, инициируется 
+графический режим работы экрана.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Аналогичным образом можно 
+присоединить к программе стандартные штриховые шрифты (матричный шрифт 8x8 
+входит в состав модуля Graph и поэтому присоединять его не надо). Присоединение 
+шрифта строится по описанной схеме за тем исключением, что для его регистрации 
+вызывается функция RegisterBGIFont. Например, после преобразования&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> c:\Pascal\binobj 
+litt.chr litt litt</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">можно использовать 
+операторы</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure 
+Litt;External;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{$L Litt.obj}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if 
+RegisterBGIFont (@litt) &lt; 0 then ...</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Обратите внимание: 
+регистрация и драйвера, и шрифтов должна предшествовать инициации графического 
+режима.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Регистрировать можно также 
+драйверы (шрифты), которые не компилируются вместе с программой, а загружаются в 
+динамическую память. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Graph;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">р: Pointer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> f: file;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">
+Assign(f,'Litt.chr'); {Открываем файл}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Reset(f,1); {LITT.CHR 
+для чтения}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+GetMem(p,FileSize(f)) ; {Резервируем для него область кучи</font> <font size="3">
+нужного размера}</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">
+BlockRead(f,pA,FileSize(f)){Читаем файл}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">
+WriteLn(RegisterBGIFont (p)){Регистрируем шрифт}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl14_9.html">
+<img SRC="Back.gif" BORDER="0">
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0">
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

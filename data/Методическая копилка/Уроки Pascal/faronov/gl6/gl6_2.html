@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl6_1.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl6_3.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Оъбявление указателей
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Как правило, в Турбо
+Паскале указатель связывается с некоторым
+типом данных. Такие указатели будем
+называть типизированными. Для объявления
+типизированного указателя используется
+значок ^, который помещается перед
+соответствующим типом, например:</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">P1 :^Integer;&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> р2 :^Real;&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> type</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PerconPointer = PerconRecord;&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">
+PerconRecord = record</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Name : String;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Job : String;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Next : PerconPointer&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Обратите внимание:
+при объявлении типа PerconPointer мы сослались на
+тип PerconRecord, который предварительно в
+программе объявлен не был. Как уже
+отмечалось, в Турбо Паскале
+последовательно проводится в жизнь принцип,
+в соответствии с которым перед
+использованием какого-либо идентификатора
+он должен быть описан. Исключение сделано
+только для указателей, которые могут
+ссылаться на еще не объявленный тип данных.
+Это исключение сделано не случайно.
+Динамическая память дает возможность
+реализовать широко используемую в
+некоторых программах организацию данных в
+виде списков. Каждый элемент списка имеет в
+своем составе указатель на соседний
+элемент (рис. 6.2), что обеспечивает
+возможность просмотра и коррекции списка.
+Если бы в Турбо Паскале не было этого
+исключения, реализация списков была бы
+значительно затруднена.</font></p>
+<p align="center"><img border="0" src="6_2.jpg"    ></p>
+<p align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Рис.6.2.</b> Списочная
+структура данных</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">В Турбо Паскале можно
+объявлять указатель и не связывать его при
+этом с каким-либо конкретным типом данных.
+Для этого служит стандартный тип POINTER,
+например:</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">р: pointer;</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Указатели такого
+рода будем называть нетипизированными.
+Поскольку нетипизированные указатели не
+связаны с конкретным типом, с их помощью
+удобно динамически размещать данные,
+структура и тип которых меняются в ходе
+работы программы.</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Как уже говорилось,
+значениями указателей являются адреса
+переменных в памяти, поэтому следовало бы
+ожидать, что значение одного указателя
+можно передавать другому. На самом деле это
+не совсем так. В Турбо Паскале можно
+передавать значения только между
+указателями, связанными с одним и тем же
+типом данных. Если, например,</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">p1,p2:  integer;&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> р3 :  Rеа1;&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> рр : pointer;</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">то присваивание</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">p1 := р2;</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">вполне допустимо, в
+то время как</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">р1 := р3;</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">запрещено,
+поскольку Р1 и Р3 указывают на разные типы
+данных. Это ограничение, однако, не
+распространяется на нетипизированные
+указатели, поэтому мы могли бы записать</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">pp := p3;&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> p1 := pp;</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">и тем самым достичь
+нужного результата.</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Читатель вправе
+задать вопрос, стоило ли вводить
+ограничения и тут же давать средства для их
+обхода. Все дело в том, что любое
+ограничение, с одной стороны, вводится для
+повышения надежности программ, а с другой -
+уменьшает мощность языка, делает его менее
+пригодным для каких-то применений. В Турбо
+Паскале немногочисленные исключения в
+отношении типов данных придают языку
+необходимую гибкость, но их использование
+требует от программиста дополнительных
+усилий и таким образом свидетельствует о
+вполне осознанном действии.</font></p>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl6_1.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl6_3.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

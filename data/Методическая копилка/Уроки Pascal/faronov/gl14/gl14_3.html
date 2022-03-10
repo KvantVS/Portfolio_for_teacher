@@ -1,0 +1,376 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl14_2.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl14_5.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Координаты, окна, страницы
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Многие графические процедуры и функции используют указатель текущей позиции 
+на экране, который в отличие от текстового курсора невидим. Положение этого 
+указателя, как и вообще любая координата на графическом экране, задается 
+относительно левого верхнего угла, который, в свою очередь, имеет координаты 
+0,0. Таким образом, горизонтальная координата экрана увеличивается слева 
+направо, а вертикальная - сверху вниз.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функции</b> GetMaxX и GetMaxY.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возвращают значения типа Word, содержащие 
+максимальные координаты экрана в текущем режиме работы соответственно по 
+горизонтали и вертикали. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Graph;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">a,b: Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">a := Detect; InitGraph(a, b, '');&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(GetMaxX, GetMaxY:5);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+CloseGraph&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функции</b> GetX и GetY.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возвращают значения типа Integer, содержащие текущие 
+координаты указателя соответственно по горизонтали и вертикали. Координаты 
+определяются относительно левого верхнего угла окна или, если окно не 
+установлено, экрана.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> SetViewPort.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Устанавливает прямоугольное окно на графическом 
+экране. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure SetViewPort(XI,Y1,X2,Y2: Integer;
+ClipOn: Boolean);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь X1...Y2 - координаты левого верхнего (XI,Y1) и правого нижнего (X2,Y2) 
+углов окна; СНрОп - выражение типа Boolean, определяющее «отсечку» не 
+умещающихся в окне элементов изображения.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Координаты окна всегда задаются относительно левого верхнего угла экрана. 
+Если параметр ClipOn имеет значение True, элементы изображения, не умещающиеся в 
+пределах окна, отсекаются, в противном случае границы окна игнорируются. Для 
+управления этим параметром можно использовать такие определенные в модуле 
+константы:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ClipOn = True;  {Включить отсечку}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> ClipOff = False;  {He включать отсечку}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Следующий пример иллюстрирует действие параметра СНрОп. Программа строит два 
+прямоугольных окна с разными значениями параметра и выводит в них несколько 
+окружностей. Для большей наглядности окна обводятся рамками (см. рис. 14.1).</font> 
+</P>
+<P align="center"><img border="0" src="14_1.jpg"    > 
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Рис. 14.1.</b> Отсечка изображения в окне</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Graph,CRT;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">x,y,e: Integer;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">xll,yll,xl2,yl2,  {Координаты 1-го окна}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">x21,x22,  {Левый верхний угол 2-го}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R,  {Начальный радиус}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k: Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DirectVideo := False  {Блокируем прямой доступ к видеопамяти в модуле CRT}</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Инициируем графический режим}</font> <font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> х := Detect; InitGraph(x, у, '');&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Проверяем 
+результат}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> е := GraphResult; if e &lt;&gt; grOk then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(GraphErrorMsg (e) ) {Ошибка}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin  {Нет ошибки}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Вычисляем координаты с учетом разрешения
+экрана}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">x11:=GetMaxX div 60;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">x12:=GetMaxX div 3;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">y11:=GetMaxY div 4; y12:=2*y11;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R:=(x12-x11) div 4; x21:=x12*2;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">x22:=x21+x12-x11;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Рисуем окна}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLnt'ClipOn:':10,'ClipOff:':40);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Rectangle(x11, y11, x12, y12); Rectangle(x21,
+y11 x22, y12);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Назначаем 1-е окно и рисуем четыре окружности}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetViewPort(x11, y11, x12, y12, ClipOn);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for k := 1 to 4 do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Circle(0,y11,R*k);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Назначаем 2-е окно и рисуем окружности}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetViewPort(x21, y11, x22, y12, ClipOff);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for k := 1 to 4 do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Circle(0,y11,R*k);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Ждем нажатия любой клавиши}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if ReadKey=#0 then k := 
+ord(ReadKey);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> CloseGraph&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> GetViewSettings.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возвращает координаты и признак отсечки текущего 
+графического окна. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure GetViewSettings(var Viewlnfo:
+ViewPortType);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь Viewlnfo - переменная типа ViewPortType. Этот тип в модуле Graph 
+определен следующим образом:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ViewPortType = record</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">x1,y1,x2,y2: Integer;  {Координаты окна}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Clip : Boolean  {Признак отсечки}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end ;</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> MoveTo.  </font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Устанавливает новое текущее положение указателя. Заголовок:</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure MoveTo(X,Y: integer);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь X, Y - новые координаты указателя соответственно по горизонтали и 
+вертикали.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Координаты определяются относительно левого верхнего угла окна или, если окно 
+не установлено, экрана.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> MoveRel.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Устанавливает новое положение указателя в относительных 
+координатах.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure MoveRel(DX,DY: Integer);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь DX.DY- приращения новых координат указателя соответственно по 
+горизонтали и вертикали.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Приращения задаются относительно того положения, которое занимал указатель к 
+моменту обращения к процедуре.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> ClearDevice.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Очищает графический экран. После обращения к процедуре 
+указатель устанавливается в левый верхний угол экрана, а сам экран заполняется 
+цветом фона, заданным процедурой SetBkColor. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure ClearDevice;</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> ClearViewPort.  </font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Очищает графическое окно, а если окно не определено 
+к этому моменту - весь экран. При очистке окно заполняется цветом с номером О из 
+текущей палитры. Указатель перемещается в левый верхний угол окна. Заголовок:</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure ClearViewPort;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В следующей программе на экране создается окно, которое затем заполняется 
+случайными окружностями (рис. 14.2). После нажатия на любую клавишу окно 
+очищается. Для выхода из программы нажмите Enter.</font> </P>
+<P align="center"><img border="0" src="14_2.jpg"    ></P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Рис. 14.2.</b> Окно со случайными окружностями</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses CRT,Graph;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">x1,y1,x2,y2,Err: Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Инициируем графический режим}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> xl := Detect; InitGraph(xl,x2,'');&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Err := 
+GraphResult; if ErrogrOk then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(GraphErrorMsg(Err))&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Определяем координаты окна с учетом разрешения экрана}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">x1 := GetMaxX div 4,-y1 := GetMaxY div 4;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> x2 := 3*x1; y2 := 3*y1;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Создаем окно}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Rectangle(x1,y1,x2,y2);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetViewPort(x1+1,y1+1,x2-1,y2-1,ClipOn);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Заполняем окно случайными 
+окружностями}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> repeat</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Сirclе(Random(Ge tMaxX),Random(Ge tMaxX)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Random(GetMaxX div 5))&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> until KeyPressed;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Очищаем окно и ждем нажатия Enter}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ClearViewPort;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OutTextXY(0,0,'Press Enter...1);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> CloseGraph&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> GetAspectRatio.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возвращает два числа, позволяющие оценить 
+соотношение сторон экрана. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure GetAspectRatio(var X,Y: Word);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь X, Y - переменные типа Word. Значения, возвращаемые в этих переменных, 
+позволяют вычислить отношение сторон графического экрана в пикселях. Найденный с 
+их помощью коэффициент может использоваться при построении правильных 
+геометрических фигур, таких как окружности, квадраты и т.п. Например, если Вы 
+хотите построить квадрат со стороной L пикселей по вертикали, Вы должны 
+использовать операторы</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetAspectRatio (Xasp, Yasp);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Rectangle(x1, y1, x1+L*round (Yasp/Xasp), y1+L);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">а если L определяет длину квадрата по горизонтали, то используется оператор&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+Rectangle (x1,y1,x1+L,y1+L*round(Xasp/Yasp));</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> SetAspectRatio.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Устанавливает масштабный коэффициент отношения 
+сторон графического экрана. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure SetAspectRatio(X,Y: Word);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь X, Y- устанавливаемые соотношения сторон.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Следующая программа строит 20 окружностей с разными соотношениями сторон 
+экрана (рис. 14.3).</font> </P>
+<P align="center"><img border="0" src="14_3.jpg"    > </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Рис.14.3.</b> Окружности при разных отношениях сторон экрана</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Graph,CRT;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R =.50;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">dx = 1000;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">d,m,e,k : Integer;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Xasp,Yasp: Word;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">d := Detect;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InitGraph(d, m,.'');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">e : = GraphResult;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if e &lt;&gt; grOk then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(GraphErrorMsg(e))&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetAspectRatio(Xasp, Yasp);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for k := 0 to 20 do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetAspectRatio(Xasp+k*dx,Yasp);&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Circle(GetMaxX div 2,GetMaxY div 2,R)&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if ReadKey=#0 then k := ord(ReadKey);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> CloseGraph&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> SetActivePage.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Делает активной указанную страницу видеопамяти. 
+Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure SetActivePage(PageNum: Word);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь PageNum - номер страницы.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Процедура может использоваться только с адаптерами, поддерживающими 
+многостраничную работу (EGA, VGA и т.п.). Фактически процедура просто 
+переадресует графический вывод в другую область видеопамяти, однако вывод 
+текстов с помощью Write/WriteLn всегда осуществляется только на страницу, 
+которая является видимой в данный момент (активная страница может быть 
+невидимой). Нумерация страниц начинается с нуля.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3">П<b>роцедура </b> SetVisualPage.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Делает видимой страницу с указанным номером. 
+Обращение:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure SetVisualPAge(PageNum: Word);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь PageNum - номер страницы.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Процедура может использоваться только с адаптерами, поддерживающими 
+многостраничную работу (EGA, VGA и т.п.). Нумерация страниц начинается с нуля.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Следующая программа сначала рисует квадрат в видимой странице и окружность -в 
+невидимой. После нажатия на Enter происходит смена видимых страниц.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Graph;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">d,m,e: Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> s : String;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">d := Detect; InitGraph(d, m, '');&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> e := GraphResult; if e &lt;&gt; grOk then</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn (GraphErrorMsg(e))&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else  {Нет ошибки. Проверяем, поддерживает ли 
+драйвер</font> <font size="3">многостраничную работу с видеопамятью:}&nbsp;</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if d in [HercMono,EGA,EGA64,MCGA,VGA] 
+then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin  {Используем многостраничный режим}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if d&lt;&gt;HercMono then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetGraphMode(m-1);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Заполняем видимую страницу}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Rectangle(10,10,GetMaxX div 2,GetMaxY div 2);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OutTextXY(0,0,'Page 0. Press 
+Enter...');&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Заполняем невидимую}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> SetActivePage (1);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Circle(GetMaxX div 2, GetMaxY div 2, 100);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OutTextXY(0,GetMaxY-10,'Page 1. 
+Press Enter...');&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Демонстрируем страницы}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> ReadLn;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetVisualPage(1);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetVisualPage (0);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">CloseGraph&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin  {Драйвер не поддерживает многостраничный режим}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> s := GetDriverName; 
+CloseGraph;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn('Адаптер ',s,' использует только 1 страницу')</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Обратите внимание на оператор</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if doHercMono then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetGraphMode(m-1);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">С его помощью гарантированно устанавливается многостраничный режим работы на 
+адаптерах EGA, MCGA, VGA. Как уже говорилось, после инициации графики с 
+Driver=Detect устанавливается режим работы с максимально возможным номером; 
+перечисленные адаптеры в этом режиме могут работать только с одной графической 
+страницей, чтобы обеспечить работу с двумя страницами, следует уменьшить номер 
+режима.</font> </P>
+
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl14_2.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl14_5.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

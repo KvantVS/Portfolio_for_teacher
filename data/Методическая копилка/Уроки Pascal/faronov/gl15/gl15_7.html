@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_6.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_8.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Инкапсуляция новых полей и методов
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+При попытке откомпилировать полученный вариант программы Турбо Паскаль 
+сообщит о неизвестном идентификаторе DisableCommands. На первый взгляд это 
+кажется странным - ведь аналогичное обращение в обработчике событий 
+TNotebook.HandleEvent не вызывало проблем! Все дело в том, что мы работаем с 
+объектами, а следовательно, здесь очень важным становится контекст программ. 
+Обработчик TNotebook-HandleEvent - это метод объекта TNotebook, который 
+унаследовал от своих родителей многие свойства, в том числе и метод 
+DisableCommands. Процедура FileOpen не является потомком объектов Turbo Vision и 
+не имеет доступа к их полям и методам.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В Turbo Vision все новые процедуры обычно инкапсулируются в объекты., если в 
+них необходимо получить доступ к специфическим</font>
+<font face="Arial, Helvetica, sans-serif" size="3">средствам этих объектов.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Поскольку процедура FileOpen вызывается из обработчика событий объекта 
+TNotebook, нам следует включить ее в виде нового метода этого объекта:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TNotebook = object(TApplication)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure FileOpen;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Procedure FileSave;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Procedure ChangeDir;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Procedure 
+DOSCall;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Procedure Work;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В этом фрагменте мы инкапсулировали в объект все методы, используемые 
+обработчиком событий. Разумеется, необходимо соответствующим образом изменить 
+заголовок процедуры FileOpen, поскольку она теперь стала методом объекта 
+TNotebook:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TNotebook.FileOpen;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Аналогичным образом следует изменить и заголовки других инкапсулированных 
+процедур. Теперь трансляция пройдет успешно, а после открытия файла станет 
+недоступна команда F3.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Тексты двух других новых методов объекта TNotebook не нуждаются в особых 
+комментариях:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TNotebook.FileSave;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Закрывает файл данных}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Close(DataFile);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OpFileF := False;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">EnableCommands(WinCom2);  {Разрешаем открыть файл}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DisableCommands(WinComl)  {Запрещаем работу и сохранение}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; {TNotebook.FileSave}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-----------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TNotebook.ChangeDir;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Изменяет текущий каталог}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PD: PChDirDialog;  {Диалоговое окно смены каталога/диска}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Control: Word;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">New(PD, Init(cdNormal,0));{Создаем диалоговое окно}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Control := DeskTop.ExecView(PD){Используем окно}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ChDir(PD.Dirlnput.Data);{Устанавливаем новый каталог}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Dispose(PD, Done){Удаляем окно из кучи}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;  {TNotebook.ChangeDir}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Несколько слов по поводу реализации процедуры TNotebook. ChangeDir. В ней 
+используется объект TChDirDialog, входящий в модуль StdDlg. С помощью этого 
+объекта создается диалоговое окно, позволяющее выбрать новый диск или каталог. 
+После создания и использования экземпляра объекта TChDirDialog в его поле</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Dirlnput.Data</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">устанавливается строка типа PathStr, задающая новый каталог (и, возможно, 
+новый диск).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Чуть сложнее обстоит дело с процедурой DOSCall, которая должна реализовать 
+временный выход в ДОС. Дело в том, что перед выходом необходимо сохранить в куче 
+текущее состояние программы, а после возврата нужно восстановить состояние 
+программы, в том числе и вид экрана. Чтобы реализовать имеющиеся в Turbo Vision 
+средства сохранения и восстановления программы, в предложение Uses необходимо 
+добавить ссылку на модуль Memory. Вот текст метода TNotebooLDOSCall:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TNotebook.DOSCall;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Временный выход в ДОС}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">txt ='Для возврата введите EXIT в ответ'+' на приглашение ДОС...';&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DoneEvents;{Закрыть обработчик событий}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DoneVideo;{Закрыть монитор экрана}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DoneMemory;{Закрыть монитор памяти}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetMemTop(HeapPtr) ;{Освободить кучу}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(txt);{Сообщить о выходе}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SwapVectors;{Установить стандартные векторы}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Передать управление командному процессору ДОС:}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Exec(GetEnv('COMSPEC'),'');&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Вернуться из ДОС:}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SwapVectors;  {Восстановить векторы)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetMemTop(HeapEnd);  {Восстановить кучу}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InitMemory;  {Открыть монитор памяти}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InitVideo;{Открыть монитор экрана}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InitEvents;{Открыть обработчик событий}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InitSysError;{Открыть обработчик ошибок}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Redraw  {Восстановить вид экрана}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;  {DOSCall}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Процедуры DoneXXXX завершают работу отдельных частей Turbo Vision, а 
+процедуры InitXXXXосуществляют обратные действия. С помощью процедуры SetMemTop 
+в ДОС передается информация о фактически используемой динамической памяти (по 
+умолчанию программе предоставляется вся доступная память). Этот вызов 
+освобождает неиспользуемую в данный момент часть кучи для размещения в ней 
+командного процессора COMMAND.COM. После возврата из ДОС вызов SetMemTop 
+используется еще раз - для того, чтобы зарезервировать за программой всю ранее 
+выделенную ей память. Процедура Redraw восстанавливает все видимые элементы 
+экрана.</font> </P>
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_6.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_8.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</BODY></HTML>

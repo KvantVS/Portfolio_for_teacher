@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Untitled</title>
+</head>
+
+
+<body lang=RU style="'tab-interval:35.4pt'" background="bgrwhite.gif">
+<p><div align="center"><b><font size="+1" face="Arial">33. Бестиповые файлы </font></b></div></p>
+<p><span
+style="mso-spacerun: yes">   </span>Бестиповые файлы позволяют записывать на
+диск произвольные участки
+
+<p>пвмяти
+ЭВМ и считывать их с диска в память.<span style="mso-spacerun: yes"> 
+</span>Операции обмена с бести-
+
+<p>повыми<span
+style="mso-spacerun: yes">   </span>файлами<span style="mso-spacerun: yes">  
+</span>осуществляется<span style="mso-spacerun: yes">   </span>с<span
+style="mso-spacerun: yes">  </span>помощью<span style="mso-spacerun: yes"> 
+</span>процедур<span style="mso-spacerun: yes">  </span>BlokRead<span
+style="mso-spacerun: yes">  </span>и
+
+<p>BlockWrite.
+Кроме<span style="mso-spacerun: yes">  </span>того,<span style="mso-spacerun:
+yes">  </span>вводится расширенная форма процедур Reset и
+
+<p>Rewrite.
+В остальном принципы работы остаются такими же, как и с ком-
+
+<p>понентными
+файлами.
+
+<p><span
+style="mso-spacerun: yes">   </span>Перед использованием логический файл
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>var<span style="mso-spacerun: yes"> 
+</span>f: File;
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p>должен
+быть<span style="mso-spacerun: yes">  </span>связан<span style="mso-spacerun:
+yes">  </span>с<span style="mso-spacerun: yes">  </span>физическим с помощью
+процедуры Assign.<span style="mso-spacerun: yes">  </span>Далее
+
+<p>файл
+должен быть открыт для чтения или для<span style="mso-spacerun: yes"> 
+</span>записи<span style="mso-spacerun: yes">  </span>процедурой<span
+style="mso-spacerun: yes">  </span>Reset
+
+<p>или
+Rewrite, а после окончания работы закрыт процедурой Close.
+
+<p><span
+style="mso-spacerun: yes">   </span>При открытии файла длина буфера
+устанавливается по умолчанию в 128
+
+<p>байт.
+TURBO<span style="mso-spacerun: yes">  </span>PASCAL<span style="mso-spacerun:
+yes">  </span>позволяет изменить размер буфера ввода - вывода,
+
+<p>для
+чего следует открывать файл расширенной записью процедур
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>Reset(var f: File; BufSize: Word )
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p>или
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">  </span><span style="mso-spacerun:
+yes"> </span>Rewrite(var f: File; BufSize: Word )
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Параметр BufSize задает число байтов,
+считываемых из файла или за-
+
+<p>писываемых
+в него за одно обращение. Минимальное значение BufSize - 1
+
+<p>байт,
+максимальное - 64 К байт.
+
+<p><span
+style="mso-spacerun: yes">   </span>Чтение данных из бестипового файла
+осуществляется процедурой
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">  </span>BlockRead( var f: File; var X; Count: Word;
+var QuantBlock: Word );
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>Эта процедура осуществляет за одно
+обращение чтение в переменную X
+
+<p>количества
+блоков,<span style="mso-spacerun: yes">  </span>заданное параметром Count,<span
+style="mso-spacerun: yes">  </span>при этом длина<span style="mso-spacerun:
+yes">  </span>блока
+
+<p>равна
+длине<span style="mso-spacerun: yes">  </span>буфера.<span style="mso-spacerun:
+yes">  </span>Значение Count не может быть меньше 1.<span style="mso-spacerun:
+yes">  </span>За одно
+
+<p>обращение
+нельзя прочесть больше, чем 64 К байтов.
+
+<p><span
+style="mso-spacerun: yes">   </span>Необязательный параметр<span
+style="mso-spacerun: yes">  </span>QuantBlock возвращает число блоков (буфе-
+
+<p>ров),
+прочитанных текущей операцией BlockRead. В случае успешного за-
+
+<p>вершения
+операции чтения QuantBlock = Count, в случае аварийной ситу-
+
+<p>ации
+параметр QuantBlock будет<span style="mso-spacerun: yes"> 
+</span>содержать<span style="mso-spacerun: yes">  </span>число<span
+style="mso-spacerun: yes">  </span>удачно<span style="mso-spacerun: yes"> 
+</span>прочитанных
+
+<p>блоков.
+Отсюда<span style="mso-spacerun: yes">  </span>следует,<span
+style="mso-spacerun: yes">   </span>что<span style="mso-spacerun: yes"> 
+</span>с<span style="mso-spacerun: yes">  </span>помощью параметра QuantBlock
+можно
+
+<p>контролировать
+правильность выполнения операции чтения.
+
+<p><span
+style="mso-spacerun: yes">   </span>Запись данных в бестиповой файл выполняется
+процедурой
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>BlockWrite( var f: File; var X; Count:
+Word; var QuantBlock: Word );
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p>которая
+осуществляет<span style="mso-spacerun: yes">  </span>за<span
+style="mso-spacerun: yes">  </span>одно обращение запись из переменной X коли-
+
+<p>чества
+блоков,<span style="mso-spacerun: yes">  </span>заданное параметром Count, при
+этом длина блока равна
+
+<p>длине
+буфера.
+
+<p><span
+style="mso-spacerun: yes">   </span>Необязательный параметр<span
+style="mso-spacerun: yes">  </span>QuantBlock возвращает число блоков (буфе-
+
+<p>ров),
+записанных успешно текущей операцией BlockWrite.
+
+<p><div align="center"><a href="../Pascal. Курс лекций.html">	<img src="../../soder.gif" width=120 height=31 border=0 alt=""></a></div></p>
+
+
+</body>
+</html>

@@ -1,0 +1,833 @@
+<html>
+
+<head>
+</head>
+
+
+<body lang=RU style="'tab-interval:35.4pt'" background="bgrwhite.gif">
+<p><div align="center"><b><font size="+1" face="Arial">40. Линейные списки </font></b></div></p>
+
+<p><span
+style="mso-spacerun: yes">   </span>В стеки или очереди компоненты можно
+добавлять тольков<span
+style="mso-spacerun: yes">  </span>какой<span style="mso-spacerun: yes"> 
+</span>-
+
+<p>либо
+один конец структуры данных, это относится и к извлечению компо-
+
+<p>нент.
+
+<p><span
+style="mso-spacerun: yes">   </span>Связный (линейный) список является
+структурой данных, в произволь-
+
+<p>но
+выбранное место которого могут включаться данные, а также изымать-
+
+<p>ся
+оттуда.
+
+<p><span
+style="mso-spacerun: yes">   </span>Каждая компонента списка определяется
+ключом.Обычно ключ -<span
+style="mso-spacerun: yes">  </span>либо
+
+<p>число,
+либострока символов. Ключ
+располагается в поле данных компо-
+
+<p>ненты,
+он может занимать как отдельное поле записи, так и быть частью
+
+<p>поля
+записи.
+
+<p><span
+style="mso-spacerun: yes">   </span>Основные отличия связного списка от стека и
+очереди следующие:
+
+<p><span
+style="mso-spacerun: yes">   </span>-для чтения доступна любая компонента
+списка;
+
+<p><span
+style="mso-spacerun: yes">   </span>-новые компоненты можно добавлять в любое
+место списка;
+
+<p><span
+style="mso-spacerun: yes">   </span>-при чтении компонента не удаляется из
+списка.
+
+<p><span
+style="mso-spacerun: yes">   </span>Над списками выполняются следующие
+операции:
+
+<p><span
+style="mso-spacerun: yes">   </span>-начальное формирование списка (запись
+первой компоненты);
+
+<p><span
+style="mso-spacerun: yes">   </span>-добавление компоненты в конец списка;
+
+<p><span
+style="mso-spacerun: yes">   </span>-чтение компоненты с заданным ключом;
+
+<p><span
+style="mso-spacerun: yes">   </span>-вставка компоненты в заданное место списка
+(обычнопосле<span style="mso-spacerun:
+yes">  </span>компо-
+
+<p>ненты с
+заданным ключом);
+
+<p><span
+style="mso-spacerun: yes">   </span>-исключение компоненты с заданным ключом из
+списка.
+
+<p><span
+style="mso-spacerun: yes">   </span>Для формирования списка и работы с ним
+необходимо иметь пять пере-
+
+<p>менных
+типа указатель,первая из которых
+определяетначало<span
+style="mso-spacerun: yes">  </span>списка,
+
+<p>вторая
+- конец списка, остальные- вспомогательные.
+
+<p><span
+style="mso-spacerun: yes">   </span>Описание компоненты списка и переменных
+типа указатель дадимсле-
+
+<p>дующим
+образом:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>type
+
+<p><span
+style="mso-spacerun: yes">    </span>PComp= ^Comp;
+
+<p><span
+style="mso-spacerun: yes">    </span>Comp= record
+
+<p><span
+style="mso-spacerun: yes">           </span>D:T;
+
+<p><span
+style="mso-spacerun: yes">           </span>pNext:PComp
+
+<p><span
+style="mso-spacerun: yes">          </span>end;
+
+<p><span
+style="mso-spacerun: yes">   </span>var
+
+<p><span
+style="mso-spacerun: yes">    </span>pBegin, pEnd, pCKey, pPreComp, pAux:
+PComp;
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p>где
+pBegin - указатель начала списка, pEnd - указатель<span style="mso-spacerun:
+yes">  </span>конца списка,
+
+<p>pCKey,
+pPreComp, pAux - вспомогательные указатели.
+
+<p><span
+style="mso-spacerun: yes">   </span>Начальное формирование списка, добавление
+компонент в конец списка
+
+<p>выполняется
+так же, как и при формировании очереди.
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p>ЙННННН»<span
+style="mso-spacerun: yes">     </span>ЙННННН»<span style="mso-spacerun:
+yes">    </span>ЙННННН»<span style="mso-spacerun: yes">       </span>ЙННННН» <span
+style="mso-spacerun: yes">   </span>ЙННННН»<span style="mso-spacerun: yes">   
+</span>ЙННННН»
+
+<p>є<span
+style="mso-spacerun: yes">  </span>*ДДєДї<span style="mso-spacerun: yes">  
+</span>є D1є<span style="mso-spacerun:
+yes">    </span>є D2є<span
+style="mso-spacerun: yes">       </span>є DN1 є<span style="mso-spacerun:
+yes">    </span>є DNє<span
+style="mso-spacerun: yes">  </span>ЪДєДД*<span style="mso-spacerun: yes"> 
+</span>є
+
+<p>ИНННННј
+і<span style="mso-spacerun: yes">   </span>єНННННє<span style="mso-spacerun:
+yes">    </span>єНННННє<span style="mso-spacerun: yes">      
+</span>єНННННє<span style="mso-spacerun: yes">    </span>єНННННє<span
+style="mso-spacerun: yes">  </span>і ИНННННј
+
+<p>pBegin<span
+style="mso-spacerun: yes">  </span>АДД&gt;є<span style="mso-spacerun: yes"> 
+</span>*ДДєДДД&gt;є<span style="mso-spacerun: yes"> 
+</span>*ДДєД....Д&gt;є*ДДєДДД&gt;є NIL
+є&lt;ДЩ<span style="mso-spacerun: yes">   </span>pEnd
+
+<p><span
+style="mso-spacerun: yes">            </span>ИНННННј<span style="mso-spacerun:
+yes">    </span>ИНННННј<span style="mso-spacerun: yes">      
+</span>ИНННННј<span style="mso-spacerun: yes">    </span>ИНННННј
+
+<p><span
+style="mso-spacerun:
+yes">                                                                                                                                                                                                                                    
+</span><span style="mso-spacerun: yes">                          </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>Для чтения<span style="mso-spacerun: yes"> 
+</span>и вставки компоненты по ключу необходимо выполнить по-
+
+<p>иск
+компоненты с заданным ключом:
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p><span
+style="mso-spacerun: yes">  </span>pCKey:=pBegin;
+
+<p><span
+style="mso-spacerun: yes">  </span>while (pCKey&lt;&gt;NIL) and
+(Key&lt;&gt;pCKey^.D) DO
+
+<p><span
+style="mso-spacerun: yes">   </span>pCKey:=pCKey^.pNext;
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p>Здесь
+Key - ключ, тип которого совпадает с типом данных компоненты.
+
+<p><span
+style="mso-spacerun: yes">   </span>После выполнения<span style="mso-spacerun:
+yes">  </span>этих операторов указатель pСKey будет определять
+
+<p>компоненту
+с заданным ключом или такая компонента не будет найдена.
+
+<p><span
+style="mso-spacerun: yes">   </span>Пусть pCKey определяет компоненту с
+заданным ключом. Вставка новой
+
+
+<p>компоненты
+выполняется следующими операторами:
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p><span
+style="mso-spacerun: yes"> </span>New(pAux);<span style="mso-spacerun:
+yes">               </span>ЙННН»
+
+<p><span
+style="mso-spacerun: yes"> </span>pAux^.D:= DK1;<span style="mso-spacerun:
+yes">        </span>ЪДДєД* є
+
+<p><span
+style="mso-spacerun: yes">                       </span>і<span
+style="mso-spacerun: yes">  </span>ИНННј
+
+<p><span
+style="mso-spacerun: yes">                       </span>і<span
+style="mso-spacerun: yes">  </span>pCKey
+
+<p><span
+style="mso-spacerun: yes">                       </span>і
+
+<p>ЙННН»<span
+style="mso-spacerun: yes">     </span>ЙННН»<span style="mso-spacerun:
+yes">      </span>ЙННН»<span style="mso-spacerun: yes">     </span>ЙННН»<span
+style="mso-spacerun: yes">      </span>ЙННН»<span style="mso-spacerun:
+yes">     </span>ЙННН»
+
+<p>є
+*ДєДДїєD1 є<span style="mso-spacerun:
+yes">      </span>єKeyє<span style="mso-spacerun: yes">     </span>єKK1є<span
+style="mso-spacerun: yes">      </span>єDN є<span style="mso-spacerun: yes"> 
+</span>ЪДДєД* є
+
+<p>ИНННј<span
+style="mso-spacerun: yes">  </span>і<span style="mso-spacerun: yes"> 
+</span>єНННє<span style="mso-spacerun: yes">      </span>єНННє<span
+style="mso-spacerun: yes">     </span>єНННє<span style="mso-spacerun:
+yes">      </span>єНННєі<span
+style="mso-spacerun: yes">  </span>ИНННј
+
+<p>pBegin
+АД&gt;є *ДєД...Д&gt;є *ДєДДДД&gt;є *ДєД...Д&gt;єNILє&lt;ДЩ<span
+style="mso-spacerun: yes">  </span>pEnd
+
+<p><span
+style="mso-spacerun: yes">          </span>ИНННј<span style="mso-spacerun:
+yes">      </span>ИНННј<span style="mso-spacerun: yes">     </span>ИНННј<span
+style="mso-spacerun: yes">      </span>ИНННј
+
+<p><span
+style="mso-spacerun: yes">               </span><span style="mso-spacerun:
+yes">                                                                                                                                                                                                                                                </span>
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p><span
+style="mso-spacerun: yes">                                          
+</span>ЙННН»<span style="mso-spacerun: yes">     </span>ЙННН»
+
+<p><span
+style="mso-spacerun: yes">                                          
+</span>єDK1єЪДДєД* є
+
+<p><span
+style="mso-spacerun: yes">                                          
+</span>єНННєі<span
+style="mso-spacerun: yes">  </span>ИНННј
+
+<p><span
+style="mso-spacerun: yes">                                          
+</span>є<span style="mso-spacerun: yes">   </span>є&lt;ДЩ<span
+style="mso-spacerun: yes">   </span>pAux
+
+<p><span
+style="mso-spacerun: yes">                        </span><span
+style="mso-spacerun: yes">                   </span>ИНННј
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p><span
+style="mso-spacerun: yes"> </span>pAux^.pNext:=pCKey^.pNext;
+
+<p><span
+style="mso-spacerun: yes"> </span>pCKey^.pNext:=pAux;
+
+<p><span
+style="mso-spacerun: yes">                                         </span>
+
+<p><span
+style="mso-spacerun: yes">                          </span>ЙННН»
+
+<p><span
+style="mso-spacerun: yes">                       </span>ЪДДєД* є
+
+<p><span
+style="mso-spacerun: yes">                       </span>і<span
+style="mso-spacerun: yes">  </span>ИНННј
+
+<p><span
+style="mso-spacerun: yes">                       </span>і<span
+style="mso-spacerun: yes">  </span>pCKey
+
+<p><span
+style="mso-spacerun: yes">                       </span>і
+
+<p>ЙННН»<span
+style="mso-spacerun: yes">     </span>ЙННН»<span style="mso-spacerun:
+yes">      </span>ЙННН»<span style="mso-spacerun: yes">     </span>ЙННН»<span
+style="mso-spacerun: yes">      </span>ЙННН»<span style="mso-spacerun:
+yes">     </span>ЙННН»
+
+<p>є
+*ДєДДїєD1 є<span style="mso-spacerun:
+yes">      </span>єKeyє<span style="mso-spacerun: yes">     </span>єKK1є<span
+style="mso-spacerun: yes">      </span>єDN є<span style="mso-spacerun: yes"> 
+</span>ЪДДєД* є
+
+<p>ИНННј<span
+style="mso-spacerun: yes">  </span>і<span style="mso-spacerun: yes"> 
+</span>єНННє<span style="mso-spacerun: yes">      </span>єНННє<span
+style="mso-spacerun: yes">     </span>єНННє<span style="mso-spacerun:
+yes">      </span>єНННєі<span
+style="mso-spacerun: yes">  </span>ИНННј
+
+<p>pBegin
+АД&gt;є *ДєД...Д&gt;є * є<span style="mso-spacerun: yes">     </span>є
+*ДєД...Д&gt;єNILє&lt;ДЩ <span style="mso-spacerun: yes"> </span>pEnd
+
+<p><span
+style="mso-spacerun: yes">          </span>ИНННј<span style="mso-spacerun:
+yes">      </span>ИНННј<span style="mso-spacerun: yes">     </span>ИНННј<span
+style="mso-spacerun: yes">      </span>ИНННј
+
+<p><span
+style="mso-spacerun: yes">                       </span>і<span
+style="mso-spacerun: yes">         </span>^
+
+<p><span
+style="mso-spacerun: yes">                       </span>і<span
+style="mso-spacerun: yes">         </span>і<span style="mso-spacerun:
+yes">          </span>ЙННН»<span style="mso-spacerun: yes">     </span>ЙННН»
+
+<p><span
+style="mso-spacerun: yes">                       </span>і<span
+style="mso-spacerun: yes">         </span>і<span style="mso-spacerun:
+yes">          </span>єDK1єЪДДє-* є
+
+<p><span
+style="mso-spacerun: yes">                       </span>і<span
+style="mso-spacerun: yes">         </span>АДДДДДДДДДДєНННє<span
+style="mso-spacerun: yes">  </span>і<span style="mso-spacerun: yes"> 
+</span>ИНННј
+
+<p><span
+style="mso-spacerun: yes">                      
+</span>АДДДДДДДДДДДДДДДДДДД&gt;єД* є&lt;ДЩ<span style="mso-spacerun: yes">  
+</span>pAux
+
+<p><span
+style="mso-spacerun: yes">                                           
+</span>ИНННј
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p><span
+style="mso-spacerun: yes">    </span>Для удаления компоненты с заданным ключом
+необходимо при поиске
+
+<p>нужной
+компоненты помнить адрес предшествующей:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+
+<p><span
+style="mso-spacerun: yes">  </span>pCKey:=pBegin;
+
+<p><span
+style="mso-spacerun: yes">  </span>while (pCKey&lt;&gt;NIL) and
+(Key&lt;&gt;pCKey^.D) do
+
+<p><span
+style="mso-spacerun: yes">   </span>begin
+
+<p><span
+style="mso-spacerun: yes">    </span>pPreComp:=pCKey;
+
+<p><span
+style="mso-spacerun: yes">    </span>pCKey:=pCKey^.pNext
+
+<p><span
+style="mso-spacerun: yes">   </span>end;
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p>Здесь
+указатель pCKey определяет компоненту с заданным ключом, указа-
+
+<p>тель
+pPreComp содержит адрес предидущей компоненты.
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>Удаление компоненты с ключом Key
+выполняется оператором:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes"> </span>pPreComp^.pNext:=pCKey^.pNext;
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p><span
+style="mso-spacerun: yes">                    </span>pPreComp<span
+style="mso-spacerun: yes">   </span>pCKey
+
+<p><span
+style="mso-spacerun: yes">                     </span>ЙННН»<span
+style="mso-spacerun: yes">     </span>ЙННН»
+
+<p><span
+style="mso-spacerun: yes">                     </span>є * є<span
+style="mso-spacerun: yes">     </span>є * є
+
+<p><span
+style="mso-spacerun: yes">                     </span>ИНННј<span
+style="mso-spacerun: yes">    </span><span style="mso-spacerun:
+yes"> </span>ИНННј
+
+<p><span
+style="mso-spacerun: yes">                       </span>і<span
+style="mso-spacerun: yes">         </span>і
+
+<p><span
+style="mso-spacerun: yes">                       </span>і<span
+style="mso-spacerun: yes">         </span>і
+
+<p><span
+style="mso-spacerun: yes">                       </span>і<span
+style="mso-spacerun: yes">         </span>і
+
+<p>ЙННН»<span
+style="mso-spacerun: yes">     </span>ЙННН»<span style="mso-spacerun:
+yes">      </span>ЙННН»<span style="mso-spacerun: yes">     </span>ЙННН»<span
+style="mso-spacerun: yes">    </span>ЙННН»<span style="mso-spacerun: yes">     
+</span>ЙННН»<span style="mso-spacerun: yes">     </span>ЙННН»
+
+<p>є
+*ДєДДїєD1 є<span style="mso-spacerun:
+yes">      </span>єKK1є<span style="mso-spacerun: yes">     </span>єKeyє<span
+style="mso-spacerun: yes">    </span>єKK2є<span style="mso-spacerun: yes">     
+</span>єDN єЪДДєД* є
+
+<p>ИНННј<span
+style="mso-spacerun: yes">  </span>і<span style="mso-spacerun: yes"> 
+</span>єНННє<span style="mso-spacerun: yes">      </span>єНННє<span
+style="mso-spacerun: yes">     </span>єНННє<span style="mso-spacerun: yes">   
+</span>єНННє<span style="mso-spacerun: yes">      </span>єНННє<span
+style="mso-spacerun: yes">  </span>і<span style="mso-spacerun: yes"> 
+</span>ИНННј
+
+<p>pBegin
+АД&gt;є *ДєД...Д&gt;є *ДєДї<span style="mso-spacerun: yes">   </span>є
+*ДєДДД&gt;є *ДєД...Д&gt;єNILє&lt;ДЩ<span style="mso-spacerun: yes">  
+</span>pEnd
+
+<p><span
+style="mso-spacerun: yes">          </span>ИНННј<span style="mso-spacerun:
+yes">      </span>ИНННј і<span style="mso-spacerun: yes">   </span>ИНННј<span
+style="mso-spacerun: yes">    </span>ИНННј<span style="mso-spacerun: yes">     
+</span>ИНННј
+
+<p><span
+style="mso-spacerun: yes">                           </span>і<span
+style="mso-spacerun: yes">              </span>^
+
+<p><span
+style="mso-spacerun: yes">                     </span><span
+style="mso-spacerun: yes">      </span>і<span style="mso-spacerun:
+yes">              </span>і
+
+<p><span
+style="mso-spacerun: yes">                           </span>АДДДДДДДДДДДДДДЩ
+
+<p><span
+style="mso-spacerun:
+yes">                                                                                                                                                                                                                                                              
+</span>
+
+<p><span
+style="mso-spacerun: yes">   </span>Пример. Составить программу, которая
+формирует список, добавляет в
+
+<p>него
+произвольное количество компонент,<span style="mso-spacerun: yes"> 
+</span>выполняет вставку и удаление
+
+<p>компоненты
+по ключу,а затем читает и выводит весь
+списокна<span style="mso-spacerun:
+yes">  </span>экран
+
+<p>дисплея.
+В<span style="mso-spacerun: yes">    </span>качестве данных взять строку
+символов.Ввод данных - с
+
+<p>клавиатуры
+дисплея, признак конца ввода - строка символов END.
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes"> </span>Program LISTLINKED;
+
+<p><span
+style="mso-spacerun: yes">  </span>uses Crt;
+
+<p><span
+style="mso-spacerun: yes">  </span>type
+
+<p><span
+style="mso-spacerun: yes">   </span>Alfa= String[10];
+
+<p><span
+style="mso-spacerun: yes">   </span>PComp= ^Comp;
+
+<p><span
+style="mso-spacerun: yes">   </span>Comp= record
+
+<p><span
+style="mso-spacerun: yes">          </span>sD:Alfa;
+
+<p><span
+style="mso-spacerun: yes">          </span>pNext:PComp
+
+<p><span
+style="mso-spacerun: yes">         </span>end;
+
+<p><span
+style="mso-spacerun: yes">  </span>var
+
+<p><span
+style="mso-spacerun: yes">   </span>pBegin, pEnd, pAux, pCKey, pPreComp: PComp;
+
+<p><span
+style="mso-spacerun: yes">   </span>sC, sKey: Alfa;
+
+<p><span
+style="mso-spacerun: yes">   </span>bCond: Boolean;
+
+<p><span
+style="mso-spacerun: yes">  </span>Procedure CreateLL(var pBegin,pEnd: PComp;
+var sC: Alfa);
+
+<p><span
+style="mso-spacerun: yes">   </span>begin
+
+<p><span
+style="mso-spacerun: yes">    </span>New(pBegin);
+
+<p><span
+style="mso-spacerun: yes">    </span>pBegin^.pNext:=NIL;
+
+<p><span
+style="mso-spacerun: yes">    </span>pBegin^.sD:=sC;
+
+<p><span
+style="mso-spacerun: yes">    </span>pEnd:=pBegin
+
+<p><span
+style="mso-spacerun: yes">   </span>end;
+
+<p><span
+style="mso-spacerun: yes">  </span>Procedure AddLL(var pEnd: PComp; var sC:
+Alfa);
+
+<p><span
+style="mso-spacerun: yes">   </span>var pAux: PComp;
+
+<p><span
+style="mso-spacerun: yes">   </span>begin
+
+<p><span
+style="mso-spacerun: yes">    </span>New(pAux);
+
+<p><span
+style="mso-spacerun: yes">    </span>pAux^.pNext:=NIL;
+
+<p><span
+style="mso-spacerun: yes">    </span>pEnd^.pNext:=pAux;
+
+<p><span
+style="mso-spacerun: yes">    </span>pEnd:=pAux;
+
+<p><span
+style="mso-spacerun: yes">    </span>pEnd^.sD:=sC
+
+<p><span
+style="mso-spacerun: yes">   </span>end;
+
+<p><span
+style="mso-spacerun: yes">  </span>Procedure Find(var sKey: Alfa; var
+pBegin,pCKey,pPreComp: PComp;
+
+<p><span
+style="mso-spacerun: yes">                 </span>var bCond: Boolean);
+
+<p><span
+style="mso-spacerun: yes">   </span>begin
+
+<p><span
+style="mso-spacerun: yes">    </span>pCKey:=pBegin;
+
+<p><span
+style="mso-spacerun: yes">    </span>while (pCKey &lt;&gt; NIL) and (sKey
+&lt;&gt; pCKey^.D) do
+
+<p><span
+style="mso-spacerun: yes">     </span>begin
+
+<p><span
+style="mso-spacerun: yes">      </span>pPreComp:=pCKey;
+
+<p><span
+style="mso-spacerun: yes">      </span>pCKey:=pCKey^.pNext
+
+<p><span
+style="mso-spacerun: yes">    </span><span style="mso-spacerun:
+yes"> </span>end;
+
+<p><span
+style="mso-spacerun: yes">    </span>if (pCKey = NIL) and (sKey &lt;&gt;
+pCKey^.sD) then bCond:=FALSE
+
+<p><span
+style="mso-spacerun: yes">                                            
+</span>else bCond:=TRUE
+
+<p><span
+style="mso-spacerun: yes">   </span>end;
+
+<p><span
+style="mso-spacerun: yes">  </span>Procedure InsComp(var sKey,sC: Alfa);
+
+<p><span
+style="mso-spacerun: yes">   </span>var pAux:PComp;
+
+<p><span
+style="mso-spacerun: yes">   </span>begin
+
+<p><span
+style="mso-spacerun: yes">    </span>Find(sKey,pBegin,pCKey,pPreComp,bCond);
+
+<p><span
+style="mso-spacerun: yes">    </span>New(pAux);
+
+<p><span
+style="mso-spacerun: yes">    </span>pAux^.sD:=sC;
+
+<p><span
+style="mso-spacerun: yes">    </span>pAux^.pNext:=pCKey^.pNext;
+
+<p><span
+style="mso-spacerun: yes">    </span>pCKey^.pNext:=pAux
+
+<p><span
+style="mso-spacerun: yes">   </span>end;
+
+<p><span
+style="mso-spacerun: yes">  </span>Procedure DelComp(var sKey: Alfa; var
+pBegin: PComp);
+
+<p><span
+style="mso-spacerun: yes">   </span>begin
+
+<p><span
+style="mso-spacerun: yes">    </span>Find(sKey,pBegin,pCKey,pPreComp,bCond);
+
+<p><span
+style="mso-spacerun: yes">    </span>pPreComp^.pNext:=pCKey^.pNext
+
+<p><span
+style="mso-spacerun: yes">   </span>end;
+
+<p><span
+style="mso-spacerun: yes">  </span>begin
+
+<p><span
+style="mso-spacerun: yes">   </span>ClrScr;
+
+<p><span
+style="mso-spacerun: yes">   </span>writeln('<span style="mso-spacerun: yes"> 
+</span>ВВЕДИ СТРОКУ ');
+
+<p><span
+style="mso-spacerun: yes">   </span>readln(sC);
+
+<p><span
+style="mso-spacerun: yes">   </span>CreateLL(pBegin,pEnd,sC);
+
+<p><span
+style="mso-spacerun: yes">   </span>repeat
+
+<p><span
+style="mso-spacerun: yes">    </span>writeln('ВВЕДИ СТРОКУ ');
+
+<p><span
+style="mso-spacerun: yes">    </span>readln(sC);
+
+<p><span
+style="mso-spacerun: yes">    </span>AddLL(pEnd,sC)
+
+<p><span
+style="mso-spacerun: yes">   </span>until sC='END';
+
+<p><span
+style="mso-spacerun: yes">   </span>writeln(' ***** ВЫВОД ИСХОДНОГО СПИСКА
+*****');
+
+<p><span
+style="mso-spacerun: yes">   </span>pAux:=pBegin;
+
+<p><span
+style="mso-spacerun: yes">   </span>repeat
+
+<p><span
+style="mso-spacerun: yes">    </span>writeln(pAux^.sD);
+
+<p><span
+style="mso-spacerun: yes">    </span>pAux:=pAux^.pNext;
+
+<p><span
+style="mso-spacerun: yes">   </span>until pAux=NIL;
+
+<p><span
+style="mso-spacerun: yes">   </span>writeln;
+
+<p><span
+style="mso-spacerun: yes">   </span>writeln('ВВЕДИ КЛЮЧ ДЛЯ ВСТАВКИ СТРОКИ');
+
+<p><span
+style="mso-spacerun: yes">   </span>readln(sKey);
+
+<p><span
+style="mso-spacerun: yes">   </span>writeln('ВВЕДИ ВСТАВЛЯЕМУЮ СТРОКУ');
+
+<p><span
+style="mso-spacerun: yes">   </span>readln(sC);
+
+<p><span
+style="mso-spacerun: yes">   </span>InsComp(sKey,sC);
+
+<p><span
+style="mso-spacerun: yes">   </span>writeln;
+
+<p><span
+style="mso-spacerun: yes">   </span>writeln('ВВЕДИ КЛЮЧ УДАЛЯЕМОЙ СТРОКИ');
+
+<p><span
+style="mso-spacerun: yes">   </span>readln(sKey);
+
+<p><span
+style="mso-spacerun: yes">   </span>DelComp(sKey,pBegin);
+
+<p><span
+style="mso-spacerun: yes">   </span>writeln;
+
+<p><span
+style="mso-spacerun: yes">   </span>writeln(' ***** ВЫВОД ИЗМЕНЕННОГО СПИСКА
+*****');
+
+<p><span
+style="mso-spacerun: yes">    </span>pAux:=pBegin;
+
+<p><span
+style="mso-spacerun: yes">    </span>repeat
+
+<p><span
+style="mso-spacerun: yes">     </span>writeln(pAux^.sD);
+
+<p><span
+style="mso-spacerun: yes">     </span>pAux:=pAux^.pNext;
+
+<p><span
+style="mso-spacerun: yes">    </span>until pAux=NIL
+
+<p><span
+style="mso-spacerun: yes">  </span>end.
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><div align="center"><a href="../Pascal. Курс лекций.html">	<img src="../../soder.gif" width=120 height=31 border=0 alt=""></a></div></p>
+</body>
+
+</html>

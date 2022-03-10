@@ -1,0 +1,505 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Untitled</title>
+</head>
+
+<body lang=RU style="'tab-interval:35.4pt'" background="bgrwhite.gif">
+<p><div align="center"><b><font size="+1" face="Arial">28. Множества </font></b></div></p>
+<p><span
+style="mso-spacerun: yes">   </span>Понятие множества в языке ПАСКАЛЬ
+основывается<span style="mso-spacerun: yes">  </span>на<span
+style="mso-spacerun: yes">  </span>математическом
+
+<p>представлении
+о<span style="mso-spacerun: yes">  </span>множествах:<span style="mso-spacerun:
+yes">  </span>это ограниченная совокупность различных
+
+<p>элементов.
+Для построения конкретного множественного типа использует-
+
+<p>ся
+перечисляемый или интервальный тип данных.<span style="mso-spacerun: yes"> 
+</span>Тип элементов, состав-
+
+<p>ляющих
+множество, называется базовым типом.
+
+<p><span
+style="mso-spacerun: yes">   </span>Множественный тип<span style="mso-spacerun:
+yes">  </span>описывается<span style="mso-spacerun: yes">  </span>с<span
+style="mso-spacerun: yes">  </span>помощью<span style="mso-spacerun: yes"> 
+</span>служебных слов Set of,
+
+<p>например:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">         </span>type<span style="mso-spacerun: yes"> 
+</span>M= Set of B;
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p>Здесь М
+- множественный тип, В - базовый тип.
+
+<p><span
+style="mso-spacerun: yes">   </span>Пример описания переменной множественного
+типа:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">         </span>type
+
+<p><span
+style="mso-spacerun: yes">             </span>M= Set of 'A'..'D';
+
+<p><span
+style="mso-spacerun: yes">         </span>var
+
+<p><span
+style="mso-spacerun: yes">            </span>MS: M;
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Принадлежность переменных к множественному
+типу может быть опреде-
+
+<p>лена
+прямо в разделе описания переменных:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">         </span>var
+
+<p><span
+style="mso-spacerun: yes">            </span>C: Set of 0..7;
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Константы множественного<span
+style="mso-spacerun: yes">  </span>типа<span style="mso-spacerun: yes"> 
+</span>записываются<span style="mso-spacerun: yes">  </span>в виде заключенной
+в
+
+<p>квадратные
+скобки последовательности элементов или интервалов базово-
+
+<p>го
+типа, разделенных запятыми, например:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">         </span>['A', 'C']<span style="mso-spacerun:
+yes">    </span>[0, 2, 7]<span style="mso-spacerun: yes">    </span>[3, 7,
+11..14].
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p>Константа
+вида
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">         </span>[ ]
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p>означает
+пустое подмножество.
+
+<p><span
+style="mso-spacerun: yes">   </span>Множество включает в себя набор элементов
+базового типа, все подм-
+
+<p>ножества
+данного множества, а также пустое подмножество. Если базовый
+
+<p>тип, на
+котором строится множество, имеет К элементов, то число подм-
+
+<p>ножеств,
+входящих в это множество, равно 2 в степени К. Пусть имеется
+
+<p>переменная
+Р интервального типа:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">         </span>var P: 1..3;
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Эта переменная может принимать три
+различных значения<span style="mso-spacerun: yes">  </span>-<span
+style="mso-spacerun: yes">  </span>либо<span style="mso-spacerun: yes"> 
+</span>1,
+
+<p>либо 2,
+либо 3. Переменная Т множественного типа
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">         </span>var T: Set of 1..3;
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p>может
+принимать восемь различных значений:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">         </span>[ ]<span style="mso-spacerun:
+yes">        </span>[1,2]
+
+<p><span
+style="mso-spacerun: yes">         </span>[1]<span style="mso-spacerun:
+yes">        </span>[1,3]
+
+<p><span
+style="mso-spacerun: yes">         </span>[2]<span style="mso-spacerun:
+yes">        </span>[2,3]
+
+<p><span
+style="mso-spacerun: yes">         </span>[3]<span style="mso-spacerun:
+yes">        </span>[1,2,3]
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Порядок перечисления элементов базового
+типа в константах<span style="mso-spacerun: yes">  </span>безраз-
+
+<p>личен.
+
+<p><span
+style="mso-spacerun: yes">   </span>Значение переменной<span
+style="mso-spacerun: yes">  </span>множественного<span style="mso-spacerun:
+yes">  </span>типа<span style="mso-spacerun: yes">  </span>может быть задано
+конс-
+
+<p>трукцией
+вида [T], где T - переменная базового типа.
+
+<p><span
+style="mso-spacerun: yes">   </span>К переменным и константам множественного
+типа<span style="mso-spacerun: yes">  </span>применимы<span
+style="mso-spacerun: yes">  </span>операции
+
+<p>присваивания(:=),
+объединения(+), пересечения(*) и вычитания(-):
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">         </span>['A','B'] + ['A','D']<span
+style="mso-spacerun: yes">      </span>даст<span style="mso-spacerun: yes"> 
+</span>['A','B','D']
+
+<p><span
+style="mso-spacerun: yes">         </span>['A'] * ['A','B','C']<span
+style="mso-spacerun: yes">      </span>даст<span style="mso-spacerun: yes"> 
+</span>['A']
+
+<p><span
+style="mso-spacerun: yes">         </span>['A','B','C'] - ['A','B']<span
+style="mso-spacerun: yes">  </span>даст<span style="mso-spacerun: yes"> 
+</span>['C'].
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Результат выполнения<span
+style="mso-spacerun: yes">  </span>этих<span style="mso-spacerun: yes"> 
+</span>операций<span style="mso-spacerun: yes">  </span>есть величина
+множественного
+
+<p>типа.
+
+<p><span
+style="mso-spacerun: yes">   </span>К множественным величинам применимы
+операции: тождественность (=),
+
+<p>нетождественность
+(&lt;&gt;), содержится<span style="mso-spacerun: yes">  </span>в (&lt;=),
+содержит (&gt;=).<span style="mso-spacerun: yes">  </span>Результат
+
+<p>выполнения
+этих операций имеет логический тип, например:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">         </span>['A','B'] = ['A','C']<span
+style="mso-spacerun: yes">  </span>даст FALSE
+
+<p><span
+style="mso-spacerun: yes">         </span>['A','B'] &lt;&gt; ['A','C'] даст
+TRUE
+
+<p><span
+style="mso-spacerun: yes">         </span>['B'] &lt;= ['B','C']<span
+style="mso-spacerun: yes">     </span>даст TRUE
+
+<p><span
+style="mso-spacerun: yes">         </span>['C','D'] &gt;= ['A']<span
+style="mso-spacerun: yes">     </span>даст FALSE.
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Кроме этих операций для работы с величинами
+множественного типа<span style="mso-spacerun: yes">  </span>в
+
+<p>языке
+ПАСКАЛЬ используется операция
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">         </span>in
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p>проверяющая<span
+style="mso-spacerun: yes">  </span>принадлежность<span style="mso-spacerun:
+yes">  </span>элемента<span style="mso-spacerun: yes">  </span>базового
+типа,<span style="mso-spacerun: yes">  </span>стоящего слева
+
+<p>от
+знака операции,<span style="mso-spacerun: yes">  </span>множеству, стоящему
+справа от знака операции. Ре-
+
+<p>зультат
+выполнения этой операции - булевский.<span style="mso-spacerun: yes"> 
+</span>Операция проверки при-
+
+<p>надлежности
+элемента множеству часто используется вместо операций от-
+
+<p>ношения,
+например:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">         </span>A in ['A', 'B'] даст<span
+style="mso-spacerun: yes">  </span>TRUE,
+
+<p><span
+style="mso-spacerun: yes">         </span>2 in [1, 3, 6]<span
+style="mso-spacerun: yes">  </span>даст<span style="mso-spacerun: yes"> 
+</span>FALSE.
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>При использовании<span style="mso-spacerun:
+yes">  </span>в<span style="mso-spacerun: yes">   </span>программах<span
+style="mso-spacerun: yes">   </span>данных<span style="mso-spacerun: yes">  
+</span>множественного<span style="mso-spacerun: yes">   </span>типа
+
+<p>выполнение
+операций происходит над битовыми строками данных.<span style="mso-spacerun:
+yes">  </span>Каждому
+
+<p>значению
+множественного типа в памяти ЭВМ соответствует один двоичный
+
+<p>разряд.
+Например, множество
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">         </span>['A','B','C','D']
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p>представлено
+в памяти ЭВМ битовой строкой
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">         </span>1 1 1 1.
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p>Подмножества
+этого множества представлены строками:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">         </span>['A','B','D']<span
+style="mso-spacerun: yes">   </span>1 1 0 1
+
+<p><span
+style="mso-spacerun: yes">         </span>['B','C']<span style="mso-spacerun:
+yes">       </span>0 1 1 0
+
+<p><span
+style="mso-spacerun: yes">         </span>['D']<span style="mso-spacerun:
+yes">           </span>0 0 0 1
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Величины<span style="mso-spacerun: yes"> 
+</span>множественного типа не могут быть элементами списка вво-
+
+<p>да -
+вывода.
+
+<p><span
+style="mso-spacerun: yes">   </span>В каждой<span style="mso-spacerun: yes"> 
+</span>конкретной<span style="mso-spacerun: yes">  </span>реализации
+транслятора с языка ПАСКАЛЬ коли-
+
+<p>чество
+элементов базового типа,<span style="mso-spacerun: yes">  </span>на котором
+строится множество, огра-
+
+<p>ничено.
+В<span style="mso-spacerun: yes">  </span>TURBO PASCAL количество базовых
+элементов не должно превы-
+
+<p>шать
+256.
+
+<p><span
+style="mso-spacerun: yes">   </span>Инициализация величин<span
+style="mso-spacerun: yes">  </span>множественного<span style="mso-spacerun:
+yes">  </span>типа производится с помощью
+
+<p>типизированных
+констант:
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>const<span style="mso-spacerun: yes"> 
+</span>seLit: Set of 'A'..'D'= [];
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>Проиллюстрируем применение<span
+style="mso-spacerun: yes">  </span>данных множественного типа на примере.
+
+<p><span
+style="mso-spacerun: yes">   </span>Пример. Составить программу, которая
+вырабатывает и выводит на эк-
+
+<p>ран
+дисплея наборы случайных чисел для игры в &quot;Спортлото 5 из 36&quot;.
+
+<p><span
+style="mso-spacerun: yes">   </span>Для заполнения каждой карточки спортлото
+необходимо получить набор
+
+<p>из пяти
+псевдослучайных чисел. К этим числам предъявляются два требо-
+
+<p>вания:
+
+<p><span
+style="mso-spacerun: yes">    </span>-числа должны находиться в диапазоне
+1..36;
+
+<p><span
+style="mso-spacerun: yes">    </span>-числа не должны повторяться.
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">    </span>Program Lotto;
+
+<p><span
+style="mso-spacerun: yes">     </span>var
+
+<p><span
+style="mso-spacerun: yes">         </span>nb, k: Set of 1..36;
+
+<p><span
+style="mso-spacerun: yes">         </span>kol, l, i, n: Integer;
+
+<p><span
+style="mso-spacerun: yes">     </span>begin
+
+<p><span
+style="mso-spacerun: yes">        </span>Randomize;
+
+<p><span
+style="mso-spacerun: yes">        </span>WriteLn('ВВЕДИ kol');
+
+<p><span
+style="mso-spacerun: yes">        </span>ReadLn(kol);
+
+<p><span
+style="mso-spacerun: yes">        </span>nb:=[1..36];
+
+<p><span
+style="mso-spacerun: yes">        </span>for i:=1 to kol do
+
+<p><span
+style="mso-spacerun: yes">          </span>begin
+
+<p><span
+style="mso-spacerun: yes">           </span>k:=[];
+
+<p><span
+style="mso-spacerun: yes">           </span>for l:=1 to 5 do
+
+<p><span
+style="mso-spacerun: yes">             </span>begin
+
+<p><span
+style="mso-spacerun: yes">               </span>repeat
+
+<p><span
+style="mso-spacerun: yes">                 </span>n:=Random(36)
+
+<p><span
+style="mso-spacerun: yes">               </span>until (n in nb) and not (n in
+k);
+
+<p><span
+style="mso-spacerun: yes">               </span>k:=k+[n];
+
+<p><span
+style="mso-spacerun: yes">               </span>Write(n:4)
+
+<p><span
+style="mso-spacerun: yes">             </span>end;
+
+<p><span
+style="mso-spacerun: yes">           </span>WriteLn
+
+<p><span
+style="mso-spacerun: yes">          </span>end
+
+<p><span
+style="mso-spacerun: yes">         </span>end.
+
+<p><div align="center"><a href="../Pascal. Курс лекций.html">	<img src="../../soder.gif" width=120 height=31 border=0 alt=""></a></div></p>
+
+</body>
+</html>

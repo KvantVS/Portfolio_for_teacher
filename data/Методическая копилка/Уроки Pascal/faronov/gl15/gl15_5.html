@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_4.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_6.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+События и их обработка
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Весьма важным принципом Turbo Vision является принцип отделения процесса 
+создания видимых изображений от процесса обработки данных. Это означает, что все 
+действия по созданию разнообразных окон, меню и прочих видимых элементов можно 
+осуществлять, не заботясь о тех командах (действиях пользователя), которые будут 
+связаны с ними. Именно так мы поступили при определении меню и строки статуса 
+-коды команд дают возможность распознать соответствующие действия пользователя, 
+однако сами эти действия пока еще никак не раскрыты. И наоборот, мы можем 
+разрабатывать части программы, ответственные за обработку действий пользователя, 
+не связывая прямо эти части с созданием нужных видимых элементов.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Turbo Vision поддерживает два возможных способа действия пользователя - с 
+помощью клавиш клавиатуры и с помощью мыши. Любое такое действие пользователя с 
+точки зрения Turbo Vision приводит к появлению события, т.е. к созданию 
+небольшого информационного пакета, описывающего вновь возникшую ситуацию. 
+События распространяются от одной части программы к другой до тех пор, пока не 
+обнаружится подпрограмма, ответственная за обработку данного события. Эта 
+подпрограмма обычно очищает информационный пакет и таким образом блокирует 
+дальнейшее перемещение события.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Пожалуй, именно механизм событий кардинально отличает Turbo Vision от других 
+библиотек Турбо Паскаля. На первых порах это может вызвать определенные 
+трудности, связанные с отладкой программ. Принцип независимости обработки 
+событий от процесса создания видимых элементов приводит фактически к появлению 
+двух параллельных процессов в рамках одной программы: процесса создания видимых 
+элементов и процесса обработки событий. Говоря о программах Turbo Vision, 
+следует помнить, что эти программы управляются событиями. Их трассировка 
+(прослеживание работы) в среде Турбо Паскаль обычно достигается установкой и 
+использованием контрольных точек.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Подпрограммы, ответственные за обработку действий пользователя, называются 
+обработчиками событий. Любой стандартный для Turbo Vision объект, обеспечивающий 
+создание видимого элемента, имеет собственный обработчик событий (виртуальный 
+метод HandleEvent), который Вы можете перекрыть своим собственным методом, если 
+Вас не устраивает стандартная реакция объекта на то или иное событие. Существует 
+такой метод и в объекте TNotebook. По умолчанию этот объект использует 
+обработчик событий, унаследованный им от объекта-родителя TApplication. 
+Стандартный обработчик знает, как реагировать на команды cmQuit и стМепи, но ему 
+не известны новые команды cmWork, cmOpenFile и другие. Чтобы программа смогла 
+правильно обработать эти команды, мы должны перекрыть стандартный метод 
+HandleEvent объекта TNotebook новым. Добавим в описание объекта TNotebook еще 
+одну строку</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TNotebook = object (TApplication)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure HandleEvent(var Event: TEvent); Virtual;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">и поместим в раздел объявлений текст новой подпрограммы:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TNotebook.HandleEvent(var Event: TEvent);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Обработчик событий 
+программы}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin {TNotebook.HandleEvent}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Inherited HandleEvent(Event);{Обработка 
+стандартных команд cmQuit и cmMenu}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if Event.What = evCommand then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> case Event.Command of</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Обработка новых команд:}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmOpen : FileOpen;  {Открыть файл}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmSave:FileSave; {Закрыть файл}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmChangeDir:ChangeDir;  {Сменить диск}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmDOSShell:DOSCall;  {Временный выход в ДОС}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmWork:Work;  {Обработать данные}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">exit  {Не обрабатывать другие команды}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ClearEvent (Event)  {Очистить событие после обработки}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;  {TNotebook.HandleEvent}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Чтобы новый вариант программы можно было выполнить, следует предусмотреть 
+«заглушки» для несуществующих пока процедур FileOpen, FileSave и т.д. Например:</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure FileOpen;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Поведение вновь созданного варианта программы внешне ничем не отличается от 
+предыдущего: также будут созданы меню, строка статуса и основное поле экрана, 
+программа по-прежнему будет распознавать команды Alt-X и F10. Однако теперь она 
+будет реагировать и на новые команды. Чтобы убедиться в этом, установите 
+контрольные точки в заглушках FileOpen и FileSave и запустите программу вновь: 
+нажатие на клавишу F3 вызовет останов в контрольной точке FileOpen - ведь именно 
+с этой клавишей мы связали команду cmOpen в процедуре InitStatusLine, в то время 
+как нажатие на клавишу F2 не приведет к срабатыванию контрольной точки FileSave, 
+поскольку команда cmSave пока еще запрещена и обработчик HandleEvent ее просто 
+не «увидит».</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Чтобы использовать нестандартные команды меню или строки статуса, мы должны 
+перекрыть обработчик событий программы, в новом обработчике выделить из потока</font>
+<font face="Arial, Helvetica, sans-serif" size="3">событий команды и распознать их коды.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Чтобы стали более понятны действия обработчика событий, отметим, что тип 
+TEvent в Turbo Vision определен как запись такого вида:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TEvent = record&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">What: Word;  {Определяет тип события}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> case Word of  {"Пустое" 
+событие}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">evMouse: (  {Событие от мыши:}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Buttons: Byte;  {Состояние кнопок}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Double: Boolean;{Признак двойного нажатия кнопки мыши}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Where: TPoint);  {Координаты курсора мыши}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">evKeyDown: (  {Событие от 
+клавиатуры:}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> case Integer of</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">0: (KeyCode: Word);{Код клавиши}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 1: (CharCode: Byte; ScanCode: Byte));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">evMessage: (  {Событие-сообщение:}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Command: Word;  {Код команды}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> case Word of</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">0:(InfoPtr: Pointer);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">1:(InfoLong: Longlnt);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">2:(InfoWord: Word);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">3:(Infolnt: Integer);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">4:(InfoByte:Byte);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">5:(InfoChar:Char));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Стандартная маска evCommand позволяет выделить из потока событий только те, 
+которые связаны с передачей команд между различными обработчиками событий. 
+Именно таким способом стандартный обработчик TApplication.HandleEvent сообщает 
+новому обработчику TNotebookHandleEvent о возникновении события, связанного с 
+вновь определенной командой. Если бы мы не предусмотрели вызов стандартного 
+обработчика с помощью оператора</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Inherited HandleEvent(Event);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">нам пришлось бы самим анализировать положение мыши или нажатую клавишу и 
+интерпретировать их как соответствующие команды. Включение вызова 
+TApplication.HandleEvent в тело нашего обработчика событий избавляет нас от этой 
+рутинной работы.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В конце обработчика мы вызвали стандартную процедуру ClearEvent, с помощью 
+которой в переменную Event помещается сообщение Nothing («пустое» событие). Это 
+событие игнорируется всеми обработчиками, так что программа будет повторять 
+проверку состояния мыши и клавиатуры до тех пор, пока не произойдет нового 
+события. Фактически тело процедуры TApplication.Run (см. раздел исполняемых 
+операторов нашей программы) состоит из бесконечно повторяющегося цикла проверки 
+мыши и клавиатуры и передачи событий по цепи обработчиков событий. После 
+получения любого события обработчик должен либо обработать это событие и 
+очистить переменную Event, либо просто вернуть управление обработчику верхнего 
+уровня, если эта команда не предназначена для него, либо, наконец, сформировать 
+и передать новое</font> <font face="Arial, Helvetica, sans-serif" size="3">событие для реализации команд, которые распознаны им, но которые он выполнять 
+не умеет или не должен.</font> </P>
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_4.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_6.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</BODY></HTML>

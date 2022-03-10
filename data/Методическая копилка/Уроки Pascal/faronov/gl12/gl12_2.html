@@ -1,0 +1,204 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl12_1.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl12_3.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Регистры
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+В МП 8086/8088 имеется 14 регистров. В функциональном отношении они делятся 
+на группы:</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">регистры общего назначения (АХ, ВХ, СХ, DX); предназначены для хранения 
+операндов и выполнения основных команд; любой из них может использоваться как 
+совокупность двух независящих друг от друга 8-разрядных регистров: старшего 
+байта регистра (АН, ВН, СН, DH) и младшего байта (AL, BL, CL, DL); например, АХ 
+состоит из АН и AL;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">сегментные регистры (CS, DS, SS, ES); используются для указания сегмента при 
+адресации памяти;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">регистры-указатели (SP, BP, IP); используются для указания смещения при 
+адресации памяти;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">индексные регистры (SI, DI); применяются для индексной адресации;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">регистр флагов; используется для хранения признаков состояния процессора.</font></li>
+</ul>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Внутри одной и той же функциональной группы регистры используются различным 
+образом. Ниже описывается специфика использования регистров.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Регистр АХ</b>. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Является основным 
+сумматором. Используется во всех арифметических операциях (сложить, умножить и 
+т.п.). Только с помощью АХ и его полурегистров AHIAL возможен обмен данными с 
+портами ввода/вывода.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Регистр ВХ.</b> </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Используется как сумматор в арифметических операциях, а также как 
+базовый регистр при индексной адресации.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Регистр СХ</b>.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В основном используется как счетчик при выполнении операций 
+повторения и сдвига. Может также участвовать в арифметических операциях.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Регистр DX.</b> </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Используется как регистр данных в операциях ввода/вывода, а также 
+как сумматор при обработке длинных целых чисел (32-разрядных).</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Регистр CS.</b> </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Содержит номер сегмента памяти (сегмента кода), в котором 
+располагается текущая машинная инструкция. Для получения полного адреса 
+следующей команды его содержимое сдвигается влево на 4 разряда и складывается с 
+регистром-указателем IP. Содержимое CS автоматически изменяется в командах 
+дальнего (межсегментного) перехода и вызова процедур.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Регистр IP. </b> </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Определяет смещение относительно начала сегмента кода CS 
+очередной исполняемой машинной инструкции. Содержимое IP автоматически 
+изменяется в ходе исполнения инструкции, обеспечивая правильный порядок выборки 
+команд из памяти.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Регистр DS.</b> </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Содержит номер сегмента памяти (сегмента данных), в котором 
+располагаются данные (константы и переменные). Все глобальные переменные и 
+типизированные константы программы Турбо Паскаля всегда располагаются в 
+единственном сегменте, адресуемом этим регистром.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Регистр SS.</b> </font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Содержит номер сегмента стека. Стек - это участок автоадресуемой 
+памяти, предназначенный для временного хранения операндов. С помощью стека ТурбоПаскаль организует обмен данными между программой и процедурами, кроме того, 
+в нем он размещает все локальные переменные (т.е. переменные, объявленные внутри 
+процедуры). Память стека используется по правилу «последним пришел - первым 
+ушел»: самый последний помещенный в стек операнд будет первым извлекаться из 
+него.</font> 
+</P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Регистр SP.</b> </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Указывает на вершину стека, т.е. совместно с регистром 55 
+адресует ячейку памяти, куда будет помещаться операнд или откуда он будет 
+извлекаться. Содержимое этого регистра автоматически уменьшается после 
+размещения в стеке очередного операнда и увеличивается после извлечения операнда 
+из стека.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Регистр ВР.</b> </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Так называемый указатель базы. Облегчает создание и использование 
+локального стека (т.е. стека для использования внутри процедуры).</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Регистр ES.</b> </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Дополнительный сегментный регистр ES используется для 
+межсегментного обмена данными и в некоторых строковых операциях.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Регистр SI.</b> </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Определяет адрес источника информации при индексной адресации 
+данных (например, при обработке массивов). Обычно используется в паре с 
+регистром DS.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Регистр DI.</b> </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В паре с регистром &pound;5 определяет приемник информации при 
+межсегментном обмене данными.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Регистр флагов</b>.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Отдельные разряды (биты) этого регистра имеют следующее 
+назначение.</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Флаг переноса CF. </font>
+</b> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Содержит 1, если произошел перенос единицы при сложении или 
+заем единицы при вычитании. Используется также в циклических операциях и 
+операциях сравнения.</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Флаг четности PF. </font>
+</b> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Содержит 1, если в результате операции получено число с 
+четным количеством значащих разрядов, т.е. дополняет результат до нечета - 
+используется в операциях обмена для контроля данных.</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Флаг внешнего переноса AF. </font>
+</b> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Контролирует перенос из 3-го бита данных. Полезен 
+при операциях над упакованными десятичными числами.</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Флаг нуля ZF. </font>
+</b> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Равен 1, если в результате операции получен ноль, и равен 0 в 
+противном случае.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Флаг знака SF.</b> </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Равен 1, если в результате операции получено отрицательное 
+число (с единицей в старшем разряде).</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Флаг трассировки TF. </font>
+</b> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Равен 1, если программа исполняется по шагам, с 
+передачей управления после каждой выполненной команды по прерыванию с вектором 
+1.</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Флаг прерываний IF. </font>
+</b> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Содержит 1, если микропроцессору разрешена обработка 
+прерываний.</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Флаг направления DF. </font>
+</b> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Управляет направлением передачи данных: если он содержит 
+0, то после каждой индексной операции содержимое индексных регистров 
+увеличивается на 1, в противном случае - уменьшается на 1.</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Флаг переполнения OF. </font>
+</b> </P>
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Устанавливается в единицу, если в результате операции 
+получено число, выходящее за разрядную сетку микропроцессора.</font> </P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl12_1.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl12_3.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

@@ -1,0 +1,325 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr5.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr5_2.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Определение биоритмов
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Программа для определения физической, эмоциональной и интеллектуальной 
+активности человека. Вводится дата рождения и текущая дата. Программа вычисляет 
+и выводит на экран общее количество дней, часов, минут и секунд, разделяющих обе 
+даты, а также прогнозирует на месяц вперед даты, соответствующие максимуму и 
+минимуму биоритмов. Описание программы см. п. 2. 7. 2.}&nbsp;</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Size_of_Month: array [1..12] of Byte =</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">d0, d,<i>{Дни рождения и текущий}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">m0, m,<i>{Месяцы рождения и текущий}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">y0, y,<i>{Годы рождения и текущий}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">dmin,<i>{Наименее благоприятный день}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">dmax,<i>{Наиболее благоприятный день}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">days: Integer;<i>{Количество дней от рождения}</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{--------------------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure InputDates(var d0,m0,y0,d,m,y :
+Integer);</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Вводит дату рождения и текущую дату.
+Контролирует правильность</font> <font size="3">дат и их непротиворечивость(текущая дата должна быть позже</font>
+<font size="3">даты рождения)}</font></font></i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">correctly: Boolean; <i> {Признак правильного ввода}</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-------------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure InpDate(text: String; var d,m,y:
+Integer);</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Выводит приглашение TEXT, вводит дату в формате ДД ММ ГГГГ и</font>
+<font size="3">проверяет ее правильность}</font></font></i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">YMIN =1800; <i> {Минимальный правильный год}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> YMAX =2000; <i> {Максимальный правильный 
+год}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin <i> {InpDate}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> repeat</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write(text);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn(d,m,y);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">correctly := (y &gt;= YMIN) and (Y &lt;= YMAX) and (m &gt;= 1)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">and (m &lt;= 12) and (d &gt; 0);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if correctly then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if (m = 2) and (d = 29) and (y mod 4=0)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> then</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Ничего не делать: это 29 февраля високосного года!}&nbsp;</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">correctly := d &lt;= Size_of_Month[m];&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if not correctly then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn('Ошибка в дате!')&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> until correctly&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i> {InpDate}</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{----------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin <i> {InputDates}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> repeat</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InpDate('Введите дату рождения в формате ДД ММ ГГГГ:',d0,m0,y0);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InpDate(' 
+Введите текущую дату: ', d, m, у);&nbsp;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Проверяем непротиворечивость дат:}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">correctly := у &gt; у0;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if not correctly and (y = y0) then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">correctly := m &gt; m0;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if not correctly and (m = m0) then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">correctly := d &gt;= d0&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">until correctly&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i> {InputDates}</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-----------------}&nbsp;</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Procedure Get_number s_of_days (d0,m0, y0,d,m, у :
+Integer;</font> <font face="Arial, Helvetica, sans-serif" size="3">var days: Integer);&nbsp;</font></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Определение полного количества дней, прошедших от одной 
+даты</font> <font size="3">до другой }</font></font></i> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-------------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Variant2 ;&nbsp;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Подсчет количества дней в месяцах, разделяющих обе даты 
+}&nbsp;</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mm : Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin <i> {Variant2}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mm : = m0 ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">while mm &lt; m do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">days := days + Size_of_Month[mm] ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if (mm = 2) and (y0 mod 4=0) then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">inc(days) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> inc (mm)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i> {Variant2}</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{---------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Variant3 ;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Подсчет количества дней в месяцах и годах,</font>
+<font size="3">разделяющих обе даты}&nbsp;</font></font></i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mm, yy : Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin {variant3}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> mm := m0 + 1;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">while mm &lt;= 12 do <i> {Учитываем остаток года рождения:}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">days := days+Size_of_Month[mm] ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if (mm = 2) and (yO mod 4=0) then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">inc (days) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> inc (mm)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">yy := y0 + 1;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">while yy &lt; у do <i> {Прибавляем разницу лет:}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">days := days + 365;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if yy mod 4=0 then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">inc (days) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> inc (yy)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mm : = 1 ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">while mm &lt; m do <i> {Прибавляем начало текущего года:}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">days := days + Size_of_Month[mm] ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if (y mod 4=0) and (mm = 2) then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">inc (days) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> inc (mm)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i> {Variant3}</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{--------------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin {Get_numbers_of_days}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if (y = y0) and (m = m0) then <i> {Даты отличаются только днями:}&nbsp;</i></font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> days := d - d0</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">else <i> {Даты отличаются не только днями: }&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">days := d + Size_of_Month[m0] - d0;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Учитываем количество дней в текущем месяце и количество дней</font>
+<font size="3">до конца месяца рождения}&nbsp;</font></font></i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if (y0 mod 4=0) and (m0 = 2) then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">inc (days) ; <i> {Учитываем високосный год}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if у = y0 then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Variant2 <i> {Разница в месяцах одного и того же года}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Variant3 <i> {Даты отличаются годами}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i> {Get_numbers_of_days}</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-------------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure FindMaxMin(var dmin, dmax:
+Integer; days: Integer) ;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Поиск критических дней}&nbsp;</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TF = 2*3.1416/23.6884; <i> {Период физической активности}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> ТЕ = 2*3.1416/28.4261; <i> 
+{Период эмоциональной активности}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> TI = 2*3.1416/33.1638; <i> {Период 
+интеллектуальной активности}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">INTERVAL = 30;<i>{Интервал прогноза}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">min,<i>{Накапливает минимум биоритмов}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">max,<i>{Накапливает максимум биоритмов}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">x : Real;<i>{Текущее значение биоритмов}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> i : Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin <i> {FindMaxMin}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">max := sin(days*TF)+sin(days*TE)+sin(days*TI);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">min := max; <i> {Начальное значение минимума и максимума</i></font><i>
+<font size="3">равно значению биоритмов для текущего дня}&nbsp;</font></i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> dmin := days;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> dmax := days ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for i 
+:= 0 to INTERVAL do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">x := sin((days+i)*TF) + sin((days+i)*TE) +</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">sin((days+i)*TI);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if x &gt; max then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">max := x;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> dmax := days + i&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">else&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if x &lt; min then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">min := x;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> dmin := days + i&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i> {FindMaxMin}</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{----------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure WriteDates (dmin, dmax, days :
+Integer);</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Определение и вывод дат критических дней. Вывод дополнительной</font>
+<font size="3">информации о количестве прожитых дней, часов, минут и секунд }</font></font></i> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-------------}</font></i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure WriteDatettext: String; dd:
+Integer);</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Определение даты для дня DD от момента рождения. В глобальных</font>
+<font size="3">переменных d, m и у имеется текущая дата, в переменной DAYS -</font>
+<font face="Arial, Helvetica, sans-serif" size="3">количество дней, прошедших от момента рождения до текущей даты.</font>
+<font face="Arial, Helvetica, sans-serif" size="3">Выводится сообщение TEXT и найденная дата в формате ДД-МЕС-ГГГГ}</font></font></i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Names_of_Monthes : array [1..12] of String [3] = ( ' янв ' , ' фев ' , ' мар 
+' , ' апр ' , ' мая '' июн ',</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">' июл ' , ' авг ' , ' сен ' , ' окт ' , ' ноя ',' дек ' ) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">d0,m0,y0,ddd : Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin <i>{WriteDate}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> d0 := d;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> m0 := m;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> y0 := y;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> ddd := 
+days;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> while ddd&lt;&gt;dd do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">inc(d0); <i>{</i><i>Наращиваем число}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if (y0 mod 4 &lt;&gt; 0) and (d0 &gt; 
+Size_of_Month [m0] ) or&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> (y0 mod 4=0) and (d0=30) then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin<i>{Корректируем месяц}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">d0 := 1;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">inc(m0);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if m0 = 13 then<i>{Корректируем год}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">m0 := 1;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">inc(y0)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">inc(ddd)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(text,d0, ' - ' , Names_of_Monthes [m0] , ' - ' ,y0)&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i> {WriteDate}</i></font> 
+</P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{------------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">LongDays: Longlnt; <i>{&quot;Длинная" целая переменная для часов,</i></font><i>
+<font size="3">минут и секунд }&nbsp;</font></i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin <i>{WriteDates}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">LongDays := days;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn ( ' Пропшо : ', LongDays,' дней, ' ,
+longDays*24,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">' часов, ',LongDays*24*60,'минут,',LongDays*24*60*60,'секунд');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteDate (' Наименее благоприятный день:
+',dmin);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteDate ( 'Наиболее благоприятный день: ',dmax)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end ; <i> { WriteDates}</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{------------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin <i> {Главная программа}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InputDates (d0,m0,y0,d, m, у) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Get_numbers_of_days (d0,m0,y0,d,m,y,days) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">FindMaxMin (dmin, dmax, days) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteDates (dmin, dmax, days)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end .</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr5.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr5_2.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+</BODY></HTML>

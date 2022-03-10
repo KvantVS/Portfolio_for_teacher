@@ -1,0 +1,223 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_10.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_12.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Использование коллекций
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Для вывода текста мы использовали глобальный массив Lines. Как известно, 
+длина любого массива в Турбо Паскале не может превышать длину сегмента данных 
+(64 Кбайт). Это ограничение можно убрать, если воспользоваться еще одним 
+механизмом Turbo Vision - коллекциями. Подобно массивам, коллекции представляют 
+собой набор элементов, в которых можно хранить любые данные, включая экземпляры 
+любых объектов. К элементам коллекции можно обращаться по индексу, однако, в 
+отличие от массива, коллекция размещается в куче, поэтому ее суммарная длина 
+ограничивается всей доступной памятью и может быть больше 64 Кбайт. Кроме того, 
+размер коллекции не лимитируется при ее создании и может динамически изменяться 
+в процессе работы программы.</font> </P>
+<p align="center"><img border="0" src="15_8.jpg"    ></p>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Рис.15.8.</b> Окно с текстом программы.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Коллекции обладают целым рядом новых свойств. В частности, к любой коллекции 
+можно применить метод ForEach, который осуществит заданные Вами действия над 
+каждым элементом коллекции. Таким способом можно, например, быстро отыскать 
+элемент, удовлетворяющий заданным требованиям. Наконец, в Turbo Vision 
+определены отсортированные коллекции, элементы которых упорядочиваются по 
+заданному ключу. Все это делает коллекции более предпочтительным способом 
+хранения данных, чем массивы Турбо Паскаля.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Попробуем заменить массив Lines на отсортированную коллекцию. Введем в объект 
+TInterior новое поле PS:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TInterior = object (TScroller)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PS: PStringCollection;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Тип PStringCollection в Turbo Vision определен как указатель на экземпляр 
+объекта TStringCollection, представляющий собой отсортированную коллекцию строк. 
+Сортировка строк осуществляется по обычным правилам сравнения строк по 
+ASCII-кодам. Если вновь помещаемая строка уже существует в коллекции, она не 
+дублируется (при желании программист может разрешить дублирование одинаковых 
+строк), поэтому в общем случае количество элементов коллекции может оказаться 
+меньшим количества помещенных в нее строк.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для создания коллекции удалите ненужные теперь глобальные объявления MaxLine, 
+Lines и NLines (в коллекции есть другие средства доступа к элементам) и измените 
+метод ReadFile следующим образом :</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TInterior.ReadFile;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PS := New(PStringCollection, Init(100,10));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> s := copy(ParamStr(0),1,pos('.',ParamStr(0)))+'pas';&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">assign(f,s);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">reset (f); {Открыть файл с текстом программы}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> while not (EOF(f) or LowMemory) 
+do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn(f,s);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if s &lt;&gt; ' ' then PS.Insert(NewStr(s))&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Close(f);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">exit;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Seek(DataFile,0);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">while not (EOF(DataFile) or&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">LowMemory) do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Read(DataFile, data);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> with data do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if s&lt;&gt;''then PS.Insert(NewStr(s))&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; {ReadFile}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В приведенном фрагменте мы предусмотрительно изменили только ту часть 
+программы, которая стоит после оператора Exit и которая зависит от удаленных 
+глобальных определений. Вы должны сделать эти изменения (они все равно нам 
+пригодятся) или закомментировать эту часть текста, чтобы получить синтаксически 
+правильный вариант программы.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">С помощью оператора</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PS := New(PStringCollection, Init(100,10));</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">инициируется экземпляр коллекции, причем параметр 100 определяет начальный 
+размер коллекции, а параметр 10 - шаг наращивания коллекции, если ее размер 
+превысит 100 элементов. Оператор</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if s&lt;&gt; ' ' then PS.Insert(NewStr(s))</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">вставляет очередную непустую строку в коллекцию. Заметим, что коллекции РЗЛ 
+передается не строка 5, а лишь указатель на нее, т.к. функция NewStr размещает 
+строку в куче и возвращает ее адрес. Функция NewStr не может разместить в куче 
+пустую строку, поэтому мы вставляем в коллекцию только непустые строки.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Функция LowMemory используется для контроля за размерами динамической памяти: 
+она возвращает значение True, если в куче осталось менее 4 Кбайт.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В последний оператор метода Interior.Init внесите следующее изменение:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor TInterior.Init(var Bounds:
+TRect;</font> <font size="3">HS,VS: PScrollBar);</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetLimit(LLine,PSA.Count)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; {TInterior.Init}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Другим станет также и реализация метода TInterior.Draw:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TInterior.Draw;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">n,k: Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">B: TDrawBuffer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">p: PString;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Color: Byte;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Color := GetColor(1);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for n := 0 to pred(Size.Y) do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k := Delta.Y+n;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MoveChar(B,' ',Color,Size.X);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if k &lt; pred(PS.Count) then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">p := PS.At(k);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MoveStr(B,Copy(р,Delta.X+1,Size.X),Color)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLine(0,N,Size.X,1,B)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;  {TInterior.Draw}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Элементы коллекции нумеруются, начиная с номера 0. Длина коллекции (общее 
+количество ее элементов) хранится в поле PS. Count. Функция PS.At(k) 
+возвращает указатель на k-й элемент коллекции.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Созданная коллекция размещается в динамической памяти, поэтому после 
+использования ее следует удалить из кучи. Для этого перекроем стандартный 
+деструктор Done:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TInterior = object (TScroller)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Destructor Done; Virtual;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Destructor TInterior.Done;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Dispose(PS, Done);  {Удаляем коллекцию}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Inherited Done  {Выполняем стандартный 
+деструктор}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Еще раз хочу обратить Ваше внимание на особенность программирования в среде 
+Turbo Vision: Вы определяете метод, но не указываете, когда он должен быть 
+выполнен. Правильно сконструированный объект уже «знает», когда он ему 
+понадобится! Так было в случае правила Draw, так же обстоит дело и с 
+деструктором Done: обработчик событий окна TWindow вызовет этот метод, как только он получит событие 
+cmCancel (закрыть окно). Чтобы убедиться в этом, установите контрольную точку в 
+строке</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Dispose(PS, Done);  {Удаляем коллекцию}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">и запустите программу. Останов в контрольной точке произойдет только в том 
+случае, если Вы загрузите окно с текстом и попытаетесь выйти из программы. Если 
+из программы выйти сразу после ее запуска, контрольная точка не сработает.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Вид экрана с окном просмотра отсортированного файла показан на рис. 15.9.</font> 
+</P>
+<p align="center"><img border="0" src="15_9.jpg"    ></p>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Puc.15.9.</b> Окно с отсортированным тестом программы</font> </P>
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_10.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_12.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</BODY></HTML>

@@ -1,0 +1,114 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+   <META NAME="Author" CONTENT="DimichG">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.04 [en] (Win95; I) [Netscape]">
+   <TITLE>ЗАДАНИЯ 4</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<CENTER><I><FONT SIZE=+2>Задачи для самостоятельной работы по теме:</FONT></I></CENTER>
+
+<CENTER><I><FONT SIZE=+2>"Структура программы. Основные операторы языка".</FONT></I></CENTER>
+&nbsp;
+
+<P><FONT FACE="Times New Roman">1. Что будет выведено на экран программой?</FONT>
+<BR><FONT FACE="Courier New">Program pr;</FONT>
+<BR><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; Var a : Integer;</FONT>
+<BR><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; Begin</FONT>
+<BR><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+a := 2;</FONT>
+<BR><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Writeln('a+1')</FONT>
+<BR><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; End.</FONT>
+
+<P><FONT FACE="Times New Roman">2. Что будет напечатано в результате работы
+следующего фрагмента:</FONT>
+<BR><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; Write(1); Write(2); Writeln(3,4);
+Write(5,6);Writeln; Writeln(7,8);</FONT>
+
+<P><FONT FACE="Times New Roman">3. Написать программу, которая для заданного
+целого числа </FONT>a <FONT FACE="Times New Roman">печатает следующую таблицу
+значений:</FONT>&nbsp;<IMG SRC="ris15.jpg" ALT="рисунок" NOSAVE HEIGHT=73 WIDTH=75 ALIGN=TEXTTOP>
+
+<P><FONT FACE="Times New Roman">4. Что будет выведено на экран программой,
+если для ввода заданы числа 1.5 и -0.8</FONT>?
+<BR><FONT FACE="Courier New">Program aba;</FONT>
+<BR><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; Var x : Real;</FONT>
+<BR><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+t : Boolean;</FONT>
+<BR><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; Begin</FONT>
+<BR><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read(x); t := x &lt; Round(x);</FONT>
+<BR><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read(x); t := t And (x &lt; Trunc(x));</FONT>
+<BR><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Writeln(t)</FONT>
+<BR><FONT FACE="Courier New">&nbsp;&nbsp;&nbsp; End.</FONT>
+
+<P>5<FONT FACE="Times New Roman">. Написать программу вычисления значения
+</FONT>y <FONT FACE="Times New Roman">по заданному значению х </FONT>:
+<BR>&nbsp;<IMG SRC="f16.jpg" ALT="формула" NOSAVE HEIGHT=49 WIDTH=188 ALIGN=TEXTTOP>
+<BR>&nbsp;
+<BR><FONT FACE="Times New Roman">6. Написать программу, определяющую попадает
+ли точка с координатами </FONT><B>(x, y)</B><FONT FACE="Times New Roman">
+в заштрихованную область</FONT>
+<CENTER><IMG SRC="ris12.jpg" ALT="рисунок" NOSAVE HEIGHT=100 WIDTH=100 ALIGN=TEXTTOP>&nbsp;&nbsp;&nbsp;&nbsp;<IMG SRC="ris13.jpg" ALT="рисунок" NOSAVE HEIGHT=100 WIDTH=100 ALIGN=TEXTTOP></CENTER>
+&nbsp;
+<BR>&nbsp;
+<DT>
+7. Написать программу, которая печатает True или False в зависимости от
+того, больше число<I> <B><FONT SIZE=+1>e</FONT></B></I><B><FONT SIZE=+1>^<FONT FACE="Symbol">p
+</FONT></FONT></B>числа&nbsp; <B><FONT SIZE=+1><FONT FACE="Symbol">p</FONT>^<I>e
+</I></FONT></B>или нет.</DT>
+
+
+<P>8. Написать программу вычисления дробной части среднего геометрического
+трех заданных положительных чисел.
+
+<P>9. Написать программу вычисления периметра и площади прямоугольного
+треугольника по длинам двух катетов.
+
+<P>10. Написать программу определения числа, полученного выписыванием в
+обратном порядке заданного трехзначного числа.
+
+<P>11. Написать программу, вычисляющую произведение цифр заданного четырехзначного
+числа.
+
+<P>12. Написать программу, которая печатает <I>True</I> или <I>False </I>в
+зависимости от того, выполняются или нет заданные условия:
+<BR>- квадрат заданного трехзначного числа равен кубу суммы цифр этого
+числа;
+<BR>- сумма двух первых цифр заданного четырехзначного числа равна сумме
+двух его последних цифр;
+<BR>- среди цифр заданного трехзначного числа есть одинаковые;
+<BR>- среди первых трех цифр из дробной части заданного положительного
+вещественного числа есть цифра 0.
+
+<P>13. Написать программу вычисления <B>y = sin x</B> для произвольного
+числа <B>x</B>, считая, что стандартные функции <B>sin</B> и <B>cos</B>
+применимы только к аргументам из отрезка <B>[0, <FONT FACE="Symbol"><FONT SIZE=+1>p</FONT></FONT>/2].</B>
+
+<P>14. Написать программы для решения указанных задач:
+<BR>- дано число<B> x</B>. Напечатать в порядке возрастания числа <B>chx
+1 + |x|</B> и <B>( 1+ x2 )x </B>;
+<BR>- даны числа <B>a</B>, <B>b</B>, и <B>c</B> <B>(a <FONT FACE="Symbol">№
+</FONT>0)</B>. Найти вещественные корни уравнения <B>ax4 + bx2 + c = 0</B>.
+Если корней нет, то сообщить об этом;
+<BR>- дано целое <B>k</B> от 1 до 180. Определить, какая цифра находится
+в <B>k-ой</B> позиции последовательности 10111213 ... 9899, в которой вписаны
+подряд все двухзначные числа;
+<BR>- даны три действительных числа. Выбрать из них те, которые принадлежат
+интервалу (1, 3).
+<BR>- даны действительные числа <B>x, y (x <FONT FACE="Symbol">№</FONT>
+y)</B>. Меньшее из этих двух чисел заменить их полусуммой, а большее -
+их удвоенным произведением.
+<BR>-даны три действительных числа. Возвести в квадрат те из них, значения
+которых неотрицательны.
+<BR>- даны действительные числа <B>x, y</B>. Если <B>x, y</B> отрицательны,
+то каждое значение заменить его модулем; если отрицательное только одно
+из них, то оба значения увеличить на 0.5; если оба значения не отрицательны
+и ни одно из них не принадлежит отрезку [0.5, 2.0], то оба значения уменьшить
+в 10 раз; в остальных случаях <B>x, y</B> оставить без изменения.
+</BODY>
+</HTML>

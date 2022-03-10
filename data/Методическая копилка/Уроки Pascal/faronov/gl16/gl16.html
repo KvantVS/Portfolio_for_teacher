@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl16_1.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+ 
+Общая характеристика объектов
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3"></font>
+<ul>
+
+    <li><font face="Arial, Helvetica, sans-serif" size="3">Структура объектов</font>
+    </li>
+    <li><font face="Arial, Helvetica, sans-serif" size="3">Абстрактные объекты и методы</font>
+    </li>
+    <li><font face="Arial, Helvetica, sans-serif" size="3">Функциональность объектов</font></li>
+    <li><font face="Arial, Helvetica, sans-serif" size="3">Обзор
+      видимых элементов</font>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Группы
+          видимых объектов</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Терминальные
+          видимые объекты</font></li>
+
+    </li>
+    <li><font face="Arial, Helvetica, sans-serif" size="3">Невидимые
+      элементы</font></li>
+
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Потоки</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Коллекции</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Списки
+          строк</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Контролеры</font></li>
+
+
+  </ul>
+</ul>
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Все свойства Turbo Vision заключены в полях и методах входящих в библиотеку 
+объектов. Каждый объект предназначен для тех или иных целей, поэтому, если Вы 
+хотите использовать какие-то возможности Turbo Vision, Вы должны создать и 
+использовать экземпляры объектов с нужными Вам свойствами. Этот процесс не 
+представляет никакой сложности: вспомните обычные переменные или константы Турбо 
+Паскаля; если, например, в программе понадобится осуществить преобразование 
+строковых данных, Вы объявляете переменную типа String, для реализации 
+математических вычислений - переменную типа Real и т.д. Точно также обстоит дело 
+и с объектами: для создания окна Вы можете объявить переменную типа TWindow, для 
+использования отсортированной коллекции строк - переменную типа 
+TStringCollection и т.д. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MyWindow': TWindow;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MyCollection: TStringCollection;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Однако для многих практических применений Вы можете не найти среди объектов 
+Turbo Vision такого, который бы имел все нужные Вам свойства. В этом случае Вы 
+должны создать новый объект как потомок от какого-либо стандартного объекта 
+Turbo Vision и наделить его дополнительными свойствами. Если, например, вновь 
+создаваемое окно предназначено для вывода отсортированных текстовых строк, Вы 
+можете изменить его конструктор Init, обеспечив в нем создание и использование 
+экземпляра объекта TStringCollection:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MyWindowType = object (TWindow)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MyCoHection: PStringCollection;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor Init;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Constructor MyWindowType.Init;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MyCollection := New(PStringCollection, Init(...));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Чтобы вновь создаваемый объект был по возможности простым в реализации, он 
+должен наследовать от объекта-родителя максимальное количество нужных ему полей 
+и методов. Таким образом, ключом к использованию Turbo Vision является знание 
+тех свойств, которыми обладают ее стандартные объекты. Изучению объектов 
+посвящена фактически вся эта часть книги, в этой главе мы дадим наиболее общую 
+их характеристику.</font> </P>
+
+<p>&nbsp;</p>
+<table COLS="3" width="%">
+<tr>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl16_1.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

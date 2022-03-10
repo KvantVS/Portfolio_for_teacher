@@ -1,0 +1,237 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Untitled</title>
+</head>
+
+<body  background="../../bgrwhite.gif">
+<p><div align="center"><b><font size="+1" face="Arial">Процедуры и функции преобразования величин </font></b></div></p>
+
+<div style='border:none;border-bottom:solid windowtext .75pt;padding:0cm 0cm 1.0pt 0cm'>
+
+<p class=MsoSubtitle style='border:none;mso-border-bottom-alt:solid windowtext .75pt;
+padding:0cm;mso-padding-alt:0cm 0cm 1.0pt 0cm'><span lang=EN-US
+style='font-size:10.0pt'>Модуль System</span><span style='font-size:10.0pt;
+mso-ansi-language:RU'><o:p></o:p></span></p>
+
+</div>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Procedure Str(X [: </span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-bidi-font-family:"Times New Roman";color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>Width</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'> [: </span></b><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>Decimals</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>]]; var S);<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Преобразовывает
+число X в строковое представление согласно </span><span lang=EN-US
+style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;layout-grid-mode:
+line'>Width</span><span style='font-size:10.0pt;color:black;layout-grid-mode:
+line'> и параметрам форматирования </span><span lang=EN-US style='font-size:
+10.0pt;color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>Decimals</span><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>X - выражение
+вещественного или целого типа. </span><span lang=EN-US style='font-size:10.0pt;
+color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>Width</span><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'> и Decimals -
+выражения целого типа. S - переменная типа </span><span lang=EN-US
+style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;layout-grid-mode:
+line'>String</span><span style='font-size:10.0pt;color:black;layout-grid-mode:
+line'> или символьный массив с нулевым окончанием, если допускается расширенный
+синтаксис.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Function </span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-bidi-font-family:"Times New Roman";color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>Chr</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>(X: </span></b><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>Byte</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>): Char;<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Возвращает символ с
+порядковым номером Х в ASCII-таблице.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Function </span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-bidi-font-family:"Times New Roman";color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>High</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>(X);<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Возвращает
+наибольшее значение в диапазоне параметра.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Function </span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-bidi-font-family:"Times New Roman";color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>Low</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>(X);<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Возвращает
+наименьшее значение в диапазоне параметра.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Function Ord(X): </span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-bidi-font-family:"Times New Roman";color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>LongInt</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>;<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Возвращает
+порядковое значение выражения перечислимого типа.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>X - выражение
+перечислимого типа.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Function </span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-bidi-font-family:"Times New Roman";color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>Round</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>(X: Extended): </span></b><b style='mso-bidi-font-weight:normal'><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>LongInt</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>;<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Округляет значение
+вещественного типа до целого.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>X - выражение
+вещественного типа. </span><span lang=EN-US style='font-size:10.0pt;color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>Round</span><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'> возвращает значение
+Longint, которое является значением X, округленным до ближайшего целого числа.
+Если X - точно посередине между двумя целыми числами, возвращается число с
+наибольшей абсолютной величиной.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Если округленное
+значение X выходит за диапазон </span><span lang=EN-US style='font-size:10.0pt;
+color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>LongInt</span><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>, генерируется
+ошибка времени выполнения программы, которую вы можете обработать с
+использованием исключительной ситуации EInvalidOp .<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Function Trunc(X:
+Extended): </span></b><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>LongInt</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>;<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Усекает значение
+вещественного типа до целого.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Если округленное
+значение X выходит за диапазон </span><span lang=EN-US style='font-size:10.0pt;
+color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>LongInt</span><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>, генерируется
+ошибка времени выполнения программы, которую вы можете обработать с
+использованием исключительной ситуации EInvalidOp .<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Procedure Val(S; var V;
+var </span></b><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>Code</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>: Integer);<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Преобразовывает
+число из строкового значения S в числовое представление </span><span
+lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>V</span><span style='font-size:10.0pt;color:black;
+layout-grid-mode:line'>.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>S - выражение
+строкового типа - последовательность символов, которая формирует целое или
+вещественное число. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Если выражение </span><span
+lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>S</span><span style='font-size:10.0pt;color:black;
+layout-grid-mode:line'> недопустимо, индекс неверного символа сохраняется в
+переменной </span><span lang=EN-US style='font-size:10.0pt;color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>Code</span><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>. В противном случае
+</span><span lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:
+EN-US;layout-grid-mode:line'>Code</span><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'> устанавливается в ноль<o:p></o:p></span></p>
+<p><div align="center"><a href="../Object Pascal.htm">	<img src="../../soder.gif" width=120 height=31 border=0 alt=""></a></div></p>
+</body>
+</html>

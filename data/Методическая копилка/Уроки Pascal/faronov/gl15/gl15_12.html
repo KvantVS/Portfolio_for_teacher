@@ -1,0 +1,186 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_11.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_13.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Указатель на элемент списка
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Как уже отмечалось, с помощью процедуры Draw можно выводить обычный текст и 
+выделенный текст. Попробуем использовать это обстоятельство для того, чтобы 
+поместить в окно просмотра указатель на текущий элемент данных. Для этого 
+добавим в TInterior еще одно поле:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TInterior = object (TScroller)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Location: Word;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Поле Location будет хранить номер той строки,которая отождествляется с 
+выбранной</font> <font face="Arial, Helvetica, sans-serif" size="3">строкой и которая на экране должна выделяться цветом.Добавьте в конце метода 
+ReadFile</font> <font face="Arial, Helvetica, sans-serif" size="3">строку</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Location:=0;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">и измените метод Draw:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TInterior.Draw;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Выводит данные в окно просмотра}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">n,k: Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> В: TDrawBuffer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> р: PString;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Color: Byte;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if Delta.Y &gt; Location then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Location := Delta.Y;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if Location &gt; Delta.Y+pred(Size.Y) then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Location := Delta.Y+pred(Size.Y);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for n := 0 to pred(Size.Y) do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k := Delta.Y+n;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if k=Location then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Color := GetColor(2)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Color := GetColor(1);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;  {TInterior.Draw}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Вначале проверяется, попадает ли строка с номером, хранящимся в Location, в 
+число выводимых строк. Если это не так, значит пользователь изменил размеры окна 
+или сдвинул его относительно текста; в этом случае нужным образом корректируется 
+значение Location. Такая проверка гарантирует, что в окне всегда будет 
+выводиться текущая строка. Перед выводом очередной строки сравнивается значение 
+ее номера с величиной Location и, если величины совпадают, строка выводится 
+цветом 2 из палитры TScroller (темно-синими символами на сером фоне).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Создав указатель в окне, нужно предусмотреть и средства воздействия на него. 
+Для этого нам понадобится проверять действия пользователя с мышью и клавиатурой 
+и изменять положение указателя. Вы не забыли, что все действия программы в Turbo 
+Vision выполняются с помощью обработчика событий? Перекроем стандартный метод 
+HandleEvent в объекте TInterior:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TInterior,. = object (TScroller)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure HandleEvent(var Event: TEvent); Virtual;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TInterior.HandleEvent(var Event: TEvent);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Обработчик событий для 
+окна данных}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R: TPoint;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Inherited HandleEvent(Event);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">case Event.What of evMouseDown:  {Реакция на щелчок мышью}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MakeLocal(MouseWhere, R){Получаем в R локальные координаты указателя мыши}</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Location := Delta.Y+R.Y;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Draw&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">evKeyDown:  {Реакция на клавиши + -}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> case Event.KeyCode of</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">kbGrayMinus: if Location &gt; Delta.Y then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">dec(Location);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Draw&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">kbGrayPlus: if Location &lt; Delta.Y+pred(Size.Y) then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">inc(Location);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Draw</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;  {TInterior.HandleEvent}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В новом методе вначале вызывается унаследованный обработчик событий 
+TScroller.HandleEvent, с помощью которого обрабатываются все стандартные 
+действия с окном (смещение текста, изменение размеров и т.д.). Затем 
+обрабатываются события от нажатия кнопки мыши и от нажатия клавиш «+» и «-» из 
+зоны цифровых клавиш (на клавиатуре ПК они выделяются серым цветом). С клавишей 
+«+» связывается действие «Сместить указатель вниз на одну строку», с клавишей 
+«-» - «Сместить вверх». Выбор серых клавиш «+» и «-» для смещения указателя 
+вызван тем, что клавиши управления курсором используются для смещения окна и 
+обрабатываются стандартным обработчиком событий. Заметим, что нажатие кнопки 
+мыши будет обрабатываться в TScroller.HandleEvent только в том случае, если 
+указатель мыши находится на рамке окна или на полосах управления. Если указатель 
+сместить внутрь окна, нажатие на кнопку мыши будет преобразовано в событие 
+evMouseDone и передано в наш обработчик. В этом случае глобальная переменная 
+MouseWhere содержит абсолютные координаты указателя мыши (т.е. координаты 
+относительно левого верхнего угла экрана). Чтобы получить номер соответствующей 
+строки текста, мы сначала с помощью оператора</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MakeLocal(MouseWhere, R) ;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">получаем в переменной R локальные координаты мыши относительно границ окна 
+TScroller. Оператор</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Location := Delta.Y+R.Y;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">устанавливает в поле Location номер той строки текста, на которой 
+располагается указатель мыши.</font> </P>
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_11.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_13.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</BODY></HTML>

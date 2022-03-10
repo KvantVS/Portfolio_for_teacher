@@ -1,0 +1,237 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_12.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_14.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Окно с текстом
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">В следующей программе на экране создается несколько окон, содержащих один и 
+тот же текст - текст программы (см. рис.23. 3).</font> </P>
+<P align="center"><img border="0" src="23_3.jpg"    > </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Рис.23.3.</b> Окна с текстом программы</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Каждое новое окно открывается с помощью клавиши Ins. Активное окно можно 
+удалить клавишей Del или распахнуть на весь экран клавишей F5. С помощью мыши Вы 
+можете перемещать активное окно по экрану и/или изменять его размеры.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Objects,App,Views,Drivers,Menus;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmNewWin = 200;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmDelWin = 201;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MaxLine = 22;  {Количество текстовых строк}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Lines: array [0.. MaxLine] of String [80];&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MyApp = object (TApplication)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WinNo : Word;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor Init;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure InitStatusLine; Virtual;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure HandleEvent (var Event: Tevent) ;
+Virtual;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure NewWindow;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PInterior = Tinterior;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> TInterior = object (TView)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor Init(R: TRect);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Draw; Virtual;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{----------------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor MyApp. Init;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Открывает и читает файл с текстом программы}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">f: text;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s: String;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k: Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Inherited Init;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WinNo := 0 ;  {Готовим номер окна }</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for К := 0 to MaxLine do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Lines [k] := ' ' ;  {Готовим массив строк}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s := copy(ParamStr(0),1,pos ('.',ParamStr(0)))+'PAS';</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{$I-}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Assign (f,s) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Reset (f);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if IOResult &lt;&gt; 0 then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">exit; {Файл нельзя открыть}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for k := 0 to MaxLine do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if not EOF(f) then ReadLn(f, Lines [k] );&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Close(f)&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{$I+}&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end  {MyApp.Init} ;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{----------------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure MyApp. InitStatusLine;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R: TRect;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetExtent (R) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.A.Y := pred(R.B.Y) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">StatusLine := New(PStatusLine, Init(R,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewstatusDef (0,$FFFF,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewStatusKey ( ' ~Alt-X~ Выход' ,
+kbAltX, cmQuit,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewStatusKey ( ' ~Ins~ Открыть новое' , kbIns, cmNewWin,&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> NewStatusKey (' 
+~Del~ Удалить активное' , kbDel, cmClose,&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> NewStatusKey (' ~F5~ Распахнуть ', 
+kbF5, cmZoom, NIL)))), NIL)))&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end {MyApp. InitStatusLine} ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{---------------------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure MyApp. HandleEvent;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Обработка нестандартных команд
+cmNewWin, cmDelWin}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Inherited HandleEvent (Event) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> case Event. Command of&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmNewWin:&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ClearEvent (Event) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewWindow;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmDelWin: Event . Command := cmClose;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ClearEvent(Event)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end  {MyApp.HandleEvent } ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-------------------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure MyApp.NewWindow ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Открывает новое окно}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R: TRect;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">W: PWindow;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Inc(WinNo);  {Номер окна}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Задаем случайные размеры и положение окна : }</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R. Assign (0, 0,24+Random(10) ,7+Random(5) ) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R. Move (Random ( 80 -R. В. X) ,Random(24-R.B.Y) ) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">W := New (PWindow, Init (R, ' ' ,WinNo) ) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">W^.GetClipRect (R) ;  {Получаем в R границы окна}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Grow( - 1, -1) ;  {Размер внутренней части окна}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Инициируем просмотр текста 
+: }</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">W. Insert (New (PInterior, Init(R)));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DeskTop . insert (W) ;  {Помещаем окно на экран}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end  {MyApp.NewWindow} ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-------------------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor TInterior.Init;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Инициация просмотра текста во внутренней части 
+окна}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Inherited Init (R) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GrowMode := gfGrowHiX+gfGrowHiY&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end {Tinterior.Init} ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-----------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TInterior. Draw;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Вывод текста в окне}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k: Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> В: TDrawBuffer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for k := 0 to pred(Size.Y) do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MoveChar(B,' ',GetColor(1),Size.X);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MoveStr(B, 
+copy(Lines[k],1,Size.X),GetColor(1));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLine(0,k,Size.X,1,B)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end  {TInterior.Draw};&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {-------------------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">P: MyApp;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">P.Init;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">P.Run;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> P.Done&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В программе объявляется тип TInterior, предназначенный для создания 
+изображения во внутренней части окон. Его метод Init определяет способ связи 
+объекта TInterior со стандартным объектом TWindow: оператор</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GrowMode := gfGrowHiX+gfGrowHiY</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">задает автоматическое изменение размеров объекта TInterior при изменении 
+размеров окна так, чтобы вся внутренняя часть окна была всегда заполнена 
+текстом. Метод TInterior.Draw заполняет внутреннюю часть окон текстовыми 
+строками, которые в ходе выполнения конструктора TMyApp.Init предварительно 
+считываются из файла с исходным текстом программы в глобальный массив Lines. Для 
+вывода текста сначала с помощью метода MoveChar буферная переменная В типа 
+TDrawBuffer заполняется пробелами, затем методом MoveStr в нее копируется нужный 
+текст, а с помощью WriteLine содержимое переменной В помещается в видеопамять. 
+Такая последовательность действий стандартна для вывода текстовых сообщений в 
+Turbo Vision. Заметим, что функция GetColor (1) возвращает номер элемента 
+палитры, связанный с обычным текстом; для выделения тестовых строк можно 
+использовать вызов GetColor (2).</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_12.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_14.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

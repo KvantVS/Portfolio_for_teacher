@@ -1,0 +1,417 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Untitled</title>
+</head>
+
+<body lang=RU style="'tab-interval:35.4pt'" background="bgrwhite.gif">
+<p><div align="center"><b><font size="+1" face="Arial">30. Файлы </font></b></div></p>
+<p><span
+style="mso-spacerun: yes">   </span>Введение файлового типа<span
+style="mso-spacerun: yes">  </span>в<span style="mso-spacerun: yes"> 
+</span>язык<span style="mso-spacerun: yes">  </span>ПАСКАЛЬ<span
+style="mso-spacerun: yes">  </span>вызвано<span style="mso-spacerun: yes"> 
+</span>необходимостью
+
+<p>обеспечить
+возможность работы с периферийными (внешними) устройствами
+
+<p>ЭВМ,
+предназначенными для ввода, вывода и хранения данных.
+
+<p><span
+style="mso-spacerun: yes">   </span>Файловый тип данных или файл определяет
+упорядоченную совокупность
+
+<p>произвольного
+числа однотипных компонент.
+
+<p><span
+style="mso-spacerun: yes">   </span>Общее свойство массива,<span
+style="mso-spacerun: yes">  </span>множества и записи заключается в том, что
+
+<p>количество
+их компонент определено на этапе написания программы, тог-
+
+<p>да
+как<span style="mso-spacerun: yes">  </span>количество компонент файла в тексте
+программы не определяется
+
+<p>и может
+быть произвольным.
+
+<p><span
+style="mso-spacerun: yes">   </span>Понятие файла<span style="mso-spacerun:
+yes">  </span>достаточно<span style="mso-spacerun: yes">  </span>широко.<span
+style="mso-spacerun: yes">  </span>Это может быть обычный файл на
+
+<p>диске,
+коммуникационный порт ЭВМ,<span style="mso-spacerun: yes">  </span>устройство
+печати,<span style="mso-spacerun: yes">  </span>клавиатура или
+
+<p>другие
+устройства.
+
+<p><span
+style="mso-spacerun: yes">   </span>При работе с файлами выполняются операции
+ввода - вывода. Операция
+
+<p>ввода
+означает<span style="mso-spacerun: yes">   </span>перепись<span
+style="mso-spacerun: yes">  </span>данных<span style="mso-spacerun: yes"> 
+</span>с внешнего устройства (из входного
+
+<p>файла)
+в<span style="mso-spacerun: yes">  </span>основную память ЭВМ, операция вывода
+- это пересылка данных
+
+<p>из
+основной памяти на внешнее устройство (в выходной файл).
+
+<p><span
+style="mso-spacerun: yes">   </span>Файлы на внешних устройствах часто
+называют<span style="mso-spacerun: yes">  </span>физическими<span
+style="mso-spacerun: yes">  </span>файлами.
+
+<p>Их
+имена<span style="mso-spacerun: yes">  </span>определяются<span
+style="mso-spacerun: yes">  </span>операционной системой.<span
+style="mso-spacerun: yes">  </span>В программах на языке
+
+<p>Паскаль
+имена файлов задаются с помощью строк. Например, имя файла на
+
+<p>диске
+может иметь вид:
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>'A:LAB1.DAT'
+
+<p><span
+style="mso-spacerun: yes">   </span>'c:\ABC150\pr.pas'
+
+<p><span
+style="mso-spacerun: yes">   </span>'lab3.pas'.
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>Операционная система<span
+style="mso-spacerun: yes">  </span>MS-DOS не делает особого различия между фай-
+
+<p>лами на
+дисках и лентах и устройствами ЭВМ и портами коммуникаций.<span
+style="mso-spacerun: yes">  </span>В
+
+<p>TURBO
+PASCAL<span style="mso-spacerun: yes">  </span>могут использоваться имена
+устройств и портов,<span style="mso-spacerun: yes">  </span>опреде-
+
+<p>ленные
+в MS-DOS, например:
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>'CON',<span style="mso-spacerun: yes"> 
+</span>'LPT1',<span style="mso-spacerun: yes">  </span>'PRN',<span
+style="mso-spacerun: yes">  </span>'COM1',<span style="mso-spacerun: yes"> 
+</span>'AUX',<span style="mso-spacerun: yes">  </span>'NUL'.
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>С файловой системой TURBO PASCAL связано
+понятие<span style="mso-spacerun: yes">  </span>буфера<span
+style="mso-spacerun: yes">  </span>ввода<span style="mso-spacerun: yes"> 
+</span>-
+
+<p>вывода.
+Ввод<span style="mso-spacerun: yes">  </span>и вывод данных осуществляется
+через буфер.<span style="mso-spacerun: yes">  </span>Буфер - это
+
+<p>область
+в памяти,<span style="mso-spacerun: yes">  </span>которая выделяется для
+каждого файла. При записи в
+
+<p>файл
+вся<span style="mso-spacerun: yes">  </span>информация сначала направляется в
+буфер и там накапливается
+
+<p>до тех
+пор,<span style="mso-spacerun: yes">  </span>пока весь объем буфера не будет
+заполнен.<span style="mso-spacerun: yes">  </span>Только<span
+style="mso-spacerun: yes">  </span>после
+
+<p>этого
+или после специальной команды сброса происходит передача данных
+
+<p>на
+внешнее устройство. При чтении из файла данные вначале считываются
+
+<p>в
+буфер, причем данных считывается не столько, сколько запрашивается,
+
+<p>а
+сколько поместится в буфер.
+
+<p><span
+style="mso-spacerun: yes">   </span>Механизм буферизации<span
+style="mso-spacerun: yes">  </span>позволяет<span style="mso-spacerun: yes"> 
+</span>более быстро и эффективно обмени-
+
+<p>ваться
+информацией с внешними устройствами.
+
+<p><span
+style="mso-spacerun: yes">   </span>Для работы<span style="mso-spacerun: yes"> 
+</span>с<span style="mso-spacerun: yes">  </span>файлами<span
+style="mso-spacerun: yes">  </span>в программе необходимо определить файловую
+
+<p>переменную.
+TURBO<span style="mso-spacerun: yes">  </span>PASCAL поддерживает три файловых
+типа:<span style="mso-spacerun: yes">   </span>текстовые
+
+<p>файлы,
+компонентные файлы, бестиповые файлы.
+
+<p><span
+style="mso-spacerun: yes">   </span>Описание файловых переменных текстового
+типа<span style="mso-spacerun: yes">  </span>производится<span
+style="mso-spacerun: yes">  </span>с<span style="mso-spacerun: yes"> 
+</span>по-
+
+<p>мощью
+служебного слова Text, например:
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>var tStory: Text;
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>Описание компонентных файлов имеет вид:
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>var fComp: File of T;
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p>где
+T<span style="mso-spacerun: yes">  </span>-<span style="mso-spacerun: yes"> 
+</span>тип<span style="mso-spacerun: yes">  </span>компоненты файла. Примеры
+описания файловой переменной
+
+<p>компонентного
+типа:
+
+<p><span
+style="mso-spacerun: yes">                           </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>type M= array[1..500] of Longint;
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>var f1: File of Real;
+
+<p><span
+style="mso-spacerun: yes">       </span>f2: File of Integer;
+
+<p><span
+style="mso-spacerun: yes">       </span>fLi: File of M;
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>Бестиповые файлы описываются с помощью
+служебного слова File:
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>var f: File;
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>Файловые переменные,<span
+style="mso-spacerun: yes">  </span>которые описаны в программе,<span
+style="mso-spacerun: yes">  </span>называют логи-
+
+<p>ческими
+файлами.<span style="mso-spacerun: yes">    </span>Все основные процедуры и
+функции,<span style="mso-spacerun: yes">  </span>обеспечивающие
+
+<p>ввод - вывод
+данных,<span style="mso-spacerun: yes">  </span>работают только с логическими
+файлами. Физичес-
+
+<p>кий
+файл<span style="mso-spacerun: yes">  </span>должен быть связан с логическим до
+выполнения процедур отк-
+
+<p>рытия
+файлов.
+
+<p><span
+style="mso-spacerun: yes">   </span>TURBO PASCAL вводит ряд процедур и
+функций,<span style="mso-spacerun: yes">  </span>применимых для<span
+style="mso-spacerun: yes">  </span>любых
+
+<p>типов
+файлов:<span style="mso-spacerun: yes">  </span>Assign,<span
+style="mso-spacerun: yes">  </span>Reset,<span style="mso-spacerun: yes"> 
+</span>Rewrite,<span style="mso-spacerun: yes">  </span>Close,<span
+style="mso-spacerun: yes">  </span>Rename, Erase, Eof,
+
+<p>IOResult.
+
+<p><span
+style="mso-spacerun: yes">   </span>Процедура Assign(<span style="mso-spacerun:
+yes">  </span>var<span style="mso-spacerun: yes">  </span>f; FileName: String )
+связывает логический
+
+<p>файл f
+с физическим файлом,<span style="mso-spacerun: yes">  </span>полное<span
+style="mso-spacerun: yes">  </span>имя<span style="mso-spacerun: yes"> 
+</span>которого<span style="mso-spacerun: yes">  </span>задано<span
+style="mso-spacerun: yes">  </span>в<span style="mso-spacerun: yes"> 
+</span>строке
+
+<p>FileName.
+
+<p><span
+style="mso-spacerun: yes">   </span>Процедура Reset( var f ) открывает
+логический файл f для последую-
+
+<p>щего
+чтения данных или,<span style="mso-spacerun: yes">  </span>как говорят,<span
+style="mso-spacerun: yes">  </span>открывает входной файл.<span
+style="mso-spacerun: yes">  </span>После
+
+<p>успешного
+выполнения процедуры Reset файл готов к чтению из него пер-
+
+<p>вого
+элемента.
+
+<p><span
+style="mso-spacerun: yes">   </span>Процедура Rewrite( var f )<span
+style="mso-spacerun: yes">  </span>открывает логический файл f для после-
+
+<p>дующей
+записи<span style="mso-spacerun: yes">  </span>данных (открывает выходной
+файл).<span style="mso-spacerun: yes">  </span>После успешного вы-
+
+<p>полнения
+этой процедуры файл готов к записи в него первого<span style="mso-spacerun:
+yes">  </span>элемента.
+
+<p><span
+style="mso-spacerun: yes">   </span>Процедура Close( var<span
+style="mso-spacerun: yes">  </span>f )<span style="mso-spacerun: yes"> 
+</span>закрывает<span style="mso-spacerun: yes">  </span>открытый до этого
+логический
+
+<p>файл.
+Вызов процедуры Close необходим при завершении работы с файлом.
+
+<p>Если<span
+style="mso-spacerun: yes">  </span>по<span style="mso-spacerun: yes"> 
+</span>какой-то<span style="mso-spacerun: yes">  </span>причине<span
+style="mso-spacerun: yes">  </span>процедура Close не будет выполнена, файл
+
+<p>все-же<span
+style="mso-spacerun: yes">  </span>будет создан на внешнем устройстве,<span
+style="mso-spacerun: yes">  </span>но содержимое последнего
+
+<p>буфера
+в него<span style="mso-spacerun: yes">  </span>не будет перенесено.<span
+style="mso-spacerun: yes">  </span>Для входных файлов использование
+
+<p>оператора
+закрытия файла необязательно.
+
+<p><span
+style="mso-spacerun: yes">   </span>Логическая функция EOF( var f ): Boolean
+возвращает значение TRUE,
+
+<p>когда
+при чтении достигнут конец файла.<span style="mso-spacerun: yes">  </span>Это
+означает, что уже прочи-
+
+<p>тан
+последний элемент в файле или файл после открытия оказался пуст.
+
+<p><span
+style="mso-spacerun: yes">   </span>Процедура Rename( var f; NewName: String )
+позволяет переименовать
+
+<p>физический
+файл на диске, связанный с логическим файлом f. Переимено-
+
+<p>вание
+возможно после закрытия файла.
+
+<p><span
+style="mso-spacerun: yes">   </span>Процедура Erase( var f )<span
+style="mso-spacerun: yes">  </span>уничтожает физический файл на диске, ко-
+
+<p>торый
+был связан с файловой переменной f.<span style="mso-spacerun: yes"> 
+</span>Файл к моменту вызова про-
+
+<p>цедуры
+Erase должен быть закрыт.
+
+<p><span
+style="mso-spacerun: yes">   </span>Функция<span style="mso-spacerun: yes"> 
+</span>IOResult: Integer возвращает целое число, соответствующее
+
+<p>коду
+последней ошибки ввода - вывода.<span style="mso-spacerun: yes">  </span>При
+нормальном завершении опе-
+
+<p>рации
+функция вернет значение 0. Значение функции IOResult необходимо
+
+<p>присваивать
+какой - либо переменной,<span style="mso-spacerun: yes">  </span>так как при
+каждом вызове функ-
+
+<p>ция
+обнуляет свое значение. Функция IOResult работает только при вык-
+
+<p>люченном
+режиме проверок ошибок ввода - вывода или с ключом<span style="mso-spacerun:
+yes">  </span>компиля-
+
+<p>ции
+{$I-}.
+
+<p><div align="center"><a href="../Pascal. Курс лекций.html">	<img src="../../soder.gif" width=120 height=31 border=0 alt=""></a></div></p>
+
+
+</body>
+</html>

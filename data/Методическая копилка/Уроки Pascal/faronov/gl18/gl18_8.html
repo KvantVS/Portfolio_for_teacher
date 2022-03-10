@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_7.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_9.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Преобразование активных событий в команды
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Как указать на необходимость выполнения команды? Для этого в Turbo Vision Вы 
+просто создаете событие-команду (evCommand), в поле Command которой помещаете 
+код нужной команды. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmMyCommand =100;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Ниже показан фрагмент обработчика событий:}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Event.What := evCommand;  {Определяем событие-команду}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Event.Command := 
+cmMyCommand;  {Указываем код команды}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Event.InfoPtr := NIL;  {Признак активного 
+события}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> PutEvent(Event);  {Создаем событие}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В этом фрагменте событие-команда создается обращением к методу PutEvent. 
+Заметим, что поле Event.InfoPtr должно содержать NIL, если событие активно; если 
+событие уже обработано, для его очистки используется стандартный метод 
+ClearEvent, который помещает в поле What признак evNothing, а в поле InfoPtr - 
+указатель @Self (указатель на таблицу виртуальных методов объекта). Подробнее об 
+использовании поля Event.InfoPtr см.п.18.7.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Вновь созданное событие вернется модальному элементу, который должен знать, 
+как его обрабатывать. Например, часто событие-команда создается обработчиком 
+событий строки статуса как реакция на нажатие предусмотренной в этой строке 
+командной клавиши или отметку мышью соответствующего поля. В этом случае 
+обработчик событий программы может иметь такой вид:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure MyProgram.HandleEvent(var Event);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Inherited HandleEvent(Event);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> case Event.What of&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> evCommand:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin  {Обработать команды:}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> case Event.Command of</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmMyCommand: MyProcedure;  {Выполнить действия, связанные с командой 
+cmMyCommand}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">exit  {He обрабатывать непредусмотренные команды}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end; {case}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ClearEvent(Event)  {Очистить событие}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Часто модальным элементом является диалоговое окно с несколькими кнопками. 
+Если Вам необходимо связать с кнопками свои команды и получить выбранную в 
+диалоге команду, Вы можете закрыть окно с помощью вызова EndModal, передав этому 
+методу в качестве параметра код команды.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В следующем примере создается диалоговое окно с двумя кнопками. При нажатии 
+кнопки «Команда cmPrint» окно закроется и на экран будет выведена строка</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Действие команды cmPrint</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если нажать кнопку «Выход» или закрыть окно клавишей Esc, эта строка не 
+появится.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses CRT,App,Dialogs,Objects,Drivers,Views;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PProg = TProg;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TProg = object (TApplication)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor Init;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PDial = TDial;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TDial = object (TDialog)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure HandleEvent(var Event: TEvent); Virtual;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmPrint = 100; Constructor TProg.Init;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R: TRect;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Dia: PDial;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Inherited Init;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(20,9,60,17);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Dia := New(PDial, Init(R,''));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(3,4,22,6) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DiaA.Insert(New(PButton,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Init(R,'Команда cm~P~rint',cmPrint,bfDefault)));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(23,4,35,6);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DiaA.Insert(New(PButton,Init(R,'Выход',cmCancel,bfNormal)));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if ExecView(Dia) = cmPrint then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Вывод сообщения "в лоб", с помощью стандартных средств Турбо Паскаля. В.- 
+TurboVision есть более удобные способы вывода сообщений}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY(30,12);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TextColor(Black);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TextBackground(White);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write (' Действие команды cmPrint ')</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;  {TProg.Init}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TDial.HandleEvent(var Event: TEvent);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Inherited HandleEvent(Event);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if (Event.What = evCommand) and</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">(Event.Command = cmPrint) then EndModal(cmPrint)&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end; {TDial.HandleEvent)&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Prog: TProg;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Prog.Init;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Prog.Run;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Prog.Done&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В обработчике событий диалогового окна TDial.HandleEvent вначале вызывается 
+стандартный обработчик TDialog.HandleEvent. Это дает возможность кнопке «Команда 
+cmPrint» преобразовать событие, связанное с ее выбором, в команду cmPrint. Вновь 
+созданное событие возвращается обработчику TDialHandleEvent, т.к. именно он 
+является обработчиком событий модального элемента. Возвращаемая модальным 
+элементом команда служит значением стандартной функции ExecView. Для упрощения 
+программы вывод сообщения реализуется стандартными средствами Турбо Паскаля. В 
+Turbo Vision имеется процедура MessageBox, обеспечивающая более удобный вывод 
+сообщений.</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_7.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_9.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

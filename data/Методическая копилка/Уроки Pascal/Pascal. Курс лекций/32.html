@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Untitled</title>
+</head>
+
+<body lang=RU style="'tab-interval:35.4pt'" background="bgrwhite.gif">
+<p><div align="center"><b><font size="+1" face="Arial">32. Компонентные файлы </font></b></div></p>
+<p><span
+style="mso-spacerun: yes">   </span>Компонентный или типизированный файл - это
+файл с объявленным<span style="mso-spacerun: yes">  </span>ти-
+
+<p>пом его
+компонент. Компонентные файлы состоят из машинных представле-
+
+<p>ний
+значений переменных,<span style="mso-spacerun: yes">  </span>они хранят данные
+в том же виде,<span style="mso-spacerun: yes">  </span>что и па-
+
+<p>мять
+ЭВМ.
+
+<p><span
+style="mso-spacerun: yes">   </span>Описание величин файлового типа имеет вид:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">         </span>type M= File Of T;
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p>где М -
+имя файлового типа, Т - тип компоненты. Например:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">         </span>type
+
+<p><span
+style="mso-spacerun: yes">           </span>FIO= String[20];
+
+<p><span
+style="mso-spacerun: yes">           </span>SPISOK=File of FIO;
+
+<p><span
+style="mso-spacerun: yes">         </span>var
+
+<p><span
+style="mso-spacerun: yes">  </span><span style="mso-spacerun:
+yes">         </span>STUD, PREP: SPISOK;
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Здесь STUD,<span style="mso-spacerun:
+yes">   </span>PREP<span style="mso-spacerun: yes">  </span>- имена
+файлов,<span style="mso-spacerun: yes">  </span>компонентами которых являются
+
+<p>строки.
+
+<p><span
+style="mso-spacerun: yes">   </span>Описание файлов можно задавать в разделе
+описания переменных:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">         </span>var
+
+<p><span
+style="mso-spacerun: yes">            </span>fsimv: File of Char;
+
+<p><span
+style="mso-spacerun: yes">            </span>fr: File of Real;
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Компонентами файла могут быть все скалярные
+типы,<span style="mso-spacerun: yes">  </span>а из структури-
+
+<p>рованных
+- массивы, множества, записи. Практически во всех конкретных
+
+<p>реализациях
+языка ПАСКАЛЬ конструкция &quot;файл файлов&quot; недопустима.
+
+<p><span
+style="mso-spacerun: yes">   </span>Все операции<span style="mso-spacerun:
+yes">  </span>над<span style="mso-spacerun: yes">  </span>компонентными<span
+style="mso-spacerun: yes">  </span>файлами<span style="mso-spacerun: yes"> 
+</span>производятся<span style="mso-spacerun: yes">  </span>с помощью
+
+<p>стандартных
+процедур:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Reset, Rewrite, Read, Write, Close.
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">    </span>Для ввода - вывода используются процедуры:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">     </span>Read(f,X);
+
+<p><span
+style="mso-spacerun: yes">     </span>Write(f,X);
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>где f - имя логического файла,<span
+style="mso-spacerun: yes">  </span>Х - либо переменная,<span
+style="mso-spacerun: yes">  </span>либо массив,
+
+<p>либо
+строка,<span style="mso-spacerun: yes">  </span>либо множество, либо запись с
+таким же описанием, какое
+
+<p>имеет
+компонента файла.
+
+<p><span
+style="mso-spacerun: yes">    </span>Выполнение процедуры<span
+style="mso-spacerun: yes">  </span>Read(f,X)<span style="mso-spacerun: yes"> 
+</span>состоит в чтении с внешнего уст-
+
+<p>ройства
+одной компоненты файла и запись ее в X.<span style="mso-spacerun: yes"> 
+</span>Повторное применение
+
+<p>процедуры
+Read(f,X) обеспечит чтение следующей компоненты файла и за-
+
+<p>пись ее
+в X.
+
+<p><span
+style="mso-spacerun: yes">   </span>Выполнение процедуры Write(f,X) состоит в
+записи X на внешнее уст-
+
+<p>ройство
+как<span style="mso-spacerun: yes">   </span>одной<span style="mso-spacerun:
+yes">  </span>компоненты.<span style="mso-spacerun: yes">  </span>Повторное
+применение этой процедуры
+
+<p>обеспечит
+запись X как следующей компоненты файла.
+
+<p><span
+style="mso-spacerun: yes">   </span>Для работы<span style="mso-spacerun: yes"> 
+</span>с компонентными файлами введена расширенная форма опе-
+
+<p>раторов
+ввода и вывода:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">    </span>Read(f,X1,X2,...XK)
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">    </span>Write(f,X1,X2,...XK)
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>Здесь f - компонентный файл, а переменные
+Х1, Х2,...ХК должны
+
+<p>иметь
+тот-же тип, что и объявленный тип компонент файла f.
+
+<p><div align="center"><a href="../Pascal. Курс лекций.html">	<img src="../../soder.gif" width=120 height=31 border=0 alt=""></a></div></p>
+
+
+</body>
+</html>

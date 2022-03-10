@@ -1,0 +1,186 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Составление разветвляющихся
+алгоритмов</title>
+</head>
+
+<body oncopy="return false" bgcolor="#EADFE0">
+
+<p class="MsoBodyText" align="left"><font face="Tahoma" size="2" color="#9C3330"><b>Блок
+3: &quot;Виды алгоритмов&quot;</b></font></p>
+<p class="MsoBodyText" align="center" style="text-align:center"><span style="mso-bidi-font-family: Arial"><b><u><font face="Tahoma" size="4" color="#9C3330">Тема
+2:&quot;Составление разветвляющихся
+алгоритмов&quot;.</font></u><font face="Tahoma" size="4" color="#9C3330"><o:p>
+</o:p>
+</font></b></span></p>
+<p class="TableText" align="center"><span style="mso-bidi-font-family: Arial"><font face="Tahoma" color="#87585C" size="3">Ветвление
+в алгоритмах позволяет<span style="mso-spacerun: yes">&nbsp;
+</span>выполнить действие (или серию действий)
+<br>
+в зависимости от выполнения или
+невыполнения какого-нибудь условия. </font></span><font face="Tahoma" size="2" color="#87585C"><span style="mso-bidi-font-family: Arial">&nbsp;<o:p>
+</o:p>
+</span></font></p>
+<p class="TableText" align="center"><span style="mso-bidi-font-family: Arial"><font face="Tahoma" color="#87585C" size="3"><b>Условие</b>
+представляет собой строку, содержащую
+операцию сравнения<br>
+с использованием знаков </font><b><font face="Tahoma" color="#87585C" size="4">&lt;&gt;=</font></b><font face="Tahoma" color="#87585C" size="3">.
+</font><font face="Tahoma" size="2" color="#87585C"><o:p>
+</o:p>
+</font></span></p>
+<blockquote>
+  <p class="TableText" style="text-align:justify"><font face="Tahoma" size="2" color="#87585C"><span style="mso-bidi-font-family: Arial">Например
+  :<o:p>
+  </o:p>
+  </span></font></p>
+  <p class="TableText" style="text-align:justify"><font color="#87585C"><font face="Tahoma"><span style="mso-bidi-font-family: Arial"><font size="2"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></font></span></font><span style="mso-bidi-font-family: Arial"><font size="2" face="Tahoma">x&gt;5;
+  <span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp; </span>s1&lt;-15.5; <span style="mso-tab-count:
+1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>d$=&quot;да&quot; ; <span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span>j&lt;&gt;4 ( не равно ) ;<br>
+  </font></span><font face="Tahoma"><span style="mso-bidi-font-family: Arial"><font size="2"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></font></span></font><span style="mso-bidi-font-family: Arial"><font size="2" face="Tahoma">Z3&gt;=3
+  (больше или равно) ;<span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span>t&lt;=0(меньше или равно).<o:p>
+  </o:p>
+  </font></span></font></p>
+</blockquote>
+<p class="TableText" align="center"><font face="Tahoma" size="2" color="#87585C"><span style="mso-bidi-font-family: Arial">Если
+<b>условие соблюдается</b>, то выполняются
+действия, расположенные в ветви под
+названием <b>&quot;Да&quot;</b>.<br>
+В случае <b>несоблюдения условия</b> будут
+выполнены действия, расположенные в ветви <b>&quot;Нет&quot;</b>.
+<o:p>
+</o:p>
+</span></font></p>
+<p class="TableText" align="center"><font face="Tahoma" size="2" color="#87585C"><span style="mso-bidi-font-family: Arial">&nbsp;Структура
+В<span style="text-transform:uppercase">етвление</span> в
+разветвляющихся алгоритмах может быть
+представлена в двух формах: полной или
+неполной.</span></font></p>
+<table border="0" width="100%">
+  <tr>
+    <td width="48%">
+      <p align="center"><img border="0" src="bl3_t27.gif" tppabs="http://inform-school.narod.ru/bl3_t27.gif" width="350" height="144"></td>
+    <td width="52%" bgcolor="#C2A3A5">
+      <p align="center"><span style="mso-bidi-font-family: Arial"><font face="Tahoma" size="2" color="#87585C"><b>Неполная
+      форма ветвления отличается от полной
+      тем, что в одной из ветвей действия
+      отсутствуют . В таком алгоритме в
+      соответствии с условием<span style="mso-spacerun: yes">&nbsp;
+      </span>либо будут выполнены действия,
+      имеющиеся в ветви, либо начнут сразу
+      выполняться действия, расположенные
+      после ветвления.</b></font></span></td>
+  </tr>
+</table>
+<p class="TableText" align="center"><span style="mso-bidi-font-family: Arial"><font face="Tahoma" color="#87585C" size="3">На
+<b>алгоритмическом языке</b> структура
+ВЕТВЛЕНИЕ&nbsp; записывается следующим
+образом:</font></span></p>
+<table border="0" width="100%">
+  <tr>
+    <td width="46%" bgcolor="#C2A3A5" align="center"><span style="mso-bidi-font-family: Arial"><font face="Tahoma" size="3" color="#87585C"><b>В
+      полной форме</b></font></span></td>
+    <td width="54%" bgcolor="#C2A3A5" align="center"><b><font color="#87585C" face="Tahoma">В
+      неполной (сокращенной) форме</font></b></td>
+  </tr>
+  <tr>
+    <td width="46%" bgcolor="#D8C5C6">
+      <p class="TableText" style="text-align:justify"><font face="Tahoma" size="2" color="#87585C"><span style="mso-bidi-font-family: Arial"><span style="mso-tab-count:1">&nbsp;</span><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <u>если</u></b> условие <span style="mso-tab-count:3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span><o:p>
+      </o:p>
+      </span></font></p>
+      <p class="TableText" style="text-align:justify"><font face="Tahoma" size="2" color="#87585C"><span style="mso-bidi-font-family: Arial"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span><b><u>то</u></b> <span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span><span style="mso-spacerun:
+yes">&nbsp;</span>действие 1</span><span style="mso-bidi-font-family: Arial"><span style="mso-tab-count:2"><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span><b><u>иначе</u></b><span style="mso-spacerun: yes">&nbsp; </span>действие
+      2<o:p>
+      </o:p>
+      </span></font></p>
+      <p class="TableText" style="text-align:justify"><font face="Tahoma" size="2" color="#87585C"><span style="mso-bidi-font-family: Arial"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span><b><u>все<br>
+      </u></b>В зависимости от условия в строке <b><u>если</u></b>
+      выполняется<br>
+      только одно из действий ( или группа
+      действий), <br>
+      расположенных либо в строке <b><u>то</u></b> (
+      условие соблюдено),<br>
+      либо в строке <b><u>иначе</u></b> (условие не
+      соблюдено).</span></font></td>
+    <td width="54%" bgcolor="#D8C5C6">
+      <p class="TableText" style="text-align:justify"><font face="Tahoma" size="2" color="#87585C"><b><span style="mso-bidi-font-family: Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <u> если</u></span></b><span style="mso-bidi-font-family: Arial">
+      условие<o:p>
+      </o:p>
+      </span></font></p>
+      <p class="TableText" style="text-align:justify"><font color="#87585C"><font face="Tahoma"><span style="mso-bidi-font-family: Arial"><font size="2"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></font></span></font><span style="mso-bidi-font-family: Arial"><font size="2" face="Tahoma"><b><u>то</u></b>
+      <span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun:
+yes">&nbsp;</span>действие <o:p>
+      </o:p>
+      </font></span></font></p>
+      <p class="TableText" style="text-align:justify"><font color="#87585C"><font face="Tahoma"><span style="mso-bidi-font-family: Arial"><font size="2"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></font></span></font><span style="mso-bidi-font-family: Arial"><font size="2" face="Tahoma"><b><u>все</u></b></font></span></font></p>
+      <p class="TableText" align="center"><font face="Tahoma" size="2" color="#87585C"><span style="mso-bidi-font-family: Arial">В
+      этом случае выполнится действие (или
+      группа действий), расположенное в строке
+      <b><u>то</u></b><span style="mso-spacerun:
+yes"> </span>только при соблюдении условия. Если
+      же условие не соблюдается, то
+      исполнитель перейдет<br>
+      &nbsp;к выполнению действий, следующих за
+      служебным словом <b><u>все</u></b>.</span></font></td>
+  </tr>
+</table>
+<p class="TableText" align="center"><font face="Tahoma" size="2" color="#87585C"><span style="mso-bidi-font-family: Arial">Служебное
+слово <b><u>если</u></b> обозначает начало
+ветвления, а <b><u>все</u></b> - конец ветвления.</span></font></p>
+<p class="TableText" align="center"><u><span style="mso-bidi-font-family: Arial"><b><font face="Tahoma" size="3" color="#9C3330">Вопросы</font></b></span></u><font face="Tahoma" size="2" color="#87585C"><span style="mso-bidi-font-family: Arial"><o:p>
+</o:p>
+</span></font></p>
+<p class="TableText" style="text-align:justify"><font face="Tahoma" size="2" color="#87585C"><span style="mso-bidi-font-family: Arial">1.
+Для чего необходимо ветвление в алгоритмах?<br>
+2. Что такое условие?<br>
+3. Какие формы ветвления различают?<span style="mso-spacerun: yes">
+<br>
+</span>4. Сравните формы ветвления между собой.<br>
+5. Как<span style="mso-spacerun: yes">&nbsp; </span>оформляется<span style="mso-spacerun: yes">&nbsp;
+</span>ветвление в<span style="mso-spacerun: yes">&nbsp; </span>алгоритмах,
+записанных в </span></font><font color="#87585C"><span style="mso-bidi-font-family: Arial"><font size="2" face="Tahoma">виде
+блок-схемы?</font></span></font><font face="Tahoma" size="2" color="#87585C"><span style="mso-bidi-font-family: Arial"><br>
+6. Как оформляется<span style="mso-spacerun: yes">&nbsp; </span>ветвление
+в<span style="mso-spacerun: yes">&nbsp; </span>алгоритмах,
+записанных на</span></font><font color="#87585C"><span style="mso-bidi-font-family: Arial"><font size="2" face="Tahoma"><span style="mso-spacerun: yes">
+</span>алгоритмическом языке?</font></span></font><font face="Tahoma" size="2" color="#87585C"><span style="mso-bidi-font-family: Arial"><br>
+7. Как осуществляется выполнение действий в
+ветвлении при </span></font><font color="#87585C"><span style="mso-bidi-font-family: Arial"><font size="2" face="Tahoma">записи
+алгоритма на алгоритмическом языке?<o:p>
+</o:p>
+</font></span></font></p>
+
+<p class="MsoBodyText" align="center">
+<a href="bl3_t1.htm">Предыдущая тема</a>
+<a href="uchebnic.htm">Содержание учебника</a>
+ <a href="prbl3_t3.htm">Практикум</a> <a href="bl3_t3.htm">Следующая тема</a>
+</p>
+
+</body>
+
+</html>
+</textarea></form>
+</title></comment></a>
+</div></span></ilayer></layer></iframe></noframes></style></noscript></table></script></applet></font>
+<style>
+#bn {display:block;}
+#bt {display:block;}
+</style>
+<div style="background:url(http://www.tns-counter.ru/V13a****yandex_ru/ru/CP1251/tmsec=narod_total/)"></div>

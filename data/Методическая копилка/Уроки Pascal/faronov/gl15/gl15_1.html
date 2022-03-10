@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_2.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Простейшая программа в Turbo Vision
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Работа большинства прикладных программ проходит в три этапа: подготовка к 
+работе, собственно работа и, наконец, ее завершение. В нашем случае к 
+подготовительному этапу можно отнести такие действия, как анализ существования 
+файла данных и его (файла) подготовка к работе. На этапе завершения мы должны 
+обеспечить необходимые действия по сохранению файла/Все остальные действия 
+относятся к среднему этапу. С учетом этого можно написать следующую простейшую 
+программу:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Подготовить работу программы}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Выполнить необходимые действия}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Завершить 
+исполнение программы}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если Вы попытаетесь выполнить эту программу, ничего не произойдет - ведь мы 
+еще никак не конкретизировали необходимые действия. Так обстоит дело в Турбо 
+Паскале, но не так - в Turbo Vision! Для любой прикладной программы Turbo Vision 
+сразу же создает некоторую минимальную программную реализацию, которую Вы можете 
+затем постепенно наращивать в ходе детализации программы. Вот начальный вариант 
+программы с использованием Turbo Vision:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Арр;  {Используется модуль АРР библиотеки Turbo
+Vision}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Notebook: TApplication;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Notebook.Init;  {Подготовить работу программы}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Notebook.Run;  {Выполнить 
+необходимые действия}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Notebook.Done  {Завершить исполнение программы}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В этой программе объявляется использование стандартного для Turbo Vision 
+модуля Арр (от application - приложение, прикладная программа). Такое объявление 
+открывает доступ прикладной программе к мощным возможностям Turbo Vision. Чтобы 
+использовать эти возможности, мы объявили переменную Notebook (notebook - 
+записная книжка) типа TApplication. Как Вы вскоре заметите, на букву Т в Turbo 
+Vision начинаются идентификаторы объектов. Таким образом, Notebook - это 
+экземпляр объекта TApplication, т.е. объединение данных (полей) и методов 
+обработки этих данных (процедур, функций, конструкторов, деструкторов). В 
+объекте TApplication предусмотрены методы Init, Run и Done. Вызов этих методов и 
+составляет исполняемую часть нашей программы. Если Вы подготовите и запустите 
+программу, на экране ПК появится изображение, показанное на рис. 15.1.</font> </P>
+<p align="center"><img border="0" src="15_1.jpg"  ></p>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Рис.15.1.</b> Вид экрана для простейшей программы</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для выхода из программы необходимо, как это следует из надписи в левом нижнем 
+углу экрана, нажать Alt-X или подвести к этой надписи указатель мыши (если, 
+разумеется, Ваш ПК оснащен этим устройством) и нажать ее левую кнопку.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Как видите, даже простейшая программа «знает», как создать экран, распознает 
+команду Alt-X и может работать с мышью. Совсем не плохо для трех исполняемых 
+операторов, не так ли? Такие возможности доступны потому, что в объекте 
+TApplication предусмотрены соответствующие методы. В этом смысле использование 
+объектов напоминает использование подпрограмм из библиотек. Однако в отличие от 
+подпрограммы любой объект имеет все необходимые ему данные. Говоря об объектах, 
+я часто буду использовать такие слова, как «знает», «умеет», «может», 
+подчеркивая тем самым главную отличительную особенность объектов от традиционных 
+подпрограмм - их «разумность»: последовательное проведение в жизнь принципа 
+инкапсуляции (объединения) данных и всех необходимых для их обработки методов 
+придает</font> <font face="Arial, Helvetica, sans-serif" size="3">объекту определенную независимость от других элементов программы; объекты как 
+бы «живут» в программе своей независимой жизнью.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Простейшая программа не может выполнять никаких других действий, кроме уже 
+перечисленных, так как именно эти действия запрограммированы в методах Init и 
+Run объекта TApplication. В ходе их выполнения на экране создается изображение, 
+имеющее три зоны: верхняя строка, нижняя строка и вся остальная часть экрана. 
+Верхняя строка обычно используется для размещения опций главного меню (не 
+забывайте, что Turbo Vision - это оболочка для диалоговых программ!). Нижняя 
+строка - строка статуса: в ней указываются так называемые командные клавиши, 
+т.е. клавиши или комбинации клавиш, которые вызывают нужные действия без 
+перехода к промежуточному диалогу. Вся остальная часть экрана составляет 
+«рабочий стол» программы - сюда будут помещаться сообщения, здесь будут 
+размещаться окна, «выпадающие» меню (меню нижнего уровня) и т.п.</font> </P>
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_2.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</BODY></HTML>

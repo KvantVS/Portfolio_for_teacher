@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+<table COLS="3" width="%">
+<tr>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr5_1.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+ 
+Тнексты программ
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3"></font>
+<ul>
+
+    <li><font face="Arial, Helvetica, sans-serif" size="3">Программа определения дня недели</font>
+    </li>
+    <li><font face="Arial, Helvetica, sans-serif" size="3">Определение биоритмов</font>
+    </li>
+    <li><font face="Arial, Helvetica, sans-serif" size="3">Игра
+      НИМ</font></li>
+    <li><font face="Arial, Helvetica, sans-serif" size="3">Программа NOTEBOOK</font>
+  
+</ul>
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+ 
+Программа определения дня недели
+
+</font>
+</b>
+<br>
+</font>
+</p>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Эта программа вводит дату в формате ДЦ ММ ГГГГ к выводит на экран 
+соответствующий этой дате день недели. Описание программы см. п. 2. 7.1.}&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">IsCorrectDate: Boolean; <i> {Признак правильной даты}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">d,m,y : Integer; <i> {Вводимая дата - день, месяц и год}</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{---------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure InputDate (var d,m,y : Integer; var correctly : Boolean);&nbsp;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Вводит в 
+переменные d, m и у очередную дату и проверяет ее. Если дата правильная, 
+устанавливает correctly=true, иначе correctly= false }&nbsp;</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin <i> {InputDate}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write ( 'Введите дату в формате ДД ММ ГГГГ: ');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn(d,m,y) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">correctly := (d&gt;=l) and (d&lt;=31) and (m&gt;=l)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">and (m&lt;=12) and (y&gt;=1582) and (y&lt;=4903)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i> {InputDate}</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{----------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure WriteDay (d,m,y : Integer) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Days_of_week : array [0..6] of String [11] =</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">( ' воскресенье ' , ' понедельник ' , ' вторник ' ,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">' среда ' , ' четверг ' , ' пятница ' , ' суббота ' ) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">с, w : Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if m &lt; 3 then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin <i> {Месяц январь или февраль}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> m := m + 10;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> у := у - 1&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">m := m - 2; <i> {Остальные месяцы}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> с := у div 100; <i> {Вычисляем столетие}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> y := y 
+mod 100; <i> {Находим год в столетии}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> w := abs(trunc(2.6*m-0.2)+d+y div 4+y+c div 
+4-2*c) mod 7;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> WriteLn (Days_of_week [w] )&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{------------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> repeat</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InputDate (d,m,y, IsCorrectDate) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if IsCorrectDate then</font>&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteDay (d,m, у )&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> until not IsCorrectDate&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+
+<p>&nbsp;</p>
+<table COLS="3" width="%">
+<tr>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr5_1.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

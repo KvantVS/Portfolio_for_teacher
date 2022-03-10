@@ -1,0 +1,1 @@
+document.write('<A TARGET=_top HREF=\'http://www.belti.ru/bansys/bnrclick.php?banid=27&dispid=27\'><IMG SRC=\'http://www.belti.ru/banners/sogetsu.gif\' BORDER=0></A>');

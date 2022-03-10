@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl20_3.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl20_5.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Работа с потоком
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Базовый объект TStream реализует три метода, используемых для 
+непосредственной работы с потоком. Метод TStream.Put предназначен для передачи 
+объектов в поток и выполняет приблизительно такие же функции, как стандартная 
+файловая процедура Write. Метод TStream.Get используется для чтения объектов из 
+потока, его аналогом является процедура Read. Наконец, с помощью метода 
+TStream.Error анализируется состояние потока после</font>
+<font face="Arial, Helvetica, sans-serif" size="3">завершения некоторой операции: если обнаружена ошибка при обмене данными с 
+потоком, вызывается этот метод, который по умолчанию просто устанавливает 
+признаки ошибки в информационных полях TStream.Status и TStream.Errorlnfo. 
+Приблизительным аналогом метода TStream.Error служит стандартная файловая 
+функция IOResult.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Сразу же замечу, что в случае возникновения ошибки все последующие операции с 
+потоком блокируются до тех пор, пока не будет вызван метод TStream.Reset.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Методы Put и Get практически никогда не перекрываются: для реализации 
+операций с потоком они обращаются к виртуальным методам Store и Load, которые 
+должны быть определены в каждом объекте, если только этот объект помещается в 
+поток или считывается из него. Главное назначение методов Put и Get состоит в 
+обеспечении полиморфизма потока за счет контроля регистрационных номеров 
+объектов. Методы Load и Store никогда не вызываются прямо, но только из методов 
+Put и Get, т.к. они ничего не знают о регистрационных номерах и не могут 
+работать в полиморфных потоках.</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl20_3.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl20_5.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+</BODY></HTML>

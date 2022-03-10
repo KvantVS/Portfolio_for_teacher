@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_11.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_13.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Перекрытие HandleEvent
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">После того как Вы определили команду и установили элемент управления, который 
+генерирует ее (например, элемент меню или кнопка диалогового окна), Вам нужно 
+научить Ваш видимый элемент реагировать на возникновение этой команды.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Каждый видимый элемент наследует обработчик событий - метод HandleEvent, 
+который уже знает, как реагировать на большую часть ввода пользователя. Если Вы 
+хотите, чтобы видимый элемент делал что-то специфическое для Вашей программы, 
+Вам необходимо перекрыть HandleEvent и научить новый обработчик событий двум 
+вещам - как откликаться на определенные Вами команды и как реагировать на 
+события от мыши и клавиатуры нужным Вам образом.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Метод HandleEvent определяет поведение видимого элемента. Два видимых 
+элемента с идентичными методами HandleEvent будут одинаково откликаться на 
+события. Когда Вы порождаете новый тип видимого элемента, Вы обычно хотите, 
+чтобы его поведение более или менее соответствовало поведению его предка с 
+некоторыми изменениями. Наиболее простой способ достичь этого - вызвать 
+HandleEvent предка в методе HandleEvent нового объекта.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Общий вид HandleEvent наследника:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">procedure NewDescendant.HandleEvent(var Event: TEvent);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Код, изменяющий или ограничивающей унаследованное поведение}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Inherited HandleEvent(Event);&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Код, выполняющий дополнительные функции}&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Другими словами, если Вы хотите, чтобы новый объект обрабатывал события не 
+так, как это делал его предок, Вы должны перехватить определенные события до передачи события в метод HandleEvent предка. Если Вы хотите, чтобы Ваш новый 
+объект вел себя также, как его предок, но с дополнительными функциями, Вы должны 
+добавить код после вызова процедуры HandleEvent предка.</font> 
+</P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_11.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_13.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

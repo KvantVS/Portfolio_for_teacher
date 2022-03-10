@@ -1,0 +1,305 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl14_5.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl14_7.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Дуги, окружности, эллипсы
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>Процедура</b> Circle. </font> </P>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Вычерчивает окружность. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Circle(X,Y: Integer; R: Word);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">ЗдесьX, Y- координаты центра; R - радиус в пикселях.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Окружность выводится текущим цветом. Толщина линии устанавливается текущим 
+стилем, вид линии всегда SolidLn (сплошная). Процедура вычерчивает правильную 
+окружность с учетом изменения линейного размера радиуса в зависимости от его направления относительно сторон графического экрана, т.е. с учетом коэффициента 
+GetAspectRatio. В связи с этим параметр R определяет количество пикселей в 
+горизонтальном направлении.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В следующем примере в центре экрана создается окно, постепенно заполняющееся 
+случайными окружностями. Для выхода из программы нажмите на любую клавишу.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Graph, CRT;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">d,r,e,x,y: Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Инициируем графику}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> d i= Detect; InitGraph(d, r, '');&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> e := GraphResult; if e 
+&lt;&gt; grOK then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(GraphErrorMsg(e))&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Создаем окно в центре экрана}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">х := GetMaxX div 4;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">у := GetMaxY div 4;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Rectangle(х,у,3*х,3*у);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetViewPort(x+1,y+1,3*x-1,3*y-1,ClipOn);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Цикл вывода случайных окружностей}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">repeat</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetColor(succ(Random(white)));  {Случайный цвет}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+SetLineStyle(0,0,2*Random(2)+1);  {и стиль линии}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> х := Random(GetMaxX);  
+{Случайное положение}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> у := Random(GetMaxY);  {центра окружности}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+Circle(х,у,Random(GetMaxY div 4));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> until KeyPressed;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if ReadKey=#0 then x := ord(ReadKey);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> CloseGraph&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура </b> Arc.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Чертит дугу окружности. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Arc(X,Y: Integer; BegA,EndA,R:
+Word);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь X, Y - координаты центра; BegA, EndA - соответственно начальный и 
+конечный углы дуги; R - радиус.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Углы отсчитываются против часовой стрелки и указываются в градусах. Нулевой 
+угол соответствует горизонтальному направлению вектора слева направо. Если 
+задать значения начального угла 0 и конечного - 359, то будет выведена полная 
+окружность. При вычерчивании дуги окружности используются те же соглашения 
+относительно линий и радиуса, что и в процедуре Circle.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Вот как выглядят две дуги: одна с углами 0 и 90, вторая 270 и 540 градусов 
+(рис. 14.6):</font> </P>
+<p align="center"><img border="0" src="14_6.jpg"    ></p>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Рис.14.6.</b> Иллюстрация процедуры Arc</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Следующая программа создает это изображение:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Graph, CRT;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">d, r, е : Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Xasp,Yasp: Word;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Инициируем графику}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> d := Detect;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InitGraphtd, r, '');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">e := GraphResult; if e &lt;&gt; grOK then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(GraphErrorMsg(e))&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetAspectRatio(Xasp,Yasp);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{R = 1/5 от вертикального размера экрана}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">r := round(Yasp*GetMaxY/5/XAsp);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">d := GetMaxX div 2;  {Смещение второго графика}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">e : = GetMaxY div 2;  {Положение горизонтальной оси}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Строим левый график}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Line (0,e,5*r div 2,e);  {Горизонтальная ось}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Line (5*r div 4,e div 2,5*r div 4,3*e div 2) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Arc (5*r div 4,e,0,90,R);  {Дуга}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OutTextXY(0,e+e div 8,'0 - 90');  {Надпись}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Правый график}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Line (d,e,d+5*r div 2,e);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Line (d+5*r div 4,e div 2, d+5*r div 4,3*e div 2);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Arc (d+5*r div 4,e,270,540,R);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OutTextXY(d,e+e div 8,'270 - 540');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Ждем нажатия на любую клавишу}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if ReadKey=#0 then d := ord(ReadKey);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+CloseGraph&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> GetArcCoords.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возвращает координаты трех точек: центра, начала и 
+конца дуги. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure GetArcCoords(var Coords:
+ArcCoordsType);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь Coords - переменная типа ArcCoordsType, в которой процедура возвращает 
+координаты центра, начала и конца дуги.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Тип ArcCoordsType определен в модуле Graph следующим образом:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ArcCoordsType = record&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> X,Y : Integer;  {Координаты центра}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Xstart,Ystart: 
+Integer;  {Начало дуги}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Xend,Yend : Integer;  {Конец дуги}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Совместное использование процедур Arc и GetArcCoords позволяет вычерчивать 
+сопряжения двух прямых с помощью дуг. Обратите внимание на коррекцию длины 
+радиуса в следующем примере, в котором вычерчивается прямоугольник со 
+скругленными углами.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Graph,CRT;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">RadX = 50;  {Горизонтальный радиус}&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> lx = 400;  {Ширина}&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> ly = 100;  {Высота}&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">d,r,e: Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> coo : ArcCoordsType;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">x1,y1: Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">xa,ya: Word;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> RadY : 
+Integer;  {Вертикальный радиус}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Инициируем графику}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> d := Detect; InitGraph(d, r, ' ') ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> e := GraphResult; if 
+e &lt;&gt; grOK then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(GraphErrorMsg(e))&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetAspectRatio(xa,ya) ;  {Получаем отношение сторон}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Вычисляем вертикальный 
+радиус и положение фигуры с учетом отношения сторон экрана}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> RadY := round (RadX 
+*( xa /ya) );</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">x1 := (GetMaxX-lx) div 2;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> y1 := (GetMaxY-2*RadY-ly) div 2;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Вычерчиваем 
+фигуру}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Line (x1,y1,x1+lx,y1);  {Верхняя горизонтальная}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Arc (x1+lx,y1+RadY,0,90,RadX) 
+;  {Скругление}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetArcCoords(coo);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> with coo do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Line(Xstart,Ystart,Xstart,Ystart+ly);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Правая вертикальная}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Arc(Xstart-RadX,Ystart+ly,270,0,RadX);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetArcCoords (coo);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Line(Xstart,Ystart,Xstart-lx,Ystart);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Нижняя горизонтальная}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Arc(Xstart-lx,Ystart-RadY,180,270,RadX);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetArcCoords(coo);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Line(Xstart,Ystart,Xstart,Ystart-ly);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Arc(Xstart+RadX,Ystart-ly,90,180,RadX)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if ReadKey=#0 then d := ord(ReadKey);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> CloseGraph</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> Ellipse.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Вычерчивает эллипсную дугу. Заголовок:&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Procedure Ellipse(X,Y: Integer;
+BegA,EndA,RX,RY: Word);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь X, Y - координаты центра; BegA, EndA - соответственно начальный и 
+конечный углы дуги; RX, RY- горизонтальный и вертикальный радиусы эллипса в 
+пикселях.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">При вычерчивании дуги эллипса используются те же соглашения относительно 
+линий, что и в процедуре Circle, и те же соглашения относительно углов, что и в 
+процедуре Arc. Если радиусы согласовать с учетом масштабного коэффициента 
+GetAspectRatio, будет вычерчена правильная окружность.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В следующей программе вычерчиваются три эллипсных дуги (рис. 14.7) при разных 
+отношениях радиусов. Замечу, что чем выше разрешение графического экрана, тем 
+ближе к единице отношение сторон и тем меньше первый график отличается от 
+третьего.</font> </P>
+<p align="center"><img border="0" src="14_7.jpg"    ></p>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Рис.14.7.</b> Эллипсные дуги</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Graph, CRT;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">d,r,e: Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">xa,ya: Word;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Инициируем графику}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> d := Detect; InitGraph(d, r, '');&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> e := GraphResult; if e 
+&lt;&gt; grOK then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(GraphErrorMsg(e))&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Первый график}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OutTextXY(5 0,4 0,'RX = RY');  {Надпись}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Line (0,100,160,100);  {Ось X}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Line (80,55,80,145); {Ось Y}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Ellipse (80,100,180,90,40,40);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Второй график}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OutTextXY(260,40,'RX = 5*RY');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Line (190,100,410,100);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Line (300,55,300,145);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Ellipse (300,100,0,359,100,20);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Третий график}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OutTextXY(465,40,'Aspect Ratio');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Line (440,100,600,100);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Line (520,55,520,145);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetAspectRatio(xa, ya);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Ellipse (520,100,0,270,40,round(40*(xa/ya)));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if ReadKey=#0 then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;d := ord(ReadKey);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">CloseGraph&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl14_5.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl14_7.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

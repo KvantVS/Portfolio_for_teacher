@@ -1,0 +1,259 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl6_4.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl6_6.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Процедуры и функции для работы с динамической памятью
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Ниже приводится
+описание как уже рассмотренных процедур и
+функций, так и некоторых других, которые
+могут оказаться полезными при обращении к
+динамической памяти. ,</font></p>
+<p align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция </b>ADDR. </font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Возвращает результат типа POINTER, в котором
+содержится адрес аргумента. Обращение:</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ADDR ( X )</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Здесь Х- любой объект
+программы (имя любой переменной, процедуры,
+функции). Возвращаемый адрес совместим с
+указателем любого типа. Отметим, что
+аналогичный результат возвращает операция
+@ .</font></p>
+<p align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция</b> CSEG. </font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Возвращает значение, хранящееся в регистре
+CS микропроцессора в начале работы
+программы в регистре CS содержится сегмент
+начала кода программы). Обращение:</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">CSEG&nbsp;</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3"> Результат
+возвращается в слове типа WORD.</font></p>
+<p align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> DISPOSE. </font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Возвращает в кучу фрагмент динамической
+памяти, который ранее был зарезервирован за
+типизированным указателем. Обращение:</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DISPOSE(TP)</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Здесь  ТР -
+типизированный указатель. При повторном
+использовании процедуры применительно к
+уже освобожденному фрагменту возникает
+ошибка периода исполнения. При
+освобождении динамических объектов можно
+указывать вторым параметром обращения к 
+DISPOSE имя деструктора (подробнее см. гл.10).</font></p>
+<p align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция</b> DSEG. </font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Возвращает значение, хранящееся в регистре
+DS микропроцессора (в начале работы
+программы в регистре DS содержится сегмент
+начала данных программы). Обращение:</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DSEG&nbsp;</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3"> Результат
+возвращается в слове типа WORD.</font></p>
+<p align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> FREEMEM. </font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Возвращает в кучу фрагмент динамической
+памяти, который ранее был зарезервирован за
+нетипизированным указателем. Обращение:</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">FREEMEM ( Р, SIZE )</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Здесь Р -
+нетипизированный указатель;</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">SIZE - длина в байтах
+освобождаемого фрагмента.</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">При повторном
+использовании процедуры применительно к
+уже освобожденному фрагменту возникает
+ошибка периода исполнения.</font></p>
+<p align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> GETMEM. </font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Резервирует за нетипизированным
+указателем фрагмент динамической памяти
+требуемого размера. Обращение:</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GETMEM ( Р, SIZE )</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">За одно обращение к
+процедуре можно зарезервировать не более
+65521 байтов динамической памяти. Если нет
+свободной памяти требуемого размера,
+возникает ошибка периода исполнения. Если
+память не фрагментирована,
+последовательные обращения к процедуре
+будут резервировать последовательные
+участки памяти, так что начало следующего
+будет располагаться сразу за концом
+предыдущего.</font></p>
+<p align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> MARK. </font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Запоминает текущее значение указателя кучи
+HEAPPTR. Обращение:</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MARK ( PTR )</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Здесь PTR - указатель
+любого типа, в котором будет возвращено
+текущее значение HEAPPTR. Используется
+совместно с процедурой RELEASE для
+освобождения части кучи.</font></p>
+<p align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция</b> MAXAVAIL. </font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Возвращает размер в байтах наибольшего
+непрерывного участка кучи. Обращение:</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MAXAVAIL</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Результат имеет тип
+LONGINT. За один вызов процедуры NEW или GETMEM
+нельзя зарезервировать памяти больше, чем
+значение, возвращаемое этой функцией.</font></p>
+<p align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция </b>MEMAVAIL. </font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Возвращает размер в байтах общего
+свободного пространства кучи. Обращение:</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MEMAVAIL&nbsp;</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3"> Результат имеет
+тип LONGINT.</font></p>
+<p align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура </b>NEW. </font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Резервирует фрагмент кучи для размещения
+переменной. Обращение:</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NEW ( ТР )</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Здесь ТР -
+типизированный указатель.</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">За одно обращение к
+процедуре можно зарезервировать не более
+65521 байта динамической памяти. Если нет
+свободной памяти требуемого размера,
+возникает ошибка периода исполнения. Если
+память не фрагментирована,
+последовательные обращения к процедуре
+будут резервировать последовательные
+участки памяти, так что начало следующего
+будет располагаться сразу за концом
+предыдущего.</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Процедура NEW может
+вызываться как функция. В этом случае
+параметром обращения к ней является тип
+переменной, размещаемой в куче, а функция NEW
+возвращает значение типа указатель.
+Например:</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PInt =^Integer;&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">p: Pint;&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">p := New(PInt);</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">......</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">При размещении в
+динамической памяти объекта разрешается в
+качестве второго параметра обращения к NEW
+указывать имя конструктора (см. гл.10).</font></p>
+<p align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция</b> OFS. </font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Возвращает значение типа WORD, содержащее
+смещение адреса указанного объекта. Вызов:</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OFS ( X )&nbsp;</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3"> Здесь Х-
+выражение любого типа или имя процедуры.</font></p>
+<p align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция</b> PTR. </font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Возвращает значение типа POINTER по заданному
+сегменту SEG и смещению OFS. Вызов:</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PTR ( SEG, OFS )</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Здесь SEG - выражение
+типа WORD, содержащее сегмент;</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">OFS - выражение типа WORD,
+содержащее смещение.&nbsp;</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3"> Значение,
+возвращаемое функцией, совместимо с
+указателем любого типа.</font></p>
+<p align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> RELEASE. </font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Освобождает участок кучи. Обращение:</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">RELEASE ( PTR )</font><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Здесь PTR - указатель
+любого типа, в котором предварительно было
+сохранено процедурой MARK значение указателя
+кучи. Освобождается участок кучи от адреса,
+хранящегося в PTR, до конца кучи.
+Одновременно уничтожается список всех
+свободных фрагментов, которые, возможно,
+были созданы процедурами DISPOSE или FREEMEM.</font></p>
+<p align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция</b> SEG. </font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Возвращает значение типа WORD, содержащее
+сегмент адреса указанного объекта. Вызов:</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SEG ( X )&nbsp;</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3"> Здесь X -
+выражение любого типа или имя процедуры.</font></p>
+<p align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция</b> SIZEOF. </font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Возвращает длину в байтах внутреннего
+представления указанного объекта. Вызов:</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SIZEOF ( X )&nbsp;</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3"> Здесь X - имя
+переменной, функции или типа. Например,
+везде в программе из примера 6.1 вместо
+константы SIZEOFREAL можно было бы использовать
+обращение SIZEOF(REAL).</font></p>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl6_4.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl6_6.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

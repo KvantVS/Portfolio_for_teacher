@@ -1,0 +1,213 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl19_4.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl19_6.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Коллекции строк
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для создания и использования коллекции отсортированных строк в Turbo Vision 
+используется объект TSrtingCollection. Этот объект является прямым потомком от 
+TSortedCollection и отличается от него тем, что его метод Compare не является 
+абстрактным - по умолчанию он осуществляет обычное для Турбо Паскаля 
+лексикографическое сравнение двух строк. Таким образом, если Вам необходимо 
+отсортировать коллекцию строк по алфавиту (точнее, в соответствии с внутренней 
+кодировкой символов), Вы можете использовать экземпляр объекта TSortedCollection 
+без какого-либо перекрытия его методов.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В следующей программе создается словарь слов, входящих в некоторый текстовый 
+файл. По умолчанию используется файл с текстом программы, но Вы можете указать 
+имя любого текстового файла в качестве параметра вызова программы.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Objects;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">f: file of Char; Function OpenFile(var Name:
+String): Boolean;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Возвращает FALSE, если нельзя открыть файл}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if ParamCount = 1 then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Name :=" ParamStr(1) {Первый параметр в строке вызова программы должен 
+содержать имя файла,}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else ,  {если это не так, анализируется файл,</font>
+<font size="3">содержащий текст программы}&nbsp;</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Name := copy(ParamStr(0),1,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">posC . ' ,ParamStr(0))) + 'PAS' ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Assign(f, Name);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{$I-}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Reset(f);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{$I+}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OpenFile := IOResult=0&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; {OpenFile}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Function GetWord: String;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Получает из 
+файла очередное слово}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">с: Char;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">w: String;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function Letter(var c: Char): Boolean;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Возвращает TRUE, если символ - буква}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">с := UpCase (с);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{проверяем на строчную русскую букву:}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if с in ['а'..'п'] then .  {а - русская буква}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> с := 
+chr(ord(c)-ord('а')+ord('А') )  {А - русская буква}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">else if с in ['р'..'я'] then ,  {р - русская буква}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> с := 
+chr(ord(с)-ord('р')+ord('Р')) ;  {Р - русская буква}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Проверяем на заглавную букву:}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Letter := с in ['А'..'Z','А1..'Я']&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;  
+{Letter}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin  {GetWord}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">w : = ' ' ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">С := #0;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">while not EOF(f) and not Letter(c) do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Read(f,c);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if not EOF(f) then while not EOF(f) and Letter(c) do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">w .:= w+c;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Read(f,c)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetWord := w&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;  {GetWord}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure PrintList(List: PStringCollection);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Выводит на экран список слов}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+Procedure PrintWord(p: PString); far;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write(р^, ' ':20-Length(р^))&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;  {PrintWord}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin {PrintList}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">List^.ForEach(@PrintWord);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; {PrintList}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WordList: PStringCollection;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">w: String;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin  {Основная программа}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if not OpenFile(w) then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn('Нельзя открыть файл
+'+w)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">else&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WordList := New(PStringCollection, Init(200,10));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> repeat</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">w := GetWord;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if (w &lt;&gt; ' ') and (MaxAvail &gt; 255) then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WordList.Insert(NewStr(w))&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+until w='';&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PrintList(WordList)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Отметим, что в операторе</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if (w &lt;&gt; '') and (MaxAvail &gt; 255) then</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">осуществляется контроль за доступной динамической памятью. В Turbo Vision 
+есть и встроенные способы контроля кучи - см. п. 19.6.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Как и в любой другой отсортированной коллекции, в коллекции строк по 
+умолчанию хранятся элементы с уникальными ключевыми полями. Чтобы подавить 
+контроль за уникальностью строк, добавьте оператор</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WordList.Duplicates := True;&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> сразу за оператором создания коллекции</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WordList := New(PStringCollection, Init(200,10));</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">и сделайте еще один прогон программы, - Вы увидите, как много раз встречается 
+в файле одно и то же слово.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Метод TStringCollection.Compare следует перекрыть, если Вы хотите осуществить 
+свой способ сортировки строк. Например, используя объект</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PStrSor =TStrSor;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TStrSor = object (TStringCollection)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function Compare(k1, k2: Pointer): Integer; Virtual;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function TStrSor.Compare(k1, k2: Pointer):
+Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s1: PString absolute k1;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> s2: PString.absolute k2;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if s1&lt; s2 then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Compare := 1&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else if s1 = s2 then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Compare := 0&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Compare := -1&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">вместо PStringCollection, Вы сможете вывести на экран список слов, 
+отсортированных в обратном порядке.</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl19_4.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl19_6.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

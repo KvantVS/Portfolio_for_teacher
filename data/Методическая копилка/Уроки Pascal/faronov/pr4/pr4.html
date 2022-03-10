@@ -1,0 +1,435 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+<table COLS="3" width="%">
+<tr>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr4_1.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+ 
+Стандартные библиотечные модули
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3"></font>
+<ul>
+
+    <li><font face="Arial, Helvetica, sans-serif" size="3">Модуль
+      SYSTEM</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Константы</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Переменные</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Стандартные
+          процедуры и функции</font></li>
+    <li><font face="Arial, Helvetica, sans-serif" size="3">Модуль
+      DOS</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Константы</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Типы</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Переменные</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Процедуры
+          и функции</font></li>
+    <li><font face="Arial, Helvetica, sans-serif" size="3">Модуль
+      CRT</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Константы</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Переменные</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Процедуры
+          и функции</font></li>
+    <li><font face="Arial, Helvetica, sans-serif" size="3">Модуль
+      GRAPH</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Константы</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Типы</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Переменные</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Процедуры</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Функции</font></li>
+</ul>
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+ 
+Модуль SYSTEM
+
+</font>
+</b>
+<br>
+</font>
+</p>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Модуль<i> SYSTEM</i> является основной библиотекой Турбо Паскаля. Он реализует 
+подпрограммы для всех встроенных возможностей, таких как ввод/вывод, обработка 
+строк, эмуляция арифметического сопроцессора, управление оверлеями и 
+динамическое распределение памяти. Модуль SYSTEM используется автоматически 
+любым модулем или программой и никогда не указывается в предложении USES.</font> </P>
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+ 
+Константы
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<TABLE border=0 frame=box rules=all>
+  <TBODY>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font></P></TD>
+    <TD><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD>
+    <TD><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD>
+    <TD><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ErrorAddr</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Pointer</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NIL;{Адрес ошибки времени выполнения}</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ExitProc</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Pointer</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NIL;{Процедура выхода}</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ExitCode</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Integer</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">0;{Выходной код}</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">FileMode</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Byte</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">2;{Режим открытия файла}</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">FreeList</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Pointer</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NIL;{Список свободных блоков кучи}</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">HeapEnd</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Pointer</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NIL;{Конец кучи}</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">HeapError</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Pointer</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NIL;{Функция обработки ошибок кучи}</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">HeapOrg</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Pointer</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NIL;{Начало кучи}</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">HeapPtr</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Pointer</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NIL;{Указатель кучи}</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InOutRes</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Integer</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">0;{Буфер результата ввода/вывода}</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OvrCodeList</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Word</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">0;{Список оверлейных сегментов кода}</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OvrDebugPtr</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Pointer</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NIL;{Адрес отладчика оверлеев}</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OvrDosHandle</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Word</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">0;{Обработчик DOS оверлеев}</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OvrEmsHandle</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Word</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">0;{Обработчик EMS оверлеев}</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OvrHeapEnd</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Word</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">0;{Конец буфера оверлеев}</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OvrHeapOrg</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Word</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">0;{Начало буфера оверлеев}</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OvrHeapPrt</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Word</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">0;{Указатель буфера оверлеев}</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OvrHeapSize</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Word</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">0;{Начальный размер буфера оверлеев}</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OvrLoadList</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Word</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">0;{Список загруженных оверлеев}</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">RandSeed</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">LongInt</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">0;{Опорное значение генератора случайных чисел}</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PrefixSeg</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Word</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">0;{Префикс программного сегмента}</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Seg0040</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Word</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">$0040{Сегмент $0040}</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SegA000</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Word</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">$A000{Сегмент $А000}</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SegB000</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Word</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">$B000{Сегмент $В000}</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SegB800</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Word</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">$B800{Сегмент $В800}</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SelectorInc</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Word</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">$1000{Шаг наращивания селекторов}</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">StackLimit</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Word</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">0;{Указатель на нижнюю границу стека}</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Test8086</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Byte</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">0;{Признак наличия процессора 80x86}</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Test8087</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Byte</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">0;{Признак наличия сопроцессора}</font></P></TD></TR></TBODY></TABLE>
+<P><font face="Arial, Helvetica, sans-serif" size="3">OvrCodeList, OvrHeapSize, OvrDebugPtr, OvrHeapOrg, OvrHeapPtr, OvrHeapEnd, 
+OvrHeapList, OvrDosHandle и OvrEmsHandle используются модулем Overlay для 
+реализации администратора оверлеев. Буфер оверлеев размещается между сегментом 
+стека и кучей и OvrHeapOrg и OvrHeapEnd содержат адреса начала и конца сегмента. 
+Размер буфера оверлеев по умолчанию соответствует размеру максимального оверлея 
+в программе; если в программе нет оверлеев, то размер оверлейного буфера равен 
+нулю.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">HeapOrg, HeapPtr, HeapEnd, FreeList, HeapError используются администратором 
+кучи для реализации распределения динамической памяти.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Переменные ExitProc, ExitCode и ErrorAddr реализуют процедуры выхода.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">PrefixSeg содержит сегментную часть адреса префикса программного сегмента 
+(PSP).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">StackLimit содержит смещение от нижней границы сегмента стека, 
+соответствующее наименьшему допустимому значению регистра SP. Обычно StackLimit 
+равен нулю; если программа откомпилирована с опциями {$N+.E+}, компилятор будет 
+устанавливать его равным 224 для резервирования рабочего пространства на нижней 
+границе сегмента стека, используемого для эмуляции сопроцессора.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">InOutRes используется встроенными программами ввода/вывода для запоминания 
+значения, возвращаемого при последующем вызове стандартной функции IOResult.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">RandSeed содержит опорное число генератора случайных чисел. При присваивании 
+конкретного значения этой переменной функция Random будет генерировать строго 
+определенную последовательность псевдослучайных чисел. Процедура Randomize 
+заносит в переменную RandSeed текущее системное время и тем самым обеспечивает 
+новую псевдослучайную последовательность при очередном прогоне программы.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">FileMode позволяет изменить режим доступа, с которым открываются 
+типизированные и нетипизированные файлы стандартной процедурой RESET. Текстовые 
+файлы этой процедурой открываются только для чтения.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Seg0040 хранит сегмент участка памяти, который MS-DOS использует для 
+размещения своих переменных.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">SegA000 содержит сегмент начала видеопамяти для графического режима работы, a 
+SegB000 и SegB800 -сегменты видеопамяти для текстового режима.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Selectorlnc используется как шаг наращивания т.н. селекторов - указателей, 
+обеспечивающих линейную модель памяти.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Test8086 хранит результат теста автообнаружения процессора Intel 80x86, a 
+Test8087 - сопроцессора.</font> </P>
+<p>&nbsp;</p>
+<table COLS="3" width="%">
+<tr>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr4_1.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</BODY></HTML>

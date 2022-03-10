@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_4.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl123_6.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Порядок вызова наследуемого метода
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Большая часть объектов Turbo Vision спроектирована в расчете на их дальнейшее 
+перекрытие в прикладных программах. Типичным примером такого рода объектов 
+является TView, метод Draw которого создает на экране пустой прямоугольник и, 
+следовательно, не может отображать никакой полезной информации. Поскольку все 
+видимые элементы порождены от TView, Вам необходимо перекрыть метод Draw в 
+собственном объекте-потомке. Более того, поскольку TView.Draw не делает никакой 
+полезной работы, его не нужно вызывать в перекрытом методе. Однако полностью 
+перекрываемые методы, подобные TView.Draw, скорее исключение из общего правила. 
+Обычно в перекрытом методе вызывается соответствующий метод, наследуемый от 
+родителя, т.к. в нем реализуются некоторые необходимые для потомка действия. В 
+такого рода ситуациях важна последовательность вызова наследуемого метода: 
+вызывать ли его до реализации специфичных действий или после? Ниже приводятся 
+практические рекомендации на этот счет.</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_4.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_6.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

@@ -1,0 +1,190 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+   <META NAME="Author" CONTENT="DimichG">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.04 [en] (Win95; I) [Netscape]">
+   <TITLE>ЧАСТЬ 4</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<CENTER><B><FONT SIZE=+2>4.<FONT FACE="Times New Roman">Структура программы.
+Основные операторы языка.</FONT></FONT></B></CENTER>
+
+<CENTER>
+<HR WIDTH="100%"></CENTER>
+
+
+<P><A NAME="4_1"></A><B><FONT SIZE=+1>4.1. Структура программы.</FONT></B>
+<BR>Любая программа на Паскале имеет следующий общий вид:
+
+<P><FONT FACE="Arial Cyr"><FONT COLOR="#800000"><B>Program</B> <имя программы>;</FONT></FONT>
+<BR><B><FONT FACE="Arial Cyr"><FONT COLOR="#800000">Блок.</FONT></FONT></B>
+
+<P>Первая строка - это заголовок программы, содержащий ее имя. Блок содержит
+описание действий, которые должны быть выполнены в соответствии с назначением
+данной программы. Обычно блок включает также описания используемых структур
+данных (константы, типы, переменные) и элементов организации алгоритма
+(метки, функции, процедуры).
+<BR>В общем случае блок состоит из пяти разделов описаний, каждый из которых
+может отсутствовать, и обязательного раздела операторов.
+
+<P><B><I>1. Описание меток.</I></B>
+<BR>Пример:</FONT>
+<BR><FONT FACE="Courier New Cyr"><FONT COLOR="#006600">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Label 5,361,017;</FONT></FONT>
+
+<P>Метки необходимы при использовании оператора перехода <FONT COLOR="#006600"><B>Goto</B></FONT>.
+<BR>В качестве меток используются целые числа из диапазона 0 - 9999.
+
+<P><B><I>2. Описание констант.</I></B>
+Пример:</FONT>
+<BR><FONT FACE="Courier New Cyr"><FONT COLOR="#006600">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Const&nbsp;&nbsp; a = -1.5;</FONT></FONT>
+<BR><FONT FACE="Courier New Cyr"><FONT COLOR="#006600">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+b = True;</FONT></FONT>
+<BR><FONT FACE="Courier New Cyr"><FONT COLOR="#006600">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+c = `pascal`;</FONT></FONT>
+
+<P><B><I>3. Описание типов.</I></B>
+<BR>Кроме ранее перечисленных стандартных типов языка Паскаль в программе
+могут быть описаны собственные типы данных. Общий вид описания
+
+<P><FONT FACE="Arial Cyr"><FONT COLOR="#800000"><B>Type </B>&lt;имя типа><B>
+=</B> &lt;определение типа><B>;</B></FONT></FONT>
+
+<P>Пример:
+<BR><FONT FACE="Courier New Cyr"><FONT COLOR="#006600">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Type&nbsp;&nbsp;&nbsp; d = 1..100;</FONT></FONT>
+<BR><FONT FACE="Courier New Cyr"><FONT COLOR="#006600">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+abc = 'a' .. 'z';</FONT></FONT>
+<BR><FONT FACE="Courier New Cyr"><FONT COLOR="#006600">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+color = (red, yellow, green);</FONT></FONT>
+<BR><FONT FACE="Courier New Cyr"><FONT COLOR="#006600">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+vektor = Array[d] Of Real;</FONT></FONT>
+
+<P><B><I>4. Описание переменных.</I></B>
+<BR>Общий вид
+
+<P><FONT FACE="Arial Cyr"><FONT COLOR="#800000"><B>Var</B> &lt;список имен
+переменных><B> :</B> &lt;имя типа><B>;</B></FONT></FONT>
+
+<P>Имя типа здесь - это имя какого-либо стандартного или описанного в данной
+программе типа данных.
+
+<P>Например:
+<BR><FONT FACE="Courier New Cyr"><FONT COLOR="#006600">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Var n,m: Integer;</FONT></FONT>
+<BR><FONT FACE="Courier New Cyr"><FONT COLOR="#006600">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+a: Real;</FONT></FONT>
+<BR><FONT FACE="Courier New Cyr"><FONT COLOR="#006600">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+b1,b2: Boolean;</FONT></FONT>
+<BR><FONT FACE="Courier New Cyr"><FONT COLOR="#006600">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+pen: color;</FONT></FONT>
+<BR><FONT FACE="Courier New Cyr"><FONT COLOR="#006600">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+x: vektor;</FONT></FONT>
+
+<P><B><I>5. Описание процедур и функций. Этот вопрос рассматривается в
+пункте 6.</I></B>
+
+<P><B><I>6. Раздел операторов</I></B> содержит список выполняемых операторов
+программы.
+<BR>Обязательным является наличие служебного слова <B><FONT COLOR="#006600">Begin</B></FONT> в начале
+и служебного слова <FONT COLOR="#006600"><B>End </B></FONT>в конце раздела. Весь текст программы должен
+завершаться точкой.
+
+<P><A NAME="4_2"></A><B><FONT SIZE=+1>4.2. Оператор присваивания.</FONT></B>
+<BR>Оператор присваивания вычисляет значение выражения, стоящего справа
+от знака “ <B><FONT FACE="Courier New,Courier"><FONT COLOR="#006600"><FONT SIZE=+1>:=
+</FONT></FONT></FONT></B>“ и присваивает его переменной, указанной слева.
+Его общий вид
+
+<P><FONT FACE="Arial Cyr"><FONT COLOR="#800000">&lt;имя переменной> <B><FONT SIZE=+1>:=</FONT></B>
+&lt;выражение>;</FONT></FONT>
+
+<P>Тип переменной и тип значения выражения должны совпадать за исключением
+того, что переменной типа <FONT COLOR="#006600"><B>Real</B></FONT> может быть присвоено значение выражения
+типа <FONT COLOR="#006600"><B>Integer</B></FONT>.
+
+<P><A NAME="4_3"></A><B><FONT SIZE=+1>4.3. Условный оператор.</FONT></B>
+<BR>С помощью условного оператора выбирается и выполняется один из операторов,
+входящих в его состав.
+<BR>Условный оператор имеет два варианта записи. Полная форма:
+
+<P><FONT FACE="Arial Cyr"><FONT COLOR="#800000"><B>If </B>&lt;логическое
+выражение> <B>Then</B> &lt;оператор1></FONT></FONT>
+<BR><FONT FACE="Arial Cyr"><FONT COLOR="#800000"><B>Else</B> &lt;оператор2>
+<B>;</B></FONT></FONT>
+
+<P>В этом случае в зависимости от значения логического выражения выбирается
+для выполнения оператор1 или оператор2 .
+
+<IMG SRC="Image3.gif" WIDTH=362 HEIGHT=233>
+
+
+<P>Неполная форма:
+
+<P><FONT FACE="Arial Cyr"><FONT COLOR="#800000"><B>If</B> &lt;логическое
+выражение> <B>Then </B>&lt;оператор> <B>;</B></FONT></FONT>
+
+<P>В этом случае в зависимости от значения логического выражения выполняется
+записанный после<B><FONT COLOR="#006600"> Then </B></FONT>оператор или не производится никаких действий.
+
+<IMG SRC="Image4.gif" WIDTH=441 HEIGHT=291>
+
+
+<P>Если после <FONT COLOR="#006600"><B>Then </B></FONT>или <FONT COLOR="#006600">
+<B>Else</B></FONT> необходимо выполнить действия,
+описанные несколькими операторами, то эти операторы должны быть заключены
+в операторные скобки <FONT COLOR="#006600"><B>Begin - End</B></FONT>.
+ Такая конструкция называется составным
+оператором.
+
+<P><A NAME="4_4"></A><B><FONT SIZE=+1>4.4. Ввод-вывод.</FONT></B>
+<BR>В программах на Паскале для ввода и вывода данных используют операторы
+обращения к процедурам ввода:
+
+<P><FONT FACE="Arial Cyr"><FONT COLOR="#800000"><B>Read </B>(список ввода)
+<B>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Readln </B>(список ввода) <B>;</B></FONT></FONT>
+
+<P>и процедурам вывода
+
+<P><FONT FACE="Arial Cyr"><FONT COLOR="#800000"><B>Write </B>(список вывода)
+<B>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Writeln </B>(список вывода)
+<B>;</B></FONT></FONT>
+
+<P>Процедура <B><FONT COLOR="#006600">Writeln</B></FONT> после вывода элементов списка переводит курсор
+на новую строку.
+<BR>В список ввода могут входить переменные типа <FONT COLOR="#006600"><B>Integer</FONT>,
+<FONT COLOR="#006600"> Real</FONT>, <FONT COLOR="#006600">Char</B></FONT>.
+В списке вывода могут содержаться константы, переменные, выражения типа<B><I>
+</I><FONT COLOR="#006600">Integer</FONT>, <FONT COLOR="#006600">Real</FONT>,
+<FONT COLOR="#006600"> Char</FONT> и <FONT COLOR="#006600">Boolean</B></FONT>. При выводе данных можно задавать
+формат вывода сразу за объектом вывода:
+
+<P><FONT FACE="Arial Cyr"><FONT COLOR="#800000">&lt;объект вывода> <B><FONT SIZE=+1>:
+</FONT></B>&lt;ширина поля></FONT></FONT>
+
+<P>где &lt;ширина поля> - целое выражение, значение которого определяет
+количество знаков отводимое для объекта вывода.
+
+<P>Вещественные значения с &lt;шириной поля> и без нее будут иметь экспоненциальную
+форму записи, поэтому для вывода значений с фиксированной точкой указанный
+формат вывода можно дополнить целым выражением через “ <B><FONT SIZE=+1>:</FONT></B>
+”, которое будет соответствовать количеству знаков после запятой:
+
+<P><FONT FACE="Arial Cyr"><FONT COLOR="#800000">&lt;объект вывода> <B><FONT SIZE=+1>:</FONT></B>
+&lt;ширина поля> <B><FONT SIZE=+1>:</FONT></B> &lt;после точки></FONT></FONT>
+
+<P>Пример: Как будет выведено на экран:
+<P><FONT FACE="Arial Cyr"><FONT COLOR="#006600">a:=10; b:=2; c:=421.65;</FONT></FONT>
+
+<P><FONT FACE="Courier New Cyr"><FONT COLOR="#006600">Writeln(a,b,c);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1024.216500000E+02</FONT></FONT>
+<BR><FONT FACE="Courier New Cyr"><FONT COLOR="#006600">Writeln(a,b:2,c:8:2)&nbsp;&nbsp;
+10 2 421.65</FONT></FONT>
+<BR><FONT COLOR="#006600">&nbsp;</FONT>
+<BR><B><FONT FACE="Times New Roman"><FONT SIZE=+1><A HREF="4pl.htm">4.5.
+Операторы цикла.</A></FONT></FONT></B>
+</BODY>
+</HTML>

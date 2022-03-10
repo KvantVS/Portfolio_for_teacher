@@ -1,0 +1,184 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0">
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_1.html">
+<img SRC="For.gif" BORDER="0">
+</a>
+</font>
+</td>
+</tr>
+</table>
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+ 
+События
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3"></font>
+<ul>
+
+    <li><font face="Arial, Helvetica, sans-serif" size="3">Природа
+      событий</font>
+    </li>
+    <li><font face="Arial, Helvetica, sans-serif" size="3">Виды
+      событий</font></li>
+
+        <li><font face="Arial, Helvetica, sans-serif" size="3">События от мыши</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">События от клавиатуры</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Сообщения</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Пустые
+          сообщения</font></li>
+    <li><font face="Arial, Helvetica, sans-serif" size="3">Маршрутизация событий</font>
+</li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Позиционированные
+          события</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Общие
+          события</font></li>
+    <li><font face="Arial, Helvetica, sans-serif" size="3">Фаза
+      событий</font>
+    </li>
+    <li><font face="Arial, Helvetica, sans-serif" size="3">Команды</font>
+</li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Преобразование
+          активных событий в команды</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Запрещение
+          и разрешение команд</font></li>
+    <li><font face="Arial, Helvetica, sans-serif" size="3">Модификация
+      и обработка событий</font>
+</li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">События,
+          определенные пользователем</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Маскирование
+          и очистка событий</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Перекрытие
+          HandleEvent</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Перекрытие
+          GetEvent</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Неиспользованное
+          время</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Ненужные
+          события</font></li>
+    <li><font face="Arial, Helvetica, sans-serif" size="3">Взаимодействие
+      видимых элементов</font></li>
+    <li><font face="Arial, Helvetica, sans-serif" size="3">Контекстная
+      помощь</font></li>
+  </ul>
+</ul>
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Как уже неоднократно подчеркивалось, программы, работающие в среде Turbo 
+Vision,- это программы, управляемые событиями. В этой главе подробно 
+рассматривается механизм событий и способы их использования.</font> </P>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+ 
+Природа событий
+
+</font>
+</b>
+<br>
+</font>
+</p>
+<P><font face="Arial, Helvetica, sans-serif" size="3">События представляют собой небольшие пакеты информации, которыми обмениваются 
+видимые элементы и которые создаются средой Turbo Vision в ответ на те или иные 
+действия пользователя. Нажатие на любую клавишу или манипуляция мышью порождает 
+событие, которое передается по цепочке активности видимых элементов до тех пор, 
+пока не найдется элемент, знающий как обработать это событие. Может оказаться, 
+что в программе нет ни одного элемента, способного обработать событие. В этом 
+случае обычно ничего не происходит, по умолчанию Turbo Vision просто удаляет 
+ненужное событие, однако программист может предусмотреть свою реакцию в этой 
+ситуации.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Важно помнить, что события сами по себе не производят никаких действий в 
+программе, но в ответ на событие могут создаваться новые видимые элементы, 
+модифицироваться или уничтожаться существующие элементы, что и приводит к 
+изменению содержимого экрана. Иными словами, все действия по созданию и 
+изменению изображения реализуются видимыми объектами, а события лишь управляют 
+их работой -именно это мы имеем в виду, говоря о программах, управляемых 
+событиями.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Технически событие представляет собой обычную для Турбо Паскаля запись, 
+имеющую следующую структуру:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TEvent = record&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">What: Word;{Тип события}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> case Word of evNothing: ();  {Пустое 
+событие}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">evMouse: (  {Событие от мыши:}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Buttons: Byte;  {Состояние кнопок}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Double : Boolean;  {Признак двойного 
+нажатия}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Where : TPoint);  {Координаты мыши}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">evKeyDown: (  {Событие от 
+клавиатуры:}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">case Integer of</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">0: (KeyCode: Word);  {Код клавиши}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 1: (CharCode: Char;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ScanCode: Byte));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">evMessage: (  {Событие-сообщение}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Command: Word; {Код команды}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> case Word of</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">0: (InfoPtr : Pointer)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 1: (InfoLong: Longlnt)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">2: (InfoWord: Word);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">3: (Infolnt : Integer);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">4: (InfoByte: Byte);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">5: (InfoChar: Char));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Ядром события является поле What, которое описывает тип события. Оставшаяся 
+часть записи содержит дополнительную информацию, например, код нажатой клавиши 
+или координаты точки, в которой была нажата кнопка мыши.</font> </P>
+
+
+<p>&nbsp;</p>
+<table COLS="3" width="%">
+<tr>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0">
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_1.html">
+<img SRC="For.gif" BORDER="0">
+</a>
+</font>
+</td>
+</tr>
+</table>
+</BODY></HTML>

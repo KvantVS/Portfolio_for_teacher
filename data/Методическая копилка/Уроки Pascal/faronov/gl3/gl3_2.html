@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl3_1.html">
+<img SRC="Back.gif" BORDER="0">
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0">
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl3_3.html">
+<img SRC="For.gif" BORDER="0">
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+ 
+Константы
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">В качестве констант в Турбо Паскале могут использоваться целые, вещественные 
+и шестнадцатеричные числа, логические константы, символы, строки символов, 
+конструкторы множеств и признак неопределенного указателя NIL.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Целые числа записываются со знаком или без него по обычным правилам и могут 
+иметь значение от -2147483648 до +2147483647. Следует учесть, что, если 
+целочисленная константа выходит за указанные границы, компилятор дает сообщение 
+об ошибке. Такие константы должны записываться с десятичной точкой, т.е. 
+определяться как вещественные числа.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Вещественные числа записываются со знаком или без него с использованием 
+десятичной точки и/или экспоненциальной части. Экспоненциальная часть начинается 
+символом е или Е, за которым могут следовать знаки «+» или «-» и десятичный 
+порядок. Символ е (Е) означает десятичный порядок и имеет смысл «умножить на 1.0 
+в степени». Например,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">3.14Е5 - 3.14 умножить на 10 в степени 5;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">-17е-2 - минус 17 умножить на 10 в степени минус 2.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если в записи вещественного числа присутствует десятичная точка, перед точкой 
+и за ней должно быть хотя бы по одной цифре. Если используется символ 
+экспоненциальной части е (Е), за ним должна следовать хотя бы одна цифра 
+десятичного порядка.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Шестнадцатеричное число состоит из шестнадцатеричных цифр, которым 
+предшествует знак доллара $ (код 36 в ASCII). Диапазон шестнадцатеричных чисел - 
+от $00000000 ДО $FFFFFFFF.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Логическая константа - это либо слово FALSE (ложь), либо слово TRUE (истина).</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Символьная константа - это любой символ ПК, заключенный в апострофы:</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">'</font><font face="Verdana, Arial, Helvetica, sans-serif" size="3">z' - символ
+z;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'Ф' - символ Ф.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если необходимо записать собственно символ апострофа, он удваивается:&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> '''' - 
+символ ' (апостроф).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Допускается использование записи символа путем указания его внутреннего кода, 
+которому предшествует символ # (код 35), например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">#97 - символ а;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">#90 - символ Z;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">#39 - символ ';</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">#13 - символ CR.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Строковая константа - любая последовательность символов (кроме символа CR 
+-возврат каретки), заключенная в апострофы. Если в строке нужно указать сам 
+символ апострофа, он удваивается, например:</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">'</font><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Это - строка символов;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;'That' 's string.'.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Строка символов может быть пустой, т.е. не иметь никаких символов в 
+обрамляющих ее апострофах. Строку можно составлять из кодов нужных символов с 
+предшествующими каждому коду символами #, например, строка #83#121#109#98#11#108 
+эквивалентна строке ' Symbol'.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Наконец, в строке можно чередовать части, записанные в обрамляющих 
+апострофах, с частями, записанными кодами. Таким способом можно вставлять в 
+строки любые управляющие символы, в том числе и символ CR (код 13), например:</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">#7'Ошибка !'#13'Нажмите любую клавишу
+...'#7 .</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Конструктор множества - список элементов множества, обрамленный квадратными 
+скобками, например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">[1,2,4..7,12]&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">[blue, red]&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> []&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">[true]</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В отличие от стандартного Паскаля, в Турбо Паскале разрешается в объявлении 
+констант использовать произвольные выражения, операндами которых могут быть 
+ранее объявленные нетипизированные константы, имена типов и объектов, а также 
+следующие функции от них;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">abs   lo  
+ptr   swap</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">chr   odd &nbsp;
+rpund  trunc</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">hi  &nbsp; ord &nbsp;
+sizeof</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">length&nbsp; pred  succ</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MaxReal = Maxlnt div SizeOf(real);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> NumChars = ord('Z') - ord('a') + 1;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Ln10 = 
+2.302585092994;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Ln10R = 1 / Lnl0;.</font> </P>
+
+<p>&nbsp;</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl3_1.html">
+<img SRC="Back.gif" BORDER="0">
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0">
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl3_3.html">
+<img SRC="For.gif" BORDER="0">
+</a>
+</font>
+</td>
+</tr>
+</table>
+</BODY></HTML>

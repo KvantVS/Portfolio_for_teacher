@@ -1,0 +1,507 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_16.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Контекстная помощь
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">В Turbo Vision предусмотрены средства, облегчающие создание 
+контекстно-зависимой справочной службы. С этой целью каждый видимый элемент 
+имеет специальное шестнадцатиразрядное поле TView.HelpCtx, содержимым которого 
+Вы можете распоряжаться по своему усмотрению. Обычно каждому видимому элементу 
+присваивается свой код (целое число в диапазоне от 0 до 65535), устанавливаемый 
+в поле HelpCtx. В этом случае при нажатии на заранее обусловленную командную 
+клавишу, открывающую доступ к справочной службе (обычно это клавиша F1), 
+программа может получить текущий контекст (прямым чтением поля HelpCtx или с 
+помощью метода GetHelpCtx) и передать его в качестве параметра вызова справочной 
+службе.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Где обрабатывать событие, связанное с нажатием клавиши вызова справочной 
+службы? Идеальным местом для этого является источник всех событий - метод 
+GetEvent. Этот метод связан с любым видимым элементом, в том числе и с 
+терминальным видимым объектом, и поэтому без труда может получить текущий 
+контекст.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В следующем примере на экране создается диалоговое окно с двумя кнопками. 
+Клавиша F1 используется для доступа к справочной службе. Если активна (выбрана) 
+левая кнопка, нажатие на F1 даст сообщение «Левая кнопка», если правая - «Правая 
+кнопка». Если на экране нет диалогового окна (оно вызывается клавишей F2), 
+появится сообщение «Нет окна».</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses CRT,App,Dialogs,Obj ects,Drivers,Views,Menus;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PProg = TProg;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TProg = object (TApplication)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure HandleEvent(var Event: Tevent); Virtual;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Procedure GetEvent(var 
+Event: Tevent); Virtual;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Procedure InitStatusLine; Virtual;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TProg.HandleEvent(var Event: TEvent);&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Procedure Dialoglnit;&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R: TRect;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Dia: PDialog;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> B1,B2: PButton;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">с: Word;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ClearEvent(Event);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(20,9,60,17);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Dia := New(PDialog, Init(R,''));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(3,4,19,6);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Bl := New(PButton,Init(R,'Левая',0,0));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">El*.HelpCtx := 1;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DiaA.insert (B1);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(20,4,35,6);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">B2 := New(PButton,Init(R,'Правая',0,0));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">В2. HelpCtx := 2;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Dia.Insert (B2) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> с := ExecView(Dia)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end ; {Dialоg Init}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin 
+{TProg.HandleEvent }</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TApplication.HandleEvent (Event) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if (Event. What = evCommand)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">(Event. Command = cmMenu) then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Dialoglnit</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; {TProg. Handl eEvent}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Procedure TProg. InitStatusLine;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R: TRect;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetExtent (R) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> R.A.Y := pred(R.B.Y) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">StatusLine := New(PStatusLine, Init(R,&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> NewStatusDef (О, О,  {Начальная строка 
+статуса}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> NewStatusKey ( ' ~Alt-X~ Выход' , kbAltX, cmQuit,&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> NewStatusKey ( '~F1~ 
+Справка' , kbFl,cmHelp,&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> NewStatusKey ( '~F2~ Окно диалога' , kbF2, cmMenu, 
+NIL))),&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> NewStatusDef (1, 2 , {Строка статуса с диалоговым окном}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> NewStatusKey ( 
+' ~Esc~ Выход' , kbEsc, cmCancel,&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> NewStatusKey ('~F1~ Справка' , kbFl, cmHelp, 
+NIL)), .NIL))));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; {TProg. InitStatusLine}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TProg. GetEvent (var Event: TEvent) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">txt: array [0..2] of String =</font> <font size="3">('Нет окна', 'Левая кнопка' , 'Правая кнопка');&nbsp;</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TApplication. GetEvent (Event) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if Event . Command = cmHelp then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY(60,l) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> TextColor (Black+Blink);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> TextBackGround (White) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Write (Txt 
+[GetHelpCtx] ) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Delay (2000) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> GotoXY(60,l) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Write ('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+')&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; {TProg. GetEvent}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Prog: TProg;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Prog.Init;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Prog . Run ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Prog . Done&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для упрощение программы справочное сообщение выводится стандартными 
+средствами Турбо Паскаля. Сообщение появляется в верхнем правом углу экрана и 
+через 2 сек стирается, в течение этого промежутка времени доступ к клавиатуре и 
+мыши блокируется.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Контекст видимого элемента может управлять содержимым строки статуса. С этой 
+целью в методе InitStatusLine используется два или более вызова NewStatusDef со 
+своим диапазоном контекста (см. предыдущий пример).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В состав демонстрационных модулей Turbo Vision включен файл HelpFile.pas и 
+компилятор TVHC.pas, существенно упрощающие процесс создания и использования 
+контекстно-чувствительной помощи.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Средства модуля HelpFile позволяют по заданному контексту найти в особом 
+файле справочной службы нужную справку и вывести ее на экран. Текст справки 
+помещается в окно со скроллером, границы которого могут изменяться. Справочная 
+служба контролирует размер окна и форматирует текст так, чтобы строки не 
+выходили за границы окна. В тексте справки могут использоваться перекрестные 
+ссылки, представляющие собой выделенные цветом фрагменты текста. Справочная 
+служба обеспечивает доступ к этим ссылкам так, как это реализовано в среде Турбо 
+Паскаля: ссылку можно выбрать клавишей Tab или отметкой мышью, после чего 
+нажатие на Enter приведет к раскрытию нового справочного окна с соответствующей 
+справкой.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для использования этих средств необходимо предварительно создать файл 
+справочной службы, содержащий текстовые данные и средства управления ими. Файл 
+справочной службы создается программой TVHC.PAS из обычного текстового файла, в 
+котором используются следующие соглашения:</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> если очередная строка начинается символами . topic, эта строка определяет 
+заголовок темы;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">если в тексте встречается фрагмент, обрамленный фигурными скобками, этот</font>
+    <font face="Arial, Helvetica, sans-serif" size="3">фрагмент определяет перекрестную ссылку.</font></li>
+</ul>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Заголовок темы содержит идентифицирующее справку уникальное кодовое слово, и 
+связанный с ним контекст. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.topic Viewer=2</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь Viewer - кодовое слово; 2 - контекст справочной службы.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Все остальные строки до очередного заголовка темы составляют справочное 
+сообщение и будут выводиться в окне справочной службы. Если очередная строка 
+справки начинается пробелом, эта строка не форматируется и может отсекаться 
+границами окна, в противном случае строка выводится с учетом текущих границ окна 
+(если очередное слово не умещается в окне, остаток текстовой строки переносится 
+на следующую строку окна). Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.topic FileOpen=3&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> File Open</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">---------</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Эта опция меню используется для загрузки файла</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь строки</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">File Open</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">---------</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">начинаются пробелом и поэтому не форматируются, т.е. сохраняют свой вид 
+независимо от границ окна, в то время как при выводе строки</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Эта опция меню используется для загрузки файла</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">будут контролироваться границы окна (строка не начинается пробелом) и, если 
+очередное слово выйдет за его правую границу, остаток строки вместе с 
+неуместившимся словом будет выведен в следующей строке окна.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Любой фрагмент строки справочного сообщения, обрамленный фигурными скобками, 
+рассматривается как перекрестная ссылка. Перекрестная ссылка может содержать 
+кодовое слово заголовка нужной справки или произвольный текст, за которым 
+указывается двоеточие и кодовое слово. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">С помощью опции {FileOpen} можно загрузить файл.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">или</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Окно обеспечивает {просмотр файла: Viewer} в режиме</font>
+<font size="3">скроллера.</font></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В первом случае будет выведена строка</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">С помощью опции <b> FileOpen</b> можно загрузить файл.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">причем слово FileOpen будет выделено цветом и может использоваться как 
+перекрестная ссылка на справку, заголовок темы которой имеет вид</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.topic FileOpen = ...&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Во втором случае в окне выводится строка</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Окно обеспечивает <b> просмотр файла</b> в режиме скроллера.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Слова просмотр файла выделяются цветом и используются как перекрестная ссылка 
+на справку с заголовком</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.topic Viewer = ...&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> В заголовке темы можно указывать несколько кодовых слов, 
+например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.topic FileOpen=3, OpenFile=103, FFileOpen&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Доступ к такой справке возможен 
+для контекстов</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">chFileOpen = 3;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> chOpenFile = 103;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> chFFileOpen= 104;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Обратите внимание: за кодовым словом FFileOpen не указывается контекст, в 
+этом случае считается, что связанный с ним контекст есть предыдущий контекст, 
+увеличенный на 1, т.е.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">chFFileOpen = 103 + 1 = 104</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Файл DEMOHELP. TXT содержит пример исходного текстового файла, 
+подготовленного с учетом описанных требований для преобразования программой 
+TVHC.PAS в файл справочной службы.</font> </P>
+<ol>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">Подготовка справочного файла и его использование осуществляется в следующей 
+последовательности.</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> Подготавливается текстовый файл NAMETEXT, содержащий заголовки тем, 
+справки и перекрестные ссылки.</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> Вызывается программа TVHC.EXE (исходный текст этой программы содержится в 
+файле \BP\EXAMPLES\DOS\TVDEMOS\TVHC.PAS) для создания файла справочной службы 
+NAMEHELP и вспомогательного модуля NAMEPAS. Обращение к программе описано ниже.</font></li>
+</ol>
+<blockquote>
+  <ul>
+    <li><font face="Arial, Helvetica, sans-serif" size="3"> В программе, использующей средства модуля HelpFile:</font></li>
+    <li><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;вызывается процедура RegisterHelpFile для регистрации объектов модуля 
+HelpFile в потоке;</font></li>
+    <li><font face="Arial, Helvetica, sans-serif" size="3"> открывается поток, связанный с созданным файлом NAMEHELP; в) создается 
+экземпляр объекта THelpFile и ему передается поток и нужный контекст;</font></li>
+    <li><font face="Arial, Helvetica, sans-serif" size="3"> инициируется работа созданного экземпляра;</font></li>
+    <li><font face="Arial, Helvetica, sans-serif" size="3"> ликвидируется экземпляр объекта THelpFile.</font></li>
+  </ul>
+</blockquote>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Действия 3,6,..., 3,д осуществляются каждый раз, когда необходимо выдать ту 
+или иную справку.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для преобразования текстового файла во внутренний формат, используемый 
+средствами модуля HelpFile, предназначена программа, исходный текст которой 
+поставляется в файле TVHC.PAS. Перед использованием этой программы ее необходимо 
+оттранслировать в ЕХЕ-файл. Формат вызова программы TVHC.EXE:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TVHC NAMETEXT [NAMEHELP [NAMEPAS]]</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">(в квадратных скобках указаны необязательные параметры). Здесь NAMETEXT - имя 
+исходного текстового файла, NAMEHELP - имя выходного файла справочной службы, 
+NAMEPAS - имя выходного файла, содержащего текст модуля с контекстами в виде 
+констант chXXXX. Если имена выходных файлов опущены, будут созданы файлы с 
+именем исходного файла и расширением HLP для файла справочной службы, PAS для 
+текста модуля.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Текст файл NAMEPAS имеет следующий вид:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">unit namepas;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">interface</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">chTopicl = nl;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> chTopic2 = n2;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">chTopicN = nN;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> implementation&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Поскольку этот файл создается программой TVHC.EXE автоматически, будьте 
+внимательны при обращении к ней. Не рекомендуется опускать имена NAMEHELP и 
+NAMEPAS: если имя исходного текстового файла совпадает с именем программы или</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">любого другого PAS-файла, старый файл будет стерт и на его месте будет создан 
+файл с текстом модуля!</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для иллюстрации техники использования средств модуля HelpFile рассмотрим 
+следующий пример. Пусть текст справочной службы помещен в файл HelpTest.txt и 
+имеет следующий вид:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.topic NoContext=0</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Добро пожаловать</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">в справочную службу системы Turbo Vision!</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">В текстовом файле для справочной службы Вы должны подготовить {заголовки тем: 
+topic} и {перекрестные ссылки: CrossRef}. Весь текст от одного заголовка до 
+другого представляет собой текст справки и выводится в окне справочной службы. 
+При подготовке текста учитываются следующие соглашения:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">если очередная строка начинается символом пробел, эта строка не будет 
+форматироваться с учетом границ окна;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">во всех остальных случаях выводимый в окне текст форматируется с учетом 
+границ окна: слово, не умещающееся на строке, переносится на следующую строку 
+экрана. Для преобразования текстового файла в файл справочной службы вызывается 
+программа TVHC.EXE:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TVHC NAMETXT [NAMEHELP [NAMEPAS]]</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Здесь NAMETXT - имя исходного текстового файла; NAMEHLP -имя выходного файла 
+справочной службы; NAMEPAS - имя выходного файла, содержащего текст PAS-модуля с 
+определением всех контекстов в виде констант chXXXX. Имя файла NAMEHELP можно не 
+указывать - в этом случае выходной файл будет иметь имя входного файла и 
+расширение HLP. Если не указан файл HELPPAS, будет создан файл с именем 
+исходного и расширением PAS.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">По умолчанию программа использует расширение ТХТ для входного файла, HLP для 
+выходного файла справочной службы и PAS - для файла констант. .topic Topic=l 
+Заголовок темы имеет следующий формат:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.topic Name[=N] [, Namel[=N2] [...]]</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Здесь Name - имя темы (может состоять только-из латинских букв и цифр; 
+разница в высоте букв игнорируется); N -контекст справочной службы, при котором 
+выдается данная справка.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">В квадратных скобках показаны необязательные параметры. Если опущен контекст 
+N, программа присваивает соответствующей перекрестной ссылке контекст NPrev + 1, 
+где NPrev - предыдущий определенный в программе контекст. .topic CrossRef=2</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">В произвольное место текста справки можно вставить так называемую 
+перекрестную ссылку:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">(text[:title])</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Здесь () - фигурные скобки; text - произвольный текст или заголовок темы; 
+title - заголовок темы; этот параметр вместе с двоеточием опускается, если text 
+- заголовок темы.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если Вы подготовите такой файл, то после вызова</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">tvhc helptest</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">будут созданы два файла: файл справочной службы helptest.hlp и файл модуля с 
+определениями констант helptest.pas. Содержимое этого последнего файла будет 
+таким:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">unit helptest;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">interface</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">hcCrossRef = 2;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">hcNoContext= 0;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">hctopic = 1;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> implementation&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Следующая программа будет выдавать контекстно-зависимые справочные сообщения</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">из файла helptest.hlp при каждом нажатии на F1.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses App, Menus, Drivers, Views, Objects, HelpFile, Dialogs;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmChangeCtx =1000;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PCtxView = ^TCtxView;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> TCtxView = object (TView)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor Init;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Procedure Draw; Virtual;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> MyApp = object (TApplication)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Ctx: PCtxView;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Constructor Init;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure InitStatusLine; Virtual;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Procedure HandleEvent(var Event: TEvent); 
+Virtual;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PMyHelpWindow = AMyHelpWindow;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> MyHelpWindow = object (THelpWindow)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function GetPalette: PPalette; Virtual;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure MyApp.InitStatusLine;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R: TRect;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetExtent(R);&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> R.A.Y := pred(R.B.Y);&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> StatusLine := New(PStatusLine,Init(R,</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewStatusDef(0, $FFFF,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewStatusKey('~Alt-X~ Выход', kbAltX, cmQuit,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewStatusKey('~F1~ Помощь',kbF1, cmHelp,&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> NewStatusKey('~F2~ Изменить 
+контекст',kbF2,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmChangeCtx,&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> NewStatusKey('~F5~ Распахнуть окно1, kbF5,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmZoom, NIL)))},&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> NIL)))&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor MyApp.Init;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TApplication.Init;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Ctx := NewtPCtxView, Init);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert(Ctx);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> RegisterHelpFile&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure MyApp.HandleEvent;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">HF: PHelpFile;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> HS: PDosStream;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> HW: PMyHelpWindow;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">HelpOpen: Boolean = False;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Procedure DoHelp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Обеспечивает доступ к контекстно-зависимой справочной службе}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">С: Word;.&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ClearEvent(Event);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{ Открываем DOS-поток: }</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">HS := New(PDosStream, Init('HELPTEST.HLP', stOpenRead));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{ Создаем и инициируем экземпляр объекта THelpFile: }</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">HF := New(PHelpFile, Init(HS));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">HelpOpen := HSA.status = stOk;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if HelpOpen then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Создаем окно справочной службы и связываем его с потоком HS и текущим 
+контекстом:}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">HW := New(PMyHelpWindow, Init(HF, GetHelpCtx));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if ValidView(HW) &lt;&gt; NIL 
+then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">С := ExecView(HW);  {Выдаем справку}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Dispose(HW)  {Ликвидируем окно}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">HelpOpen := False&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Dispose (HF, Done)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TApplication.HandleEvent (Event) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> case Event . Command of</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmHelp: if not HelpOpen then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DoHelp;&nbsp; {Выдаем справку}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> cmChangeCtx:  {Изменяем контекст по клавише F2}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if HelpCtx = 3 then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">HelpCtx := 0&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">inc (HelpCtx) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Ctx^.Draw;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ClearEvent (Event)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function MyHelpWindow.GetPalette;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">P = #16#17#18#19#20#47#21#13;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">C: String [8] = P;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetPalette := @C&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor TCtxView. Init;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R: TRect;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R. Assign (67 , 0, 80, 1) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TView.Init(R) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TCtxView. Draw;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">S: String;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">B: TDrawBuffer;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">C: Byte;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Str (Application^. HelpCtx, S) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">S := 'Контекст = '+S;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">С := GetColor(2) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MoveChar(B, ' ', C, Size.X) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MoveStr(B, S, C) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLine(0, 0,Size.X,1,B)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Р: МуАрр;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">P.Init;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">P.Run;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">P.Done&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В программе предусмотрена смена текущего контекста с помощью клавиши F2. 
+Разумеется, в реальной программе смена контекста будет, судя по всему, 
+происходить иначе: обычно в текст конструктора Init видимого элемента 
+вставляется оператор</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">HelpCtx := NNN;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">где NNN - нужный контекст.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для визуализации текущего контекста в программе используется простой объект 
+TCtxView, с помощью которого в верхнем правом углу экрана выводится строка</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Контекст = N&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> N - текущий контекст.</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_16.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

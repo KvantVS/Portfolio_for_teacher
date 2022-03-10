@@ -1,0 +1,409 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr5_1.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr5_3.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Игра Ним
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Описание программы см, п.2.7.3.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses CRT; <i> {Подключение библиотеки дополнительных</i></font><i>
+<font size="3">процедур и функций для управления экраном}</font></i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MAXROW = 14; <i> {Максимальное количество рядов}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> MAXCOL = 20; <i> {Максимальное 
+количество фишек в ряду}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ColType = array [1.. MAXROW] of Integer;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">exit : Boolean; <i> {Признак окончания работы}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">change : Boolean; <i> {Признак изменения условий игры}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">nrow : Integer; <i> { Количество рядов}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ncol : ColType; <i> {Максимальное количество фишек по рядам}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">col : ColType; <i> {Текущее количество фишек по рядам}</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-----------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure ShowField;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Отображает на экране текущее состояние игрового поля}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">FISH = #220; <i> {Символ-указатель фишки}&nbsp;</i></font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Х0 =4; <i> {Левая колонка номеров рядов}&nbsp;</i></font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> X1 
+= 72; <i> {Правая колонка количества фишек}&nbsp;</i></font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> X =20; <i> {Левый край игрового поля}</i></font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">i,j : Integer;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin <i> {ShowField}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for i := 1 to nrow do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY(X0,i+4) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">write(i); <i> {Номер ряда}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> GotoXY(Xl,i+4) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">write (col [i] :2) ; <i> {Количество фишек в ряду}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for j := 1 to ncol [i] do <i> 
+{Вывод ряда фишек:}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY(X+2*j,i+4) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if j&lt;=col[i] then write (FISH) else write ( ' . ' )&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i> {ShowField}</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{---------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Prepare;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{ Подготовка данных и формирование экрана }</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Header0='ИГРА НИМ';</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Header1=' Вы можете взять любое число фишек из любого ряда.';</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Header2='Выигрывает тот, кто возьмет последнюю фишку.';</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Header3='Номер ряда';</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Header4='Кол-во фишек';</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">i : Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin <i> {Prepare}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ClrScr;<i>{Очищаем экран }</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Выводим заголовок:}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY( (80 -Length (Header0))div 2,1);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">write (Header0) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY( (80-Length(Headerl))div 2,2);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">write (Header1) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY( (80-Length(Header2))div 2,3);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">writeln(Header2) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">write (Header3) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY (80- Length ( Header 4 ) , 4 ) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">write (Header4) ;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Подготовить начальную раскладку: }</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for i := 1 to nrow do col [i] := ncol [i]&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; {Prepare}</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-----------------}</font></i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure GetPlayerMove;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{</font><font size="3">Получить, проконтролировать и отобразить ход игрока }</font> </font></i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ТЕХТ1 = 'Введите Ваш ход в формате РЯД КОЛИЧ ' +</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'(например, 2 3 - взять из 2 ряда 3 фишки)';</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ТЕХТ2='или введите 0 0 для выхода из игры; -1 0 для настройки</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">игры'; ТЕХТЗ=' Ваш ход: ';&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Y=20; <i> {номер строки для вывода сообщений}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">correctly : Boolean;<i>{признак правильности сделанного хода}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">xl,x2 : Integer;<i>{вводимый ход}&nbsp;</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {-------------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure GetChange;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{ Ввести новую настройку игры (количество рядов и количество</font>
+<font size="3">фишек в каждом ряду}&nbsp;</font></font></i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">t1= 'НАСТРОЙКА ИГРЫ';</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">t2= '(ввод количества рядов и количества фишек в каждом ряду)';&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">correctly : Boolean;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> i : Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin <i> {GetChange}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">clrscr;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY((80-Length (t1)) div 2,1);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">write(t1);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY((80-Length(t2)) div 2,2);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">write(t2);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> repeat</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY(1,3);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">write('Введите количество рядов (максимум ',MAXROW,'): ');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY(WhereX-6,WhereY);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">readln(nrow);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">correctly := (nrow&lt;=MAXROW) and (nrow&gt;1);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if not correctly then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">write (#7)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">until correctly;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for i : = 1 to nrow do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> repeat</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY(1,i+3) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">write ('ряд',i,',количество фишек(максимум',MAXCOL,'):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY (Wherex- 6, WhereY) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">readlntncol [i] ) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">correctly := (ncol [i] &lt;=MAXCOL) and (ncol [i] &gt;0) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if not correctly then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">write (#7)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> until correctly&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i> {GetChange}&nbsp;</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {-------------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin <i> {GetPlayerMove}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ShowField; <i> {Показать начальное состояние поля }</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{ Сообщить игроку правила ввода хода: }</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY ( (80 -Length (TEXT1) ) div 2,Y);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">write (TEXT1) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotOXY( (80-Length(TEXT2) ) div 2, Y+1);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">write (TEXT2) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">repeat</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{ Пригласить игрока ввести ход: }&nbsp;</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY (1, Y+2) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write (ТЕХТЗ ); <i> {вывести приглашение и стереть предыдущий ход}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> GotoXY 
+(WhereX-1 6, Y+2) ; <i> {курсор влево на 16 позиций}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> ReadLn (x1 , х2 ) ; <i> {</i>ввести 
+очередной ход}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> exit := x1=0; <i> {контроль команды выхода}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> change := x1=-1; <i> 
+{контроль команды изменения}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if not (exit or change) then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">correctly := (x1&gt;0) and (x1&lt;=nrow) and&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> (x2&lt;=col [x1] ) and (x2&gt;0) 
+;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if correctly then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin <i>{ход правильный: }</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">col [x1] := col[x1]-x2; <i> {изменить раскладку фишек}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> ShowField <i> {показать поле}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">write (#7) <i>{ход неправильный: дать звуковой сигнал }&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">correctly := true {случай EXIT или CHANGE}&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> until correctly;&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if change then</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetChange</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i> {GetPlayerMove}&nbsp;</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {--------------------------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure SetOwnerMove;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{ Найти и отобразить очередной ход программы }</font> </i> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{------------------}</font></i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function CheckField : Integer;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{ Проверка состояния игры. Возвращает 0, если нет ни одной</font>
+<font size="3">фишки (победа игрока) , 1 - есть один ряд (победа машины) и</font>
+<font size="3">количество непустых рядов в остальных случаях }&nbsp;</font></font></i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">i,j : Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin <i> {CheckField}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">j := 0;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for i := 1 to nrow do if col[i]&gt;0 then
+inc(j);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">CheckField := j</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i> {CheckField}</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{--------------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure CheckPlay;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{ Контроль окончания игры }</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">i : Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin {CheckPlay}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY(1,25) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">write ( 'Введите 1, если хотите сыграть еще раз, 0 - выход:');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">readln(i);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if i=l then change := true else exit := true&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i> {CheckPlay}</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{--------------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure PlayerVictory;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{ Поздравить игрока с победой и усложнить игру }</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">t1 = 'ПОЗДРАВЛЯЮ С ОТЛИЧНОЙ ПОБЕДОЙ!'; var i : Integer; begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY( (80-Length(t1) ) div 2,24);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">writeln(t1,#7) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for i : = 1 to nrow do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if ncol [i] &lt;MAXROW then inc (ncol [i] ) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> CheckPlay</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i> {PlayerVictory}&nbsp;</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {---------------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure OwnVictory;&nbsp;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> { Победа машины }&nbsp;</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">t1 = 'ВЫ ПРОИГРАЛИ: СЛЕДУЮЩИМ ХОДОМ Я БЕРУ ВЕСЬ РЯД';</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">i : Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin <i> {OwnVictory}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> i := 1;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">while col[i]=0 do inc(i);&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY( (80-Length(t1) ) div 2,24);&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">write(t1,i,#7);</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">delay (2000); <i> {задержка на 2 секунды}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> col [i] := 0;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> ShowField;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> CheckPlay&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end; <i> 
+{OwnVictory}</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{--------------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure ChooseMove;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{ Выбор очередного хода }</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">BIT = 6; {количество двоичных разрядов}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">BitType = array [1..BIT] of Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ncbit : array [1..MAXROW] of BitType;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">i,j,k : Integer;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">nbit : BitType;&nbsp;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {------------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure BitForm(n : Integer; var b :
+BitType);</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{ Формирует двоичное представление b целого числа
+n }</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">i : Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin <i> {BitForm}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for i := BIT downto 1 do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if odd(n) then b[i] := 1 else b[i] := 0;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">n := n shr 1&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i> {BitForm}</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{------------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin <i> {ChooseMove}</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Найти двоичное представление количества фишек во всех рядах:}&nbsp;</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for i := 1 to 
+nrow do BitForm(col [i] ,ncbit [i] ) ;&nbsp;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Найти сумму разрядов по модулю 2:}&nbsp;</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for i 
+:= 1 to BIT do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">nbitti] := 0;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for j := 1 to nrow do nbitti] := nbitti] xor ncbit [j / i]&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Найти i = старший ненулевой разряд суммы}&nbsp;</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> i := 1;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">while nbitti] =0 do inc(i);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if i&gt;BIT then</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Опасный вариант}&nbsp;</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin j := 1;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">while col[j]=0 do inc(j); <i>{найти ненулевой ряд}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> k := 1 <i> {взять из него 1 
+фишку}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Безопасный вариант}&nbsp;</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin j := 1;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">while ncbit [j,i]=0 do inc(j); <i> {найти нужный ряд}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for i := i to BIT do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if 
+nbit[i] =1 then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ncbit [j,i] := ord (ncbit [j , i] =0) ; <i>{инверсия разрядов}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> k := 0;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for i := 1 to BIT do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if ncbit [j,i]=1 then inc(k);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if i&lt;BIT then k := k shl 1&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k := col [j] - k&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GotoXY(1,23);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">write('Мой ход: ');&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> GotoXY(WhereX-8,WhereY);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> delay (.1000) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> write (j, ' ' 
+,k) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> col[j] := col[j] -k&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end; <i> {ChooseMove}</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-------------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin {SetOwnerMove}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> case CheckField of <i> {проверить количество непустых рядов}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+0 : PlayerVictory; <i> {все ряды пусты - Победа игрока}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 1 : OwnVictory; <i> {один 
+непустой ряд - победа машины}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ChooseMove; <i> {выбрать очередной ход}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;<i>{case}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end; <i> {SetOwnerMove}</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{--------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin <i> {Главная программа}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> nrow : = 3 ; <i> { Подготовить игру }&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> ncol [1] := 3; <i> { 
+на поле из трех }&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> ncol [2] := 4; <i> { рядов фишек }&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> ncol [3] := 5;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> repeat<i>{ Цикл 
+изменения условий игры }</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Prepare; <i> { Подготовить экран }&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> repeat <i> { Игровой цикл }</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetPlayerMove; <i>{ Получить ход пользователя }&nbsp;</i></font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if not (exit or change) then</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetOwnerMove <i> { Определить собственный ход }&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> until exit or change&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> until exit&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+end.</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr5_1.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr5_3.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+</BODY></HTML>

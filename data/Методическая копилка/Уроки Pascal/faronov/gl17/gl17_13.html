@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl17_12.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl17_14.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Поле State
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Шестнадцатиразрядное поле State хранит различные признаки, определяющие 
+поведение или состояние видимого элемента. На рис. 17.11 показаны разряды поля 
+State.</font> </P>
+<P align="center"><img border="0" src="17_11.jpg"  ></P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Puc.17.1l.</b> Разряды поля State</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">sjVisible</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Разрешает визуализировать видимый элемент, если визуализируется его владелец. 
+По умолчанию этот флаг установлен.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">sfCursorVis</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Разрешает показать курсор внутри видимого элемента. По умолчанию этот флаг 
+очищен.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">sfCursorlns</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если этот флаг установлен, курсор будет занимать всю высоту строки, если 
+сброшен, курсор имеет стандартную высоту (две нижних строки развертки).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">sfShadow&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Если флаг установлен, видимый элемент имеет «тень».</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">sfActive</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Указывает, является ли данный элемент активным окном или подэлементом 
+активного окна.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">sfSelected</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Указывает, является ли данный элемент текущим (выбранным) видимым элементом. 
+Каждый объект TGroup имеет поле Current, содержащее указатель на текущий 
+выбранный подэлемент или NIL, если не выбран ни один подэлемент. В каждый момент 
+времени в группе может быть выбран только один подэлемент.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">sfFocused</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Указывает, принадлежит ли данный элемент цепочке активности видимых 
+элементов, т.е. выбран ли он и все его владельцы в данный момент времени.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">sJDragging&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Разрешает изменять размеры элемента.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">sfDisable</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Флаг запрещает выбирать данный видимый элемент. Если флаг сброшен, элемент 
+можно выбрать мышью или клавишей Tab.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">sfModal</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если флаг установлен, данный элемент - это модальный элемент. В программе 
+Turbo Vision всегда имеется один и только один модальный элемент. Обычно это 
+экземпляр TApplication или TDialog. Модальный видимый элемент активизируется 
+вызовом метода ExecView и образует корень активного дерева событий: он 
+перехватывает события и управляет ими до тех пор, пока не будет вызван его метод 
+EndModal (см.гл.18). Модальный элемент может передавать события своим подэлементам и 
+получать события от них, но он никогда не передает события своему владельцу 
+(события локализуются в модальном элементе).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">sfExposed</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Указывает, виден ли элемент или любая его часть в данный момент времени 
+(элемент может закрываться другими видимыми элементами). Если флаг установлен, 
+метод Exposed данного элемента возвращает значение
+True.</font> </P>
+<p>&nbsp;</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl17_12.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl17_14.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</BODY></HTML>

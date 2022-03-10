@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl16_4.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl16_6.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Группы видимых элементов
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Абстрактная группа</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Абстрактная группа - это объект TGroup. Этот объект, вообще говоря, не 
+является абстрактным, однако его экземпляры практически никогда не используются 
+в программах: основное назначение объекта - служить основой иерархии родственных 
+объектов пользователя. Хотя группа владеет прямоугольным участком экрана, она 
+становится видимой только за счет визуализации своих элементов. Элементы группы 
+организуются в связанный список: каждый элемент имеет поле Owner, содержащее 
+указатель на своего владельца, и поле Next, с помощью которого указывается 
+следующий элемент списка.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Панель экрана</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Панель экрана - это объект TDesktop, создающий фоновое изображение рабочей 
+зоны экрана. TDesktop является прямым потомком TGroup и, следовательно, может 
+владеть произвольным набором видимых элементов. Заполнение панели экрана 
+осуществляется другими видимыми элементами, такими как TWindow, TDialog и т.п. 
+Обычно владельцем группы TDesktop является программа - объект TApplication или 
+его потомки.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Программы</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Все программы, использующие средства Turbo Vision, должны порождаться от</font>
+<font face="Arial, Helvetica, sans-serif" size="3">объекта TProgram или его единственного потомка TApplication. Оба объекта 
+создают</font> <font face="Arial, Helvetica, sans-serif" size="3">на экране стандартное изображение строки меню, панели- экрана и строки 
+статуса, т.е.</font> <font face="Arial, Helvetica, sans-serif" size="3">.являются владельцем группы, состоящей из TMenuBar, TDesktop и TStatusLine</font>
+<font face="Arial, Helvetica, sans-serif" size="3">(рис. 16.4).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">TApplication отличается от своего родителя только методами Init и Done, с 
+помощью которых осуществляется инициация основных подсистем Turbo Vision и их 
+закрытие:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor TApplication.Init;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InitMemory;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InitVideo;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InitEvents;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InitSysError;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InitHistory;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TProgam.Init&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Destructor TApplication.Done;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TProgram.Done;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DoneHistory;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DoneSysError;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DoneEvents;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DoneVideo;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> DoneMemory end;</font> </P>
+<P align="center"><img border="0" src="16_4.jpg"  > </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Рис.16.4.</b>
+Стандартная группа TProgram</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Обычно программа пользователя связывается с экземпляром TApplication или его 
+потомка. Если Вас не устраивает стандартная последовательность инициации и 
+закрытия подсистем Turbo Vision, Вы должны создать и использовать потомка от 
+TProgram.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Окна</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для создания и использования окон в Turbo Vision предусмотрен объект TWindow. 
+Обычно этот объект владеет объектом TFrame и поэтому очерчивается прямоугольной 
+рамкой со стандартными кнопками изменения размера и закрытия. Вы можете 
+перемещать окно, изменять его размеры и закрывать, используя методы TView или 
+перекрывая их собственными методами. Если окно имеет номер от 1 до 9, его можно 
+сделать активным (выбрать) командными клавишами Alt-N, где N - номер окна. Если 
+окно имеет несколько видимых элементов, его обработчик событий интерпретирует 
+нажатие на клавиши Tab и Shift-Tab как команду активизации следующего 
+(предыдущего) видимого элемента.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Диалоговые окна</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Объект TDialog порожден от TWindow и предназначен для реализации 
+взаимодействия с пользователем. В отличие от TWindow диалоговое окно не может 
+изменять свой размер (но может перемещаться по экрану). Его обработчик событий 
+генерирует команду cmCancel в ответ на нажатие клавиши Esc (или воздействие 
+мышью на кнопку закрытия) и команду cmDefault в ответ на нажатие
+Enter.</font> </P><p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl16_4.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl16_6.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</BODY></HTML>

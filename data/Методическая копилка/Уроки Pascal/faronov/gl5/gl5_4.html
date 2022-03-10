@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl5_3.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl5_5.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Инициализация файла
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Инициировать файл означает указать для этого файла направление передачи 
+данных. В Турбо Паскале можно открыть файл для чтения, для записи информации, а 
+также для чтения и записи одновременно.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для чтения файл инициируется с помощью стандартной процедуры RESET:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">RESET (&lt;ф.п.&gt;);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь &lt;ф.п.&gt; - файловая переменная, связанная ранее процедурой ASSIGN с 
+уже существующим файлом или логическим устройством-приемником информации.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">При выполнении этой процедуры дисковый файл или логическое устройство 
+подготавливается к чтению информации. В результате специальная 
+переменная-указатель,</font> <font face="Arial, Helvetica, sans-serif" size="3">связанная с этим файлом, будет указывать на начало файла, т.е. на компонент с 
+порядковым номером 0.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если делается попытка инициировать чтение из несуществующего файла или из 
+логического устройства PRN, возникает ошибка периода исполнения, которая может 
+быть сообщена программе ненулевым значением встроенной функции IORESULT типа 
+WORD. Например, следующий фрагмент программы позволяет установить, существует ли 
+требуемый файл на диске:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">f : file of char;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">assign(f,'myfile.dat');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{$I-} <i> {Отключаем контроль ошибок ввода-вывода}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">reset(f);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{$I+}<i> {Включаем контроль ошибок ввода-вывода}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if IOResult &lt;&gt; 0 then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;..... <i> {Файл не существует}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">..... <i> {Файл существует}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В этом фрагменте с помощью директивы компилятора {$I-} отключается 
+автоматический контроль ошибок ввода-вывода. Если этого не сделать, то 
+отсутствие файла приведет к аварийному завершению программы.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В Турбо Паскале разрешается обращаться к типизированным файлам, открытым 
+процедурой RESET (т.е. для чтения информации), с помощью процедуры WRITE (т.е. 
+для записи информации). Такая возможность позволяет легко обновлять ранее 
+созданные типизированные файлы и при необходимости расширять их. Для текстовых 
+файлов, открытых процедурой RESET, нельзя использовать процедуру WRITE или 
+WRITELN.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Стандартная процедура</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">REWRITE (&lt;ф.п.&gt;).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">инициирует запись информации в файл или в логическое устройство, связанное 
+ранее с файловой переменной &lt;ф.п.&gt;. Процедурой REWRITE нельзя инициировать 
+запись информации в ранее существовавший дисковый файл: при выполнении этой 
+процедуры старый файл уничтожается и никаких сообщений об этом в программу не 
+передается. Новый файл подготавливается к приему информации и его указатель 
+принимает значение 0.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Стандартная процедура</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">APPEND (&lt;ф.п.&gt;)</font> </P>
+<P dir="ltr"><font face="Arial, Helvetica, sans-serif" size="3">инициирует запись в ранее существовавший текстовый файл для его расширения, 
+при этом указатель файла устанавливается в его конец. Процедура APPEND применима 
+только к текстовым файлам, т.е. их файловая переменная должна иметь тип TEXT 
+(см. выше). Процедурой APPEND нельзя инициировать запись в типизированный или 
+нетипизированный файл. Если текстовый файл ранее уже был открыт с помощью RESET</font>
+<font face="Arial, Helvetica, sans-serif" size="3">или REWRITE, использование процедуры APPEND приведет к закрытию этого файла и 
+открытию его вновь, но уже для добавления записей.</font> 
+</P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl5_3.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl5_5.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

@@ -1,0 +1,184 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr4_6.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr4_8.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Модуль Graph
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Модуль Graph представляет собой мощную библиотеку графических подпрограмм 
+универсального назначения, рассчитанную на работу с наиболее распространенными 
+графическими адаптерами IBM-совместимых ПК. Подпрограммы модуля Graph 
+обеспечивают различные режимы работы многорежимных адаптеров, полностью 
+используют их цветовые возможности и разрешающую способность.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">При исполнении графических программ требуется автономный драйвер графического 
+адаптера (BGI-файл). Если программа использует штриховые шрифты, то кроме того 
+нужен один или несколько шрифтовых файлов (CHR-файлы). При необходимости драйвер 
+и шрифты могут быть включены в тело программы еще на этапе компиляции.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Графические драйверы поддерживают следующие графические адаптеры (и полностью 
+совместимые с ними):</font> </P>
+<TABLE border=1 frame=box rules=all >
+  <TBODY>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">CGA</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Hercules</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">MCGA</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">AT&amp;T 400</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">EGA</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">3270 PC</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">VGA</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">IBM-8514</font></P></TD></TR></TBODY></TABLE>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для поддержки этих аппаратных средств используются следующие драйверы:</font> </P>
+<TABLE border=1 frame=box rules=all>
+  <TBODY>
+  <TR>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">CGA.BGI</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Драйвер для CGA, MCGA</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">EGAVGA.BGI</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Драйвер для EGA, VGA</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">HERC . BGI</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Драйвер для монохромного Hercules</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">ATT . BGI</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Драйвер для AT&amp;T 6300 (400 строк)</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">PC3270.BGI</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Драйвер для IBM 3270 PC</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">IBM8514.BGI</font></P></TD>
+    <TD>
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Драйвер для IBM 8514</font></P></TD></TR></TBODY></TABLE>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Во время выполнения программы процедура InitGraph автоматически распознает 
+графический адаптер, установленный на ПК, загружает и инициализирует 
+соответствующий графический драйвер, переводит адаптер в графический режим и 
+возвращает управление вызывающей программе. Процедура CloseGraph выгружает 
+драйвер из памяти и восстанавливает текстовый режим работы адаптера.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Подпрограммы модуля Graph позволяют адресоваться к любому элементу (пикселю) 
+растрового графического экрана и управлять светимостью этого элемента. Для 
+указания пикселя используется следующая система координат: верхний левый угол 
+графического экрана имеет координаты 0,0; горизонтальная координата X 
+увеличивается слева направо, вертикальная координата У увеличивается сверху 
+вниз. Например, в режиме 640x480 (адаптер VGA) правый нижний угол экрана имеет 
+координаты 639, 479, а центр экрана -координаты 319,239.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Некоторые графические подпрограммы используют понятие текущего указателя. 
+Указатель содержит координаты того пикселя, начиная с которого будет строиться 
+изображение подпрограммами LineTo, LineRel, OutText и др. В этом смысле 
+указатель подобен текстовому курсору, но, в отличие от него, не имеет видимого 
+изображения на экране.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для вывода текстовых сообщений на графический экран модуль Graph 
+предоставляет один матричный и 4 штриховых шрифтов. Каждый символ матричного 
+шрифта на экране реализуется в виде матрицы из 8x8 пикселей. Штриховые шрифты 
+для каждого символа определяют набор штрихов (векторов), с помощью которых на 
+экране создается (вычерчивается) соответствующий символ. Штриховые шрифты 
+позволяют изменять размеры текстовых надписей в широких пределах без 
+существенного ухудшения качества изображения символов. Однако стандартные 
+штриховые шрифты не содержат символы кириллицы.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В модуле Graph имеется несколько процедур для рисования элементарных 
+графических фигур - точек, линий, окружностей, дуг и т.п. При необходимости 
+замкнутые фигуры могут быть закрашены различными цветами и стилями (образцами 
+закраски).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Процедура SetViewPort создает на экране графическое окно. Если окно 
+определено, весь дальнейший графический вывод осуществляется относительно 
+координат этого окна и отсекается его границами.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В модуле имеются средства сохранения и выдачи изображений, работы с 
+несколькими графическими страницами, установки необходимых цветов.</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr4_6.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr4_8.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+</BODY></HTML>

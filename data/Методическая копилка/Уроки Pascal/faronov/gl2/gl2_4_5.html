@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" >
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl2_4_4.html">
+<img SRC="Back.gif" BORDER="0">
+</a>
+</font>
+</td>
+<td >
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0">
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl2_5.html">
+<img SRC="For.gif" BORDER="0">
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p align="left">
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+ 
+Метки и операторы перехода
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Можно теоретически показать, что рассмотренных операторов вполне достаточно 
+для написания программ любой сложности. В этом отношении наличие в языке 
+операторов перехода кажется излишним. Более того, современная технология 
+структурного программирования основана на принципе «программировать без GOTO»: 
+считается, что злоупотребление операторами перехода затрудняет понимание 
+программы, делает ее запутанной и сложной в отладке.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Тем не менее, в некоторых случаях использование операторов перехода может 
+упростить программу.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Оператор перехода имеет вид:</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GOTO &lt;метка&gt;.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Здесь GOTO - зарезервированное слово (перейти [на метку]); &lt;метка&gt; - 
+метка.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Метка в Турбо Паскале - это произвольный идентификатор, позволяющий именовать 
+некоторый оператор программы и таким образом ссылаться на него. В целях 
+совместимости со стандартным языком Паскаль в языке Турбо Паскаль допускается в 
+качестве меток использование также целых чисел без знака.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Метка располагается непосредственно перед помечаемым оператором и отделяется 
+от него двоеточием. Оператор можно помечать несколькими метками, которые в этом 
+случае отделяются друг от друга двоеточием. Перед тем как появиться в программе, 
+метка должна быть описана. Описание меток состоит из зарезервированного слова 
+LABEL (метка), за которым следует список меток:</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">label</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">loop, 1b1, 1b2;&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">goto 1b1;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;loop: ......</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 1b1:1b2: ......</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">........&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> goto 1b2;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Действие оператора GOTO состоит в передаче управления соответствующему 
+меченному оператору.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">При использовании меток необходимо руководствоваться следующими правилами:</font> 
+</P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">метка, на которую ссылается оператор GOTO, должна быть описана в разделе 
+описаний и она обязательно должна встретиться где-нибудь в теле программы;</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">метки, описанные в процедуре (функции), локализуются в ней, поэтому передача 
+управления извне процедуры (функции) на метку внутри нее невозможна.</font> </P> 
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" >
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl2_4_4.html">
+<img SRC="Back.gif" BORDER="0">
+</a>
+</font>
+</td>
+<td >
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0">
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl2_5.html">
+<img SRC="For.gif" BORDER="0">
+</a>
+</font>
+</td>
+</tr>
+</table>
+</body>
+</html>

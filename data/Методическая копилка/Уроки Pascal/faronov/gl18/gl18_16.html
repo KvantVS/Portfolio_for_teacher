@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_15.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_17.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Взаимодействие видимых элементов
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Иерархия объектов Turbo Vision построена так, чтобы любой объект имел все 
+необходимые для его работы поля и методы. Взаимодействие видимых элементов 
+обычно осуществляется путем создания и использования групп. Если у Вас возникнет 
+необходимость организовать взаимодействие не связанных друг с другом объектов, 
+следует прежде всего тщательно проанализировать программу: возможно Вы не 
+использовали всех средств Turbo Vision или некорректно разделили задачи между 
+двумя видимыми объектами. В большинстве случаев задача может быть решена путем 
+создания нового объекта, объединяющего в себе свойства двух других.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если программа спроектирована правильно и видимые элементы требуют 
+взаимодействия между собой, можно создать объект-посредник. Типичным примером 
+такого объекта является внутренний буфер Clipboard диалоговой среды Турбо 
+Паскаля (опция Edit). Для передачи фрагмента текста из одного окна редактора в 
+другое фрагмент помещается в буфер командными клавишами Shift-Del или Ctrl-Ins, 
+затем вызывается другое окно и фрагмент вставляется в нужное место командой 
+Shift-Ins. Вы можете организовать такого рода буфер и в Вашей программе, так как 
+с помощью Turbo Vision Вам доступны все средства диалоговой среды Турбо Паскаля. 
+Преимуществом создания объекта-посредника является то, что с его помощью легко 
+решается проблема взаимодействия сразу нескольких объектов друг с другом. 
+Например, если Вы создаете сложную интегрированную систему, включающую текстовый 
+редактор, систему управления базами данных, электронную таблицу и сервисные 
+средства, промежуточный буфер позволит передать данные из текстового редактора в 
+базу данных, или из базы данных в электронную таблицу и т.д.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Другим способом организации взаимодействия элементов является использование 
+событий-сообщений. Эти события создаются с помощью глобальной функции Message. 
+Функция Message описана в интерфейсной части модуля Views следующим образом:</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function Message (Receiver: Pview; What, Command: Word;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InfoPtr: Pointer): Pointer;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Первым параметром указывается ссылка на экземпляр объекта, которому 
+адресуется сообщение. Остальные параметры используются для создания записи 
+TEvent. Функция создает запись события и, если это возможно, вызывает метод 
+Receiver^ .HandleEvent для обработки этого события. Если адресат не существует 
+или при обращении к функции указан параметр Receiver = NIL, функция возвращает 
+NIL - это означает, что событие не было обработано. Если событие успешно 
+обработано (Receiver^. HandleEvent возвращает событие с полем What = evNothing), 
+функция вернет указатель Event.InfoPtr.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Как уже говорилось в п. 18.6.2, стандартный метод ClearEvent очищает событие, 
+устанавливая Event. What = evNothing и Event.InfoPtr = @Self. Таким образом, 
+объект, обработавший и очистивший событие, оставляет в Event.InfoPtr указатель 
+на свою таблицу виртуальных методов. Этот указатель позволяет полностью 
+идентифицировать объект-получатель сообщения и организовать связь с ним.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Рассмотрим пример. В диалоговой среде Турбо Паскаля используется окно 
+отладки, с которым Вы, очевидно, хорошо знакомы.. Если программист потребовал 
+открыть это окно, среда должна проверить, открывалось ли оно ранее: если да, то 
+окно просто переносится наверх (в смысле Z-упорядочения), если нет, создается 
+вновь. Для реализации проверки среда дает сообщение</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">AreYouThere := Message(DeskTop,evBroadcast,</font>
+<font size="3">cmFindWatchWindow, NIL);</font></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В методе HandleEvent окна отладки есть проверка на команду cmFindWatchWindow:</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if (Event.What = evBroadcast) and</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">(Event.Command = cmFindWatchWindow) then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> ClearEvent(Event);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если окно существует, оно очистит событие и оставит в нем свою «подпись», 
+поэтому сразу за передачей сообщения реализуется такая проверка:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if AreYouThere = NIL then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">CreateWatchWindow  {Создать новое окно}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">AreYouThereA.Select;  {Поместить существующее окно наверх}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Поскольку окно отладки - это единственный объект, который знает, как 
+реагировать на команду cmFindWatchWindow, в диалоговой среде Турбо Паскаля может 
+использоваться только одно окно этого типа.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Таким же способом компилятор Турбо Паскаля определяет окно редактора, из 
+которого следует брать текст компилируемой программы. Это окно - всегда верхнее 
+на экране, поэтому компилятор посылает сообщение с командой, на которую 
+откликаются только окна редактора. Так как событие-сообщение передается в 
+Z-порядке, первое откликнувшееся окно, т.е. окно, очистившее событие, и будет 
+самым верхним.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Видимый элемент может послать сообщение, установив в поле Event.InfoPtr 
+указатель на собственную таблицу виртуальных методов. Это даст возможность 
+получателю сообщения при необходимости обратиться к методам объекта-отправителя.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Организовать взаимодействие можно также с помощью прямого вызова обработчика 
+событий нужного объекта. Для этого экземпляр объекта-адресата (переменная типа 
+объект или указатель на него) должен быть инициирован предыдущим обраще</font><font face="Arial, Helvetica, sans-serif" size="3">нием к конструктору и программа должна «видеть» его, т.е. он должны быть 
+глобальным по отношению к инициатору взаимодействия.</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_15.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_17.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

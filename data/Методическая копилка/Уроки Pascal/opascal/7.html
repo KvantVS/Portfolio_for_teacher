@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Untitled</title>
+</head>
+
+<body  background="../../bgrwhite.gif">
+<p><div align="center"><b><font size="+1" face="Arial">Процедуры и функции работы с порядковыми величинами </font></b></div></p>
+
+<div style='border:none;border-bottom:solid windowtext .75pt;padding:0cm 0cm 1.0pt 0cm'>
+
+<p class=MsoSubtitle style='border:none;mso-border-bottom-alt:solid windowtext .75pt;
+padding:0cm;mso-padding-alt:0cm 0cm 1.0pt 0cm'><span lang=EN-US
+style='font-size:10.0pt'>Модуль System</span><span style='font-size:10.0pt;
+mso-ansi-language:RU'><o:p></o:p></span></p>
+
+</div>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Procedure </span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-bidi-font-family:"Times New Roman";color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>Dec</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>(var X [; N: </span></b><b style='mso-bidi-font-weight:normal'><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>LongInt</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>]);<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Вычитает единицу или
+N из переменной </span><span lang=EN-US style='font-size:10.0pt;color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>X</span><span style='font-size:
+10.0pt;color:black;layout-grid-mode:line'>.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>Dec(X)</span><span style='font-size:10.0pt;color:black;
+layout-grid-mode:line'> соответствует X := X - 1, и </span><span lang=EN-US
+style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;layout-grid-mode:
+line'>Dec</span><span style='font-size:10.0pt;color:black;layout-grid-mode:
+line'>(X, N) соответствует X := X - N.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>X - переменная
+перечислимого типа или типа PChar, если допускается расширенный синтаксис, и N
+- выражение с<span style="mso-spacerun: yes">  </span>целочисленного типа. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Процедура </span><span
+lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>Dec</span><span style='font-size:10.0pt;color:black;
+layout-grid-mode:line'> генерирует оптимальный код и особенно полезна в длительных
+циклах.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Procedure Inc(var X [; N: </span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-bidi-font-family:"Times New Roman";color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>LongInt</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>]);<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Прибавляет единицу
+или N к переменной X.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>X - переменная
+перечислимого типа или типа PChar, если<span style="mso-spacerun: yes"> 
+</span>допускается расширенный синтаксис, и N - выражение целочисленного типа. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Inc (X)
+соответствует инструкции X := X + 1, и Inc (X, N) соответствует инструкции X :=
+X + N.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Процедура Inc
+генерирует оптимальный код и особенно полезна в длительных циклах.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Function </span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-bidi-font-family:"Times New Roman";color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>Odd</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>(X: </span></b><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>LongInt</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>): </span></b><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>Boolean</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>;<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Возвращает </span><span
+lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>True</span><span style='font-size:10.0pt;color:black;
+layout-grid-mode:line'>, если X - нечетное число и </span><span lang=EN-US
+style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;layout-grid-mode:
+line'>False</span><span style='font-size:10.0pt;color:black;layout-grid-mode:
+line'> в противном случае.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Function Pred(X);<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Возвращает
+предыдущее значение параметра.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>X - выражение
+перечислимого типа. Результат того же самого типа.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Function Succ(X);<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Возвращает следующее
+значение параметра.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>X - выражение
+перечислимого типа. Результат того же самого типа.<o:p></o:p></span></p>
+<p><div align="center"><a href="../Object Pascal.htm">	<img src="../../soder.gif" width=120 height=31 border=0 alt=""></a></div></p>
+
+</body>
+</html>

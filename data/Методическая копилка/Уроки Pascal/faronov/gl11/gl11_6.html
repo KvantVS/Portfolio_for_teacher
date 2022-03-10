@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl11_5.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl11_7.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Прямое обращение к памяти и портам ввода - вывода
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+В Турбо Паскале имеется пять предварительно объявленных массивов: MEM, MEMW, 
+MEML, PORT и PORTW. Первые три обеспечивают доступ к любому участку оперативной 
+памяти по абсолютному адресу, два других - доступ к портам ввода-вывода.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Компонентами массива MEM являются данные типа BYTE, массива MEMW - типа WORD, 
+массива MEML - типа LONGINT. Обращение к элементам этих массивов, т.е. их 
+индексация, имеет специальный вид: каждый индекс представляет собой абсолютный 
+адрес и состоит из двух выражений типа WORD; первое дает сегментную часть 
+адреса, второе - смещение; выражения разделяются двоеточием. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Меm[$0000:$1000] := 0;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> DataMem := MemWfSeg(p):0fs(p)];&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> MemLong :.= MemL [64 : 
+i*SizeOf (real) ] ;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Как следует из технического описания операционной системы MS-DOS, в памяти по 
+адресу $F000:$FFFE располагается байт-указатель типа компьютера. Следующая 
+программа (пример 11.5) прочтет этот байт и выведет на экран тип Вашего ПК.</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Пример 11.5&nbsp;</font>
+</b> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write (' Тип компьютера: ') ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> case Mem [$FOOO:$FFFE] of</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">$FF : WriteLn ('PC');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">$FE : WriteLn('XT');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">$FD : WriteLn('PCjr');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">$FC : WriteLn('AT');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">$F9 : WriteLn('совместимый с PC')&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Компонентами массива PORT являются байты (тип BYTE), а массива PORTW - слова 
+(тип WORD). Индексами этих массивов должно быть выражение типа BYTE, указывающее 
+номер нужного порта. Присвоение значения элементу массива PORT или PORTW 
+приведет к записи в порт, упоминание элемента в выражении - к чтению из порта. 
+Компоненты массивов PORT и PORTW нельзя передавать в качестве параметров 
+процедурам или функциям. Эти идентификаторы не употребляются без индексных 
+выражений.</font> </P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl11_5.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl11_7.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

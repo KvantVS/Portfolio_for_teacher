@@ -1,0 +1,361 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl6_2.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl6_4.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Выделение и освобождение динамической память
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Вся динамическая
+память в Турбо Паскале рассматривается как
+сплошной массив байтов, который называется
+кучей. Физически куча располагается в
+старших адресах сразу за областью памяти,
+которую занимает тело программы.</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Начало кучи хранится
+в стандартной переменной  HEAPORG (рис. 6.3), конец
+- в временной HEAPEND. Текущую границу
+незанятой динамической памяти указывает
+указатель HEAPPTR.</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Память под любую
+динамически размещаемую переменную
+выделяется процедурой NEW. Параметром
+обращения к этой процедуре является
+типизированный указатель. В результате
+обращения указатель приобретает значение,
+соответствующее динамическому адресу,
+начиная с которого можно разместить данные,
+например:</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">i, j : Integer;&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> r :  Real;&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">New(i)
+;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">После выполнения
+этого фрагмента указатель / приобретет
+значение, которое перед этим имел указатель
+кучи HEAPPTR, а сам HEAPPTR увеличит свое значение
+на 2, так как длина внутреннего
+представления типа INTEGER, с которым связан
+указатель I, составляет 2 байта (на самом
+деле это не совсем так: память под любую
+переменную выделяется порциями, кратными 8
+байтам - см. п.6.7). Оператор</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">new(r);</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">вызовет еще раз
+смещение указателя HEAPPTR, но теперь уже на 6
+байт, потому что такова длина внутреннего
+представления типа REAL. Аналогичным образом
+выделяется память и для переменной любого
+другого типа.</font></p>
+<p align="center"><img border="0" src="6_3.jpg"    ></p>
+<p align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Рис.6.3.</b> Расположение кучи в
+памяти ПК</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">После того как
+указатель приобрел некоторое значение, т.е.
+стал указывать на конкретный физический
+байт памяти, по этому адресу можно
+разместить любое значение
+соответствующего типа. Для этого сразу за
+указателем без каких-либо пробелов
+ставится значок ^, например:</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">i := 2;  {B область памяти
+i помещено значение 2}&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> r := 2*pi;  {В область
+памяти r помещено значение 6.28}</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Таким образом,
+значение, на которое указывает указатель, т.е.
+собственно данные, размещенные в куче,
+обозначаются значком ^, который ставится
+сразу за указателем. Если за указателем нет
+значка ^, то имеется в виду адрес, по
+которому размещены данные. Имеет смысл еще
+раз задуматься над только что сказанным:
+значением любого указателя является адрес,
+а чтобы указать, что речь идет не об адресе,
+а о тех данных, которые размещены по этому
+адресу, за указателем ставится л. Если Вы
+четко уясните себе это, у Вас не будет
+проблем при работе с динамической памятью.</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Динамически
+размещенные данные можно использовать в
+любом месте программы, где это допустимо
+для констант и переменных соответствующего
+типа, например:</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">r := sqr(r) + i - 17;</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Разумеется,
+совершенно недопустим оператор</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">r := sqr(r) + i - 17;</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">так как указателю R
+нельзя присвоить значение вещественного
+выражения. Точно так же недопустим оператор</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">r
+:= sqr(r) ;</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">поскольку значением
+указателя R является адрес, и его (в отличие
+от того значения, которое размещено по
+этому адресу) нельзя возводить в квадрат.
+Ошибочным будет и такое присваивание:</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">r :=i;</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">так как вещественным
+данным, на которые указывает R, нельзя
+присвоить значение указателя (адрес).</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Динамическую память
+можно не только забирать из кучи, но и
+возвращать обратно. Для этого используется
+процедура DISPOSE. Например, операторы</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">dispose (r) ;&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> dispose (i) ;</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">вернут в кучу 8 байт,
+которые ранее были выделены указателям I и R
+(см. выше).</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Отметим, что
+процедура DISPOSE(PTR) не изменяет значения
+указателя PTR, а лишь возвращает в кучу
+память, ранее связанную с этим указателем.
+Однако повторное применение процедуры к
+свободному указателю приведет к
+возникновению ошибки периода исполнения.
+Освободившийся указатель программист
+может пометить зарезервированным словом NIL.
+Помечен ли какой-либо указатель или нет,
+можно проверить следующим образом:</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">p:&nbsp; Real = NIL;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if p = NIL then</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">new(p);</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">dispose(p);&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> p := NIL;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Никакие другие
+операции сравнения над указателями не
+разрешены.</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Приведенный выше
+фрагмент иллюстрирует предпочтительный
+способ объявления указателя в виде
+типизированной константы (см. гл. 7) с
+одновременным присвоением ему значения NIL.
+Следует учесть, что начальное значение
+указателя (при его объявлении в разделе
+переменных) может быть произвольным.
+Использование указателей, которым не
+присвоено значение процедурой NEW или другим
+способом, не контролируется системой и
+может привести к непредсказуемым
+результатам.</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Чередование
+обращений к процедурам NEW и DISPOSE обычно
+приводит к «ячеистой» структуре памяти.
+Дело в том, что все операции с кучей
+выполняются под управлением особой
+подпрограммы, которая называется
+администратором кучи. Она автоматически
+пристыковывается к Вашей программе
+компоновщиком Турбо Паскаля и ведет учет
+всех свободных фрагментов в куче. При
+очередном обращении к процедуре NEW эта
+подпрограмма отыскивает наименьший
+свободный фрагмент, в котором еще может
+разместиться требуемая переменная. Адрес
+начала найденного фрагмента возвращается в
+указателе, а сам фрагмент или его часть
+нужной длины помечается как занятая часть
+кучи. (Подробнее о работе администратора
+кучи см. п.6.7).</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Другая возможность
+состоит в освобождении целого фрагмента
+кучи. С этой целью перед началом выделения
+динамической памяти текущее значение
+указателя HEAPPTR запоминается в переменной-указателе
+с помощью процедуры MARK. Теперь можно в любой
+момент освободить фрагмент кучи, начиная от
+того адреса, который запомнила процедура MARK,
+и до конца динамической памяти. Для этого
+используется процедура RELEASE. Например:</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">p,p1,p2,</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">рЗ,р4,р5 :  Integer;&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">new(p1);</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">new(p2) ;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mark(p); .</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">new(p3);</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">new(p4);</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">new(p5)</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">......</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">release(p);&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">В этом примере
+процедурой MARK(P) в указатель Р было помещено
+текущее значение HEAPPTR, однако память под
+переменную не резервировалась. Обращение
+RELEASE(P) освободило динамическую память от
+помеченного места до конца кучи. Рис.6.4
+иллюстрирует механизм работы процедур
+NEW-DISPOSE и NEW-MARK-RELEASE для рассмотренного
+примера и для случая, когда вместо
+оператора RELEASE(P) используется, например,
+DISPOSE(P3).</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Следует учесть, что
+вызов RELEASE уничтожает список свободных
+фрагментов в куче, созданных до этого
+процедурой DISPOSE, поэтому совместное
+использование обоих механизмов
+освобождения памяти в рамках одной
+программы не рекомендуется.</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Как уже отмечалось,
+параметром процедуры NEW может быть только
+типизированный указатель. Для работы с
+нетипизированными указателями
+используются процедуры:</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">GETMEM (P, SIZE) -
+резервирование памяти;&nbsp;</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">FREEMEM(P, SIZE) -
+освобождение памяти.</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Здесь Р -
+нетипизированный указатель;</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">SIZE - размер в байтах
+требуемой или освобождаемой части кучи.</font></p>
+<p align="center"><img border="0" src="6_4.jpg"    ></p>
+<p align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Puc.6.4</b>. Состояние
+динамической памяти: а) перед освобождением;
+б) после Dispose(p3); в) после Release(p)</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">За одно обращение к
+куче процедурой GETMEM можно зарезервировать
+до 65521 байта динамической памяти.</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Использование
+процедур GETMEM-FREEMEM, как и вообще вся работа с
+динамической памятью, требует особой
+осторожности и тщательного соблюдения
+простого правила: освобождать нужно ровно
+столько памяти, сколько ее было
+зарезервировано, и именно с того адреса, с
+которого она была зарезервирована.</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Нетрудно обнаружить,
+что наличие нетипизированных указателей в
+Турбо Паскале I в стандартном Паскале их нет)
+открывает широкие возможности неявного
+преобразования типов. К сожалению, трудно
+обнаруживаемые ошибки в программе,
+связанные с некорректно используемыми
+обращениями к процедурам NEW и DISPOSE, также
+могут привести к нежелательному
+преобразованию типов. В самом деле, пусть
+имеется программа:</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">i,j : Integer;&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> r : Real;&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">new(i); {i := HeapOrg; HeapPtr:=
+HeapOrg + 2}</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">j := i;  {j := HeapOrg}&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> j := 2;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">dispose(i); {HeapPtr := HeapOrg}&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">new(r); 
+{r := HeapOrg; HeapPtr:= HeapOrg + 6}</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">r := pi;&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(j)&nbsp;</font></p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Что будет выведено на
+экран дисплея? Чтобы ответить на этот
+вопрос, проследим за значениями указателя
+HEAPPTR. Перед исполнением программы этот
+указатель имел значение адреса начала кучи
+HEAPORG, которое и было передано указателю I,
+азатем и J. После выполнения DISPOSE(I) указатель
+кучи вновь приобрел значение HEAPORG, этот
+адрес передан указателю R в процедуре NEW(R).
+После того как по адресу R разместилось
+вещественное число pi=3.14159, первые 2 байта
+кучи оказались заняты под часть
+внутреннего представления этого числа. В то
+же время J все еще сохраняет адрес HEAPORG,
+поэтому оператор WRITELN(J^) будет
+рассматривать 2 байта числа pi как
+внутреннее представление целого числа (ведь
+J - это указатель на тип INTEGER) и выведет 8578.</font></p>
+
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl6_2.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl6_4.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

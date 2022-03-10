@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_5.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_7.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Конструктор
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Вызывайте наследуемый Метод до реализации дополнительных действий:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure MyObject.Init(.....);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Вызов наследуемого конструктора Init}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Реализация дополнительных действий}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Такая последовательность необходима по той простой причине, что вызов 
+наследуемого конструктора приводит к обнулению всех дополнительных полей объекта 
+MyObject. Если, например, Вы используете следующий фрагмент программы:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MyObject = object (TWindow)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Value: Word;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Ok : Boolean;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Constructor Init(var Bounds: TRect; ATitle:
+TTitleStr;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">AValue: Word; AOk: Boolean);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor MyObject.Init;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Inherited Init(Bounds, ATitle, wnNoNumber);&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Value := 16;&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Ok := True;&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">то дополнительные поля Value и Ok получат нужные значения 16 и True. Однако, 
+если обращение TWindow.Init (Bounds, ATitle, wnNoNumber); поставить после 
+оператора Ok := True, в них будут помещены значения 0 и False. Из этого правила 
+существует одно исключение, связанное с загрузкой коллекции из потока 
+конструктором Load. Дело в том, что в наследуемом методе TCollection.Load 
+реализуется следующий цикл:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor TCollection.Load (var S: TStream);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for I := 0 to Count - 1 do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">AtPut(I, GetItem(S));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если элементами коллекции являются произвольные наборы двоичных данных (не 
+объекты), Вам потребуется перед чтением очередного элемента сначала получить из 
+потока его длину. Следующий пример иллюстрирует сказанное.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PDataCollection = ATDataCollection;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> TDataCollection = object (TStringCollection)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ItemSize: Word;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor Load(var S: TStream);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function GetItem(var S: TStream): Pointer;
+Virtual;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor TDataCollection.Load(var S: TStream);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">S.Read(ItemSize, SizeOf(ItemSize));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Inherited Load(S);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function TDataCollection.GetItem(var S:
+TStream): Pointer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Item: Pointer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetMem(Item, ItemSize);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">S.Read(Item, ItemSize);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetItem := Item;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В этом примере конструктор Load сначала загружает из потока поле ItemSize, 
+содержащее длину читаемого элемента. Затем вызывается конструктор 
+TCollection.Load, в котором осуществляется вызов
+GetItem. Новый GetItem 
+использует поле ItemSize, чтобы определить размер читаемых данных, и резервирует 
+нужный буфер в динамической памяти. Разумеется, запись полиморфных коллекций в 
+поток должна происходить в том же порядке, т.е. сначала записывается длина 
+очередного элемента, а уже потом - его данные.</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_5.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_7.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

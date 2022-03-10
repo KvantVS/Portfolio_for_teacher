@@ -1,0 +1,278 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl19_5.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl19_7.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Полиформные коллекции
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Как уже говорилось, коллекции Turbo Vision обладают свойством полиморфизма 
+-они позволяют хранить различные объекты. Поскольку каждый объект имеет все 
+необходимые для него поля и методы, работа с полиморфными коллекциями не создает 
+дополнительных проблем. Действительно, в полиморфной коллекции Вам обычно нет 
+нужды следить за тем, какого типа объект хранится в том или ином элементе - 
+достаточно вызвать нужный виртуальный метод, чтобы осуществить над элементом 
+требуемые действия.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Рассмотрим следующий пример. Пусть необходимо создать и использовать 
+библиотеку графических примитивов (точки, окружности, прямоугольники и т.п.). 
+Каждый из этих элементов может отличаться своим набором полей и методов. Однако 
+некоторые методы выполняют над объектами однотипные действия, такие, например, 
+как создание нового объекта или его вычерчивание на экране. Если эти методы 
+сделать виртуальными и инкапсулировать в объект-предок, каждый из его потомков 
+сможет осуществить нужные действия одинаковым способом.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для нашего примера можно создать следующий объект-родитель:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PGraphObject = TGraphObject;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TGraphObject = object (TObject)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">X, Y: Integer;  {Координаты характерной точки}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Constructor Init;  {Создание 
+объекта}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Procedure Draw; Virtual;  {Вычерчивание}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Объект TGraphObject содержит общие для всех потомков поля и методы. Заметим, 
+что методы Init и Draw должны перекрываться в объектах-потомках, поэтому их 
+содержимое не имеет значения. Однако полезно вынести в них некоторые общие для 
+всех потомков части программы. Например, конструктор Init может помещать в поля 
+X и Y заданные начальные значения; если этот метод наполнить конкретным 
+содержанием, он может использоваться во всех объектах иерархии:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor TGraphObject.Init;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Присваивает случайные значения координатам X и Y}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">X := Random(GetMaxX);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Y := Random(GetMaxY)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь GetMaxX, GetMaxY - максимальные координаты графического экрана. 
+Виртуальный метод Draw весьма специфичен: его конкретная программная реализация 
+будет существенно зависеть от типа объекта. Поэтому объявим этот метод 
+абстрактным:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TGraphObject.Draw;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Абстрактный метод для вычерчивания графического примитива}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Abstract&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Как видим, тело этого метода содержит обращение к глобальной процедуре 
+Abstract, которая аварийно завершает выполнение программы и выдает 
+соответствующую диагностику, если в программе используется вызов метода 
+TGraphObject.Draw. Таким стандартным способом Turbo Vision сообщает пользователю 
+о некорректности программы. Вы можете сделать тело этого метода другим, если Вас 
+не устраивают стандартные действия, однако во всех случаях имеет смысл 
+предусмотреть возможность некорректного вызова абстрактного метода, даже если 
+вновь создаваемая библиотека будет использоваться только Вами - это значительно 
+облегчит отладку программы.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Создадим три потомка от
+TGraphObject:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PPoint =TPoint;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TPoint = object (TGraphObject)  {Точка}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Draw; Virtual;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PCircle = TCircle;  {Окружность}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> TCircle = object (TGraphObject)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R: Integer;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor Init;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Draw; Virtual;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PRectangle = TRectangle;  {Прямоугольник}&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> TRectangle = object (TGraphObject)</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">W, H: Integer;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor Init;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Draw; Virtual;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Объект TPoint (точка) не имеет новых полей и поэтому лишь перекрывает 
+абстрактный метод TGraphObject.Draw:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TPoint.Draw;  {Выводит точку на экран}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PutPixel (X, Y, White)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В объектах TCircle (окружность) и TRectangle (прямоугольник) инкапсулированы 
+новые поля, поэтому перекрываются также и методы Init:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor TCircle.Init;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Создает окружность случайного радиуса в случайном месте}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TGraphObject.Init;  {Получаем координаты центра}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R := Random(GetMaxY div 2)  {Получаем радиус}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TCircle.Draw;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Вычерчивает окружность}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Circle(X, Y, R)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor TRectangle.init;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Создает случайный прямоугольник}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TGraphObject.Init;{Верхний левый угол}&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> W := Random(GetMaxX div 2)  {Ширина}</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">H := Random(GetMaxY div 2)  {Высота}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TRectangle.Draw;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Вычерчивает прямоугольник}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Rectangle(X, Y, X+W, Y+H)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">После того как определены нужные объекты, не составляет особого труда 
+поместить эти объекты в коллекцию и вывести их на экран. Например, для вывода 
+всех элементов коллекции можно использовать такую процедуру:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure DrawAll (C: PCollection) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Выводит все элементы полиморфной 
+коллекции}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Procedure DrawItem(p: PGraphObject); far;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">p.Draw  {Это и есть полиморфизм в действии!}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">С.ForEach(@DrawItem)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Как видим, в процедуре
+DrawItem полиморфизм используется дважды: во-первых, 
+метод ForEach обращается к ней, передавая в качестве параметра обращения 
+нетипизированный указатель на элемент коллекции; это позволяет трактовать 
+параметр как указатель на любой объект, в том числе и на TGraphObject. 
+Во-вторых, в процедуре используется обращение к виртуальному методу 
+объекта-родителя Draw: поскольку этот метод перекрывается во всех потомках, 
+каждый из них будет использовать свой метод Draw для вывода на экран.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Сформируем программу, поместив в нее вместо, точек уже рассмотренные 
+фрагменты:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Objects,Graph,CRT;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor TGraphObject.Init;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TGraphObject.Draw;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor TPoint.Init;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P></P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TPoint.Draw;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor TCircle.Init;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TCircle.Draw;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor TRectangle.Init;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TRectangle.Draw;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure DrawAll(C: PCollection);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">a, r, k: Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">List: PCollection;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">p: Pointer;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin . a := 0;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Инициируем графический режим работы экрана:}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InitGraph(a, r, '\TP\BGI');&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> r 
+:= GraphResult; if r &lt;&gt; 0 then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(GraphErrorMsg(r)) {Ошибка инициации}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Создаем коллекцию:}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">List := New(PCollection, Init (20,5));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Наполняем ее 20 элементами:}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for k := 
+1 to 20 do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">case k mod 3 of&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">0: p := New(PPoint, Init);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 1: p := New(PCircle, Init);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">2: p := New(PRectangle, Init)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if p &lt;&gt; NIL then List.Insert(p)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DrawAll(List) ;  {Выводим на экран все элементы}&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> While not KeyPressed do;{Ждем 
+нажатия на любую клавишу}&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> CloseGraph  {Возвращаемся в текстовый режим}&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В этой программе предполагается, что драйвер графического экрана расположен в 
+каталоге \TF\BGI на текущем диске. Если это не так, следует указать маршрут 
+поиска</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">этого драйвера в качестве параметра обращения к процедуре InitGraph. Кроме 
+того, каталог, содержащий стандартную графическую библиотеку Graph, должен быть 
+указан опцией Options/Directories/Unit directories, если, разумеется, библиотека 
+не содержится в текущем каталоге.</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl19_5.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl19_7.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

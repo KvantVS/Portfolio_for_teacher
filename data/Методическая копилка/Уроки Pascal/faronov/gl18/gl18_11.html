@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_10.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_12.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Маскирование и очистка событий
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Каждый видимый элемент имеет поле EventMask. По умолчанию значение этого поля 
+устанавливается таким образом, чтобы видимый элемент обрабатывал все необходимые 
+ему события и не откликался на другие. Например, TProgam и TDialog имеют 
+EventMask = $FFFF, что позволяет им откликаться на любые возможные события, в 
+том числе и определенные программистом. Кнопка TButton имеет EventMask =</font>
+<font face="Arial, Helvetica, sans-serif" size="3">$0311, т.е. откликается на события evBroadcast, evCommand, evKeyDown, 
+evMouseAuto, evMouseUp и evMouseDown. Как видим, ей доступны все стандартные 
+события, кроме evMouseMove - кнопка не может реагировать на перемещение мыши.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Соответствующей установкой поля EventMask Вы можете запретить или разрешить 
+любому видимому элементу реагировать на те или иные события. Например, Вы можете 
+создать кнопку, доступ к которой возможен только с помощью мыши:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MouseButton: PButton;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MouseButton := New(PButton, Init(...));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> MouseButton.EventMask := evMouse;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">nsert(MouseButton);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для очистки события следует обратиться к методу ClearEvent, который 
+устанавливает в поле Event. What значение evNothing, а в поле Event.InfoPtr - 
+адрес таблицы виртуальных методов объекта. Таким образом, в поле Event.InfoPtr 
+остается «подпись» видимого объекта, который очистил событие. Эта информация 
+используется для организации межэлементного взаимодействия (см.п.18.7).</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_10.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_12.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

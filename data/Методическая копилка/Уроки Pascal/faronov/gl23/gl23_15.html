@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_14.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Просмотр списка файлов
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Ниже приводится программа, в которой показано, как можно создать и 
+использовать диалоговое окно для выбора файлов из любого каталога. В пример 
+включены лишь минимальные средства, с помощью которых на экране формируется окно 
+выбора файлов и окно с сообщением о конкретном выборе (см. рис.23. 5).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для реализации просмотра списка файлов и выбора из этого списка нужного файла 
+в Turbo Vision предусмотрен объект TListBox. Этот объект создает специальное 
+окно скроллера, содержащее одну вертикальную полосу и указатель на текущий 
+элемент. Имена файлов помещаются в коллекцию строк, указатель на которую 
+передается объекту с помощью метода TListBox.NewList.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В программе используются две глобальные переменные, содержащие указатель на 
+коллекцию L и номер выбранного элемента Foc. В объекте TApplication 
+перекрываются методы Run и Done. Новый метод TMyApp.Run создает коллекцию и окно 
+просмотра. Метод TMyApp.Done перед завершением работы программы формирует окно, 
+в котором сообщается имя выбранного из списка файла. Заметим, что это имя 
+помещается в переменную Foc в момент выхода из программы с помощью 
+перекрываемого метода TListBox. Valid.</font> </P>
+<P align="center"><img border="0" src="23_5.jpg"    > </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Рис. 23.5.</b> Окно выбора файлов</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{$Х+}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses DOS,Objects,App,Views,Dialogs,Drivers,MsgBox;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">L: PStringCollection;  {Коллекция имен файлов}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Foc: String;  {Выбранный файл}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ТМуАрр = object (TApplication)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Procedure Run; Virtual;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Destructor Done; 
+Virtual;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PMyListBox =^TMyListBox;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> TMyListBox = object (TListBox)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function Valid(Command: Word): Boolean; Virtual;&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end ;&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {------------------}</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TMyApp.Run;  {Создает диалоговое окно с TListBox}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R,RR: TRect;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> W: PDialog;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">S: SearchRec;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">B: PScrollBar;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> P: PListBox;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin  {Создаем коллекцию имен файлов:}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">L := New(PStringCollection, Init(50,10));&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+FindFirst('\games\fl9\*.*',Archive,S);&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> While DosError = 0 do with S,L^ do&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert(NewStr(Name));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> FindNext(S)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Создаем окно:}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> R.Assign (17, 4 ,63, 14 );</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">W := New(PDialog, Init (R, 'Текущий каталог:'));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Вставляем в окно TListBox:}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+with W do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">RR.Assign(44,1,45,9) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">В := New(PScrollBar, Init(RR));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert (B) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign (1, 1,44,9) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">P:= New(PMyListBox, Init (R, 3 ,B) ) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">P.NewList(L) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert (P)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DeskTop . Insert (W) ;  {Помещаем окно на экран}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Inherited Run  {Ждем команду 
+Alt-X}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;  {TMyApp.Run}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-------------------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function TMyListBox. Valid;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Помещает в Foc имя выбранного файла}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Foc := PString(L.At (Focused));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Valid := True</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end ; {TMyL stBox .Valid}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Destructor TMyApp.Done;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Выводит имя выбранного файла}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R: TRect;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(20, 15, 60,22) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MessageBoxRect(R,#3' Выбран файл '+Foc, NIL, $402);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Inherited Done&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end  {TMyApp.Done};</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-----------------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">P: TMyApp;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">P. Init;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">P. Run;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">P. Done&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Окно TListBox управляется мышью и клавишами. В частности, клавишами смещения 
+курсора можно выбрать нужный файл, клавишами PgUp, PgDn листать окно со списком. 
+Работают также клавиши End, Home, Ctrl-PgUp, Ctrl-PgDn.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В момент обращения к методу TMyApp.Done вызывается функция TMyListBox. Valid, 
+которая определяет номер вьщеленного файла (этот номер хранится в поле 
+TListBox.Focused) и переписывает имя этого файла из коллекции в глобальную 
+переменную Foc.</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_14.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+</BODY></HTML>

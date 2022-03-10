@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_9.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl118_11.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Модификация и обработка событий
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+События, определенные пользователем
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Старшие разряды поля Event. What используются для указания на то, что событие 
+относится к классу сообщений. Первые шесть разрядов в этом поле программист 
+может использовать для определения собственных классов событий.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Необходимость в новых классах событий может возникнуть в том случае, когда 
+Ваша программа работает с нестандартными источниками информации. Если, например, 
+Вы собираетесь работать с последовательным портом, Вы, возможно, захотите 
+определить класс событий evSerial, используя для его идентификации один или 
+несколько старших разрядов поля Event.What. Технически получить информацию из 
+нового источника и сделать ее событием можно путем перекрытия метода 
+TProgram.GetEvent (см.п. 18.6.4) или «фонового» метода TProgram.Idle (см.п. 
+18.6.5).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">По умолчанию все новые классы событий маскируются маской evMessage, т.е. 
+считаются сообщениями. Такие события модальный элемент рассылает всем своим 
+подэ-лементам в Z-порядке (см. 17.3.2). Если Вы хотите, чтобы новый класс 
+событий передавался как позиционированные или активные события, Вы можете 
+изменить маски этих событий. В Turbo Vision определены маски PositionalEvents и 
+FocusedEvents. Первая позволяет всем видимым элементам рассматривать событие как 
+позиционированное, вторая - как активное. По умолчанию маска PositionalEvents 
+выделяет все биты evMouse, a FocusedEvents содержит evKeyboard. Если Вам 
+понадобится, чтобы новый класс событий обрабатывался так же как активные или 
+позиционированные события, Вам необходимо добавить к нужной маске биты, 
+соответствующие этому классу в поле What.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Например, создан новый класс событий evSerial с маской $8000, т.е. этот класс 
+связан со старшим разрядом поля What. Если потребуется обработать этот класс так 
+же как активные события, нужно задать новую маску:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">evSerial = $8000;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">FocusedEvents := FocusedEvents or evSerial;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Обратите внимание: при добавлении к любой маске новых разрядов следует 
+применять поразрядные операции над целыми числами (операции or, and, not). He 
+следует использовать операцию арифметического сложения (+), так как в этом 
+случае разрешен поразрядный перенос и вновь полученная маска может оказаться не 
+той, какую Вы хотели. Если, например, к маске evMouse прибавить единицу, 
+получится маска evKeyboard, т.е.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">evKeyboard = evMouse + 1</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В то же время операция</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">evMouse or 1</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">не вызовет поразрядного переноса и маска evMouse останется прежней, т.к. ее 
+младший бит уже установлен.</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_9.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_11.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

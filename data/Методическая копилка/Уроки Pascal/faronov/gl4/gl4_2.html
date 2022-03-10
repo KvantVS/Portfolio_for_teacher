@@ -1,0 +1,1130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl4_1.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl4_3.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Порядковые типы
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">К порядковым типам относятся (см. рис.4.1) целые, логический, символьный, 
+перечисляемый и тип-диапазон. К любому из них применима функция ORD(X), которая 
+возвращает порядковый номер значения выражения X. Для целых типов функция ORD(X) 
+возвращает само значение X, т.е. ORD(X) = X для X, принадлежащего любому шелому 
+типу. Применение ORD(X) к логическому, символьному и перечисляемому типам дает 
+положительное целое число в диапазоне от 0 до 1 (логический тип), от 0 до 155 
+(символьный), от 0 до 65535 (перечисляемый). Тип-диапазон сохраняет все свойства 
+базового порядкового типа, поэтому результат применения к нему функции ORD(X) 
+зависит от свойств этого типа. </P>
+<P>К порядковым типам можно также применять функции: </P>
+<P>PRED (X) - возвращает предыдущее значение порядкового типа (значение, которое 
+соответствует порядковому номеру ORD(X)- 1), т.е. </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ORD(PRED(X)) = ORD(X) - 1;</font> </P>
+<P>SUCC (X) - возвращает следующее значение порядкового типа, которое 
+соответствует порядковому номеру ORD(X) +1, т.е. </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ORD(SUCC(X)) = ORD(X) + 1.</font> </P>
+<P>Например, если в программе определена переменная </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">с : Char;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">с := '5' ;&nbsp;</font> </P>
+<P>end. </P>
+<P>то функция PRED(C) вернет значение '4', а функция SUCC(C) - значение '6'. 
+</P>
+<P>Если представить себе любой порядковый тип как упорядоченное множество 
+значий, возрастающих слева направо и занимающих на числовой оси некоторый отрезок, то функция PRED(X) не определена для левого, a SUCC(X) - для правого 
+конца этого отрезка. 
+</P>
+<P>Целые типы. Диапазон возможных значений целых типов зависит от их внутреннего 
+представления, которое может занимать один, два или четыре байта. В табл. 4.1 
+приводится название целых типов, длина их внутреннего представления в байтах и 
+диапазон возможных значений. </P>
+<P align="center"><b>Таблица 4.1 </b> </P>
+<center>
+<table border="1" >
+  <tr>
+    <td  colspan="3" align="center">Целые типы</td>
+  </tr>
+  <tr>
+    <TD   align="center">
+      <P>Название</P></TD>
+    <TD   align="center">
+      <P>Длина, байт</P></TD>
+    <TD   align="center">
+      <P>Диапазон значений</P></TD>
+  </tr>
+  <tr>
+    <TD   align="center">
+      <P>Byte</P></TD>
+    <TD   align="center">
+      <P>1</P></TD>
+    <TD   align="center">
+      <P>0. . .255</P></TD>
+  </tr>
+  <tr>
+    <TD   align="center">
+      <P>ShortInt</P></TD>
+    <TD   align="center">
+      <P>1</P></TD>
+    <TD   align="center">
+      <P>-128. . .+127</P></TD>
+  </tr>
+  <tr>
+    <TD   align="center">
+      <P>Word</P></TD>
+    <TD   align="center">
+      <P>2</P></TD>
+    <TD   align="center">
+      <P>0. . .65535</P></TD>
+  </tr>
+  <tr>
+    <TD   align="center">
+      <P>Integer</P></TD>
+    <TD   align="center">
+      <P>2</P></TD>
+    <TD   align="center">
+      <P>-32768.. .+32767</P></TD>
+  </tr>
+  <tr>
+    <TD   align="center">
+      <P>LongInt</P></TD>
+    <TD   align="center">
+      <P>4</P></TD>
+    <TD   align="center">
+      <P>-2 147 483 648... +2 147 483 647</P></TD>
+  </tr>
+</table>
+</center>
+<P>При использовании процедур и функций с целочисленными параметрами следует 
+руководствоваться «вложенностью» типов, т.е. везде, где может использоваться 
+WORD, допускается использование BYTE (но не наоборот), в LONGINT «входит» 
+INTEGER, который, в свою очередь, включает в себя SHORTINT. </P>
+<P>Перечень процедур и функций, применимых к целочисленным типам, приведен в 
+табл.4.2. Буквами <i>b, s, w, i, l</i> обозначены выражения соответственно типа BYTE, 
+SHORTINT, WORD, INTEGER и LONGINT, x - выражение любого из этих типов; буквы
+<i> vb, 
+vs, vw, vi, vl, vx</i> обозначают переменные соответствующих типов. В квадратных 
+скобках указывается необязательный параметр. </P>
+<P align="center"><b>Таблица 4.2 </b> </P>
+<center>
+<TABLE border=1 frame=box rules=all >
+  <TBODY>
+  <TR>
+    <TD colSpan=3  align="center">
+      <P>Стандартные процедуры и функции, применимые к целым типам</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>Обращение</P></TD>
+    <TD  align="center">
+      <P>Тип результата</P></TD>
+    <TD  align="center">
+      <P>Действие</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>abs (x)</P></TD>
+    <TD  align="center">
+      <P>x</P></TD>
+    <TD  align="left">
+      <P>Возвращает модуль х</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>chr(b)</P></TD>
+    <TD  align="center">
+      <P>Char</P></TD>
+    <TD  align="left">
+      <P>Возвращает символ по его коду</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>dec (vx[, i] )</P></TD>
+    <TD  align="center">
+      <P>-</P></TD>
+    <TD  align="left">
+      <P>Уменьшает значение vx на i, а при отсутствии i -на 1</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>inc(vx[, i] )</P></TD>
+    <TD  align="center">
+      <P>-</P></TD>
+    <TD  align="left">
+      <P>Увеличивает значение vx на i, а при отсутствии i - на 1</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>Hi(i)</P></TD>
+    <TD  align="center">
+      <P>Byte</P></TD>
+    <TD  align="left">
+      <P>Возвращает старший байт аргумента</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>Hi(w)</P></TD>
+    <TD  align="center">
+      <P>To же</P></TD>
+    <TD  align="left">
+      <P>То же</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>Lo(i)</P></TD>
+    <TD  align="center">
+      <P>"</P></TD>
+    <TD  align="left">
+      <P>Возвращает младший байт аргумента</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>Lo (w)</P></TD>
+    <TD  align="center">
+      <P>"</P></TD>
+    <TD  align="left">
+      <P>То же</P></TD></TR>
+  <tr>
+    <TD  align="center">
+      <P>odd(l)</P></TD>
+    <TD  align="center">
+      <P>Boolean</P></TD>
+    <TD  align="left">
+      <P>Возвращает True, если аргумент - нечетное
+      число</P></TD>
+  </tr>
+  <tr>
+    <TD align="center">
+      <P>Random (w)</P></TD>
+    <TD align="center">
+      <P>Как у параметра</P></TD>
+    <TD>
+      <P>Возвращает псевдослучайное число, равномерно распределенное в диапазоне
+      0...(w-l)</P></TD>
+  </tr>
+  <tr>
+    <TD align="center">
+      <P>sgr (x)</P></TD>
+    <TD align="center">
+      <P>X</P></TD>
+    <TD>
+      <P>Возвращает квадрат аргумента</P></TD>
+  </tr>
+  <tr>
+    <TD align="center">
+      <P>swap ( i )</P></TD>
+    <TD align="center">
+      <P>Integer</P></TD>
+    <TD>
+      <P>Меняет местами байты в слове</P></TD>
+  </tr>
+  <tr>
+    <TD align="center">
+      <P>swap (w)</P></TD>
+    <TD align="center">
+      <P>Word</P></TD>
+    <TD>&nbsp; </TD>
+  </tr>
+  </TBODY></TABLE></center>
+<P>При действиях с целыми числами тип результата будет соответствовать типу 
+операндов, а если операнды относятся к различным целым типам,
+- типу того 
+операнда, который имеет максимальную мощность (максимальный диапазон значений). 
+Возможное переполнение результата никак не контролируется, что может привести к 
+недоразумениям, например: </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">а : Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> х, у : Real;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">а := 32767; <i> {Максимально возможное значение типа INTEGER}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">х := а + 2; <i> {Переполнение при вычислении этого выражения!}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">у := LongInt(а)+2; <i> {Переполнения нет после приведения переменной к более 
+мощному типу}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(x:10:0, у:10:0)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P>В результате прогона программы получим </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">-32767&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 32769</font> </P>
+<P><i>Логический тип</i>. Значениями логического типа может быть одна из предварительно 
+объявленных констант FALSE (ложь) или TRUE (истина). Для них справедливы 
+правила: </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ord(False) = 0;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ord(True) = 1;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> False &lt; True;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">succ(False)= True;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">pred(True) 
+= False.</font> </P>
+<P>Поскольку логический тип относится к порядковым типам, его можно использовать 
+в операторе счетного типа, например: </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">1 : Boolean;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for 1 := False to True do ....</font> </P>
+<P><i>Символьный тип.</i> Значением символьного типа является множество всех символов 
+ПК. Каждому символу приписывается целое число в диапазоне 0...255. Это число 
+служит кодом внутреннего представления символа, его возвращает функция ORD. </P>
+<P>Для кодировки используется код ASCII (<i>American Standard Code for Information 
+Interchange</i> - американский стандартный код для обмена информацией). Это 7-битный
+код, т.е. с его помощью можно закодировать лишь 128 символов в диапазоне от 0 
+до 127. В то же время в 8-битном байте, отведенном для хранения символа в Турбо 
+Паскале, можно закодировать в два раза больше символов в диапазоне от 0 до 255. 
+Первая половина символов ПК с кодами 0...127 соответствует стандарту ASCII 
+(табл. 4.3). Вторая половина символов с кодами 128...255 не ограничена жесткими 
+рамками стандарта и может меняться на ПК разных типов (в прил.2 приведены 
+некоторые распространенные варианты кодировки этих символов). 
+</P>
+<P align="center"><b>Таблица 4.3 </b> </P>
+<center>
+<TABLE border=1 frame=box rules=all >
+  <TBODY>
+  <TR>
+    <TD colSpan=8  align="center">
+      <P>Кодировка символов в соответствии со стандартом ASCII</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>Код</P></TD>
+    <TD  align="center">
+      <P>Символ</P></TD>
+    <TD  align="center">
+      <P>Код</P></TD>
+    <TD  align="center">
+      <P>Символ</P></TD>
+    <TD  align="center">
+      <P>Код</P></TD>
+    <TD  align="center">
+      <P>Символ</P></TD>
+    <TD  align="center">
+      <P>Код</P></TD>
+    <TD  align="center">
+      <P>Символ</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>0</P></TD>
+    <TD  align="center">
+      <P>NUL</P></TD>
+    <TD  align="center">
+      <P>32</P></TD>
+    <TD  align="center">
+      <P>BL</P></TD>
+    <TD  align="center">
+      <P>64</P></TD>
+    <TD  align="center">
+      <P>®</P></TD>
+    <TD  align="center">
+      <P>96</P></TD>
+    <TD  align="center">
+      <P>'</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>1</P></TD>
+    <TD  align="center">
+      <P>ЗОН</P></TD>
+    <TD  align="center">
+      <P>33</P></TD>
+    <TD  align="center">
+      <P>!</P></TD>
+    <TD  align="center">
+      <P>65</P></TD>
+    <TD  align="center">
+      <P>A</P></TD>
+    <TD  align="center">
+      <P>97</P></TD>
+    <TD  align="center">
+      <P>a</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>2</P></TD>
+    <TD  align="center">
+      <P>STX</P></TD>
+    <TD  align="center">
+      <P>34</P></TD>
+    <TD  align="center">
+      <P>"</P></TD>
+    <TD  align="center">
+      <P>66</P></TD>
+    <TD  align="center">
+      <P>В</P></TD>
+    <TD  align="center">
+      <P>98</P></TD>
+    <TD  align="center">
+      <P>b</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>3</P></TD>
+    <TD  align="center">
+      <P>ЕТХ</P></TD>
+    <TD  align="center">
+      <P>35</P></TD>
+    <TD  align="center">
+      <P>#</P></TD>
+    <TD  align="center">
+      <P>67</P></TD>
+    <TD  align="center">
+      <P>С</P></TD>
+    <TD  align="center">
+      <P>99</P></TD>
+    <TD  align="center">
+      <P>с</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>4</P></TD>
+    <TD  align="center">
+      <P>EOT</P></TD>
+    <TD  align="center">
+      <P>36</P></TD>
+    <TD  align="center">
+      <P>$</P></TD>
+    <TD  align="center">
+      <P>68</P></TD>
+    <TD  align="center">
+      <P>D</P></TD>
+    <TD  align="center">
+      <P>100</P></TD>
+    <TD  align="center">
+      <P>d</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>5</P></TD>
+    <TD  align="center">
+      <P>ENQ</P></TD>
+    <TD  align="center">
+      <P>37</P></TD>
+    <TD  align="center">
+      <P>%</P></TD>
+    <TD  align="center">
+      <P>69</P></TD>
+    <TD  align="center">
+      <P>E</P></TD>
+    <TD  align="center">
+      <P>101</P></TD>
+    <TD  align="center">
+      <P>e</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>6</P></TD>
+    <TD  align="center">
+      <P>АСК</P></TD>
+    <TD  align="center">
+      <P>38</P></TD>
+    <TD  align="center">
+      <P>&amp;</P></TD>
+    <TD  align="center">
+      <P>70</P></TD>
+    <TD  align="center">
+      <P>F</P></TD>
+    <TD  align="center">
+      <P>102</P></TD>
+    <TD  align="center">
+      <P>f</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>7</P></TD>
+    <TD  align="center">
+      <P>BEL</P></TD>
+    <TD  align="center">
+      <P>39</P></TD>
+    <TD  align="center">
+      <P>'</P></TD>
+    <TD  align="center">
+      <P>71</P></TD>
+    <TD  align="center">
+      <P>G</P></TD>
+    <TD  align="center">
+      <P>103</P></TD>
+    <TD  align="center">
+      <P>g</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>8</P></TD>
+    <TD  align="center">
+      <P>BS</P></TD>
+    <TD  align="center">
+      <P>40</P></TD>
+    <TD  align="center">
+      <P>(</P></TD>
+    <TD  align="center">
+      <P>72</P></TD>
+    <TD  align="center">
+      <P>H</P></TD>
+    <TD  align="center">
+      <P>104</P></TD>
+    <TD  align="center">
+      <P>h</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>9</P></TD>
+    <TD  align="center">
+      <P>НТ</P></TD>
+    <TD  align="center">
+      <P>41</P></TD>
+    <TD  align="center">
+      <P>)</P></TD>
+    <TD  align="center">
+      <P>73</P></TD>
+    <TD  align="center">
+      <P>I</P></TD>
+    <TD  align="center">
+      <P>105</P></TD>
+    <TD  align="center">
+      <P>i</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>10</P></TD>
+    <TD  align="center">
+      <P>LF</P></TD>
+    <TD  align="center">
+      <P>42</P></TD>
+    <TD  align="center">
+      <P>*</P></TD>
+    <TD  align="center">
+      <P>74</P></TD>
+    <TD  align="center">
+      <P>J</P></TD>
+    <TD  align="center">
+      <P>106</P></TD>
+    <TD  align="center">
+      <P>j</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>11</P></TD>
+    <TD  align="center">
+      <P>VT</P></TD>
+    <TD  align="center">
+      <P>43</P></TD>
+    <TD  align="center">
+      <P>+</P></TD>
+    <TD  align="center">
+      <P>75</P></TD>
+    <TD  align="center">
+      <P>k</P></TD>
+    <TD  align="center">
+      <P>107</P></TD>
+    <TD  align="center">
+      <P>k</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>12</P></TD>
+    <TD  align="center">
+      <P>FF</P></TD>
+    <TD  align="center">
+      <P>44</P></TD>
+    <TD  align="center">
+      <P>,</P></TD>
+    <TD  align="center">
+      <P>76</P></TD>
+    <TD  align="center">
+      <P>L</P></TD>
+    <TD  align="center">
+      <P>108</P></TD>
+    <TD  align="center">
+      <P>i</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>13</P></TD>
+    <TD  align="center">
+      <P>CR</P></TD>
+    <TD  align="center">
+      <P>45</P></TD>
+    <TD  align="center">
+      <P>-</P></TD>
+    <TD  align="center">
+      <P>77</P></TD>
+    <TD  align="center">
+      <P>M</P></TD>
+    <TD  align="center">
+      <P>109</P></TD>
+    <TD  align="center">
+      <P>m</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>14</P></TD>
+    <TD  align="center">
+      <P>SO</P></TD>
+    <TD  align="center">
+      <P>46</P></TD>
+    <TD  align="center">
+      <P>.</P></TD>
+    <TD  align="center">
+      <P>78</P></TD>
+    <TD  align="center">
+      <P>N</P></TD>
+    <TD  align="center">
+      <P>110</P></TD>
+    <TD  align="center">
+      <P>n</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>15</P></TD>
+    <TD  align="center">
+      <P>SI</P></TD>
+    <TD  align="center">
+      <P>47</P></TD>
+    <TD  align="center">
+      <P>/</P></TD>
+    <TD  align="center">
+      <P>79</P></TD>
+    <TD  align="center">
+      <P>О</P></TD>
+    <TD  align="center">
+      <P>111</P></TD>
+    <TD  align="center">
+      <P>0</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>16</P></TD>
+    <TD  align="center">
+      <P>DEL</P></TD>
+    <TD  align="center">
+      <P>48</P></TD>
+    <TD  align="center">
+      <P>0</P></TD>
+    <TD  align="center">
+      <P>80</P></TD>
+    <TD  align="center">
+      <P>p</P></TD>
+    <TD  align="center">
+      <P>112</P></TD>
+    <TD  align="center">
+      <P>P</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>17</P></TD>
+    <TD  align="center">
+      <P>DC1</P></TD>
+    <TD  align="center">
+      <P>49</P></TD>
+    <TD  align="center">
+      <P>1</P></TD>
+    <TD  align="center">
+      <P>81</P></TD>
+    <TD  align="center">
+      <P>Q</P></TD>
+    <TD  align="center">
+      <P>113</P></TD>
+    <TD  align="center">
+      <P>q</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>18</P></TD>
+    <TD  align="center">
+      <P>DC2</P></TD>
+    <TD  align="center">
+      <P>50</P></TD>
+    <TD  align="center">
+      <P>2</P></TD>
+    <TD  align="center">
+      <P>82</P></TD>
+    <TD  align="center">
+      <P>R</P></TD>
+    <TD  align="center">
+      <P>114</P></TD>
+    <TD  align="center">
+      <P>r</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>19</P></TD>
+    <TD  align="center">
+      <P>DC3</P></TD>
+    <TD  align="center">
+      <P>51</P></TD>
+    <TD  align="center">
+      <P>3</P></TD>
+    <TD  align="center">
+      <P>83</P></TD>
+    <TD  align="center">
+      <P>S</P></TD>
+    <TD  align="center">
+      <P>115</P></TD>
+    <TD  align="center">
+      <P>s</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>20</P></TD>
+    <TD  align="center">
+      <P>DC4</P></TD>
+    <TD  align="center">
+      <P>52</P></TD>
+    <TD  align="center">
+      <P>4</P></TD>
+    <TD  align="center">
+      <P>84</P></TD>
+    <TD  align="center">
+      <P>T</P></TD>
+    <TD  align="center">
+      <P>116</P></TD>
+    <TD  align="center">
+      <P>t</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>21</P></TD>
+    <TD  align="center">
+      <P>NAK</P></TD>
+    <TD  align="center">
+      <P>53</P></TD>
+    <TD  align="center">
+      <P>5</P></TD>
+    <TD  align="center">
+      <P>85</P></TD>
+    <TD  align="center">
+      <P>U</P></TD>
+    <TD  align="center">
+      <P>117</P></TD>
+    <TD  align="center">
+      <P>u</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>22</P></TD>
+    <TD  align="center">
+      <P>SYN</P></TD>
+    <TD  align="center">
+      <P>54</P></TD>
+    <TD  align="center">
+      <P>6</P></TD>
+    <TD  align="center">
+      <P>86</P></TD>
+    <TD  align="center">
+      <P>V</P></TD>
+    <TD  align="center">
+      <P>118</P></TD>
+    <TD  align="center">
+      <P>V</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>23</P></TD>
+    <TD  align="center">
+      <P>ETB</P></TD>
+    <TD  align="center">
+      <P>55</P></TD>
+    <TD  align="center">
+      <P>7</P></TD>
+    <TD  align="center">
+      <P>87</P></TD>
+    <TD  align="center">
+      <P>w</P></TD>
+    <TD  align="center">
+      <P>119</P></TD>
+    <TD  align="center">
+      <P>w</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>24</P></TD>
+    <TD  align="center">
+      <P>CAN</P></TD>
+    <TD  align="center">
+      <P>56</P></TD>
+    <TD  align="center">
+      <P>8</P></TD>
+    <TD  align="center">
+      <P>88</P></TD>
+    <TD  align="center">
+      <P>X</P></TD>
+    <TD  align="center">
+      <P>120</P></TD>
+    <TD  align="center">
+      <P>X</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>25</P></TD>
+    <TD  align="center">
+      <P>EM</P></TD>
+    <TD  align="center">
+      <P>57</P></TD>
+    <TD  align="center">
+      <P>9</P></TD>
+    <TD  align="center">
+      <P>89</P></TD>
+    <TD  align="center">
+      <P>У</P></TD>
+    <TD  align="center">
+      <P>121</P></TD>
+    <TD  align="center">
+      <P>У</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>26</P></TD>
+    <TD  align="center">
+      <P>SUB</P></TD>
+    <TD  align="center">
+      <P>58</P></TD>
+    <TD  align="center">
+      <P>:</P></TD>
+    <TD  align="center">
+      <P>90</P></TD>
+    <TD  align="center">
+      <P>z</P></TD>
+    <TD  align="center">
+      <P>122</P></TD>
+    <TD  align="center">
+      <P>z</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>27</P></TD>
+    <TD  align="center">
+      <P>ESC</P></TD>
+    <TD  align="center">
+      <P>59</P></TD>
+    <TD  align="center">
+      <P>/</P></TD>
+    <TD  align="center">
+      <P>91</P></TD>
+    <TD  align="center">
+      <P>[</P></TD>
+    <TD  align="center">
+      <P>123</P></TD>
+    <TD  align="center">
+      <P>{</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>28</P></TD>
+    <TD  align="center">
+      <P>FS</P></TD>
+    <TD  align="center">
+      <P>60</P></TD>
+    <TD  align="center">
+      <P>&lt;</P></TD>
+    <TD  align="center">
+      <P>92</P></TD>
+    <TD  align="center">
+      <P>\</P></TD>
+    <TD  align="center">
+      <P>124</P></TD>
+    <TD  align="center">
+      <P>l</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>29</P></TD>
+    <TD  align="center">
+      <P>GS</P></TD>
+    <TD  align="center">
+      <P>61</P></TD>
+    <TD  align="center">
+      <P>=</P></TD>
+    <TD  align="center">
+      <P>93</P></TD>
+    <TD  align="center">
+      <P>]</P></TD>
+    <TD  align="center">
+      <P>125</P></TD>
+    <TD  align="center">
+      <P>}</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>30</P></TD>
+    <TD  align="center">
+      <P>RS</P></TD>
+    <TD  align="center">
+      <P>62</P></TD>
+    <TD  align="center">
+      <P>&gt;</P></TD>
+    <TD  align="center">
+      <P>94</P></TD>
+    <TD  align="center">
+      <P>^</P></TD>
+    <TD  align="center">
+      <P>126</P></TD>
+    <TD  align="center">
+      <P>~</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>31</P></TD>
+    <TD  align="center">
+      <P>US</P></TD>
+    <TD  align="center">
+      <P>63</P></TD>
+    <TD  align="center">
+      <P>?</P></TD>
+    <TD  align="center">
+      <P>95</P></TD>
+    <TD  align="center">
+      <P>—</P></TD>
+    <TD  align="center">
+      <P>127</P></TD>
+    <TD  align="center">
+      <P><sub>n</sub></P></TD></TR></TBODY></TABLE></center>
+<P></P>
+<P>Символы с кодами 0...31 относятся к служебным кодам. Если эти коды 
+используются в символьном тексте программы, они считаются пробелами. При 
+использовании их в операциях ввода-вывода они могут иметь следующее 
+самостоятельное значение: </P>
+<center>
+<TABLE border=1 frame=box rules=all >
+  <TBODY>
+  <TR>
+    <TD >
+      <P>Символ</P></TD>
+    <TD >
+      <P>Код</P></TD>
+    <TD >
+      <P align="center">Значение</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>BEL</P></TD>
+    <TD  align="center">
+      <P>7</P></TD>
+    <TD >
+      <P>Звонок; вывод на экран этого символа сопровождается звуковым 
+      сигналом</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>НТ</P></TD>
+    <TD  align="center">
+      <P>9</P></TD>
+    <TD >
+      <P>Горизонтальная табуляция; при выводе на экран смещает курсор в позицию, 
+      кратную 8, плюс 1 (9, 17, 25 и т.д.)</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>LF</P></TD>
+    <TD  align="center">
+      <P>10</P></TD>
+    <TD >
+      <P>Перевод строки; при выводе его на экран все последующие символы будут 
+      выводиться, начиная с той же позиции, но на следующей строке</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>VT</P></TD>
+    <TD  align="center">
+      <P>11</P></TD>
+    <TD >
+      <P>Вертикальная табуляция; при выводе на экран заменяется специальным 
+      знаком</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>FF</P></TD>
+    <TD  align="center">
+      <P>12</P></TD>
+    <TD >
+      <P>Прогон страницы; при выводе на принтер формирует страницу, при выводе 
+      на экран заменяется специальным знаком</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>CR</P></TD>
+    <TD  align="center">
+      <P>13</P></TD>
+    <TD >
+      <P>Возврат каретки; вводится нажатием на клавишу Enter (при вводе с 
+      помощью READ или READLN означает команду «Ввод» и в буфер ввода не 
+      помещается; при выводе означает команду «Продолжить вывод с начала текущей 
+      строки»)</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>SUB</P></TD>
+    <TD  align="center">
+      <P>26</P></TD>
+    <TD >
+      <P>Конец файла; вводится с клавиатуры нажатием Ctrl-Z; при выводе 
+      заменяется специальным знаком</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>SSC</P></TD>
+    <TD  align="center">
+      <P>27</P></TD>
+    <TD >
+      <P>Конец работы; вводится с клавиатуры нажатием на клавишу ESC; при выводе 
+      заменяется специальным знаком</P></TD></TR></TBODY></TABLE>
+      </center>
+<P>К типу CHAR применимы операции отношения, а также встроенные функции: СНR(В) 
+- функция типа CHAR; преобразует выражение В типа BYTE в символ и возвращает его 
+своим значением; </P>
+<P>UPCASE(CH) - функция типа CHAR; возвращает прописную букву, если СН -строчная 
+латинская буква, в противном случае возвращает сам символ СН, например: </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cl,c2: Char;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cl := UpCase('s') ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> c2 := UpCase ('Ф') ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(cl,'&nbsp; ',c2)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P>Так как функция UPCASE не обрабатывает кириллицу, в результате прогона этой 
+</P>
+<P>программы на экран будет выдано </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">S&nbsp;</font>&nbsp;&nbsp;&nbsp; <font face="Verdana, Arial, Helvetica, sans-serif" size="3">ф</font> </P>
+<P><i>Перечисляемый тип</i>. Перечисляемый тип задается перечислением тех значений,
+которые он может получать. Каждое значение именуется некоторым 
+идентификатором и располагается в списке, обрамленном круглыми скобками, 
+например: 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">typе</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">colors =(red, white, blue);</font> </P>
+<P>Применение перечисляемых типов делает программы нагляднее. Если, например, в 
+программе используются данные, связанные с месяцами года, то такой фрагмент 
+программы: </P>
+<P>type </P>
+<P>ТипМесяц=(янв,фев,мар,апр,май,июн,июл,авг,сен,окт,ноя,дек);&nbsp; </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">месяц : ТипМесяц;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if месяц = авг then WriteLn('Хорошо бы поехать к морю!');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P>был бы, согласитесь, очень наглядным. Увы! В Турбо Паскале нельзя 
+использовать кириллицу в идентификаторах, поэтому мы вынуждены писать так: </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TypeMonth=(jan,feb,mar,may,jun,jul,aug,sep,oct,nov,dec);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">month: TypeMonth;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if month = aug then WriteLn('Хорошо бы поехать к морю!');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P>Соответствие между значениями перечисляемого типа и порядковыми номерами этих 
+значений устанавливается порядком перечисления: первое значение в списке 
+получает порядковый номер 0, второе - 1 и т.д. Максимальная мощность 
+перечисляемого типа составляет 65536 значений, поэтому фактически перечисляемый 
+тип задает некоторое подмножество целого типа WORD и может рассматриваться как 
+компактное объявление сразу группы целочисленных констант со значениями О, 1 и 
+т.д. </P>
+<P>Использование перечисляемых типов повышает надежность программ благодаря 
+возможности контроля тех значений, которые получают соответствующие переменные. 
+Пусть, например, заданы такие перечисляемые типы: </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">colors = (black, red, white);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ordenal= (one, two, three);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">days = (monday, tuesday, Wednesday);</font> </P>
+<P>С точки зрения мощности и внутреннего представления все три типа 
+эквивалентны: </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ord(black)=0, ..., ord(white)=2,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ord(one)=0, ...ord(three)=2,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ord(monday)=0, ...ord(Wednesday)=2.</font> </P>
+<P>Однако, если определены переменные </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">col :colors; num :ordenal;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">day : days;</font> </P>
+<P>то допустимы операторы </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">col := black;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">num := succ(two);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">day := pred(tuesday);</font> </P>
+<P>но недопустимы </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">col := one;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> day := black;</font> </P>
+<P>Как уже упоминалось, между значениями перечисляемого типа и множеством целых
+чисел существует однозначное соответствие, задаваемое функцией ORD(X). В 
+Турбо Паскале допускается и обратное преобразование: любое выражение типа WORD 
+можно преобразовать в значение перечисляемого типа, если только значение 
+целочисленного выражения не превышает мощное1™ перечисляемого типа. Такое 
+преобразование достигается применением автоматически объявляемой функции с 
+именем перечисляемого типа (см. п. 4.4). Например, для рассмотренного выше 
+объявления типов эквивалентны следующие присваивания: 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">col := one;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">col := colors(0);</font> </P>
+<P>Разумеется, присваивание </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">col := 0;</font> </P>
+<P>будет недопустимым. </P>
+<P>Переменные любого перечисляемого типа можно объявлять без предварительного 
+описания этого типа, например: </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">col: (black, white, green);</font> </P>
+<P>Тип-диапазон. Тип-диапазон есть подмножество своего базового типа, в качестве 
+которого может выступать любой порядковый тип, кроме типа-диапазона. 
+Тип-диапазон задается границами своих значений внутри базового типа: </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&lt;мин.знач.&gt;..&lt;макс.знач.&gt;</font> </P>
+<P>Здесь &lt;мин.знач. &gt; - минимальное значение типа-диапазона;&nbsp; </P>
+<P> 
+&lt;макс.знач.&gt; - максимальное его значение. </P>
+<P>Например: </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">digit = '0'..'9';&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> dig2= 48..57;</font> </P>
+<P>Тип-диапазон необязательно описывать в разделе TYPE, а можно указывать 
+непосредственно при объявлении переменной, например: </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">date : 1..31;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">month: 1. .12;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Ichr : 'A'..'Z';.</font> </P>
+<P>При определении типа-диапазона нужно руководствоваться следующими правилами: 
+</P>
+<ul>
+  <li> два символа «..» рассматриваются как один символ, поэтому между ними 
+недопустимы пробелы;</li>
+  <li> левая граница диапазона не должна превышать его правую границу. 
+Тип-диапазон наследует все свойства своего базового типа, но с ограничениями, 
+связанными с его меньшей мощностью. В частности, если определена переменная</li>
+</ul>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">days = (mo,tu,we,th,fr,sa,su);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WeekEnd = sa .. su;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">w : WeekEnd;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">w := sa;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P>то ORD(W) вернет значение 5 , в то время как PRED(W) приведет к ошибке. </P>
+<P>В стандартную библиотеку Турбо Паскаля включены две функции, поддерживающие 
+работу с типами-диапазонами: </P>
+<P>НIGН(Х) - возвращает максимальное значение типа-диапазона, к которому 
+принадлежит переменная X; </P>
+<P>LOW(X) -возвращает минимальное значение типа-диапазона. </P>
+<P>Следующая короткая программа выведет на экран строку </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">-32768...32767</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k: Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(Low(k),'..',High(k))</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+
+<p>&nbsp;</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl4_1.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl4_3.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

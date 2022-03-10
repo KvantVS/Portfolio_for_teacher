@@ -1,0 +1,557 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Untitled</title>
+</head>
+
+<body lang=RU style="'tab-interval:35.4pt'" background="bgrwhite.gif">
+<p><div align="center"><b><font size="+1" face="Arial">36. Динамические переменные </font></b></div></p>
+<p><span
+style="mso-spacerun: yes">   </span>Статической переменной (статически
+размещенной) называется описан-
+
+<p>ная
+явным образом в программе переменная, обращение к ней осуществля-
+
+<p>ется по
+имени.<span style="mso-spacerun: yes">  </span>Место в памяти для размещения
+статических<span style="mso-spacerun: yes">  </span>переменных
+
+<p>определяется
+при компиляции программы.
+
+<p><span
+style="mso-spacerun: yes">   </span>В отличие от таких статических переменных в
+программах, написанных
+
+<p>на
+языке ПАСКАЛЬ,<span style="mso-spacerun: yes">  </span>могут быть созданы
+динамические переменные. Основ-
+
+<p>ное
+свойство динамических переменных заключается в том,<span style="mso-spacerun:
+yes">  </span>что они соз-
+
+<p>даются
+и<span style="mso-spacerun: yes">   </span>память<span style="mso-spacerun:
+yes">  </span>для<span style="mso-spacerun: yes">  </span>них выделяется во
+время выполнения программы.
+
+<p>Размещаются
+динамические переменные<span style="mso-spacerun: yes">  </span>в<span
+style="mso-spacerun: yes">  </span>динамической<span style="mso-spacerun:
+yes">  </span>области<span style="mso-spacerun: yes">  </span>памяти
+
+<p>(heap -
+области).
+
+<p><span
+style="mso-spacerun: yes">   </span>Динамическая переменная не указывается явно
+в описаниях переменных
+
+<p>и
+к<span style="mso-spacerun: yes">   </span>ней нельзя обратиться по имени.<span
+style="mso-spacerun: yes">  </span>Доступ к таким переменным осу-
+
+<p>ществляется
+с помощью указателей и ссылок.
+
+<p><span
+style="mso-spacerun: yes">   </span>Работа с динамической областью памяти в
+TURBO PASCAL реализуется с
+
+<p>помощью
+процедур и функций New,<span style="mso-spacerun: yes">  </span>Dispose,<span
+style="mso-spacerun: yes">  </span>GetMem,<span style="mso-spacerun: yes">  
+</span>FreeMem,<span style="mso-spacerun: yes">   </span>Mark,
+
+<p>Release,
+MaxAvail, MemAvail, SizeOf.
+
+<p><span
+style="mso-spacerun: yes">   </span>Процедура New( var p:<span
+style="mso-spacerun: yes">  </span>Pointer ) выделяет место в динамической об-
+
+<p>ласти
+памяти<span style="mso-spacerun: yes">   </span>для<span style="mso-spacerun:
+yes">  </span>размещения<span style="mso-spacerun: yes">  </span>динамической
+переменной p^ и ее адрес
+
+<p>присваивает
+указателю p.
+
+<p><span
+style="mso-spacerun: yes">   </span>Процедура Dispose(<span
+style="mso-spacerun: yes">  </span>var p:<span style="mso-spacerun: yes"> 
+</span>Pointer )<span style="mso-spacerun: yes">  </span>освобождает участок
+памяти,
+
+<p>выделенный
+для размещения динамической переменной процедурой<span style="mso-spacerun:
+yes">  </span>New,<span style="mso-spacerun: yes">  </span>и
+
+<p>значение
+указателя p становится неопределенным.
+
+<p><span
+style="mso-spacerun: yes">   </span>Проуедура GetMem( var p:<span
+style="mso-spacerun: yes">  </span>Pointer; size:<span style="mso-spacerun:
+yes">  </span>Word )<span style="mso-spacerun: yes">  </span>выделяет участок
+
+<p>памяти
+в<span style="mso-spacerun: yes">   </span>heap - области,<span
+style="mso-spacerun: yes">  </span>присваивает адрес его начала указателю p,
+
+<p>размер
+участка в байтах задается параметром size.
+
+<p><span
+style="mso-spacerun: yes">   </span>Процедура FreeMem( var p:<span
+style="mso-spacerun: yes">  </span>Pointer; size: Word ) освобождает учас-
+
+<p>ток
+памяти,<span style="mso-spacerun: yes">  </span>адрес начала которого определен
+указателем p, а размер -
+
+<p>параметром
+size. Значение указателя p становится неопределенным.
+
+<p><span
+style="mso-spacerun: yes">   </span>Процедура Mark( var p:<span
+style="mso-spacerun: yes">  </span>Pointer )<span style="mso-spacerun: yes"> 
+</span>записывает в указатель p<span style="mso-spacerun: yes">  </span>адрес
+
+<p>начала
+участка свободной динамической памяти на момент ее вызова.
+
+
+<p><span
+style="mso-spacerun: yes">   </span>Процедура Release( var p: Pointer )
+освобождает участок динамичес-
+
+<p>кой
+памяти,<span style="mso-spacerun: yes">   </span>начиная с адреса,<span
+style="mso-spacerun: yes">  </span>записанного в указатель p процедурой
+
+<p>Mark,<span
+style="mso-spacerun: yes">  </span>то-есть,<span style="mso-spacerun: yes"> 
+</span>очищает ту динамическую память,<span style="mso-spacerun: yes"> 
+</span>которая была занята
+
+<p>после
+вызова процедуры Mark.
+
+<p><span
+style="mso-spacerun: yes">   </span>Функция MaxAvail: Longint возвращает длину
+в байтах самого длинно-
+
+<p>го
+свободного участка динамической памяти.
+
+<p><span
+style="mso-spacerun: yes">   </span>Функция MemAvail:<span style="mso-spacerun:
+yes">  </span>Longint полный объем свободной динамической па-
+
+<p>мяти в
+байтах.
+
+<p><span
+style="mso-spacerun: yes">   </span>Вспомогательная функция SizeOf( X ):<span
+style="mso-spacerun: yes">  </span>Word возвращает объем в бай-
+
+<p>тах,
+занимаемый<span style="mso-spacerun: yes">  </span>X, причем X может быть либо
+именем переменной любого
+
+<p>типа,
+либо именем типа.
+
+<p><span
+style="mso-spacerun: yes">   </span>Рассмотрим некоторые примеры работы с
+указателями.
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p><span
+style="mso-spacerun: yes">    </span>var
+
+<p><span
+style="mso-spacerun: yes">     </span>p1, p2: ^Integer;
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>Здесь p1 и p2 - указатели или пременные
+ссылочного типа.
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p><span
+style="mso-spacerun: yes">    </span>p1:=NIL;<span style="mso-spacerun: yes"> 
+</span>p2:=NIL;
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>После выполнения этих операторов
+присваивания указатели p1 и p2 не
+
+<p>будут
+ссылаться ни на какой конкретный объект.
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p><span
+style="mso-spacerun: yes">    </span>New(p1);<span style="mso-spacerun: yes"> 
+</span>New(p2);
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Процедура New(p1) выполняет следующие
+действия:
+
+<p><span
+style="mso-spacerun: yes">   </span>-в памяти ЭВМ выделяется участок для<span
+style="mso-spacerun: yes">  </span>размещения<span style="mso-spacerun: yes"> 
+</span>величины<span style="mso-spacerun: yes">  </span>целого
+
+<p>типа;
+
+<p><span
+style="mso-spacerun: yes">   </span>-адрес этого участка присваивается
+переменной p1:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">                </span>ЙННННН»<span
+style="mso-spacerun: yes">          </span>ЙННННН»
+
+<p><span
+style="mso-spacerun: yes">                </span>є<span style="mso-spacerun:
+yes">  </span>*ДДєДДДДДДДДД&gt;є<span style="mso-spacerun: yes">     </span>є
+
+<p><span
+style="mso-spacerun: yes">                </span>ИНННННј<span
+style="mso-spacerun: yes">          </span>ИНННННј
+
+<p><span
+style="mso-spacerun: yes">                  </span>p1<span style="mso-spacerun:
+yes">               </span>p1^
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Аналогично, процедура New(p2)<span
+style="mso-spacerun: yes">  </span>обеспечит выделение участка памяти,
+
+<p>адрес
+которого будет записан в p2:
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">                </span>ЙННННН»<span
+style="mso-spacerun: yes">          </span>ЙННННН»
+
+<p><span
+style="mso-spacerun: yes">                </span>є<span style="mso-spacerun:
+yes">  </span>*ДДєДДДДДДДДД&gt;є<span style="mso-spacerun: yes">     </span>є
+
+<p><span
+style="mso-spacerun: yes">                </span>ИНННННј<span
+style="mso-spacerun: yes">       </span><span style="mso-spacerun:
+yes">   </span>ИНННННј
+
+<p><span
+style="mso-spacerun: yes">                  </span>p2<span style="mso-spacerun:
+yes">               </span>p2^
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>После выполнения операторов присваивания
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p><span
+style="mso-spacerun: yes">        </span>p1^:=2;<span style="mso-spacerun:
+yes">   </span>p2^:=4;
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p>в
+выделенные<span style="mso-spacerun: yes">  </span>участки<span
+style="mso-spacerun: yes">  </span>памяти<span style="mso-spacerun: yes"> 
+</span>будут записаны значения 2 и 4 соответ-
+
+<p>ственно:
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p><span
+style="mso-spacerun: yes">                </span>ЙННННН»<span
+style="mso-spacerun: yes">          </span>ЙННННН»
+
+<p><span
+style="mso-spacerun: yes">                </span>є<span style="mso-spacerun:
+yes">  </span>*ДДєДДДДДДДДД&gt;є<span style="mso-spacerun: yes">  </span>2<span
+style="mso-spacerun: yes">  </span>є
+
+<p><span
+style="mso-spacerun: yes">                </span>ИНННННј<span
+style="mso-spacerun: yes">          </span>ИНННННј
+
+<p><span
+style="mso-spacerun: yes">                  </span>p1<span style="mso-spacerun:
+yes">               </span>p1^
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">                </span>ЙННННН»<span
+style="mso-spacerun: yes">          </span>ЙННННН»
+
+<p><span
+style="mso-spacerun: yes">                </span>є<span style="mso-spacerun:
+yes">  </span>*ДДєДДДДДДДДД&gt;є<span style="mso-spacerun: yes">  </span>4<span
+style="mso-spacerun: yes">  </span>є
+
+<p><span
+style="mso-spacerun: yes">                </span>ИНННННј<span
+style="mso-spacerun: yes">          </span>ИНННННј
+
+<p><span
+style="mso-spacerun: yes">                  </span>p2<span style="mso-spacerun:
+yes">               </span>p2^
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>В результате выполнения оператора
+присваивания
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p><span
+style="mso-spacerun: yes">       </span>p1^:=p2^;
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p>в<span
+style="mso-spacerun: yes">  </span>участок памяти,<span style="mso-spacerun:
+yes">  </span>на который ссылается указатель p1, будет записано
+
+<p>значение
+4:
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p><span
+style="mso-spacerun: yes">                </span>ЙННННН»<span
+style="mso-spacerun: yes">          </span>ЙННННН»
+
+<p><span
+style="mso-spacerun: yes">                </span>є<span style="mso-spacerun:
+yes">  </span>*ДДєДДДДДДДДД&gt;є<span style="mso-spacerun: yes">  </span>4<span
+style="mso-spacerun: yes">  </span>є
+
+<p><span
+style="mso-spacerun: yes">                </span>ИНННННј<span
+style="mso-spacerun: yes">          </span>ИНННННј
+
+<p><span
+style="mso-spacerun: yes">                  </span>p1<span style="mso-spacerun:
+yes">               </span>p1^
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">                </span>ЙННННН»<span
+style="mso-spacerun: yes">          </span>ЙННННН»
+
+<p><span
+style="mso-spacerun: yes">                </span>є<span style="mso-spacerun:
+yes">  </span>*ДДєДДДДДДДДД&gt;є<span style="mso-spacerun: yes">  </span>4<span
+style="mso-spacerun: yes">  </span>є
+
+<p><span
+style="mso-spacerun: yes">                </span>ИНННННј<span
+style="mso-spacerun: yes">          </span>ИНННННј
+
+<p><span
+style="mso-spacerun: yes">                  </span>p2<span style="mso-spacerun:
+yes">               </span>p2^
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>После выполнения оператора присваивания
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p><span
+style="mso-spacerun: yes">      </span>p2:=p1;
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p>оба
+указателя будут содержать адрес первого участка памяти:
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p><span
+style="mso-spacerun: yes">                </span>ЙННННН»<span
+style="mso-spacerun: yes">          </span>ЙННННН»
+
+<p><span
+style="mso-spacerun: yes">                </span>є<span style="mso-spacerun:
+yes">  </span>*ДДєДДДДДДДДД&gt;є<span style="mso-spacerun: yes">  </span>4<span
+style="mso-spacerun: yes">  </span>є
+
+<p><span
+style="mso-spacerun: yes">                </span>ИНННННј<span
+style="mso-spacerun: yes">      </span>ЪДД&gt;ИНННННј
+
+<p><span
+style="mso-spacerun: yes">                  </span>p1<span style="mso-spacerun:
+yes">         </span>і<span style="mso-spacerun: yes">   </span>p1^ p2^
+
+<p><span
+style="mso-spacerun: yes">                             </span>і
+
+<p><span
+style="mso-spacerun: yes">                </span>ЙННННН»<span
+style="mso-spacerun: yes">      </span>і
+
+<p><span
+style="mso-spacerun: yes">                </span>є<span style="mso-spacerun:
+yes">  </span>*ДДєДДДДДДЩ
+
+<p><span
+style="mso-spacerun: yes">                </span>ИНННННј
+
+<p><span
+style="mso-spacerun: yes">                  </span>p2
+
+<p><span
+style="mso-spacerun: yes">                 </span><span style="mso-spacerun:
+yes">                                                  </span>
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>Переменные p1^, p2^ являются динамическими,
+так как память для них
+
+<p>выделяется
+в процессе выполнения программы с помощью процедуры New.
+
+<p><span
+style="mso-spacerun: yes">   </span>Динамические переменные<span
+style="mso-spacerun: yes">  </span>могут входить в состав выражений,<span
+style="mso-spacerun: yes">  </span>напри-
+
+<p>мер:
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p><span
+style="mso-spacerun: yes">      </span>p1^:=p1^+8;<span style="mso-spacerun:
+yes">    </span>Write('p1^=',p1^:3);
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p><span
+style="mso-spacerun: yes">    </span>Пример. В результате выполнения программы:
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p><span
+style="mso-spacerun: yes"> </span>Program DemoPointer;
+
+<p><span
+style="mso-spacerun: yes">  </span>var p1,p2,p3:^Integer;
+
+<p><span
+style="mso-spacerun: yes">  </span>begin
+
+<p><span
+style="mso-spacerun: yes">   </span>p1:=NIL;<span style="mso-spacerun: yes"> 
+</span>p2:=NIL;<span style="mso-spacerun: yes">  </span>p3:=NIL;
+
+<p><span
+style="mso-spacerun: yes">   </span>New(p1);<span style="mso-spacerun: yes"> 
+</span>New(p2);<span style="mso-spacerun: yes">  </span>New(p3);
+
+<p><span
+style="mso-spacerun: yes">   </span>p1^:=2;<span style="mso-spacerun: yes"> 
+</span>p2^:=4;
+
+<p><span
+style="mso-spacerun: yes">   </span>p3^:=p1^+Sqr(p2^);
+
+<p><span
+style="mso-spacerun: yes">   </span>writeln('p1^=',p1^:3,'<span
+style="mso-spacerun: yes">  </span>p2^=',p2^:3,'<span style="mso-spacerun:
+yes">  </span>p3^=',p3^:3);
+
+<p><span
+style="mso-spacerun: yes">   </span>p1:=p2;
+
+<p><span
+style="mso-spacerun: yes">   </span>writeln('p1^=',p1^:3,'<span
+style="mso-spacerun: yes">  </span>p2^=',p2^:3)
+
+<p><span
+style="mso-spacerun: yes">  </span>end.
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p>на
+экран дисплея будут выведены результаты:
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p>p1^=<span
+style="mso-spacerun: yes">  </span>2<span style="mso-spacerun: yes"> 
+</span>p2^=<span style="mso-spacerun: yes">  </span>4<span style="mso-spacerun:
+yes">  </span>p3^= 18
+
+<p>p1^=<span
+style="mso-spacerun: yes">  </span>4<span style="mso-spacerun: yes"> 
+</span>p2^=<span style="mso-spacerun: yes">  </span>4
+
+<p><span
+style="mso-spacerun: yes">                                           </span>
+<p><div align="center"><a href="../Pascal. Курс лекций.html">	<img src="../../soder.gif" width=120 height=31 border=0 alt=""></a></div></p>
+
+</body>
+</html>

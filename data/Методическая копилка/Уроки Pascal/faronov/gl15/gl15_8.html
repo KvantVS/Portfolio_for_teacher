@@ -1,0 +1,199 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_7.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_9.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Создание и использование групп
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Пора заняться основной содержательной частью нашей программы - процедурой 
+Work. Прежде всего следует продумать способ взаимодействия пользователя с 
+данными (интерфейс пользователя). От удачного выбора интерфейса во многом 
+зависит успех разработки диалоговых программ: неудобный способ доступа, 
+связанный с не</font><font face="Arial, Helvetica, sans-serif" size="3">обходимостью ввода каких-либо команд или ответов на многочисленные вопросы, 
+надолго отобьет у пользователя всякое желание работать с программой. Turbo 
+Vision предоставляет в Ваше распоряжение все необходимые средства для разработки 
+современного объектно-ориентированного диалога. В ходе такого диалога 
+пользователь видит на экране объекты, о которых идет речь, он может указать на 
+любой объект и выбрать те действия, которые нужно осуществить над ним.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">При работе с электронной записной книжкой хотелось бы, чтобы на экране 
+появилось сразу несколько записей, отсортированных в алфавитном порядке. 
+Пользователь должен иметь возможность «листать» книжку, отыскивать в ней нужную 
+запись, добавлять новые и исключать ненужные записи, редактировать их (вносить 
+изменения). Таким образом, ядром диалога должно стать окно с текстом. При 
+необходимости пользователь может смещать текст в окне в ту или иную сторону, 
+перемещать само окно относительно границ экрана, менять его размеры. Все эти 
+возможности типичны для многочисленных текстовых редакторов, систем 
+программирования, систем управления базами данных и т.п.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для реализации этих действий в Turbo Vision предусмотрен специальный объект 
+TWindow, экземпляры которого отображаются на экране в виде прямоугольного окна с 
+рамкой и стандартными кнопками изменения размера и закрытия окна. Попробуем 
+создать такое окно в нашей программе. Для этого изменим текст процедуры Work 
+следующим образом:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TNotebook.Work;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Работа с данными}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R: TRect;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(0,0,80,23);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Desktop.Insert(New(PWindow,Init(R,'',0)))</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; {Work}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">После запуска программы нажмите клавишу F3, укажите в диалоговом окне имя 
+несуществующего файла (файл данных пока еще не создан), нажмите клавиши Enter и 
+F4 - экран приобретет вид, показанный на рис. 15.4.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если Ваш ПК оснащен устройством ввода типа мышь, Вы можете перемещать это 
+окно по экрану (надо «схватить» мышью верхнюю рамку окна, т.е. подвести к ней 
+указатель мыши, нажать левую кнопку и, удерживая кнопку нажатой, перемещать 
+мышь), изменять его размеры («схватить» правый нижний угол), использовать 
+стандартные кнопки изменения размера (справа на верхней рамке) и закрытия окна 
+(слева). Ничего другого окно не умеет. А как загрузить в него текст? Как 
+получить хорошо знакомые по среде Турбо Паскаль полосы-указатели и управлять с 
+их помощью положением текста? Для этих целей можно было бы использовать объект 
+TScroller, представляющий собой окно с текстом и с двумя полосами-указателями. 
+Однако по умолчанию такое окно не имеет рамки, а потому не может изменять своего 
+размера, в нем нет стандартных кнопок изменения размера и закрытия окна. Таким 
+образом, и объект TScroller не решает всех проблем. Каков же выход? Нужно 
+создать новый объект, объединяющий в себе свойства и TWindow, и TScroller! В 
+терминах Turbo Vision такие составные объекты называются группами.</font> </P>
+<p align="center"><img border="0" src="15_4.jpg"    ></p>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Рис. 15.4</b>. Окно просмотра данных&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Введем в программу следующий объект:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PWorkWin =TWorkWin;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> TWorkWin = object (TWindow)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Constructor Init(Bounds: 
+TRect);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Новый объект является потомком TWindow и, следовательно, наследует все 
+свойства родителя, в том числе рамку и способность перемещения по экрану. 
+Дополнительные свойства ему должен придать новый конструктор TWorkWin.Init, 
+которому мы в качестве параметра передаем начальное положение и размеры 
+создаваемого окна:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor TWorkWin.Init(Bounds: TRect);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Создание окна данных}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">HS,VS: PScrollBar;  {Полосы-указатели}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Interior: PScroller;  {Указатель на</font>
+<font size="3">управляемое текстовое окно}&nbsp;</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TWindow.Init(Bounds,'',0);  {Создаем новое окно с рамкой}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetClipRect(Bounds){Получаем в BOUNDS координаты минимальной перерисовываемой 
+части окна}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Bounds.Grow(-1,-1){Устанавливаем размеры окна с текстом}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Включаем стандартные по размеру и положению</font>
+<font size="3">полосы-указатели:}</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">VS := StandardScrollBar(sbVertical+sbHandleKeyBoard);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">HS := StandardScrollBar(sbHorizontal+sbHandleKeyBoard);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Создаем текстовое 
+окно:}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Interior := New(PScroller,Init(Bounds, HS, VS));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert(Interior)  {Включаем 
+его в основное окно}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;  {TWorkWin.Init}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">С помощью вызова процедуры GetClipRect мы получаем размеры минимального 
+прямоугольника, который следует обновлять при любых перемещениях окна или 
+изменениях его размера. Такой вызов позволяет до минимума сократить время 
+вывода. Процедура Bounds.Grow изменяет вертикальный и горизонтальный размеры 
+прямоугольника Bounds: при положительном параметре соответствующий размер 
+увеличивается, при отрицательном - уменьшается. Параметры -1,-1 учитывают рамку 
+основного окна. Функция StandardScrollBar создает указатель на управляющую 
+полосу стандартного размера. При обращении к ней параметр sbVertical 
+(sbHorizontal) определяет положение полосы, а параметр sbHandleKeyboard 
+разрешает использование клавиатуры для управления ею (если этот параметр не 
+включить, полоса будет управляться только с помощью мыши). Наконец, процедура 
+Insert включает вновь созданное окно TScrollBar в основное окно TWindow, так что 
+теперь оба окна будут функционировать как одно целое.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для создания группы необходимо в объект-потомок от TGroup (обычно - это 
+объект TWindow или потомок от него) вставлять нужные элементы с помощью метода</font>
+<font face="Arial, Helvetica, sans-serif" size="3">Insert.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Осталось лишь нужным образом изменить процедуру Work:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TNotebook.Work;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Работа с данными}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R: TRect;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PW: PWorkWin;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(0,0,80,23) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PW := New(PWorkWin, Init(R));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DeskTop.Insert(PW)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; {Work}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если исполнить подготовленную таким образом программу, на экране появится 
+изображение, показанное на рис. 15.5.</font> </P>
+<p align="center"><img border="0" src="15_5.jpg"    ></p>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Рис.15.5.</b> Окно с полосами прокрутки</font> </P>
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_7.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_9.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</BODY></HTML>

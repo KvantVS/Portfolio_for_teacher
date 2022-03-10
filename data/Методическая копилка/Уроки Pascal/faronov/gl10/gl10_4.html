@@ -1,0 +1,278 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl10_3.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Использование объектов
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Идею инкапсуляции полей и алгоритмов можно применить не только к графическим 
+объектам, но и ко всей программе в целом. Ничто не мешает нам создать 
+объект-программу и «научить» его трем основным действиям: инициации (Init), 
+выполнению основной работы (Run) и завершению (Done). На этапе инициации экран 
+переводится в графический режим работы и создаются и отображаются графические 
+объекты (100 экземпляров TPoint и по одному экземпляру TLine, TCircle, TRecf). 
+На этапе Run осуществляется сканирование клавиатуры и перемещение графических 
+объектов. Наконец, на этапе Done экран переводится в текстовый режим и 
+завершается работа всей программы.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Назовем объект-программу именем TGraphApp и разместим его в модуле GraphApp 
+(пока не обращайте внимание на точки, скрывающие содержательную часть модуля 
+-позднее будет представлен его полный текст):</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Unit GraphApp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Interface</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TGraphApp = object</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Init;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Run;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Destructor Done;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Implementation Procedure TGraphApp.Init;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">...</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">...</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> В этом случае основная программа будет предельно простой:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Program Graph_0bjects;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses GraphApp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">App: TGraphApp;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">App.Init;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">App.Run;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">App.Done&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В ней мы создаем единственный экземпляр Арр объекта-программы TGrahpApp и 
+обращаемся к трем его методам.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Создание экземпляра объекта ничуть не отличается от создания экземпляра 
+переменной любого другого типа. Просто в разделе описания переменных мы 
+указываем имя переменной и ее тип:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Арр: TGraphApp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Получив это указание, компилятор зарезервирует нужный объем памяти для 
+размещения всех полей объекта TGraphApp. Чтобы обратиться к тому или иному 
+объектному методу или полю, используется составное имя, причем первым 
+указывается не имя объектного типа, а имя соответствующей переменной:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">App.Init;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Арр.Run;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Арр.Done;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Переменные объектного типа могут быть статическими или динамическими, т.е. 
+располагаться в сегменте данных (статические) или в куче (динамические). В 
+последнем случае мы могли бы использовать такую программу:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Program Graph_0bjects;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses GraphApp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PGraphApp = TGraphApp;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">App: PGraphApp;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">App := New(PGraphApp,Init)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Арр.Run;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Арр.Done&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для инициации динамической переменной Арр используется вызов функции New. В 
+этом случае первым параметром указывается имя типа инициируемой переменной, а 
+вторым осуществляется вызов метода-конструктора, который, я напомню, нужен для 
+настройки таблицы виртуальных методов. Такой прием (распределение объектов в 
+динамической памяти с одновременной инициацией их ТВМ) характерен для техники 
+ООП. -</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Ниже приводится возможный вариант модуля GraphApp для нашей учебной 
+программы:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Unit GraphApp;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Interface</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses GraphObj;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NPoints = 100;  {Количество точек}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Объект-программа}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TGraphApp = object</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Points: array [1..NPoints] of TPoint;  {Массив точек}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Line: TLine; {Линия}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Rect: TRect;  {Прямоугольник}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Circ: TCircle;  {Окружность}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ActiveObj : Integer;  {Активный объект}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Procedure Init; Procedure Run;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+Procedure Done; Procedure ShowAll;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure MoveActiveObj (dX,dY: Integer);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Implementation Uses Graph, CRT;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TGraphApp.Init;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Инициирует графический режим работы экрана . Создает и отображает NPoints экземпляров объекта TPoint, а также экземпляры</font>
+<font size="3">объектов TLine, TCircle и TRect}</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">D,R,Err,k: Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Инициируем графику}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">D := Detect;  {Режим автоматического определения</font>
+<font size="3">типа графического адаптера}</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InitGraph(D,R, '\tp\bgi') ; {Инициируем графический режим. Текстовая строка 
+должна задавать путь к каталогу с графическими драйверами}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Err := GraphResult;  {Проверяем успех инициации графики}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if Err&lt;&gt;0 then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GraphErrorMsg (Err) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Halt&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Создаем точки}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for k : = 1 to NPoints do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Points [k] .Init (Random(GetMaxX),Random(GetMaxY),Random(15)+1);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Создаем другие объекты}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Line. Init (GetMaxX div 3, GetMaxY div 3,2*GetMaxX div 3,</font>
+<font size="3">2*GetMaxY div 3,LightRed);</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Circ. Init (GetMaxX div 2, GetMaxY div 2, GetMaxY div 5,
+White);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Rect.Init(2*GetMaxX div 5,2*GetMaxY div 5 , 3*GetMaxX div 5,</font>
+<font size="3">3*GetMaxY div 5, Yellow);</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ShowAll;  {Показываем все графические объекты}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ActiveObj := 1  {Первым перемещаем прямоугольник}&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end ;  { TGraphApp .Init}</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-----------}</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TGraphApp .Run ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Выбирает объект с помощью Tab и перемещает его по экрану}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Stop: Boolean;  {Признак нажатия Esc}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">D = 5;  {Шаг смещения фигур}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Stop := False;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Цикл опроса клавиатуры}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">repeat</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">case ReadKey of  {Читаем код нажатой клавиши}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">#27: Stop := True;  {Нажата Esc}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">#9:begin  {Нажата Tab}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">inc(ActiveObj);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if ActiveObj&gt;3 then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ActiveObj := 3&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">#0: case ReadKey of</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">#71:MoveActiveObj(-D,-D);  {Влево и вверх}&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">#72:MoveActiveObj( 0,-D);  {Вверх}&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">#73:MoveActiveObj( D,-D);  {Вправо и вверх}&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">#75:MoveActiveObj(-D, 0);  {Влево}</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">#77:MoveActiveObj( D, 0);  {Вправо}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">#79:MoveActiveObj(-D, D);  {Влево и вниз}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">#80:MoveActiveObj( 0, D);  {Вниз}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">#81:MoveActiveObj( D, D);  {Вправо и вниз}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ShowAll;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Until Stop&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;  {TGraphApp. Run}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-----------}</font></P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Destructor TGraphApp . Done ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Закрывает графический режим}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">CloseGraph&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;  {TGraphApp. Done}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TGraphApp . ShowAll ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Показывает все графические объекты}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k: Integer;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for k := 1 to NPoints do Points [k] . Show;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Line. Show;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Rect . Show;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Circ.Show&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-----------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TGraphApp.MoveActiveObj;&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Перемещает активный графический объект}</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">case ActiveObj of</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">1: Rect.MoveTo(dX,dY);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">2: Circ.MoveTo(dX,dY);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 3: Line.MoveTo(dX,dY)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В реализации объекта TGraphApp используется деструктор Done. Следует иметь в 
+виду, что в отличие от конструктора, осуществляющего настройку ТВМ, деструктор 
+не связан с какими-то специфичными действиями: для компилятора слова destructor 
+и procedure - синонимы. Введение в ООП деструкторов носит, в основном, 
+стилистическую направленность - просто процедуру, разрушающую экземпляр объекта, 
+принято называть деструктором. В реальной практике ООП с деструкторами обычно 
+связывают процедуры, которые не только прекращают работу с объектом, но и 
+освобождают выделенную для него динамическую память. И хотя в нашем примере 
+деструктор Done не освобождает кучу, я решил использовать общепринятую 
+стилистику и заодно обсудить с Вами последнее еще не рассмотренное 
+зарезервированное слово технологии ООП.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В заключении следует сказать, что формалистика ООП в рамках реализации этой 
+технологии в Турбо Паскале предельно проста и лаконична. Согласитесь, что 
+введение лишь шести зарезервированных слов, из которых действительно 
+необходимыми являются три (object, constructor и virtual), весьма небольшая 
+плата за мощный инструмент создания современного программного обеспечения.</font> 
+</P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl10_3.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

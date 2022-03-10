@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl16.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl16_2.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Структура объектов
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Все множество объектов Turbo Vision строится на базе трех примитивных 
+объектов: TPoint, TRect и TObject. Примитивными они называются потому, что не 
+являются потомками каких-либо других объектов, но используются или могут 
+использоваться как основа порождаемых от них деревьев родственных типов 
+(рис.16.1).</font> </P>
+<P align="center"><img border="0" src="16_1.jpg"  > </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Рис. 16.1.</b> Примитивные объекты Turbo Vision</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Объекты TPoint и TRect используются для задания координат точки (TPoint) и 
+прямоугольника (TRect) на экране. В Turbo Vision эти объекты не имеют потомства, 
+но используются всеми другими объектами, связанными с созданием изображений на 
+экране ПК. Объект TObject служит основой иерархии всех других объектов Turbo 
+Vision, кроме TPoint и TRect (см. рис. 16.2).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Объект TObject не имеет данных (полей) и содержит три метода: Init, Free и 
+Done. Конструктор Init осуществляет распределение памяти и является основой всех 
+других конструкторов Turbo Vision. Метод Free освобождает память, распределенную 
+конструктором. Деструктор Done не выполняет никакой работы - это абстрактный 
+метод, который всегда перекрывается в объектах-потомках. .</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl16.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl16_2.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

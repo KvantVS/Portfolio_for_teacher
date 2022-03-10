@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl20_8.html">
+<img SRC="Back.gif" BORDER="0">
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0">
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Использование потоков с произвольными данными
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Хотя потоки спроектированы в основном для работы с объектами, Вы можете 
+использовать их для хранения не только полей объектов, но и любых других данных. 
+При этом не следует обращаться к методам Put и Get, так как они предполагают 
+доступ к объектам. Вместо этого Вы должны обратиться к низкоуровневым процедурам 
+Write и Read.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Следующая простая программа использует поток для сохранения десяти случайных 
+целых чисел:&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Uses Objects; var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">S: TBufStream; {Экземпляр потока}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k, j : Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn('Запись в поток:');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">S.lnit('Test.dat', stCreate, 512);  {Создаем поток}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for k := 1 to 10 do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">j := Random(l00);  {Получаем случайное целое}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write(j:8);  {Выводим на экран}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">S.Write(j,2)  {Помещаем в поток}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Done;  {Удаляем поток}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">S.lnit('Test.dat', stOpenRead, 512);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn('Чтение из потока:');&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for k := 1 to 10 do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">S.Read(j,2);  {Получаем целое из потока}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Write (j:8)  {Выводим на экран}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">S.Done;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> WriteLn&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для простоты в программу не включены средства контроля ошибок. В ходе прогона 
+программы в текущем каталоге диска будет создан файл TEST.DАТ размером в 20 
+байт, а на экран будут выведены две строки с одинаковыми числами.</font> 
+</P>
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl20_8.html">
+<img SRC="Back.gif" BORDER="0">
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0">
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

@@ -1,0 +1,657 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl13.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl13_2.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Программирование клавиатуры
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Дополнительные возможности управления клавиатурой реализуются двумя 
+функциями: KeyPressed и ReadKey.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция</b> KeyPressed. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возвращает значение типа Boolean, указывающее состояние 
+буфера клавиатуры: False означает, что буфер пуст, a True - что в буфере есть 
+хотя бы один символ, еще не прочитанный программой.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В MS-DOS реализуется так называемый асинхронный буферизованный ввод с 
+клавиатуры. По мере нажатия на клавиши соответствующие коды помещаются в особый 
+буфер, откуда они могут быть затем прочитаны программой. Стандартная длина 
+буфера рассчитана на хранение до 16 кодов символов. Если программа достаточно 
+долго не обращается к клавиатуре, а пользователь нажимает клавиши, буфер может 
+оказаться переполненным. В этот момент раздается звуковой сигнал и «лишние» коды 
+теряются. Чтение из буфера обеспечивается процедурами Read/ReadLn и функцией 
+ReadKey. Замечу, что обращение к функции KeyPressed не задерживает исполнения 
+программы: функция немедленно анализирует буфер и возвращает то или иное 
+значение, не дожидаясь нажатия клавиши.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция</b> ReadKey. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возвращает значение типа Char. При обращении к этой функции 
+анализируется буфер клавиатуры: если в нем есть хотя бы один не прочитанный 
+символ, код этого символа берется из буфера и возвращается в качестве значения 
+функции, в противном случае функция будет ожидать нажатия на любую клавишу. Ввод 
+символа с помощью этой функции не сопровождается эхо-повтором и содержимое 
+экрана не меняется.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Пусть, например, в какой-то точке программы необходимо игнорировать все ранее 
+нажатые клавиши, коды которых еще не прочитаны из буфера, т.е. необходимо 
+очистить буфер. Этого можно достичь следующим способом:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses CRT;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">С: Char;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">while KeyPressed do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> С := ReadKey;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">При использовании процедуры ReadKey необходимо учесть, что в клавиатурный 
+буфер помещаются так называемые расширенные коды нажатых клавиш. Если нажимается 
+любая алфавитно-цифровая клавиша, расширенный код совпадает с ASCII-кодом 
+соответствующего символа. Например, если нажимается клавиша с латинской буквой 
+«а» (в нижнем регистре), функция ReadKey возвращает значение chr (97), а если 
+«А» (в верхнем регистре) - значение chr (65). При нажатии функциональных клавиш 
+F1...F10, клавиш управления курсором, клавиш Ins, Home, Del, End, PgUp, PgDn в 
+буфер помещается двухбайтная последовательность: сначала символ #0, а затем 
+расширенный код клавиши. Таким образом, значение #0, возвращаемое функцией 
+ReadKey, используется исключительно для того, чтобы указать программе на 
+генерацию расширенного кода. Получив это значение, программа должна еще раз 
+обратиться к функции, чтобы прочитать расширенный код клавиши.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Т.е. код сканирования клавиши. Этот код определяется порядком, в 
+соответствии с которым</font> <font face="Arial, Helvetica, sans-serif" size="3">микропроцессор клавиатуры Intel 8042 периодически опрашивает (сканирует) 
+состояние</font> <font face="Arial, Helvetica, sans-serif" size="3">клавиш.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Следующая простая программа позволит Вам определить расширенный код любой 
+клавиши. Для завершения работы программы нажмите клавишу Esc.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Uses CRT;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">С: Char;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> repeat</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">С := ReadKey;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if C&lt;&gt;#0 then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(ord(C))&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLnCO1 ,ord(ReadKey) :8)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">until C=#27  {27 - расширенный код клавиши Esc}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если Вы воспользуетесь этой программой, то обнаружите, что нажатие на 
+некоторые клавиши игнорируется функцией ReadKey. Это прежде всего так называемые 
+сдвиговые клавиши - Shift, Ctrl, Alt. Сдвиговые клавиши в MS-DOS обычно 
+используются для переключения регистров клавиатуры и нажимаются в сочетании с 
+другими клавишами. Именно таким способом, например, различается ввод прописных и 
+строчных букв. Кроме того, функция игнорирует переключающие клавиши Caps Lock, 
+Num. Lock, Scroll Lock, а также «лишние» функциональные клавиши F11 и F12 
+клавиатуры IBM AT, не имеющие аналога на клавиатуре ранних моделей IBMPC/XT (в 
+этих машинах использовалась 84-клавишная клавиатура, в то время как на IBM AT - 
+101-клавишная).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В табл. 13.1 приводятся расширенные коды клавиш, возвращаемые функцией 
+ord(ReadKey). Для режима ввода кириллицы приводятся коды, соответствующие 
+альтернативному варианту кодировки.</font> </P>
+<P align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Таблица 13.1</font>
+</b><font face="Arial, Helvetica, sans-serif" size="3">Расширенные коды клавиш</font> </P>
+<center>
+<TABLE border=1 frame=box rules=all  >
+  <TBODY>
+  <TR>
+    <TD colSpan=2 align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Код</b></font></P></TD>
+    <TD rowSpan=2 align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Клавиша или комбинация клавиш</b></font></P></TD>
+    <TD colSpan=2 align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Код</b></font></P></TD>
+    <TD rowSpan=2 align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Клавиша или комбинация клавиш</b></font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Первый байт</b></font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Второй байт</b></font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Первый байт</b></font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Второй байт</b></font></P></TD></TR>
+  <TR>
+    <TD colSpan=6 align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Алфавитно-цифровые клавиши</b></font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">8</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Backspace (Забой)</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">9</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Tab (Табуляция)</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">13</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Enter</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">32</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Пробел</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">33</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">!</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">34</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">"</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">35</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">#</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">36</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">$</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">37</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">%</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">38</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">&amp;</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">39</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">'</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">40</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">(</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">41</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">)</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">42</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">*</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">43</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">+</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">44</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">,</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">45</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">46</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">.</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">47</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">/</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">4S...57</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0...9</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">58</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" ><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">59</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">;</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">60</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">&lt;</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">61</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">=</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">62</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">&gt;</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">63</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">?</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">64</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">@</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">65...90</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">A...Z</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">91</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">[</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">92</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">\</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">93</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">]</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">94</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">^</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">95</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" ><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">96</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">'</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">97...122</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">a...z</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">123</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">{</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">124</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">l</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">125</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">}</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">126</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">~</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">128...159</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">А...Я</font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">160... 175</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">а...п</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">224...239</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">-</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">р...я</font></P></TD></TR>
+  <TR>
+    <TD colSpan=6 >
+      <P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Управляющие клавиши и их сочетания со сдвиговыми</b></font></P></TD></TR>
+  <TR>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">3</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Ctrl-2</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">15</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Shift-Tab</font></P></TD></TR>
+  <tr>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">16...25</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Alt-Q...Alt-Р (верхний
+      ряд букв)</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">30...38</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Alt-A...Alt-L (средний
+      ряд букв)</font></P></TD>
+  </tr>
+  <tr>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">44...50</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Alt-Z...Alt-М (нижний ряд букв)</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">59...68</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">F1...F10</font></P></TD>
+  </tr>
+  <tr>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">- 71</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Ноте</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">72</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Курсор вверх</font></P></TD>
+  </tr>
+  <tr>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">73</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">PgUp</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">75</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Курсор влево</font></P></TD>
+  </tr>
+  <tr>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">77</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Курсор вправо</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">79</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">End</font></P></TD>
+  </tr>
+  <tr>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">80</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Курсор вниз</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">81</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">PgDn</font></P></TD>
+  </tr>
+  <tr>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">82</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Ins</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">83</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Del</font></P></TD>
+  </tr>
+  <tr>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">84...93</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Shift-Fl...Shift-F10</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">94...103</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Ctrl-F1... Ctrl-F10</font></P></TD>
+  </tr>
+  <tr>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">104...113</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Alt-Fl...Alt-F10</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">114</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Ctrl-PrtScr</font></P></TD>
+  </tr>
+  <tr>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">115</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Ctrl-курсор влево</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">116</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Ctrl-Курсор вправо</font></P></TD>
+  </tr>
+  <tr>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">117</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Ctrl-End</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">118</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Ctrl-PgDn</font></P></TD>
+  </tr>
+  <tr>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">119</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Ctrl-Home</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">120...131</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Alt-1. ..Alt-= (верхний ряд клавиш)</font></P></TD>
+  </tr>
+  <tr>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">0</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">132</font></P></TD>
+    <TD align="center" >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Ctrl-PgUp</font></P></TD>
+    <TD align="center" ><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD>
+    <TD align="center" >&nbsp; </TD>
+    <TD align="center" >&nbsp; </TD>
+  </tr>
+  </TBODY></TABLE>
+</center>
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl13.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl13_2.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

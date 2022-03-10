@@ -1,0 +1,589 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl14_8.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl14_10.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Вывод текста
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Описываемые ниже 
+стандартные процедуры и функции поддерживают вывод текстовых сообщений в 
+графическом режиме. Это не одно и то же, что использование процедур Write или 
+WriteLn. Дело в том, что специально для графического режима разработаны 
+процедуры, обеспечивающие вывод сообщений различными шрифтами в горизонтальном 
+или вертикальном направлении, с изменением размеров и т.д. Однако в стандартных 
+шрифтах, разработанных для этих целей фирмой Borland, отсутствует кириллица, что 
+исключает вывод русскоязычных сообщений.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">С другой стороны, 
+процедуры Write и WriteLn после загрузки в память второй половины таблицы 
+знакогенератора (а эта операция легко реализуется в адаптерах EGA и VGA) 
+способны выводить сообщения с использованием национального алфавита, но не 
+обладают мощными возможностями специальных процедур.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Ниже описываются 
+стандартные средства модуля Graph для вывода текста.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> 
+OutText. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Выводит текстовую строку, 
+начиная с текущего положения указателя. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure 
+OutText(Txt: String);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь Txt - выводимая 
+строка.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">При горизонтальном 
+направлении вывода указатель смещается в конец выведенного текста, при 
+вертикальном - не меняет своего положения. Строка выводится в соответствии с 
+установленным стилем и выравниванием. Если текст выходит за границы экрана, то 
+при использовании штриховых шрифтов он отсекается, а в случае стандартного 
+шрифта не выводится.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> 
+OutTextXY.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Выводит строку, начиная с заданного места. Заголовок:&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+Procedure OutTextXY (X,Y: Integer; Txt: String);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь X, Y - координаты 
+точки вывода; Txt - выводимая строка. Отличается от процедуры OutText только 
+координатами вывода. Указатель не меняет своего положения.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> 
+SetTextStyle.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Устанавливает стиль текстового вывода на графический экран. 
+Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure 
+SetTextStyle(Font,Direct,Size: Word);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь Font - код (номер) 
+шрифта; Direct - код направления; Size - код размера шрифта.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для указания кода шрифта 
+можно использовать следующие предварительно определенные константы:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DefaultFont = 
+0;{Точечный шрифт 8x8}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TriplexFont = 
+1;{Утроенный шрифт TRIP.CHR}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> SmallFont = 
+2;{Уменьшенный шрифт LITT.CHR}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SansSerifFont = 
+3;{Прямой шрифт SANS.CHR}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GothicFont = 
+4;{Готический шрифт GOTH.CHR}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Замечу, что эти константы 
+определяют все шрифты для версий 4.0, 5.0, 5.5 и 6.0. В версии 7,0 набор шрифтов 
+значительно расширен, однако для новых шрифтов не предусмотрены соответствующие 
+мнемонические константы. В этой версии помимо перечисленных Вы можете при 
+обращении к SetTextStyle использовать такие номера шрифтов:</font> </P>
+<center>
+<TABLE border=1 frame=box rules=all >
+  <TBODY>
+  <TR>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Номер</b></font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3"><b>Файл</b></font></P></TD>
+    <TD >
+      <P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>
+      Краткое описание</b></font></P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">5</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">scri.chr</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">«Рукописный» шрифт</font></P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">6</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">simp.chr</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Одноштриховый шрифт 
+      типа Courier</font></P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">7</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">tscr.chr</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Красивый наклонный 
+      шрифт типа Times Italic</font></P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">8</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Icom.chr</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Шрифт типа Times 
+      Roman</font></P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">9</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">euro . chr</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Шрифт типа Courier 
+      увеличенного размера</font></P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">10</font></P></TD>
+    <TD  align="center">
+      <P><font face="Arial, Helvetica, sans-serif" size="3">bold.chr</font></P></TD>
+    <TD >
+      <P><font face="Arial, Helvetica, sans-serif" size="3">Крупный 
+      двухштриховый шрифт</font></P></TD></TR></TBODY></TABLE>
+      </center>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Шрифт DefaultFont входит в 
+модуль Graph и доступен в любой момент. Это -единственный матричный шрифт, т.е. 
+его символы создаются из матриц 8x8 пикселей. Все остальные шрифты - векторные: 
+их элементы формируются как совокупность векторов (штрихов), характеризующихся 
+направлением и размером. Векторные шрифты отличаются более богатыми 
+изобразительными возможностями, но главная их особенность заключается в легкости 
+изменения размеров без существенного ухудшения качества изображения. Каждый из 
+этих шрифтов размещается в отдельном дисковом файле. Если Вы собираетесь 
+использовать какой-либо векторный шрифт, соответствующий файл должен находиться 
+в Вашем каталоге, в противном случае вызов этого шрифта игнорируется и 
+подключается стандартный.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Замечу, что шрифт 
+DefaultFont создается графическим драйвером в момент инициации графики на 
+основании анализа текстового шрифта. Поэтому, если Ваш ПК способен выводить 
+кириллицу в текстовом режиме, Вы сможете с помощью этого шрифта выводить 
+русскоязычные сообщения и в графическом режиме. В остальных шрифтах эта 
+возможность появляется только после их модификации.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для задания направления 
+выдачи текста можно использовать константы:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">HorizDir = 
+0;{Слева направо}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">VertDir = 
+1;{Снизу вверх}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Как видим, стандартные 
+процедуры OutText и OutTextXY способны выводить сообщения лишь в двух возможных 
+направлениях - слева направо или снизу вверх. Зная структуру векторных шрифтов, 
+нетрудно построить собственные процедуры вывода, способные выводить сообщения в 
+любом направлении.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Каждый шрифт способен 
+десятикратно изменять свои размеры. Размер выводимых символов кодируется 
+параметром Size, который может иметь значение в диапазоне от 1 до 10 (точечный 
+шрифт - в диапазоне от 1 до 32). Если значение параметра равно 0. 
+устанавливается размер 1, если больше 10 - размер 10. Минимальный размер шрифта. 
+при котором еще отчетливо различаются все его детали, равен 4 (для точечного 
+шрифта - 1).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Следующая программа 
+демонстрирует различные шрифты. Их размер выбран так. чтобы строки имели 
+приблизительно одинаковую высоту. Перед исполнением программы скопируйте все 
+шрифтовые файлы с расширением .CHR в текущий каталог.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Graph, CRT;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">FontNames: array 
+[1..10] of String[4] =</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">( 'TRIP' , 'LITT'' 
+SANS ' , ' GOTH ' , 'SCRI ' , ' SIMP ' ,'TSCR ' , ' LOOM ' , ' EURO',' BOLD ' );</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Tabl = 50;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Tab2 = 150;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Tab3 =220;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">d, r, 
+Err,{Переменные для инициации графики}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Y,dY,{Ордината 
+вывода и ее приращение}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Size,{Размер 
+символов}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">
+MaxFont,{Максимальный номер шрифта}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k: Integer;{Номер 
+шрифта}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NT, SizeT, SynibT: 
+String;{Строки вывода}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">c: Char;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">
+&nbsp;{-------------------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure 
+OutTextWithTab ( S1, S2, S3, S4: String);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Выводит строки 
+S1..S4 с учетом позиций табуляции Таb1..ТаbЗ}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MoveTo( 
+(Tab1-TextWidth(Sl) ) div2,Y);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OutText (S1) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MoveTo(Tabl+(Tab2-Tabl-TextWidth(S2)) 
+div2,Y);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OutText (S2) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">
+MoveTo(Tab2+(Tab3-Tab2-TextWidth(S3)) div 2,Y);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OutText(S3);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if S4='Symbols' 
+then {Заголовок колонки Symbols}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MoveTo((Tab3+GetMaxX-TextWidth(S4)) 
+div 2,Y)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">else {Остальные 
+строки}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">
+MoveTo(Tab3+3,Y);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OutText(S4)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{------------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Инициируем 
+графику}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> InitGraph(d,r, ' 
+');&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Err := 
+GraphResult; if ErrogrOk then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">
+WriteLn(GraphErrorMsg(Err))&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Определяем 
+количество шрифтов:}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {$IFDEF VER70'}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MaxFont := 10; .&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{$ELSE}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MaxFont := 4;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{$ENDIF}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">
+SetTextStyle(l,0,4);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Y := 0;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OutTextWi 
+thTab('N','Name',Size','Symbols');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Определяем 
+высоту Y линии заголовка}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Y := 4*TextHeight('Z') 
+div3;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">
+Line(0,Y,GetMaxX,Y) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Определяем 
+начало Y таблицы и высоту dY каждой строки}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Y := 3*TextHeight('Z') 
+div 2;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">dY := (GetMaxY-Y) 
+div (MaxFont);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Готовим строку 
+символов}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SymbT := '';</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for с := 'a' to 
+'z' do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SymbT := SymbT+c;&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Цикл вывода 
+строк таблицы}&nbsp;</font> 
+ 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for k := 1 to 
+MaxFont do&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Size := 0;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Увеличиваем 
+размер до тех пор, пока высота строки не станет приблизительно равна dY}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> repeat</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">inc(Size);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">
+SetTextStyle(k,0,Size+1);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> until (TextHeight('Z')&gt;=dY) 
+or (Size=10)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">or (Textwidth(FontNames[k])&gt;(Tab2-Tab1));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Готовим номер 
+NT и размер SizeT шрифта}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Str(k,NT);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Str(Size,SizeT);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Выводим строку 
+таблицы}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">
+SetTextStyle(k,HorizDir,Size);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">
+OutTextWithTab(NT,FontNames[k],SizeT,SymbT);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">inc(Y,dY)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Рисуем линии 
+рамки}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+Rectangle(0,0,GetMaxX,GetMaxY);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+Line(Tab1,0,Tabl,GetMaxY);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+Line(Tab2,0,Tab2,GetMaxY);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+Line(Tab3,0,ТаЬЗ,GetMaxY);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+{Ждем инициативы пользователя}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> ReadLn;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> CloseGraph</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> 
+SetTextJustify.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Задает выравнивание выводимого текста по отношению к 
+текущему положению указателя или к заданным координатам. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure 
+SetTextJustify(Horiz,Vert: Word);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь Horiz - 
+горизонтальное выравнивание; Vert - вертикальное выравнивание. Выравнивание 
+определяет как будет размещаться текст - левее или правее указанного места, выше, 
+ниже или по центру. Здесь можно использовать такие константы:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">LeftText = 
+0;{Указатель слева от текста}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">CenterText= 
+1;{Симметрично слева и справа,верху и снизу}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">RightText = 
+2;{Указатель справа от текста}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">BottomText= 
+0;{Указатель снизу от текста}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> TopText = 
+2;{Указатель сверху от текста}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Обратите внимание на 
+неудачные, с моей точки зрения, имена мнемонических констант: если, например, Вы 
+зададите LeftText, что в переводе означает «Левый Текст», сообщение будет 
+расположено справа от текущего положения указателя (при выводе процедурой 
+OutTextXY - справа от заданных координат). Также «наоборот» трактуются и 
+остальные константы.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Следующая программа 
+иллюстрирует различные способы выравнивания относительно центра графического 
+экрана.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Graph, CRT;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">d, r, e : 
+Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Инициируем 
+графику}&nbsp;</font> 
+ 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> d := Detect; 
+InitGraph(d,, r, ' ') ;&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> e := GraphResult;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if e &lt;&gt; grOk 
+then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">
+WriteLn(GraphErrorMsg(e))</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">else&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Выводим 
+перекрестие линий в центре экрана}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Line(0,GetMaxY 
+div 2,GetMaxX,GetMaxY div 2);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Line(GetMaxX div 
+2,0,GetMaxX div 2,GetMaxY);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Располагаем 
+текст справа и сверху от центра}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">
+SetTextStyle(TriplexFont,HorizDir,3);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">
+SetTextJustify(LeftText,BottomText);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OutTextXY (GetMaxX 
+div 2, GetMaxY div 2, 'LeftText,BottomText');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Располагаем 
+текст слева и снизу}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetTextJustify (RightText, 
+TopText);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OutTextXY (GetMaxX 
+div 2, GetMaxY div 2,'RightText, TopText');&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if ReadKey=#0 
+then d := ord(ReadKey);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">CloseGraph&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура </b> 
+SetUserCharSize.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Изменяет размер выводимых символов в соответствии с 
+заданными пропорциями. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure 
+SetUserCharSize(XI,X2,Yl,Y2: Word);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь X1...Y2 - выражения 
+типа Word, определяющие пропорции по горизонтали и вертикали.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Процедура применяется 
+только по отношению к векторным шрифтам. Пропорции задают масштабный коэффициент, 
+показывающий во сколько раз увеличится ширина и высота выводимых символов по 
+отношению к стандартно заданным значениям. Коэффициент по горизонтали находится 
+как отношение X1 к Х2, по вертикали - как отношение Y1 к Y2. Чтобы, например, 
+удвоить ширину символов, необходимо задать X1=2 и Х2=1. Стандартный размер 
+символов устанавливается процедурой SetTextStyle, которая отменяет 
+предшествующее ей обращение к SetUserCharSize.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В следующем примере 
+демонстрируется изменение пропорций уменьшенного шрифта.</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Graph, CRT;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">d, r, e : 
+Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Инициируем 
+графику}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">d := Detect; .InitGraph 
+(d, r, '');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">e := GraphResult;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if e &lt;&gt; grOk then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">
+WriteLn(GraphErrorMsg(e))&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MoveTo (0, 
+GetMaxY div 2); SetTextStyle (SmallFont, HorizDir, 5);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetTextJustify (LeftText, 
+BottomText);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Выводим 
+сообщение стандартной высотой 5}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OutText ('Normal 
+Width,');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Удваиваем ширину 
+шрифта}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetUserCharSize 
+(2, 1, 1, 1);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OutText (' Double 
+Width, ');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Удваиваем высоту, 
+возвращаем стандартную ширину}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetUserCharSize 
+(I, 1, 2, 1) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OutText ('Double 
+Height,');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetUserCharSize 
+(2, 1, 2, 1) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OutText (' Double 
+Width and Height');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if ReadKey=#0 
+then d := ord(ReadKey);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">CloseGraph</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция </b> 
+TextWidth.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возвращает длину в пикселях выводимой текстовой строки. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function 
+TextWidth (Txjt: String): Word;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Учитываются текущий стиль 
+вывода и коэффициенты изменения размеров символов, заданные соответственно 
+процедурами SetTextStyle и SetUserCharSize.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция</b> 
+TextHeight.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возвращает высоту шрифта в пикселях. Заголовок:&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Function 
+TextHeight(Txt: String): Word;</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура </b> 
+GetTextSettings.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возвращает текущий стиль и выравнивание текста. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure 
+GetTextSettins(var Textlnfo: TextSettingsType);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь Textlnfo - 
+переменная типа TextSettingsType, который в модуле Graph определен следующим 
+образом:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TextSettingsType 
+= record</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Font : Word; {Номер 
+шрифта}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Direction: Word; 
+{Направление}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">CharSize : Word; 
+{Код размера}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Horiz : Word; {Горизонтальное 
+выравнивание}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Vert : Word; {Вертикальное 
+выравнивание}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция</b> 
+InstallUserFont.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Позволяет программе использовать нестандартный векторный 
+шрифт. Заголовок функции:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function 
+InstallUserFont(FileName: String): Integer;&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Здесь FileName - имя 
+файла, содержащего векторный шрифт.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Как уже говорилось, в 
+стандартную поставку Турбо Паскаля версий 4.0 - 6.0 включены три векторных 
+шрифта, для версии 7.0 - 10. Функция InstallUserFont позволяет расширить этот 
+набор. Функция возвращает идентификационный номер нестандартного шрифта, который 
+может использоваться при обращении к процедуре SetTextStyle.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция</b> 
+InstallUserDriver.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Включает нестандартный графический драйвер в систему 
+BGI-драйверов. Заголовок функции:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function 
+InstallUserDriver(FileName: String; AutoDetectPtr: Pointer): Integer;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь FileName - имя файла, 
+содержащего программу драйвера; AutoDetectPtr - адрес точки входа в специальную 
+процедуру автоопределения типа дисплея, которая в числе прочих процедур должна 
+входить в состав драйвера.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Эта функция расширяет и 
+без того достаточно обширный набор стандартных графических драйверов и 
+предназначена в основном для разработчиков аппаратных средств.</font> </P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl14_8.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl14_10.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+</BODY></HTML>

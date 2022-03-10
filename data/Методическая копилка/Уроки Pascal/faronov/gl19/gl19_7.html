@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl19_7.html">
+<img SRC="Back.gif" BORDER="0">
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0">
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Коллекции и управление памятью
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Поскольку элементы коллекций располагаются в динамической памяти, при их 
+использовании особенно важными становятся вопросы контроля за состоянием кучи.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Любая коллекция не может расти до бесконечности: с одной стороны, ее размеры 
+определяются доступной памятью и размером элементов, с другой стороны - общее 
+количество элементов коллекции не может превышать</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">65520 div SizeOf (Pointer) = 16380</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Иными словами, все указатели на элементы коллекции должны располагаться в 
+пределах одного сегмента. Величина 16380 задается значением глобальной константы 
+MaxCollectionSize, объявленной в интерфейсной части модуля Objects.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Таким образом, при наполнении коллекции необходимо следить за общим 
+количеством элементов (переменная TCollection.Couni), которое не может превысить 
+значение, задаваемое константой MaxCollectionSize. Кстати, если при обращении к 
+методу TCollection.Init начальное значение N0 коллекции указано слишком большим, 
+оно заменяется на MaxCollectionSize.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Элементы коллекции обычно размещаются в куче, поэтому перед размещением 
+очередного элемента следует проверить доступную память (возвращается стандартной 
+функцией MaxAvail).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В ходе расширения коллекции может оказаться, что динамической памяти не 
+хватает для размещения нового массива указателей (напомню, что расширение 
+коллекции заключается в создании нового массива из NO + k*ND указателей, где N0 
+- начальная длина, ND - шаг наращивания коллекции, k= 1,2, ...; после этого в 
+новый массив копируется старый массив указателей, а место, выделенное под 
+размещение старого массива, возвращается в кучу). Если обнаружена нехватка 
+памяти для расширения коллекции или если при обращении к методу TCollection.At 
+указан индекс, превышающий размер коллекции, вызывается метод TCollection.Error. 
+По умолчанию этот метод завершает выполнение программы с кодом 212 ошибки 
+периода исполнения. Вы можете перекрыть TCollection.Error, чтобы нужным образом 
+отреагировать на возникшую ситуацию. В этом случае следует учесть, что заголовок 
+TCollection.Error в Turbo Vision имеет следующий вид:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TCollection.Error (Code, Info':
+Integer);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Параметр Code в стандартных ситуациях соответствует следующим константам:</font> 
+</P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> coIndexError = -1 - индекс метода At превысил значение Count-1; параметр 
+Info содержит неверный индекс;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> coOverflow = -2 - нет памяти для расширения коллекции; параметр Info 
+содержит требуемый размер коллекции. Константы соХХХХ определены в интерфейсной 
+части модуля Objects.</font></li>
+</ul>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl19_7.html">
+<img SRC="Back.gif" BORDER="0">
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0">
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

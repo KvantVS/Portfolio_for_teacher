@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_1.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_3.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Виды событий
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Существуют 4 основных класса событий: события от мыши, события от клавиатуры, 
+сообщения и пустые события. Внутри класса события могут подразделяться на виды. 
+Например, класс событий от мыши состоит из таких видов, как перемещение 
+указателя мыши, нажатие на кнопку мыши и т.п. Каждый класс имеет определенную 
+маску, с помощью которой можно легко идентифицировать класс события, не 
+анализируя его вид. Например, вместо того, чтобы проверять 4 различных вида 
+событий от мыши, можно просто проверить, пришло ли это событие от мыши или оно 
+имеет другой источник. Два следующих оператора идентичны:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if Event.What and ((svMouseDown or&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> evMouseUp or evMouseMove or evMouseAuto} 
+&lt;&gt; 0) then ...&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if Event.What and (evMouse &lt;&gt; 0) then ...</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для анализа класса событий используются следующие маски:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">evNothing  {'Пустое' событие};</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">evMouse  {Событие от мыши};</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">evKeyboard  {Событие от клавиатуры};</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">evMessage  {Сообщение}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">На рис. 18.1 показаны разряды поля What и соответствующие маски.</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_1.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_3.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

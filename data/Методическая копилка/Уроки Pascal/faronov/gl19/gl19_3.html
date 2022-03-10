@@ -1,0 +1,264 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl19_2.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl19_4.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Доступ к элементам коллекций
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Итак, оператором</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">BookList := New(PCollection, Init(50,10));&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> мы объявили о создании коллекции, 
+а операторами</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert(New(PBook, Init(...)))</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">наполнили эту коллекцию нужными элементами. Как осуществить доступ к 
+элементам коллекции? Для этого можно использовать несколько способов.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Во-первых, к любому элементу коллекции можно обратиться по его порядковому 
+номеру (индексу). В отличие от массивов Турбо Паскаля, индексы которых могут 
+иметь произвольные границы, коллекции индексируются целыми числами в диапазоне 
+от 0 до Count-l (Count - общее количество элементов в коллекции). Любая 
+коллекция имеет поле Count, которое указывает текущую длину коллекции. Чтобы по 
+индексу получить доступ к нужному элементу, используется метод At, который 
+возвращает указатель на элемент.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Например, нам требуется вывести на экран содержимое тех записей нашего 
+каталога, которые соответствуют 1991 году издания. Тогда вместо точек в конце 
+программы, показанной на с.426, следует вставить оператор</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PrintYear(BookList,1991);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Кроме того, в раздел описаний программы добавим две новых процедуры:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure PrintItem(A,T,PB: String; Y,P: Word);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Выводит на экран элемент 
+коллекции}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(A); WriteLn(' ',Т):&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> WriteLnC ',РВ,', ',Y,', ',Р)&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; {PrintItem}</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure PrintYear(BookList: PCollection; Y: Word);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Выводит на экран 
+издания нужного года выпуска}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Book: PBook;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k: Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for k := 0 to pred(BookList.Count) do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Book := BookList.At(k);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> with Book do if Year = Y then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PrintItem(Autor,Title,PubHouse,Year,Pages)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;  {PrintYear}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В процедуре PrintYear организуется счетный цикл от 0 до pred 
+(TCollection.Count). С помощью оператора</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Book := BookList.At(k);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">в переменную Book помещается указатель на элемент коллекции с индексом k. 
+Именно здесь обеспечивается полиморфизм коллекций: метод At возвращает 
+нетипизированный указатель, который Вы можете интерпретировать нужным Вам 
+образом. Однако здесь же таится источник трудно обнаруживаемых ошибок: в левую 
+часть оператора присваивания можно поместить указатель любого типа и тип этого 
+указателя может не соответствовать типу k-гo элемента коллекции.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Отметим, что обращение к методу At с индексом, выходящим за границы 
+коллекции, активизирует вызов метода TCollection.Error, который по умолчанию 
+аварийно завершает исполнение программы (подробнее см. п. 17.6).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Помимо использования метода At коллекции обеспечивают доступ к трем 
+итерационным методам, которые могут оказаться весьма удобными. Метод ForEach 
+осуществляет некоторую заранее заданную операцию сразу над всеми элементами 
+коллекции, а методы FirstThat и LastThat отыскивают в коллекции первый элемент, 
+удовлетворяющий некоторому опять же заранее заданному критерию поиска: FirstThat 
+ищет от начала коллекции к ее концу, a LastThat - в обратном направлении.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Чтобы воспользоваться методом ForEach мы должны сначала создать процедуру без 
+параметров, которая осуществляет нужные действия над всеми элементами коллекции, 
+и передать адрес этой процедуры как параметр обращения к ForEach. Например, для 
+того чтобы вьшести на экран содержимое всего нашего каталога, мы должны внести в 
+программу следующие изменения. Поместите в раздел описаний следующий текст 
+процедуры PrintAll:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure PrintAll (Book: PCollection) ;&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Вывод всех элементов коллекции}</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure PrintBook(P: PBook) ; far;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">with Р do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PrintItem (Autor, Title, PubHouse, Year,
+Pages)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; {PrintBook}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin {PtintAll}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Book .ForEach (PrintBook) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;  {PrintAll}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Как видите, эта процедура содержит внутреннюю процедуру PrintBook, в которой 
+осуществляется нужное нам действие - вывод очередного элемента каталога на 
+экран. Этот вывод достигается с помощью вызова уже использованной нами ранее 
+процедуры PrintItem. Таким образом, описание процедуры PrintAll должно следовать 
+после описания PrintItem, чтобы этот вызов был синтаксически правильным. Далее, 
+вывод всех элементов коллекции в процедуре PrintAll осуществляется оператором</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Book. ForEach (PrintBook) ;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">который обращается к методу TCollection.ForEach, передавая ему в качестве 
+параметра адрес процедуры PrintBook. Чтобы программа успешно выполнила нужные 
+действия, процедура, адрес которой передается методу ForEach, должна 
+удовлетворять двум условиям:</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> она должна быть рассчитана на дальнюю модель вызова (для этих целей мы 
+указали директиву far сразу за заголовком
+    PrintBook);</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> она должна быть локальной для процедуры, в которой реализуется вызов</font>
+    <font face="Arial, Helvetica, sans-serif" size="3">ForEach, именно поэтому мы разместили ее в теле процедуры PrintAll, Осталось 
+в тело главной программы поместить оператор</font></li>
+</ul>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PrintAll (BookList) ;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">перед оператором уничтожения коллекции. Если Вы запустите таким образом 
+подготовленную программу на счет, на экран будет выведено:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Джордейн Р .</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Справочник программиста персональных компьютеров типа IBM
+PC,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">XT и AT</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Финансы и статистика, 1991, 544</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Шелдон</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Язык Си для профессионалов</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">И. В. К. -СОФТ, 1991, 383</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Скэнлон Л.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Персональные ЭВМ IBM PC и XT. Программирование на языке ас</font><font size="3">семблера</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Радио и связь, 1991, 336</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Йенсен К., Вирт Н.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Паскаль . Руководство для пользователя и описание языка</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Финансы и статистика, 1982, 151</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Все действия по выводу содержимого коллекции реализуются методом ForEach, 
+который для собственно вывода каждого очередного элемента обращается к процедуре 
+PrintBook.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Точно таким же образом реализуется обращение к методам FirstThat и LastThat. 
+Например, если нам потребуется отыскать в каталоге запись, содержащую слово 
+«Вирт» в noлe Autor, можно добавить в программу следующие строки&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Procedure 
+SearchAutor(BookList: Pcollection; A: String);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Function FindAutor(P: PBook): 
+Boolean; far;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">FindAutor := pos(А, Р.Autor) &lt;&gt;0&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;  {FindAutor}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Book: PBook;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin  {SearchAutor}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Book := BookList.FirstThat(FindAutor);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if Book = NIL then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn('Heт автора ',А)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">else with Book do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PrintItern(Autor,Title,PubHouse,Year,Pages)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;  {SearchAutor}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В тело главной программы следует добавить оператор</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SearchAutor(BookList,'Вирт');&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Собственно поиск элемента коллекции реализуется 
+оператором</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Book := BookList.FirstThat(FindAutor);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">который для этих целей обращается к методу TCollection.FirstThat. В этом 
+методе реализуется последовательный анализ всех элементов коллекции, начиная с 
+самого первого (с индексом 0), причем для анализа используется вызов функции 
+FindAutor. Как видим, эта функция нужным образом анализирует очередную запись и 
+возвращает True, если условие поиска удовлетворено. Метод FirstThat возвращает 
+указатель на элемент коллекции, для которого удовлетворено условие поиска, или 
+NIL, если этому условию не отвечает ни один элемент. Таким образом, оператор</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if Book = NIL then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">проверяет результат поиска и выводит на печать найденный элемент коллекции 
+или сообщение «Нет автора ...», если условие поиска не удовлетворено.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Как и в случае метода ForEach, функция, передаваемая методу FirstThat, должна 
+транслироваться в расчете на дальнюю модель памяти и должна локализоваться в 
+теле процедуры, в которой осуществляется вызов метода.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Любой элемент коллекции можно удалить или заменить новым. Для удаления 
+используется метод AtFree, которому в качестве параметра передается индекс 
+удаляемого элемента. При удалении элемента предполагается, что коллекция 
+содержит указатели на объекты, порожденные от TObect и размещенные в куче, 
+поэтому автоматически вызывается метод TObject.Done. Индексы всех элементов, 
+размещенных в коллекции после удаляемого элемента, уменьшаются на 1.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">С помощью метода DeleteAll удаляются все элементы из коллекции, но сама 
+коллекция при этом сохраняется, т.е. очищенная коллекция будет иметь Count = 0. 
+Для очистки коллекции вызывается AtFree для каждого элемента.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Чтобы заменить существующий элемент новым, используется метод AtPut (Index, 
+Item), где Index - индекс заменяемого элемента, a Item - указатель на новый 
+элемент.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Метод Atlnsert (Index, Item) вставляет новый элемент в коллекцию в позицию 
+Index и увеличивает индексы всех ранее существовавших в коллекции элементов от 
+элемента Index до конца коллекции на единицу, т.е. «раздвигает» коллекцию.</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl19_2.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl19_4.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

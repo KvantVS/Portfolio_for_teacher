@@ -1,0 +1,306 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl5_5.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl5_7.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Текстовые файлы
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Текстовые файлы связываются с файловыми переменными, принадлежащими 
+стандартному типу TEXT. Текстовые файлы предназначены для хранения текстовой</font>
+<font face="Arial, Helvetica, sans-serif" size="3">информации. Именно в такого типа файлах хранятся, например, исходные тексты 
+программ. Компоненты (записи) текстового файла могут иметь переменную длину, что 
+существенно влияет на характер работы с ними.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Текстовый файл трактуется в Турбо Паскале как совокупность строк переменной 
+длины. Доступ к каждой строке возможен лишь последовательно, начиная с первой. 
+При создании текстового файла в конце каждой записи (строки) ставится 
+специальный признак EOLN (End OfLiNe - конец строки), а в конце всего файла - 
+признак EOF (End Of File - конец файла). Эти признаки можно протестировать 
+одноименными логическими функциями (см. ниже). При формировании текстовых файлов 
+используются следующие системные соглашения:</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">EOLN- последовательность кодов ASCII #13 (CR) и #10 (LF);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">EOF - код #26 стандарта ASCII.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для доступа к записям применяются процедуры READ, READLN, WRITE, WRITELN. Они 
+отличаются возможностью обращения к ним с переменным числом фактических 
+параметров, в качестве которых могут использоваться символы, строки и числа. 
+Первым параметром в любой из перечисленных процедур может стоять файловая 
+переменная. В этом случае осуществляется обращение к дисковому файлу или 
+логическому устройству, связанному с переменной процедурой ASSIGN. Если файловая 
+переменная не указана, происходит обращение к стандартным файлам INPUT к OUTPUT.</font> 
+</P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> READ. </font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Обеспечивает ввод символов, строк и чисел. Формат обращения:</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">READ (&lt;ф.п.&gt;,&lt;сп.ввода&gt;) или READ (&lt;сп.ввода&gt;)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь &lt;сп.ввода&gt; - список ввода: последовательность из одной или более 
+переменных типа CHAR, STRING, а также любого целого или вещественного типа.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">При вводе переменных типа CHAR выполняется чтение одного символа из файла и 
+присваивание считанного значения переменной. Если перед выполнением чтения 
+указатель файла достиг конца очередной строки, то результатом чтения будет 
+символ CR (ASCII код #13), а если достигнут конец файла, то - символ EOF (код 
+#26). При вводе с клавиатуры символ CR вводится при нажатии на клавишу Enter, а 
+символ EOF - при одновременном нажатии клавиш CTRL и Z.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">При вводе переменных типа STRING количество считанных процедурой и помещенных 
+в строку символов равно максимальной длине строки, если только раньше не 
+встретились символы CR или EOF. В этом случае сами символы CR и EOF в строку не 
+помещаются. Если количество символов во входном потоке данных больше 
+максимальной длины строки, «лишние» символы до конца строки отбрасываются,а 
+новое обращение к READ возвращает пустую строку. Таким образом, процедура READ 
+не в состоянии прочесть последовательность строк: первая строка будет прочитана 
+нормально, а все последующие окажутся пустыми. Для ввода последовательности 
+строк нужно использовать процедуру READLN (см. ниже).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">При вводе числовых переменных процедура READ вначале выделяет подстроку во 
+входном потоке по следующему правилу: все ведущие пробелы, символы табуляции и 
+маркеры конца строк EOLN пропускаются; после выделения первого значащего 
+символа, наоборот, любой из перечисленных символов или символ EOF служат 
+признаком конца подстроки. Выделенная таким образом подстрока затем 
+рассматривается как символьное представление числовой константы соответствующего 
+типа и преобразуется во внутреннее представление, а полученное значение 
+присваивается переменной. Если в подстроке был нарушен требуемый формат 
+представления численной</font> <font face="Arial, Helvetica, sans-serif" size="3">константы, возникает ошибка ввода-вывода. Если при пропуске ведущих пробелов 
+встретился символ EOF, переменная получает значение 0. Отметим, что в Турбо 
+Паскале не предусмотрен ввод шестнадцатеричных констант.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">При использовании процедуры READ применительно к стандартному файлу INPUT, 
+т.е. при вводе с клавиатуры, символьные строки запоминаются в буфере, который 
+передается процедуре только после нажатия на клавишу Enter. Это позволяет 
+редактировать данные при их вводе. Для редактирования используются следующие 
+клавиши:</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">Backspace, Ctrl-H, перевод курсора влево - стирают символ слева от курсора;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">перевод курсора вправо - восстанавливает символ за символом предыдущую строку 
+ввода;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">Ctrl-Z Enter - завершает ввод по процедуре READ; оставшиеся «лишние» 
+символьные параметры принимают значение CHR(26), строки возвращаются пустыми, а 
+численные переменные остаются без изменения.</font></li>
+</ul>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Максимальная длина буфера ввода при работе с клавиатурой составляет 127 
+символов. Ввод с клавиатуры по процедуре READ сопровождается эхо-повтором 
+вводимых символов на экране ПК.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Процедура READ прекрасно приспособлена к вводу чисел. При обращении к ней за 
+вводом очередного целого или вещественного числа процедура «перескакивает» 
+маркеры конца строк, т.е. фактически весь файл рассматривается ею как одна 
+длинная строка, содержащая текстовое представление чисел. В сочетании с 
+проверкой конца файла функцией EOF процедура READ позволяет организовать простой 
+ввбд массивов данных, например, так:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">N = 1000; <i> {Максимальная длина ввода}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">f : text;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">m : array [1..N] of real;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> i : Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">assign(f, 'prog.dat') ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">reset(&pound;); i := 1;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">while not EOF(f) and (i &lt;= N) do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">read(f ,m[i] ) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">inc(i)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">close(f);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> READLN. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Обеспечивает ввод символов, строк и чисел. Эта процедура 
+идентична процедуре READ за исключением того, что после считывания последней 
+переменной оставшаяся часть строки до маркера EOLN пропускается, поэтому 
+следующее обращение к READLN или READ начинается с первого символа новой строки. 
+Кроме того, эту процедуру можно вызвать без параметра &lt;cn.вводa&gt; (см. 
+процедуру READ), что приведет к пропуску всех символов текущей строки вплоть до 
+EOLN.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если процедура используется для чтения с клавиатуры, нажатие на клавишу Enter 
+отобразится на экране как последовательность CR + LF и курсор будет помещен в 
+начало следующей строки, в то время как в процедуре READ эхо-повтором клавиши 
+Enter является символ CR и курсор помещается в начало текущей строки.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> WRITE. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Обеспечивает вывод информации в текстовый файл или передачу 
+ее на логическое устройство. Формат обращения:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WRITE (&lt;ф.п.&gt;, &lt;сп.вывода&gt;) или WRITE (&lt;сп.вывода&gt;)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь &lt;сп.вывода&gt; - список вывода: последовательность из одного или 
+более выражений типа CHAR, STRING, BOOLEAN, a также любого целого или 
+вещественного типа.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Файловая переменная &lt;ф.п.&gt;, если она указана, должна быть 
+предварительно описана как переменная типа TEXT и связана с именем файла или 
+логическим устройством процедурой ASSIGN. Если файловая переменная отсутствует, 
+подразумевается вывод в стандартный файл OUTPUT, который обычно связан с экраном 
+ПК.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Любой элемент списка вывода может иметь форму</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OutExpr [ : MinWidth [ : DecPlaces ] ]</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь OUTEXPR - выводимое выражение;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">MINWIDTH, DECPLACES - выражения типа WORD (квадратные скобки означают 
+возможность отсутствия заключенных в них параметров).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Подпараметр MINWIDTH, если он присутствует, указывает минимальную ширину 
+поля, в которое будет записываться символьное представление значения OUTEXPR. 
+Если символьное представление имеет меньшую длину, чем MINWIDTH, оно будет 
+дополнено слева пробелами, если - большую длину, то подпараметр MINWIDTH 
+игнорируется и выводится необходимое число символов.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Подпараметр DECPLACES задает количество десятичных знаков в дробной части 
+вещественного числа. Он может использоваться только совместно с MINWIDTH и 
+только по отношению к выводимому выражению одного из вещественных типов.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если ширина поля вывода не указана, соответствующий параметр выводится вслед 
+за предыдущим без какого-либо их разделения.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Символы и строки передаются выводному файлу без изменений, но снабжаются 
+ведущими пробелами, если задана ширина поля вывода и эта ширина больше требуемой 
+для вывода.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">При выводе логических выражений в зависимости от их значения выводятся строки 
+TRUE или FALSE. (Ввод логических констант процедурами READ или READLN не 
+предусмотрен).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Вещественные числа выводятся в экспоненциальном формате, если не указан 
+подпараметр DECPLACES, в противном случае выбирается формат представления числа 
+с фиксированной точкой. Экспоненциальный формат представляет вещественное число 
+в виде</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">_s#.##############E*####,</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">где:</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">_&nbsp;&nbsp;&nbsp;&nbsp; пробел;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">s&nbsp;&nbsp;&nbsp; пробел для положительного и знак «-» для отрицательного чисел;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">#&nbsp;&nbsp;&nbsp; десятичная цифра;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Е&nbsp;&nbsp;&nbsp; символ десятичного основания;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">*&nbsp;&nbsp;&nbsp; знак «+» или «-» в зависимости от знака десятичного порядка числа.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если подпараметр MINWIDTH опущен, принимается его значение по умолчанию (23). 
+Если MINWIDTH меньше 10, считается, что он равен 10.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если подпараметр DECPLACES равен нулю, ни дробная часть числа, ни десятичная 
+точка не выводятся. При отрицательном значении DECPLACES этот параметр 
+игнорируется и число выводится в экспоненциальном формате с учетом MINWIDTH. 
+Если значение DECPLACES больше 18, принимается значение 18. Следует учесть, что 
+при указании подпараметра DECPLACES вещественное число всегда будет выводиться в 
+формате с фиксированной точкой и требуемым количеством знаков в дробной части, 
+даже если значение подпараметра MINWIDTH окажется недостаточным для размещения 
+целой части: в этом случае значение MINWIDTH автоматически увеличивается.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">При выводе на экран в случае, когда длина выводимой последовательности 
+символов превышает ширину экрана или созданного на нем окна, «лишние» символы 
+переносятся на следующую экранную строку. При заполнении экрана или окна его 
+содержимое сдвигается вверх на одну строку.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Процедура WRITELN. Эта процедура полностью идентична процедуре WRITE за 
+исключением того, что выводимая строка символов завершается кодами CR и LF. При 
+вызове WRITELN можно опускать параметр &lt;сп.вывода&gt;: в этом случае в файл 
+передается маркер EOLN, что при выводе на экран приведет к переводу курсор» в 
+начало следующей строки.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Логическая функция EOLN. Возвращает TRUE, если во входном текстовом файле 
+достигнут маркер конца строки. Формат обращения:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">EOLN&lt;ф.п.&gt;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если параметр &lt;ф.п.&gt; опущен, функция проверяет стандартный файл INPUT.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Существует некоторое отличие в работе функций EOLN и EOF с дисковыми файлами 
+и логическими устройствами. Дело в том, что для логического устройства 
+невозможно предвидеть, каким будет результат чтения очередного символа. Поэтому 
+при работе с логическим устройством функция EOLN возвращает TRUE, если последним 
+считанным с устройства символом был EOLN или EOF, в то время как при чтении с 
+диска TRUE возвращается в случае, если следующим считываемым символом будет EOLN 
+или EOF. Аналогичное различие наблюдается и в функции EOF: для логического 
+устройства TRUE возвращается в случае, если последним символом был EOF, а при 
+чтении с диска - если следующим считываемым символом будет EOF. Иными словами, 
+функции тестируют соответствующие признаки для логического устройства после 
+очередного чтения, а для файла - перед чтением.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Логическая функция</b> SEEKEOLN. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Пропускает все пробелы и знаки табуляции до 
+маркера конца строки EOLN или до первого значащего символа и возвращает TRUE, 
+если маркер обнаружен. Формат обращения:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SEEKEOLN (&lt;ф.п.&gt;)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;Если параметр &lt;ф.п.&gt; опущен, функция проверяет 
+стандартный файл INPUT.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Логическая функция</b> SEEKEOF. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Пропускает все пробелы, знаки табуляции и маркеры 
+конца строки EOLN до маркера конца файла или до первого значащего символа и 
+возвращает TRUE, если маркер обнаружен. Формат обращения:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SEEKEOF (&lt;ф.п.&gt;)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если параметр &lt;ф.п.&gt; опущен, функция проверяет стандартный файл INPUT.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В следующем примере, иллюстрирующем работу с текстовым файлом, подсчитывается 
+общее количество символов в файле и результат делится на 40000 - таким способом 
+можно оценить объем рукописи в так называемых учетно-издательских листах:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">f : text;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s: String;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Sum: LongInt = 0; <i> {Здесь будет количество символов}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write('Имя файла: ');<i>{Запрашиваем...}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Readln(s); <i> {и вводим имя файла.}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">assign(f,s);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Reset (f); <i> {Открываем файл}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">while not EOF(f) do <i> {Подсчитываем...}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin <i> {количество. . .}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn(f,s); <i> {символов...}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">inc(Sum, Length(s)) <i> {в файле}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Close(f); <i> {Закрываем файл}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn('Объем = ', Sum/40000 : 6:2,' уч.изд.л.')</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl5_5.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl5_7.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl22_1.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Использование объектов - еонтроллеров
+
+</font>
+</b>
+<br>
+</font>
+&nbsp;
+</p>
+
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Контроль текстового ввода
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Как уже говорилось, основное назначение объектов-контролеров состоит в 
+контроле текстовой информации, вводимой пользователем с помощью объектов 
+TInputLine или их специализированных потомков. Для упрощения подключения 
+контролера в объекте TInputLine предусмотрен специальный метод SetValidator, 
+единственным параметром обращения к которому является ссылка на экземпляр 
+объекта-контролера. Таким образом, подключение контролера осуществляется в два 
+этапа: вначале инициируется экземпляр объекта-контролера, а затем вызывается 
+метод TInputLine.SetValidator для объекта, осуществляющего ввод данных. 
+Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InpLine: PInputLine;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Validator: PRangeValidator;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Создаем строку ввода}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InpLine := New(PInputLine,Init(...));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Создаем объект-контролер}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Validator := New(PRangeValidator,Init(0,10));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Связываем контролер с редактором}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> InpLineA.SetValidator(Validator) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Можно объединить оба действия в одном операторе:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InpLine^.SetValidator(New(PRangeValidator,Init(0,10))</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">При работе совместно с объектом TInputLine контролер может активно 
+воздействовать на ввод пользователя. Это относится к объектам TFilterValidator и 
+TPXPicture-Validator: они контролируют ввод каждого символа и игнорируют нажатие 
+пользователем клавиши, если очередной символ не соответствует требуемому. Объект 
+TPXPictureValidator, кроме того, способен автоматически дополнять ввод 
+пользователя неспециальными символами шаблона. Если, например, шаблон задан 
+следующим образом:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InpLine^.SetValidator(New(PPXPictureValidator, Init('#/#/#',True)))</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">то нажатие пользователем любых клавиш, кроме цифровых, будет игнорироваться, 
+а сразу после нажатия первой (второй) цифровой клавиши в строке ввода появится 
+символ «/». Вставкой неспециальных символов шаблона управляет второй параметр 
+обращения к методу TPXPictureValidator.Init (True - разрешить вставку, False - 
+запретить).</font> </P>
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+Проверка других объектов
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Хотя чаще всего для реализации текстового ввода Вы будете использовать объект 
+TInputLine или его специализированного потомка, не исключена возможность 
+проверки данных, подготовленных другими видимыми объектами. Для этого в поле 
+Options любого видимого элемента предусмотрен бит ofValidate, единичное 
+состояние которого приведет к тому, что при каждой потере видимым элементом 
+фокуса ввода будет вызываться его метод Valid, который он наследует от TView. 
+Перекрыв этот метод, Вы сможете обратиться к любому объекту-контролеру для 
+проверки данных.</font> </P>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+Реализация нестандартного контроля
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возможно, Вам понадобится сконструировать собственный объект-контролер. В 
+этом случае Вы должны помнить, что за контроль отвечают четыре метода базового 
+объекта TValidator: Valid, IsValidInput, IsValid и Error, причем абстрактные 
+методы Is Valid и Error перекрываются в потомках, вызываются другими методами 
+объекта-контролера и не предназначены для вызова извне.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Метод Valid получает строку, введенную пользователем, осуществляет ее 
+контроль и возвращает True или False в зависимости от результатов контроля (True 
+означает правильный ввод). Метод IsValidlnput также получает строку символов 
+ввода, однако,</font> <font face="Arial, Helvetica, sans-serif" size="3">в отличие от Valid, он получает ее после каждого изменения пользователем 
+входной строки. Метод IsValidlnput имеет два параметра обращения:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function TValidator.IsValidlnput(var S: String; SuppressFill: Boolean): 
+Boolean</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Параметр SuppressFill указывает, должен ли метод автоматически форматировать 
+строку перед ее проверкой. Если этот параметр имеет значение True, метод должен 
+дополнить подготовленный пользователем ввод S нужными в этом месте символами и 
+только после этого производить контроль. Поскольку параметр S определен как 
+параметр-переменная, метод может вставлять дополнительные символы 
+непосредственно в строку ввода, но ни в коем случае не должен удалять ошибочно 
+введенные символы из нее. Из всех стандартных контролеров только 
+TPXPictureValidator использует SuppressFill = True.</font><font face="Arial, Helvetica, sans-serif" size="3">I</font> </P>
+
+<p>
+&nbsp;
+</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl22_1.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

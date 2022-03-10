@@ -1,0 +1,183 @@
+BODY {
+	BACKGROUND-COLOR: #fafafa
+}
+H1 {
+	COLOR: lightgreen
+}
+H1 {
+	FONT-FAMILY: 'Arial Cyr', 'Helvetica Cyr'
+}
+H1 {
+	TEXT-ALIGN: right
+}
+H1 {
+	BACKGROUND-COLOR: blue
+}
+H2 {
+	COLOR: darkmagenta
+}
+H2 {
+	FONT: 16pt 'Arial Cyr' bold
+}
+H2 {
+	TEXT-ALIGN: center
+}
+H2 {
+	MARGIN-TOP: 0em
+}
+H2 {
+	CLEAR: both
+}
+H2.questions {
+	COLOR: darkred
+}
+H2.exercises {
+	COLOR: darkcyan
+}
+H3 {
+	TEXT-ALIGN: center
+}
+H4 {
+	TEXT-ALIGN: center
+}
+P {
+	TEXT-INDENT: 2em
+}
+P {
+	TEXT-ALIGN: justify
+}
+P.figure {
+	TEXT-INDENT: 0em
+}
+P.figure-right {
+	TEXT-INDENT: 0em
+}
+P.figure-left {
+	TEXT-INDENT: 0em
+}
+P.figure {
+	TEXT-ALIGN: center
+}
+P.figure-right {
+	TEXT-ALIGN: center
+}
+P.figure-left {
+	TEXT-ALIGN: center
+}
+P.figure {
+	FONT-FAMILY: 'Arial Cyr', 'Helvetica Cyr'
+}
+P.figure-right {
+	FONT-FAMILY: 'Arial Cyr', 'Helvetica Cyr'
+}
+P.figure-left {
+	FONT-FAMILY: 'Arial Cyr', 'Helvetica Cyr'
+}
+P.figure {
+	FONT-SIZE: 9pt
+}
+P.figure-right {
+	FONT-SIZE: 9pt
+}
+P.figure-left {
+	FONT-SIZE: 9pt
+}
+P.figure {
+	COLOR: #778855
+}
+P.figure-right {
+	COLOR: #778855
+}
+P.figure-left {
+	COLOR: #778855
+}
+P.figure-right {
+	FLOAT: right
+}
+P.figure-left {
+	FLOAT: left
+}
+TABLE.definition {
+	BACKGROUND-COLOR: cyan
+}
+TABLE.definition {
+	BORDER-BOTTOM-STYLE: double; BORDER-LEFT-STYLE: double; BORDER-RIGHT-STYLE: double; BORDER-TOP-STYLE: double
+}
+TABLE.definition {
+	BORDER-BOTTOM-COLOR: magenta; BORDER-LEFT-COLOR: magenta; BORDER-RIGHT-COLOR: magenta; BORDER-TOP-COLOR: magenta
+}
+TABLE.definition {
+	PADDING-BOTTOM: 0.4em; PADDING-LEFT: 0.4em; PADDING-RIGHT: 0.4em; PADDING-TOP: 0.4em
+}
+TABLE.definition TR TD {
+	FONT-FAMILY: 'Arial Cyr', 'Helvetica Cyr'
+}
+TABLE.definition TR TD {
+	TEXT-ALIGN: justify
+}
+TABLE.definition TR TD {
+	FONT-WEIGHT: bold
+}
+TABLE.definition TR TD {
+	COLOR: #5555aa
+}
+TABLE.text-insertion {
+	BACKGROUND-COLOR: gold
+}
+TABLE.text-insertion {
+	BORDER-BOTTOM-STYLE: groove; BORDER-LEFT-STYLE: groove; BORDER-RIGHT-STYLE: groove; BORDER-TOP-STYLE: groove
+}
+TABLE.text-insertion {
+	BORDER-BOTTOM-COLOR: blue; BORDER-LEFT-COLOR: blue; BORDER-RIGHT-COLOR: blue; BORDER-TOP-COLOR: blue
+}
+TABLE.text-insertion {
+	PADDING-BOTTOM: 0.6em; PADDING-LEFT: 0.6em; PADDING-RIGHT: 0.6em; PADDING-TOP: 0.6em
+}
+TABLE.text-insertion TR TD {
+	FONT-FAMILY: 'Arial Cyr', 'Helvetica Cyr'
+}
+TABLE.text-insertion TR TD {
+	TEXT-ALIGN: justify
+}
+TABLE.text-insertion TR TD {
+	COLOR: red
+}
+TABLE.text-insertion TR TH {
+	TEXT-ALIGN: right
+}
+TABLE.text-insertion TR TH {
+	FONT-SIZE: 16pt
+}
+TABLE.rule {
+	BACKGROUND-COLOR: #ffffee
+}
+TABLE.rule {
+	BORDER-BOTTOM-STYLE: groove; BORDER-LEFT-STYLE: groove; BORDER-RIGHT-STYLE: groove; BORDER-TOP-STYLE: groove
+}
+TABLE.rule {
+	BORDER-BOTTOM-COLOR: blue; BORDER-LEFT-COLOR: blue; BORDER-RIGHT-COLOR: blue; BORDER-TOP-COLOR: blue
+}
+TABLE.rule {
+	PADDING-BOTTOM: 0.3em; PADDING-LEFT: 0.3em; PADDING-RIGHT: 0.3em; PADDING-TOP: 0.3em
+}
+TABLE.rule TR TD {
+	FONT-FAMILY: 'Arial Cyr', 'Helvetica Cyr'
+}
+TABLE.rule TR TD {
+	TEXT-ALIGN: justify
+}
+TABLE.rule TR TD {
+	FONT-WEIGHT: 500
+}
+TABLE.rule TR TD {
+	COLOR: black
+}
+UL {
+	MARGIN-LEFT: 3em
+}
+OL {
+	MARGIN-LEFT: 3em
+}
+LI {
+	TEXT-ALIGN: justify
+}

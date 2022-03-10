@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl7_1.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl7_3.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Константы - массивы
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+В качестве начального значения типизированной константы-массива используется 
+список констант, отделенных друг от друга запятыми; список заключается в круглые 
+скобки, например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">colors '= (white, red, black);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ColStr : array [colors] of String [5] =('white', 'red',
+'blaсk');&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> vector : array [1..5] of Byte = (0,0,0,0,0); .</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">При объявлении массива символов можно использовать то обстоятельство, что все 
+символьные массивы и строки в Турбо Паскале хранятся в упакованном формате, 
+поэтому в качестве значения массива-константы типа CHAR допускается задание 
+символьной строки соответствующей длины. Два следующих объявления идентичны:</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">digit : array [0..9] of Char =</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">('0', Ч','2','3','4','5','6', ' 7 ' , ' 8 ' , ' 9 ') ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">digchr: array [0..9] of Char =0123456789';</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">При объявлении многомерных констант-массивов множество констант, 
+соответствующих каждому измерению, заключается в дополнительные круглые скобки и 
+отделяется от соседнего множества запятыми. В результате образуются вложенные 
+структуры множеств, причем глубина вложения должна соответствовать количеству 
+изменений (размерности) массива. Самые внутренние множества констант связываются 
+с изменением самого правого индекса массива.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Следующая программа выведет на экран три строки с монотонно увеличивающимися 
+целыми числами:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">i, j, k, 1 : Byte;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">matr : array [1..3, 1..5] of Byte = ((0, 1, 2, 3,4),</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">(5, 6, 7, 8, 2) , (10,11,12,13,14)) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> cube : array [0..1, 0..1, 0..2] of 
+Integer =&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> (((0 ,1 ,2 ), (3 ,4 ,5 )), ((6 ,7 ,8 ), (9 ,10,11))) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> mas4 : array 
+[0..1, 0..1, 0..1, 0..1] of Word = (</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">(((0 ,1 ), (2 ,3 )) ,((4 ,5 ), (6 ,7 ))), (((8 ,9 ), (10,11)), ((12,13), (14,15))));</font> </P>
+<TABLE border=0 frame=box rules=all>
+  <TBODY>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font></P></TD>
+    <TD><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for i :=&nbsp;</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">1 to 3 do</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for j :=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">1 to 5 do Write (matr[i,j] :3) ;</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">writeln;</font></P></TD>
+    <TD><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for i :=&nbsp;</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">0 to 1 do</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for j :=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">0 to 1 do</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for k :=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">0 to 2 do Write (cube [i,j ,k] :3) ;</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">writeln;</font></P></TD>
+    <TD><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for i :=&nbsp;</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">0 to 1 do</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for j :=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">0 to 1 do</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for k :=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">0 to 1 do</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for :=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">0 to 1 do Write (mas4 [i,j ,k,l] :3) ;</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn</font></P></TD>
+    <TD><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font></P></TD>
+    <TD><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR></TBODY></TABLE>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Количество переменных в списке констант должно строго соответствовать 
+объявленной длине массива по каждому измерению.</font> </P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl7_1.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl7_3.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

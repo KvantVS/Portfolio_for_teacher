@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+<table COLS="3" width="%">
+<tr>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0">
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr1_1.html">
+<img SRC="For.gif" BORDER="0">
+</a>
+</font>
+</td>
+</tr>
+</table>
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+ 
+Среда Турбо Паскаля
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3"></font>
+<ul>
+
+    <li><font face="Arial, Helvetica, sans-serif" size="3">Элементы диалоговой среды</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Работа с окнами</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Работа с меню</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Работа
+          с диалоговым окном</font></li>
+    <li><font face="Arial, Helvetica, sans-serif" size="3">Система
+      меню</font>
+</li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Меню
+          опции FILE</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Меню
+          опции EDIT</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Меню
+          опции SEARCH</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Меню
+          опции RUN</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Меню
+          опции COMPILE</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Меню
+          опции DEBUG</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Меню
+          опции TOOLS</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Меню
+          опции OPTIONS</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Меню
+          опции WINDOW</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Меню
+          опции HELP</font></li>
+    <li><font face="Arial, Helvetica, sans-serif" size="3">Директивы компилятора</font></li>
+    <li><font face="Arial, Helvetica, sans-serif" size="3">Редактор</font>
+</li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Команды
+          перемещения курсора</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Команды
+          удаления/вставки</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Команды
+          работы с блоками</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Прочие
+          команды</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="3">Команды,
+          передаваемые среде из редактора</font></li>
+    <li><font face="Arial, Helvetica, sans-serif" size="3">Вызов Турбо-Паскаля</font></li>
+
+</ul>
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Элементы диалоговой среды
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">
+При работе с Турбо Паскалем на экране ПК может формироваться сложная 
+структура прямоугольных участков экрана, рассматриваемых как единое целое и 
+предназначенных для тех или иных действий. Такие участки в тексте книги 
+называются меню, окнами, полями и т.д. На рис.П1.1 показаны эти элементы и даны 
+их названия.</font> </P>
+<P align="center"><img border="0" src="p1_1.jpg"  > </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><i><b>Рис.П1.1.</b> Элементы диалоговой среды Турбо Паскаля</i></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Меню будем называть прямоугольный участок экрана, содержащий кодовые слова и 
+предназначенный для диалогового выбора продолжения работы. Меню фиксирует 
+некоторое текущее состояние диалоговой среды и предлагает несколько 
+альтернативных путей перехода из этого состояния. Содержащиеся в меню кодовые 
+слова обозначают возможные альтернативы. Условимся называть их в дальнейшем 
+опциями (option - выбор).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Окно в Турбо Паскале предназначено для обмена информацией между программистом 
+и средой. В окно редактора программист помещает текст программы, в окне 
+программы среда показывает результат ее прогона, в справочном окне появляются 
+справочные сообщения, в отладочном окне программист может наблюдать за 
+изменением переменных в процессе отладки программы. Одновременно на экране может 
+присутствовать сразу несколько окон, однако только одно из них активно в каждый 
+момент. Активное окно очерчивается двойной рамкой, неактивные - одинарной.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Диалоговое окно разворачивается на экране по мере надобности. С помощью 
+диалогового окна пользователь уточняет выбранное действие. Внутри диалогового 
+окна может быть несколько полей. В поле ввода программист может подготовить 
+текстовую строку (например, имя файла). В поле выбора среда предлагает несколько 
+возможных имен файлов. В поле переключаемой опции можно установить необходимую 
+настройку среды, с помощью командных полей - передать среде ту или иную команду.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Работа с меню и окнами значительно упрощается, если Ваш ПК оснащен 
+устройством ввода типа «мышь». Условимся в дальнейшем вместо длинного 
+"устройство ввода типа «мышь»" писать просто мышь, что соответствует обиходному 
+названию этого прибора. Подвигав мышь по столу, Вы тут же заметите 
+перемещающийся по экрану указатель мыши. С помощью этого указателя можно выбрать 
+нужный элемент диалоговой среды. Для этого подведите к нему указатель и нажмите 
+левую кнопку мыши.</font> </P>
+<p>&nbsp;</p>
+<table COLS="3" width="%">
+<tr>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0">
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr1_1.html">
+<img SRC="For.gif" BORDER="0">
+</a>
+</font>
+</td>
+</tr>
+</table>
+</BODY></HTML>

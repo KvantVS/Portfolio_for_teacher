@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl17_10.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl17_12.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Поле GrowMode
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Восьмиразрядное поле GrowMode определяет, как должен изменяться видимый 
+элемент, когда его владелец (группа) изменяет свои размеры. Разряды этого поля 
+показаны на рис. 17.9.</font> </P>
+<P align="center"><img border="0" src="17_9.jpg"  ></P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Puc. 17.9.</b> Разряды поля GrowMode</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Среда Turbo Vision позволяет изменять размеры окон с помощью мыши: для этого 
+надо «схватить» мышью правый нижний угол окна. Флаги GrowMode определяют, как 
+будут вести себя в этой ситуации вставленные в окно элементы. Напомню, что 
+изображение встроенного элемента всегда отсекается границами группы. Стандартное 
+состояние элементов среды Турбо Паскаль соответствует установленным флагам 
+gfGrowHiX и gfGrowHiY.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">gfGrowLoX</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если флаг установлен, левая граница видимого элемента всегда располагается на 
+одинаковом расстоянии от правой границы группы-владельца. Таким образом, при 
+уменьшении горизонтального размера окна вставленный в него видимый элемент 
+смещается влево и, возможно, отсекается левой границей окна.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">gfGrowLoY</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если флаг установлен, верхняя граница видимого элемента всегда располагается 
+на одинаковом расстоянии от нижней границы группы, т.е. уменьшение вертикального 
+размера окна приводит к смещению элемента вверх.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">gfGrowHiX</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если флаг установлен, правая граница видимого элемента всегда располагается 
+на одинаковом расстоянии от левой границы группы, т.е. при уменьшении 
+горизонтального размера окна видимое на экране положение его внутреннего 
+элемента остается неизменным и, возможно, отсекается правой границей окна.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">gfGrowHiY</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если флаг установлен, нижняя граница видимого элемента всегда располагается 
+на одинаковом расстоянии от верхней границы группы, т.е. при уменьшении 
+вертикального размера окна видимое на экране положение его внутреннего элемента 
+останется неизменным. Стандартное состояние элементов среды Турбо Паскаль 
+соответствует установленным флагам gfGrowHiX и gfGrowHiY.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">gfGrowAll</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если разряды gfGrowAll установлены в 1, видимый элемент передвигается в 
+процессе изменения размеров своего владельца, отсекаясь его левой и верхней 
+границами.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">gfGrowRel</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если флаг установлен, видимый элемент пропорционально изменяет свои размеры 
+при изменении размеров владельца. Вы должны использовать эту опцию только с 
+TWindow, или с наследниками от TWindow, которые присоединяются к панели экрана. 
+В этом случае окна сохраняют свои относительные размеры и положения на экране 
+при переходе от 25 строк к 43/50 строкам и обратно. Этот флаг не предназначен 
+для использования с видимыми элементами внутри окна.</font> </P>
+<p>&nbsp;</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl17_10.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl17_12.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</BODY></HTML>

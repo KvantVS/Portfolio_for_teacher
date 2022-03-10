@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Untitled</title>
+</head>
+
+<body lang=RU style="'tab-interval:35.4pt'" background="bgrwhite.gif">
+<p><div align="center"><b><font size="+1" face="Arial">20. Оператор варианта </font></b></div></p>
+
+<p><div align="center"><b><font size="+1" face="Arial">21. Перечисляемый тип данных </font></b></div></p>
+<p><span
+style="mso-spacerun: yes">   </span>Перечисляемый тип представляет<span
+style="mso-spacerun: yes">  </span>собой<span style="mso-spacerun: yes"> 
+</span>ограниченную<span style="mso-spacerun: yes">  </span>упорядоченную
+
+<p>последовательность
+скалярных констант,<span style="mso-spacerun: yes">  </span>составляющих данный
+тип. Зна-
+
+<p>чение
+каждой константы задается ее именем.<span style="mso-spacerun: yes"> 
+</span>Имена отдельных<span style="mso-spacerun: yes">  </span>констант
+
+<p>отделяются
+друг от друга запятыми,<span style="mso-spacerun: yes">  </span>а вся
+совокупность констант, сос-
+
+<p>тавляющих
+данный перечисляемый тип, заключается в круглые скобки.
+
+<p><span
+style="mso-spacerun: yes">   </span>Программист объединяет в одну группу в
+соответствии с каким - либо
+
+<p>признаком
+всю совокупность значений,<span style="mso-spacerun: yes">  </span>составляющих
+перечисляемый тип.
+
+<p>Например,
+перечисляемый<span style="mso-spacerun: yes">    </span>тип<span
+style="mso-spacerun: yes">  </span>Rainbow(РАДУГА)<span style="mso-spacerun:
+yes">  </span>объединяет скалярные значения
+
+<p>RED,
+ORANGE, YELLOW, GREEN, LIGHT_BLUE, BLUE, VIOLET (КРАСНЫЙ,
+
+<p>ОРАНЖЕВЫЙ,<span
+style="mso-spacerun: yes">  </span>ЖЕЛТЫЙ, ЗЕЛЕНЫЙ, ГОЛУБОЙ, СИНИЙ,
+ФИОЛЕТОВЫЙ). Пе-
+
+<p>речисляемый
+тип Traffic_Light (СВЕТОФОР) объединяет скалярные
+
+<p>значения
+RED, YELLOW, GREEN (КРАСНЫЙ,<span style="mso-spacerun: yes">  </span>ЖЕЛТЫЙ,
+ЗЕЛЕНЫЙ).
+
+<p><span
+style="mso-spacerun: yes">   </span>Перечисляемый тип<span style="mso-spacerun:
+yes">  </span>описывается<span style="mso-spacerun: yes">  </span>в разделе
+описания типов,<span style="mso-spacerun: yes">  </span>который
+
+<p>начинается
+со служебного слова type, например:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p>type
+
+<p><span
+style="mso-spacerun: yes">  </span>Rainbow = (RED, ORANGE, YELLOW, GREEN,
+LIGHT_BLUE, BLUE, VIOLET);
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Каждое значение<span style="mso-spacerun:
+yes">  </span>является константой своего типа и может принадле-
+
+<p>жать
+только одному из перечисляемых типов, заданных в программе. Нап-
+
+<p>ример,
+перечисляемый<span style="mso-spacerun: yes">    </span>тип<span
+style="mso-spacerun: yes">  </span>Traffic_Light не может быть определен в
+одной
+
+<p>программе
+с типом Rainbow,<span style="mso-spacerun: yes">  </span>так как оба типа
+содержат одинаковые конс-
+
+<p>танты.
+
+<p><span
+style="mso-spacerun: yes">   </span>Описание переменных, принадлежащих к
+скалярным типам, которые объ-
+
+<p>явлены
+в<span style="mso-spacerun: yes">  </span>разделе описания типов,<span
+style="mso-spacerun: yes">  </span>производится с помощью имен типов.
+
+<p>Например:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">        </span>type<span style="mso-spacerun: yes"> 
+</span>Traffic_Light= (RED, YELLOW, GREEN);
+
+<p><span
+style="mso-spacerun: yes">        </span>var<span style="mso-spacerun: yes">  
+</span>Section: Traffic_Light;
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Это означает, что переменная Section может
+принимать значения RED,
+
+<p>YELLOW
+или GREEN.
+
+<p><span
+style="mso-spacerun: yes">   </span>Переменные перечисляемого типа могут быть
+описаны в разделе описа-
+
+<p>ния
+переменных, например:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">        </span>var<span style="mso-spacerun: yes"> 
+</span>Section: (RED, YELLOW, GREEN);
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>При этом имена типов отсутствуют,<span
+style="mso-spacerun: yes">  </span>а переменные определяются сово-
+
+<p>купностью
+значений, составляющих данный перечисляемый тип.
+
+<p><span
+style="mso-spacerun: yes">   </span>К переменным перечисляемого<span
+style="mso-spacerun: yes">  </span>типа<span style="mso-spacerun: yes"> 
+</span>может<span style="mso-spacerun: yes">  </span>быть<span
+style="mso-spacerun: yes">  </span>применим<span style="mso-spacerun: yes"> 
+</span>оператор
+
+<p>присваивания:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">          </span>Section:= YELLOW;
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Упорядоченная последовательность значений,
+составляющих перечисля-
+
+<p>емый
+тип, автоматически нумеруется, начиная с нуля и далее через еди-
+
+<p>ницу.
+Отсюда следует, что к перечисляемым переменным и константам мо-
+
+<p>гут
+быть применены операции отношения<span style="mso-spacerun: yes"> 
+</span>и<span style="mso-spacerun: yes">  </span>стандартные<span
+style="mso-spacerun: yes">  </span>функции<span style="mso-spacerun: yes"> 
+</span>Pred,
+
+<p>Succ,
+Ord.
+
+<p><span
+style="mso-spacerun: yes">   </span>Переменные и константы перечисляемого типа
+не могут быть элемента-
+
+<p>ми
+списка ввода или вывода.
+<p><div align="center"><a href="../Pascal. Курс лекций.html">	<img src="../../soder.gif" width=120 height=31 border=0 alt=""></a></div></p>
+
+</body>
+</html>

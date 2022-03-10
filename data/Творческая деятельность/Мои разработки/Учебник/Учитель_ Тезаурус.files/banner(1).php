@@ -1,0 +1,1 @@
+document.write('<H1><A HREF=#>BANNER.PHP FAILED!!!</A></H1>');

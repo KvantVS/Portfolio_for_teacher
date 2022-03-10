@@ -1,0 +1,259 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" >
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl2_7.html">
+<img SRC="Back.gif" BORDER="0">
+</a>
+</font>
+</td>
+<td >
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0">
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl2_7_2.html">
+<img SRC="For.gif" BORDER="0">
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p align="left">
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+ 
+Вычисление дня недели
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Случалось ли Вам мучительно вспоминать, какой именно день недели приходился 
+на то или иное число год или два назад, или вычислять, на какой день недели в 
+этом году приходится Ваш день рождения? Если да, то Вас, думаю, заинтересует 
+простая программа, позволяющая по заданной дате мгновенно вычислить 
+соответствующий день недели. В ее основе лежит такая формула:</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">день недели = остаток от деления X на 7,</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">где X = abs(trunc(2.6*m-0.2)+d+y/4+y+c/4-2*c);&nbsp;</font> 
+</P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3"> m - номер месяца (см. ниже);&nbsp;</font> 
+</P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3"> d 
+- число (день месяца);&nbsp;</font> 
+</P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3"> с - номер столетия (см. ниже);&nbsp;</font> 
+</P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3"> у - номер года в столетии.</font> 
+</P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">При использовании этой формулы следует учесть два обстоятельства. Во-первых, 
+формула верна для григорианского календаря нового стиля (от 1582 до 4903 года). 
+Во-вторых, год и месяц следует предварительно преобразовать так, как если бы 
+начало года приходилось на 1 марта. Иными словами, март в этой формуле имеет 
+порядковый номер 1, апрель 2, ..., январь 11 и февраль 12, причем январь и 
+февраль следует отнести к предыдущему году. Например, для 1 февраля 1991 года 
+номер месяца должен быть равен 12, а год 1990, в то время как для 31 декабря 
+1991 года номер месяца - 10, а год - 1991. Результат вычисления дается в виде 
+целого числа в диапазоне от 0 до 6, причем 0 соответствует воскресенью.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Приступим к разработке программы. Прежде всего, предположим, что программа 
+уже создана и Вы осуществляете ее прогон. Какая форма взаимодействия с 
+программой кажется Вам наиболее подходящей? Вряд ли Вас удовлетворит однократное 
+ее исполнение (ввод некоторой даты и вывод на экран соответствующего дня 
+недели). Скорее всего Вы захотите повторить работу программы для нескольких дат, 
+например, поинтересоваться, в какой день недели Вы родились, затем, на какой 
+день недели приходится в этом году Ваш день рождения, дни рождения близких, 
+друзей; может быть, определить, в какой день родились известные Вам исторические 
+деятели, и т.д. Таким образом, в программе следует предусмотреть многократное 
+выполнение действий &lt;ввод даты&gt; - &lt;вычисление дня недели&gt;, причем 
+число циклов вычисления заранее не известно. Сразу же возникает новый вопрос: 
+как сообщить программе, что Вы завершаете работу с ней? Для этого можно 
+условиться, что ввод некоторой заранее обусловленной или недопустимой даты 
+должен интерпретироваться программой, как указание на прекращение работы. С 
+учетом сказанного, напишем такой начальный вариант программы:</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">IsCorrectDate: Boolean; <i>{Признак правильной даты}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> d,m,y : Integer; <i> {Вводимая 
+дата - день, месяц и год}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> repeat</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Ввести в переменные d, л? и у очередную дату и проверить ее. Если дата 
+правильная, установить IsCorrectDate=True, иначе
+IsCorrectDate=False}</font> </i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if 
+IsCorrectDate then</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Вычислить и выдать на экран день недели}</font></i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">;&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> until not IsCorrectDate&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Если Вы попытаетесь запустить эту программу на счет, то ее поведение будет 
+зависеть от начального значения переменной IsCorrectDate. Это значение случайно, 
+так как компилятор Турбо Паскаля не проводит начальной инициализации переменных. 
+Скорее всего, тот байт оперативной памяти, в котором она разместится, окажется 
+нулевым, что в Турбо Паскале расценивается как логическое значение FALSE, 
+поэтому с большой вероятностью ничего не произойдет, и программа сразу же 
+завершит свою работу (условие not IsCorrectDate будет выполнено). Если начальное 
+значение IsCorrectDate окажется не нулевым, то цикл REPEAT. . .UNTIL будет 
+выполняться до тех пор, пока Вы не выключите компьютер или не нажмете клавиши 
+Ctrl-Break.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Будем считать, что необходимые действия осуществляются в двух процедурах с 
+именами InputDate (ввод даты) и WriteDay (вычисление и печать дня недели). В 
+процедуру InputDate не нужно ничего передавать из программы, так как в ней самой 
+осуществляются ввод и контроль даты. Поэтому заголовок процедуры может иметь 
+такой вид:</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure InputDate(var d,m,y: Integer; var
+correctly:</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Boolean);</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Процедура WriteDay, напротив, только получает из программы нужные ей данные и 
+ничего не возвращает в программу, поэтому в ее заголовке параметры описываются 
+без слова VAR:</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure WriteDay(d,m,у : Integer);</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;С учетом этого программу можно уточнить 
+следующим образом:</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">IsCorrectDate: Boolean; <i> {Признак правильной даты}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">d,m,y : Integer; <i> {Вводимая дата - день, месяц и год}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{...............................}</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure InputDate(var d,m,y : Integer;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var correctly : Boolean);</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Вводит в переменные d, m и у очередную дату и проверяет ее. Если дата 
+правильная, устанавливает correctly=true, иначе correctly=false }</font> </i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin <i> 
+{InputDate}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">correctly := false&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i>{InputDate}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {...............................}</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure WriteDay(d,m,у: Integer);&nbsp;</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Вычисляет день недели и выводит его на 
+экран}</font> </i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin <i>{WriteDay}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i>{WriteDay}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{..............................}</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> repeat</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InputDate(d,m,y,IsCorrectDate);&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if IsCorrectDate then</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteDay(d,m,y)&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> until not IsCorrectDate&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Теперь можно разработать процедуру INPUTDATE. Ввод даты не вызывает 
+трудностей - стандартные процедуры WRITE и READLN отлично приспособлены для этой 
+цели. Для проверки правильности даты нужно проверить принадлежность месяца 
+диапазону 1...12 и года - диапазону 1582...4903. Кроме того, число не должно 
+выходить из диапазона 1...31. Если Вы не очень настаиваете на более точной 
+проверке числа в зависимости от месяца и года (для февраля), то программная 
+реализация процедуры будет следующей:</font> </P>
+<p align="left"></P>
+<p align="left"></P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure InputDate(var d,m,y : Integer;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var correctly : Boolean);</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Вводит в переменные d, m и у очередную дату и проверяет ее. Если дата 
+правильная, устанавливает correctly=true, иначе correctly=false }</font> </i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin <i> 
+{InputDate}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write('Введите дату в формате ДД ММ ГГ: ');</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn(d,m,y);</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">correctly := (d&gt;=l)and (d&lt;=31) and (m&gt;=l)</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">and (m&lt;=12) and (y&gt;=1582) and (y&lt;=4903)</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i>{InputDate}</i></font> </P>
+<p align="left"></P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">При выполнении этой процедуры ввод, например, трех нулей приведет к 
+присвоению переменной CORRECTLY значения FALSE, что вызовет завершение работы 
+программы.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Теперь разберемся с процедурой WRITEDAY. Получив в параметрах обращения день, 
+месяц и год, она должна:</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> преобразовать месяц и год так, как описано выше (год должен начинаться 1 
+марта);</font> </li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> вычислить день недели;</font> </li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> выдать на экран результат.</font> </li>
+</ul>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Первое и второе действия очень просты и легко программируются. Что касается 
+выдачи на экран, то можно потребовать от программы, чтобы эта выдача была не 
+просто числом от 0 до 6, а одной из строк «воскресенье», «понедельник», ..., 
+«суббота». Для этого потребуются дополнительные усилия: нужно сначала создать 
+массив строковых констант с именем, например, DAYS_OF_WEEK (дни_недели), а затем 
+выбрать из этого массива и выдать на экран нужную строку. Создать массив 
+текстовых констант можно с помощью объявления типизированной константы (см. гл. 
+7):</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Days_of_week: array [0..6] of String [11] =</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">('воскресенье','понедельник','вторник', 
+'среда','четверг','пятница','суббота');</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">В этом объявлении идентификатор Days_of_week описывается в разделе констант, 
+однако справа от него указан тип данных (массив строк), как если бы описывалась 
+переменная, а уже только после типа стоит знак равенства и заключенный в круглые 
+скобки список элементов массива. В результате получим следующую процедуру:</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure WriteDay(d,m,y : Integer);&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Days_of_week: array [0..6] of String [11] =</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">('воскресенье','понедельник','вторник', ' среда', ' четверг', ' пятница', ' 
+суббота.') ;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">с, w :Integer;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if m &lt;3 then</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin <i>{Месяц январь или
+февраль}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">m := m + 10;&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> у := у - 1&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">m : = m - 2; <i> {Остальные месяцы}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">с := у div 100; <i> {Вычисляем столетие}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> у := у mod 100; <i> {Находим год в столетии}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+w := abs(trunc(2.6*m-0.2)+d+y div 4+y+c div 4-2*c) mod 7;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(Days_of_week[w] )&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<p align="left"></P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Окончательный вариант программы приведен в прил.5.1.</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" >
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl2_7.html">
+<img SRC="Back.gif" BORDER="0">
+</a>
+</font>
+</td>
+<td >
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0">
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl2_7_2.html">
+<img SRC="For.gif" BORDER="0">
+</a>
+</font>
+</td>
+</tr>
+</table> 
+</body>
+</html>

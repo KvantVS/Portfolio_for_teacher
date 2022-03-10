@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_2.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Контроль за динамической памятью
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Как правило, объекты в Turbo Vision размещаются в куче. Это отвечает 
+специфике диалоговых программ: на этапе разработки программист обычно не может 
+учесть все возможные действия пользователя программы. Чтобы не накладывать 
+неестественные ограничения на те или иные ее возможности, не следует 
+злоупотреблять статическими определениями объектов, так как в этом случае 
+программа не сможет гибко учитывать специфические требования пользователя.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В правильно разработанной программе контроль за доступной динамической 
+памятью должен осуществляться перед каждым обращением к New, в противном случае 
+нехватка памяти может вызвать аварийный останов программы и все подготовленные 
+пользователем данные и промежуточные результаты будут безвозвратно потеряны.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В Turbo Vision имеются средства, упрощающие этот контроль: глобальная функция 
+LowMemory будет возвращать True, если размер свободного участка кучи стал 
+слишком мал (по умолчанию меньше 4 Кбайт). Таким образом, вместо того, чтобы 
+контролировать кучу перед каждым обращением к New, можно обратиться к функции 
+LowMemory перед началом размещения динамического объекта или сразу после того, 
+как объект размещен в куче. Если LowMemory возвращает True, дальнейшая работа с 
+кучей возможна только после ее очистки. Резервный участок кучи длиной в 4 Кбайт 
+называется пулом надежности. Предполагается, что его размеры достаточны для 
+размещения любого объекта Turbo Vision, поэтому обычно контроль с помощью 
+LowMemory осуществляется сразу после процедуры динамического размещения нового 
+видимого элемента.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В следующем примере создается простое диалоговое окно:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Memory,...;{Функция LowMemory определена в модуле
+Memory}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(20,3,60,10);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">D := New(Dialog, Init(R, 'Диалоговое окно'));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> with D do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(2,2,32,3);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert(New(PStaticText, Init(R, 'Сообщение-вопрос')));&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(5,5,14,7);</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert(New(PButton, Init(R, '~Y~es (Да)', cmYes)));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">RAssign(16,5,25,7);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert(New(PButton, Init(R, ' ~N~o (Нет)', cmNO)))&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if LowMemory then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Dispose(D,Done);  {Нет памяти: удаляем распределение}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OutOfMemory;  {Сообщаем 
+об этом}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> DoIt := False {Признак ошибки}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Dolt := DeskTop.ExecView(D)=cmYes;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если Вы используете вызов LowMemory сразу после динамического размещения 
+объекта, то в ходе самого размещения не должен произойти аварийный останов, 
+связанный с нехваткой памяти. Таким образом, размер пула надежности должен быть 
+достаточным для размещения всего объекта. Переменная LowMemSize задает размер 
+пула надежности в параграфах (участках, длиной по 16 байт). По умолчанию она 
+имеет значение 4096 div 16 = 256, т.е. размер пула надежности составляет 4 
+Кбайт.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">На практике вместо прямого обращения к LowMemory чаще используется вызов 
+метода TProgram.ValidView (P: Pointer): Pointer. Этот метод получает в качестве 
+параметра обращения указатель Р на динамический объект и осуществляет следующие 
+действия:</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> если Р = NIL, метод возвращает
+    NIL;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> если LowMemory = True, метод освобождает память, связанную с Р, вызывает 
+метод TProgram.OutOfMemory и возвращает NIL;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> если обращение к методу TView. Valid (cm Valid) дает False (см. ниже), 
+объект Р удаляется из кучи и метод ValidView возвращает
+    NIL;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> в противном случае считается, что размещение осуществлено успешно, и метод 
+возвращает значение указателя Р.</font></li>
+</ul>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Метод TProgram.ValidView осуществляет стандартные действия по контролю 
+надежности использования кучи. Обычно его используют перед тем, как поместить 
+новый видимый элемент в группу, например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DeskTop.Insert(ValidView(New(TMyWindow,
+Init(...))));</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Заметим, что нехватка памяти вызывает обращение к виртуальному методу 
+OutOfMemory, предназначенному для выдачи сообщения о ненормальной ситуации. По 
+умолчанию этот метод ничего не делает и просто возвращает управление вызывающей 
+программе. Вы должны перекрыть его, если хотите сообщить пользователю о 
+возникшей проблеме.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В ряде случаев может оказаться полезной глобальная функция Function MemAlloc 
+(Size: Word): Pointer, которая осуществляет те же действия, что и New или 
+GetMem, но в отличие от них не распределяет пул надежности. Функция возвращает 
+указатель на выделенную область кучи или NIL, если в куче нет свободного блока 
+нужного размера. Аналогичные действия осуществляет функция MemAllocSeg, 
+отличающаяся от MemAlloc только тем, что выделяет память, выровненную на границу 
+параграфа (на границу сегмента).</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl23_2.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

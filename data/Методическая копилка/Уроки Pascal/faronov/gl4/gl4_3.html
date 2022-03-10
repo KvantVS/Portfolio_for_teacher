@@ -1,0 +1,378 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl4_2.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl4_4.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Вещественные типы
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+В отличие от порядковых типов, значения которых всегда сопоставляются с рядом 
+целых чисел и, следовательно, представляются в ПК абсолютно точно, значения 
+вещественных типов определяют произвольное число лишь с некоторой конечной 
+точностью, зависящей от внутреннего формата вещественного числа. </P>
+<P align="center"><b>Таблица 4.4 </b> </P>
+<center>
+<TABLE border=1 frame=box rules=all >
+  <TBODY>
+  <TR>
+    <TD  align="center">
+      <P><b>Длина, байт</b></P></TD>
+    <TD  align="center">
+      <P><b>Название</b></P></TD>
+    <TD  align="center">
+      <P><b>Количество значащих цифр</b></P></TD>
+    <TD  align="center">
+      <P><b>Диапазон десятичного порядка</b></P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>6</P></TD>
+    <TD  align="center">
+      <P>Real</P></TD>
+    <TD  align="center">
+      <P>11. . .12</P></TD>
+    <TD  align="center">
+      <P>-39. ..+38</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>8</P></TD>
+    <TD  align="center">
+      <P>Double</P></TD>
+    <TD  align="center">
+      <P>15. ..16</P></TD>
+    <TD  align="center">
+      <P>-324. . .+308</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>10</P></TD>
+    <TD  align="center">
+      <P>extended</P></TD>
+    <TD  align="center">
+      <P>19. . .20</P></TD>
+    <TD  align="center">
+      <P>-4951. . .+4932</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>8</P></TD>
+    <TD  align="center">
+      <P>comp</P></TD>
+    <TD  align="center">
+      <P>19. . .20</P></TD>
+    <TD  align="center">
+      <P>-2*1063+1. . .+2*63-1</P></TD></TR></TBODY></TABLE>
+<P>Как видно из табл.4.4, вещественное число в Турбо Паскале занимает от 6 до 10 
+смежных байт и имеет следующую структуру в памяти ПК: </P>
+<table border="1" width="%">
+  <tr>
+    <td width="%" align="center">s</td>
+    <td width="%" align="center">e</td>
+    <td width="%" align="center">m</td>
+  </tr>
+</table>
+</center>
+<P>&nbsp; Здесь s - знаковый разряд числа; е - экспоненциальная часть; содержит 
+двоичный порядок; m - мантисса числа. </P>
+<P>Мантисса m имеет длину от 23 (для SINGLE) до 63 (для EXTENDED) двоичных 
+разрядов, что и обеспечивает точность 7.. .8 для SINGLE и 19.. .20 для EXTENDED 
+десятичных цифр. Десятичная точка (запятая) подразумевается перед левым (старшим) 
+разрядом мантиссы, но при действиях с числом ее положение сдвигается влево или 
+вправо в соответствии с двоичным порядком числа, хранящимся в экспоненциальной 
+части, поэтому действия над вещественными числами называют арифметикой с 
+плавающей точкой (запятой). </P>
+<P>Как видим, Турбо Паскаль характеризуется богатой гаммой вещественных типов, 
+однако доступ к типам SINGLE, DOUBLE и EXTENDED возможен только при особых 
+режимах компиляции. Дело в том, что эти типы рассчитаны на аппаратную поддержку 
+арифметики с плавающей точкой и для их эффективного использования в состав ПК 
+должен входить арифметический сопроцессор. Компилятор Турбо Паскаля позволяет 
+создавать программы, работающие на любых ПК (с сопроцессором или без него) и 
+использующие любые вещественные типы. Необходимая для этого настройка 
+компилятора описана в прил.1. В процессе запуска Турбо Паскаль проверяет состав
+аппаратных средств и выявляет наличие или отсутствие сопроцессора. </P>
+<P>В некоторых случаях бывает необходимо отключить автоконтроль. Для этого перед 
+запуском Турбо Паскаля следует дать такую команду ДОС: </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">set 87=N</font> </P>
+<P>команда </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">set 87=Y</font> </P>
+<P>напротив, включает автоконтроль - эта команда активна по умолчанию. </P>
+<P>Отметим, что арифметический сопроцессор всегда обрабатывает числа в формате 
+EXTENDED, а три других вещественных типа в этом случае получаются простым 
+усечением результатов до нужных размеров и применяются в основном для экономии 
+памяти. </P>
+<P>Например, если «машинное эпсилон» (см. пример 2.6 в гл.2) вычисляется с 
+помощью такой программы: </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{$N+,E+}&nbsp;</font></i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">RealType = Real:&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">epsilon : RealType;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">epsilon := 1;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">while 1+epsilon/2 &gt; 1 do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> epsilon := epsilon/2;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(epsilon)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P>то независимо от объявления типа REALTYPE (он может быть SINGLE, REAL, DOUBLE 
+или EXTENDED) на печать будет выдан результат </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">1.08420217248550Е-0019</font> </P>
+<P>что соответствует типу EXTENDED. Происходит это по той причине, что все 
+операнды вещественного выражения 1 + epsilon/2 в операторе WHILE, перед 
+вычислением автоматически преобразуются к типу EXTENDED. Чтобы получить 
+правильный результат (например, для типа REALTYPE = REAL он будет 9 . 
+09494701772928Е-0013), программу необходимо изменить следующим образом: </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{$N+,E+}&nbsp;</font></i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">RealType= Real;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">epsilon, epsl:RealType;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">epsilon := 1;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> repeat</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">epsilon := epsilon/2;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> epsl := 1 + epsilon&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> until epsl = 1;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(2*epsilon)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P>Следует учесть, что тип REAL оптимизирован для работы без сопроцессора. Если 
+Ваш ПК оснащен сопроцессором, использование типа REAL приведет к дополнительным 
+затратам времени на преобразование REAL к EXTENDED. Поэтому никогда не 
+используйте REAL на ПК с сопроцессором, т.к. дополнительные затраты времени на 
+преобразование типов могут свести на нет все преимущества сопроцессора. При 
+разработке программ, критичных ко времени счета, следует заменять его типами 
+SINGLE или DOUBLE: по сравнению с типом REAL скорость вычислений на машинах с 
+сопроцессором в этом случае увеличивается в 2...3 раза. Если в ПК нет 
+арифметического сопроцессора, скорость обработки данных всех вещественных типов 
+приблизительно одинакова. </P>
+<P>Особое положение в Турбо Паскале занимает тип СОМР, который трактуется как 
+вещественное число без экспоненциальной и дробной частей. Фактически, СОМР - это 
+«большое» целое число со знаком, сохраняющее 19...20 значащих десятичных цифр 
+(во внутреннем представлении СОМР занимает 8 смежных байт). В то же время в 
+выражениях СОМР полностью совместим с любыми другими вещественными типами: над 
+ним определены все вещественные операции, он может использоваться как аргумент 
+математических функций и т.д. Наиболее подходящей областью применения типа СОМР 
+являются бухгалтерские расчеты: денежные суммы выражаются в копейках или центах 
+и действия над ними сводятся к операциям с достаточно длинными целыми числами. 
+</P>
+<P>Для работы с вещественными данными могут использоваться встроенные 
+математические функции, представленные в табл. 2.5. В этой таблице REAL означает 
+любой вещественный тип, INTEGER - любой целый тип. </P>
+<P align="center"><b>Таблица 4.5 </b> </P>
+<center>
+<TABLE border=1 frame=box rules=all >
+  <TBODY>
+  <TR>
+    <TD colSpan=4  align="center">
+      <P>Стандартные математические функции Турбо Паскаля</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>Обращение</P></TD>
+    <TD  align="center">
+      <P>Тип параметра</P></TD>
+    <TD  align="center">
+      <P>Тип результата</P></TD>
+    <TD  align="center">
+      <P>Примечание</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>abs (x)</P></TD>
+    <TD  align="center">
+      <P>Real, Integer</P></TD>
+    <TD  align="center">
+      <P>Тип аргумента</P></TD>
+    <TD >
+      <P>Модуль аргумента</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>АrсТаn (х)</P></TD>
+    <TD  align="center">
+      <P>Real</P></TD>
+    <TD  align="center">
+      <P>Real</P></TD>
+    <TD >
+      <P>Арктангенс ( значение в радианах)</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>cos (х)</P></TD>
+    <TD  align="center">
+      <P>To же</P></TD>
+    <TD  align="center">
+      <P>То же</P></TD>
+    <TD >
+      <P>Косинус, угол в радианах</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>ехр (х)</P></TD>
+    <TD  align="center">
+      <P>"</P></TD>
+    <TD  align="center">
+      <P>"</P></TD>
+    <TD >
+      <P>Экспонента</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>frас (х)</P></TD>
+    <TD  align="center">
+      <P>"</P></TD>
+    <TD  align="center">
+      <P>"</P></TD>
+    <TD >
+      <P>Дробная часть числа</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>int(x)</P></TD>
+    <TD  align="center">
+      <P>"</P></TD>
+    <TD  align="center">
+      <P>"</P></TD>
+    <TD >
+      <P>Целая часть числа</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>ln(x)</P></TD>
+    <TD  align="center">
+      <P>"</P></TD>
+    <TD  align="center">
+      <P>"</P></TD>
+    <TD >
+      <P>Логарифм натуральный</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>Pi</P></TD>
+    <TD  align="center">
+      <P>-</P></TD>
+    <TD  align="center">
+      <P>"</P></TD>
+    <TD >
+      <P>л = 3.141592653...</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>Random</P></TD>
+    <TD  align="center">
+      <P>-</P></TD>
+    <TD  align="center">
+      <P>"</P></TD>
+    <TD >
+      <P>Псевдослучайное число, равномерно распределенное в диапазоне 
+    0...[1]</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>Pandom(x)</P></TD>
+    <TD  align="center">
+      <P>Integer</P></TD>
+    <TD  align="center">
+      <P>Integer</P></TD>
+    <TD >
+      <P>Псевдослучайное целое число, равномерно распределенное в диапазоне 
+      0...(х-1)</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>Randomize</P></TD>
+    <TD  align="center">
+      <P>-</P></TD>
+    <TD  align="center">
+      <P>-</P></TD>
+    <TD >
+      <P>Инициация генератора псевдослучайных чисел</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>sin(x)</P></TD>
+    <TD  align="center">
+      <P>Real</P></TD>
+    <TD  align="center">
+      <P>Real</P></TD>
+    <TD >
+      <P>Синус, угол в радианах</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>sqr (x)</P></TD>
+    <TD  align="center">
+      <P>To же</P></TD>
+    <TD  align="center">
+      <P>То же</P></TD>
+    <TD >
+      <P>Квадрат аргумента</P></TD></TR>
+  <TR>
+    <TD  align="center">
+      <P>sqrt (x)</P></TD>
+    <TD  align="center">
+      <P>"</P></TD>
+    <TD  align="center">
+      <P>"</P></TD>
+    <TD >
+      <P>Корень квадратный</P></TD></TR></TBODY></TABLE>
+      </center>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl4_2.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl4_4.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr3.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr3_2.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Ошибки возникающие во время выполнения программ
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">
+Некоторые ошибки, обнаруженные во время выполнения программы, приводят к 
+появлению на экране сообщения вида</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Runtime error ппп at хххх:уууу&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> (Ошибка периода исполнения ппп по адресу 
+хххх:уууу)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">где ппп - номер ошибки; хххх:уууу - адрес (сегмент и смещение). После этого 
+сообщения программа завершает свою работу.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Ошибки периода исполнения делятся на четыре категории: ошибки, обнаруживаемые 
+ДОС (коды ошибок с 1 до 99), ошибки ввода-вывода (с 100 по 149), критические 
+ошибки (с 150 по 199) и фатальные ошибки (коды ошибок с 200 до 255).</font> </P>
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Ошибки, обнаруживаемые ДОС
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">1 Invalid function number (Неверный номер функции).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Вы пытаетесь вызвать 
+несуществующую функцию ДОС.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">2 File not found (He найден файл).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Ошибка генерируется процедурами RESET, APPEND, RENAME или ERASE в случае, 
+если имя, присвоенное файловой переменной, указывает несуществующий файл.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">3 Path not found (Путь не найден).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Ошибка генерируется процедурами:</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">RESET, REWRITE, APPEND или ERASE в случае, если имя, присвоенное файловой 
+переменной, является недействительным или указывает на несуществующий 
+подкаталог;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3">CHDIR, MKDIR или RMDIR в случае, если путь является недействительным или 
+указывает несуществующий подкаталог.</font></li>
+</ul>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">4 Too many open files (Слишком много открытых файлов).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Ошибка генерируется процедурами RESET, REWRITE или APPEND в случае, если 
+программа имеет слишком много открытых файлов. ДОС не позволяет использовать 
+более 15 открытых файлов для каждого процесса. Если ошибка возникла при наличии 
+менее 15 открытых файлов, то она может указывать на то, что файл CONFIG.SYS не 
+содержит параметра FILES=xxx или что этот параметр задает слишком мало файлов. 
+Увеличьте параметр FILES=xxx до какого-либо подходящего значения, например, до 
+80.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">5 File access defined (Отказано в доступе к файлу).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Данная ошибка 
+генерируется процедурами:</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> RESET или APPEND в случае, когда имя, присвоенное файловой переменной, 
+указывает каталог или файл, доступный только для чтения, в то время как параметр 
+FILEMODE файловой переменной содержит указание на запись данных;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> REWRITE в случае, когда каталог заполнен, или если имя, присвоенное 
+файловой переменной, задает каталог или существующий файл, доступный только для 
+чтения;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> RENAME в случае, если имя, присвоенное файловой переменной, указывает 
+каталог или если новое имя указывает существующий файл;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> ERASE в случае, если имя, присвоенное файловой переменной, указывает 
+каталог или файл, доступный только для чтения;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> MKDIR в случае, если файл с тем же именем уже существует в порождающем 
+каталоге, если нет места в порождающем каталоге или если путь к каталогу 
+содержит имя логического устройства;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> RMDIR в случае, если каталог не является пустым, если путь не определяет 
+каталог или если путь задает корневой каталог;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> READ или BLOCKREAD в случае типизированного или нетипизированного файла, 
+если файл не открыт для чтения;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> WRITE или BLOCKWRITE для типизированного или нетипизированного файла в 
+случае, если этот файл не открыт для записи.</font></li>
+</ul>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">6 Invalid file handle (Недопустимый файловый канал).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Данная ошибка генерируется в случае, когда системному вызову ДОС передается 
+недопустимый файловый канал. Эта ошибка не должна возникать в правильно 
+работающей программе. Ее появление является свидетельством того, что файловая 
+переменная каким-либо образом испорчена.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">12 Invalid file access code (Недействительный код доступа к файлам).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Ошибка 
+генерируется процедурами RESET или APPEND, если значение параметра FILEMODE в 
+файловой переменной не является допустимым.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">15 Invalid drive number (Недопустимый номер дисковода).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Ошибка генерируется процедурой GETDIR в случае, если номер дисковода не 
+является допустимым.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">16 Cannot remove current directory (Нельзя удалить текущий каталог).&nbsp;</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Ошибка 
+генерируется процедурой RMDIR в случае, если путь указывает текущий каталог.</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">17 Cannot rename across drives (Нельзя при переименовании указывать разные 
+дисководы).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Генерируется процедурой RENAME в случае, если оба файла не находятся на одном 
+и том же диске.</font> </P>
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr3.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr3_2.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+</BODY></HTML>

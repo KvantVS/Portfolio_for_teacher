@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Untitled</title>
+</head>
+
+<body lang=RU style="'tab-interval:35.4pt'" background="bgrwhite.gif">
+<p><div align="center"><b><font size="+1" face="Arial">35. Указатели </font></b></div></p>
+<p><span
+style="mso-spacerun: yes">   </span>Операционная система MS - DOS все
+адресуемое пространство делит на
+
+<p>сегменты.
+Сегмент - это участок памяти размером 64 К байт.<span style="mso-spacerun:
+yes">  </span>Для зада-
+
+<p>ния адреса
+необходимо определить адрес начала сегмента и смещение от-
+
+<p>носительно
+начала сегмента.
+
+<p><span
+style="mso-spacerun: yes">   </span>В TURBO<span style="mso-spacerun: yes"> 
+</span>PASCAL определен адресный тип Pointer - указатель.<span
+style="mso-spacerun: yes">  </span>Пере-
+
+<p>менные
+типа Pointer
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>var p: Pointer;
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p>содержат
+адрес какого - либо элемента программы и занимают<span style="mso-spacerun:
+yes">  </span>4<span style="mso-spacerun: yes">  </span>байта,
+
+<p>при
+этом<span style="mso-spacerun: yes">   </span>адрес хранится как два
+слова,<span style="mso-spacerun: yes">  </span>одно из них определяет сег-
+
+<p>мент,
+второе - смещение.
+
+<p><span
+style="mso-spacerun: yes">   </span>Переменную типа указатель можно описать
+другим способом.
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">  </span>type NameType= ^T;
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">  </span>var p: NameType;
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>Здесь p - переменная типа указатель,
+связанная с типом Т с помощью
+
+<p>имени
+типа NameType.<span style="mso-spacerun: yes">  </span>Описать переменную типа
+указатель можно<span style="mso-spacerun: yes">  </span>непос-
+
+<p>редственно
+в разделе описания переменных:
+
+<p><span
+style="mso-spacerun: yes">  </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>var p: ^T;
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>Необходимо различать<span
+style="mso-spacerun: yes">  </span>переменную<span style="mso-spacerun: yes"> 
+</span>типа указатель и переменную,<span style="mso-spacerun: yes">  </span>на
+
+<p>которую
+этот указатель ссылается.<span style="mso-spacerun: yes">  </span>Например если
+p - ссылка на<span style="mso-spacerun: yes">  </span>пере-
+
+<p>менную
+типа Т, то p^ - обозначение этой самой переменной.
+
+<p><span
+style="mso-spacerun: yes">   </span>Для переменных<span style="mso-spacerun:
+yes">  </span>типа<span style="mso-spacerun: yes">  </span>указатель<span
+style="mso-spacerun: yes">  </span>введено стандартное значение NIL,
+
+<p>которое
+означает,<span style="mso-spacerun: yes">  </span>что указатель не ссылается
+ни<span style="mso-spacerun: yes">  </span>к<span style="mso-spacerun: yes"> 
+</span>какому<span style="mso-spacerun: yes">  </span>объекту.
+
+<p>Константа
+NIL используется для любых указателей.
+
+<p><span
+style="mso-spacerun: yes">   </span>Над указателями не определено никаких
+операций,<span style="mso-spacerun: yes">  </span>кроме проверки на
+
+<p>равенство
+и неравенство.
+
+<p><span
+style="mso-spacerun: yes">   </span>Переменные типа указатель могут быть
+записаны в левой части опера-
+
+<p>тора
+присваивания,<span style="mso-spacerun: yes">  </span>при этом в правой<span
+style="mso-spacerun: yes">  </span>части<span style="mso-spacerun: yes"> 
+</span>может<span style="mso-spacerun: yes">  </span>находиться<span
+style="mso-spacerun: yes">  </span>либо
+
+<p>функция
+определения адреса Addr(X), либо выражение @ X, где @ - унар-
+
+<p>ная
+операция взятия адреса,<span style="mso-spacerun: yes">  </span>X - имя
+переменной любого типа,<span style="mso-spacerun: yes">   </span>в<span
+style="mso-spacerun: yes">  </span>том
+
+<p>числе
+процедурного.
+
+<p><span
+style="mso-spacerun: yes">   </span>Переменные типа указатель не могут быть
+элементами списка ввода<span style="mso-spacerun: yes">  </span>-
+
+<p>вывода.
+<p><div align="center"><a href="../Pascal. Курс лекций.html">	<img src="../../soder.gif" width=120 height=31 border=0 alt=""></a></div></p>
+
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_13.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_15.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Обработка команд пользователя
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Обработчик событий диалогового окна поддерживает только стандартные команды 
+cmClose, cmOk, cmCancel. Как заставить его реагировать на команды пользователя? 
+Вы правы: нужно перекрыть стандартный обработчик событий.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Введем новый объект TDlgWin как потомок объекта TDialog и перекроем его метод
+HandleEvent:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PDlgWin =ATDlgWin;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TDlgWin = object (TDialog)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure HandleEvent(var Event: TEvent); Virtual;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В новом методе следует сначала вызвать стандартный обработчик, а затем 
+проанализировать событие: если оно не очищено и содержит команду, значит была 
+нажата какая-то командная кнопка, и нам следует заставить обработчик закрыть 
+окно и вернуть эту команду как результат диалога с пользователем:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TDlgWin.HandleEvent(var Event:
+TEvent);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Обработчик событий для 
+основного диалогового окна}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Inherited HandleEvent(Event);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if Event.What = evCommand then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">EndModal(Event.Command) {Закрыть окно и вернуть команду}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Метод EndModal используется для того, чтобы завершить работу с диалоговым 
+окном и вернуть команду в программу, использующую это окно. Измените описание 
+переменной D в функции Control на</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">D: PDlgWin;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">и обращение к методу Init:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">D := New(PDlgWin, Init(...));</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">и вновь запустите программу: теперь нажатие на любую кнопку диалогового окна 
+приведет к его закрытию.</font> </P>
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_13.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_15.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</BODY></HTML>

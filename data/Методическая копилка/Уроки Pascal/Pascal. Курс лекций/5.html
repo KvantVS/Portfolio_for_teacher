@@ -1,0 +1,602 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Untitled</title>
+</head>
+
+<body lang=RU style="'tab-interval:35.4pt'" background="bgrwhite.gif">
+<p><div align="center"><b><font size="+1" face="Arial">5. Стандартные типы данных </font></b></div></p>
+<p><span
+style="mso-spacerun: yes">   </span>К стандартным относятся целые, действительные, символьный
+и адресный типы.
+
+<p><span
+style="mso-spacerun: yes">   </span><b>Целые</b> типы<span style="mso-spacerun: yes"> 
+</span>определяют константы,переменные
+и функции,значения
+
+<p>которых
+реализуются множеством целых чисел,<span style="mso-spacerun: yes"> 
+</span>допустимых в данной ЭВМ.
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes"> </span>тип<span style="mso-spacerun:
+yes">            </span>диапазон значений<span style="mso-spacerun: yes">      
+</span>требуемая память
+
+<p>__________________________________________________________
+
+<p>Shortint<span
+style="mso-spacerun: yes">            </span>-128 .. 127<span
+style="mso-spacerun: yes">           </span>1 байт
+
+<p>Integer<span
+style="mso-spacerun: yes">           </span>-32768 .. 32767<span
+style="mso-spacerun: yes">         </span>2 байта
+
+<p>Longint<span
+style="mso-spacerun: yes">      </span>-2147483648 .. 2147483647<span
+style="mso-spacerun: yes">    </span>4 байта
+
+<p>Byte<span
+style="mso-spacerun: yes">                   </span>0 .. 255<span
+style="mso-spacerun: yes">           </span>1 байт
+
+<p>Word<span
+style="mso-spacerun: yes">                   </span>0 .. 65535<span
+style="mso-spacerun: yes">         </span>2 байта
+
+<p>__________________________________________________________
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>Над целыми операндами<span
+style="mso-spacerun: yes">  </span>можно<span style="mso-spacerun: yes"> 
+</span>выполнятьследующие<span
+style="mso-spacerun: yes">  </span>арифметические
+
+<p>операции:
+сложение,вычитание, умножение,
+деление, получение остатка
+
+<p>от
+деления. Знаки этих операций:
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">        </span>+<span style="mso-spacerun: yes">     
+</span>-<span style="mso-spacerun: yes">     </span>*<span style="mso-spacerun:
+yes">     </span>div<span style="mso-spacerun: yes">     </span>mod
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>Результат арифметической операции над
+целыми операндами есть вели-
+
+<p>чина
+целого типа. Результат выполнения операции деления целых величин
+
+<p>есть
+целая часть частного.Результат
+выполненияоперации<span
+style="mso-spacerun: yes">  </span>получения
+
+<p>остатка
+от деления - остаток от деления целых. Например:
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">        </span>17 div 2 = 8,<span
+style="mso-spacerun: yes">   </span>3 div 5 = 0.
+
+<p><span
+style="mso-spacerun: yes">        </span>17 mod 2 = 1,<span
+style="mso-spacerun: yes">   </span>3 mod 5 = 3.
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>Операции отношения,<span
+style="mso-spacerun: yes">  </span>примененные к целым операндам, дают
+результат
+
+<p>логического
+типа TRUE или FALSE ( истинаили<span
+style="mso-spacerun: yes">  </span>ложь ).
+
+<p><span
+style="mso-spacerun: yes">   </span>В языке ПАСКАЛЬ имеются следующие операции
+отношения: равенство =,
+
+<p>неравенство
+&lt;&gt;, больше или равно &gt;=,<span style="mso-spacerun: yes"> 
+</span>меньше или равно &lt;=,больше
+&gt;,
+
+<p>меньше
+&lt; .
+
+<p><span
+style="mso-spacerun: yes">   </span>К аргументам целого типа применимы
+следующие стандартные (встроен-
+
+<p>ные)
+функции, результат выполнения которых имеет целый тип:
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">        </span>Abs(X),<span style="mso-spacerun:
+yes">   </span>Sqr(X),<span style="mso-spacerun: yes">   </span>Succ(X),<span
+style="mso-spacerun: yes">   </span>Pred(X),
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p>и
+которые определяют соответственно абсолютное значение Х,<span
+style="mso-spacerun: yes">  </span>Х в квад-
+
+<p>рате,
+Х+1, Х-1.
+
+<p><span
+style="mso-spacerun: yes">   </span>Следующая группа стандартных функций для
+аргумента целого типа да-
+
+<p>ет
+действительный результат:
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">        </span>Sin(X), Cos(X), ArcTan(X), Ln(X),
+Exp(X), Sqrt(X).
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>Эти функции вычисляют синус, <span
+style="mso-spacerun: yes"> </span>косинус и арктангенс угла, заданного
+
+<p>в
+радианах,логарифм натуральный,
+экспоненту и корень квадратный со-
+
+<p>ответственно.
+
+<p><span
+style="mso-spacerun: yes">   </span>Результат выполнения функции проверки целой
+величины на нечетность
+
+<p>Odd(X)
+имеет<span style="mso-spacerun: yes">    </span>значение истина,<span
+style="mso-spacerun: yes">  </span>если аргумент нечетный,<span
+style="mso-spacerun: yes">  </span>и значение
+
+<p>ложь,
+если аргумент четный:
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">        </span>X=5<span style="mso-spacerun: yes">   
+</span>Odd(X)=TRUE ,<span style="mso-spacerun: yes">    </span>X=4<span
+style="mso-spacerun: yes">    </span>Odd(X)=FALSE.
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>Для быстрой работы с целыми числами
+определены процедуры:
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">    </span>Inc(X)<span style="mso-spacerun: yes">    
+</span>X:=X+1
+
+<p><span
+style="mso-spacerun: yes">    </span>Inc(X,N)<span style="mso-spacerun: yes">  
+</span>X:=X+N
+
+<p><span
+style="mso-spacerun: yes">    </span>Dec(X)<span style="mso-spacerun: yes">    
+</span>X:=X-1
+
+<p><span
+style="mso-spacerun: yes">    </span>Dec(X,N)<span style="mso-spacerun: yes">  
+</span>X:=X-N
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span><b>Действительные</b> типы<span
+style="mso-spacerun: yes">  </span>определяет<span style="mso-spacerun: yes"> 
+</span>теданные,<span
+style="mso-spacerun: yes">   </span>которые реализуются
+
+<p>подмножеством
+действительных чисел, допустимых в данной ЭВМ.
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>Тип<span style="mso-spacerun:
+yes">           </span>Диапазон<span style="mso-spacerun: yes">       
+</span>Количество цифр<span style="mso-spacerun: yes">     </span>Требуемая
+
+<p><span
+style="mso-spacerun: yes">                 </span>значений<span
+style="mso-spacerun: yes">            </span>мантиссы<span style="mso-spacerun:
+yes">      </span>память (байт)
+
+<p>---------------------------------------------------------------
+
+<p>Real<span
+style="mso-spacerun: yes">         </span>2.9e-39 .. 1.7e+38<span
+style="mso-spacerun: yes">        </span>11<span style="mso-spacerun:
+yes">                </span>6
+
+<p>Single<span
+style="mso-spacerun: yes">       </span>1.5e-45 .. 3.4e+38<span
+style="mso-spacerun: yes">         </span>7<span style="mso-spacerun:
+yes">                </span>4
+
+<p>Double<span
+style="mso-spacerun: yes">      </span>5.0e-324 .. 1.7e+308<span
+style="mso-spacerun: yes">       </span>15<span style="mso-spacerun:
+yes">         </span><span style="mso-spacerun: yes">       </span>8
+
+<p>Extended<span
+style="mso-spacerun: yes">   </span>3.4e-4932 .. 1.1e+4932<span
+style="mso-spacerun: yes">      </span>19<span style="mso-spacerun:
+yes">               </span>10
+
+<p>Comp<span
+style="mso-spacerun: yes">        </span>-9.2e+18 .. 9.2e+18<span
+style="mso-spacerun: yes">        </span>19<span style="mso-spacerun:
+yes">                </span>8
+
+<p>---------------------------------------------------------------
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>Тип Real определен в стандартном ПАСКАЛЕ
+иматематическим<span
+style="mso-spacerun: yes">  </span>сопро-
+
+<p>цессором
+не поддерживается.
+
+<p><span
+style="mso-spacerun: yes">   </span>Остальные действительные типы определены
+стандартом IEEE 457 и ре-
+
+<p>ализованы
+на всех современных компьютерах.
+
+<p><span
+style="mso-spacerun: yes">   </span>Для их использования при наличии
+сопроцессора илипри<span
+style="mso-spacerun: yes">  </span>работе<span style="mso-spacerun: yes"> 
+</span>на
+
+<p>ЭВМ
+типа 80486 необходимо компилировать программу с ключом {$ N+},<span
+style="mso-spacerun: yes">  </span>а
+
+<p>при
+отсутствии сопроцессора - с ключами {$N-,E+}.
+
+<p><span
+style="mso-spacerun: yes">   </span>Тип Comp<span style="mso-spacerun: yes"> 
+</span>хотяи относится к
+действительным типам,хранит только
+
+<p>длинные
+целые значения.
+
+<p><span
+style="mso-spacerun: yes">   </span>Над действительными операндами можно
+выполнять следующие арифмети-
+
+<p>ческие
+операции, дающие действительный результат:
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">    </span>сложение + ,<span style="mso-spacerun:
+yes">  </span>вычитание - ,умножение *
+,деление / .
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>К величинам действительного типа применимы
+все операции отношения,
+
+<p>дающие
+булевский результат.
+
+<p><span
+style="mso-spacerun: yes">   </span>Один из операндов, участвующих в этих
+операциях, может быть целым.
+
+<p><span
+style="mso-spacerun: yes">   </span>К действительным аргументам применимы
+функции, дающие действитель-
+
+<p>ный
+результат:
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p><span
+style="mso-spacerun: yes">     </span>Abs(X), Sqr(X), Sin(X), Cos(X),<span
+style="mso-spacerun: yes">  </span>ArcTan(X),<span style="mso-spacerun: yes"> 
+</span>Ln(X),Exp(X),
+
+<p>Sqrt(X),
+Frac(X), Int(X), Pi.
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>Функция Frac(X) возвращает дробную часть X,
+функция Int(X) - целую
+
+<p>часть
+X.
+
+<p><span
+style="mso-spacerun: yes">   </span>Безаргументная функция<span
+style="mso-spacerun: yes">  </span>Pi<span style="mso-spacerun: yes"> 
+</span>возвращаетзначение числа Пи
+действи-
+
+<p>тельного
+типа.
+
+<p><span
+style="mso-spacerun: yes">   </span>К аргументам действительного типа применимы
+также функции
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p><span
+style="mso-spacerun: yes">     </span>Trunc(X) и Round(X),
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p>дающие
+целыйрезультат.<span
+style="mso-spacerun: yes">  </span>Первая из них выделяет целую часть действи-
+
+<p>тельного<span
+style="mso-spacerun: yes">  </span>аргумента<span style="mso-spacerun: yes"> 
+</span>путемотсечения дробной части,
+вторая округляет
+
+<p>аргумент
+до ближайшего целого.
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>ЛОГИЧЕСКИЙ тип (Boolean)<span
+style="mso-spacerun: yes">  </span>определяет те данные, которые могут при-
+
+<p>нимать
+логические значения TRUE и FALSE.
+
+<p><span
+style="mso-spacerun: yes">   </span>К булевским операндам применимы следующие
+логические операции:
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p><span
+style="mso-spacerun: yes">     </span>not<span style="mso-spacerun: yes">    
+</span>and<span style="mso-spacerun: yes">      </span>or<span
+style="mso-spacerun: yes">     </span>xor.
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>Логический тип определен таким образом, что
+FALSE &lt; TRUE. Это поз-
+
+<p>воляет
+применять к булевским операндам все операции отношения.
+
+<p><span
+style="mso-spacerun: yes">   </span>В ТУРБО ПАСКАЛЬ введены еще разновидности
+логического типа:
+
+<p>ByteBool,
+WordBool и LongBool, которые занимают в памяти ЭВМ один, два
+
+<p>и
+четыре байта соответственно.
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span><b>Символьный</b> тип (Char) определяет
+упорядоченную совокупность симво-
+
+<p>лов,
+допустимых<span style="mso-spacerun: yes">    </span>в<span
+style="mso-spacerun: yes">  </span>данной ЭВМ.<span style="mso-spacerun: yes"> 
+</span>Значение символьной переменной или
+
+<p>константы
+- это один символ из допустимого набора.
+
+<p><span
+style="mso-spacerun: yes">   </span>Символьная константа<span
+style="mso-spacerun: yes">  </span>может<span style="mso-spacerun: yes"> 
+</span>записываться в тексте программы тремя
+
+<p>способами:
+
+<p><span
+style="mso-spacerun: yes">    </span>-как один символ, заключенный в апострофы,
+например:
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p><span
+style="mso-spacerun: yes">      </span>'A'<span style="mso-spacerun: yes">  
+</span>'a'<span style="mso-spacerun: yes">   </span>'Ю'<span
+style="mso-spacerun: yes">  </span>'ю';
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>-с помощью конструкции вида #K, где K - код
+соответствущего симво-
+
+<p>ла, при
+этом значение K должно находиться в пределах 0..255;
+
+<p><span
+style="mso-spacerun: yes">   </span>-с помощью конструкции вида ^C, где C - код
+соответствущего управ-
+
+<p>ляющего<span
+style="mso-spacerun: yes">  </span>символа, при этом<span style="mso-spacerun:
+yes">  </span>значениеC должно быть на
+64 больше
+
+<p>кода
+управляющего символа.
+
+<p><span
+style="mso-spacerun: yes">   </span>К величинам символьного типа применимы все
+операции отношения.
+
+<p><span
+style="mso-spacerun: yes">   </span>Для величин символьного типа определены две
+функции преобразования
+
+<p><span
+style="mso-spacerun: yes">      </span>
+
+<p><span
+style="mso-spacerun: yes">        </span>Ord(C)<span style="mso-spacerun:
+yes">     </span>Chr(K).
+
+<p><span
+style="mso-spacerun: yes">   </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>Первая функция определяет порядковый номер
+символа С в наборе сим-
+
+<p>волов,<span
+style="mso-spacerun: yes">  </span>вторая<span style="mso-spacerun: yes"> 
+</span>определяет по порядковому номеру К символ, стоящий на
+
+<p>К-ом
+месте в наборе символов. Порядковый номер имеет целый тип.
+
+<p><span
+style="mso-spacerun: yes">   </span>К аргументам символьного типа применяются
+функции, которые опреде-
+
+<p>ляют
+предыдущий и последующий символы:
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p><span
+style="mso-spacerun: yes">      </span>Pred(C)<span style="mso-spacerun:
+yes">    </span>Succ(C).<span style="mso-spacerun: yes">   </span>Pred('F') =
+'E' ; Succ('Y') = 'Z' .
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p><span
+style="mso-spacerun: yes">   </span>При отсутствии<span style="mso-spacerun:
+yes">  </span>предыдущего или последующего символов значение со-
+
+<p>ответствующих
+функций не определено.
+
+<p><span
+style="mso-spacerun: yes">   </span>Для литер из интервала 'a'..'z' применима
+функция UpCase(C), кото-
+
+<p>рая
+переводит эти литеры в верхний регистр 'A'..'Z'.
+
+<p><span
+style="mso-spacerun: yes">    </span>
+
+<p><span
+style="mso-spacerun: yes">   </span><b>Адресный </b>тип (Pointer) определяет
+переменные, которые могут содер-
+
+<p>жать
+значенияадресов данных или фрагментов
+программы.Для хранения
+
+<p>адреса
+требуются два слова (4 байта), одно из них определяет сегмент,
+
+<p>второе
+- смещение.
+
+<p><span
+style="mso-spacerun: yes">   </span>Работа с адресными переменными<span
+style="mso-spacerun: yes">  </span>(указателями)<span style="mso-spacerun:
+yes">   </span>будетрассмотрена
+
+<p>позже,
+сейчасотметим,<span
+style="mso-spacerun: yes">  </span>что для получения значения адреса какой-либо
+
+<p>переменной
+введена унарная операция @.
+
+<p><div align="center"><a href="../Pascal. Курс лекций.html">	<img src="../../soder.gif" width=120 height=31 border=0 alt=""></a></div></p>
+
+
+</body>
+</html>

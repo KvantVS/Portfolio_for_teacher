@@ -1,0 +1,276 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl11_2.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl11_4.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Поддержка процедур обработки прерываний
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+При написании процедур обработки прерываний существенными являются два 
+обстоятельства. Во-первых, процедура обработки прерывания не должна искажать 
+работу прерванной программы. Для этого необходимо сначала сохранить регистры 
+центрального процессора, а перед выходом из процедуры - восстановить их. 
+Во-вторых, процедура должна строиться по принципу реентерабельности (повторной 
+входимости): ее работа может быть прервана в любой момент другими прерываниями 
+и ДОС может обратиться к соответствующей функции до завершения обработки 
+предыдущего прерывания.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Турбо Паскаль предоставляет программисту возможность написания процедур 
+обработки прерывания на языке высокого уровня, хотя обычно такие процедуры 
+пишутся на языке ассемблера.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Процедура обработки прерывания, написанная на Турбо Паскале, должна 
+начинаться стандартной директивой INTERRUPT (прерывание), например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure IntProc (Flags, CS, IP, AX, BX,
+CX, DX,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SI, DF, DS, ES, BP : word); inerrupt;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">...</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end ;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Формальные параметры в заголовке процедуры должны перечисляться в указанном 
+порядке - через эти параметры все регистры прерванной программы становятся дос</font><font face="Arial, Helvetica, sans-serif" size="3">тупны процедуре обработки прерывания. Количество перечисляемых в заголовке 
+процедуры параметров-регистров может быть любым, но не больше 12. Если в списке 
+опущен какой-либо параметр, должны быть опущены также и все предшествующие ему 
+параметры. Например, описание</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure IntProc(SI, DP, ES: word); interrupt;&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> будет неверным (опущены 
+параметры DS и ВР); правильное описание:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure IntProc(SI, DP, DS, ES, BP: word);
+interrupt;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Заметим, что компилятор не контролирует порядок перечисления параметров в 
+заголовке процедуры обработки прерывания.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Директива INTERRUPT вызывает генерацию специальных машинных кодов, 
+обеспечивающих заталкивание регистров в стек при входе в процедуру и извлечение 
+их из стека перед выходом из нее.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">При входе в процедуру:</font> </P>
+<TABLE border=0 frame=box rules=all>
+  <TBODY>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">push</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ax</font></P></TD>
+    <TD><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">push</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">bx</font></P></TD>
+    <TD><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">push</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cx</font></P></TD>
+    <TD><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">push</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">dx</font></P></TD>
+    <TD><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">push</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">si</font></P></TD>
+    <TD><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">push</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">di</font></P></TD>
+    <TD><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">push</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ds</font></P></TD>
+    <TD><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">push</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">es</font></P></TD>
+    <TD><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">push</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">bp</font></P></TD>
+    <TD><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">bp,</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">si</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">sub</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">sp,</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">LocalSize</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ax,</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SEG DATA</font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ds,</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ax</font></P></TD></TR></TBODY></TABLE>
+<P><font face="Arial, Helvetica, sans-serif" size="3">При выходе из процедуры:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov sp, bp</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">pop bp</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">pop es</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">pop ds</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">pop di</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">pop si</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">pop dx</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">pop cx</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">pop bx</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">pop ax</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">irep</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В самой процедуре обработки прерывания не рекомендуется обращаться к другим 
+функциям ДОС, так как некоторые из них, в том числе все функции ввода-вывода,
+нереентерабельны.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для связи с любыми процедурами прерываний, а следовательно, и с процедурами, 
+написанными программистом, используются векторы прерываний - четырехбайтные 
+абсолютные адреса точек входа в эти процедуры. Векторы прерываний располагаются</font>
+<font face="Arial, Helvetica, sans-serif" size="3">в младших адресах оперативной памяти, начиная с нулевого адреса: прерывание 
+номер 0 - по адресу 0, номер 1 - по адресу 1*4 = 4, номер N - по адресу N * 4. С 
+помощью следующих двух процедур программист может прочитать содержимое любого 
+вектора или установить его новое значение.</font> 
+</P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> GETINTVEC. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возвращает вектор прерывания с указанным номером. 
+Обращение:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GETINTVEC (&lt;,&lt;вектор&gt;)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь &lt;D&gt; - выражение типа BYTE; номер прерывания;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">&lt;вектор&gt; - переменная типа POINTER; адрес точки входа в процедуру 
+обработки прерывания.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Представленная в примере 11.3 программа выводит на экран содержимое всех 
+ненулевых векторов прерываний.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><u>Пример 11.3</u></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses DOS;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">i : byte; p : pointer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for i := 0 to 255 do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetlntVec (i, p) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if (Seg (р) &lt;&gt; 0) or (Ofs (рл) &lt;&gt; 0) then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> WriteLn (' N=', i:3, ' 
+Seg=', Seg (р):5,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">' Ofs =' , Ofs (р) :5)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура </b>SETINTVEC.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Устанавливает ндвое значение вектора прерывания. Формат 
+обращения:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SETINTVEC (&lt;,&lt;адрес&gt;)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь &lt;D&gt; - выражение типа BYTE; номер прерывания;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">&lt;адрес&gt; - выражение типа POINTER; адрес точки входа в процедуру 
+обработки прерывания.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">При нормальном завершении программы она выгружается из памяти, что делает 
+невозможным разработку резидентных в памяти процедур обработки прерываний. Вы 
+можете прекратить работу программы и оставить ее резидентной в памяти, если 
+воспользуетесь процедурой KEEP.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура </b>KEEP. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Завершает работу программы и оставляет ее резидентной в 
+памяти. Обращение:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">KEEP (&lt;код&gt;)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь &lt;код&gt; - выражение типа WORD - код завершения программы. Код 
+завершения представляет собой фактически единственный механизм передачи 
+сообщений от</font> <font face="Arial, Helvetica, sans-serif" size="3">запущенной программы к программе, которая ее запустила. Он может быть 
+проанализирован в вызывающей программе с помощью функции
+DOSEXITCODE.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция </b>DOSEXITCODE. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возвращает значение типа WORD - код завершения 
+подчиненной программы. Обращение:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DOSEXITCODE</font> </P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl11_2.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl11_4.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

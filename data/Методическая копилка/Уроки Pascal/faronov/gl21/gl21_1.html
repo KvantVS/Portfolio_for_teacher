@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl21.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl21_2.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Создание ресурса
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Поскольку ресурс - это поток, для создания ресурса необходимо открыть 
+(создать) поток. Для этого следует использовать метод Init для потока нужного 
+типа (обычно используется буферизованный поток TBufStream или его потомок). 
+После того как поток успешно открыт, в него помещают нужные объекты с их 
+уникальными ключами и затем поток закрывается - файл ресурсов готов.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Вот как, например, можно создать ресурс, содержащий строку статуса с именем 
+(ключом) «Статус»:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Drivers, Objects, Views, App, Menus;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">StatusRes: TResourceFile;  {Файл ресурсов}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PStatusStrm: PBufStream;  {Буферизованный поток}&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Procedure CreatestatusLine;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Создает строку статуса и помещает ее в файл ресурсов}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R: TRect;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PStatus: PStatusLine;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(0,24,80,25) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PStatus := New(PStatusLine, Init(R,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewStatusDef(0, $FFFF,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewStatusKey('~Alt-X~ Выход', kbAltX, cmQuit,&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewStatusKey('Демонстрация 
+строки статуса',О,0, NIL)),</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NIL)) ) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">StatusRes.Put(PStatus, 'Статус');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Dispose(PStatus, Done)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PStatusStrm := New(PBufStream,Init(</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'status.res',stCreate,1024));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">StatusRes.Init(PStatusStrm);  {Создаем поток}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">RegisterType(RStatusLine);  {Регистрируем строку статуса}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">CreateStatusLine;  {Помещаем строку статуса в поток}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">StatusRes.Done&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В программе создается поток, связанный с указателем PStatusStrm, и в него с 
+помощью процедуры CreateStatusLine помещается строка статуса. Этой строке 
+присваивается ключ Статус.</font> </P>
+
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl21.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl21_2.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

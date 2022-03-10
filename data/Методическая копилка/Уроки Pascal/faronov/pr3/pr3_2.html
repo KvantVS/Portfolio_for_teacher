@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr3_1.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr3_3.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Ошибки ввода-вывода
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если один из операторов компилировался с директивой {$I+}, то ошибка 
+ввода-вывода приводит к прекращению выполнения программы. В состоянии {$I-} 
+программа продолжает выполняться, а ошибка возвращается функцией
+IORESULT.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">100 Disk read error (Ошибка чтения с диска).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Генерируется процедурой READ в типизированном файле в случае, если Вы 
+пытаетесь осуществить считывание из полностью прочитанного файла.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">101 Disk write error (Ошибка записи на диск).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Ошибка генерируется процедурами CLOSE, WRITE, WRITELN, FLUSH в случае, если 
+диск заполнен.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">102 File not assigned (Файлу не присвоено имя).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Ошибка генерируется процедурами RESET, REWRITE, APPEND, RENAME и ERASE в 
+случае, если файловой переменной не было присвоено имя файла с помощью обращения 
+к процедуре ASSIGN.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">103 File not open (Файл не открыт).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Ошибка генерируется процедурами CLOSE, READ, WRITE, SEEK, EOF, FILEPOS, 
+FILESIZE, FLUSH, BLOCKREAD, BLOCKWRITE в случае, если файл не открыт.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">104 File not open for input (Файл не открыт для ввода).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Ошибка генерируется процедурами READ, READLN, EOF, EOLN, SEEKEOF или SEEKEOLN 
+в текстовом файле в случае, если файл не открыт для ввода.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">105 File not open for output (Файл не открыт для вывода).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Ошибка генерируется процедурами WRITE или WRITELN в текстовом файле в случае, 
+если файл не открыт для вывода.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">106 Invalid numeric format (Неверный числовой формат).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Генерируется процедурами READ или READLN в случае, если числовое значение, 
+считанное из текстового файла, не соответствует правильному числовому формату.</font> 
+</P>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+Критические ошибки
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">150 Disk is write protected (Диск защищен от записи).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">151 Unknown unit (Неизвестный модуль).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">152 Drive not ready (Дисковод находится в состоянии «не готов»).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">153 Unknown command (Неопознанная команда).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">154 CRC error in data (Ошибка в исходных данных).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">155 Bad drive requiest structure length (При обращении к диску указана 
+неверная длина структуры).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">156 Disk seek error (Ошибка при операции установки головок на диске).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">157 Unknown media type (Неизвестный тип носителя).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">158 Sector not found ЦСектор не найден).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">159 Printer out of paper (Кончилась бумага на принтере).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">160 Device write fault (Ошибка при записи на устройство).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">161 Device read fault (Ошибка при чтении с устройства).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">162 Hardware failure (Сбой аппаратуры).</font> </P>
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr3_1.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr3_3.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+</BODY></HTML>

@@ -1,0 +1,238 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_14.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl115_16.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Редактирование и добавление записей
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Для редактирования и добавления записей создадим окно, показанное на рис. 
+15.11.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Режим редактирования отличается от режима добавления записей двумя 
+обстоятельствами: во-первых, в режиме редактирования поля ввода данных окна 
+должны содержать текст, взятый из редактируемой записи, а в режиме ввода эти 
+поля пусты. Во-вторых, режим редактирования завершается сразу после нажатия на 
+клавишу Enter, в то время как в режиме ввода нажатие на эту клавишу означает 
+добавление к файлу текущей записи и переход к вводу следующей: режим ввода 
+завершается командой cmClose (клавиша Esc). С учетом этого оба режима 
+реализуются в рамках одной процедуры AddItem (Edit), а параметр Edit указывает 
+нужный режим: если Edit = True, реализуется режим редактирования, если False - 
+режим добавления записей. Вот текст этой процедуры:</font> </P>
+<p align="center"><img border="0" src="15_11.jpg"    ></p>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Рис.15.11.</b> Окно ввода/редактирования записей</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure AddItem(Edit: Boolean);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Добавляет новый или редактирует старый элемент данных}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">у = 1;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">dy= 2;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">L -= LName+LPhone+LAddr;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Data: DataType;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R: TRect;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InWin: PDialog;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">BName,BPhone,BAddr: PInputLine;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Control: Word;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OldCount: Word;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s: String;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">р: PString;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Seek(DataFile,FileSize(DataFile));{Добавляем записи в конец файла}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">repeat  {Цикл ввода записей}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if Edit then  {Готовим заголовок}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s := 'Редактирование:'&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Str(FileSize(DataFile)+1,s);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> while Length(s) &lt; 3 do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s := '0'+s;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s :- 'Вводится запись N '+s&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">FillChar(Data,SizeOf(Data),' ');{Заполняем 
+поля пробелами}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(15,5,65,16) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> InWin := New(PDialog, Init(R, s));{Создаем окно}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">with InWin do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin{Формируем окно:}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(2,y+1,2+LName,y+2);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">BName := New(PInputLine, Init(R,LName));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert(BName);  {Поле имени}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(2,y,2+LName,y+1);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert(New(PLabel,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Init(R, 'Имя',BName)));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(2,y+dy+1,2+LPhone,y+dy+2);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">BPhone := New(PInputLine, Init(R,LPhone));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert(BPhone);  {Поле телефона}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign (2,y+dy, 2+LPhone,y+dy+1) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert (New(PLabel,.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Init(R, 'Телефон',BPhone)));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(2,y+2*dy+1,2+LAddr,y+2*dy+2);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">BAddr := New(PInputLine, Init(R,LAddr));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert(BAddr);  {Поле адреса}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(2,y+2*dy,2+LAddr,y+2*dy+1);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert(New(PLabel,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Init(R, 'Адрес',BAddr)));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Вставляем две командные кнопки:}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(2,y+3*dy+1,12,y+3*dy+3);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert(New(PButton,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Init(R, 'Ввести',cmOK,bfDefault)));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(2+20,y+3*dy+1,12+20,y+3*dy+3);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert(New(PButton,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Init(R, 'Выход',cmCancel,bfNormal)));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SelectNext(False)  {Активизируем первую кнопку}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;  {Конец формирования окна}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+if Edit then with Data do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin  {Готовим начальный текст:}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">р :=PS.At(Location);  {Читаем данные из записи)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">S:=p;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Name := copy(s,1,LName);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Phone:= copy(s,succ(LName),LPhone);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Addr := 
+copy(s,succ(LName+LPhone),LAddr);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InWin.SetData(Data)  {Вставляем текст в поля 
+ввода}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Control := DeskTop.ExecView(InWin); {Выполняем диалог}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if Control=cmOk then 
+with Data do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if Edit then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DeleteItem;  {Удаляем старую запись}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Name := BName.Data;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Phone:= 
+BPhone.Data;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Addr := BAddr.Data;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s[0] := chr(L) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">FillChar(s[1],L,' ');&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">move(Name[1],s[1],Length(Name)) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">move(Phone[1],s[succ(LName)],Length(Phone));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">move(Addr[1],s[succ(LName+LPhone)],Length(Addr));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> OldCount := PS.Count;  
+{Прежнее количество записей}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> РS.insert(NewStr(s));  {Добавляемв коллекцию}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+{Проверяем добавление}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if OldCount &lt;&gt; РS.Count then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write(DataFile,Data)  {Да - добавляем в файл}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">until Edit or (Control=cmCancel);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Draw&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; {AddItem}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Вначале указатель файла смещается в самый конец, подготавливая добавление 
+записей (судя по всему, режим добавления будет использоваться гораздо чаще, чем 
+режим редактирования). Затем формируется заголовок окна и само окно. Операторы</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if Edit then with Data do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin {Готовим начальный текст:}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">готовят начальное состояние полей ввода в режиме редактирования. Оператор</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InWin. SetData (Data)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">помещает подготовленный текст в нужные поля. При обращении к процедуре 
+SetData данные должны быть предварительно подготовлены в строгом соответствии с 
+порядком создания диалоговых полей в окне и типом их данных. Поскольку в нашем 
+случае формат данных в полях ввода окна совпадает с форматом файловых данных, мы 
+можем использовать одну и ту же переменную как для работы с файлом, так и для 
+установки начальных значений диалоговых полей.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В самом общем случае пользователь должен объявить новый тип, соответствующий 
+формату помещаемых в окно данных, и использовать выражение этого типа в</font>
+<font face="Arial, Helvetica, sans-serif" size="3">качестве параметра обращения к процедуре SetData. Например, если бы в нашем 
+окне было предусмотрено только одно поле ввода «Телефон», то установку данных 
+можно было бы осуществить таким оператором:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InWin. SetData (DataType . Phone)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">где DataType.Phone - выражение типа String [LPhone].</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Контроль за соответствием типа устанавливаемых данных порядку объявления и 
+типу данных диалоговых полей полностью возлагается на программиста. В операторах</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if Control=cmOk then with Data do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">данные, полученные из диалогового окна, помещаются сначала в отсортированную 
+коллекцию, а затем - в файл. С помощью оператора</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if OldCount &lt;&gt;PS. Count then</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">проверяется изменение количества данных в коллекции (напомню, что в 
+отсортированную коллекцию можно поместить только уникальную запись). Если 
+количество записей в коллекции изменилось, значит новая запись не совпадает ни с 
+одной из уже имеющихся и ее следует поместить в файл.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Операторы</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if Edit then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DeleteItem;  {Удаляем старую запись}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">предварительно удаляют старую запись с помощью обращения к процедуре
+DeleteItem.</font> </P>
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_14.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_16.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</BODY></HTML>

@@ -1,0 +1,245 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Untitled</title>
+</head>
+
+<body  background="../../bgrwhite.gif">
+<p><div align="center"><b><font size="+1" face="Arial">Функции форматирования </font></b></div></p>
+
+<div style='border:none;border-bottom:solid windowtext .75pt;padding:0cm 0cm 1.0pt 0cm'>
+
+<p class=MsoNormal align=right style='text-align:right;border:none;mso-border-bottom-alt:
+solid windowtext .75pt;padding:0cm;mso-padding-alt:0cm 0cm 1.0pt 0cm'><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;color:black;
+layout-grid-mode:line'>Модуль </span></b><b style='mso-bidi-font-weight:normal'><span
+lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>SysUtils</span></b><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><o:p></o:p></span></p>
+
+</div>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US
+style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;layout-grid-mode:
+line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+color:black;layout-grid-mode:line'>Function FloatToStrF(</span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-bidi-font-family:"Times New Roman";color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>Value</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>: Extended; </span></b><b style='mso-bidi-font-weight:normal'><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>Format</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>: TFloatFormat; </span></b><b style='mso-bidi-font-weight:normal'><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>Precision</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>,<span style="mso-spacerun: yes">  </span></span></b><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+mso-bidi-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>Digits</span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+color:black;layout-grid-mode:line'>: Integer): </span></b><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+mso-bidi-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>String</span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+color:black;layout-grid-mode:line'>;<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Преобразовывает
+число с плавающей запятой, в строковое представление. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Параметр Format
+определяет формат результирующей строки. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Параметр Precision
+определяет точность данного значения. Он должен быть равен 7 или меньше для
+значений типа </span><span lang=EN-US style='font-size:10.0pt;color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>Single</span><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>, 15 или меньше для
+значений типа </span><span lang=EN-US style='font-size:10.0pt;color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>Double</span><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'> и 18 или меньше для
+значений типа Extended. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Значение параметра
+Digit зависит от выбранного формата.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Возможные значения
+параметра Format описаны ниже.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><i style='mso-bidi-font-style:
+normal'><span lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:
+EN-US;layout-grid-mode:line'>f</span></i><i style='mso-bidi-font-style:normal'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>fGeneral</span></i><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'> - общий формат
+числа. Значение преобразовывается в самую короткую возможную десятичную строку,
+использующую фиксированный или научный формат. Конечные нули удаляются, а
+десятичная точка появляется только в случае необходимости. Параметр Digit
+определяет минимальное число цифр в порядке числа (между 0 и 4).<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><i style='mso-bidi-font-style:
+normal'><span lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:
+EN-US;layout-grid-mode:line'>f</span></i><i style='mso-bidi-font-style:normal'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>fExponent</span></i><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'> - научный формат.
+Значение преобразовывается в строку вида «-d. ddd ... E + dddd». Общее
+количество цифр в результирующей строке (включая одну перед десятичной точкой)
+определяется параметром Precision. Параметр Digit определяет минимальное число
+цифр в порядке числа (между 0 и 4).<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><i style='mso-bidi-font-style:
+normal'><span lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:
+EN-US;layout-grid-mode:line'>f</span></i><i style='mso-bidi-font-style:normal'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>fFixed</span></i><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'> - фиксированный
+формат. Значение преобразовывается в строку вида «-ddd. ddd ...». Число цифр
+после десятичной точки определяется параметром Digit и должно быть не больше
+18. Если число цифр слева от десятичной точки больше, чем определено в
+параметре </span><span lang=EN-US style='font-size:10.0pt;color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>Precision</span><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>, используется
+научный формат.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><i style='mso-bidi-font-style:
+normal'><span lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:
+EN-US;layout-grid-mode:line'>f</span></i><i style='mso-bidi-font-style:normal'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>fNumber</span></i><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'> - числовой формат.
+Значение преобразовывается в строку вида «-d, ddd, ddd.ddd ...». Формат
+ffNumber соответствует формату ffFixed, за исключением того, что возникающая в
+результате строка содержит разделитель тысяч.</span><span lang=EN-US
+style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;layout-grid-mode:
+line'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><i style='mso-bidi-font-style:
+normal'><span lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:
+EN-US;layout-grid-mode:line'>f</span></i><i style='mso-bidi-font-style:normal'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>fCurrency</span></i><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'> - денежный формат.
+Значение преобразовывается в строку, которая представляет собой денежную
+величину. Преобразование управляется глобальными переменными CurrencyString,
+CurrencyFormat, NegCurrFormat, ThousandSeparator и DecimalSeparator, которые
+определяются соответствующими значениями раздела «<i style='mso-bidi-font-style:
+normal'>Язык и стандарты»</i> Панели управления </span><span lang=EN-US
+style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;layout-grid-mode:
+line'>Windows</span><span style='font-size:10.0pt;color:black;layout-grid-mode:
+line'>. Число цифр после десятичной точки определяется параметром Digit</span><span
+lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>s</span><span style='font-size:10.0pt;color:black;
+layout-grid-mode:line'> и должно быть не больше 18.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Если параметр </span><span
+lang=EN-US style='font-size:10.0pt;color:black;mso-ansi-language:EN-US;
+layout-grid-mode:line'>Value </span><span style='font-size:10.0pt;color:black;
+layout-grid-mode:line'>принимает бесконечное значение (с плюсом или минусом),
+функция возвращает соответственно «INF» или «-INF».<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Function StrToFloat(</span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-bidi-font-family:"Times New Roman";color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>const</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'> S: </span></b><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>String</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>): Extended;<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Преобразовывает
+данную строку в число с плавающей запятой.<span style="mso-spacerun: yes"> 
+</span>Строка должна состоять из необязательного знака (+ или -), последовательности
+цифр с необязательной десятичной точкой и необязательным «E» или «e»,
+сопровождаемым целым числом со знаком.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Глобальная
+переменная DecimalSeparator определяет символ, который будет использоваться как
+десятичная точка. Разделитель тысяч и обозначения денежной единицы не
+допускаются. Если строка имеет неверный формат, возбуждается исключительная
+ситуация EConvertError. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Function IntToStr(</span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-bidi-font-family:"Times New Roman";color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>Value</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>: Integer): </span></b><b style='mso-bidi-font-weight:normal'><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>String</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>;<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt;color:black;layout-grid-mode:line'>Преобразовывает
+целое число в строку.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+color:black;layout-grid-mode:line'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:
+"Times New Roman";color:black;layout-grid-mode:line'>Function StrToInt(</span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-bidi-font-family:"Times New Roman";color:black;
+mso-ansi-language:EN-US;layout-grid-mode:line'>const</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'> S: </span></b><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";mso-bidi-font-family:"Times New Roman";
+color:black;mso-ansi-language:EN-US;layout-grid-mode:line'>String)</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Courier New";mso-bidi-font-family:"Times New Roman";color:black;layout-grid-mode:
+line'>: Integer;<o:p></o:p></span></b></p>
+
+<p class=MsoBodyText style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:10.0pt'>Преобразовывает строку, представляющую целое число в
+десятичной или шестнадцатеричной записи, в целое число. Если строка имеет неверный
+формат, возбуждается исключительная ситуация EConvertError.<o:p></o:p></span></p>
+<p><div align="center"><a href="../Object Pascal.htm">	<img src="../../soder.gif" width=120 height=31 border=0 alt=""></a></div></p>
+</body>
+</html>

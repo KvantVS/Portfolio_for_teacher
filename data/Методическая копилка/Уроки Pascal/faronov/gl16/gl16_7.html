@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl16_6.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl16_8.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Невидимые элементы
+
+</font>
+</b>
+<br>
+</font>
+</p>
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Потоки
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Поток - это обобщение процедур ввода/вывода данных. Потоки имеют все 
+необходимые методы, позволяющие им правильно обрабатывать любые наборы данных, в 
+том числе - экземпляры объектов Turbo Vision. Базовый абстрактный объект TStream 
+служит основой для специализированных потоков. Он имеет поле Status, 
+определяющее режим доступа к данным (только чтение, только запись или и чтение и 
+запись одновременно). В объекте предусмотрено 7 абстрактных методов: Flush, 
+GetPos, GetSize, Read, Seek, Truncate и Write. Это методы должны перекрываться в 
+потомках TStream для того, чтобы придать потокам необходимые свойства. Перед 
+использованием любого вновь созданного объекта в потоке его необходимо 
+зарегистрировать. В ходе регистрации объекта ему приписывается уникальный 
+идентификатор, позволяющий Turbo Vision автоматически распознавать тип данных, 
+циркулирующих в потоке. Каждому стандартному объекту Turbo Vision уже приписан 
+уникальный номер в диапазоне от 0 до 99. Для регистрации вновь создаваемых 
+объектов программист может использовать номера от 100 до 65535.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Потоки DOS</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">TDOSStream - это специализированный поток, реализующий небуферизованный 
+ввод/вывод. Метод Init этого объекта позволяет создать новый или открыть уже 
+существующий дисковый файл, задав его имя и режим доступа. В объекте 
+перекрываются все абстрактные методы TStream за исключением TStream.Flush. В 
+большинстве программ удобнее использовать буферизованный поток TBufStream, 
+порожденный от TDOSStream.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Буферизованные потоки</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">TBufStream реализует буферизованную версию TDOSStream. Наличие внутреннего 
+буфера существенно увеличивает скорость доступа к данным. Объект перекрывает 
+абстрактный метод TStream.Flush, используемый для выталкивания данных из буфера. 
+Выталкивание данных означает чтение (запись) данных из буфера перед закрытием 
+потока и очисткой буфера.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Потоки EMS</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Объект TEMSStream реализует обмен данными с так называемой EMS-памятью (EMS - 
+от Expanded Memory Specification - спецификация расширенной памяти, т.е. 
+оперативная память, превышающая основные для ДОС 640 Кбайт). Новые поля этого 
+объекта содержат обработчик EMS, число страниц, размер потока и текущую позицию 
+внутри него.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Ресурсы</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Файл ресурсов (объект TResourceFile) - это специальный вид потока, элементы 
+которого могут индексироваться с помощью строковых ключей. При сохранении в 
+потоке очередного элемента (объекта) ему приписывается текстовая строка, которая 
+идентифицирует этот элемент. Для быстрого поиска нужного элемента поток 
+сохраняет в дисковом файле строки-индексы в виде отсортированной коллекции строк 
+вместе с указателем на положение в файле индексируемого элемента и его размером.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Основное назначение файла ресурсов - обеспечение относительно простого 
+способа доступа к диалоговым элементам. Например, вместо того, чтобы создавать 
+диалоговое окно в точке ветвления программы, можно прочитать это окно из заранее 
+подготовленного файла ресурсов.</font> </P><p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl16_6.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl16_8.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</BODY></HTML>

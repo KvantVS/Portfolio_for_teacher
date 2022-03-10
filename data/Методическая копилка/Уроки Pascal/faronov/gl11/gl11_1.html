@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl11.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl11_2.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Использование встроенных машин кодов
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+В Турбо Паскале имеется возможность непосредственного включения в программу 
+небольших фрагментов, написанных в машинных кодах. Для этого используется 
+стандартная директива INLINE, за которой в круглых скобках следует один или 
+несколько элементов машинного кода, разделяемых косыми чертами. Элемент кода, в 
+свою очередь, строится из одного или более элементов данных, разделенных знаками 
+«+» или «-»</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В качестве элемента данных может использоваться целая константа, 
+идентификатор (переменной, константы или функции) или ссылка на счетчик адреса 
+(«*»). Каждый элемент данных вызывает генерацию 1 или 2 байт кода программы. Значение 
+этого кода получается сложением или вычитанием элементов данных в соответствии с 
+разделяющим их знаком. Значением идентификатора переменной, константы, функции 
+служит адрес соответствующего объекта, значением ссылки на счетчик адреса 
+является тот адрес, по которому будет размещаться следующий байт кода.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Элемент кода будет генерировать 1 байт кода, если этот элемент состоит только 
+из целых констант и значение результата не превышает мощности одного байта, т.е. 
+находится в диапазоне от 0 до 255. Если значение превышает 255 или элемент кода 
+содержит ссылку на счетчик адреса, генерируются 2 байта. Знаки «&lt;» и «&gt;» 
+могут использоваться -для отмены автоматического выбора размера генерируемого 
+кода. Если элемент кода начинается со знака «&lt;», в код заносится только 1 
+байт (с младшей значимостью), даже если само значение занимает 2 байта. 
+Наоборот, если элемент начинается со знака «&gt;», в код заносятся 2 байта 
+(старший байт может оказаться нулевым).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Значением идентификатора является смещение соответствующего объекта. Если 
+переменная - глобальная, смещение задается относительно сегмента данных, 
+хранящееся в регистре DS, если это локальная переменная, - относительно сегмента 
+стека регистр SP). Базовым сегментом типизированной константы является сегмент 
+кода регистр CS).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В следующем примере приводятся две короткие процедуры, с помощью которых 
+можно ввести или вывести данные через любой порт ПК.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function InPort(Port: Word): Word;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">pp: Word;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cc:Char;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">egin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">pp:=port;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> inline (</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">$8b/$96/pp/  { mov DX,pp[bp] }</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">$EC/  { IN AX,DX }</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">$88/$86/cc); {mov cc[bp],AX}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InPort:=ord(cc);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure OutPort(Port,Bt: Word);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">pp: Word;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cc:Char;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">pp:=port;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cc:=chr(Bt);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">inline (</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">$8a/$86/cc/  { mov AX,cc[bp] }</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">$8b/$96/pp/  { mov DX,pp[bp] }</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">$EE)  { OUT DX,AX }&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Операторы INLINE могут произвольным образом смешиваться с другими операторами 
+Турбо Паскаля, однако при выходе из процедуры (функции) содержимое регистров ВР, 
+SP, DS и SS должно быть таким же, как и при входе в нее.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">С помощью директивы INLINE можно также задавать последовательность машинных 
+кодов, которую необходимо несколько раз вставить в программу. Для этого 
+используется описание INLINE-процедуры, например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure DisableInterrupts;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> inline ($FA); {CLI}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">INLINE-процедура имеет обычный для Турбо Паскаля заголовок, в то время как 
+тело процедуры пишется целиком с помощью оператора INLINE. Всякий раз, когда в 
+программе будет встречаться оператор вызова INLINE-процедуры, компилятор Турбо 
+Паскаля будет вставлять на это место не код вызова процедуры, а нужные машинные 
+коды. Например, вместо вызова процедуры в операторе</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DisableInterrupt;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">компилятор вставит команду запрета прерываний CLI. Таким образом, 
+INLINE-процедуры служат своеобразным средством расширения возможностей 
+стандартного компилятора Турбо Паскаля и подобны макросам ассемблера. 
+Использование INLINE-процедур увеличивает скорость исполнения программы, так как 
+не осуществляется генерация (и исполнение) команд передачи управления в 
+процедуру. По этой причине в INLINE-процедурах не следует использовать команды 
+выхода из подпрограммы. INLINЕ-процедура может иметь параметры, однако на них 
+нельзя ссылаться в INLINE-директивах (на другие символы Турбо Паскаля ссьшаться 
+можно). В следующем примере перемножаются два числа типа INTEGER, результат 
+имеет тип LONGINT:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">FUNCTION LongMul(X,YInteger) : Longint;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">inline (&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> $5 А/  {POP AX; получить в АХ число Х }</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">$58/  { POP DX; получить в DX число Y }&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">$F7/$EA);  { IMUL DX; DX:AX ;= X * Y }</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Отметим, что в силу упоминавшегося сходства с макросами ассемблера, имена 
+INLINE-подпрограмм не могут использоваться в качестве аргументов в операторах @ 
+или служить параметрами функций ADDR, OFS и SEG.</font> </P>
+<p>&nbsp;</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl11.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl11_2.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</BODY></HTML>

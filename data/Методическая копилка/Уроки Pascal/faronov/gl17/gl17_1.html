@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl17.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl17_2.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Территориальность
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Видимый элемент владеет прямоугольным участком экрана. Правильно 
+сконструированный элемент обязан заполнять нужным изображением всю выделенную 
+ему область, иначе на экране останется «мусор». Чтобы элемент мог заполнить 
+область, он должен знать координаты закрепленного за ним участка. Эти координаты 
+хранятся в двух полях - Origin и Size, каждое из которых имеет тип TPoint. Поле 
+Origin задает координаты левого верхнего угла области, выделенной элементу, поле 
+Size - размер этой области, т.е. показывает на каком расстоянии от Origin 
+находится его правый нижний угол. Минимальный по размеру видимый элемент, 
+который может хоть что-то вывести на экран, имеет Size.X = Size.Y=1.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Объект TPoint крайне прост, он только определяет координаты некоторой точки 
+на экране и не имеет никаких методов:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TPoint = object</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">X: Integer;  {Горизонтальная координата}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Y: Integer;  {Вертикальная координата}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Координаты в Turbo Vision имеют две особенности. Во-первых, они указывают 
+позицию на экране, начиная с 0, а не с 1, как это принято в стандартных для 
+Турбо Паскаля подпрограммах работы с текстовым экраном (например, GotoXY из 
+модуля CRT). Во-вторых, все координаты задаются относительно границ той группы 
+видимых элементов, в которой создается и используется новый элемент. В Turbo 
+Vision любойвидимый элемент входит в состав какой-то группы, поскольку все элементы в 
+конечном счете принадлежат программе, которая сама по себе является группой.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для указания всех четырех координат видимого элемента и действий над ними 
+используется тип TRect следующего вида:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TRect = object</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">A: TPoint;  {Левый верхний угол }</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">В: TPoint;  {Правый нижний угол}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Assign(XA,YA,XB,YB: Integer);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Назначает значения параметров полям А и В}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Copy(R: Trect);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Устанавливает все поля, равными прямоугольнику R}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Move(ADX,ADY: Integer);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Смещает прямоугольник, добавляя ADX к А.Х, В.Х и</font>
+<font size="3">ADY к А. Y, B.Y}</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Grow(ADX,ADY: Integer);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Изменяет размер, вычитая ADX из А.Х и 
+прибавляя ADX к В.Х;</font> <font size="3">вычитая ADY из A.Y и прибавляя ADY к B.Y}&nbsp;</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Procedure Intersect(R: TRect);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+{Изменяет положение и размер прямоугольника до области,</font>
+<font size="3">определенной пересечением R и текущего положения элемента}&nbsp;</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Procedure Union(R: 
+Trect);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Изменяет прямоугольник до области, определяемой</font>
+<font size="3">объединением R и текущего положения элемента}&nbsp;</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Function Contains(P: TPoint): 
+Boolean;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Возвращает TRUE, если точка принадлежит элементу}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Function Equals(R: 
+Trect): Boolean;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Возвращает True, если положение и размеры прямоугольника R и элемента 
+одинаковы}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Function Empty: Boolean;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Возвращает TRUE, если элемент пустой, т.е. 
+если его поля</font> <font size="3">Size.X и Size,У. равны нулю}&nbsp;</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">С помощью полей Owner^.Origin и Owner^.size видимый элемент может определить 
+положение и размер своего владельца, т.е. той группы, в состав которой он 
+входит, а с помощью метода</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure GetExtend(var R: Trect)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">получить в R свои текущие координаты (напомню, что положение и размеры 
+большинства видимых элементов могут меняться в ходе работы программы). Обычно 
+обращение к GetExtend используется перед тем, как задать максимально возможные 
+координаты вновь создаваемого видимого элемента. Например, если внутри окна 
+TWindow нужно поместить скроллер так, чтобы он занял всю внутреннюю часть окна, 
+можно использовать такой фрагмент:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MyWindow = object (TWindow)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor Init;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor MyWindow.Init;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">S: PScroller{Указатель на скроллер}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R: TRect;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">HS, VS: PScrollBar;{Указатели на полосы скроллера}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetExtend(R) ;{Получаем координаты окна}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Grow(-1, -1) ;{Уменьшаем их на 1}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">S := New(PScroller,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Init(S, HS, VS)){Создаем скроллер}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert(S);{Помещаем скроллер в окно}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P>&nbsp; </P>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl17.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl17_2.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</BODY></HTML>

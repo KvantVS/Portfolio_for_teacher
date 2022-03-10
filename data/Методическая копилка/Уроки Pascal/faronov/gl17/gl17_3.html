@@ -1,0 +1,238 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl17_2.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl17_4.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Цвет изображения
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Все цвета в Turbo Vision определяются системой палитр: за каждым стандартным 
+видимым элементом закреплен свой набор условных номеров цветов, называемый 
+палитрой. Размер палитры (количество определенных для видимого элемента цветов) 
+зависит от функциональности элемента: чем сложнее элемент, чем больше функций он 
+выполняет, тем богаче его палитра (каждому элементу палитры приписывается 
+некоторая функциональность: один элемент ответственен за фон изображения, другой 
+- за текст, третий выделяет специальные символы и т.д.). Например, для скроллера 
+палитра состоит всего из двух элементов: первый элемент определяет цвет 
+основного текста, второй - цвет выделенного текста. Обычно скроллер входит в 
+качестве терминального видимого объекта в группу, палитра которой будет больше. 
+Например, часто скроллер помещается в окно TWindow, палитра которого насчитывает 
+уже 8 элементов (см. рис. 17.2).</font> </P>
+<P align="center"><img border="0" src="17_2.jpg"  > </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Рис. 17.2.</b> Связь палитры TScroller с палитрой TWindow</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Палитры образуют систему связанных друг с другом ссылок: каждый элемент 
+палитры содержит не какой-то конкретный цвет или его код, а целое число, 
+указывающее на номер элемента в палитре своего владельца. Если владелец входит в 
+группу, содержимое его палитры устанавливает связь с нужными элементами палитры 
+этой группы и т.д. Ссылки завершаются на «владельце всех владельцев», т.е. на 
+программе: только палитра TProgram и его потомков содержит не ссылки, а сами 
+байты цветовых атрибутов.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Пусть, например, при формировании изображения в методе Draw скроллера выбран 
+первый элемент палитры (нормальный текст). Этот элемент содержит число 6, 
+указывающее номер шестого элемента палитры владельца TScroller. Если владельцем 
+скроллера является объект TWindow, это число означает ссылку на шестой элемент 
+палитры TWindow, который содержит число 13 как ссылку на тринадцатый элемент 
+владельца окна (рис. 17.2). Если, наконец, владельцем окна является программа, 
+то число 13 - это ссылка на тринадцатый элемент палитры TProgram, который 
+содержит байт атрибутов $1Е, т.е. символы будут выводиться желтым цветом на 
+синем фоне (рис. 17.3).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Чтобы получить цвет элемента, используется обращение к функции GetColor. Эта 
+функция просматривает всю цепочку ссылок от текущего видимого элемента до 
+программы и найденный таким образом байт атрибутов из палитры TProgram 
+возвращает в качестве результата. Параметром обращения к функции является номер 
+элемента палитры видимого объекта. Если указан номер несуществующего в данной 
+палитре элемента, функция вернет атрибуты $CF и изображение будет выводиться 
+мигающими белыми символами на красном фоне. Такого сочетания цветов нет ни в 
+одной стандартной палитре, поэтому появление мигающих бело-красных символов на 
+экране</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">сигнализирует о непредусмотренном разработчиками Turbo Vision функциональном 
+использовании элемента. Если, например, вставить кнопку TButton в текстовое окно 
+TWindow, то окажется, что первый элемент палитры TButton (нормальный текст 
+кнопки) ссылается на 10-й элемент палитры владельца, в то время как в палитре 
+TWindow только 8 элементов.</font> </P>
+<P align="center"><img border="0" src="17_3.jpg"  > </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Рис. 17.3.</b> Фрагмент палитры TProgram</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Чтобы изменить цвет изображения, нужно либо изменить ссылку в палитре 
+элемента или его владельца, либо сменить атрибут цвета в палитре TProgram. На 
+практике обычно меняют палитру TProgram, т.к. она определяет цвет всех 
+родственных элементов. Например, если Вы измените элемент палитры, ответственный 
+за цвет основного текста в окне, одновременно все окна изменят свой цвет нужным 
+образом, что, по всей видимости, будет логически правильным.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Палитры Turbo Vision задаются в виде обычных текстовых строк. Это дает 
+возможность применять к палитрам все операции и преобразования, которые 
+используются при работе со строковыми данными. Для изменения k-го элемента 
+палитры TProgram следует изменить k-ый символ в строке, указатель на которую 
+возвращает функция GetPalette. Пусть, например, нам нужно, чтобы во всех окнах 
+скроллера стандартный цвет текста (желтый на голубом фоне) был заменен на белый 
+на черном фоне. Тогда можно использовать такой прием:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Арр,...;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TMyProgram = object (TApplication)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Constructor Init;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor TMyProgram.Init;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetPaletteA[13] := #$0F;  {Задаем белый цвет на черном фоне}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> TApplication.Init  
+{Инициируем программу}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В этом фрагменте в конструкторе TMyProgram.Init осуществляется замена 13-го 
+элемента палитры: этот элемент отвечает за цвет основного текста скроллера (см. 
+рис. 17.3). После такого изменения во всех скроллерах программы основной текст 
+будет выводиться белыми символами на черном фоне.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для изменения палитры видимого элемента только одного типа нужно перекрыть 
+его метод GetPalette. Допустим нам необходимо, чтобы скроллер рисовал основной 
+текст таким же цветом, как полосы скроллера. В этом случае мы должны посмотреть,</font>
+<font face="Arial, Helvetica, sans-serif" size="3">каким по счету элементом в палитре окна-владельца скроллера определяется цвет 
+полос: в нашем примере это элемент с номером 5. Таким образом, палитра скроллера 
+должна содержать значения 5 и 7 вместо прежних 6 и 7 (см. рис. 17.2). Создадим 
+новый объект:</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TMyScroller = object (TScroller)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function GetPalette: PPalette; Virtual;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function TMyScroller.GetPalette: PPalette;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewColors = #5#7;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewPalette: String [2] = NewColors;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetPalette := @NewPalette&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Существует и менее универсальный, но более простой путь изменения цвета 
+только в одном видимом элементе. Как мы знаем, изображение этого элемента в 
+конечном счете формируется в его методе Draw; если этот метод перекрывается в 
+Вашей программе, а в некоторых случаях, например в скроллере, он должен 
+обязательно перекрывается, то можно воздействовать на цвет непосредственно при 
+обращениях к процедурам MoveChar и MoveStr. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MyScroller = object (TScroller)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Procedure Draw; Virtual;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure MyScroller.Draw;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Color: Byte;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">(* Color := GetColor(l); {Стандартный цвет скроллера} *)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Color := $0F;  
+{Задаем белые символы на черном фоне}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MoveChar(...,...,Color,...);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MoveStr(...,...,Color);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В этом примере в строке комментария
+</font><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> (* ..... *)</font><font face="Arial, Helvetica, sans-serif" size="3"> указывается обычный способ 
+получения стандартного цвета основного текста скроллера. Вместо этого желаемый 
+цвет задается нужными атрибутами в переменной Color, которая затем используется 
+при обращениях к процедурам MoveChar и MoveStr.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Палитра TProgram насчитывает 63 элемента и учитывает все возможные 
+функциональные действия, осуществляемые видимыми элементами (см. прил.П6). Более 
+того, этот объект на самом деле имеет три 63-элементных палитры: CColor (цветная 
+палитра), CBlackWhite (черно-белая) и CMonoChrome (монохромная). В установочной 
+сек</font><font face="Arial, Helvetica, sans-serif" size="3">ции модуля Views на основе тестирования аппаратных средств ПК из этих палитр 
+выбирается рабочая палитра, которая затем и будет использоваться при 
+формировании изображений. При необходимости Вы можете переустановить палитру 
+TProgram с помощью глобальной процедуры SetVideoMode, например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Program MyProgram; Uses&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Views,....;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Main: TApplication;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin {Начало основной программы}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetVideoMode(smBW80); {Выбрать черно-белую 
+палитру}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Main.Init;  {Инициация программы}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Обращение к SetVideoMode должно предшествовать инициации основной программы, 
+работающей в среде Turbo Vision. Параметром обращения к этой процедуре может 
+быть одна из следующих констант:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">smBW80 = $002;  {Черно-белый режим работы цветного адаптера}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">smCO80 = $003;  
+{Цветной режим работы}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> smMono = $007;  {Монохроматический адаптер}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Эти константы можно дополнять константой</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">smFont8x8 = $100;  {Задает 43/50 строк для экрана EGA/VGA.}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">для задания режима вывода 43 или 50 строк на экране дисплея, оснащенного 
+адаптером EGA или VGA. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetVideoMode(smC080+smFont8x8);</font> </P>
+<P>&nbsp; </P>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl17_2.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl17_4.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</BODY></HTML>

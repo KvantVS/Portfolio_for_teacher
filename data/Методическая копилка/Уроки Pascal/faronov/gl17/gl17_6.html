@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl17_5.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl17_7.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Z-упорядочение и дерево видимых элементов
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Последовательное присоединение подэлементов к группе приводит к так 
+называемому Z-упорядочению видимых элементов. Z-упорядочение - это трехмерная 
+модель видимых элементов, в которой координаты X и Y определяют положение 
+элементов на экране, а координата Z - порядковый номер элемента в группе. 
+Например, на рис. 17.5 показана Z-модель элементов окна с рамкой и скроллером.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В этой модели каждый элемент можно представить в виде стеклянной пластины, 
+накладывающейся на уже существующее изображение. То изображение, которое мы 
+видим на экране, есть проекция трехмерной модели на плоскость XY. Трехмерный 
+образ позволяет «взглянуть» на видимые элементы со стороны и увидеть порядок, в 
+котором они присоединяются к группе.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Важно помнить, что любая группа визуализирует свои подэлементы в порядке, 
+определяемом их Z-упорядочением. Для рис. 17.5 это означает, что сначала 
+создается изображение рамки, очерчивающей все окно, затем на рамку накладываются 
+полосы скроллера, потом - сам скроллер с текстом, а накрывает сверху все 
+изображение и скрепляет его в единое целое прозрачная пластина TWindow.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для того чтобы группа нашла связанный с ней список подэлементов, используется 
+поле First, входящее в любой видимый объект. Это поле содержит NIL, если данный 
+элемент - терминальный видимый объект; если этот элемент - группа, поле First 
+содержит указатель на первый вставленный в группу подэлемент, т.е. на самый 
+«нижний» элемент в смысле Z-упорядочения. Таким образом, цепочка ссылок First - 
+Next образует дерево видимых элементов, так как каждый элемент Next может быть 
+новой группой и в этом случае его поле First &lt;&gt; NIL.</font> </P>
+<P align="center"><img border="0" src="17_5.jpg"  > </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Рис.17.5.</b> Z-модель видимых элементов окна</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Программа Turbo Vision всегда владеет строкой меню, строкой статуса и рабочей 
+зоной экрана, а следовательно, имеет дерево видимых элементов, показанное на 
+рис. 17.6.</font> </P>
+<P align="center"><img border="0" src="17_6.jpg"  > </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Рис. 17.6.</b> Основное дерево видимых элементов TApplication</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Отметим, что деревья видимых элементов показывают принадлежность элементов, а 
+не их иерархию в генеалогии объектов Turbo Vision, т.е. связи на рис. 17.6 
+определяют функциональную подчиненность экземпляров объектов Application, 
+MenuBar, Desktop и StatusLine.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Деревья видимых элементов динамически изменяются в ходе работы программы. Они 
+могут расти, если к программе присоединяются новые группы, или уменьшаться, если 
+эти группы уничтожаются. В отличие от этого генеалогическое дерево объектов 
+может только расти за счет создания потомков.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Все ветви дерева видимых элементов всегда заканчиваются терминальными 
+видимыми объектами.</font> </P>
+<p>&nbsp;</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl17_5.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl17_7.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</BODY></HTML>

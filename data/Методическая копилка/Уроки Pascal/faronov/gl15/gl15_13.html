@@ -1,0 +1,345 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_12.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_14.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Диалоговое окно выбора режима
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Подведем некоторые итоги. Мы создали программу, которая погружает 
+пользователя в среду объектно-ориентированного диалога Turbo Vision: она 
+поддерживает командные клавиши, работу с мышью, может сменить каталог или диск, 
+выбрать нужный файл и загрузить его в окно просмотра. Не так плохо для 300 строк 
+программного текста! Наша дальнейшая задача - реализовать другие режимы работы 
+(поиск нужной строки, добавление и уничтожение строк, их изменение). Для двух из 
+них (уничтожение и редактирование строки) в программе необходимо каким-то 
+образом указать ту строку, с которой будет работать пользователь. Мы уже 
+реализовали эту возможность, предусмотрев в окне просмотра текста управляемый 
+указатель. Поэтому режим просмотра можно принять в качестве основного режима 
+работы с данными. В связи с этим следует несколько изменить метод 
+TNotebook-HandleEvent, предусмотрев в нем автоматический переход в режим 
+просмотра данных в случае успешного открытия файла с данными:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TNotebook.HandleEvent(var Event:
+TEvent);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Обработчик событий 
+программы}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Inherited HandleEvent(Event);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if Event.What = evCommand then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> case 
+Event.Command of&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmOpenFile:&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">FileOpen;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if OpFileF then Work&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; {TNotebook.HandleEvent}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Как из режима просмотра данных перейти к другим режимам? Возможно несколько 
+решений. Я предлагаю для этих целей воспользоваться командой cmClose (закрыть 
+окно просмотра): в момент, когда пользователь в режиме просмотра данных нажмет 
+клавишу Esc или воздействует мышью на кнопку «Закрыть окно», на экране должно 
+раскрыться диалоговое окно выбора режима, предлагающее одно из пяти возможных 
+продолжений:</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> закрыть окно просмотра;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> удалить текущую запись;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> искать нужную запись;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> редактировать текущую запись;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> добавить запись (записи).</font></li>
+</ul>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для реализации этой идеи в уже созданный нами обработчик событий 
+TInterior.HandleEvent следует ввести обработку события
+cmClose:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Команды для обработчиков событий:}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmCan=205;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmDelete=206;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmSearch = 207;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmEdit = 208;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmAdd = 209;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function Control: Word; {Создает и использует диалоговое окно</font>
+<font size="3">выбора режима работы)&nbsp;</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Control := cmCan&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;  {Control}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-----------------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TInterior.HandleEvent (var Event:
+TEvent) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Обработчик событий для окна данных}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure DeleteItem;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Удаляет указанный в Location элемент данных}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; {DeleteItem}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-----------------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure AddItem(Edit: Boolean);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Добавляет новый или редактирует старый элемент данных}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; {AddItem}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-----------------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure SearchItem;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Ищет нужный элемент}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; {SearchItem}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-----------------}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R: TPoint; label Cls;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin  {TInterior.HandleEvent}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Inherited HandleEvent (Event) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> case Event. 
+What of evCommand:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">case Event . Command of&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmClose:&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Cls:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">case Control of{Получить команду из основного диалогового окна}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmCan,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmCancel:EndModal (cmCancel) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmEdit:AddItem (True);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmDelete:DeleteItem;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmSearch:SearchItem;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmAdd:AddItem (False);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmZoom: exit;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">evMouseDown:  {Позиционировать мышью}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">evKeyDown:  {Позиционировать клавишами + -}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">case Event.KeyCode of</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">kbEsc: goto Cls;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">kbGrayMinus: if Location &gt; Delta.Y then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; {TInterior.HandleEvent}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В этом фрагменте мы расширили набор нестандартных команд (константы стпСап, 
+..., cmAdd), ввели новую функцию Control и предусмотрели необходимые процедуры в 
+теле обработчика событий. Заметим, что режимы редактирования записи и добавления 
+новой записи очень схожи по организации диалога с пользователем, поэтому он» 
+реализуются в рамках одной процедуры AddItem и управляются параметром обращения 
+к ней.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Функция Control используется для создания диалогового окна выбора 
+продолжения. В качестве значения этой функции будет возвращаться одна из пяти 
+новых команд. В начальном варианте функция возвращает команду стСап, что 
+интерпретируется обработчиком событий как указание на завершение работы с 
+диалоговым окном. Поэтому, если Вы вставите указанный текст в программу и 
+запустите ее, поведение программы останется прежним.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Займемся реализацией функции Control. Она должна создать диалоговое окно 
+выбора режима, получить с его помощью команду, идентифицирующую выбранный режим, 
+и вернуть эту команду в качестве своего значения:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function Control: Word;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Получает команду из основного диалогового окна}&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> X = 1;&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> L = 12;&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DX= 13;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">But: array [0. .4]of String [13] =  {Надписи на кнопках:}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">('~1~ Выход ','~2~Убрать ','~3~ Искать ',</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'~4~ Изменить ','~5~ Добавить ') ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Txt: array [0..3]of String [52] = (</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Справочный текст:}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'Убрать - удалить запись, выделенную цветом', 'Искать - искать запись, 
+начинающуюся нужными буквами', 'Изменить - изменить поле (поля) выделенной 
+записи', 'Добавить - добавить новую запись'); var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R: TRect;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">D: PDialog;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k: Integer;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(7,6,74,15) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">D := New{PDialog,Init(R, 'Выберите продолжение:'));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> with D do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for k := 0 to 3 do {Вставляем поясняющий текст}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(l,l+k,65,2+k);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert(New(PStaticText,Init(R,#3+Txt[k])))&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for k := 0 to 4 do  {Вставляем кнопки:}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(X+k*DX,6,X+k*DX+L,8);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert(New(PButton,</font> <font size="3">Init(R,But[k],cmCan+k,bfNormal)))&nbsp;</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SelectNext(False);  {Активизируем первую кнопку}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Control := DeskTopA.ExecView(D);  {Выполняем диалог}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;  {Control}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Сначала создается диалоговое окно с заданными размерами (чтобы программе стал 
+доступен тип TDialog, укажите в предложении Uses модуль Dialogs). Затем в цикле</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for k := 0 to 3 do</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">в окно вставляется поясняющий текст (см. рис.15.10).</font> </P>
+<p align="center"><img border="0" src="15_10.jpg"    ></p>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Рис.15.10.</b> Диалоговое окно функции Control</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Этот текст не связан с диалогом и называется статическим. Для вставки 
+статической строки в любой видимый элемент используется конструктор 
+TStaticTextJnit, которому в качестве параметров передаются координаты строки и 
+сама строка. Как Вы уже могли заметить, идентификаторы объектов в Turbo Vision 
+начинаются на букву Т, а идентификаторы типов-указателей на экземпляры этих 
+объектов начинаются на бук</font><font face="Arial, Helvetica, sans-serif" size="3">ву Р. Таким образом, PStaticText - это тип-указатель на экземпляр объекта 
+TStaticText, поэтому оператор</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert(New (PStaticText, Init(R,'Текст'))</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">помещает строку «Текст» на место, заданное координатами переменной R. 
+Отметим, что если строка начинается на символ #3, то при выводе на экран она 
+будет размещаться в центре прямоугольника R. Мы используем это соглашение и 
+дополняем каждую выводимую строку этим символом. В цикле</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for k := 0 to 4 do  {Вставить кнопки:}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">в окно вставляются пять кнопок. При их инициации используется то 
+обстоятельство, что определенные нами команды cmCan, ..., cmAdd образуют 
+непрерывное множество [205..209].</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Особо следует остановится на операторе</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SelectNext(False);  {Активизируем 1-ю кнопку}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Дело в том, что по умолчанию активизируется тот элемент диалогового окна, 
+который задан (вставлен в окно) последним. Чтобы изменить активность по 
+умолчанию, используется вызов процедуры SelectNext, которая смещает активность к 
+следующему элементу. Так как элементы образуют замкнутую цепь (от последнего 
+элемента активность переходит к первому), параметр обращения к этой процедуре 
+указывает направления смещения: если он имеет значение False, активным станет 
+следующий в цепи элемент, если True - предыдущий.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Прежде, чем Вы попробуете запустить эту программу на счет, внесем в нее 
+несколько изменений. Во-первых, пора убрать имитацию данных, показываемых в окне 
+просмотра. Для этого в процедуре TInterior.ReadFile необходимо удалить строки</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s := copy(ParamStr(O),1,pos('.',ParamStr(0)))+'pas';&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">assign(f,s);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">exit;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Надеюсь, что Вы заблаговременно подготовили остальной текст этого метода, 
+если это не так, вставьте операторы</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">seek (DataFile, 0);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">while not (EOF (DataFile) or LowMemory) do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Location := 0</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Во-вторых, обратили ли Вы внимание на то, что в процедуре TNotebook. Work 
+указатель</font> <font face="Arial, Helvetica, sans-serif" size="3">PW инициируется оператором</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PW := New(PWorkWin, Init(R));</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">а динамическая память, выделенная для размещения экземпляра объекта TWorkWin, 
+не возвращается обратно в кучу? Если да, то у Вас есть хорошие шансы избежать 
+многих неприятностей при программировании в среде Turbo Vision. Конечно же, нам 
+следовало где-то в программе позаботиться об удалении ненужного нам экземпляра 
+объекта. Чтобы не усложнять программу, я не стал этого делать: если вставить 
+оператор</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Dispose(PW, Done)&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> сразу за оператором</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DeskTop.Insert(PW)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">то вновь созданное окно будет тут же удалено с экрана, поэтому оператор 
+Dispose нужно разместить в обработчике событий TNotebook. HandleEvent 
+(подумайте, где именно).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">После включения диалогового окна в цепочку действий, связанных с инициацией 
+PW, появилась возможность приостановить исполнение программы в процедуре Work: 
+вместо оператора</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DeskTop.Insert(PW)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">вставьте следующие строки:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Control := DeskTop.ExecView(PW);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Dispose(PW, Done)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">и добавьте описание переменной
+Control:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Control: Word;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В отличие от процедуры Insert процедура ExecView не только помещает видимый 
+элемент на экран, но и приостанавливает дальнейшее исполнение программы Work до 
+тех пор, пока не закончится диалог с пользователем.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">И, наконец, еще одно усовершенствование. Работа с программой станет удобнее, 
+если сразу после чтения файла с данными она перейдет к их показу. Реализовать 
+это очень просто: добавьте вызов процедуры Work в процедуру FileOpen следующим 
+образом:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TNotebook.FileOpen;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">..... begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if OpFileF then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Work{Переходим к работе}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; {FileOpen}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если Вы внесете в программу все описанные изменения и запустите ее на счет , 
+то при попытке выйти из режима просмотра на экране будет развернуто диалоговое 
+окно, показанное на рис. 15.10. «Нажатие» на любую кнопку этого окна не приводит 
+ни к каким последствиям - наше окно пока откликается только на стандартную 
+команду cmClose, связанную с клавишей Esc.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Файл с данными DataType пока еще не существует. Чтобы программа смогла 
+нормально</font> <font face="Arial, Helvetica, sans-serif" size="3">работать, в диалоговом окне открытия файла укажите произвольное имя, например</font>
+<font face="Arial, Helvetica, sans-serif" size="3">MYDATA. После завершения работы программы будет создан пустой файл
+MYDATA.DAT.</font> </P>
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_12.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_14.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</BODY></HTML>

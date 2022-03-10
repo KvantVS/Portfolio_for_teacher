@@ -1,0 +1,312 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Untitled</title>
+</head>
+
+<body lang=RU style="'tab-interval:35.4pt'" background="bgrwhite.gif">
+<p><div align="center"><b><font size="+1" face="Arial">25. Процедуры и функции </font></b></div></p>
+<p><span
+style="mso-spacerun: yes">   </span>Алгоритм решения<span style="mso-spacerun:
+yes">  </span>задачи проектируется путем декомпозиции всей за-
+
+<p>дачи в
+отдельные подзадачи. Обычно подзадачи реализуются в виде подп-
+
+<p>рограмм.
+
+<p><span
+style="mso-spacerun: yes">   </span>Подпрограмма - это последовательность
+операторов,<span style="mso-spacerun: yes">  </span>которые опреде-
+
+<p>лены
+и<span style="mso-spacerun: yes">   </span>записаны<span style="mso-spacerun:
+yes">  </span>только<span style="mso-spacerun: yes">  </span>в<span
+style="mso-spacerun: yes">  </span>одном месте программы,<span
+style="mso-spacerun: yes">  </span>однако их можно
+
+<p>вызвать
+для выполнения из одной или нескольких точек программы.<span
+style="mso-spacerun: yes">  </span>Каж-
+
+<p>дая
+подпрограмма определяется уникальным именем.<span style="mso-spacerun: yes"> 
+</span>В языке ПАСКАЛЬ су-
+
+<p>ществуют
+два типа подпрограмм - процедуры и функции.
+
+<p><span
+style="mso-spacerun: yes">   </span>Процедура и<span style="mso-spacerun:
+yes">  </span>функция - это именованная последовательность описаний
+
+<p>и
+операторов.<span style="mso-spacerun: yes">  </span>При использовании процедур
+или функций ПАСКАЛЬ - прог-
+
+<p>рамма
+должна содержать текст процедуры или функции и обращение к про-
+
+<p>цедуре
+или функции.<span style="mso-spacerun: yes">  </span>Тексты процедур и
+функций<span style="mso-spacerun: yes">  </span>помещаются<span
+style="mso-spacerun: yes">  </span>в<span style="mso-spacerun: yes"> 
+</span>раздел
+
+<p>описаний
+процедур и функций.
+
+<p>{}
+
+<p><span
+style="mso-spacerun: yes">   </span>Процедура может содержать такие - же
+разделы описаний,<span style="mso-spacerun: yes">  </span>что и ПАС-
+
+<p>КАЛЬ -
+программа,<span style="mso-spacerun: yes">  </span>а именно:<span
+style="mso-spacerun: yes">  </span>разделы описания модулей,<span
+style="mso-spacerun: yes">  </span>меток, конс-
+
+<p>тант,
+типов, переменных, процедур и функций.
+
+<p>{}
+
+<p><span
+style="mso-spacerun: yes">   </span>ПЕРЕДАЧА ИМЕН ПРОЦЕДУР И ФУНКЦИЙ В КАЧЕСТВЕ
+ПАРАМЕТРОВ.<span style="mso-spacerun: yes">  </span>Во многих
+
+<p>задачах,
+особенно в задачах вычислительной математики, необходимо пе-
+
+<p>редавать
+имена процедур и функций в качестве параметров.<span style="mso-spacerun:
+yes">  </span>Для этого в
+
+<p>TURBO
+PASCAL<span style="mso-spacerun: yes">   </span>введен новый тип данных -
+процедурный или функциональ-
+
+<p>ный, в
+зависимости от того, что описывается.
+
+<p><span
+style="mso-spacerun: yes">   </span>Описание процедурных и функциональных типов
+производится в разделе
+
+<p>описания
+типов:
+
+<p><span
+style="mso-spacerun: yes">   </span>type
+
+<p><span
+style="mso-spacerun: yes">         </span>FuncType = Function(z: Real): Real;
+
+<p><span
+style="mso-spacerun: yes">         </span>ProcType = Procedure (a,b: Real; var
+x,y: Real);
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Функциональный и процедурный тип
+определяется как заголовок проце-
+
+<p>дуры и
+функции со списком формальных параметров,<span style="mso-spacerun: yes"> 
+</span>но без имени. Можно
+
+<p>определить
+функциональный или процедурный тип без параметров,<span style="mso-spacerun:
+yes">  </span>напри-
+
+<p>мер:
+
+<p><span
+style="mso-spacerun: yes">   </span>type
+
+<p><span
+style="mso-spacerun: yes">         </span>Proc = Procedure;
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>После объявления процедурного или
+функционального типа<span style="mso-spacerun: yes">  </span>его<span
+style="mso-spacerun: yes">  </span>можно
+
+<p>использовать
+для<span style="mso-spacerun: yes">  </span>описания<span style="mso-spacerun:
+yes">  </span>формальных<span style="mso-spacerun: yes"> 
+</span>параметров<span style="mso-spacerun: yes">  </span>- имен процедур и
+
+<p>функций.
+
+<p><span
+style="mso-spacerun: yes">   </span>Кроме того, необходимо написать те реальные
+процедуры или функции,
+
+<p>имена
+которых будут передаваться как фактические параметры.<span style="mso-spacerun:
+yes">  </span>Эти про-
+
+<p>цедуры
+и<span style="mso-spacerun: yes">  </span>функции должны компилироваться в
+режиме дальней адресации с
+
+<p>ключом
+{$F+}.
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Пример. Составить программу для вычисления
+определенного интеграла
+
+<p><span
+style="mso-spacerun: yes">                </span>tk
+
+<p><span
+style="mso-spacerun: yes">                       </span>2t
+
+<p><span
+style="mso-spacerun: yes">             </span>I= S--------------- dt
+
+<p><span
+style="mso-spacerun: yes">                   </span>sqrt(1-sin2t)
+
+<p><span
+style="mso-spacerun: yes">                </span>tn
+
+<p>по
+методу Симпсона. Вычисление<span style="mso-spacerun: yes"> 
+</span>подинтегральной функции реализовать с
+
+<p>помощью
+функции, имя которой передается как параметр.<span style="mso-spacerun: yes"> 
+</span>Значение опре-
+
+<p>деленного
+интеграла по формуле Симпсона вычисляется по формуле:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">      </span>ISimps=2*h/3*(0.5*F(A)+2*F(A+h)+F(A+2*h)+2*F(A+3*h)+...
+
+<p><span
+style="mso-spacerun: yes">                                               
+</span>+2*F(B-h)+0.5*F(B))
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p>где A и
+B - нижняя и верхняя границы интервала интегрирования,
+
+<p><span
+style="mso-spacerun: yes">    </span>N - число разбиений интервала
+интегрирования,
+
+<p><span
+style="mso-spacerun: yes">    </span>h=(B-A)/N, причем N должно быть четным.
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p>Program
+INTEGRAL;
+
+<p><span
+style="mso-spacerun: yes"> </span>type
+
+<p><span
+style="mso-spacerun: yes">    </span>Func= function(x: Real): Real;
+
+<p><span
+style="mso-spacerun: yes"> </span>var
+
+<p><span
+style="mso-spacerun: yes">    </span>I,TN,TK:Real;
+
+<p><span
+style="mso-spacerun: yes">    </span>N:Integer;
+
+<p>{$F+}
+
+<p><span
+style="mso-spacerun: yes"> </span>Function Q(t: Real): Real;
+
+<p><span
+style="mso-spacerun: yes">   </span>begin
+
+<p><span
+style="mso-spacerun: yes">     </span>Q:=2*t/Sqrt(1-Sin(2*t));
+
+<p><span
+style="mso-spacerun: yes">   </span>end;
+
+<p>{$F-}
+
+<p><span
+style="mso-spacerun: yes"> </span>Procedure Simps(F:Func; a,b:Real; N:Integer;
+var INT:Real);
+
+<p><span
+style="mso-spacerun: yes">   </span>var
+
+<p><span
+style="mso-spacerun: yes">      </span>sum, h: Real;
+
+<p><span
+style="mso-spacerun: yes">      </span>j:Integer;
+
+<p><span
+style="mso-spacerun: yes">   </span>begin
+
+<p><span
+style="mso-spacerun: yes">     </span>if Odd(N) then N:=N+1;
+
+<p><span
+style="mso-spacerun: yes">     </span>h:=(b-a)/N;
+
+<p><span
+style="mso-spacerun: yes">     </span>sum:=0.5*(F(a)+F(b));
+
+<p><span
+style="mso-spacerun: yes">     </span>for j:=1 to N-1 do
+
+<p><span
+style="mso-spacerun: yes">       </span>sum:=sum+(j mod 2+1)*F(a+j*h);
+
+<p><span
+style="mso-spacerun: yes">       </span>INT:=2*h*sum/3
+
+<p><span
+style="mso-spacerun: yes">   </span>end;
+
+<p><span
+style="mso-spacerun: yes"> </span>begin
+
+<p><span
+style="mso-spacerun: yes">   </span>WriteLn(' ВВЕДИ TN,TK,N');
+
+<p><span
+style="mso-spacerun: yes">   </span>Read(TN,TK,N);
+
+<p><span
+style="mso-spacerun: yes">   </span>Simps(Q,TN,TK,N,I);
+
+<p><span
+style="mso-spacerun: yes">   </span>WriteLn('I=',I:8:3)
+
+<p><span
+style="mso-spacerun: yes"> </span>end.
+
+<p><div align="center"><a href="../Pascal. Курс лекций.html">	<img src="../../soder.gif" width=120 height=31 border=0 alt=""></a></div></p>
+
+
+</body>
+</html>

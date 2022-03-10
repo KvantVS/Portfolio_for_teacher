@@ -1,0 +1,248 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl4_6.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl4_8.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Множества
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Множества - это наборы однотипных логически связанных друг с другом объектов. Характер связей между объектами лишь подразумевается программистом и 
+никак не контролируется Турбо Паскалем. Количество элементов, входящих в множество,
+может меняться в пределах от 0 до 256 (множество, не содержащее элементов, 
+называется пустым). Именно непостоянством количества своих элементов множества 
+отличаются от массивов и записей. 
+</P>
+<P>Два множества считаются эквивалентными тогда и только тогда, когда все их 
+элементы одинаковы, причем порядок следования элементов в множестве безразличен. 
+Если все элементы одного множества входят также и в другое, говорят о включении 
+первого множества во второе. Пустое множество включается в любое другое. </P>
+<P>Пример определения и задания множеств: </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">digitChar= set of '0'..'9';</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">digit = set of 0. .9;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">sl,s2,s3 :digitChar;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s4,s5,s6 :digit;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s1:=['1','2','3'];</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s2:=['3','2','1'];</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s3:=['2','3'];</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s4:=[0..3,6];</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s5:=[4,5];</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s6:=[3..9];</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P>В этом примере множества S1 и S2 эквивалентны, а множество S3 включено в S2 , 
+но не эквивалентно ему. </P>
+<P>Описание типа множества имеет вид: </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&lt;имя типа&gt; = SET OF &lt;баз.тип&gt;</font> </P>
+<P>Здесь &lt;имя типа&gt; - правильный идентификатор; </P>
+<P>SET, OF - зарезервированные слова (множество, из); </P>
+<P>&lt;баз.тип&gt; - базовый тип элементов множества, в качестве которого может 
+</P>
+<P>использоваться любой порядковый тип, кроме WORD,
+INTEGER, LONGINT. </P>
+<P>Для задания множества используется так называемый конструктор множества: 
+список спецификаций элементов множества, отделяемых друг от друга запятыми; 
+список обрамляется квадратными скобками (см. предыдущий пример). Спецификациями 
+элементов могут быть константы или выражения базового типа, а также - 
+тип-диапазон того же базового типа. </P>
+<P>Над множествами определены следующие операции: </P>
+<P>*&nbsp; пересечение множеств; результат содержит элементы, общие для обоих 
+множеств; например, S4*S6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+содержит [3], S4*S5 - пустое множество (см. выше); 
+</P>
+<P>+ объединение множеств; результат содержит элементы первого множества, 
+дополненные недостающими&nbsp; элементами из второго множества: </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp; S4+S5 содержит [0,1,2,3,4,5,6];&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp; S5+S6 содержит [3,4,5,6,7,8,9];</font> </P>
+<P>- разность множеств; результат содержит элементы из первого множества, 
+которые не принадлежат второму: </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp; S6-S5 содержит [3,6,7,8,9];&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp; S4-S5 содержит [0,1,2,3,6];</font> </P>
+<P>= проверка эквивалентности; возвращает TRUE, если оба множества эквивалентны; 
+</P>
+<P>&lt;&gt; проверка неэквивалентности; возвращает TRUE, если оба множества 
+неэквивалентны; </P>
+<P>&lt;= проверка вхождения; возвращает TRUE, если первое множество включено во 
+второе; </P>
+<P>&gt;= проверка вхождения; возвращает TRUE, если второе множество включено в 
+первое; </P>
+<P>IN проверка принадлежности; в этой бинарной операции первый элемент - 
+выражение, а второй -&nbsp;&nbsp; множество одного и того же типа; возвращает TRUE , если 
+выражение имеет значение, принадлежащее множеству: </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp; 3 in s6 возвращает TRUE;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp; 2*2 in s1 возвращает FALSE.</font> </P>
+<P>Дополнительно к этим операциям можно использовать две процедуры. INCLUDE - 
+включает новый элемент во множество. Обращение к процедуре: </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">INCLUDE (S,I)</font> </P>
+<P>Здесь S - множество, состоящее из элементов базового типа TSetBase; </P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; I - элемент типа TSetBase, который необходимо включить во множество. </P>
+<P>EXCLUDE - исключает элемент из множества. Обращение: </P>
+<P align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">EXCLUDE(S,I)</font> </P>
+<P>Параметры обращения - такие же, как у процедуры INCLUDE. </P>
+<P>В отличие от операций + и -, реализующих аналогичные действия над двумя 
+множествами, процедуры оптимизированы для работы с одиночными элементами 
+множеcтва и поэтому отличаются высокой скоростью выполнения. </P>
+<P>В примере 4.1, иллюстрирующем приемы работы с множествами, реализуется 
+алгоритм выделения из первой сотни натуральных чисел всех простых чисел. В его 
+основе лежит прием, известный под названием «решето Эратосфена». В соответствии 
+с этим алгоритмом вначале формируется множество BEGINSET, состоящее из всех 
+целых чисел в диапазоне от 2 до N. В множество PRIMERSET (оно будет содержать 
+искомые простые числа) помещается 1. Затем циклически повторяются следующие 
+действия: </P>
+<ul>
+  <li> взять из BEGINSET первое входящее в него число NEXT и поместить его в
+    PRIMERSET;</li>
+  <li>удалить из BEGINSET число NEXT и все другие числа, кратные ему, т.е.2*NEXT,
+    3*NEXT и т.д.&nbsp;</li>
+</ul>
+<P> Цикл повторяется до тех пор, пока множество BEGINSET не 
+станет пустым. </P>
+<P>Эту программу нельзя использовать для произвольного N, так как в любом 
+множестве не может быть больше 256 элементов. </P>
+<P align="center"><b>Пример 4.1 </b> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Program Primer_numbers_detect;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Выделение всех простых чисел из первых N целых}</font></i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">N = 255; <i>{Количество элементов исходного множества}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetOfNumber = set of 1..N;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">n1,next,i : Word; <i> {Вспомогательные переменные}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">BeginSet, <i> {Исходное множество}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+PrimerSet : SetOfNumber; <i> {Множество простых чисел} .</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">BeginSet := [2. .N] ; <i> {Создаем исходное множество}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PrimerSet:= [1]; <i> {Первое простое число}</i>&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">next:= 2; <i> {Следующее простое число}</i></font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">while BeginSet &lt;&gt; [] do <i> {Начало основного цикла}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">n1 := next;<i>{n1-число,кратное очередному простому (next)}</i>&nbsp;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Цикл удаления из 
+исходного множества непростых чисел:}&nbsp;</font></i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> while n1 &lt;= N do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Exclude(BeginSet,nl);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">n1 := n1+next <i> {Следующее кратное}</i>&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i> {Конец цикла удаления}</i>&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Include(PrimerSet,next);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"><i>{Получаем следующее простое, которое есть первое
+невычеркнутое из исходного 
+множества}</i>&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> repeat</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">inc(next)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">until (next in BeginSet) or (next &gt; N)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i> {Конец основного цикла}</i>&nbsp;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+{Выводим результат:}&nbsp;</font></i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for i := 1 to N do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if i in PrimerSet then Write(i:8);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> WriteLn&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">END.</font> </P>
+<P>Перед тем как закончить рассмотрение множеств полезно провести небольшой 
+эксперимент. Измените описание типа SETOFNUMBER следующим образом: </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetOf Number = set of 1. . 1 ;</font> </P>
+<P>и еще раз запустите программу из предыдущего примера. На экран будет выведено 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">1&nbsp;&nbsp; 3&nbsp;&nbsp; 5&nbsp;&nbsp; 7</font> </P>
+<P>Множества BeginSet и PrimerSet состоят теперь из одного элемента, а программа сумела поместить в них не менее семи! Секрет этого прост: внутреннее 
+устройство множества таково, что каждому его
+элементу ставится в соответствие один двоичный разряд (один бит); если 
+элемент включен во множество, соответствующий разряд имеет значение 1, в 
+противном случае - 0. Минимальной единицей памяти является один байт, содержащий 8 бит. 
+Компилятор выделил множествам по одному байту, в результате мощность каждого из 
+них стала равна 8 элементов. Максимальная мощность множества - 256 элементов. 
+Для таких множеств компилятор выделяет по 16 смежных байт. </P>
+<P>И еще один эксперимент: измените диапазон базового типа на 1.256. Хотя 
+мощность этого типа составляет 256 элементов, при попытке компиляции программы 
+компилятор сообщит: </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Error 23: Set base type out of range.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">(Ошибка 23: Базовый тип множества выходит за допустимые</font>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="3">границы.)</font> </P>
+<P>Компилятор разрешает использовать в качестве базового типа целочисленный
+тип-диапазон с минимальной границей 0 и максимальной 255 или любой перечисляемый 
+тип не более чем с 256 элементами (максимальная мощность перечисляемого типа -5536 элементов). 
+</P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl4_6.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl4_8.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

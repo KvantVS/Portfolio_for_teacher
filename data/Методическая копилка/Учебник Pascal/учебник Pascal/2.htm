@@ -1,0 +1,514 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+   <META NAME="Author" CONTENT="DimichG">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.04 [en] (Win95; I) [Netscape]">
+   <TITLE>ЧАСТЬ 2</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<CENTER><B><FONT SIZE=+2>2. Типы данных. Операции и функции над данными
+разных типов.</FONT></B></CENTER>
+
+<HR>
+<P>Любые объекты, т.е. константы, переменные, значения функций или
+выражения, в Паскале характеризуются своими типами. Тип определяет множество
+допустимых значений того или иного объекта, а также множество операций,
+которые к нему применимы. Кроме того, тип определяет формат внутреннего
+представления данных в памяти ЭВМ.
+
+<CENTER>&nbsp;
+<FONT SIZE=+1> Паскаль характеризуется разветвленной структурой типов данных:</FONT>
+</P>
+&nbsp;<IMG SRC="type.gif" ALT="типы данных" NOSAVE HEIGHT=293 WIDTH=545 ALIGN=TEXTTOP></CENTER>
+
+
+<P><A NAME="2_1"></A><B>2.1. Простые типы.</B>
+<BR>К простым типам относятся порядковые и вещественный типы.
+
+<P><B>Порядковые типы</B> отличаются тем, что каждый из них имеет конечное
+число возможных значений. Эти значения можно определенным образом упорядочить
+и, следовательно, с каждым из них можно сопоставить некоторое целое число
+- порядковый номер значения.
+<BR>В Паскале есть следующие порядковые типы:
+
+<P><B><FONT COLOR="#006600"> Integer</B></FONT> - целый тип, представляет собой подмножество множества
+целых чисел, определяемое конкретной реализацией. Во внутреннем представлении
+он занимает 2 байта, диапазон возможных значений - от -32768 до +32767,
+данные представляются точно.
+
+<P><B><FONT COLOR="#006600">Char</B></FONT> - символьный тип, представляет собой набор символов, определяемый
+конкретной реализацией. Во внутреннем представлении он занимает 1 байт,
+множество значений этого типа фиксировано и упорядочено. Все символы считаются
+перенумерованными, начиная с нуля. Такой набор символов определен в каждой
+вычислительной сисеме. Он необходим, по крайней мере, для связи системы
+с внешним миром.
+<BR>Константой символьного типа является один из допустимых символов, взятый
+в апострофы. Если апостроф сам является символом, то&nbsp; апостроф, являющийся
+значением константы, записывается дважды, например&nbsp;&nbsp;
+<B><FONT COLOR="#006600">‘7’ ,&nbsp; ‘+’ , ‘F’ , ‘’’’ , ‘j’ , ‘?’ .</B></FONT>
+
+<P><B><FONT COLOR="#006600">Boolean</B></FONT> - логический тип, определяет диапазон логических значений,
+который содержит два элемента <FONT COLOR="#006600"><B>False</FONT> (ложь) и <FONT COLOR="#006600">True
+</FONT>(истина)</B></FONT>. Во внутреннем представлении он занимает 1 байт.
+
+<P><B>Перечисляемый тип</B> - задается перечислением тех значений, которые
+он может получать. Каждое значение именуется некоторым идентификатором
+и располагается в списке, обрамленном круглыми скобками, например:
+<BR><FONT COLOR="#006600"><B>Type&nbsp; colors = (red, white, blue, black);</B></FONT>
+
+<P><B>Тип-диапазон</B> - подмножество своего базового типа, в качестве
+которого может быть любой порядковый тип, кроме типа-диапазон. Тип- диапазон
+задается границами своих значений внутри базового типа
+<BR><FONT FACE="Arial Cyr"><FONT COLOR="#800000">&lt;минимальное значение>
+. .&lt;максимальное значение></FONT></FONT>
+<BR>При определении типа-диапазон нужно руководствоваться следующими правилами:
+<BR>-".."&nbsp; рассматриваются как один символ, поэтому между точками
+пробелы недопустимы;
+<BR>- левая граница не должна превышать правую границу.
+
+<P>Пример:&nbsp;&nbsp;&nbsp;<FONT COLOR="#006600"><B> Type month = 1 ..12;</B></FONT>
+<BR><FONT COLOR="#008000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<FONT COLOR="#006600"><B>lat = ’a’ .. ’z’;</B></FONT>
+</FONT>
+<P><B>Вещественный тип</B>, строго говоря, тоже имеет конечное число значений,
+которое определяется форматом внутреннего представления вещественного числа.
+Однако количество возможных значений вещественного числа настолько велико,
+что сопоставить с каждым из них целое число&nbsp; не представляется возможным.
+
+<P><FONT COLOR="#006600"><B>Real </B></FONT>- вещественный тип, представляет собой определяемое конкретной
+реализацией подмножество множества вещественных чисел.&nbsp; Во внутреннем
+представлении он занимает 6 байт, диапазон возможных значений - от 2.9Е-39
+до 1.7Е+38, точность представления данных - 11...12 значащих цифр.
+
+<P><B>Примечание</B>. В системе программирования Турбо-Паскаль определено
+несколько дополнительных простых типов данных для целых и вещественных
+величин. Они различаются своими диапазонами значений и размером занимаемой
+памяти. Информация о них представлена в следующих таблицах.
+<CENTER><B>Целые числа</B></CENTER>
+
+<CENTER><TABLE BORDER=3 CELLSPACING=0 CELLPADDING=0 COLS=3 WIDTH="80%" >
+<TR ALIGN=CENTER VALIGN=CENTER>
+<TD ALIGN=CENTER WIDTH="20%"><B>Тип&nbsp;</B></TD>
+
+<TD ALIGN=CENTER><B>Диапазон&nbsp;</B></TD>
+
+<TD ALIGN=CENTER VALIGN=CENTER WIDTH="20%"><B>Размер в байтах&nbsp;</B></TD>
+</TR>
+
+<TR>
+<TD ALIGN=CENTER>Byte&nbsp;
+<BR>Shortint&nbsp;
+<BR>Word&nbsp;
+<BR>Longint</TD>
+
+<TD ALIGN=CENTER>0 ... 255&nbsp;
+<BR>-128 ... 127&nbsp;
+<BR>0 ... 65535&nbsp;
+<BR>-2147483648 ... 2147483647</TD>
+
+<TD ALIGN=CENTER>1&nbsp;
+<BR>1&nbsp;
+<BR>2&nbsp;
+<BR>4</TD>
+</TR>
+</TABLE></CENTER>
+&nbsp;
+<CENTER>&nbsp;<B>Вещественные числа</B></CENTER>
+
+<CENTER><TABLE BORDER=2 CELLSPACING=0 CELLPADDING=0 COLS=4 WIDTH="80%" >
+<TR>
+<TD ALIGN=CENTER VALIGN=CENTER WIDTH="10%"><B>Тип</B></TD>
+
+<TD ALIGN=CENTER><B>Диапазон</B></TD>
+
+<TD ALIGN=CENTER><B>Знач. цифры</B></TD>
+
+<TD ALIGN=CENTER><B>Размер в байтах&nbsp;</B></TD>
+</TR>
+
+<TR>
+<TD ALIGN=CENTER>Single&nbsp;
+<BR>Double&nbsp;
+<BR>Extended</TD>
+
+<TD ALIGN=CENTER>1.5E-45 ... 34E38&nbsp;
+<BR>5E-324 ... 1.7E308&nbsp;
+<BR>1.6E-4951...1.1E4932</TD>
+
+<TD ALIGN=CENTER>7-8&nbsp;
+<BR>15-16&nbsp;
+<BR>19-20</TD>
+
+<TD ALIGN=CENTER>4&nbsp;
+<BR>8&nbsp;
+<BR>10</TD>
+</TR>
+</TABLE></CENTER>
+&nbsp;
+<BR><A NAME="2_2"></A><B>2.2. Операции.</B>
+<CENTER>В таблице приведены арифметические операции, которые определены&nbsp;
+для целого и вещественного типов:</CENTER>
+
+<CENTER><TABLE BORDER COLS=4 WIDTH="100%" >
+<TR>
+<TD ALIGN=CENTER WIDTH="10%"><B>Знак</B>&nbsp;
+<BR><B>операции</B></TD>
+
+<TD ALIGN=CENTER WIDTH="40%"><B>Операция</B></TD>
+
+<TD ALIGN=CENTER WIDTH="25%"><B>Типы операндов</B></TD>
+
+<TD ALIGN=CENTER WIDTH="25%"><B>Тип результата</B>&nbsp;</TD>
+</TR>
+
+<TR>
+<TD ALIGN=CENTER WIDTH="10%"><B><FONT SIZE=+2>+</FONT></B></TD>
+
+<TD ALIGN=CENTER WIDTH="40%">Сложение</TD>
+
+<TD ALIGN=CENTER WIDTH="25%">Целый или вещественный</TD>
+
+<TD ALIGN=CENTER ROWSPAN="3" WIDTH="25%">Целый, если оба операнда целого
+типа, в противном случае - вещественный.&nbsp;</TD>
+</TR>
+
+<TR>
+<TD ALIGN=CENTER WIDTH="10%"><B><FONT SIZE=+2>-</FONT></B></TD>
+
+<TD ALIGN=CENTER WIDTH="40%">Вычитание</TD>
+
+<TD ALIGN=CENTER WIDTH="25%">Целый или вещественный</TD>
+</TR>
+
+<TR>
+<TD ALIGN=CENTER WIDTH="10%"><B><FONT SIZE=+2>*</FONT></B>&nbsp;</TD>
+
+<TD ALIGN=CENTER WIDTH="40%">Умножение</TD>
+
+<TD ALIGN=CENTER WIDTH="25%">Целый или вещественный</TD>
+</TR>
+
+<TR>
+<TD ALIGN=CENTER WIDTH="10%"><B><FONT SIZE=+2>/</FONT></B>&nbsp;</TD>
+
+<TD ALIGN=CENTER WIDTH="40%">Деление&nbsp;</TD>
+
+<TD ALIGN=CENTER WIDTH="25%">Целый или вещественный</TD>
+
+<TD ALIGN=CENTER WIDTH="25%">Вещественный&nbsp;</TD>
+</TR>
+
+<TR>
+<TD ALIGN=CENTER WIDTH="10%"><B><FONT SIZE=+1>Div</FONT></B></TD>
+
+<TD ALIGN=CENTER WIDTH="40%">Целочисленное деление</TD>
+
+<TD ALIGN=CENTER WIDTH="25%">Целый</TD>
+
+<TD ALIGN=CENTER WIDTH="25%">Целый&nbsp;</TD>
+</TR>
+
+<TR>
+<TD ALIGN=CENTER WIDTH="10%"><B><FONT SIZE=+1>Mod</FONT></B></TD>
+
+<TD ALIGN=CENTER WIDTH="40%">Остаток от целочисленного деления</TD>
+
+<TD ALIGN=CENTER WIDTH="25%">Целый&nbsp;</TD>
+
+<TD ALIGN=CENTER WIDTH="25%">Целый&nbsp;</TD>
+</TR>
+</TABLE></CENTER>
+&nbsp;
+<CENTER><B>В Паскале определены следующие логические операции:</B></CENTER>
+
+<CENTER>&nbsp;&nbsp;&nbsp;<B> Not</B>&nbsp; -&nbsp;&nbsp; логическое&nbsp;
+<B>НЕ</B>;</CENTER>
+
+<CENTER>&nbsp;&nbsp;&nbsp; <B>And</B> -&nbsp;&nbsp; логическое&nbsp; <B>И</B>;</CENTER>
+
+<CENTER>&nbsp;&nbsp;&nbsp; <B>Or</B>&nbsp;&nbsp; -&nbsp;&nbsp; логическое&nbsp;
+<B>ИЛИ</B>;</CENTER>
+
+<CENTER>&nbsp;&nbsp;&nbsp; <B>Xor</B>&nbsp; -&nbsp;&nbsp; исключительное
+<B>ИЛИ</B>.</CENTER>
+
+<CENTER>Данные операции определяются следующим образом</CENTER>
+
+<CENTER><TABLE BORDER COLS=6 WIDTH="100%" >
+<TR>
+<TD><B>P&nbsp;</B></TD>
+
+<TD><B>Q</B></TD>
+
+<TD><B>Not P</B></TD>
+
+<TD><B>P And Q</B></TD>
+
+<TD><B>&nbsp;P Or Q</B></TD>
+
+<TD><B>P Xor Q&nbsp;</B></TD>
+</TR>
+
+<TR>
+<TD>True&nbsp;
+<BR>True&nbsp;
+<BR>False&nbsp;
+<BR>False</TD>
+
+<TD>True&nbsp;
+<BR>False&nbsp;
+<BR>True&nbsp;
+<BR>False</TD>
+
+<TD>False&nbsp;
+<BR>False&nbsp;
+<BR>True&nbsp;
+<BR>True</TD>
+
+<TD>True&nbsp;
+<BR>False&nbsp;
+<BR>False&nbsp;
+<BR>False</TD>
+
+<TD>True&nbsp;
+<BR>True&nbsp;
+<BR>True&nbsp;
+<BR>False</TD>
+
+<TD>False&nbsp;
+<BR>True&nbsp;
+<BR>True&nbsp;
+<BR>False</TD>
+</TR>
+</TABLE></CENTER>
+&nbsp;В Паскале используются следующие операции отношения: <B><FONT SIZE=+1>=,
+&lt;>, >, &lt;, &lt;=, >=</FONT></B>. Операции сравнения применимы
+к данным простых типов. Сравнивать можно между собой значения одного типа:
+целые, вещественные, символьные, логические, значения перечисляемого типа.
+Допустимо также сравнивать между собой целые и вещественные числа.
+<BR>При вычислении выражений любого типа приоритет вычислений определяется
+расставленными скобками, а при их отсутствии по следующей таблице (в порядке
+убывания приоритета).
+<CENTER><TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="50%" >
+<TR>
+<TD ALIGN=CENTER><B>Приоритет</B></TD>
+
+<TD ALIGN=CENTER><B>Операция</B>&nbsp;</TD>
+</TR>
+
+<TR>
+<TD ALIGN=CENTER>1&nbsp;
+<BR>2&nbsp;
+<BR>3&nbsp;
+<BR>4</TD>
+
+<TD ALIGN=CENTER>Not&nbsp;
+<BR>*, /, Div, Mod, And&nbsp;
+<BR>+, -, Or, Xor&nbsp;
+<BR>=,&lt;>, &lt;, >, &lt;=, >=</TD>
+</TR>
+</TABLE></CENTER>
+&nbsp;<A NAME="2_3"></A><B>2.3. Функции.</B>
+<CENTER>Все&nbsp; функции можно разделить на два вида:&nbsp; не выводящие
+за пределы типа, т. е. аргументы и результат относятся к одному типу и
+те, у которых тип результата не совпадает или может не совпадать с типом
+результата. Ниже приводится перечень часто используемых функций&nbsp; Паскаля.</CENTER>
+
+<CENTER><TABLE BORDER WIDTH="100%" >
+<TR>
+<TD ALIGN=CENTER><B>Вызов функции</B></TD>
+
+<TD ALIGN=CENTER><B>Тип аргумента</B></TD>
+
+<TD ALIGN=CENTER><B>Тип результата</B></TD>
+
+<TD ALIGN=CENTER><B>Назначение</B></TD>
+</TR>
+
+<TR>
+<TD>&nbsp;<B>Abs(x)</B>&nbsp;</TD>
+
+<TD>целый вещественный&nbsp;</TD>
+
+<TD>целый вещественный&nbsp;</TD>
+
+<TD>Возвращает абсолютное значение <B>x</B>&nbsp;</TD>
+</TR>
+
+<TR>
+<TD><B>Pi</B>&nbsp;</TD>
+
+<TD>-&nbsp;</TD>
+
+<TD>вещественный&nbsp;</TD>
+
+<TD>Возвращает значение числа <B>ПИ</B>&nbsp;</TD>
+</TR>
+
+<TR>
+<TD><B>Sin(x)</B>&nbsp;</TD>
+
+<TD>целый вещественный&nbsp;</TD>
+
+<TD>вещественный&nbsp;</TD>
+
+<TD>Возвращает синус <B>x</B> радиан&nbsp;</TD>
+</TR>
+
+<TR>
+<TD><B>Cos(x)</B>&nbsp;</TD>
+
+<TD>целый вещественный&nbsp;</TD>
+
+<TD>вещественный&nbsp;</TD>
+
+<TD>Возвращает косинус <B>x</B> радиан&nbsp;</TD>
+</TR>
+
+<TR>
+<TD><B>ArcTan(x)</B>&nbsp;</TD>
+
+<TD>целый вещественный&nbsp;</TD>
+
+<TD>вещественный&nbsp;</TD>
+
+<TD>Возвращает арктангенс <B>x</B> радиан&nbsp;</TD>
+</TR>
+
+<TR>
+<TD><B>Sqrt(x)</B>&nbsp;</TD>
+
+<TD>целый вещественный&nbsp;</TD>
+
+<TD>вещественный&nbsp;</TD>
+
+<TD>&nbsp;Возвращает квадратный корень из <B>x>=0</B>&nbsp;</TD>
+</TR>
+
+<TR>
+<TD><B>Sqr(x)</B>&nbsp;</TD>
+
+<TD>целый вещественный&nbsp;</TD>
+
+<TD>целый вещественный&nbsp;</TD>
+
+<TD>Возвращает значение квадрата <B>x</B>&nbsp;</TD>
+</TR>
+
+<TR>
+<TD><B>Exp(x)</B>&nbsp;</TD>
+
+<TD>целый вещественный&nbsp;</TD>
+
+<TD>вещественный&nbsp;</TD>
+
+<TD>Возвращает значение e в степени <B>x</B>&nbsp;</TD>
+</TR>
+
+<TR>
+<TD><B>Ln(x)</B>&nbsp;</TD>
+
+<TD>целый вещественный&nbsp;</TD>
+
+<TD>вещественный&nbsp;</TD>
+
+<TD>Возвращает натуральный логарифм <B>x, x>0</B>&nbsp;</TD>
+</TR>
+
+<TR>
+<TD><B>Trunc(x)</B>&nbsp;</TD>
+
+<TD>вещественный целый&nbsp;</TD>
+
+<TD>целый&nbsp;</TD>
+
+<TD>Возвращает целую часть значения <B>x</B>&nbsp;</TD>
+</TR>
+
+<TR>
+<TD><B>Frac(x)</B>&nbsp;</TD>
+
+<TD>вещественный целый&nbsp;</TD>
+
+<TD>вещественный&nbsp;</TD>
+
+<TD>Возвращает дробную часть значения <B>x&nbsp;</B>&nbsp;</TD>
+</TR>
+
+<TR>
+<TD><B>Int(x)</B>&nbsp;</TD>
+
+<TD>вещественный целый&nbsp;</TD>
+
+<TD>вещественный&nbsp;</TD>
+
+<TD>Возвращает целую часть значения <B>x</B>&nbsp;</TD>
+</TR>
+
+<TR>
+<TD><B>Round(x)</B>&nbsp;</TD>
+
+<TD>вещественный целый&nbsp;</TD>
+
+<TD>целый&nbsp;</TD>
+
+<TD>Округляет <B>x</B> до ближайшего целого&nbsp;</TD>
+</TR>
+
+<TR>
+<TD><B>Odd(x)</B>&nbsp;</TD>
+
+<TD>целый&nbsp;</TD>
+
+<TD>логический&nbsp;</TD>
+
+<TD>Проверяет нечетность значения<B> x</B>&nbsp;</TD>
+</TR>
+
+<TR>
+<TD><B>Ord(x)</B>&nbsp;</TD>
+
+<TD>порядковый&nbsp;</TD>
+
+<TD>целый&nbsp;</TD>
+
+<TD>Возвращает порядковый номер, соответствующий значению <B>x</B>&nbsp;</TD>
+</TR>
+
+<TR>
+<TD><B>Chr(x)</B>&nbsp;</TD>
+
+<TD>символьный&nbsp;</TD>
+
+<TD>целый&nbsp;</TD>
+
+<TD>Возвращает символ с заданным порядковым номером <B>x</B>&nbsp;</TD>
+</TR>
+
+<TR>
+<TD><B>Pred(x)</B>&nbsp;</TD>
+
+<TD>порядковый&nbsp;</TD>
+
+<TD>порядковый&nbsp;</TD>
+
+<TD>Возвращает предшествующее значение <B>x</B>&nbsp;</TD>
+</TR>
+
+<TR>
+<TD><B>Succ(x)</B>&nbsp;</TD>
+
+<TD>порядковый&nbsp;</TD>
+
+<TD>порядковый&nbsp;</TD>
+
+<TD>Возвращает последующее значение <B>x</B>&nbsp;</TD>
+</TR>
+</TABLE></CENTER>
+&nbsp;
+<CENTER>&nbsp;</CENTER>
+
+</BODY>
+</HTML>

@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl17_1.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl17_3.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Вывод изображения
+
+</font>
+</b>
+<br>
+</font>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Заполнение области
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Видимый элемент может быть частично или полностью перекрыт другими видимыми 
+элементами. Turbo Vision позволяет располагать окна на экране в произвольном 
+порядке, в том числе и накладывая их друг на друга. С помощью метода</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure GetClipRect(var R: TRect)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">видимый элемент может получить координаты минимальной площади, которую он 
+должен заполнить в данный момент. Обращение к GetClipRect обычно используется в 
+методе Draw и позволяет до минимума сократить время обновления информации на 
+экране.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Следует помнить, что в правильно построенной программе никакой другой видимый 
+элемент не должен вторгаться в область владения данного элемента. Поэтому, если 
+видимый элемент не заполнит всю выделенную ему область, этого за него не сделает 
+никто другой, и незаполненная область окажется «замусоренной» предыдущим выводом 
+в эту часть экрана.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для вывода на экран не рекомендуется использовать стандартную процедуру Write 
+(WriteLn), т.к. она заполняет только ту часть экрана, которая необходима для 
+вывода, в то время как длина строки в видимом элементе может быть больше строки 
+вывода. С другой стороны, эта процедура игнорирует границы видимого элемента и 
+может «залезть» в чужую область.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Вывод в Turbo Vision основан на применении методов MoveChar, MoveStr и 
+WriteLine. Все три метода используют переменную типа TDrawBuffer в качестве 
+буфера видеопамяти. Метод MoveChar заполняет буфер нужным символом, например, 
+пробелом или символом Char (#176) - этим символом заполняется фон панели экрана. 
+Метод MoveStr переносит в буфер строку (подстроку), а метод WriteLine переносит 
+буфер в видеопамять и таким образом осуществляет собственно вывод на экран.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Тип TDrawBuffer представляет собой массив слов:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TDrawBuffer = array [0..MaxViewWidth-1] of
+Word;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Константа MaxViewWidth определена в интерфейсной части модуля Views и 
+устанавливает максимально возможную длину вывода (132 символа). Элементы массива 
+задают двухбайтные последовательности, используемые в видеопамяти ПК для 
+размещения кода выводимог/о символа (младший байт) и его атрибутов (старший 
+байт). Байт атрибутов определяет цвет выводимого символа и цвет фона, а также 
+содержит признак мерцания (рис. 17.1).</font> </P>
+<P align="center"><img border="0" src="17_1.jpg"    ></P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Рис. 17.1.</b> Байт атрибутов видеопамяти</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">При обращении к методам MoveChar и MoveStr байт атрибутов задается в качестве 
+одного из параметров обращения. Его можно получить с помощью функции GetColor, 
+параметр обращения к которой определяет нужный номер элемента палитры.</font> </P>
+<p>&nbsp;</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl17_1.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl17_3.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</BODY></HTML>

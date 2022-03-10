@@ -1,0 +1,194 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_16.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_18.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Режим поиска записи
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Для поиска нужной записи 
+сформируем диалоговое окно, показанное на рис.15.12.</font> 
+</P>
+<p align="center"><img border="0" src="15_12.jpg"    ></p>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Рис.15.12.</b> Окно 
+ввода шаблона поиска</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">С помощью этого окна 
+пользователь может задать несколько начальных букв, используемых как ключ для 
+поиска записи. Получив данные из этого окна, процедура SearchItem организует 
+поиск первой от начала коллекции строки, для которой не выполняется условие</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Pattern &gt;= Item</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">где Pattern - образец 
+поиска, Item - текущая строка коллекции. Найденная строка указывается как 
+текущая в поле Location и организуется вывод соответствующего текста в окне 
+просмотра.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В реализации процедуры 
+SearchItem указанная проверка осуществляется для строк, предварительно 
+преобразованных к прописным буквам с помощью внутренней процедуры UpString, т.е. 
+поиск игнорирует возможную разницу в высоте букв шаблона и строк коллекции.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure 
+SearchItem;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Ищет нужный 
+элемент}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function 
+UpString(s: String): String;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Преобразует 
+строку в верхний регистр}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k: Integer; begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for k := 1 to 
+Length(s) do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if s[k] in 
+['a'-.'z'] then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s[k] := 
+chr(ord('A')+ord(s[k])-ord('a'))&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else if s[k] in 
+['a'..'n']. then</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s[k] := 
+chr(ord('A')+ord(s[k])-ord('a'))&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else if s[k] in 
+['р'..'я'] then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s[k] := 
+chr(ord('P')+ord(s[k])-ord('p'));&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> UpString := s&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; {UpString}&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InWin: PDialog;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R: TRect;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s: String;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">p: PInputLine;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k: Word;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin {SearchItem}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">
+R.Assign(15,8,65,16);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> InWin := 
+New(PDialog,&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Init(R,'Поиск 
+записи:'));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> with InWin do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">
+R.Assign(2,2,47,3);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">p := 
+New(PInputLine, Init(R,50));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert(p);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">
+R.Assign(l,l,40;2);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert(New(PLabel, Init(R,</font> <font size="3">
+'Введите образец для поиска:',р)));&nbsp;</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">
+R.Assign(10,5,20,7);&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert(New(PButton,</font> <font size="3">
+Init(R,'Ввести',cmOk,bfDefault)));&nbsp;</font></font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">
+R.Assign(25,5,35,7);&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert(New(PButton,</font> <font size="3">
+Init(R,'Выход',cmCancel,bfNormal)));&nbsp;</font></font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SelectNext(False)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if DeskTop.ExecView(InWin) 
+= cmCancel then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">exit; s := 
+p.Data;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Location := 0;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">while (UpString(s) 
+&gt;= UpString(PString(PS.At(Location))))</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">and (Location &lt; 
+pred(PS.count)) do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">inc(Location); if 
+(Location &lt; Delta.Y) or</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">(Location &gt; 
+Delta.Y+pred(Size.Y)) then&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">
+ScrollTo(Delta.X,Location)&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Draw&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; {SearchItem}</font> </P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_16.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_18.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</BODY></HTML>

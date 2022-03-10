@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl5_6.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl5_8.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Типизированные файлы
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Длина любого компонента типизированного файла строго постоянна, что дает 
+возможность организовать прямой доступ к каждому из них (т.е. доступ к 
+компоненту по его порядковому номеру).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Перед первым обращением к процедурам ввода-вывода указатель файла стоит в его 
+начале и указывает на первый компонент с номером 0. После каждого чтения или 
+записи указатель сдвигается к следующему компоненту файла. Переменные в списках 
+ввода-вывода должны иметь тот же тип, что и компоненты файла. Если этих 
+переменных в списке несколько, указатель будет смещаться после каждой операции 
+обмена данными между переменными и дисковым файлом.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> READ. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Обеспечивает чтение очередных компонентов типизированного 
+файла. Формат обращения:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">READ (&lt;ф.п.&gt;,&lt;сп.ввода&gt;)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь &lt;cn.вводa&gt; - список ввода, содержащий одну или более переменных 
+такого же типа, что и компоненты файла.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Файловая переменная &lt;ф.п.&gt; должна быть объявлена предложением FILE 
+OF... и связана с именем файла процедурой ASSIGN. Файл необходимо открыть 
+процедурой RESET. Если файл исчерпан, обращение к READ вызовет ошибку 
+ввода-вывода.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> WRITE.</font></P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;Используется для записи данных в типизированный файл. Формат 
+обращения:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WRITE (&lt;ф.п.&gt;,&lt;сп.вывода&gt;)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь &lt;сп.вывода&gt; - список вывода, содержащий одно или более выражений 
+того же типа, что и компоненты файла.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> SEEK. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Смещает указатель файла к требуемому компоненту. Формат 
+обращения:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SEEK (&lt;ф.п.&gt;,&lt;N компонента&gt;)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь &lt;N компонента&gt; - выражение типа LONGINT, указывающее номер 
+компонента файла.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Первый компонент файла имеет номер 0. Процедуру нельзя применять к текстовым 
+файлам.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция</b> FILESIZE. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возвращает значение типа LONGINT, которое содержит 
+количество компонентов файла. Формат обращения: '</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">FILESIZE (&lt;ф.п.&gt;)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Функцию нельзя использовать для текстовых файлов. Чтобы переместить указатель 
+в конец типизированного файла, можно написать:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">seek (FileVar, FileSize(FileVar));</font><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> где FILEVAR - файловая переменная.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Функция</b>.FILEPOS. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возвращает значение типа LONGINT, содержащее порядковый 
+номер компонента файла, который будет обрабатываться следующей операцией 
+ввода-вывода. Формат обращения:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">FILEPOS (&lt;ф.п.&gt;)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Функцию нельзя использовать для текстовых файлов. Первый компонент файла 
+имеет порядковый номер 0.</font> </P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl5_6.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl5_8.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

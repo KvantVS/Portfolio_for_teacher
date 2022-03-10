@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" >
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl2_4_5.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td >
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl2_6.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p align="left">
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+ 
+Массивы
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Рассмотренные выше простые типы данных позволяют использовать в программе 
+одиночные объекты - числа, символы, строки и т.п. В Турбо Паскале могут 
+использоваться также объекты, содержащие множество однотипных элементов. Это 
+массивы -формальное объединение нескольких однотипных объектов (чисел, символов, 
+строк и т.п.), рассматриваемое как единое целое. К необходимости применения 
+массивов мы приходим всякий раз, когда требуется связать и использовать целый 
+ряд родственных величин. Например, результаты многократных замеров температуры 
+воздуха в течение года удобно рассматривать как совокупность вещественных чисел, 
+объединенных в один сложный объект - массив измерений.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">При описании массива необходимо указать общее число входящих в массив 
+элементов и тип этих элементов. Например:</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">а : array [1..10] of Real;&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> b : array [0..50] of Char;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">с : array [-3..4] of Boolean;</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Как видим, при описании массива используются зарезервированные слова ARRAY и 
+OF (массив, из). За словом ARRAY в квадратных скобках указывается тип-диапазон, 
+с помощью которого компилятор определяет общее число элементов массива. 
+Тип-диапазон (подробнее см. в гл.4) задается левой и правой границами изменения 
+индекса массива, так что массив А состоит из 10 элементов, массив В - из 51, а 
+массив С - из 8 элементов. За словом OF указывается тип элементов, образующих 
+массив.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Доступ к каждому элементу массива в программе осуществляется с помощью 
+индекса - целого числа (точнее, выражения порядкового типа, см. гл.4), служащего 
+своеобразным именем элемента в массиве (если левая граница типа-диапазона равна 
+1, индекс элемента совпадает с его порядковым номером). При упоминании в 
+программе любого элемента массива сразу за именем массива должен следовать 
+индекс элемента в квадратных скобках, например:</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">a: array [1..10] of Integer;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">b: array [0..40] of Char;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">c: array [-2..2] of Boolean;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k: Integer; begin</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">b[17] := 'F1;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">c[-2] := a[l] &gt; [2] ;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for k : = 1 to 10 do a[k] := 0;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">...</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">В правильно составленной программе индекс не должен выходить за пределы, 
+определенные типом-диапазоном. Например, можно использовать элементы А[1], 
+В[38], С[0], но нельзя A[0] или С[38] (определение массивов см. выше). Турбо 
+Паскаль может контролировать использование индексов в программе на этапе компиляции и 
+на этапе счета программы.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Для иллюстрации приемов работы с массивами составим программу (пример 2.9), 
+которая создает массив случайных целых чисел, подсчитывает их среднее 
+арифметическое, а также определяет и выводит на экран минимальное и максимальное 
+из этих чисел.</font> </P>
+<p align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Пример 2.9</font>
+</b> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Program Average;</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Программа создает массив из N случайных целых чисел, равномерно 
+распределенных в диапазоне от 0 до MAX_VALUE-1, подсчитывает среднее 
+арифметическое этих чисел, а также минимальное и максимальное из них.}</font> 
+</i> 
+</P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> 
+</P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">N = 1000;&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MAX_VALUE = 100+1; <i> {Диапазон 
+значений случайных чисел}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">m : array [1..N] of Integer; <i> {Массив чисел}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">i : Integer; <i> {Индекс массива}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">max, min : Integer; <i>{Максимальное и минимальное число}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s : Real; <i> {Сумма чисел}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Наполняем массив случайными числами:}&nbsp;</font> </i> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for i := 1 to N do</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">m[i] := random(MAX_VALUE); <i> {Задаем начальные значения переменных:}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s := 0;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">max : = m [ 1 ] ;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">min : = m [ 1 ] ;</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Цикл вычисления суммы всех случайных чисел и поиска минимального и 
+максимального:}</font> </i> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for i := 1 to N do&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s : = s + m [ i ] ;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if m[i] &lt; min then</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">min := m[i]</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">else if m[i] &gt; max then</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">max := m[i]&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Вычисляем среднее значение и печатаем результат:}</font> </i> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn('MMH = ',min,' 
+Макс = ', max, ' Среднее = ',s/N)&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Для создания массива используется встроенная функция RANDOM (MAX) , которая 
+возвращает случайное целое число, равномерно распределенное в диапазоне от 0 до 
+МАХ-1 (МАХ- параметр обращения).</font> </P>
+<p align="left"></P>
+<p align="left"></P> 
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" >
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl2_4_5.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td >
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl2_6.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</body>
+</html>

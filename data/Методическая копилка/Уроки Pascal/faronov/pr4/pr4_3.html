@@ -1,0 +1,189 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr4_2.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr4_4.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Переменные
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DosError : Integer;&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Значение, запомненное в DosError, представляет собой код 
+ошибки операционной системы:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">0 - нет ошибки</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">2 - файл не найден</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">3 - путь не найден</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">5 - доступ запрещен</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">6 - неверный обработчик</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">8 - нет памяти</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">10 - неправильная среда</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">11 - неправильный формат&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 18 - больше нет файлов</font> </P>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+Процедуры и функции
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>Процедуры даты и времени</i></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> GetDate (var Year, Month, Day, DayOfWeek: Word) Возвращает текущую 
+дату.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> GetFTime (var F; var Time: Longlnt) Возвращает дату и время 
+последнего обновления файла.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> GetTime(var Hour, Minute, Second, Sec100: Word) Возвращает текущее 
+время.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> PackTime(var Pack: DataTime; var Time; Longlnt) Преобразует запись 
+Pack в,4-байтовое упакованное значение даты и времени типа Longlnt, используемое 
+процедурой SetFTime. Поля записи DateTime не проверяются на диапазон.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> SetData (Year, Month, Day: Word) Устанавливает текущую дату.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> SetFTime (var F; Time; Longlnt) Устанавливает время и дату 
+последнего обновления файла.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> SetTime(Hour, Minute, Second, SeclOO: Word) Устанавливает текущее 
+время.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> UnpackTime(Time: Longlnt; var Pack: DataTime) Преобразует 
+4-байтовое упакованное значение даты и времени, возвращаемое GetFTime, FindFirst 
+или FindNext, в распакованную запись типа DateTime.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>Процедуры обслуживания прерываний</i></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> GetIntyec (IntNo: Byte; var Vec: Pointer) Возвращает адрес, 
+хранящийся в указанном векторе прерывания.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Intr (IntNo; Byte; var R: Registers) Выполняет указанное 
+программное прерывание.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> MSDos (var R: Registers) Выполняет функцию операционной системы.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> SetIntVec (IntNo: byte; P: Pointer) Устанавливает адрес для 
+указанного вектора прерывания.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>Функции статуса диска</i></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> DiskFree(Disk: Word): LongInt Возвращает число свободных байт на 
+указанном диске;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> DiskSize(Disk: Word): LongInt Возвращает полный объем указанного 
+диска в байтах</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>Процедуры обработки файлов</i></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> FindFirst(Path: String; Attr: Byte; var Search: SearchRec) Ищет в 
+указанном или текущем каталоге первый файл, соответствующий заданному имени 
+файла и набору атрибутов.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> FindNext (var Search: SearchRec) Возвращает следующий файл, 
+соответствующий имени и атрибутам, указанным в предыдущем вызове FindFrst.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> GetFAttrtvar F; var Attr; Byte) Возвращает атрибуты файла.&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b> 
+Procedure</b> SetFAttr (var F; Attr: Byte) Устанавливает атрибуты файла.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> FSplit(Path: PathStr; var Dir: DirStr; var Name: NameStr; var Ext: 
+ExtStr) Разбивает имя файла Path на 3 составные части (каталог, имя файла, 
+расширение).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>Функции обработки файла</i></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> FExpand(Name; PathStr) : PathStr Берет имя файла Name и возвращает 
+полное имя файла (устройство, каталог, имя и расширение).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> FSearch(Name: PathStr; DirList; String): PathStr Ищет файл Name в 
+списке DirList каталогов. Элементы списка разделяются точкой с запятой.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>Процедуры обработки процессов</i></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Exec(Name: PathStr; CmdLine: String) Выполняет заданную программу 
+Name с указанной командной строкой CmdLine.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Keep (Code: Word) Завершает программу и оставляет ее резидентной в 
+памяти.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> SwapVectors Обменивает сохраненные векторы прерываний из переменных 
+SaveIntXX c текущими векторами.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>Функции управления программой</i></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> DosExitCode: Word  Возвращает код завершения подпроцесса.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>Функции управления средой</i></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> EnvCount: Integer Возвращает число переменных окружения, 
+содержащихся в среде ДОС.&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b> Function</b> EnvStr (Index: Integer): String Возвращает 
+указанную переменную окружения ДОС.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> GetEnv(EnvVar: String): String Возвращает значение указанной 
+переменной окружения ДОС.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>Дополнительные процедуры</i></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> GetCBreak (var CBreak: Boolean) Возвращает состояние проверки 
+Ctrl-Break.&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b> Procedure</b> SetCBreak(CBreak: Boolean) Устанавливает состояние 
+проверки Ctrl-Break в ДОС.&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b> Procedure</b> GetVerify(var Verify: Boolean) Возвращает 
+состояние флага верификации в ДОС.&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b> Procedure</b> SetVerifу (Verify: Boolean) 
+Устанавливает состояние флага верификации в ДОС.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>Дополнительные функции</i></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> DosVersion: Word Возвращает номер версии ДОС.</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr4_2.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr4_4.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+</BODY></HTML>

@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr3_2.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Фатальные ошибки
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">
+Эти ошибки всегда приводят к немедленной остановке программы.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">200 Division by zero (Деление на ноль).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">201 Range check error (Ошибка при проверке границ).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Ошибка генерируется операторами, скомпилированными в состоянии {$R+}, при 
+возникновении одной из следующих ситуаций:</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> индексное выражение массива находилось вне допустимого диапазона;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> была осуществлена попытка присвоить переменной значение, находящееся вне 
+диапазона переменной;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> была осуществлена попытка передать значение, находящееся вне допустимого 
+диапазона, в качестве параметра процедуре или функции.</font></li>
+</ul>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">202 Stack overflow error (Переполнение стека).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Эта ошибка генерируется на входе в процедуру или функцию, скомпилированную в 
+режиме {$S+}, в случае, если нет достаточной области для размещения локальных 
+переменных подпрограммы. Увеличьте размер стека, используя директиву компилятора 
+{$М}.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">203 Heap overflow error (Переполнение кучи).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Эта ошибка генерируется процедурами NEW или GETMEM в случае, если в куче нет 
+свободной памяти требуемого размера.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">204 Invalid pointer operation (Недействительная операция с .указателем).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Эта 
+ошибка генерируется процедурами DISPOSE или FREEMEM в случае, когда указатель 
+имеет значение NIL или указывает на адрес, лежащий за пределами динамически 
+распределяемой области памяти.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">205 Floating point overflow (Переполнение при операции с плавающей запятой).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> 
+В результате выполнения операции с плавающей запятой получено слишком большое 
+вещественное число.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">206 Floating point underflow (Исчезновение порядка при операции с плавающей 
+запятой).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Эта ошибка генерируется только в том случае, если используется сопроцессор 
+8087/80287/80387 с управляющим словом, которое демаскирует ошибку исчезновения 
+порядка. По умолчанию исчезновение порядка приводит к возвращению результата, 
+равного нулю.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">207 Invalid floating point operation (Недопустимая операция с плавающей 
+запятой) .</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Возможные причины сообщения:</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> аргумент функций TRUNC или ROUND не может быть преобразован в целое число, 
+находящееся внутри диапазона типа LONGINT (от -2147483648 до +2147483647);</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> отрицательный аргумент функции SQRT (извлечение квадратного корня);</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> аргумент функции LN (логарифм) равен нулю или имеет отрицательное значение;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> произошло переполнение стека сопроцессора.</font></li>
+</ul>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">208 Overlay manager not installed (He установлена подсистема управления 
+оверлеем).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Ваша программа вызывает оверлейную процедуру или функцию, а подсистема 
+управления оверлеем не инициирована. Вероятнее всего, в программе отсутствует 
+обращение к процедуре OVRINIT или обращение к этой процедуре завершилось с 
+ошибкой. Нужно иметь в виду, что если в каком-либо из оверлейных модулей 
+содержится раздел инициации, то в программе необходимо создать дополнительный 
+или использовать имеющийся неоверлейный модуль, вызывающий процедуру OVRINIT в 
+своем разделе инициализации, и указать этот модуль в предложении USES перед 
+любым из оверлейных модулей.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">209 Overlay file read error (Ошибка чтения оверлейного файла).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Ошибка чтения 
+произошла, когда подсистема управления оверлеем пыталась считать оверлейный 
+модуль из оверлейного файла.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">210 Object not initialized (He инициирован объект).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Вы обращаетесь к виртуальному правилу применительно к неинициированному 
+объекту (до вызова конструктора).</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">211 Call to abstract method (Вызов абстрактного правила).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Эта ошибка генерируется правилом ABSTRACT модуля OBJECT при работе в среде 
+Turbo Vision в случае обращения к абстрактному правилу, т.е. к виртуальному 
+правилу, которое разработано специально для его замены в объектах-потомках.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">212 Stream registration error (Ошибка в регистрируемом потоке).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> Эта ошибка 
+генерируется правилом REGISTERTYPE модуля OBJECT при работе в среде Turbo Vision 
+в случае возникновения одной из следующих ошибок:</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> запись регистрируемого потока не содержит сегмента данных;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> поле OBJTYPE записи регистрируемого потока нулевое;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> указанный тип уже был зарегистрирован;</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> существует другой тип с таким же полем
+    OBJTYPE.</font></li>
+</ul>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">213 Collection index out of range (Набираемый индекс выходит из границ 
+диапазона) .</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Индекс, передаваемый объекту TCOLLECTION при работе в среде Turbo Vision, 
+выходит за границы диапазона.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">214 Collection overflow error (Переполнение коллекции).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Эта ошибка генерируется объектом TCOLLECTION при работе в среде Turbo Vision 
+в случае, если делается попытка добавить элемент к коллекции, которую нельзя 
+расширять.</font> </P>
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr3_2.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+
+</tr>
+</table>
+
+
+</BODY></HTML>

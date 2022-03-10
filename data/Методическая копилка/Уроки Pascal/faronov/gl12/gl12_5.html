@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl12_4.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl12_6.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Спецификация встроенного ассемблера
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Приведенное выше общее описание архитектуры МП 8086/8088 является базовым для 
+любого ассемблера, в том числе и для встроенного ассемблера Турбо Паскаля. 
+Однако ассемблеры содержат массу дополнительных возможностей, облегчающих 
+разработку готовых к работе программ. Эти возможности отражаются в директивах и 
+макрокомандах ассемблера. Встроенный ассемблер не предназначен для написания</font>
+<font face="Arial, Helvetica, sans-serif" size="3">законченных программ, поэтому в нем отсутствуют макрокоманды и директивы. 
+Главной особенностью встроенного ассемблера является практически полное 
+отсутствие в нем средств описания переменных и данных, т.к. эти объекты 
+описываются средствами Турбо Паскаля.</font> 
+</P>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Оператор ASM
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Зарезервированное слово ASM открывает доступ к средствам встроенного 
+ассемблера. Этот оператор может располагаться только внутри исполняемой части 
+программы (подпрограммы). Область действия оператора ASM ограничивается 
+ближайшим по тексту зарезервированным словом END. Таким образом, структура 
+любого ассемблерного оператора такова:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">asm</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&lt;Одна или несколько команд встроенного ассемблера&gt;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">С точки зрения Турбо Паскаля пара asm... end считается операторными скобками, 
+ограничивающими единственный оператор Паскаля, например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if X&gt;10 then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> asm</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for k :=1 to 5 do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">asm</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Тело ассемблерного оператора asm... end может быть пустым или содержать 
+несколько ассемблерных команд. Каждая ассемблерная команда должна располагаться 
+на отдельной строке или отделяться от следующей за ней команды символом «;». 
+Ниже приводятся два разных способа написания одной и той же последовательности 
+ассемблерных команд:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">asm</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ah,0; int $16; mov ChCode, al; mov ScCode, ah&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> asm</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ah , 0</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">int $16</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ChCode, al</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">mov ScCode, ah&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В конце строки, содержащей единственную ассемблерную команду, или между двумя 
+командами, располагающимися на одной строке, разрешается вставлять комментарий, 
+который должен оформляться по обычным правилам Турбо Паскаля, т.е. 
+ограничиваться символами «{», «}» или «(*», «*)». Таким образом, комментарии 
+разрешены между ассемблерными командами, но не внутри них. Например, такой 
+оператор будет правильным:&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> asm</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Инициируем регистры}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">lea si,X; push ds;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">pop es;  {ES := DS}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">lea di,Y; mov ex,100</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cld  {Перенос - вперед}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> rep  {Выполняем Y := X}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> movsw</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Здесь нет ошибки - комментарий можно вставлять между префиксом и командой}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">а такой - неправильным:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">asm</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Готовим регистры}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> lea si,X; push ds;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> pop {ES:=DS} es;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Ошибка! Комментарий 
+разорвал мнемонику команды и ее операнд}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> lea di,Y; mov ex,100  {и направление} 
+eld&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Комментарий является разделителем команд, поэтому перед ним можно не 
+ставить ";"}.</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;rep movsw&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В пределах ассемблерного оператора допускаются любые команды, но Турбо 
+Паскаль требует выполнения следующего соглашения:</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В начале ассемблерного оператора регистр DS содержит сегмент кода, SS - 
+сегмент стека, ВР - текущий стек, SP указывает на вершину стека. Все эти
+регистры должны иметь точно такие же значения к моменту завершения работы 
+ассемблерного оператора.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Программист не должен делать каких-либо предположений о содержимом остальных 
+регистров, и эти регистры могут иметь произвольное значение после завершения 
+работы ассемблерного оператора. Исключением является случай ассемблерной 
+функции, которая должна использовать некоторые регистры для возврата своего 
+значения (см. п. 12.2.3).</font> </P>
+
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl12_4.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl12_6.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

@@ -1,0 +1,208 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" >
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl2_4_3.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td >
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl2_4_5.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p align="left">
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+ 
+Оператор выбора
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Оператор выбора позволяет выбрать одно из нескольких возможных продолжений 
+программы. Параметром, по которому осуществляется выбор, служит ключ выбора 
+-выражение любого порядкового типа (любого из рассмотренных, кроме типов REAL и 
+STRING, см. гл. 4).</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Структура оператора выбора такова:</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">CASE &lt;ключ_выбора&gt; OF &lt;список_выбора&gt; [ELSE &lt;операторы&gt;] 
+END</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Здесь CASE, OF, ELSE, END - зарезервированные слова (случай, из, иначе, 
+конец);</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;&lt;ключ_выбора&gt; - ключ выбора;&nbsp;</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3"> &lt;список_выбора&gt; - одна или 
+более конструкций вида:</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;&lt;константа_выбора&gt; : &lt;оператор&gt;;</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;&lt;константа_выбора&gt; - константа того же типа, что и выражение&lt;ключ_выбopa&gt; ;</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;&lt;операторы&gt; - произвольные операторы Турбо 
+Паскаля.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Оператор выбора работает следующим образом. Вначале вычисляется значение 
+выражения &lt;ключ_выбора&gt;, а затем в последовательности операторов 
+&lt;список_выбора&gt; отыскивается такой, которому предшествует константа, 
+равная вычисленному значению. Найденный оператор выполняется, после чего 
+оператор выбора завершает свою работу. Если в списке выбора не будет найдена 
+константа, соответствующая вычисленному значению ключа выбора, управление 
+передается операторам, стоящим за словом ELSE. Часть ELSE &lt;оператор&gt; можно 
+опускать. Тогда при отсутствии в списке выбора нужной константы ничего не 
+произойдет и оператор выбора просто завершит свою работу.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Составим программу (пример 2.8), имитирующую работу микрокалькулятора. 
+Программа вводит две строки: первая содержит два произвольных числа, разделенных 
+пробелом, вторая - символ арифметического действия, например:</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">2 2</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;*</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">или</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">18.35 0.12</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;&nbsp;&nbsp;&nbsp; /</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Над введенными числами осуществляется соответствующее действие и результат 
+выводится на экран. Признаком конца работы программы служит ввод любого символа, 
+отличного от +,-,*, /.</font> </P>
+<p align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Пример 2.8</font>
+</b> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Program Calc;</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Программа вводит два числа в первой строке и один из знаков +, -, *, / - во 
+второй и выводит на экран результат соответствующего арифметического действия}&nbsp;</font> </i> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+var</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">operation : Char; <i> {Знак операции}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">х, у, z : Real; <i> {Операнды и результат</i></font><i><font size="3">}</font></i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">stop : Boolean; <i> {Признак ошибочной операции</i></font><i>
+<font size="3">и останова}</font></i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">stop := false;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">repeat&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> WriteLn; <i>{Пустая строка-разделитель}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Write('x,y= ' ) ;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn(x,y);&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+Write('операция: ') ;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> ReadLn(operation);&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> case operation of</font> </P>
+<TABLE border=0 frame=box rules=all>
+  <TBODY>
+  <TR>
+    <TD>
+      <p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">' + ' :</font></P></TD>
+    <TD>
+      <p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">z : =</font></P></TD>
+    <TD>
+      <p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">x + y;</font></P></TD></TR>
+  <TR>
+    <TD>
+      <p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">' - ' :</font></P></TD>
+    <TD>
+      <p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">z : =</font></P></TD>
+    <TD>
+      <p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">x - y;</font></P></TD></TR>
+  <TR>
+    <TD>
+      <p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">' * ' :</font></P></TD>
+    <TD>
+      <p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">z : =</font></P></TD>
+    <TD>
+      <p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">x * y;</font></P></TD></TR>
+  <TR>
+    <TD>
+      <p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">' / ' :</font></P></TD>
+    <TD>
+      <p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">z : =</font></P></TD>
+    <TD>
+      <p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">x / y;</font></P></TD></TR>
+  <TR>
+    <TD>
+      <p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">else</font></P></TD>
+    <TD><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD>
+    <TD><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD>
+      <p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">stop</font></P></TD>
+    <TD colSpan=2>
+      <p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">:= true;</font></P></TD></TR>
+  <TR>
+    <TD>
+      <p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font></P></TD>
+    <TD><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD>
+    <TD><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD>
+      <p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if not</font></P></TD>
+    <TD>
+      <p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">stop</font></P></TD>
+    <TD>
+      <p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">then</font></P></TD></TR></TBODY></TABLE>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn('результат=',z)</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">until stop&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Любому из операторов списка выбора может предшествовать не одна, а несколько 
+констант выбора, разделенных запятыми. Например, следующая программа при вводе 
+одного из символов: у или Y выведет на экран слово «Да», а при вводе
+n или N - 
+слово «Нет»:</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ch : Char ;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn (ch) ;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">case ch of</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'n','N' : WriteLn ('Нет' );</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'y','Y' : WriteLn ('Да')</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P> 
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" >
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl2_4_3.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td >
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl2_4_5.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</body>
+</html>

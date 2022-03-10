@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl20_7.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl20_9.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Прямой доступ к потокам
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Поток имеет методы, имитирующие файловые процедуры прямого доступа к 
+дисковому файлу.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">С помощью функции GetPos программа может получить текущую позицию в потоке, 
+т.е. номер байта, начиная с которого будет осуществляться очередная операция с 
+потоком (первый байт потока имеет номер 0).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Метод Seek (Pos: LongInf) перемещает текущую позицию в потоке в байт Pos от 
+начало потока.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Метод GetSize возвращает общий размер потока в байтах.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">С помощью метода Truncate можно удалить из потока все данные, начиная с 
+текущей позиции до конца потока.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Как видим, эти процедуры можно использовать только в том случае, если создать 
+вне потока индексную коллекцию, содержащую начальные позиции в потоке для 
+каждого из сохраняемых в нем объектов. Такая коллекция используется в ресурсах, 
+поэтому для обеспечения прямого доступа к потоку лучше использовать файл 
+ресурсов (см. гл.21).</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl20_7.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl20_9.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+</BODY></HTML>

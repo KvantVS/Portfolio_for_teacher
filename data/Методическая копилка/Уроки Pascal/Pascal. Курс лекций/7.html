@@ -1,0 +1,208 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Untitled</title>
+</head>
+
+<body lang=RU style="'tab-interval:35.4pt'" background="bgrwhite.gif">
+<p><div align="center"><b><font size="+1" face="Arial">7. Переменные. Инициализация переменных. </font></b></div></p>
+<p><span
+style="mso-spacerun: yes">   </span>Тип переменных определяется пользователем в
+разделе описания пере-
+
+<p>менных:{}
+
+<p><span
+style="mso-spacerun: yes">   </span>В настоящее<span style="mso-spacerun:
+yes">  </span>время<span style="mso-spacerun: yes">  </span>в<span
+style="mso-spacerun: yes">  </span>профессиональном<span style="mso-spacerun:
+yes">  </span>программировании<span style="mso-spacerun: yes">  </span>принято
+
+<p>записывать
+имена<span style="mso-spacerun: yes">  </span>переменных с использованием так
+называемой венгерс-
+
+<p>кой
+нотации.
+
+<p><span
+style="mso-spacerun: yes">   </span>Венгерская нотация<span
+style="mso-spacerun: yes">  </span>-<span style="mso-spacerun: yes"> 
+</span>это соглашение о наименованиях переменных и
+
+<p>функций.<span
+style="mso-spacerun: yes">  </span>Соглашение широко используется при
+программировании на язы-
+
+<p>ках
+PASCAL, C и в среде WINDOWS.
+
+<p><span
+style="mso-spacerun: yes">   </span>Венгерская нотация основывается на
+следующих принципах:
+
+<p><span
+style="mso-spacerun: yes">   </span>-имена переменных и функций должны
+содержать префикс,<span style="mso-spacerun: yes">  </span>описывающий
+
+<p>их тип;
+
+<p><span
+style="mso-spacerun: yes">   </span>-имена переменных<span style="mso-spacerun:
+yes">  </span>и функций записываются полными словами или сло-
+
+<p>восочетаниями
+или их сокращениями,<span style="mso-spacerun: yes">  </span>но так, чтобы по
+имени можно было
+
+<p>понять
+назначение переменной или действие, выполняемое функцией.
+
+<p><span
+style="mso-spacerun: yes">   </span>Префиксы записываются малыми буквами,
+первая буква каждого слова -
+
+<p>заглавная,
+префиксы и слова записываются либо слитно, либо через сим-
+
+<p>вол _
+(подчеркивание).
+
+<p><span
+style="mso-spacerun: yes">   </span>Для языка<span style="mso-spacerun: yes"> 
+</span>PASCAL<span style="mso-spacerun: yes">  </span>могут быть рекомендованы
+следующие префиксы для
+
+<p>скалярных
+переменных и функций:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p>Префикс<span
+style="mso-spacerun: yes">     </span>Тип
+
+<p>---------------------
+
+<p>by<span
+style="mso-spacerun: yes">        </span>Byte
+
+<p>sh<span
+style="mso-spacerun: yes">        </span>Shortint
+
+<p>i<span
+style="mso-spacerun: yes">         </span>Integer
+
+<p>w<span
+style="mso-spacerun: yes">         </span>Word
+
+<p>l<span
+style="mso-spacerun: yes">         </span>Longint
+
+<p>r<span
+style="mso-spacerun: yes">         </span>Real
+
+<p>si<span
+style="mso-spacerun: yes">        </span>Single
+
+<p>d<span
+style="mso-spacerun: yes">         </span>Double
+
+<p>e<span
+style="mso-spacerun: yes">         </span>Extended
+
+<p>c<span
+style="mso-spacerun: yes">         </span>Comp
+
+<p>ch<span
+style="mso-spacerun: yes">        </span>Char
+
+<p>b<span
+style="mso-spacerun: yes">         </span>Boolean
+
+<p>p<span
+style="mso-spacerun: yes">         </span>Pointer
+
+<p>x,у<span
+style="mso-spacerun: yes">       </span>координаты символа или точки на экране
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Для величин структурированного типа могут
+быть использованы следу-
+
+<p>ющие
+префиксы:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p>a<span
+style="mso-spacerun: yes">         </span>Array
+
+<p>s<span
+style="mso-spacerun: yes">         </span>String
+
+<p>sz<span
+style="mso-spacerun: yes">        </span>Stringz
+
+<p>se<span
+style="mso-spacerun: yes">        </span>Set
+
+<p>re<span
+style="mso-spacerun: yes">        </span>Record
+
+<p>f<span
+style="mso-spacerun: yes">         </span>File
+
+<p>t<span
+style="mso-spacerun: yes">         </span>Text
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Например:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">    </span>rV, arVector[1..20], sName, iCount.
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>В откомпилированной программе для всех
+переменных отведено место в
+
+<p>памяти,
+и всем переменным присвоены нулевые значения.
+
+<p><span
+style="mso-spacerun: yes">   </span>Для задания начальных значений переменным
+(инициализации<span style="mso-spacerun: yes">  </span>перемен-
+
+<p>ных)
+TURBO PASCAL позволяет присваивать начальные значения переменным
+
+<p>одновременно
+с их описанием. Для этого используется конструкция
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">    </span>имя переменной: тип = значение;
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p>которая
+должна быть размещена в разделе описания констант, например:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">    </span>const rWeight: Real = 0.4;
+
+<p><div align="center"><a href="../Pascal. Курс лекций.html">	<img src="../../soder.gif" width=120 height=31 border=0 alt=""></a></div></p>
+
+</body>
+</html>

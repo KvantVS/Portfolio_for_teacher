@@ -1,0 +1,224 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" >
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl2_4_2.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td >
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl2_4_4.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p align="left">
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+ 
+Операторы повторений
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">В языке Турбо Паскаль имеются три различных оператора, с помощью которых 
+можно запрограммировать повторяющиеся фрагменты программ.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Счетный оператор
+цикла FOR имеет такую структуру:&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> FOR &lt;пар_цик&gt; := 
+&lt;нач_знач&gt; ТО &lt;кон_знач&gt; DO &lt;оператор&gt;.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Здесь FOR, TO, DO - зарезервированные слова (для, до, выполнить);</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">&lt;пар_цик&gt; - параметр цикла - переменная типа INTEGER (точнее, любого 
+порядкового типа, см. гл.4);</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">&lt;нач_знач&gt; - начальное значение - выражение того же типа;</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;&lt;кон_знач&gt; - конечное значение - выражение того же типа;&nbsp;</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3"> &lt;оператор&gt; 
+- произвольный оператор Турбо Паскаля.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">При выполнении оператора FOR вначале вычисляется выражение &lt;нач_знач&gt; и 
+осуществляется присваивание &lt;пар_цик&gt; : = &lt;нач_знач&gt;. После этого 
+циклически повторяется:</font> </P>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> проверка условия &lt;пар_цик&gt; &lt;= &lt;кон_знач&gt;; если условие не 
+выполнено, оператор FOR завершает свою работу;</font> </li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> выполнение оператора &lt;оператор&gt;;</font> </li>
+  <li><font face="Arial, Helvetica, sans-serif" size="3"> наращивание переменной &lt;пар_цик&gt; на единицу.</font> </li>
+</ul>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">В качестве иллюстрации применения оператора FOR рассмотрим программу, 
+осуществляющую ввод с клавиатуры произвольного целого числа N и вычисление суммы 
+всех целых чисел от 1 до N (пример 2.5).</font> </P>
+<p align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Пример 2.5</font>
+</b> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Program Summ_of_Integer;</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3"><i>{Программа вводит целое положительное число N и подсчитывает сумму всех целых 
+чисел от 1 до N}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">i, n, s : Integer;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write('N = ');</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn(n); . {<i>Вводим N}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s := 0; <i> {Начальное значение суммы}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for i : = 1 to n do <i> {Цикл подсчета суммы}</i>&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> s : = s + i;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">writeln('Сумма = ',s) <i> {Выводим результат}</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Отметим два обстоятельства. Во-первых, условие, управляющее работой оператора 
+FOR, проверяется перед выполнением оператора &lt;оператор&gt;: если условие не 
+выполняется в самом начале работы оператора FOR, исполняемый оператор не будет 
+выполнен ни разу. Другое обстоятельство - шаг наращивания параметра цикла строго 
+постоянен и равен (+1). Существует другая форма оператора:</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">FOR&lt;пар_цик&gt;: = &lt;нач_знач&gt; DOWNTO &lt;кон_знач&gt; DO 
+&lt;оператор&gt;</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Замена зарезервированного слова ТО на DOWNTO означает, что шаг наращивания 
+параметра цикла равен (-1), а управляющее условие приобретает вид 
+&lt;пар_цик&gt; = &lt;кон_знач&gt;.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Пример 2.5 можно модифицировать так, чтобы сделать его пригодным для подсчета 
+любых сумм - положительных и отрицательных:</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">..................</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s := 0;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if n &gt;= 0 then</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for i := 1 to n do</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s := s + i else</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for i := -1 downto n do s : = s + i ;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">...............</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Два других оператора повторений лишь проверяют условие выполнения или 
+повторения цикла, но не связаны с изменением счетчика цикла.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Оператор цикла WHILE с предпроверкой условия:</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WHILE &lt;условие&gt; DO &lt;оператор&gt;.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Здесь WHILE, DO - зарезервированные слова (пока [выполняется условие], 
+делать);</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">&lt;условие&gt; - выражение логического типа;</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;&lt;оператор&gt; - 
+произвольный оператор Турбо Паскаля.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Если выражение &lt;условие&gt; имеет значение TRUE, то выполняется 
+&lt;оператор&gt;, после чего вычисление выражения &lt;условие&gt; и его 
+проверка повторяются. Если &lt;условие&gt; имеет значение FALSE , оператор WHILE 
+прекращает свою работу.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Рассмотрим пример 2.6, иллюстрирующий использование оператора WHILE. Найдем 
+так называемое «машинное эпсилон» - такое минимальное, не равное нулю 
+вещественное число, которое после прибавления его к 1.0 еще дает результат, 
+отличный от 1.0.</font> </P>
+<p align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Пример 2.6</font>
+</b> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Program EpsilpnDetect;</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Программа вычисляет и выводит на экран значение "машинного эпсилон"}</font> 
+</i> 
+</P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> 
+</P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">epsilon: Real;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">epsilon := 1;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">while epsilon/2 + 1 &gt; 1 do</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">epsilon := epsilon/2</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn('Машинное эпсилон = ',epsilon)&nbsp;</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">У читателя, привыкшего к непрерывной вещественной арифметике, может вызвать 
+недоумение утверждение о том, что в дискретной машинной арифметике всегда 
+существуют такие числа 0&lt;X&lt;eps, что 1.0+Х=1.0. Дело в том, что внутреннее 
+представление типа REAL может дать «лишь» приблизительно 1014 возможных 
+комбинаций значащих разрядов в отведенных для него 6 байтах. Конечно же, это 
+очень большое число, но оно несопоставимо с бесконечным множеством вещественных 
+чисел. Аппроксимация бесконечного непрерывного множества вещественных чисел 
+конечным (пусть даже и очень большим) множеством их внутреннего машинного 
+представления и приводит к появлению «машинного эпсилон».</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Оператор цикла REPEAT... UNTIL с постпроверкой условия:</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">REPEAT &lt;тело_цикла&gt; UNTIL &lt;условие&gt;.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Здесь REPEAT, UNTIL- зарезервированные слова (повторять до тех пор, пока не</font>
+<font face="Arial, Helvetica, sans-serif" size="3">будет выполнено условие);</font> 
+</P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">&lt;тело_цикла&gt; - произвольная последовательность операторов Турбо 
+Паскаля;&nbsp;</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3"> &lt;условие&gt; - выражение логического типа.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Операторы &lt;тело_цикла&gt; выполняются хотя бы один раз, после чего 
+вычисляется выражение &lt;условие&gt;: если его значение есть FALSE, операторы 
+&lt;тело_цикла&gt; повторяются, в противном случае оператор REPEAT. . . UNTIL 
+завершает свою работу.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Для иллюстрации применения оператора REPEAT... UNTIL модифицируем программу 
+из примера 2.3. Модификация (пример 2.7) состоит в том, что программа будет все 
+время повторять цикл ввода символа и печати его кода до тех пор, пока очередным 
+символом не будет символ CR (вводится клавишей Enter).</font> </P>
+<p align="center"><b><font face="Arial, Helvetica, sans-serif" size="3">Пример 2.7&nbsp;</font>
+</b> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Program Codes_of_Chars;</font> </P>
+<p align="left"><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Программа вводит символ и выводит на экран его код. Для завершения работы 
+программы нужно дважды нажать Enter}</font> </i> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ch : Char; <i> {Вводимый символ}&nbsp;</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">CR = 13; <i> {Код символа CR}&nbsp;</i></font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">repeat</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn(ch);</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(ch,' = ',ord(ch))</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">until ord(ch) = CR</font> </P>
+<p align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Обратите внимание: пара REPEAT... UNTIL подобна операторным скобкам begin. .. 
+end, поэтому перед UNTIL ставить точку с запятой необязательно.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Для гибкого управления циклическими операторами FOR, WHILE и REPEAT в состав 
+Турбо Паскаля включены две процедуры:</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">BREAK - реализует немедленный выход из цикла; действие процедуры заключается 
+в передаче управления&nbsp;&nbsp;&nbsp;&nbsp; оператору, стоящему сразу за концом циклического 
+оператора;</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">CONTINUE - обеспечивает досрочное завершение очередного прохода цикла; 
+эквивалент передачи управления в самый конец циклического оператора.</font> </P>
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="3">Введение в язык этих процедур практически исключает необходимость 
+использования операторов безусловного перехода GOTO (см. ниже п.2.4.5).</font> </P> 
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" >
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl2_4_2.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td >
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl2_4_4.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</body>
+</html>

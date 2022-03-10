@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl21_3.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Строковые ресурсы
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Списки строк используются в программах Turbo Vision очень часто, поэтому 
+специально для этого вида ресурсов разработаны два особых объекта - 
+TStrListMaker и TStringList. С помощью TSrtListMaker создается строковый ресурс, 
+а с помощью TStringList ранее созданный строковый ресурс становится доступен 
+программе. Предполагается, что создание строкового ресурса и его использование 
+осуществляется в разных программах, поэтому обоим объектам в Turbo Vision 
+присвоен один и тот же регистрационный номер. По той же причине TStrListMaker 
+имеет метод Put, но не имеет метода Get, a TStringList, наоборот, имеет Get и не 
+имеет Put.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В отличие от остальных ресурсов доступ к строковым ресурсам осуществляется по 
+индексам. Таким образом, Ваша программа становится независимой от языка, 
+используемого для вывода сообщений. Чтобы поместить на экран ту или иную 
+информацию, достаточно указать индекс нужного сообщения и в зависимости от 
+используемого файла строкового ресурса сообщение будет выведено на нужном языке.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В двух следующих программах иллюстрируется создание и использование 
+строкового ресурса. В программе CreateStringRes создается строковый ресурс, 
+содержащий все строки текста программы. Константы NStr и SizeStrRes определяют 
+количество</font> <font face="Arial, Helvetica, sans-serif" size="3">строк и общую длину строкового ресурса в байтах. В нашем примере эти величины 
+заранее не известны и выбираются приблизительно, но так, чтобы в ресурсе 
+гарантированно разместился бы весь текст программы. В реальной программе они 
+должны выбираться, исходя из конкретной задачи.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Program CreateStingRes;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Эта программа создает строковый ресурс}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Objects;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SizeStrRes = 2000;  {Общая длина всех строк в ресурсе}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NStr = 40;  {Общее количество строк}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">f: text;  {Файл с текстом программы}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ProgText: TResourceFile;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Strings : TStrListMaker;  {Строковый ресурс}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k: Integer;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s: String;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s := copy(ParamStr(0),1,pos('.',ParamStr(0)));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Assign(f,s+'PAS');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Reset(f);  {Открываем файл с текстом программы}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">RegisterType(RStrListMaker);  {Регистрируем объект}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ProgText.Init(New(PBufStream,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InitC prog, res' , stCreate, 1024) )) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Strings.Init(SizeStrRes,Nstr);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k := 0;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">while not EOF(f) do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadLn(f,s);  {Читаем строку программы}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> inc(k) ;  {k - порядковый номер строки}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+Strings.Put(k,s)  {Помещаем строку в ресурс}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Close (f);  {Закрываем файл с текстом программы}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Помещаем ресурс в поток}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ProgText.Put(@Strings,'Программа');</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Strings.Done; {Закрываем ресурс}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ProgText. Done  {Закрываем поток}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В программе UseStringRes текст, полученный из созданного строкового ресурса, 
+читается и выводится на экран «задом наперед», начиная с последней строки 
+текста.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Program UseStingRes;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Эта программа использует ранее созданный строковый ресурс}&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Uses Objects;&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ProgText: TResourceFile;  {Файл ресурсов}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PStrings : PStringList;  {Строковый ресурс}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k,N: Integer;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">RegisterType(RStringList);  {Регистрируем объект}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ProgText.Init(New(PBufStream,  {Создаем поток}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Init('prog.res',stOpenRead,1024)));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PStrings :=  {Получаем из потока ресурс}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PStringList(ProgText.Get('Программа'));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">N := 1;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">while (PStrings.Get(N))&lt;&gt;'' do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">inc(N);  {N-1 = общее количество строк}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for k := N-l downto 1 do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(PStrings.Get(k));  {Получаем и выводим строки}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> PStringsA.Done; {Закрываем ресурс}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> ProgText.Done  {Закрываем поток}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Заметим, что индексы, по которым осуществляется доступ к строковому ресурсу, 
+могут быть произвольными целыми числами в диапазоне от 0 до 65535. Чтобы 
+определить общее количество строк в строковом ресурсе, используется то 
+обстоятельство, что при обращении к TStringList.Get с недействительным индексом 
+метод выдает пустую строку. На практике этот способ нельзя считать надежным (в 
+строковом ресурсе могут храниться и пустые строки), однако других способов 
+определения этого параметра в TStringList не существует.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Перед обращением к TSrtListMaker.Put и TSrtmgList.Get соответствующие объекты 
+должны быть зарегистрированы с помощью RegisterType.</font> </P>
+
+<p>
+&nbsp;
+</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl21_3.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+</BODY></HTML>

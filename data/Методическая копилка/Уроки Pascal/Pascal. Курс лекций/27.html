@@ -1,0 +1,354 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Untitled</title>
+</head>
+
+<body lang=RU style="'tab-interval:35.4pt'" background="bgrwhite.gif">
+<p><div align="center"><b><font size="+1" face="Arial">27. Модули </font></b></div></p>
+<p><span
+style="mso-spacerun: yes">   </span>Модуль (UNIT) в TURBO PASCAL - это особым
+образом оформленная биб-
+
+<p>лиотека
+подпрограмм.<span style="mso-spacerun: yes">  </span>Модуль в отличие от
+программы не может быть за-
+
+<p>пущен на
+выполнение самостоятельно,<span style="mso-spacerun: yes">  </span>он
+может<span style="mso-spacerun: yes">  </span>только<span style="mso-spacerun:
+yes">  </span>участвовать<span style="mso-spacerun: yes">  </span>в
+
+<p>построении
+программ и других модулей.
+
+<p><span
+style="mso-spacerun: yes">   </span>Модули позволяют создавать личные
+библиотеки процедур и функций<span style="mso-spacerun: yes">  </span>и
+
+<p>строить
+программы практически любого размера.
+
+<p><span
+style="mso-spacerun: yes">   </span>Модуль в TURBO PASCAL представляет собой
+отдельно хранимую и неза-
+
+<p>висимо
+компилируемую программную единицу.
+
+<p><span
+style="mso-spacerun: yes">   </span>В общем случае модуль -<span
+style="mso-spacerun: yes">  </span>это<span style="mso-spacerun: yes"> 
+</span>совокупность<span style="mso-spacerun: yes">  </span>программных<span
+style="mso-spacerun: yes">  </span>ресурсов,
+
+<p>предназначенных
+для использования другими программами.<span style="mso-spacerun: yes"> 
+</span>Под программ-
+
+<p>ными
+ресурсами понимаются любые элементы языка TURBO PASCAL: констан-
+
+<p>ты,
+типы,<span style="mso-spacerun: yes">  </span>переменные,<span
+style="mso-spacerun: yes">  </span>подпрограммы.<span style="mso-spacerun:
+yes">  </span>Модуль сам по себе не является
+
+<p>выполняемой
+программой, его элементы используются другими программны-
+
+<p>ми
+единицами.
+
+<p><span
+style="mso-spacerun: yes">   </span>Все программные элементы модуля можно
+разбить на две части:
+
+<p><span
+style="mso-spacerun: yes">   </span>- программные элементы,<span
+style="mso-spacerun: yes">  </span>предназначенные для использования другими
+
+<p>программами
+или модулями,<span style="mso-spacerun: yes">  </span>такие элементы называют
+видимыми вне моду-
+
+<p>ля;
+
+<p><span
+style="mso-spacerun: yes">   </span>- программные элементы, необходимые только
+для работы самого моду-
+
+<p>ля, их
+называют невидимыми или скрытыми.
+
+<p><span
+style="mso-spacerun: yes">   </span>В соответствии с этим модуль, кроме
+заголовка, содержит две основ-
+
+<p>ные
+части, называемые интерфейсом и реализацией.
+
+<p><span
+style="mso-spacerun: yes">   </span>В общем случае модуль имеет следующую
+структуру:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>unit &lt;имя модуля&gt;;<span
+style="mso-spacerun: yes">         </span>{заголовок модуля}
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">    </span>interface
+
+<p><span
+style="mso-spacerun: yes">     </span>{ описание видимых программных элементов
+модуля }
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">     </span>{ описание скрытых программных элементов
+модуля }
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">    </span>begin
+
+<p><span
+style="mso-spacerun: yes">     </span>{ операторы инициализации элементов
+модуля }
+
+<p><span
+style="mso-spacerun: yes">    </span>end.
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>В частном случае модуль может не содержать
+части реализации и час-
+
+<p>ти инициализации,
+тогда структура модуля будет такой:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>unit &lt;имя модуля&gt;;<span
+style="mso-spacerun: yes">         </span>{заголовок модуля}
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">    </span>interface
+
+<p><span
+style="mso-spacerun: yes">     </span>{ описание видимых программных элементов
+модуля }
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">    </span>implementation
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">    </span>end.
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Использование в модулях процедур и функций
+имеет свои особенности.
+
+<p>Заголовок
+подпрограммы содержит все сведения,<span style="mso-spacerun: yes"> 
+</span>необходимые для ее вы-
+
+<p>зова:
+имя, перечень и тип параметров, тип результата для функций, эта
+
+<p>информация
+должна быть доступна для других программ и модулей. С дру-
+
+<p>гой
+стороны,<span style="mso-spacerun: yes">   </span>текст подпрограммы,<span
+style="mso-spacerun: yes">  </span>реализующий ее алгоритм,<span
+style="mso-spacerun: yes">  </span>другими
+
+<p>программами
+и модулями не может быть использован.<span style="mso-spacerun: yes"> 
+</span>Поэтому<span style="mso-spacerun: yes">  </span>заголовок
+
+<p>процедур
+и функций помещают в интерфейсную часть модуля,<span style="mso-spacerun:
+yes">  </span>а текст - в
+
+<p>часть
+реализации.
+
+<p><span
+style="mso-spacerun: yes">   </span>Интерфейсная часть<span
+style="mso-spacerun: yes">  </span>модуля<span style="mso-spacerun: yes"> 
+</span>содержит только видимые (доступные для
+
+<p>других
+программ и модулей)<span style="mso-spacerun: yes">  </span>заголовки процедур
+и функций (без служеб-
+
+<p>ного
+слова<span style="mso-spacerun: yes">   </span>forward).<span
+style="mso-spacerun: yes">  </span>Полный текст процедуры или функции помещают
+в
+
+<p>часть
+реализации, причем заголовок может не содержать список формаль-
+
+<p>ных
+параметров.
+
+<p><span
+style="mso-spacerun: yes">   </span>Исходный текст модуля должен быть
+откомпилирован с помощью<span style="mso-spacerun: yes">  </span>дирек-
+
+<p>тивы
+Make<span style="mso-spacerun: yes">  </span>подменю Compile и записан на
+диск.<span style="mso-spacerun: yes">  </span>Результатом компиляции
+
+<p>модуля
+является файл с расширением .TPU (Turbo Pascal Unit). Основное
+
+<p>имя
+модуля берется из заголовка модуля.
+
+<p><span
+style="mso-spacerun: yes">   </span>Для подключения<span style="mso-spacerun:
+yes">  </span>модуля<span style="mso-spacerun: yes">  </span>к<span
+style="mso-spacerun: yes">  </span>программе необходимо указать его имя в
+
+<p>разделе
+описания модулей, например:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">           </span>uses<span style="mso-spacerun:
+yes">  </span>CRT, Graph;
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>В том случае,<span style="mso-spacerun:
+yes">  </span>если имена переменных в интерфейсной части модуля и
+
+<p>в
+программе,<span style="mso-spacerun: yes">   </span>использующей этот модуль,<span
+style="mso-spacerun: yes">  </span>совпадают,<span style="mso-spacerun: yes"> 
+</span>обращение будет
+
+<p>происходить
+к переменной,<span style="mso-spacerun: yes">  </span>описанной в программе.
+Для обращения к пе-
+
+<p>ременной,
+описанной<span style="mso-spacerun: yes">  </span>в<span style="mso-spacerun:
+yes">  </span>модуле,<span style="mso-spacerun: yes">   </span>необходимо
+применить составное имя,
+
+<p>состоящее
+из имени модуля и имени переменной, разделенных точкой.
+
+<p><span
+style="mso-spacerun: yes">   </span>Например, пусть имеется модуль, в котором
+описана переменная К:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>unit M;
+
+<p><span
+style="mso-spacerun: yes">    </span>interface
+
+<p><span
+style="mso-spacerun: yes">     </span>var K: Integer;
+
+<p><span
+style="mso-spacerun: yes">    </span>implementation
+
+<p><span
+style="mso-spacerun: yes">   </span>.................
+
+<p><span
+style="mso-spacerun: yes">    </span>end.
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Пусть программа, использующая этот модуль,
+также содержит перемен-
+
+<p>ную К:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Program P;
+
+<p><span
+style="mso-spacerun: yes">  </span><span style="mso-spacerun:
+yes">  </span>uses M;
+
+<p><span
+style="mso-spacerun: yes">    </span>var K: Char;
+
+<p><span
+style="mso-spacerun: yes">    </span>begin
+
+<p><span
+style="mso-spacerun: yes">   </span>.............
+
+<p><span
+style="mso-spacerun: yes">    </span>end.
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Для того, чтобы в программе P иметь доступ
+к переменной K из моду-
+
+<p>ля M,
+необходимо задать составное имя M.K.
+
+<p><span
+style="mso-spacerun: yes">   </span>Использование составных имен применяется не
+только к именам<span style="mso-spacerun: yes">  </span>пере-
+
+<p>менных,
+а ко всем именам, описанным в интерфейсной части модуля.
+
+<p><span
+style="mso-spacerun: yes">   </span>Рекурсивное использование модулей
+запрещено.
+
+<p><span
+style="mso-spacerun: yes">   </span>Если в модуле имеется раздел
+инициализации,<span style="mso-spacerun: yes">  </span>то операторы из этого
+
+<p>раздела
+будут выполнены перед началом выполнения программы, в которой
+
+
+<p>используется
+этот модуль.
+
+<p><div align="center"><a href="../Pascal. Курс лекций.html">	<img src="../../soder.gif" width=120 height=31 border=0 alt=""></a></div></p>
+
+
+</body>
+</html>

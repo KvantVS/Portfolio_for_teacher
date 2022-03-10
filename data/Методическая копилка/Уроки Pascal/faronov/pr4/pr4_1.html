@@ -1,0 +1,308 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr4.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr4_2.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Переменные
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Input : Text;<i>{Стандартный файл ввода}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Output : Text;<i>{Стандартный файл вывода}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+SaveInt00: Pointer;<i>{Сохранение вектора $00}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SaveInt75: Pointer;<i>{Сохранение вектора $75}</i></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Input и Output - стандартные файлы, необходимые в каждой реализации языка 
+Паскаль. По умолчанию они ссылаются на стандартные входные и выходные файлы ДОС: 
+Input - на клавиатуру, Output - на экран.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В момент загрузки среда Турбо Паскаля изменяет значения 18 векторов 
+прерывания (векторы $00, $02, $1N, $21, $23, $24, $35, $36, $37, $38, $39, $ЗА, 
+$ЗВ, $ЗС, $3D, $3E, $3F и $75). В переменных SaveIntXX сохраняются старые 
+значения этих векторов (XX - номер вектора: SavelntOO - для вектора $00, 
+SaveIntlB - для вектора $1В и т.д.).</font> </P>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+Стандартные процедуры и функции
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>Процедуры управления</i></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Break  Обеспечивает немедленный выход из операторов повторения.&nbsp;</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b> 
+Procedure</b> Continue Завершает очередной итерационный цикл операторов повторения.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Exit Позволяет немедленно выйти из текущей подпрограммы. При вызове 
+из тела основной программы завершает ее работу.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Halt [ (ExitCode: Word)] Останавливает выполнение программы и 
+возвращает управление в операционную систему. Необязательный параметр ExitCode 
+определяет код завершения программы.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> RunError [ (ErrorCode: Byte)]
+ Останавливает выполнение программы и 
+генерирует ошибку периода выполнения программы. Необязательный параметр 
+ErrorCode определяет код ошибки.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>Процедуры динамического распределения памяти</i></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Dispose(var P: Pointer [,Destructor]) Уничтожает динамическую 
+переменную, связанную с указателем Р. Необязательный параметр Destructor 
+определяет метод-деструктор для динамического объекта.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> FreeMem(var P: Pointer; Size: Word) Уничтожает динамическую 
+переменную P размером Size байт.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> GetMemtvar Р: Pointer; Size: Word) Создает новую динамическую 
+переменную Р заданного размера Size.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Mark(var P: Pointer) Записывает в указателе Р текущее состояние 
+кучи.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> New(var P; Pointer [,Constructor]) Создает новую динамическую 
+переменную, связанную с указателем Р. Необязательный параметр Constructor 
+определяет метод-конструктор для динамического объекта.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Release (var P: Pointer) Возвращает кучу в состояние, которое было 
+сохранено в указателе Р процедурой Mark.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>Функции динамического распределения памяти</i></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> MaxAvail: LongInt Возвращает размер наибольшего непрерывного 
+свободного блока кучи, соответствующий размеру наибольшей динамической 
+переменной, которая может быть помещена в кучу.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function </b> MemAvail; LongInt Возвращает количество имеющихся в куче свободных 
+байт памяти.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>Функции преобразования</i></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Процедуры Pack и UnPack, определенные в стандартном Паскале, в Турбо Паскале 
+не реализованы. Function Chr(X: Byte): Char Возвращает символ с заданным 
+порядковым номером X.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> Ord(X) : LongInt Возвращает порядковый номер, соответствующий 
+значению X порядкового типа.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> Round (R: Real) :
+LongInt Округляет значение R вещественного типа до 
+ближайшего целого.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> Trunc(R: Real): LpngInt Усекает значение вещественного типа до 
+значения типа LongInt путем отбрасывания дробной части.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>Арифметические функции</i></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">При компиляции в режиме использования сопроцессора или его эмуляции 
+арифметические функции возвращают значение типа EXTENDED, в противном случае - 
+типа REAL.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> Abs(R; Real): Real Возвращает абсолютное значение аргумента.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> ArcTan(R: Real): Real Возвращает арктангенс аргумента.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> Cos(R: Real): Real Возвращает косинус аргумента.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> Exp(R; Real): Real Возвращает экспоненту аргумента.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> Frac(R; Real): Real  Возвращает дробную часть аргумента.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> Int(R; Real): Real Возвращает целую часть аргумента.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> Ln(R: Real) : Real Возвращает натуральный логарифм аргумента.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> Pi: Real Возвращает значение числа pi=3.1415926535897932385.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> Sin(R: Real): Real Возвращает синус аргумента.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> Sqr(R: Real): Real Возвращает аргумент в квадрате.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> Sqrt(R; Real): Real Возвращает квадратный корень аргумента.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>Процедуры порядкового типа</i></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Dec (var X [; DX: LongInt] ) Уменьшает значение переменной X на 
+величину DX, а если параметр DX не задан - на 1.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Inc (var X [; DX: LongInt]) Увеличивает значение переменной X на 
+величину DX, а если параметр DX не задан - на 1.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>Функции порядкового типа</i></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> Odd(X) : Boolean Проверяет, является ли аргумент нечетным числом.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> Pred(X) Возвращает предшествующее значение аргумента. Тип результата 
+совпадает с типом аргумента.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> Succ(X) Возвращает последующее значение аргумента. Тип результата 
+совпадает с типом аргумента.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>Строковые процедуры</i></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Delete (var S: String; Index, Count: Integer) Удаляет Count 
+символов из строки S, начиная с позиции Index.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Insert (SubS: String; var S: String; Index: Integer) Вставляет 
+подстроку SubS в строку 5, начиная с позиции Index.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Str(X [: width [: Decimals]]; var S: String) Преобразует численное 
+значение X в его строковое представление S.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Val(S; String; var X; var Code: Integer) Преобразует строковое 
+значение S в его численное представление X. Параметр Code -содержит признак 
+ошибки преобразования (0 - нет ошибки).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>Строковые функции</i></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> Concat(S1 [, S2,...,SN]): String Выполняет конкатенацию 
+последовательности строк.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> Copy(S: String; Index, Count: Integer): String Возвращает подстроку 
+из строки S, начиная с позиции Index и длиной Count символов.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> Length(S: String): Byte Возвращает текущую длину строки S.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> Pos(SubS, S: String): Byte Возвращает позицию, начиная с которой в 
+строке S располагается подстрока SubS (О - S не содержит SubS).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>Функции для работы с указателями и адресами</i></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> Addr (X) : Pointer Возвращает адрес заданного объекта X.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> Assigned: (var P) : Boolean Проверяет, хранит ли ли указатель Р 
+значение, отличное от NIL, и возвращает TRUE в этом случае.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> CSeg: Word  Возвращает текущее значение регистра CS. Function DSeg: 
+Word Возвращает текущее значение регистра DS. Function Of s (X) ; Word 
+Возвращает смещение заданного объекта.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> Ptr(Seg, 0&pound;s: Word): Pointer Преобразует сегмент Seg и смещение Ofs 
+в значение типа указатель.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> Seg (X) : Word  Возвращает сегмент для заданного объекта X.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> SPtr: Word Возвращает текущее значение регистра SP.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> SSeg: Word Возвращает текущее значение регистра SS.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>Процедуры разного назначения</i></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Exclude (var S: set of Т; I: T) Исключает элемент T из множества S.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> FillChar(var X; Count: Word; Value) Заполняет заданное количество 
+Count последовательных байт переменной X указанным значением Value (выражение 
+любого порядкового типа).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Include (var S: set of Т; I; T) Включает элемент T во множество 5.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Move (var X, Y,- Count: Word) Копирует заданное количество 
+последовательных байт из источника X в переменную Г.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Randomize Инициализирует случайным значением (текущим системным 
+временем) встроенный генератор псевдослучайных чисел.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>Функции разного назначения</i></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> Hi(X; Word) : Byte Возвращает старший байт аргумента X. Function 
+High (X) Возвращает максимальное значение порядкового типа. Function Lo(X: 
+Word): Byte Возвращает младший байт аргумента X. Function Low(X) Возвращает 
+минимальное значение порядкового типа.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> ParamCount: Word Возвращает число параметров, переданных программе в 
+командной строке (строке вызова).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> ParamStr(N; Byte): String Возвращает N-ый параметр командной строки.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> Random [ (Range: Word)] Возвращает псевдослучайное число. Если 
+параметр Range опущен, функция возвращает вещественное число в диапазоне от 0 до 
+1, если указан - целое число в диапазоне от 0 до Range-1.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> SizeOf(X): Word Возвращает число байт, занимаемых аргументом.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> Swap(X) Производит перестановку старших и младших байт двухбайтного 
+аргумента X. Тип функции соответствует типу аргумента.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> UpCase(C: char): Char Преобразует латинскую букву в заглавную.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>Процедуры ввода/вывода</i></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Assign (var F; Name: String) Связывает внешний файл Name с файловой 
+переменной F.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> ChDir(S: String) Устанавливает текущий каталог.&nbsp;</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b> Procedure</b> Close 
+(var F) Закрывает открытый файл.&nbsp;</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b> Procedure</b> Erase (var F) Удаляет внешний файл.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> GetDir(D: Byte; var S: String) Возвращает каталог по умолчанию S на 
+заданном диске D.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> MkDirtS: String) Создает подкаталог S.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Rename (var F)  Переименовывает внешний файл.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Reset (var F) Открывает существующий файл для чтения или изменения.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Rewrite (var F) Создает и открывает новый файл.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> RmDir(S: String) Удаляет пустой подкаталог.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Seek (var F; N:
+LongInt) Устанавливает текущую позицию файла на 
+указанный элемент (не используется с текстовыми файлами).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Truncate (var F) Усекает размер файла до текущей позиции в файле 
+(не используется с текстовыми файлами)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>Функции ввода/вывода</i></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> EOF (var F) ; Boolean Возвращает для файла F признак конца файла.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> FilePos (var F) :
+LongInt Возвращает текущую позицию в файле (не 
+используется с текстовыми файлами)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> FileSize(var F) :
+LongInt Возвращает текущий размер файла (не 
+используется с текстовыми файлами).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> IQResult; Integer Возвращает целое значение, являющееся состоянием 
+последней выполненной операции ввода/вывода.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>Процедуры для текстовых файлов</i></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Append (var F: Text) Открывает существующий файл для расширения.&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b> 
+Procedure</b> Flush (var F: Text) Выталкивает буфер файла вывода.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Read ([var F: Text;] V1 [, V2,...,VN]) Считывает одно или более 
+значений из текстового файла в одну или более переменных.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Readln Выполняет те же действия, что и Read, а потом делает пропуск 
+до начала следующей строки файла.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> SetTextBuf (var F: Text; var Buf [; Size: Word]) Назначает буфер 
+ввода/вывода для текстового файла. Параметр Size определяет длину буфера в 
+байтах (если Size опущен, длина буфера равна 128 байтам).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Write([var F: Text;] V1 [, V2,...,VN]) Записывает в текстовый файл 
+одно или более значений.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> WriteLn Выполняет те же действия, что и Write, а затем добавляет к 
+файлу маркер конца строки.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>Функции для текстовых файлов</i></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> Eolntvar F: Text): Boolean Возвращает признак конца строки.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function </b> SeekEof [ (var F: Text)]: Boolean Возвращает признак конца файла. 
+Предварительно пропускает все пробелы, символы табуляции и признаки конца строк.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> SeekEoln [ (var F: Text)]: Boolean Возвращает признак конца строки. 
+В отличие от Eoln предварительно пропускает все пробелы и символы табуляции.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>Процедуры для нетипизированных файлов</i></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> BlockRead(var F: File; var Buf; Count; Word [;var Result; Word])
+ 
+Считывает в переменную Buf Count записей из файла F. Необязательный параметр 
+Result содержит истинное количество считанных записей.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> BlockWrite(var F; File; var Buf; Count: Word [;var Result: Word])
+ 
+Передает Count записей из переменной Bufe файл F. Необязательный параметр Result 
+содержит истинное количество переданных записей.</font> </P>
+
+<p>&nbsp;</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr4.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr4_2.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</BODY></HTML>

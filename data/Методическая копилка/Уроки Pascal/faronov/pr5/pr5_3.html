@@ -1,0 +1,726 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr5_2.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Программа Notebook
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Описание программы см. п.. 15.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Program Notebook;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Программа обслуживает файлы данных "записной книжки". Описание программы см. 
+в гл.15}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses App, Objects, Menus, Drivers, Views,
+StdDlg,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DOS, Memory, Dialogs; type</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Объект TWorkWin создает рамочное окно с полосами скроллинга для управления 
+встроенным в него объектом TInterior}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PWorkWin =TWorkWin;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TWorkWin = object (TWindow)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor Init(Bounds: TRect);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Объект TDlgWin создает диалоговое окно для</font>
+<font size="3">выбора режима работы}&nbsp;</font></font></i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> PDlgWin =TDlgWin;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> TDlgWin = object (TDialog)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure HandleEvent(var Event: TEvent); Virtual;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Следующий объект обслуживает внутреннюю часть рамочного</font>
+<font size="3">окна TWorkWin. Он создает скроллируемое окно с записями из</font>
+<font size="3">архивного файла и с помощью диалогового окна TDlgKin</font>
+<font size="3">управляет работой с этими записями}&nbsp;</font></font></i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> PInterior =TInterior;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> TInterior = object 
+(TScroller)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> PS: PStringCollection;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Location: Word;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor Init(var Bounds: TRect; HS,VS: PScrollBar);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Procedure Draw; 
+Virtual;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Procedure ReadFile;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Destructor Done; Virtual;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure HandleEvent(var Event: TEvent); Virtual;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Объект-программа TNotebook поддерживает работу с меню и</font>
+<font size="3">строкой статуса}&nbsp;</font></font></i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> TNotebook = object (TApplication)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure InitStatusLine; Virtual;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure InitMenuBar; Virtual;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Procedure HandleEvent(var Event: TEvent); 
+Virtual;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure FileSave;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure ChangeDir;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure DOSCall;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure FileOpen;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Work;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Команды для обработчиков событий:}&nbsp;</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> cmChDir = 202; <i> {Сменить каталог}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> cmWork = 
+203; <i> {Обработать данные}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmDOS= 204; <i> {Временно выйти в ДОС}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> cmCan= 205; <i> {Команда завершения работы}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+cmDelete= 206; <i>{</i><i>Уничтожить текущую запись}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> cmSearch = 207;<i>{Искать нужную запись}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+cmEdit = 209;<i>{Редактировать запись}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> cmAdd = 208;<i>{Добавить запись}&nbsp;</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Множество 
+временно недоступных команд:}&nbsp;</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WinCom1: TCommandSet = [cmSave,cmWork];&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> WinCom2: 
+TCommandSet = [cmOpen];</font> </P>
+<P></P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">LName = 25; <i> {Длина поля Name}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> LPhone= 11; <i> {Длина поля Phone}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> LAddr =40; <i> 
+{Длина поля Addr}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">LLine = LName+LPhone+LAddr; <i> {Длина строки}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DataType = record <i> {Тип данных в файле}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Name : String [LName]; <i> {Имя}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Phone: String [LPhone]; <i> {Телефон}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Addr : String 
+[LAddr] <i> {Адрес}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DataFile: file of DataType; <i> {Файловая переменная}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OpFileF : Boolean; <i> {Флаг открытого файла}</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-----------------------}</font> </i> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Реализация объекта TWorkWin</font> </i> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-----------------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor TWorkWin.Init(Bounds: TRect);</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Создание окна данных}</font></i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">HS,VS: PScrollBar; <i> {Полосы-указатели}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Interior: PInterior; <i> {Указатель на 
+управляемое текстовое окно}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TWindow.Init(Bounds,0);<i>{Создаем новое окно с рамкой}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> GetClipRect(Bounds); <i> 
+{Получаем в BOUNDS координаты минимальной перерисовываемой части окна}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Bounds.Grow(-1,-1);<i>{Устанавливаем размеры окна с текстом}</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Включаем стандартные по размеру и положению полосы-указатели:}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">VS := StandardscrollBar (sbVertical+sbHandleKeyBoard) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">HS := StandardscrollBar (SbHorizontal+sbHandleKeyBoard) ;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Создаем текстовое окно:}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Interior := New (PInterior, Init (Bounds, HS, VS) ) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert (Interior) <i> {Включаем его в основное окно}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end; <i> {TWorkWin.Init}</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{----------------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TDlgWin.HandleEvent;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Inherited HandleEvent (Event) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if Event. What=evCommand then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">EndModal (Event. Command)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-----------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TNotebook.FileOpen;&nbsp;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Открывает файл данных}&nbsp;</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PF: PFileDialog; <i> {Диалоговое окно выбора файла}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Control: Word;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s: PathStr;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Создаем экземпляр динамического объекта:}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">New(PF, Init('*.dat','Выберите нужный файл:',</font>
+<font size="3">'Имя файла',fdOpenButton,0))</font></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{С помощью следующего оператора окно выводится на экран</font>
+<font face="Arial, Helvetica, sans-serif" size="3">и результат работыпользователя с ним помещается в переменную</font>
+<font face="Arial, Helvetica, sans-serif" size="3">Control:}&nbsp;</font> </font></i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Control := DeskTop.ExecView(PF);&nbsp;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Анализируем результат запроса:}&nbsp;</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+case Control of</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">StdDlg.cmFileOpen,cmOk:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin <i> {Пользователь указал имя файла:}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PF.GetFileName(s); <i> {s содержит имя файла}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Assign(DataFile,s);&nbsp;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {$I-}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Reset(DataFile) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if IOResult &lt;&gt; 0 then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Rewrite(DataFile);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> OpFileF := IOResult=0;&nbsp;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{$I+}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if OpFileF then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DisableCommands(WinCom2);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">EnableCommands(WinCom1);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Work <i> {Переходим к работе}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i>{case Control}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Dispose(PF, Done) <i> {Уничтожаем экземпляр}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i> {FileOpen}</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-----------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TNotebook.FileSave; {Закрывает файл данных} begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Close(DataFile);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OpFileF := False;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">EnableCommands(WinCom2); <i> {Разрешаем открыть файл)</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DisableCommands(WinCom1) <i> {Запрещаем работу и сохранение}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i> 
+{TNotebook.FileSave}&nbsp;</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {------------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TNotebook.ChangeDir;&nbsp;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Изменяет текущий каталог}&nbsp;</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PD: PChDirDialog; <i> {Диалоговое окно смены каталога/диска}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Control: Word; begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">New(PD, Init(cdNormal,0)); <i> {Создаем диалоговое окно}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Control := DeskTop.ExecView(PD); <i> {Используем окно}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Choir(PD.DirInput.Data); <i> {Устанавливаем новый каталог}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Dispose(PD, Done) <i>{</i><i>Удаляем окно из кучи}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i>{TNotebook.ChangeDir}</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{---------------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TNotebook.DOSCall;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Временный выход в ДОС}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">txt ='Для возврата введите EXIT в ответ'+ ' на приглашение ДОС...';</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DoneEvents; <i> {Закрыть обработчик событий}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DoneVideo; <i> {Закрыть монитор экрана}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DoneMemory; <i> {Закрыть монитор памяти}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetMemTop(HeapPtr); <i> {Освободить кучу}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(txt); <i> {Сообщить о выходе}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SwapVectors; <i> {Установить стандартные векторы}&nbsp;</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+{Передать управление командному процессору ДОС:}&nbsp;</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Exec(GetEnv('COMSPEC'),''); <i> 
+{Вернуться из ДОС:}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SwapVectors; <i> {Восстановить векторы}&nbsp;</i></font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetMemTop(HeapEnd); <i> {Восстановить кучу}</i></font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InitMemory;<i>{Открыть монитор памяти}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InitVideo; <i> {Открыть монитор экрана}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InitEvents; <i> {Открыть обработчик событий}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InitSysError; <i> {Открыть обработчик 
+ошибок}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Redraw <i> {Восстановить вид экрана}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i> {DOSCall}</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{---------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor TInterior.Init;&nbsp;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Создает окно скрроллера}&nbsp;</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TScroller.Init(Bounds, Hs, VS);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadFile;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GrowMode := gfGrowHiX+gfGrowHiY;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetLimit(LLine, РS.Count)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{--------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Destructor TInterior. Done;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Dispose (PS, Done) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Inherited Done&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end ;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{--------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TInterior. ReadFile;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Читает содержимое файла данных в массив LINES}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k: Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s: String;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Data: DataType;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">f: text;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PS := New(PStringGollection, Init (100, 10) );&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">seek(DataFile,0) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">while not (EOF(DataFile) or LowMemory) do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ReadfDataFile, data) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> with data do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s : = Name ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">while Length (s) &lt; LName do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s : = s+ ' ' ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> s := s+Phone;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> while Length (s) &lt; LName+LPhone do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s : = s+ ' ' ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> s := s+Addr&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if so'' then PS. insert (NewStr (S) )&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Location := 0;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i>{ReadFile}</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-----------}</font></i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TInterior.Draw;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{ Выводит данные в окно просмотра}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">n, <i> {Текущая строка экрана}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k: Integer; <i> {Текущая строка массива}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">В: TDrawBuffer;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Color: Byte;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">p: PString;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if Delta.Y&gt;Location then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Location := Delta.Y;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if Location&gt;Delta.Y+pred(Size.Y) then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Location := Delta. Y+pred (Size. Y) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for n := 0 to pred(Size.Y) do&nbsp;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Size. Y 
+- количество строк окна}&nbsp;</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k := Delta. Y+n;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if k=Location then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Color := GetColor(2)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Color := GetColor(1);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MoveCharfB,' ', Color, Size. X) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if k &lt; pred(PS. count) then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">p := PS.At(k) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MoveStr(B, Copy (р, Delta. X+1, Size. X) , Color) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLine(0,N,Size.X,1,B)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i> {Tlnterior.Draw}</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{---------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function Control: Word;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Получает команду из основного диалогового окна}&nbsp;</font> 
+</i> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const X = 1;&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> L = 12;&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DX= 13;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">But: array [0..4] of String [13] = <i> {Надписи на кнопках:}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">('~l~ Выход ' , ' ~2~ 
+Убрать ','~3~ Искать ','~4~ Изменить ','~5~ Добавить');&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Txt: array [0..3] of String [52] = (&nbsp;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Справочный текст:}</font></i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">'Убрать - удалить запись, выделенную цветом ',&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 'Искать - искать запись, 
+начинающуюся нужными буквами',&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 'Изменить - изменить поле (поля) выделенной 
+записи',&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 'Добавить - добавить новую запись');&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R: TRect;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">D: PDlgWin;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k: Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(7,6,74,15) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">D := New (PDlgWin, Init (R, 'Выберите продолжение:'));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> with D do begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for k := 0 to 3 do<i>{Вставляем поясняющий текст}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(1,1+k,65,2+k) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert (New(PStaticText, Init (R,#3+Txt [k] ) ) )&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for k := 0 to 4 do <i> {Вставляем кнопки:}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(X+k*DX,6,X+k*DX+L,8) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Insert (New (PButton, Init(R,But [k] 
+,cmCan+k,bf Normal) ) )</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SelectNext (False) ; <i> {Активизируем первую кнопку}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Control := DeskTop.ExecView(D) ; <i> {Выполняем диалог}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;<i> {Control}</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-----------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TInterior.HandleEvent;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Procedure DeleteItem;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Удаляет указанный в Location элемент данных}&nbsp;</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">D: Integer;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PStr: PString;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s: String;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Data: DataType;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PStr := PS.At(Location); <i> {Получаем текущую запись}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s := copy(PStr,1,LName);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">seek(DataFile,0);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">D := -1; <i> {D - номер записи в файле}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">repeat <i> {Цикл поиска по совпадению поля Name:}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">inc(D) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">read(DataFile,Data);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">with Data do while Length(Name) &lt; LName do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Name := Name+' '</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">until Data.Name=s;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">seek(DataFile,pred(FileSize(DataFile)));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">read(DataFile,Data); <i> {Читаем последнюю запись}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">seek(DataFile,D);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">write(DataFile,Data); <i> {Помещаем ее на место удаляемой}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">seek(DataFile,pred(Filesize(DataFile)));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">truncate(DataFile); <i> {Удаляем последнюю запись}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">with PS do D := IndexOf(At(Location));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PS.AtFree(D); <i> {Удаляем строку из коллекции}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Draw<i> {Обновляем окно}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; {DeleteItem}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-------------}</font></P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure AddItemfEdit: Boolean);</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Добавляет новый или редактирует старый элемент данных}&nbsp;</font> 
+</i> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const у = 1;&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">dy= 2;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">L = LName+LPhone+LAddr;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Data: DataType;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R: TRect;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InWin: PDialog;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">BName,BPhone,BAddr: PInputLine;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Control: Word;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OldCount: Word;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s: String;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">p: 
+PString;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Seek(DataFile,Filesize(DataFile));<i>{Добавляем записи</i></font><i>
+<font size="3">в конец файла}&nbsp;</font></i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> repeat <i> {Цикл ввода записей}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if Edit then <i> {Готовим заголовок}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s := 'Редактирование:'&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Str(Filesize(DataFile)+1,s);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> while Length(s) &lt; 3 do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s := '0'+s;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s := 'Вводится запись N '+s&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">FillChar(Data,SizeOf(Data),' ');<i>{Заполняем поля пробелами}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(15,5,65,16);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InWin := New(PDialog, Init(R, s));<i>{Создаем окно}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> with 
+InWin do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(2,y+1,2+LName,y+2); <i> {Формируем окно:}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">BName := New(PInputLine, Init(R,LName))</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert(BName); <i> {Поле имени}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(2,y,2+LName,y+1) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Insert(New(PLabel, 
+Init(R, 'Имя',BName)));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> R.Assign(2,y+dy+1,2+LPhone,y+dy+2);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> BPhone := 
+NewtPInputLine, Init(R,LPhone));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert(BPhone); {Поле телефон}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(2,y+dy,2+LPhone,y+dy+1);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert(New(PLabel, Init(R, 'Телефон',BPhone)));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(2,y+2*dy+1,2+LAddr,y+2*dy+2) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> BAddr := New(pinputLine, Init(R,LAddr));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert(BAddr); <i> {Поле адреса}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign)2,y+2*dy,2+LAddr,y+2*dy+1);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert(New(PLabel, Init(R, 'Адрес',BAddr)));&nbsp;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Вставляем две командные кнопки:}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;R.Assign(2,y+3*dy+1,12,y+3*dy+3);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert(New(PButton, Init(R, 
+'Ввести',cmOK,bfDefault))) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(2+20,y+3*dy+1,12+20,y+3*dy+3) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert(NewfPButton, Init(R, 'Выход',cmCancel,bfNormal)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SelectNext(False) <i> 
+{Активизируем первую кнопку}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i> {Конец формирования окна}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if Edit then with Data do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin <i> {Готовим начальный текст:}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">p := PS.At(Location); <i> {Читаем данные из записи}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s := p;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Name := copy(s,1,LName);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Phone:= copy(s,succ(LName),LPhone);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Addr := copy(s,succ(LName+LPhone),LAddr);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InWin.setData(Data) <i> {Вставляем текст в поля ввода}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Control := DeskTop.ExecView(InWin); {Выполняем диалог}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if Control=cmOk then 
+with Data do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if Edit then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DeleteItem; <i> {Удаляем старую запись}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Name := BName.Data;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Phone:= BPhone.Data;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Addr := BAddr.Data;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s[0] := chr(L) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">FillChar(s [1] , L, ' ') ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">move (Name [1] ,s [1] ,Length (Name)) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">move(Phone[1],s[succ(LName)],Length(Phone));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">move(Addr[1],s[succ(LName+LPhone)],Length(Addr)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OldCount := PS. Count; <i> {Прежнее количество записей}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> PS . Insert (NewStr (s) 
+) ; <i> {Добавляем в коллекцию}&nbsp;</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Проверяем добавление }&nbsp;</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if OldCount &lt;&gt; PS. 
+Count then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Write (DataFile, Data) <i> {Да - добавляем в файл}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">until Edit or (Control=cmCancel) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Draw&nbsp;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; {AddItem}</font> </i> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-----------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure SearchItem;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Ищет нужный элемент}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function UpString(s: String): String;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Преобразует строку в верхний регистр}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k: Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for k := 1 to Length(s) do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if s[k] in ['a'..'z'] then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s[k] := chr(ord('A')+ord(s [k] ) -ord('a') )&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else if s[k] in ['a'..'n'] then</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s[k]:= chr(ord('A')+ord(s[k] )-ord('a') )</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">else if s[k] in ['p'..'я'] then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s[k] := chr(ord('P')+ord(s [k] ) -ord('p') )</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">UpString := s&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i> {UpString}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">InWin: PDialog;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R: TRect;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s: String;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">p: PInputLine;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k: Word;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin <i>{SearchItem}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(15,8,65,16) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> InWin := New (PDialog, Init (R, 
+'Поиск записи:'))&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> with InWin do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(2,2,47,3) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> p := New (PInputLine,Init(R,50));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Insert (p) ; 
+R.Assign(1,1,40,2) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Insert (New (PLabel, Init(R,'Введите образец для 
+поиска:',р)));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(10,5,20,7) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Insert (New 
+(PButton,Init(R,'Ввести',cmOk,bfDefault)));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(25,5,35,7) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Insert (New (PButton,Init (R,' Выход' ,cmCancel,bf Normal)));&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> SelectNext 
+(False)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if DeskTop.ExecView(InWin) = cmCancel then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">exit; s :=p.Data;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Location := 0;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">while (UpString(s) &gt;= UpString (PString(PS. At (Location))))</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">and (Location &lt; pred(PS. Count) ) do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> inc (Location) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if (Location &lt; 
+Delta.Y) or (Location &gt; Delta.Y+pred(Size.Y)) then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ScrollTo (Delta.X, Location)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Draw&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i>{SearchItem}</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-----------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R: TPoint;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> label Cls;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TScroller. HandleEvent (Event) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> case Event. What of&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> evCommand :</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">case Event.Command of</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmClose:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Cls:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">case Control of <i> {Получить команду из основного диалогового окна}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmCan,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmCancel: EndModal (cmCancel) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmEdit : AddItem(True) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmDelete: DeleteItem;&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmSearch: SearchItem;&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> cmAdd : AddItem(False);&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmZoom: exit;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">evMouseDown: <i> {Реакция на щелчок мышью}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MakeLocal(MouseWhere, R);<i>{Получаем в R локальные координаты указателя мыши}</i></font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Location := Delta.Y+R.Y;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Draw&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">evKeyDown: <i> {Реакция на клавиши + -}&nbsp;</i></font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> case Event.KeyCode of&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">kbEsc: goto Cls;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">kbGrayMinus: if Location &gt; Delta.Y then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">dec(Location); Draw&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">kbGrayPlus: if Location &lt; Delta.Y+pred(Size.Y)then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">inc(Location);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Draw&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i> {Tlnterior.HandleEvent}</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{------------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TNotebook.Work;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Работа с данными}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R : TRect ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PW : PWorkWin ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Control: Word;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.Assign(0,0,80,23) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PW := New (PWorkWin, Init (R) ) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Control := DeskTop.ExecView(PW) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Dispose (PW, Done)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;&nbsp;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {-------------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TNOtebook.HandleEvent (var Event: TEvent) ;&nbsp;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Обработчик событий 
+программы}&nbsp;</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin <i> {TNOtebook.HandleEvent}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TApplication.HandleEvent (Event) ;<i>{Обработка стандартных команд cmQuit и 
+cmMenu}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if Event.What = evCommand then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">c</font><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ase Event.Command of</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Обработка новых команд:}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmOpen: FileOpen; <i> {Открыть файл}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmSave: FileSave; <i> {Закрыть файл}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmChangeDir : ChangeDir; <i> {Сменить диск}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmDOSShell : DOSCall; <i> {Временный выход в ДОС}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">cmWork : Work; {Обработать данные}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">exit <i> {Не обрабатывать другие команды}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ClearEvent(Event) <i> {Очистить событие после обработки}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i> 
+{TNOtebook.HandleEvent}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-------------}</font></P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TNotebook. InitMenuBar;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Создание верхнего меню}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R: TRect;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetExtent(R) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R.B.Y := succ (R.A.Y) ; <i> {R - координаты строки меню}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MenuBar := New(PMenuBar, Init(R,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewMenu ( <i> {Создаем меню}&nbsp;</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Первый элемент нового меню представляет собой 
+подменю (меню второго уровня) . Создаем его}</font> </i><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> NewSubMenu ( '~F~/Файл' , 
+hcNoContext,&nbsp;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Описываем элемент главного меню}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewMenu (<i> {Создаем подменю}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewItem( <i> {Первый элемент}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> '~1~/ Открыть', 'F3 ', 
+kbF3,cmOpen, hcNoContext,&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewItem( <i> {Второй элемент}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> '~2~/ Закрыть', 
+'F2',kbF2,cmSave,hcNoContext,&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewItem( <i> {Третий элемент}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> '~3~/ Сменить диск1 , ' 
+' , 0, cmChangeDir, hcNoContext,&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewLine( <i> {Строка-разделитель}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewItem( '~4~/ 
+Вызов ДОС' , ' ' , 0, cmDOSShell, hcNoContext,&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewItem( '~5~/ Конец работы' , 
+'Alt-X' , kbAltX, cmQuit,hcNoContext,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NIL)))))) <i> {Нет других элементов подменю} ),</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Создаем второй элемент главного меню}&nbsp;</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewItem('~W~/ Работа', ' ', 
+kbF4,cmWork, hcNoContext,&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NIL) <i> {Нет других элементов главного меню}</i>&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> ))))&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i> 
+{TNotebook. InitMenuBar}</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{-----------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TNotebook. InitStatusLine;&nbsp;</font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Формирует строку статуса}&nbsp;</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R: TRect; <i> {Границы строки статуса}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetExtent (R) ; <i> {Получаем в R координаты всего экрана}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> R.A.Y := pred(R.B.Y) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+StatusLine := New(PStatusLine,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Init(R, <i> {Создаем строку статуса}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> NewStatusDef (0, $FFFF, <i> {Устанавливаем 
+максимальный</i></font><i> <font size="3">диапазон контекстной справочной службы}</font></i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp; NewStatusKey('~Alt-X~ Выход1, kbAltX, 
+cmQuit,&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NewStatusKey(I~F2~ Закрыть', kbF2, cmSaveFile,&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> NewStatusKey ( '~F3~ 
+Открыть', kbF3, cmOpenFile,&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> NewStatusKey ( '~F4~ Работа', kbF4, cmWork,&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+NewStatusKey ( '~F10~ Меню1, kbF10, craMenu,&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NIL) ) ) ) ) , <i>{Нет других клавиш}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NIL) <i> {Нет других определений}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> ));</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DisableCommands (WinCom1) <i> {Запрещаем недоступные команды}&nbsp;</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; <i>{TNotebook . InitStatusLine}</i></font> </P>
+<P><i><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{------------------}</font> </i> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Nbook: TNotebook;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Nbook. Init ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Nbook. Run;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Nbook . Done </font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr5_2.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

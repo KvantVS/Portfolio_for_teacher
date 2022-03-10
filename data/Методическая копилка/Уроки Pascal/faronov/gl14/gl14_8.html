@@ -1,0 +1,228 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl14_7.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl14_9.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Сохранение и выдача изображений
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>Функция</b> ImageSize. </font> </P>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Возвращает размер памяти в байтах, необходимый для размещения прямоугольного 
+фрагмента изображения. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function ImageSize(X1,Y1,X2,Y2: Integer):
+Word;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь X1... Y2 - координаты левого верхнего (X1, Y1) и правого нижнего (Х2, 
+Y2) углов фрагмента изображения.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура </b> Getlmage.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Помещает в память копию прямоугольного фрагмента 
+изображения. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Getlmage(X1,Y1,X2,Y2: Integer; var
+Buf)</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь X1...Y2 - координаты углов фрагмента изображения; Buf - переменная или 
+участок кучи, куда будет помещена копия видеопамяти с фрагментом изображения.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Размер Buf должен быть не меньше значения, возвращаемого функцией ImageSize с 
+теми же координатами X1....Y2.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> Put Image.  </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Выводит в заданное место экрана копию фрагмента 
+изображения, ранее помещенную в память процедурой Getlmage. Заголовок:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Putlmage(X,Y: Integer; var Buf;
+Mode: Word);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь X,Y- координаты левого верхнего угла того места на экране, куда будет 
+скопирован фрагмент изображения; Buf - переменная или участок кучи, откуда 
+берется изображение; Mode - способ копирования.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Как видим, координаты правого нижнего угла не указываются, так как они 
+полностью определяются размерами вновь выводимой на экран копии изображения. 
+Координаты левого верхнего угла могут быть какими угодно, лишь бы только 
+выводимая копия уместилась в пределах экрана (если копия не может разместиться 
+на экране, она не выводится и экран остается без изменений).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Параметр Mode определяет способ взаимодействия вновь размещаемой копии с уже 
+имеющимся на экране изображением. Взаимодействие осуществляется путем</font>
+<font face="Arial, Helvetica, sans-serif" size="3">применения кодируемых этим параметром логических операций к каждому биту 
+копии и изображения. Для указания применяемой логической операции можно 
+использовать одну из следующих предварительно определенных констант:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NormalPut= 0;{Замена существующего изображения на копию}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">XorPut = 1;{Исключительное ИЛИ}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">OrPut = 2;{Объединительное ИЛИ}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">AndPut = 3;{Логическое И}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> NotPut = 4;{Инверсия изображения}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Наиболее часто используются операции NormalPut, XORPut и NotPut. Первая из 
+них просто стирает часть экрана и на это место помещает копию из памяти в том 
+виде, как она там сохраняется. Операция NotPut делает то же самое, но копия 
+выводится в инверсном виде. Для монохромного режима это означает замену 
+светящихся пикселей на темные и наоборот. В цветном режиме операция NotPut 
+применяется к коду цвета каждого пикселя. Например, для White (код 15 или в 
+двоичном виде 1111) эта операция даст код 0000 = 0 = Black, для Red = 4 = 0100 
+получим 1011 = 11 = LightCyan и т.д. Операция XORPut, примененная к тому же 
+месту экрана, откуда была получена копия, сотрет эту часть экрана. Если операцию 
+применить дважды к одному и тому же участку, вид изображения на экране не 
+изменится. Таким способом можно довольно просто перемещать изображения по 
+экрану, создавая иллюзию движения.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Следующая программа рисует «Неопознанный Летающий Объект» - летающую тарелку 
+на звездном фоне (рис. 14.10).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Рис.14.10. </b> Иллюстрация процедур Getlmage/Putlmage</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Graph, CRT;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">r = 20;  {Характерный размер НЛО}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> pause = 50;  {Длительность паузы}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">d,m,e,xm/ym,x,y/lx,ly,rx,ry,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Size,i,dx,dy,Width,Height: Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Saucer : Pointer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> label</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">loop;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Инициируем графику}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> d := Detect; lnitGraph(d, m, ' ') ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> e := GraphResult; if 
+e &lt;&gt; grOk then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(GraphErrorMsg(e))&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">x := r*5;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">у := r*2;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">xm := GetMaxX div 4;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ym := GetMaxY div 4;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Создаем "тарелку" из двух эллипсов с усами антенн}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Ellipse (х,у,0,360,r,r div 3+2); ,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Ellipse (х,у-4,190,357,r,r div 3);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Line (х+7,у-б,х+10,у-12);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Line (x-7,y-6, х-10, у-12);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Circle (x+10,y-12,2);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Circle (х-10,у-12,2);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">FloodFill(x+l,y+4,White);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Определяем габариты НЛО и помещаем его в кучу}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">1х := х-r-1;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">1у := у-14;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">гх := х+r+1;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">гу := у+r div 3+3;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Width := rx - lx + 1;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Height:= ry - ly + 1;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Size := ImageSize(lx, ly, rx, ry);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">GetMem (Saucer, Size);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Getlmage (lx, ly, rx, ry, Saucer^);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Стираем построенное}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Putlmage (lx, ly, Saucer^, xorPut);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Создаем звездное небо}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Rectangle(xm,ym,3 *xm,3 *ym);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetViewPort(xm+1,ym+1,3*xm-1,3*ym-1,ClipOn);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">xm := 2*xm;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">ym := 2*ym;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">for i:=1 to 200 do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PutPixe1 (Random(xm), Random(ym), White) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Задаем начальное положение НЛО и направление движения}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">х := xm div 2;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">у := ym div 2;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">dx := 10;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">dy := 10;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Основной цикл}</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">repeat</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Putlmage(x,y,Saucer^,xorPut);  {Изображаем НЛО на}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Delay(pause);  {новом месте 
+и после}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Putlmage (x, у, Saucer^, XorPut);{паузы стираем его}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Получаем новые 
+координаты}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">loop: x := x+dx;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">у := y+dy;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {НЛО достиг границы экрана?}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> if (x&lt;0) or (x+Width+1&gt;xm) or&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+(у&lt;0) or (y+Height+1&gt;ym) then&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin  {Да - НЛО достиг границы: меняем 
+направление его перемещения}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> x := x-dx;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">y:= y-dy;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">dx : = GetMaxX div 10 - Random(GetMaxX div 5);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> dy := GetMaxY div 30 - 
+Random(GetMaxY div 15);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> goto loop&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">until KeyPressed;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if ReadKey=#0 then x := ord(ReadKey);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> CloseGraph&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl14_7.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl14_9.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

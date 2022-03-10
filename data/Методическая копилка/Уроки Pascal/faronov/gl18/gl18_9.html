@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_8.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_10.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Запрещение и разрешение команд
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">В качестве значения константы-команды можно использовать любое число в 
+диапазоне от О до 65535, однако следует учесть, что диапазоны 0...99 и 2S6...999 
+Turbo Vision резервирует для стандартных команд и их не следует использовать для 
+определения команд пользователя. Два диапазона зарезервированных команд выбраны 
+потому, что команды с кодами 0...255 можно временно запретить, в то время как 
+остальные команды запретить невозможно. Для запрещения или разрешения команд 
+используется глобальный тип TCommandSet, представляющий собой множество чисел в 
+диапазоне 0...256 (мощность множеств в Турбо Паскале не может превышать 256, вот 
+почему запретить можно только первые 256 команд). Команды запрещаются обращением 
+к методу DisableCommands, а разрешаются обращением к EnableCommands. Диалоговые 
+элементы, связанные с запрещенными командами, выделяются оттенком и их нельзя 
+выбрать мышью или командными клавишами. Например, если в конструкторе TProgJnit 
+(см. предыдущий пример) перед оператором</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if ExecView(Dia) = cmPrint then</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">вставить оператор</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DisableCommand([cmPrint]);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">кнопка «Команда cmPrint» будет выведена цветом фона окна и станет недоступна 
+для диалога.</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_8.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl18_10.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

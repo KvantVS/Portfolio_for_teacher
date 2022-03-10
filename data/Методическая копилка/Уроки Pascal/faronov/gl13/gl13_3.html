@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl13_2.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Программирование звукового генератора
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Звуковые возможности ПК основаны на одноканальном управляемом звуковом 
+генераторе, вырабатывающем электромагнитные колебания звуковой частоты. 
+Колебания подаются на встроенный в ПК динамик и заставляют его звучать.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В модуль CRT включены три процедуры, с помощью которых Вы сможете 
+запрограммировать произвольную последовательность звуков.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> Sound. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Заставляет динамик звучать с нужной частотой. Заголовок 
+процедуры:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Sound(F: Word);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь F - выражение типа Word, определяющее частоту звука в герцах. После 
+обращения к процедуре включается динамик и управление немедленно возвращается в 
+основную программу, в то время как динамик будет звучать впредь до вызова 
+процедуры NoSound.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура </b> No Sound.</font></P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;Выключает динамик. Если он к этому моменту не был 
+включен, вызов процедуры игнорируется.</font> </P>
+<P align="center"><font face="Arial, Helvetica, sans-serif" size="3"><b>Процедура</b> Delay. </font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Обеспечивает задержку работы программы на заданный интервал 
+времени. Заголовок процедуры:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Delay(T: Word);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Здесь Т - выражение типа Word, определяющее интервал времени (в 
+миллисекундах), в течение которого задерживается выполнение следующего оператора 
+программы.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для генерации звукового сигнала обычно используется вызов описанных процедур 
+по схеме Sound-Delay-NoSound. Следующая программа заставит ПК воспроизвести 
+простую музыкальную гамму. Используемый в ней массив F содержит частоты всех 
+полутонов в первой октаве от «до» до «си». При переходе от одной октавы к 
+соседней частоты изменяются в два раза.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses CRT;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">F: array [1..12] of Real =</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">(130.8, 138.6, 146.8, 155.6, 164.8, 174.6, 185.0, 196.0, 207.7, 220.0,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">233.1, 246.9);{Массив частот 1-й октавы}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Temp = 100;{Темп исполнения}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k,n: Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Восходящая гамма}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for k := 0 to 3 do for n := 1 to 12 do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Sound(Round(F[n]*(1 shl k) )) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Delay(Temp);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> NoSound&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Нисходящая гамма}&nbsp;</font>  </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for k := 3 downto 0 do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for n := 12 downto 1 do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Sound(Round(F[n]*(1 shl k)) ) ;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Delay(Temp);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> NoSound&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end </font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl13_2.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

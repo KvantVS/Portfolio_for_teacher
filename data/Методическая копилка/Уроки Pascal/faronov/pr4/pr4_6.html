@@ -1,0 +1,294 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr4_5.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr4_7.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Модуль CRT
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Модуль Сrt содержит подпрограммы управления текстовым выводом на экран 
+дисплея, звуковым генератором и чтения клавиатуры.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В режиме текстового вывода используются следующие координаты экрана: левый 
+верхний угол экрана имеет координаты 1,1; горизонтальная координата возрастает 
+слева направо, вертикальная - сверху вниз. Если на экране определено окно, все 
+координаты определяются относительно границ окна. Исключением являются 
+координаты процедуры Window установки границ окна, которые всегда задаются 
+относительно границ экрана.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для чтения клавиатуры используются две функции - KeyPressed и ReadKey. 
+Функция KeyPressed определяет факт нажатия на любую клавишу и не 
+приостанавливает дальнейшее исполнение программы. Функция</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">KeyPressed читает расширенный код нажатой клавиши. Если к моменту обращения к 
+функции не была нажата ни одна клавиша, программа приостанавливает свою работу, 
+ожидая действий пользователя.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Управление звуковым генератором строится по схеме Sound - Delay - NoSound. 
+Процедура Sound включает звуковой генератор и заставляет его непрерывно 
+генерировать звук нужного тона. Процедура Delay приостанавливает работу 
+программы на заданное число миллисекунд реального времени. Процедура NtfSound 
+отключает звуковой генератор.</font> </P>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+Константы
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>Константы режима работы</i></font> </P>
+<TABLE border=0 frame=box rules=all>
+  <TBODY>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font></P></TD>
+    <TD><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD>
+    <TD><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp;</font> </TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">BW40</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">0;<i>{Черно-белый, 40 символов, 25 строк}</i></font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">BW80</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">2;<i>{Черно-белый, 80 х 25}</i></font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Mono</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">7;<i>{Монохромный, 80 х 25}</i></font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">С040</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">1;<i>{Цветной, 40 х 25}</i></font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">С080</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">3;<i>{Цветной, 80 х 25}</i></font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Font8x8</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">256;<i>{Для EGA/VGA режим 43 или 50 строк}</i></font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">С40</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">C040;<i>{Для совместимости с версией 3.0}</i></font></P></TD></TR>
+  <TR>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">С80</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">=</font></P></TD>
+    <TD>
+      <P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">C080;<i>{Для совместимости с версией 3.0}</i></font></P></TD></TR></TBODY></TABLE>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>Константы цветов</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Black = 0;<i>{Черный}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Blue = 1;<i>{Синий}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Green = 2;<i>{Зеленый}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Cyan = 3;<i>{Голубой}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Red = 4;<i>{Красный}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Magenta = 5;<i>{Фиолетовый}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Brown = 6;<i>{Коричневый}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">LightGray = 7;<i>{Светло-серый}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">DarkGray = 8;<i>{Темно-серый}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">LightBlue = 9;<i>{Ярко-синий}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">LightGreen = 10;<i>{Ярко-зеленый}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">LightCyan = 11;<i>{Ярко-голубой}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">LightRed = 12;<i>{Розовый}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">LightMagenta= 13;<i>{Малиновый}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Yellow = 14;<i>{Желтый}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">White = 15;<i>{Белый}</i></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Blink = 128;<i>{Мерцание символа}</i></font> </P>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+Переменные
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">CheckBreak:Boolean;{Разрешает/запрещает контроль Ctrl-Break}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">CheckEof:Boolean; {Разрешает/запрещает контроль Ctrl-Z}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">CheckSnow:Boolean {Разрешает/запрещает контроль "снега"}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Directvideo:Boolean; {Разрешает/запрещает прямой доступ к видеопамяти</font><font size="3">}</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">LastMode:Word; {Хранит последний текстовый режим</font><font size="3">}</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TextAttr:Byte; {Хранит текущий байт атрибутов}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WindMin:Word; {Координаты левого верхнего угла текущего окна} .</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WindMax:Word; {Координаты правого нижнего угла</font><font size="3">}</font></font> </P>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+Процедуры и функции
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+Функции
+</font>
+</b>
+<br>
+</font>
+</p>
+
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> KeyPressed; Boolean Возвращает True, если на клавиатуре была нажата 
+клавиша, и False в противном случае. Не задерживает исполнение программы.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> ReadKey: char Читает символ с клавиатуры без эхоповтора на экране. 
+Приостанавливает исполнение программы до нажатия на любую клавишу, кроме Shift, 
+Ctrl, Alt, CapsLock, NumLock, ScrollLock.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> WhereX: Byte Возвращает горизонтальную координату текущей позиции 
+курсора относительно текущего окна.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Function</b> WhereY: Byte Возвращает вертикальную координату текущей позиции 
+курсора относительно текущего окна.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><i>Процедуры</i></font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> AssignCrt (var F: Text) Связывает с файловой переменной устройство 
+CON (клавиатуру для ввода и экран для вывода).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> ClrEol Удаляет все символы от текущей позиции курсора до конца 
+строки без перемещения курсора.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> ClrScr Очищает экран (окно) и помещает курсор в верхний левый угол.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Delay (D: word) Приостанавливает работу программы на указанное 
+число D миллисекунд.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> DelLine Удаляет строку, на которой находится курсор, и перемещает 
+все строки ниже этой строки на строку вверх. Нижняя строка очищается.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> GotoXY(X, Y; Byte) Перемещает курсор в нужное место экрана (окна).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b> 
+Procedure</b> Highvideo Устанавливает высокую яркость символов.&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b> Procedure</b> InsLine 
+Вставляет пустую строку в позицию курсора. ,&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b> Procedure</b> LowVideo Устанавливает 
+низкую яркость символов.&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b> Procedure</b> NormVideo Устанавливает нормальную яркость 
+символов.&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b> Procedure</b> NoSound Выключает звуковой генератор.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Sound (F: word) Включает звуковой генератор. F - частота звука 
+(Гц).&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b> Procedure</b> TextBackground (Color: Byte) Устанавливает цвет фона.&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b> Procedure</b> 
+TextColor (Color: Byte) Устанавливает цвет символов.&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b> Procedure</b> TextMode (Mode: 
+Word) Устанавливает нужный текстовый режим.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"><b>Procedure</b> Window(X1, Y1, X2, Y2 : Byte) Определяет текстовое окно на экране. 
+X1, Y1 - координаты левого верхнего угла, Х2, Y2 - правого нижнего угла.</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr4_5.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="pr4_7.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+</BODY></HTML>

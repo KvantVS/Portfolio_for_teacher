@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl9_4.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl9_6.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Инициирующая часть
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+Инициирующая часть завершает модуль. Она может отсутствовать вместе с 
+начинающим ее словом BEGIN или быть пустой - тогда за BEGIN сразу следует 
+признак конца модуля (слово END и следующая за ним точка).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В инициирующей части размещаются исполняемые операторы, содержащие некоторый 
+фрагмент программы. Эти операторы исполняются до передачи управления основной 
+программе и обычно используются для подготовки ее работы. Например, в них могут 
+инициироваться переменные, открываться нужные файлы, устанавливаться связи с 
+другими ПК по коммуникационным каналам и т.п.:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Unit FileText;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Interface</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Print(s : string);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Implementation</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">f: text; const&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">name = 'output.txt'; Procedure Print;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLn(f, s)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{ Начало инициирующей части: }&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">assign(f, name);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">rewrite(f);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{ Конец инициирующей части }&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Не рекомендуется делать инициирующую часть пустой, лучше ее опустить: пустая 
+часть содержит пустой оператор, которому будет передано управление при запуске 
+программы. Это часто вызывает проблемы при разработке оверлейных программ (см. 
+гл.11).</font> </P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl9_4.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl9_6.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

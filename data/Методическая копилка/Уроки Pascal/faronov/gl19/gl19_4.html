@@ -1,0 +1,208 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl19_3.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl19_5.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Отсортированные коллекции
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">Часто бывает необходимо каким-либо образом упорядочить коллекцию, т.е. 
+расставить ее элементы в определенном порядке. Для этих целей в Turbo Vision 
+предусмотрен специальный объект TSortedCollection. Этот объект порожден от 
+TCollection и, следовательно, уже умеет создавать коллекцию, вставлять в нее 
+элементы и удалять их. Единственное, чего он не умеет - это сортировать 
+коллекцию. В TSortedCollection есть абстрактный метод Compare, который 
+используется для упорядочения элементов и который Вы должны перекрыть, чтобы 
+обеспечить нужную Вам сортировку. Таким образом, чтобы создать отсортированную 
+коллекцию, Вы должны создать объект-потомок от TSortedCollection и перекрыть его 
+метод Compare.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">По умолчанию этот метод получает в качестве параметров указатели на два 
+элемента коллекции и должен вернуть 1, 0 или -1 в зависимости от того, больше, 
+равно или меньше какое-то поле первого элемента по сравнению с этим же полем 
+второго элемента. Поле, по которому сравниваются элементы, называется ключевым.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Например, нам требуется создать отсортированную коллекцию, содержащую каталог 
+библиотеки (см. пример п. 19.3), причем в качестве ключевого используется поле 
+Autor^. Тогда создадим новый объект</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PSort = Tsort;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TSort = object (TSortedCollection)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function Compare(Key1, Key2: Pointer): Integer; Virtual;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">чтобы перекрыть метод Compare. Если теперь объявить новый метод TSort.Compare 
+следующим образом:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function TSort.Compare(Key1, Key2: Pointer):
+Integer;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">A: PSort absolute Key1;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">B: PSort absolute Key2;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if A.Autor &lt; BA.Autor then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Compare := -1 else if A.Autor = B.Autor then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Compare := 0&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Compare := 1&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; {TSort.Compare}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">то после объявления</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">BookList: PSort;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">вместо</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">BookList: PCollection;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">программа выведет каталог, отсортированный по фамилиям авторов:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Джордейн Р.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Справочник программиста персональных компьютеров типа IBM PC, XT и AT</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Финансы и статистика, 1991, 544 Йенсен К., Вирт Н.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Паскаль. Руководство для пользователя и описание языка финансы и статистика, 
+1982, 151 Скэнлон Л.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Персональные ЭВМ IBM PC и XT. Программирование на языке ассемблера</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Радио и связь, 1991, 336 Шелдон</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Язык Си для профессионалов И.В.К.-СОФТ, 1991, 383</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Ключевое поле определяется методом TSortedCollection.KeyOf. Этот метод по 
+заданному в качестве параметра обращения указателю на элемент коллекции 
+возвращает указатель на ключевое поле. По умолчанию метод KeyOf возвращает 
+указатель на весь элемент, однако Вы можете перекрыть его новым методом, 
+возвращающим указатель на нужное ключевое поле. Пусть, например, нам требуется 
+отсортировать каталог по году издания книг (поле Year). Добавим в описание 
+объекта TSort перекрытие метода KeyOf:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TSort = object (TSortedCollection)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function KeyOf(Item: Pointer): Pointer; Virtual;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end ;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Опишем новый метод следующим образом:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Functon TSort.KeyOf(Item: Pointer): Pointer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">KeyOf := PBook(Item).Yеаr&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">и изменим описание метода Compare:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Function TSort.Compare(Key1, Key2: Pointer): Integer;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">A:  Integer absolute Key1;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">B:  Integer absolute Key2;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if А &lt; B then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Compare := -1</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">else if А = B then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Compare := 0&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> else</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Compare := 1</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; {TSort.Compare}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Теперь после запуска программы на экран будет выведено:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Йенсен К., Вирт Н.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Паскаль. Руководство для пользователя и описание языка</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Финансы и статистика, 1982, 151</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Джордейн Р.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Справочник программиста персональных компьютеров типа IBM
+PC,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">XT и AT</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Финансы и статистика, 1991, 544</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Обратите внимание: в отсортированной коллекции теперь хранятся только 2 
+элемента! Произошло это потому, что по умолчанию TSortedCollection игнорирует 
+новую запись, если в коллекции уже существует элемент, ключевое поле которого 
+имеет такое же значение. Таким образом, обычно в отсортированной коллекции 
+содержатся записи с уникальными ключевыми полями.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Можно ли поместить в коллекцию два или больше элементов с одинаковыми полями? 
+Turbo Vision позволяет сделать это: поле TSortedCollection.Duplicates по 
+умолчанию содержит FALSE, что указывает на уникальность ключевого поля; если 
+перед наполнением коллекции Вы поместите в это поле значение TRUE, коллекция не 
+будет контролировать уникальность ключевых полей.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Изменим начало раздела исполняемых операторов главной программы следующим 
+образом:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Bookiist := New(PSort, Init(50,10) ) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">with BookList do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Duplicates := True;  {Отменяем уникальность ключей}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">......</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.....</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Теперь на экран будет выведено:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Йенсен К., Вирт Н.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Паскаль. Руководство для пользователя и описание языка Финансы и статистика, 
+1982, 151 Скэнлон Л.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Персональные ЭВМ IBM PC и XT. Программирование на языке ассемблера</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Радио и связь, 1991, 336 Шелдон</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Язык Си для профессионалов И.В.К.-СОФТ, 1991, 383 Джордейн Р.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Справочник программиста персональных компьютеров типа IBM PC, XT и AT Финансы 
+и статистика, 1991, 544</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Заметим, что, очередной элемент вставляется перед первым элементом с равным 
+значением ключевого поля. Точно также поиск First.That вернет указатель на 
+первый из нескольких элементов с одинаковыми ключевыми полями, а метод LastThat 
+- на последний из них.</font> </P>
+
+<p>
+&nbsp;
+</p>
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl19_3.html">
+<img SRC="Back.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl19_5.html">
+<img SRC="For.gif" BORDER="0"    >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+</BODY></HTML>

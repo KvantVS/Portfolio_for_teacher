@@ -1,0 +1,303 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Untitled</title>
+</head>
+
+<body lang=RU style="'tab-interval:35.4pt'" background="bgrwhite.gif">
+<p><div align="center"><b><font size="+1" face="Arial">31. Текстовые файлы </font></b></div></p>
+<p><span
+style="mso-spacerun: yes">   </span>Особое место в языке ПАСКАЛЬ занимают
+текстовые файлы,<span style="mso-spacerun: yes">  </span>компоненты
+
+<p>которых
+имеют символьный тип.<span style="mso-spacerun: yes">  </span>Для описания
+текстовых файлов в<span style="mso-spacerun: yes">  </span>языке
+
+<p>определен
+стандартный тип Тext:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">         </span>var<span style="mso-spacerun:
+yes">    </span>TF1, TF2: Text;
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Текстовые файлы<span style="mso-spacerun:
+yes">  </span>представляют<span style="mso-spacerun: yes">  </span>собой<span
+style="mso-spacerun: yes">  </span>последовательность строк,<span
+style="mso-spacerun: yes">  </span>а
+
+<p>строки
+- последовательность символов.<span style="mso-spacerun: yes">  </span>Строки
+имеют переменную длину,
+
+<p>каждая
+строка завершается признаком конца строки.
+
+<p><span
+style="mso-spacerun: yes">   </span>С признаком конца строки связана функция
+EOLn(var T:Text):Boolean,
+
+<p>где Т -
+имя<span style="mso-spacerun: yes">  </span>текстового<span
+style="mso-spacerun: yes">  </span>файла.<span style="mso-spacerun: yes"> 
+</span>Эта функция принимает значение TRUE,
+
+<p>если
+достигнут конец строки, и значение<span style="mso-spacerun: yes"> 
+</span>FALSE, если<span style="mso-spacerun: yes">  </span>конец строки не
+
+<p>достигнут.
+
+<p><span
+style="mso-spacerun: yes">   </span>Для операций над текстовыми файлами,<span
+style="mso-spacerun: yes">  </span>кроме перечисленных, опреде-
+
+<p>лены
+также операторы обращения к процедурам:
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>ReadLn(T) - пропускает строку до начала
+следующей;
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>WriteLn(T) -<span style="mso-spacerun:
+yes">  </span>завершает<span style="mso-spacerun: yes">  </span>строку
+файла,<span style="mso-spacerun: yes">  </span>в которую производится за-
+
+<p>пись,
+признаком конца строки и переходит к началу следующей.
+
+<p><span
+style="mso-spacerun: yes">   </span>Для работы с текстовыми файлами введена
+расширенная форма операто-
+
+<p>ров
+ввода и вывода. Оператор
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">    </span>Read(T,X1,X2,...XK)
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes"> </span>эквивалентен группе операторов
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">    </span>begin
+
+<p><span
+style="mso-spacerun: yes">      </span>Read(T,X1);
+
+<p><span
+style="mso-spacerun: yes">      </span>Read(T,X2);
+
+<p><span
+style="mso-spacerun: yes">      </span>...........
+
+<p><span
+style="mso-spacerun: yes">      </span>Read(T,XK)
+
+<p><span
+style="mso-spacerun: yes">    </span>end;
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Здесь Т - текстовый файл, а переменные Х1,
+Х2,...ХК могут быть ли-
+
+<p>бо<span
+style="mso-spacerun: yes">  </span>переменными<span style="mso-spacerun: yes"> 
+</span>целого, действительного или символьного<span style="mso-spacerun: yes"> 
+</span>типа,<span style="mso-spacerun: yes">  </span>либо
+
+<p>строкой.
+При чтении значений переменных из файла они преобразуются из
+
+<p>текстового
+представления в машинное.
+
+<p><span
+style="mso-spacerun: yes">   </span>Оператор
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">    </span>Write(T,X1,X2,...XK)
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p>эквивалентен
+группе операторов
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">    </span>begin
+
+<p><span
+style="mso-spacerun: yes">      </span>Write(T,X1);
+
+<p><span
+style="mso-spacerun: yes">      </span>Write(T,X2);
+
+<p><span
+style="mso-spacerun: yes">      </span>...........
+
+<p><span
+style="mso-spacerun: yes">      </span>Write(T,XK)
+
+<p><span
+style="mso-spacerun: yes">    </span>end;
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]>
+
+<p><span
+style="mso-spacerun: yes">   </span>Здесь Т<span style="mso-spacerun: yes"> 
+</span>-<span style="mso-spacerun: yes">  </span>также текстовый файл,<span
+style="mso-spacerun: yes">  </span>но переменные Х1,Х2,...ХК могут
+
+<p>быть
+целого, действительного, символьного, логического типа или стро-
+
+<p>кой.
+При записи значений переменных в файл они преобразуются из внут-
+
+<p>реннего
+представления в текстовый.
+
+<p><span
+style="mso-spacerun: yes">   </span>К текстовым файлам относятся стандартные
+файлы INPUT, OUTPUT.
+
+<p><span
+style="mso-spacerun: yes">   </span>Рассмотренные ранее операторы ввода -
+вывода являются частным слу-
+
+<p>чаем
+операторов обмена с текстовыми файлами, когда используются стан-
+
+<p>дартные
+файлы ввода - вывода INPUT, OUTPUT.
+
+<p><span
+style="mso-spacerun: yes">   </span>Работа с этими файлами имеет особенности:
+
+<p><span
+style="mso-spacerun: yes">   </span>-имена этих файлов в списках ввода - вывода
+не указываются;
+
+<p><span
+style="mso-spacerun: yes">   </span>-применение процедур<span
+style="mso-spacerun: yes">  </span>Reset,<span style="mso-spacerun: yes"> 
+</span>Rewrite и Close к стандартным файлам
+
+<p>ввода -
+вывода запрещено;
+
+<p><span
+style="mso-spacerun: yes">   </span>-для работы с файлами INPUT,<span
+style="mso-spacerun: yes">  </span>OUTPUT введена разновидность функции
+
+<p>EOLn
+без параметров.
+
+<p><span
+style="mso-spacerun: yes">   </span>TURBO PASCAL вводит дополнительные
+процедуры и функции, применимые
+
+<p>только
+к текстовым файлам,<span style="mso-spacerun: yes">  </span>это
+SetTextBuf,<span style="mso-spacerun: yes">  </span>Append, Flush, SeekEOLn,
+
+<p>SeekEOF.
+
+<p><span
+style="mso-spacerun: yes">   </span>Процедура SetTextBuf( var f: Text; var Buf;
+BufSize: Word ) служит
+
+<p>для
+увеличения<span style="mso-spacerun: yes">  </span>или уменьшения буфера ввода
+- вывода текстового файла
+
+<p>f.
+Значение<span style="mso-spacerun: yes">  </span>размера буфера для текстовых
+файлов по<span style="mso-spacerun: yes">  </span>умолчанию<span
+style="mso-spacerun: yes">  </span>равно
+
+<p>128
+байтам.<span style="mso-spacerun: yes">  </span>Увеличение размера буфера
+сокращает количество обращений
+
+<p>к
+диску.<span style="mso-spacerun: yes">  </span>Рекомендуется изменять разиер
+буфера до открытия файла. Бу-
+
+<p>фер
+файла начнется с первого байта переменной Buf.<span style="mso-spacerun: yes"> 
+</span>Размер буфера за-
+
+<p>дается
+в необязательном параметре BufSize,<span style="mso-spacerun: yes">  </span>а
+если этот параметр<span style="mso-spacerun: yes">  </span>от-
+
+<p>сутствует,
+размер буфера определяется длиной переменной Buf.
+
+<p><span
+style="mso-spacerun: yes">   </span>Процедура Append( var f:<span
+style="mso-spacerun: yes">  </span>Text )<span style="mso-spacerun: yes"> 
+</span>служит для специального открытия
+
+<p>выходных
+файлов. Она применима к уже существующим физическим файлам и
+
+<p>открывает
+из для дозаписи в конец файла.
+
+<p><span
+style="mso-spacerun: yes">   </span>Процедура Flush(<span style="mso-spacerun:
+yes">  </span>var<span style="mso-spacerun: yes">  </span>f: Text )<span
+style="mso-spacerun: yes">  </span>применяется<span style="mso-spacerun: yes"> 
+</span>к открытым выходным
+
+<p>файлам.
+Она<span style="mso-spacerun: yes">  </span>принудительно записывает данные из
+буфера в файл незави-
+
+<p>симо от
+степени его заполнения.
+
+<p><span
+style="mso-spacerun: yes">   </span>Функция SeekEOLn( var f: Text ): Boolean
+возвращает значение True,
+
+<p>если до
+конца строки остались только пробелы.
+
+<p><span
+style="mso-spacerun: yes">   </span>Функция SeekEOF( var f:<span
+style="mso-spacerun: yes">  </span>Text ): Boolean возвращает значение True,
+
+<p>если до
+конца файла остались строки, заполненные пробелами.
+
+<p><div align="center"><a href="../Pascal. Курс лекций.html">	<img src="../../soder.gif" width=120 height=31 border=0 alt=""></a></div></p>
+
+
+</body>
+</html>

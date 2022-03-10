@@ -1,0 +1,185 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_8.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_10.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Вывод текста
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<p align="left">
+<font face="Arial, Helvetica, sans-serif" size="3">
+По сравнению с рис. 15.4 мы добились немногого, ведь пока еще не решена 
+главная проблема - вывод нужного текста. Разумеется, в Вашем распоряжении всегда 
+имеется процедура WRITELN, однако вывод текста «в лоб» с помощью этой процедуры 
+практически никогда не используется в Turbo Vision, так как в этом случае 
+выведенный текст не будет связан с окнами.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В объекте TScroller для вывода текста предусмотрен абстрактный метод Draw. 
+Абстрактным он называется потому, что не выполняет никакой полезной работы. 
+Однако именно к этому методу обращается обработчик событий объекта TScroller 
+всякий раз, когда понадобится обновить на экране вид окна. Чтобы объект выполнял 
+все заложенные в него функции, нам необходимо перекрыть этот метод новым. Мы уже 
+знаем, что для этого нужно объявить новый объект:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PInterior =ATInterior; TInterior = object (TScroller)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor Init(var Bounds: TRect;</font>
+<font size="3">HS,VS: PScrollBar);</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Draw; virtual;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure ReadFile;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Мы перекрыли абстрактный метод Draw, стандартный конструктор Init и 
+инкапсулировали в объект новый метод ReadFile. Новый конструктор предназначен 
+для инициации экземпляра объекта TScroller. Кроме того, с помощью метода 
+ReadFile он должен прочитать все записи файла данных и подготовить 
+соответствующий массив строк - это сократит время на обновление текста 
+процедурой Draw.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Перед тем, как двигаться дальше, подумаем о способе хранения строк для 
+процедуры Draw. Если все необходимые действия по чтению нужной записи из файла и 
+преобразования ее к текстовому формату возложить на процедуру Draw, наша 
+программа станет слишком медленной, в особенности, если файл данных записан на 
+дискете. Поэтому предусмотрим такие глобальные переменные:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">const</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MaxLine = 300;  {Максимальная длина массива}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> LLine = LName+LPhone+LAddr; {Длина
+строки}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NLines: Word;  {Истинная длина массива строк}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Lines: array [1..MaxLine] of 
+String [LLine];  {Массив строк}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Теперь нетрудно подготовить процедуру ReadFile:</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Procedure TInterior.ReadFile;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">{Читает содержимое файла данных в массив
+Lines}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k: Integer; s: String;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Data: DataType;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">seek(DataFile, 0) ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NLines := FileSize(DataFile);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">if NLines &gt; MaxLine then</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">NLines := MaxLine;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for k ':= 1 to NLines do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Read(DataFile, data);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> with data do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s := Name;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">while Length(s) &lt; LName do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s := s+' ';&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> s := s+Phone;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> while Length(s) &lt; LName+LPhone do</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">s := s+' ';&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> s := s+Addr&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Lines[k] := s&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;  {ReadFile}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В этой процедуре из записей файла данных готовится массив строк Lines, причем 
+начало каждого поля выравнивается так, чтобы поля образовали колонки - такая 
+форма вывода поможет легко найти на экране каждое поле.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Теперь займемся процедурой Draw:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TInterior.Draw;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> {Выводит данные в окно просмотра}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">n,  {Текущая строка экрана}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k: Integer;  {Текущая строка массива}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> В: 
+TDrawBuffer; Color: Byte;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Color := GetColor(l);  {Использовать цвет основного текста}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> for n := 0 to 
+pred(Size.Y) do&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Size.Y - количество строк окна}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">k := Delta.Y+n+1;  {Delta.Y - номер первой выводимой строки}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MoveChar(B,' ',Color,Size.X);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MoveStr(B, Copy(Lines[k],Delta.X+l,Size.X),Color);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">WriteLine(0,N,Size.X,l,B)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> 
+end&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;  {TInterior.Draw}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Работа процедуры основана на использовании текущих размеров и положения 
+текстового окна относительно текста. Эти параметры хранятся в полях Size и Delta 
+объекта TScroller и обновляются всякий раз, когда пользователь манипулирует 
+полосами управления или изменяет размеры окна. Для вывода текста используются 
+три процедуры: MoveChar, MoveStr, WriteLine. Каждая из них оперирует переменной 
+В типа TDrawBuffer, представляющей собой последовательности кодов выводимых 
+символов и их атрибутов. Процедура MoveChar заполняет переменную В указанным 
+символом (' ') и атрибутом (Color). Процедура MoveStr копирует строку в 
+переменную В, а с помощью WriteLine осуществляется вывод буфера В на экран.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для вывода изображений (текста) перекрывайте и используйте метод Draw 
+объекта-владельца нужной части экрана. Это обеспечит автоматическое изменение 
+изображения и его прорисовку при изменении границ или положения поля вывода.</font> 
+</P>
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_8.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl15_10.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+</BODY></HTML>

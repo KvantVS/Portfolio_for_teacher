@@ -1,0 +1,431 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+</head>
+<body BGCOLOR="#E7E3E7" TEXT="#000000" LINK="#004080" VLINK="#004080">
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl10_2.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl10_4.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b>
+<font size="4">
+
+Создание объектов
+
+</font>
+</b>
+<br>
+</font>
+</p>
+
+
+<P><font face="Arial, Helvetica, sans-serif" size="3">В Турбо Паскале для создания объектов используются три зарезервированных 
+слова:  object, constructor, destructor к три стандартные директивы:
+ private, 
+public и virtual.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Зарезервированное слово
+ object  используется для описания объекта. Описание 
+объекта должно помещаться в разделе описания типов:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MyObject = object</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">(Поля объекта}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Методы объекта}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end ;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Если объект порождается от какого-либо родителя, имя родителя указывается в 
+круглых скобках сразу за словом object:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">MyDescendantObject = object(MyObject)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Любой объект может иметь сколько угодно потомков, но только одного родителя, 
+что позволяет создавать иерархические деревья наследования объектов.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для нашей учебной задачи создадим объект-родитель TGraphObject, в рамках 
+которого будут инкапсулированы поля и методы, общие для всех остальных объектов:</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TGraphObj = object</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Private  {Поля объекта будут скрыты от пользователя}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">X,Y: Integer;  {Координаты реперной точки}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Color: Word;  {Цвет фигуры}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Public  {Методы объекта будут доступны 
+пользователю}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor Init(aX,aY: Integer; aColor:
+Word);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Создает экземпляр объекта}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Draw(aColor: Word); Virtual;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Вычерчивает объект заданным цветом aColor}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Show;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Показывает объект - вычерчивает его цветом Color}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Hide;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Прячет объект - вычерчивает его цветом фона}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Procedure MoveTo(dX,dY: Integer);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Перемещает объект в точку с координатами X+dX и
+Y+dY}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;  {Конец описания 
+объекта TGraphObj}</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В дальнейшем предполагается создать объекты-потомки от TGraphObj, реализующие 
+все специфические свойства точки, линии, окружности и прямоугольника. Каждый из 
+этих графических объектов будет характеризоваться положением на экране (поля X и 
+Y) и цветом (поле Color). С помощью метода Draw он будет способен отображать 
+себя на экране, а с помощью свойств «показать себя» (метод Show) и «спрятать 
+себя» (метод Hide) сможет перемещаться по экрану (метод MoveTo). Учитывая 
+общность свойств графических объектов, мы объявляем абстрактный объект 
+TGraphObj, который не связан с конкретной графической фигурой. Он объединяет в 
+себе все общие поля и методы реальных фигур и будет служить родителем для других 
+объектов.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Директива Private в описании объекта открывает секцию описания скрытых полей 
+и методов. Перечисленные в этой секции элементы объекта «не видны» программисту, 
+если этот объект он получил в рамках библиотечного ТР(/-модуля. Скрываются 
+обычно те поля и методы, к которым программист (в его же интересах!) не должен 
+иметь непосредственного доступа. В нашем примере он не может произвольно менять 
+координаты реперной точки (X.Y), т.к. это не приведет к перемещению объекта. Для 
+изменения полей X и Y предусмотрены входящие в состав объекта методы Init и 
+MoveTo. Скрытые поля и методы доступны в рамках той программной единицы 
+(программы или модуля), где описан соответствующий объект. В дальнейшем 
+предполагается, что программа будет использовать модуль GraphObj с описанием 
+объектов. Скрытые поля будут доступны в модуле GraphObj, но недоступны в 
+использующей его основной программе. Разумеется, в рамках реальной задачи 
+создание скрытых элементов объекта вовсе необязательно. Я ввел их в объект 
+TGraphObj лишь для иллюстрации возможностей ООП.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Директива public отменяет действие директивы private, поэтому все следующие 
+за public элементы объекта доступны в любой программной единице. Директивы 
+private и public могут произвольным образом чередоваться в пределах одного 
+объекта.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Вариант объявления объекта TGraphObj без использования механизма
+private...public:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TGraphObj = object</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">X,Y: Integer;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Color: Word;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor Init(aX,aY: Integer; aColor:
+Word);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Draw(aColor: Word); Virtual;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Show;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Hide;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure MoveTo(dX,dY: Integer);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Описания полей ничем не отличаются от описания обычных переменных. Полями 
+могут быть любые структуры данных, в том числе и другие объекты. Используемые в</font>
+<font face="Arial, Helvetica, sans-serif" size="3">нашем примере поля X и Y содержат координату реперной (характерной) точки 
+графического объекта, а поле Color - его цвет. Реперная точка характеризует 
+текущее положение графической фигуры на экране и, в принципе, может быть любой 
+ее точкой.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В нашем примере она совпадает с координатами точки в описываемом ниже объекте</font>
+<font face="Arial, Helvetica, sans-serif" size="3">TPoint, с центром окружности в объекте
+TCircle, первым концом прямой в 
+объекте TLine</font> <font face="Arial, Helvetica, sans-serif" size="3">и с левым верхним углом прямоугольника в объекте
+TRect.</font> 
+</P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для описания методов в ООП используются традиционные для Паскаля процедуры и 
+функции, а также особый вид процедур - конструкторы и деструкторы. Конструкторы 
+предназначены для создания конкретного экземпляра объекта, ведь объект - это тип 
+данных, т.е. «шаблон», по которому можно создать сколько угодно рабочих 
+экземпляров данных объектного типа (типа TGraphOhj, например). Зарезервированное 
+слово constructor, используемое в заголовке конструктора вместо procedure, 
+предписывает компилятору создать особый код пролога, с помощью которого 
+настраивается так называемая таблица виртуальных методов (см. ниже). Если в 
+объекте нет виртуальных методов, в нем может не быть ни одного конструктора, 
+наоборот, если хотя бы один метод описан как виртуальный (с последующим словом 
+Virtual, см. метод Draw), в состав объекта должен входить хотя бы один 
+конструктор и обращение к конструктору должно предшествовать обращению к любому 
+виртуальному методу.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Типичное действие, реализуемое конструктором, состоит в наполнении объектных 
+полей конкретными значениями. Следует заметить, что разные экземпляры одного и 
+того же объекта отличаются друг от друга только содержимым объектных полей, в то 
+время как каждый из них использует одни и те же объектные методы. В нашем 
+примере конструктор Init объекта TGraphObj получает все необходимые для полного 
+определения экземпляра данные через параметры обращения аХ, аY и aColor.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Процедура Draw предназначена для вычерчивания графического объекта. Эта 
+процедура будет реализовываться в потомках объекта TGraphObj по-разному. 
+Например, для визуализации точки следует вызвать процедуру PutPixel, для 
+вычерчивания линии - процедуру Line и т.д. В объекте TGraphObj процедура Draw 
+определена как виртуальная («воображаемая»). Абстрактный объект TGraphObj не 
+предназначен для вывода на экран, однако наличие процедуры Draw в этом объекте 
+говорит о том, что любой потомок TGraphObj должен иметь собственный метод Draw, 
+с помощью которого он может показать себя на экране.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">При трансляции объекта, содержащего виртуальные методы, создается так 
+называемая таблица виртуальных методов (ТВМ), количество элементов которой равно 
+количеству виртуальных методов объекта. В этой таблице будут храниться адреса 
+точек входа в каждый виртуальный метод. В нашем примере ТВМ объекта TGraphObj 
+хранит единственный элемент - адрес метода Draw. Первоначально элементы ТВМ не 
+содержат конкретных адресов. Если бы мы создали экземпляр объекта TGraphObj с 
+помощью вызова его конструктора Init, код пролога конструктора поместил бы в ТВМ 
+нужный адрес родительского метода Draw. Далее мы создадим несколько потомков 
+объекта TGraphObj. Каждый из них будет иметь собственный конструктор, с помощью 
+которого ТВМ каждого потомка настраивается так, чтобы ее единственный элемент 
+содержал адрес нужного метода Draw. Такая процедура называется поздним 
+связыванием объекта. Позднее связывание позволяет методам родителя обращаться к 
+виртуальным методам своих потомков и использовать их для реализации специфичных 
+для потомков действий.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Наличие в объекте TGraphObj виртуального метода Draw позволяет легко 
+реализовать три других метода объекта: чтобы показать объект на экране в методе 
+Show, вызывается Draw с цветом aColor, равным значению поля Color, а чтобы 
+спрятать графический объект, в методе Hide вызывается Draw со значением цвета 
+GetBkColor, т.е. с текущим цветом фона.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Рассмотрим реализацию перемещения объекта. Если потомок TGraphObj (например, 
+TLine) хочет переместить себя на экране, он обращается к родительскому методу 
+MoveTo. В этом методе сначала с помощью Hide объект стирается с экрана, а затем 
+с помощью Show показывается в другом месте. Для реализации своих действий и 
+Hide, и Show обращаются к виртуальному методу Draw. Поскольку вызов MoveTo 
+происходит в рамках объекта TLine, используется ТВМ этого объекта и вызывается 
+его метод Draw, вычерчивающий прямую. Если бы перемешалась окружность, ТВМ 
+содержала бы адрес метода Draw объекта TCircle и визуализация-стирание объекта 
+осуществлялась бы с помощью этого метода.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Чтобы описать все свойства объекта, необходимо раскрыть содержимое объектных 
+методов, т.е. описать соответствующие процедуры и функции. Описание методов 
+производится обычным для Паскаля способом в любом месте раздела описаний, но 
+после описания объекта. Например:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TGraphObj = object</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">...</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor TGraphObj.Init;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">X := aX;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Y := aY; Color := aColor&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TGraphObj-Draw;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Эта процедура в родительском объекте ничего не делает, поэтому экземпляры 
+TGraphObj не способны отображать себя на экране. Чтобы потомки объекта TGraphObj 
+были способны отображать себя, они должны перекрывать этот метод}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TGraphObj.Show;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Draw(Color)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TGraphObj.Hide;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Draw(GetBkColor)&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TGraphObj.MoveTo;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Hide;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">X := X+dX;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Y := Y+dY;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Show&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Отмечу два обстоятельства. Во-первых, при описании методов имя метода 
+дополняется спереди именем объекта, т.е. используется составное имя метода. Это 
+необходимо по той простой причине, что в иерархии родственных объектов любой из 
+методов может быть перекрыт в потомках. Составные имена четко указывают 
+принадлежность конкретной процедуры. Во-вторых, в любом объектном методе можно 
+использовать инкапсулированные поля объекта почти так, как если бы они были 
+определены в качестве глобальных переменных. Например, в конструкторе 
+TGraph.Init переменные в левых частях операторов присваивания представляют собой 
+объектные поля и не должны заново описываться в процедуре. Более того, описание</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor TGraphObj.Init;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> var</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">X,Y: Integer;  {Ошибка!}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Color: Word;  {Ошибка!}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">вызовет сообщение о двойном определении переменных X, Y и Color (в этом и 
+состоит отличие в использовании полей от глобальных переменных: глобальные 
+переменные можно переопределять в процедурах, в то время как объектные поля 
+переопределять нельзя).</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Обратите внимание: абстрактный объект TGraphObj не предназначен для вывода на 
+экран, поэтому его метод Draw ничего не делает. Однако методы Hide, Show и 
+MoveTo «знают» формат вызова этого метода и реализуют необходимые действия, 
+обращаясь к реальным методам Draw своих будущих потомков через соответствующие 
+ТВМ. Это и есть полиморфизм объектов.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Создадим простейшего потомка от TGraphObj - объект TPoint, с помощью которого 
+будет визуализироваться и перемещаться точка. Все основные действия, необходимые 
+для этого, уже есть в объекте TGraphObj, поэтому в объекте TPoint перекрывается 
+единственный метод - Draw.</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TPoint = object(TGraphObj)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Draw(aColor); Virtual;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TPoint.Draw;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">PutPixel(X,Y,Color) {Показываем цветом Color пиксель</font>
+<font size="3">с координатами X и Y}&nbsp;</font></font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В новом объекте TPoint можно использовать любые методы объекта-родителя 
+TGraphObj. Например, вызвать метод MoveTo, чтобы переместить изображение точки 
+на новое место. В этом случае родительский метод TGraphObj.MoveTo будет 
+обращаться к методу TPoint.Draw, чтобы спрятать и затем показать изображение 
+точки. Такой вызов станет доступен после обращения к конструктору Init объекта 
+TPoint, который нужным образом настроит ТВМ объекта. Если вызвать TPoint.Draw до 
+вызова Init, его ТВМ не будет содержать правильного адреса и программа 
+«зависнет».</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Чтобы создать объект-линию, необходимо ввести два новых поля для хранения 
+координат второго конца. Дополнительные поля требуется наполнить конкретными 
+значениями, поэтому нужно перекрыть конструктор родительского объекта:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TLine = object(TGraphObj)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">dX,dY: Integer; {Приращения координат второго конца}&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Constructor 
+Init(X1,Y1,X2,Y2: Integer; aColor: Word);&nbsp;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Procedure Draw(aColor: Word); Virtual;</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end; ,</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor TLine.Init;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Вызывает унаследованный конструктор TGraphObj для инициации полей X, Y и 
+Color. Затем инициирует поля dX и dY}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Вызываем унаследованный конструктор}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Inherited Init(XI,Yl,aColor);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Инициируем поля dX и dY}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">dX := Х2-Х1;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">dY := Y2-Y1&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Draw;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetColor(Color);{Устанавливаем цвет Color}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Line(X,Y,X+dX,Y+dY){Вычерчиваем 
+линию}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В конструкторе TLine.Init для инициации полей X, Y и Color, унаследованных от 
+родительского объекта, вызывается унаследованный конструктор TGraph.Init, для 
+чего используется зарезервированное слово inherited (англ.- унаследованный):</font> 
+</P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Inherited Init(XI,Yl,aColor) ;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">С таким же успехом мы могли бы использовать и составное имя метода:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TGraphObj.Init(Xl,Yl,aColor);</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Для инициации полей dX и dY вычисляется расстояние в пикселах по горизонтали 
+и вертикали от первого конца прямой до ее второго конца. Это позволяет в методе 
+TLine.Draw вычислить координаты второго конца по координатам первого и смещениям 
+dX и dY. В результате простое изменение координат реперной точки X, Y в 
+родительском методе TGraph.MoveTo перемещает всю фигуру по экрану.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Теперь нетрудно реализовать объект TCircle для создания и перемещения 
+окружности:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TCircle = object(TGraphObj)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R: Integer;  {Радиус}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor Init(aX,aY,aR: Integer;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Draw(aColor: Virtual);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor TCircle.Init;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Inherited Init(aX,aY,aColor);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">R := aR&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> end ;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">aColor: Word)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TCircle.Draw;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetColor(aColor);  {Устанавливаем цвет Color}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Circle(X,Y,R)  {Вычерчиваем 
+окружность}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В объекте TRect, с помощью которого создается и перемещается прямоугольник, 
+учтем то обстоятельство, что для задания прямоугольника требуется указать четыре 
+целочисленных параметра, т.е. столько же, сколько для задания линии. Поэтому 
+объект TRect удобнее породить не от TGraphObj, а от TLine, чтобы использовать 
+его конструктор Init:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TRect = object(TLine)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure Draw(aColor: Word);&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Procedure TRect.Draw;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> begin</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">SetColor(aColor);</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Rectangle(X,Y,X+dX,Y+dY)  {Вычерчиваем прямоугольник}&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">Чтобы описания графических объектов не мешали созданию основной программы, 
+оформим эти описания в отдельном модуле GraphObj:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Unit GraphObj; Interface</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">{Интерфейсная часть модуля содержит только объявления объектов}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">type</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TGraphObj = object</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">...</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TPoint = object(TGraphObj)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">...</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TLine = object(TGraphObj)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">...</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TCircle = object(TGraphObj)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">TRect = object(TLine)</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">...</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end;&nbsp;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3"> Implementation</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">{Исполняемая часть содержит описания всех объектных методов}</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Uses Graph;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor TGraphObj.Init;</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">...</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">end.</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3">В интерфейсной части модуля приводятся лишь объявления объектов, подобно тому 
+как описываются другие типы данных, объявляемые в модуле доступными для внешних 
+программных единиц. Расшифровка объектных методов помещается в исполняемую часть 
+implementation, как если бы это были описания обычных интерфейсных процедур и 
+функций. При описании методов можно опускать повторное описание в заголовке 
+параметров вызова. Если они все же повторяются, они должны в точности 
+соответствовать ранее объявленным параметрам в описании объекта. Например, 
+заголовок конструктора TGraphObj.Init может быть таким:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor TGraphObj.Init;&nbsp;</font> </P>
+<P><font face="Arial, Helvetica, sans-serif" size="3"> или таким:</font> </P>
+<P><font face="Verdana, Arial, Helvetica, sans-serif" size="3">Constructor TGraphObj.Init(aX,aY: Integer;
+aColor: Word);</font> </P>
+
+<p>&nbsp;</p>
+
+<table COLS="3" width="%">
+<tr>
+<td>
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl10_2.html">
+<img SRC="Back.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td width="%">
+<font face="Arial, Helvetica, sans-serif">
+<a href="../index.html">
+<img SRC="Menu.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+<td ALIGN="RIGHT">
+<font face="Arial, Helvetica, sans-serif">
+<a href="gl10_4.html">
+<img SRC="For.gif" BORDER="0"  >
+</a>
+</font>
+</td>
+</tr>
+</table>
+
+
+</BODY></HTML>
